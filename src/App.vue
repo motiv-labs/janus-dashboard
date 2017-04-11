@@ -1,36 +1,71 @@
 <template>
-    <div id="app" class="keen-docs">
-        <sidebar class="is-desktop"></sidebar>
+  <div class="app">
+    <nav-bar></nav-bar>
 
-        <transition name="transition-fade">
-            <div
-                class="keen-docs-mobile-sidebar__backdrop"
-            ></div>
-        </transition>
+    <div class="wrapper">
+      <sidebar class="sidebar"></sidebar>
 
-        <section class="keen-docs-content">
-            <div class="keen-docs-content__toolbar">
-                <div class="keen-docs-content__toolbar-content">
-                    <h1 class="keen-docs-content__toolbar-title">dadasd</h1>
+      <main class="content">
+        <ui-alert type="success">
+          Here's an alert
+        </ui-alert>
 
-                    <a>View Source</a>
-                </div>
-            </div>
-
-            <div class="keen-docs-content__page-content" ref="pageContent">
-                <router-view></router-view>
-            </div>
-        </section>
+        <router-view></router-view>
+      </main>
     </div>
+  </div>
 </template>
 
 <script>
+import NavBar from './NavBar';
 import Sidebar from './Sidebar';
 
 export default {
   name: 'app',
   components: {
+    NavBar,
     Sidebar,
   },
 };
 </script>
+
+<style>
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    font-family: 'Roboto';
+  }
+
+  html {
+    font-size: 100%;
+  }
+
+  body,
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  .sidebar {
+    order: -1;
+  }
+
+  @media (min-width: 768px) {
+    .wrapper {
+      flex-direction: row;
+      flex: 1;
+    }
+
+    .content {
+      flex: 1;
+      margin: 0 2rem;
+    }
+
+    .sidebar {
+      flex: 0 0 12em;
+    }
+  }
+</style>
