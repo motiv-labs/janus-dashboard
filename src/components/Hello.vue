@@ -1,32 +1,47 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-      <br>
-      <li><a href="http://vuejs-templates.github.io/webpack/" target="_blank">Docs for This Template</a></li>
-    </ul>
-    <h2>Ponto</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
-  </div>
+  <section class="page page--ui-tabs">
+    <h2 class="page__title">APIs</h2>
+
+    <ui-tabs raised>
+      <ui-tab title="Slots">
+          <div class="table-responsive">
+              <table class="table">
+                  <thead>
+                      <tr>
+                          <th>Name</th>
+                          <th>Active</th>
+                          <th>Listen Path</th>
+                          <th>Upstream URL</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <api-item v-for="item in items" :name="item.name" :active="item.active" :proxy="item.proxy"></api-item>
+                  </tbody>
+              </table>
+          </div>
+      </ui-tab>
+    </ui-tabs>
+  </section>
 </template>
 
 <script>
+import axios from 'axios';
+import UiTabs from 'keen-ui/src/UiTabs';
+import UiTab from 'keen-ui/src/UiTab';
+import ApiItem from './ApiItem';
+
 export default {
   name: 'hello',
   data() {
     return {
-      msg: '',
+      items: [],
     };
+  },
+
+  components: {
+    ApiItem,
+    UiTabs,
+    UiTab,
   },
 
   beforeMount() {
@@ -35,8 +50,13 @@ export default {
 
   methods: {
     loadMessage() {
-      fetch('https://httpbin.org/ip').then(res => res.json()).then((json) => {
-        this.msg = json.origin;
+      axios.get('http://localhost:8081/apis')
+      .then((response) => {
+        console.log(response);
+        this.items = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
       });
     },
   },
@@ -47,19 +67,5 @@ export default {
 <style scoped>
 h1, h2 {
   font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>
