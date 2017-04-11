@@ -10,6 +10,10 @@
           Here's an alert
         </ui-alert>
 
+        <ui-alert type="error" v-if="errorMessage" @dismiss="SET_ERROR">
+          {{ errorMessage }}
+        </ui-alert>
+
         <router-view></router-view>
       </main>
     </div>
@@ -17,15 +21,25 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
 import NavBar from './NavBar';
 import Sidebar from './Sidebar';
 
 export default {
-  name: 'app',
   components: {
     NavBar,
     Sidebar,
   },
+
+  computed: mapState([
+    'errorMessage',
+  ]),
+
+  methods: {
+    ...mapMutations([
+      'SET_ERROR'
+    ]),
+  }
 };
 </script>
 

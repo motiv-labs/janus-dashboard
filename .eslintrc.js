@@ -33,6 +33,8 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', {
       'optionalDependencies': ['test/unit/index.js']
     }],
+    'import/prefer-default-export': 0,
+    'no-shadow': 0,
     'no-param-reassign': 0,
     'no-plusplus': 0,
     'comma-dangle': 0,
