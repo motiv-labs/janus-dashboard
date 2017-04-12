@@ -1,31 +1,28 @@
 <template>
-  <section>
-    <h2>APIs</h2>
+  <section class="section">
+    <h1 class="title">APIs</h1>
+    <h2 class="subtitle">Some thing stuff other things</h2>
 
-    <ui-tabs raised>
-      <ui-tab title="Slots">
-          <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th>Name</th>
-                          <th>Active</th>
-                          <th>Listen Path</th>
-                          <th>Upstream URL</th>
-                      </tr>
-                  </thead>
-                  <tbody>
-                      <api-item
-                        v-for="api in apis"
-                        :name="api.name"
-                        :active="api.active"
-                        :proxy="api.proxy">
-                      </api-item>
-                  </tbody>
-              </table>
-          </div>
-      </ui-tab>
-    </ui-tabs>
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Name</th>
+            <th>Active</th>
+            <th>Listen Path</th>
+            <th>Upstream URL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <api-item
+          v-for="api in apis"
+          :key="api.name"
+          :name="api.name"
+          :active="api.active"
+          :proxy="api.proxy">
+        </api-item>
+      </tbody>
+    </table>
+
   </section>
 </template>
 
@@ -43,13 +40,7 @@ export default {
   ]),
 
   beforeMount() {
-    this.$store.dispatch('fetchApis');
+    this.$store.dispatch('fetchApisFake');
   },
 };
 </script>
-
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-</style>

@@ -1,8 +1,7 @@
 <template>
-  <section>
-    <h1>404</h1>
-
-    <p>The page {{ url }} was not found</p>
+  <section class="section">
+    <h1 class="title">404</h1>
+    <h2 class="subtitle">The page {{ url }} was not found...</h2>
   </section>
 </template>
 

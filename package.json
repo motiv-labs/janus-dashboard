@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "axios": "^0.16.1",
-    "keen-ui": "^1.0.0",
+    "buefy": "^0.1.4",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "vue": "^2.2.2",

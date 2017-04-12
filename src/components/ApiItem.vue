@@ -9,21 +9,19 @@
 </template>
 
 <script>
-import UiSwitch from 'keen-ui/src/UiSwitch';
-
 export default {
-  name: 'ApiItem',
   props: [
     'name',
     'active',
     'proxy',
   ],
+
   data() {
     return {
     };
   },
+
   components: {
-    UiSwitch,
   },
 };
 </script>

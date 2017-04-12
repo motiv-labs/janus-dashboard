@@ -2,19 +2,15 @@
   <div class="app">
     <nav-bar></nav-bar>
 
-    <div class="wrapper">
-      <sidebar class="sidebar"></sidebar>
+    <div class="columns">
+      <main class="column">
+        <hero></hero>
 
-      <main class="content">
-        <ui-alert type="success">
-          Here's an alert
-        </ui-alert>
-
-        <ui-alert type="error" v-if="errorMessage" @dismiss="SET_ERROR">
+        <b-notification type="is-danger" has-icon v-if="errorMessage" @close="SET_ERROR">
           {{ errorMessage }}
-        </ui-alert>
+        </b-notification>
 
-        <router-view></router-view>
+        <router-view class="container"></router-view>
       </main>
     </div>
   </div>
@@ -22,13 +18,13 @@
 
 <script>
 import { mapMutations, mapState } from 'vuex';
-import NavBar from './NavBar';
-import Sidebar from './Sidebar';
+import Hero from './components/Hero';
+import NavBar from './components/NavBar';
 
 export default {
   components: {
+    Hero,
     NavBar,
-    Sidebar,
   },
 
   computed: mapState([
@@ -44,42 +40,5 @@ export default {
 </script>
 
 <style>
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-    font-family: 'Roboto';
-  }
 
-  html {
-    font-size: 100%;
-  }
-
-  body,
-  .wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
-  }
-
-  .sidebar {
-    order: -1;
-  }
-
-  @media (min-width: 768px) {
-    .wrapper {
-      flex-direction: row;
-      flex: 1;
-    }
-
-    .content {
-      flex: 1;
-      margin: 0 2rem;
-    }
-
-    .sidebar {
-      flex: 0 0 12em;
-    }
-  }
 </style>
