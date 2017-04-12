@@ -10,8 +10,12 @@
 export default {
   data() {
     return {
-      url: this.$state.route.fullPath
+      url: null,
     };
   },
+
+  created() {
+    this.url = this.$route.fullPath;
+  }
 };
 </script>
