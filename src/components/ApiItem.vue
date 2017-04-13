@@ -1,8 +1,11 @@
 <template>
     <tr>
         <td>{{ name }}</td>
-        <td v-if="active == true"><code>Yes</code></td>
-        <td v-else><code>No</code></td>
+        <td>
+          <span class="icon is-unselectable" :class="{ 'is-success': isActive, 'is-danger': !isActive }" @click="toggleActive">
+            <i class="mdi">{{ isActive ? 'done' : 'clear' }}</i>
+          </span>
+        </td>
         <td>{{ proxy.listen_path }}</td>
         <td>{{ proxy.upstream_url }}</td>
     </tr>
@@ -18,14 +21,17 @@ export default {
 
   data() {
     return {
+      isActive: !!this.active,
     };
   },
 
-  components: {
+  methods: {
+    toggleActive() {
+      this.isActive = !this.isActive;
+    },
   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
