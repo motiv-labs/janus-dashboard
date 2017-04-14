@@ -1,6 +1,6 @@
 {
   "name": "janus-dashboard",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A Vue.js project",
   "author": "Kieran <me@kieranajp.co.uk>",
   "private": true,
@@ -15,6 +15,7 @@
   "dependencies": {
     "axios": "^0.16.1",
     "buefy": "^0.1.4",
+    "dotenv": "^4.0.0",
     "node-sass": "^4.5.2",
     "sass-loader": "^6.0.3",
     "vue": "^2.2.2",
