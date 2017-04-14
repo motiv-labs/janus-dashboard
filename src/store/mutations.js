@@ -6,4 +6,8 @@ export default {
   SET_ERROR(state, message = null) {
     state.errorMessage = message;
   },
+
+  STORE_TOKEN(state, token = null) {
+    state.token = token;
+  }
 };

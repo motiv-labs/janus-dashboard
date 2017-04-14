@@ -8,7 +8,7 @@
 
     <div class="nav-center">
       <a href="https://github.com/hellofresh/janus" target="_blank" class="nav-item">
-        <b-icon icon="fa-github"></b-icon>
+        <b-icon icon="code"></b-icon>
       </a>
     </div>
 

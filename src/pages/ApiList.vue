@@ -28,7 +28,7 @@
 
 <script>
 import { mapState } from 'vuex';
-import ApiItem from './ApiItem';
+import ApiItem from '../components/ApiItem';
 
 export default {
   components: {
@@ -40,7 +40,7 @@ export default {
   ]),
 
   beforeMount() {
-    this.$store.dispatch('fetchApisFake');
+    this.$store.dispatch('fetchApis');
   },
 };
 </script>

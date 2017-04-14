@@ -5,7 +5,7 @@
   "author": "Kieran <me@kieranajp.co.uk>",
   "private": true,
   "scripts": {
-    "dev": "node build/dev-server.js",
+    "dev": "export USE_MOCKS=1; node build/dev-server.js",
     "start": "node build/dev-server.js",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",

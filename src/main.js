@@ -7,9 +7,7 @@ import store from './store';
 import router from './router';
 
 Vue.config.productionTip = false;
-Vue.use(Buefy, {
-  defaultIconPack: 'fa',
-});
+Vue.use(Buefy);
 
 sync(store, router);
 
