@@ -1,8 +1,8 @@
-import axios from 'axios';
+import client from '@/api';
 
 export default {
   fetchApis(context) {
-    axios.get('http://localhost:8080/apis')
+    client.get('/apis')
       .then((response) => {
         context.commit('STORE_APIS', response.data);
       })
@@ -12,7 +12,7 @@ export default {
   },
 
   attemptLogin(context, username, password) {
-    axios.post('http://localhost:8080/login', { username, password })
+    client.post('/login', { username, password })
       .then((response) => {
         context.commit('STORE_TOKEN', response.data.token);
       })
