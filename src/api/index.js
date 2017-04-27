@@ -5,8 +5,10 @@ const headers = {
   Authorization: 'Bearer aaa'
 };
 
+console.log(process.env);
+
 const client = axios.create({
-  baseURL: 'http://localhost:8081',
+  baseURL: process.env.GATEWAY_BASE_URI,
   headers
 });
 
