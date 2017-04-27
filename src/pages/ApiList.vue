@@ -15,7 +15,6 @@
       <tbody>
         <api-item
           v-for="api in apis"
-          :key="api.name"
           :name="api.name"
           :active="api.active"
           :proxy="api.proxy">
@@ -35,12 +34,14 @@ export default {
     ApiItem,
   },
 
-  computed: mapState([
-    'apis',
-  ]),
+  computed: {
+    ...mapState([
+      'apis',
+    ]),
+  },
 
   beforeMount() {
     this.$store.dispatch('fetchApis');
-  },
+  }
 };
 </script>

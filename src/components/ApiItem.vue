@@ -2,7 +2,7 @@
     <tr>
         <td>{{ name }}</td>
         <td>
-          <span class="icon is-unselectable" :class="{ 'is-success': isActive, 'is-danger': !isActive }" @click="toggleActive">
+          <span class="icon is-unselectable" :class="{ 'is-success': isActive, 'is-danger': !isActive }" @click="toggleApiActive({ name, isActive })">
             <i class="mdi">{{ isActive ? 'done' : 'clear' }}</i>
           </span>
         </td>
@@ -26,9 +26,11 @@ export default {
   },
 
   methods: {
-    toggleActive() {
-      this.isActive = !this.isActive;
-    },
+    toggleApiActive() {
+      this.$store.dispatch('toggleApiActive', this).then(() => {
+        this.isActive = !this.isActive;
+      });
+    }
   },
 };
 </script>

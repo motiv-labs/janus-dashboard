@@ -1,5 +1,5 @@
 export default {
-  apis: [],
+  apis: {},
   errorMessage: null,
   token: null,
 };

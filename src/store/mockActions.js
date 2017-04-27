@@ -62,7 +62,9 @@ const fakeApi = {
 
 export default {
   fetchApis(context) {
-    context.commit('STORE_APIS', [fakeApi]);
+    setTimeout(() => {
+      context.commit('STORE_API', fakeApi);
+    }, 500);
   },
 
   attemptLogin(context, username, password) {
@@ -71,5 +73,9 @@ export default {
     } else {
       context.commit('SET_ERROR', 'Infernal server error');
     }
+  },
+
+  toggleApiActive(context, api) {
+    context.commit('SET_API_ACTIVE', { name: api.name, active: !api.active });
   }
 };

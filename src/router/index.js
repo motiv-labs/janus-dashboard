@@ -12,6 +12,7 @@ const routes = [
     path: '/',
     name: 'ApiList',
     component: ApiList,
+    auth: true,
   },
 ].concat(
   authRoutes
