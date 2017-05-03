@@ -1,4 +1,4 @@
-import client from '@/api';
+import client, { setToken } from '@/api';
 
 export default {
   fetchApis(context) {
@@ -21,9 +21,10 @@ export default {
       });
   },
 
-  attemptLogin(context, username, password) {
+  attemptLogin(context, { username, password }) {
     return client.post('login', { username, password })
       .then((response) => {
+        setToken(response.data.token);
         context.commit('STORE_TOKEN', response.data.token);
       })
       .catch(() => {

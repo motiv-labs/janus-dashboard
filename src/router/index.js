@@ -12,7 +12,7 @@ const routes = [
     path: '/',
     name: 'ApiList',
     component: ApiList,
-    auth: true,
+    meta: { requiresAuth: true },
   },
 ].concat(
   authRoutes

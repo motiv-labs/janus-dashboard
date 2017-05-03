@@ -1,10 +1,19 @@
+import { getToken } from '@/api';
+
 const register = (store, router) => {
   router.beforeEach((to, from, next) => {
-    if (to.auth && !store.state.auth.token) {
-      return next('/login');
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+      if (!getToken()) {
+        next({
+          path: '/login',
+          query: { redirect: to.fullPath },
+        });
+      } else {
+        next();
+      }
+    } else {
+      next();
     }
-
-    return next();
   });
 };
 

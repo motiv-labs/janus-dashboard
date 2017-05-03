@@ -3,10 +3,10 @@
 
     <h1 class="title">Login</h1>
 
-    <form @submit.prevent="attemptLogin">
+    <form @submit.prevent="attemptLogin({ username, password })">
       <b-field label="Username">
         <b-input
-          :value="username"
+          v-model="username"
           maxlength="30"
           icon="person">
         </b-input>
@@ -15,7 +15,7 @@
       <b-field label="Password">
         <b-input
           type="password"
-          :value="password"
+          v-model="password"
           icon="lock">
         </b-input>
       </b-field>
@@ -33,8 +33,6 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-
 export default {
   data() {
     return {
@@ -44,9 +42,11 @@ export default {
   },
 
   methods: {
-    ...mapActions([
-      'attemptLogin'
-    ]),
+    attemptLogin(credentials) {
+      const redirectTo = this.$route.query.redirect ? this.$route.query.redirect : '/';
+
+      this.$store.dispatch('attemptLogin', credentials).then(() => this.$router.push(redirectTo));
+    },
   },
 };
 </script>

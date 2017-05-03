@@ -15,6 +15,7 @@
       <tbody>
         <api-item
           v-for="api in apis"
+          :key="api.name"
           :name="api.name"
           :active="api.active"
           :proxy="api.proxy">
