@@ -8,12 +8,6 @@
         </router-link>
       </li>
 
-      <li :class="{ 'is-active': route === '404' }">
-        <router-link class="nav-item" to="/asdsa">
-          Test
-        </router-link>
-      </li>
-
     </ul>
   </nav>
 </template>
