@@ -1,21 +1,24 @@
 import axios from 'axios';
 import { login } from '@/api/auth';
+import config from '@/config';
 
 const headers = {
   Accept: 'application/vnd.janus.v1+json',
 };
 
+console.log(config.gateway);
+
 const client = axios.create({
-  baseURL: process.env.GATEWAY_BASE_URI,
+  baseURL: config.gateway.uri,
   headers
 });
 
 client.interceptors.response.use(undefined, (error) => {
-  if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
-    return login(process.env.GATEWAY_USERNAME, process.env.GATEWAY_PASSWORD).then(() => {
-      error.config.isRetryRequest = true;
-      return client(error.config);
-    });
+  console.log(error);
+  if (error.response.status === 401) {
+    return login(config.gateway.username, config.gateway.password).then(() =>
+      client(error.config)
+    );
   }
 
   throw error;
