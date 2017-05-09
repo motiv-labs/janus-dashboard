@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { login } from '@/api/auth';
 
 const headers = {
   Accept: 'application/vnd.janus.v1+json',
@@ -9,23 +10,30 @@ const client = axios.create({
   headers
 });
 
-client.interceptors.response.use(response => response, (error) => {
-  console.log(error.response.status);
-  if (error.response.status === 401) {
-    location('/login');
+client.interceptors.response.use(undefined, (error) => {
+  if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
+    return login(process.env.GATEWAY_USERNAME, process.env.GATEWAY_PASSWORD).then(() => {
+      error.config.isRetryRequest = true;
+      return client(error.config);
+    });
   }
-  Promise.reject(error);
+
+  throw error;
 });
 
-export const setToken = (token) => {
-  localStorage.setItem('token', token);
+export const setAccessToken = (token) => {
+  localStorage.setItem('access_token', token);
   client.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const getToken = () => localStorage.getItem('token');
+export const getAccessToken = () => localStorage.getItem('access_token');
 
-if (getToken()) {
-  setToken(getToken());
+export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
+
+export const getRefreshToken = () => localStorage.getItem('refresh_token');
+
+if (getAccessToken()) {
+  setAccessToken(getAccessToken());
 }
 
 export default client;
