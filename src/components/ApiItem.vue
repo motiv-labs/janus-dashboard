@@ -27,9 +27,11 @@ export default {
 
   methods: {
     toggleApiActive() {
-      this.$store.dispatch('toggleApiActive', this).then(() => {
-        this.isActive = !this.isActive;
-      });
+      if (window.confirm('Are you sure?')) {
+        this.$store.dispatch('toggleApiActive', this).then(() => {
+          this.isActive = !this.isActive;
+        });
+      }
     }
   },
 };
