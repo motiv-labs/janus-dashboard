@@ -13,7 +13,7 @@ WORKDIR /src
 COPY . /src
 
 RUN npm install --quiet
-RUN npm run build
+RUN npm run build --quiet
 
 # ---
 

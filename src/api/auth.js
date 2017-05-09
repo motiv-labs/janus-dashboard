@@ -4,5 +4,6 @@ import client, { setAccessToken } from '@/api';
 export const login = (username, password) =>
   client.post('login', { username, password })
     .then((response) => {
-      setAccessToken(response.token);
+      console.log(response);
+      setAccessToken(response.data.token);
     });
