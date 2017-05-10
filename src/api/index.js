@@ -6,22 +6,9 @@ const headers = {
   Accept: 'application/vnd.janus.v1+json',
 };
 
-console.log(config.gateway);
-
 const client = axios.create({
   baseURL: config.gateway.uri,
   headers
-});
-
-client.interceptors.response.use(undefined, (error) => {
-  console.log(error);
-  if (error.response.status === 401) {
-    return login(config.gateway.username, config.gateway.password).then(() =>
-      client(error.config)
-    );
-  }
-
-  throw error;
 });
 
 export const setAccessToken = (token) => {
@@ -38,5 +25,18 @@ export const getRefreshToken = () => localStorage.getItem('refresh_token');
 if (getAccessToken()) {
   setAccessToken(getAccessToken());
 }
+
+client.interceptors.response.use(undefined, (error) => {
+  if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
+    return login(config.gateway.username, config.gateway.password).then((response) => {
+      error.config.isRetryRequest = true;
+      error.config.headers.Authorization = `Bearer ${response.data.token}`;
+      setAccessToken(response.data.token);
+      return client(error.config);
+    });
+  }
+
+  throw error;
+});
 
 export default client;

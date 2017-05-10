@@ -27,6 +27,7 @@ export default {
 
   methods: {
     toggleApiActive() {
+      // eslint-disable-next-line
       if (window.confirm('Are you sure?')) {
         this.$store.dispatch('toggleApiActive', this).then(() => {
           this.isActive = !this.isActive;
