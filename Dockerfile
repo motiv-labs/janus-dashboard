@@ -19,3 +19,4 @@ RUN npm run build --quiet
 
 FROM abiosoft/caddy
 COPY --from=builder /src/dist /srv
+COPY Caddyfile /etc/Caddyfile
