@@ -11,6 +11,16 @@ export default {
       });
   },
 
+  fetchApi(context, name) {
+    return client.get(`apis/${name}`)
+      .then((response) => {
+        context.commit('SET_WORKING_API', response.data);
+      })
+      .catch(() => {
+        context.commit('SET_ERROR', 'Infernal server error');
+      });
+  },
+
   toggleApiActive(context, { name, isActive }) {
     return client.put(`apis/${name}`, { active: !isActive })
       .then(() => {

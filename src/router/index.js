@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import ApiList from '@/pages/ApiList';
+import EditApi from '@/pages/EditApi';
 import NotFound from '@/pages/NotFound';
 
 import authRoutes from './auth';
@@ -12,6 +13,12 @@ const routes = [
     path: '/',
     name: 'ApiList',
     component: ApiList,
+    meta: { requiresAuth: true },
+  },
+  {
+    path: '/:api',
+    name: 'EditApi',
+    component: EditApi,
     meta: { requiresAuth: true },
   },
 ].concat(

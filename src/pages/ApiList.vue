@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" style="overflow-x: scroll;">
     <h1 class="title">APIs</h1>
     <h2 class="subtitle">Some thing stuff other things</h2>
 
@@ -18,7 +18,8 @@
           :key="api.name"
           :name="api.name"
           :active="api.active"
-          :proxy="api.proxy">
+          :proxy="api.proxy"
+          :plugins="api.plugins">
         </api-item>
       </tbody>
     </table>

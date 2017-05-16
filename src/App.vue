@@ -13,6 +13,8 @@
         <router-view class="container"></router-view>
       </main>
     </div>
+
+    <page-footer></page-footer>
   </div>
 </template>
 
@@ -20,11 +22,13 @@
 import { mapMutations, mapState } from 'vuex';
 import Hero from './components/Hero';
 import NavBar from './components/NavBar';
+import PageFooter from './components/PageFooter';
 
 export default {
   components: {
     Hero,
     NavBar,
+    PageFooter,
   },
 
   computed: mapState([

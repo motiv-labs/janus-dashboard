@@ -4,7 +4,13 @@
 
       <li :class="{ 'is-active': route === 'ApiList' }">
         <router-link class="nav-item" :to="{ name: 'ApiList' }">
-          Api List
+          API List
+        </router-link>
+      </li>
+
+      <li :class="{ 'is-active': route === 'EditApi' }">
+        <router-link class="nav-item" :to="{ name: 'EditApi', params: { api: 'new' } }">
+          New API
         </router-link>
       </li>
 

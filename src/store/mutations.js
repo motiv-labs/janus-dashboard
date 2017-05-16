@@ -9,6 +9,12 @@ export default {
     Vue.set(state.apis[name], 'active', active);
   },
 
+  SET_WORKING_API(state, api) {
+    state.workingApi = api;
+    // Also update main state
+    Vue.set(state.apis, api.name, api);
+  },
+
   SET_ERROR(state, message = null) {
     state.errorMessage = message;
   },

@@ -13,6 +13,11 @@
             <i class="mdi">lock{{ isOauthEnabled ? '_outline' : '_open' }}</i>
           </span>
         </td>
+        <td>
+          <router-link class="icon is-unselectable" :to="{ name: 'EditApi', params: { api: name } }">
+            <i class="mdi">create</i>
+          </router-link>
+        </td>
     </tr>
 </template>
 
