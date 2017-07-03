@@ -10,6 +10,8 @@
             <th>Active</th>
             <th>Listen Path</th>
             <th>Upstream URL</th>
+            <th></th>
+            <th></th>
         </tr>
       </thead>
       <tbody>
