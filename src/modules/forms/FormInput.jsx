@@ -53,7 +53,7 @@ const styles = {
   },
 };
 
-const renderField = (component, type, name, normalize, disabled) => {
+const renderField = (component, type, name, normalize, parse, disabled) => {
   const style = disabled ? {...styles[type], ...styles.disabled} : styles[type];
   const props = {
     style,
@@ -61,6 +61,7 @@ const renderField = (component, type, name, normalize, disabled) => {
     component,
     type,
     normalize,
+    parse,
     disabled,
   };
   return (
@@ -69,11 +70,12 @@ const renderField = (component, type, name, normalize, disabled) => {
 };
 
 const FormInput = (props) => {
-  const { attachTo, component, type, normalize, disabled } = props;
+  const { attachTo, component, type, normalize, parse, disabled } = props;
+
   return (
     <FormField>
       <FormLabel htmlFor={attachTo} text={props.label} />
-      {renderField(component, type, attachTo, normalize, disabled)}
+      {renderField(component, type, attachTo, normalize, parse, disabled)}
     </FormField>
   );
 };

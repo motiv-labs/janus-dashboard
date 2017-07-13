@@ -14,69 +14,10 @@ import FormLabel from '../../forms/FormLabel';
 import RenderPlugins from '../../forms/RenderPlugins';
 
 let ApiForm = props => {
-  // console.warn('Props pf API form', props);
   const { 
     handleSubmit, 
-    // pristine,
-    // reset,
-    // submitting,
   } = props;
-
-  const renderPlugin = plugins => {
-    return plugins.map((plugin, index) => {
-      console.log('PLUGIN: ', plugin);
-      return (
-        <div className="j-form-field j-form-row BORDER" key={plugin.name}>
-          <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled/>
-          <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
-          
-
-          <FormField>
-            <FormLabel text="Config" />
-              {
-                plugin.config && Object.keys(plugin.config).map(item => {
-                  const config = plugins[index].config[item];
-                  
-                  if (typeOf(config, 'Object')) {
-                    return (
-                      <FormField key={item}>
-                        <FormLabel text={item} />
-                          {
-                            Object.keys(config).map(el => {
-                              if (typeOf(config[el], 'Object')) {
-                                return (
-                                  <FormField key={item}>
-                                    <FormLabel text={item} />
-                                      {
-                                        Object.keys(config[el]).map(e => {
-                                          return (
-                                            <FormInput key={e} component="input" label={e} attachTo={`plugins[${index}].config[${item}][${el}][${e}]`} type="text" />
-                                          );
-                                        })
-                                      }
-                                  </FormField>
-                                );
-                              }
-
-                              return (
-                                <FormInput key={el} component="input" label={el} attachTo={`plugins[${index}].config[${item}][${el}]`} type="text" />
-                              );
-                            })
-                          }
-                      </FormField>
-                    );
-                  }
-                  
-                  return (
-                    <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
-                  );
-                })
-              }
-          </FormField>
-        </div>
-      );
-    });
-  };
+  const parse = value => value === undefined ? undefined : parseInt(value);
 
   return (
     <form onSubmit={handleSubmit}>
@@ -93,6 +34,16 @@ let ApiForm = props => {
           <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v}/>
           <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" normalize={v => !!v}/>
         </FormRow>
+
+	      <Section>
+          <FormRow>
+	          <FormLabel text="Health check" />
+	        </FormRow>
+	        <FormRow>
+            <FormInput component="input" label="url" attachTo="health_check.url" type="text"/>
+            <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse} />
+	        </FormRow>
+        </Section>
       </Section>
 
       {

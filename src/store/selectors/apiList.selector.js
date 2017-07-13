@@ -5,7 +5,11 @@ const getSearchQuery = state => state.searchReducer.searchQuery;
 
 const getFilteredApiList = (apiList, searchQuery) => {
   return apiList.filter(el => {
-    if (el.name.toLowerCase().includes(searchQuery.toLowerCase())) {
+    if (
+	    el.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+	    el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase()) || 
+	    el.proxy.upstream_url.toLowerCase().includes(searchQuery.toLowerCase())
+    ) {
       return el;
     }
   });
