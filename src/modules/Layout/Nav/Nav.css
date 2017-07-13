@@ -1,0 +1,79 @@
+.j-nav {
+  align-items: stretch;
+  background-color: white;
+  display: flex;
+  height: 3.25rem;
+  position: relative;
+  text-align: center;
+  z-index: 10;
+}
+
+.j-nav-left,
+.j-nav-right {
+  align-items: stretch;
+  display: flex;
+  flex-grow: 1;
+  flex-shrink: 0;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.j-nav-left {
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  white-space: nowrap;
+}
+
+.j-nav-right {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.j-nav-center {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.j-nav-item {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
+  font-size: 1rem;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  color: #7a7a7a;
+}
+
+.source-code-icon {
+  text-decoration: none;
+}
