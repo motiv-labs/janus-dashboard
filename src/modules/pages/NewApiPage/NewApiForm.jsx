@@ -1,14 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
-
-import { typeOf } from '../../../helpers';
-
-import plugins from '../../../configurations/pluginsSchema.json';
+import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
 import FormRow from '../../forms/FormRow';
-import FormField from '../../forms/FormField';
 import FormInput from '../../forms/FormInput';
 import FormLabel from '../../forms/FormLabel';
 import RenderPlugins from '../../forms/RenderPlugins';

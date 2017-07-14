@@ -4,7 +4,6 @@ import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
 import FormRow from '../../forms/FormRow';
-import FormField from '../../forms/FormField';
 import FormInput from '../../forms/FormInput';
 import FormLabel from '../../forms/FormLabel';
 

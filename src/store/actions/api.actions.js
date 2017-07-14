@@ -11,7 +11,7 @@ import {
 } from '../constants';
 import {
   openResponseModal,
-  closeResponseModal,
+  // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 
 export const getAPIRequest = () => ({

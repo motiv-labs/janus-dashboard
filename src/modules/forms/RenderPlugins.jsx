@@ -6,7 +6,6 @@ import { typeOf } from '../../helpers';
 import PluginSection from '../PluginSection/PluginSection';
 
 import Section from '../Layout/Section/Section';
-import FormRow from './FormRow';
 import FormField from './FormField';
 import FormLabel from './FormLabel';
 import FormInput from './FormInput';
@@ -16,7 +15,6 @@ const propTypes = {
 };
 
 const RenderPlugin = ({ plugins }) => {
-  // console.error(plugins);
   return (
     <Section>
       {
@@ -35,7 +33,6 @@ const RenderPlugin = ({ plugins }) => {
                     const config = plugins[index].config[item];
                     
                     if (typeOf(config, 'Object')) {
-                      {/*console.error(typeOf(config));*/}
                       return (
                         <FormField key={item}>
                           <FormLabel text={item} />

@@ -4,7 +4,6 @@ import {
   openResponseModal,
   closeResponseModal,
 } from '../../../store/actions';
-import { filteredApiList } from '../../../store/selectors';
 
 import APIRespondModal from './APIRespondModal';
 

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import Section from '../Layout/Section/Section';
 import FormRow from '../forms/FormRow';
-import FormInput from '../forms/FormInput';
 import FormLabel from '../forms/FormLabel';
 
 const propTypes = {
