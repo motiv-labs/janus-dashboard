@@ -9,6 +9,7 @@ import {
 import Nav from '../Layout/Nav/Nav';
 import Header from '../Layout/Header/Header';
 import Footer from '../Layout/Footer/Footer';
+import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer';
 
 import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
@@ -36,6 +37,8 @@ class Root extends Component {
 					</div>
 
           <Footer />
+
+          <APIRespondModalContainer />
         </div>
       </Router>
     );

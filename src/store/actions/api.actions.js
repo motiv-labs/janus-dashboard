@@ -9,6 +9,10 @@ import {
   SAVE_API_SUCCESS,
   RESET_API,
 } from '../constants';
+import {
+  openResponseModal,
+  closeResponseModal,
+} from './index';
 
 export const getAPIRequest = () => ({
   type: FETCH_API_REQUEST,
@@ -72,10 +76,12 @@ export const updateAPI = (pathname, api) => dispatch => {
   
   return client.put(`apis${pathname}`, api)
     .then((response) => {
+      console.warn(response.statusText, response);
       dispatch(saveAPISuccess(JSON.parse(response.config.data)));
     })
     .catch((error) => {
       if (error.response) {
+        dispatch(openResponseModal(error.response));
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
