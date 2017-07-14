@@ -6,6 +6,7 @@ import {
 const initialState = {
   isOpen: false,
   status: null,
+  statusText: '',
   message: '',
 };
 
@@ -16,6 +17,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         message: action.payload.message,
         status: action.payload.status,
+        statusText: action.payload.statusText,
         isOpen: true,
       };
     }

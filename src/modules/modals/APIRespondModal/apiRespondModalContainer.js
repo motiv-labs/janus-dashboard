@@ -11,13 +11,12 @@ import APIRespondModal from './APIRespondModal';
 const mapStateToProps = (state) => {
   const { isOpen, status, message } = state.apiResponseModalReducer;
 
-  return { isOpen, status, message };
-  // return {
-  //   respondModal: state.apiResponseModalReducer,
-  // };
+  return {
+    isOpen, status, message,
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { openResponseModal, closeResponseModal },
+  { openResponseModal, closeModal: closeResponseModal },
 )(APIRespondModal);

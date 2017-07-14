@@ -76,12 +76,20 @@ export const updateAPI = (pathname, api) => dispatch => {
   
   return client.put(`apis${pathname}`, api)
     .then((response) => {
-      console.warn(response.statusText, response);
       dispatch(saveAPISuccess(JSON.parse(response.config.data)));
+      dispatch(openResponseModal({
+        status: response.status,
+        message: 'Successfuly saved', 
+        statusText: response.statusText,
+      }));
     })
     .catch((error) => {
       if (error.response) {
-        dispatch(openResponseModal(error.response));
+        dispatch(openResponseModal({
+          status: error.response.status,
+          statusText: error.response.statusText,
+          message: error.response.data,
+        }));
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
@@ -106,9 +114,20 @@ export const saveAPI = (pathname, api) => dispatch => {
   return client.post('apis', api)
     .then((response) => {
       dispatch(saveAPISuccess(JSON.parse(response.config.data)));
+      dispatch(openResponseModal({
+        status: response.status,
+        message: 'Successfuly saved', 
+        statusText: response.statusText,
+      }));
     })
     .catch((error) => {
       if (error.response) {
+        dispatch(openResponseModal({
+          status: error.response.status,
+          statusText: error.response.statusText,
+          message: error.response.data,
+        }));
+
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors

@@ -4,13 +4,9 @@ import {
 } from '../constants';
 
 export const openResponseModal = (data) => {
-  console.error('=======>', data);
   return {
     type: OPEN_RESPONSE_MODAL,
-    payload: {
-      status: data.statusText,
-      message: data.data,
-    },
+    payload: data,
   };
 };
 

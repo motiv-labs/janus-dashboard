@@ -1,29 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Modaliz from 'react-modaliz';
 
-const styles = {
-  position: 'fixed',
-  left: 0,
-  top: 0,
-  zIndex: 1000,
-  padding: '50px',
-  borderRadius: '5px',
-  backgroundColor: 'rebeccapurple',
+const propTypes = {
+  closeModal: PropTypes.func.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+  message: PropTypes.string.isRequired,
+  statusText: PropTypes.string.isRequired,
+};
+
+const defaultProps = {
+  statusText: '',
 };
 
 const APIRespondModal = (props) => {
-  console.log('PROPS:::', props);
+  const handleClose = () => {
+    props.closeModal();
+  };
   
-  return props.isOpen ? 
-    (
-      <div style={styles}>
-        SHOW
-      </div>
-    ) :
-    (
-      <div style={styles}>
-        No Error so far
-      </div>
-    );
+  return (
+    <Modaliz
+      show={props.isOpen}
+      simple
+      speed={500}
+      text={props.message}
+      title={props.statusText}
+      onClose={handleClose}
+    />
+  );
 };
+
+APIRespondModal.propTypes = propTypes;
+APIRespondModal.defaultProps = defaultProps;
 
 export default APIRespondModal;
