@@ -72,7 +72,7 @@ class ApiList extends PureComponent {
       return (
         <Pagimagic 
           list={this.props.apiList}
-          itemsPerPage={10}
+          itemsPerPage={3}
           currentPageIndex={this.props.currentPageIndex}
           changePageIndex={this.props.setCurrentPageIndex}
           className="your-class-if-its-necessary"
