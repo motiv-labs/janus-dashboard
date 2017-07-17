@@ -1,0 +1,32 @@
+.j-table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  background-color: white;
+  color: #363636;
+  margin-bottom: 1.5rem;
+  width: 100%;
+}
+
+.j-table thead td,
+.j-table thead th {
+  border-width: 0 0 2px;
+  color: #7a7a7a;
+}
+
+.j-table tbody tr:last-child td,
+.j-table tbody tr:last-child th {
+    border-bottom-width: 0;
+}
+
+.j-table td, 
+.j-table th {
+  border: 1px solid #dbdbdb;
+  border-width: 0 0 1px;
+  padding: 0.5em 0.75em;
+  vertical-align: top;
+}
+
+.j-table th {
+  color: #363636;
+  text-align: left;
+}

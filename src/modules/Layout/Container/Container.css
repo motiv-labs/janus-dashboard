@@ -1,0 +1,8 @@
+.j-container {
+  max-width: 1344px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white;
+  padding: 3rem 1.5rem;
+  overflow-x: scroll;
+}
