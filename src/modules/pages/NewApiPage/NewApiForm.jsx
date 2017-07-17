@@ -10,7 +10,8 @@ import RenderPlugins from '../../forms/RenderPlugins';
 
 let ApiForm = props => {
   const { 
-    handleSubmit, 
+    handleSubmit,
+    initialValues,
   } = props;
   const parse = value => value === undefined ? undefined : parseInt(value);
 
@@ -42,8 +43,8 @@ let ApiForm = props => {
       </Section>
 
       {
-        !!props.initialValues.plugins &&
-          <RenderPlugins plugins={props.initialValues.plugins} />
+        !!initialValues.plugins &&
+          <RenderPlugins plugins={initialValues.plugins} />
       }
 
       <FormRow alignX>

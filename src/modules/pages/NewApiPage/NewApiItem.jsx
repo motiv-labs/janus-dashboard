@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { deleteProperty } from 'picklock';
 
 import { isEmpty } from '../../../helpers';
 import Subtitle from '../../Layout/Title/Subtitle';
@@ -15,28 +16,35 @@ const propTypes = {
 
 class NewApiItem extends Component {
   componentWillMount() {
-    // this.props.fetchAPI(this.props.location.pathname);
-    // reset form and reducer api
     this.props.resetAPI();
-    this.props.fetchApiSchema();
+    
+    if (this.hasToBeCloned()) {
+      this.props.willClone(deleteProperty(this.props.location.state.clone, 'name')); 
+    }
+    else {
+      this.props.fetchApiSchema();
+    }
   }
 
   submit = (values) => {
-    console.log('Values for new API::: ', values);
     this.props.saveAPI(this.props.location.pathname, values);
+  }
+
+  hasToBeCloned = () => {
+    if (this.props.location.state && !isEmpty(this.props.location.state.clone)) {
+      return {
+        clone: this.props.location.state.clone,
+      };
+    }
   }
   
   render() {
-    console.log('API PROPS:: ', isEmpty(this.props.api));
-    // if (!isEmpty(this.props.api)) {
-      // const keys = Object.keys(this.props.api);
     return (
       <div>
         <Subtitle>{this.props.api.name}</Subtitle>
         <NewApiForm onSubmit={this.submit} />
       </div>
     );
-    // }    
   }
 };
 
