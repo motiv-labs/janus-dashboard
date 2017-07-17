@@ -93,7 +93,6 @@ export const updateAPI = (pathname, api) => dispatch => {
         status: response.status,
         message: 'Successfuly saved', 
         statusText: response.statusText,
-        // redirectOnClose: '',
       }));
     })
     .catch((error) => {
@@ -133,7 +132,6 @@ export const saveAPI = (pathname, api) => dispatch => {
         statusText: response.statusText,
         redirectOnClose: () => (history.push('/')),
       }));
-      // history.push('/');
     })
     .catch((error) => {
       if (error.response) {
