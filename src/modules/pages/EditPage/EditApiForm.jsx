@@ -32,7 +32,7 @@ let ApiForm = props => {
 	    </FormRow>
 	    <FormRow>
             <FormInput component="input" label="url" attachTo="health_check.url" type="text"/>
-            <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parseJOHNNY={parse}/>
+            <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse}/>
 	    </FormRow>
         </Section>
       </Section>
