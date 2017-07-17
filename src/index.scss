@@ -1,9 +1,12 @@
 /* Colors */
+$HFcolorGreen: #9bbf3c;
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #9bbf3c; }
+  background-color: $HFcolorGreen;
+}
 
 .input, .textarea {
   -moz-appearance: none;
@@ -35,10 +38,11 @@ body {
   box-shadow: inset 0 1px 2px rgba(10, 10, 10, 0.1);
   max-width: 100%;
   width: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+}
 
 .save-btn {
-  -moz-appearance: none;
+    -moz-appearance: none;
   -webkit-appearance: none;
   -webkit-box-align: center;
   align-items: center;
@@ -72,88 +76,19 @@ body {
   background-color: #7957d5;
   border-color: transparent;
   color: #fff;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+}
 
 .input--checkbox {
   height: 36px;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+}
 
 .centered {
-  text-align: center; }
+  text-align: center;
+}
 
 .BORDER {
-  border: solid 3px red; }
-
-.j-nav {
-  align-items: stretch;
-  background-color: #9bbf3c;
-  display: flex;
-  height: 3.25rem;
-  position: relative;
-  text-align: center;
-  z-index: 10; }
-
-.j-nav-left,
-.j-nav-right {
-  align-items: stretch;
-  display: flex;
-  flex-grow: 1;
-  flex-shrink: 0;
-  max-width: 100%;
-  overflow: auto; }
-
-.j-nav-left {
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  white-space: nowrap; }
-
-.j-nav-right {
-  -webkit-box-pack: end;
-  -ms-flex-pack: end;
-  justify-content: flex-end; }
-
-.j-nav-center {
-  -webkit-box-align: stretch;
-  -ms-flex-align: stretch;
-  align-items: stretch;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  margin-left: auto;
-  margin-right: auto; }
-
-.j-nav-item {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-flex: 0;
-  -ms-flex-positive: 0;
-  flex-grow: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  font-size: 1rem;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  line-height: 1.5;
-  padding: 0.5rem 0.75rem;
-  -webkit-box-pack: start;
-  -ms-flex-pack: start;
-  justify-content: flex-start;
-  color: #7a7a7a; }
-
-.source-code-icon {
-  text-decoration: none; }
+  border: solid 3px red;
+}
