@@ -14,6 +14,12 @@ import {
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 
+import createHistory from 'history/createBrowserHistory';
+
+const history = createHistory({
+  forceRefresh: true,
+});
+
 export const getAPIRequest = () => ({
   type: FETCH_API_REQUEST,
 });
@@ -118,6 +124,7 @@ export const saveAPI = (pathname, api) => dispatch => {
         status: response.status,
         message: 'Successfuly saved', 
         statusText: response.statusText,
+        redirectOnClose: () => (history.push('/')),
       }));
     })
     .catch((error) => {

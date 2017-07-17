@@ -16,8 +16,12 @@ const defaultProps = {
 const APIRespondModal = (props) => {
   const handleClose = () => {
     props.closeModal();
+
+    if (props.redirectOnClose) {
+      props.redirectOnClose();
+    }
   };
-  
+
   return (
     <Modaliz
       show={props.isOpen}

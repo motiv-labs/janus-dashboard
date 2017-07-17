@@ -29,7 +29,6 @@ export const fetchAPIs = () => dispatch => {
   
   return client.get('apis')
     .then((response) => {
-      // console.error(typeOf(response.data));
       dispatch(getAPIsSuccess(response.data));
     });
     // .catch(() => {

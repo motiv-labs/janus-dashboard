@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import {
-//   Link,
-// } from 'react-router-dom';
 
 import { isEmpty } from '../../../helpers';
 import Subtitle from '../../Layout/Title/Subtitle';

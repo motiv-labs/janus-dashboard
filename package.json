@@ -5,8 +5,10 @@
   "author": "",
   "dependencies": {
     "axios": "^0.16.2",
+    "history": "^4.6.3",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
+    "react-history": "^0.18.2",
     "react-modaliz": "^0.1.2",
     "react-pagimagic": "^0.5.0",
     "react-redux": "^5.0.5",

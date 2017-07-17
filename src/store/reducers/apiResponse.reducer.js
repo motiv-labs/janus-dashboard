@@ -16,6 +16,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         message: action.payload.message,
+        redirectOnClose: action.payload.redirectOnClose,
         status: action.payload.status,
         statusText: action.payload.statusText,
         isOpen: true,
