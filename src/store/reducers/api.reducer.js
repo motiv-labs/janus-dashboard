@@ -6,6 +6,7 @@ import {
   SAVE_API_REQUEST,
   SAVE_API_SUCCESS,
   RESET_API,
+  WILL_CLONE,
 } from '../constants';
 
 const initialState = {
@@ -30,6 +31,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         api: action.payload,
         isFetching: false,
+      };
+    }
+    case WILL_CLONE: {
+      return {
+        ...state,
+        api: action.payload,
       };
     }
     case RESET_API: {

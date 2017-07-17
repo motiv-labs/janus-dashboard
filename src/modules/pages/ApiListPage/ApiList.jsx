@@ -4,7 +4,6 @@ import {
   Link,
 } from 'react-router-dom';
 import Pagimagic from 'react-pagimagic';
-// import Pagimagic from '../../../P';
 
 import Table from '../../Layout/Table/Table';
 
@@ -42,6 +41,16 @@ class ApiList extends PureComponent {
           <td>
             <Link to={`/${api.name}`}>EDIT</Link>
           </td>
+          <td>
+            <Link
+              to={{
+                pathname: '/new',
+                state: {
+                  clone: api,
+                },
+              }}
+            >Clone</Link>
+          </td>
         </tr>
       );
     });
@@ -56,6 +65,7 @@ class ApiList extends PureComponent {
             <th>Active</th>
             <th>Listen Path</th>
             <th>Upstream URL</th>
+            <th></th>
             <th></th>
             <th></th>
           </tr>  

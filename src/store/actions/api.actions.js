@@ -8,6 +8,7 @@ import {
   SAVE_API_REQUEST,
   SAVE_API_SUCCESS,
   RESET_API,
+  WILL_CLONE,
 } from '../constants';
 import {
   openResponseModal,
@@ -49,6 +50,11 @@ export const saveAPISuccess = api => ({
 
 export const resetAPI = () => ({
   type: RESET_API,
+});
+
+export const willClone = data => ({
+  type: WILL_CLONE,
+  payload: data,
 });
 
 export const fetchAPI = (pathname) => dispatch => {
