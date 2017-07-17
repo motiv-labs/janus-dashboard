@@ -22,15 +22,11 @@ class ApiItem extends Component {
   }
 
   submit = (values) => {
-    // console.log('subm this', this)
-    // console.log('Values::: ', values);
     this.props.updateAPI(this.props.location.pathname, values);
   }
   
   render() {
-    // console.log('API PROPS:: ', isEmpty(this.props.api));
     if (!isEmpty(this.props.api)) {
-      // const keys = Object.keys(this.props.api);
       return (
         <div>
           <Section>

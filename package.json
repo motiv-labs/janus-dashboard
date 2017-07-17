@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.6.3",
+    "picklock": "^0.5.1",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-history": "^0.18.2",

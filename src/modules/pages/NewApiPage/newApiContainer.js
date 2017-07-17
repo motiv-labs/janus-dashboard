@@ -4,6 +4,7 @@ import {
   fetchApiSchema,
   resetAPI,
   saveAPI,
+  willClone,
 } from '../../../store/actions';
 
 import NewApiItem from './NewApiItem';
@@ -16,5 +17,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { fetchApiSchema, resetAPI, saveAPI },
+  { fetchApiSchema, resetAPI, saveAPI, willClone },
 )(NewApiItem);

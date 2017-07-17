@@ -8,6 +8,7 @@ import {
   SAVE_API_REQUEST,
   SAVE_API_SUCCESS,
   RESET_API,
+  WILL_CLONE,
 } from '../constants';
 import {
   openResponseModal,
@@ -51,6 +52,11 @@ export const resetAPI = () => ({
   type: RESET_API,
 });
 
+export const willClone = data => ({
+  type: WILL_CLONE,
+  payload: data,
+});
+
 export const fetchAPI = (pathname) => dispatch => {
   dispatch(getAPIRequest());
   
@@ -87,6 +93,7 @@ export const updateAPI = (pathname, api) => dispatch => {
         status: response.status,
         message: 'Successfuly saved', 
         statusText: response.statusText,
+        // redirectOnClose: '',
       }));
     })
     .catch((error) => {
@@ -126,6 +133,7 @@ export const saveAPI = (pathname, api) => dispatch => {
         statusText: response.statusText,
         redirectOnClose: () => (history.push('/')),
       }));
+      // history.push('/');
     })
     .catch((error) => {
       if (error.response) {
