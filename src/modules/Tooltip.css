@@ -1,0 +1,22 @@
+.j-tooltip {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -50%);
+  z-index: 1;
+}
+.j-tooltip:hover .j-tooltip__text {
+  display: block;
+}
+.j-tooltip__text {
+  position: absolute;
+  display: none;
+  right: 0;
+  top: 50%;
+  transform: translate(100%, -50%);
+  background-color: #fff;
+  border: solid 1px red;
+  border-radius: 3px;
+  padding: 10px;
+}

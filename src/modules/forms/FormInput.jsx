@@ -12,6 +12,7 @@ const propTypes = {
   label: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
   normalize: PropTypes.func,
+  tooltip: PropTypes.string,
 };
 
 const styles = {
@@ -70,11 +71,11 @@ const renderField = (component, type, name, normalize, parse, disabled) => {
 };
 
 const FormInput = (props) => {
-  const { attachTo, component, type, normalize, parse, disabled } = props;
+  const { attachTo, component, type, tooltip, normalize, parse, disabled } = props;
 
   return (
     <FormField>
-      <FormLabel htmlFor={attachTo} text={props.label} />
+      <FormLabel htmlFor={attachTo} text={props.label} tooltip={tooltip} />
       {renderField(component, type, attachTo, normalize, parse, disabled)}
     </FormField>
   );

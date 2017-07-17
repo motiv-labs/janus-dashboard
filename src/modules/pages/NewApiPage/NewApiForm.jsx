@@ -18,12 +18,12 @@ let ApiForm = props => {
     <form onSubmit={handleSubmit}>
       <Section>
         <FormRow>
-          <FormInput component="input" label="Name" attachTo="name" type="text"/>
+          <FormInput component="input" label="Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull"/>
         </FormRow>
       </Section>
       <Section>
         <FormRow>
-          <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text"/>
+          <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="LOREM IPSUM" />
           <FormInput component="input" label="Upstream URL" attachTo="proxy.upstream_url" type="text"/>
           <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v}/>
           <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v}/>
