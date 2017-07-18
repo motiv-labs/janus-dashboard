@@ -1,0 +1,26 @@
+/* Colors */
+$hellofresh-color: #90c200;
+$hf-color-bg: rgba(250, 250, 250, 1);
+$hf-color-white: #fff;
+$hf-color-white-pale: rgba(255, 255, 255, 0.15); 
+
+/* Shadows */
+$hf-box-shadow-header: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+
+/* Fonts */
+$hf-font-family-sans-serif: 'roboto', sans-serif;
+$hf-font-size-base: 14px;
+
+/* Sizes */
+$hf-width-container: 1140px;
+$hf-padding-main: 20px;
+$hf-padding-middle: 15px;
+$hf-padding-small: 5px;
+$hf-height-header: 50px;
+
+$hf-border-radius-main: 4px;
+
+$hf-padding-button: $hf-padding-small $hf-padding-middle;
+$hf-color-button-primary: $hellofresh-color;
+$hf-border-radius-button: $hf-border-radius-main;
+

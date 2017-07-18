@@ -1,13 +1,13 @@
 @import 'index.scss';
 
 .j-header {
-  grid-template-columns: 1fr $HFwidthContainer 1fr;
+  grid-template-columns: 1fr $hf-width-container 1fr;
   display: grid;
-  padding: 0 19px;
-  background-color: $HFcolorGreen;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+  padding: 0 $hf-padding-main;
+  background-color: $hellofresh-color;
+  box-shadow: $hf-box-shadow-header; 
 
-  & > * {
+  &__col {
     align-self: center;
   }
 }
