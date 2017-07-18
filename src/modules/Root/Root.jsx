@@ -14,8 +14,6 @@ import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
 
-import './Root.css';
-
 class Root extends Component {
   render() {
     return (

@@ -9,17 +9,17 @@ import './Header.css';
 const Header = ({ children }) => {
   return (
     <header className="j-header">
-      <div className="j-header__left">
+      <div className="j-header__col j-header__left">
         <JanusLogo />
       </div>
-      <div className="j-header__middle">
+      <div className="j-hidder__col j-header__middle">
         <Container>
           <Nav>
             {children}
           </Nav>
         </Container>
       </div>
-      <div className="j-header__right">
+      <div className="j-header__col j-header__right">
         Here will be info about user 
       </div>
     </header>
