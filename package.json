@@ -21,6 +21,7 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
     "redux-logger": "^3.0.6"
@@ -30,7 +31,7 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "PORT=8082 npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && yarn lint:fix &&react-scripts build",
+    "build": "npm run build-css && npm run lint:fix &&react-scripts build",
     "lint": "eslint --ext .jsx,.js ./src",
     "lint:fix": "eslint --ext .jsx,.js ./src --fix",
     "test": "react-scripts test --env=jsdom",

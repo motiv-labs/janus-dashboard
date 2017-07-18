@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Nav from '../Layout/Nav/Nav';
 import Header from '../Layout/Header/Header';
 import Footer from '../Layout/Footer/Footer';
 import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer';
@@ -22,10 +21,9 @@ class Root extends Component {
     return (
       <Router>
         <div className="App">
-          <Nav />
           <Header>
-            <NavLink exact to="/" className="nav-item">API List</NavLink>
-            <NavLink to="/new" className="nav-item">New API</NavLink>
+            <NavLink exact to="/" className="j-nav__item">API Definitions</NavLink>
+            <NavLink to="/new" className="j-nav__item">New API</NavLink>
           </Header>
 
 					<div className="Pages">
