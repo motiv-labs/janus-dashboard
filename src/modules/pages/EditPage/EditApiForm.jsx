@@ -44,7 +44,7 @@ let ApiForm = props => {
       }
 
       <FormRow centered>
-        <Button label="Submit" type="submit"/>
+        <Button label="Submit" type="submit" mod="primary"/>
       </FormRow>
     </form>
   );

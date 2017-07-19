@@ -49,7 +49,7 @@ let ApiForm = props => {
       }
 
       <FormRow alignX>
-        <Button type="submit" label="Submit"/>
+        <Button type="submit" label="Submit" mod="primary"/>
       </FormRow>
     </form>
   );

@@ -6,18 +6,29 @@ import './Button.css';
 
 const propTypes = {
   label: PropTypes.string,
+  mod: PropTypes.string,
   type: PropTypes.string,
+  onClick: PropTypes.func,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
 };
 
 const b = block('j-button');
 
-const Button = (props) => {
+const addMod = mod => mod ? { [mod]: !!mod } : {};
+
+const Button = ({ label, mod, type, onClick, children }) => {
+  const inner = children ? children : label;
+
   return (
     <button
-      className={b({primary: true})}
-      type={props.type}
+      className={b(addMod(mod))}
+      type={type}
+      onClick={onClick}
     >
-      {props.label}
+      {inner}
     </button>
   );
 };
