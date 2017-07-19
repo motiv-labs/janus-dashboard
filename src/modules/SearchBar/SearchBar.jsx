@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import block from '../../helpers/bem-cn';
+
 import '../forms/FormInput/FormInput.css';
 import './SearchBar.css';
 
@@ -16,12 +18,14 @@ const defaultProps = {
   placeholder: 'Search...',
 };
 
+const b = block('j-search-bar');
+
 const SearchBar = ({ discardPagination, placeholder, searchQuery, setSearchQuery }) => {
   return (
-    <div className="j-search-bar">
-      <span className="j-search-bar__icon"></span>
+    <div className={b}>
+      <span className={b('icon')}></span>
       <input
-        className="j-input j-search-bar__input"
+        className={b('input').mix('j-input')}
         type="text"
         placeholder={placeholder}
         value={searchQuery}

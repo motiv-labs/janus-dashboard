@@ -21,6 +21,7 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "bem-cn": "^2.1.3",
     "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",

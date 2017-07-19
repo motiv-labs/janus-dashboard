@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import block from '../../helpers/bem-cn';
 import './Button.css';
 
 const propTypes = {
@@ -8,10 +9,12 @@ const propTypes = {
   type: PropTypes.string,
 };
 
+const b = block('j-button');
+
 const Button = (props) => {
   return (
     <button
-      className="j-button j-button--primary"
+      className={b({primary: true})}
       type={props.type}
     >
       {props.label}
