@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SearchIcon from '../UI/icons/SearchIcon';
+
+import '../forms/FormInput/FormInput.css';
 import './SearchBar.css';
 
 const propTypes = {
@@ -18,8 +21,9 @@ const defaultProps = {
 const SearchBar = ({ discardPagination, placeholder, searchQuery, setSearchQuery }) => {
   return (
     <div className="j-search-bar">
+      <SearchIcon className="j-search-bar__icon" />
       <input
-        className="search-bar__input input"
+        className="j-input j-search-bar__input"
         type="search"
         placeholder={placeholder}
         value={searchQuery}

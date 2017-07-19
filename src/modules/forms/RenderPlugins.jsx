@@ -8,7 +8,7 @@ import PluginSection from '../PluginSection/PluginSection';
 import Section from '../Layout/Section/Section';
 import FormField from './FormField';
 import FormLabel from './FormLabel';
-import FormInput from './FormInput';
+import FormInput from './FormInput/FormInput';
 
 const propTypes = {
   plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
