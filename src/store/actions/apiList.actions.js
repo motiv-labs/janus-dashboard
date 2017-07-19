@@ -3,6 +3,7 @@ import {
   FETCH_APIS_REQUEST,
   FETCH_APIS_SUCCESS,
   DISCARD_PAGINATION,
+  REFRESH_APIS,
   SET_PAGINATION_PAGE,
 } from '../constants';
 
@@ -35,3 +36,8 @@ export const fetchAPIs = () => dispatch => {
     //   context.commit('SET_ERROR', 'Infernal server error');
     // });
 };
+
+export const refreshAPIs = api => ({
+  type: REFRESH_APIS,
+  payload: api,
+});

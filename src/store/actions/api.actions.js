@@ -1,6 +1,8 @@
 import client from '../api';
 import apiSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
+  DELETE_API_REQUEST,
+  DELETE_API_SUCCESS,
   FETCH_API_REQUEST,
   FETCH_API_SUCCESS,
   FETCH_API_SCHEMA_REQUEST,
@@ -19,6 +21,14 @@ import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory({
   forceRefresh: true,
+});
+
+export const deleteAPIRequest = () => ({
+  type: DELETE_API_REQUEST,
+});
+
+export const deleteAPISuccess = () => ({
+  type: DELETE_API_SUCCESS,
 });
 
 export const getAPIRequest = () => ({
@@ -57,7 +67,30 @@ export const willClone = data => ({
   payload: data,
 });
 
-export const fetchAPI = (pathname) => dispatch => {
+export const deleteAPI = (apiName, callback) => dispatch => {
+  dispatch(deleteAPIRequest());
+
+  return client.delete(`apis/${apiName}`)
+    .then(response => {
+      dispatch(deleteAPISuccess());
+      dispatch(openResponseModal({
+        status: response.status,
+        message: 'Successfuly deleted', 
+        statusText: response.statusText,
+      }));
+      dispatch(callback(apiName));
+    })
+    .catch((error) => {
+      dispatch(openResponseModal({
+        status: error.response.status,
+        statusText: error.response.statusText,
+        message: error.response.data.error,
+      }));
+      console.log('DELETE_API_ERROR', 'Infernal server error', error.response);
+    });
+};
+
+export const fetchAPI = pathname => dispatch => {
   dispatch(getAPIRequest());
   
   return client.get(`apis${pathname}`)
@@ -69,7 +102,7 @@ export const fetchAPI = (pathname) => dispatch => {
     });
 };
 
-export const fetchApiSchema = (pathname) => dispatch => {
+export const fetchApiSchema = pathname => dispatch => {
   dispatch(getApiSchemaRequest());
   
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready

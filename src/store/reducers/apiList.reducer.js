@@ -1,6 +1,7 @@
 import {
   FETCH_APIS_REQUEST,
   FETCH_APIS_SUCCESS,
+  REFRESH_APIS,
   DISCARD_PAGINATION,
   SET_PAGINATION_PAGE,
 } from '../constants';
@@ -36,6 +37,18 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         currentPageIndex: action.payload,
+      };
+    }
+    case REFRESH_APIS: {
+      return {
+        ...state,
+        apiList: state.apiList.reduce((memo, item) => {
+          if (item.name !== action.payload) {
+            memo.push(item);
+          }
+
+          return memo;
+        }, []),
       };
     }
     default:
