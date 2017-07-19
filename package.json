@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.6.3",
+    "node-sass-chokidar": "^0.0.3",
     "picklock": "^0.5.1",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
@@ -20,15 +21,19 @@
     "reselect": "^3.0.1"
   },
   "devDependencies": {
+    "npm-run-all": "^4.0.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
     "redux-logger": "^3.0.6"
   },
   "scripts": {
-    "start": "PORT=8082 react-scripts start",
+    "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
+    "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "start-js": "react-scripts start",
+    "start": "PORT=8082 npm-run-all -p watch-css start-js",
+    "build": "npm run build-css && npm run lint:fix &&react-scripts build",
     "lint": "eslint --ext .jsx,.js ./src",
     "lint:fix": "eslint --ext .jsx,.js ./src --fix",
-    "build": "yarn lint:fix && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   }
