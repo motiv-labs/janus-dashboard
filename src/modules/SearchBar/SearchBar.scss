@@ -1,0 +1,24 @@
+@import 'index.scss';
+
+.j-search-bar {
+  position: relative;
+  width: 360px;
+  background-color: $hf-color-white; 
+
+  &__input {
+    position: relative;
+    width: 100%;
+    padding-left: 50px;
+    background-color: transparent;
+  }
+
+  &__icon {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-image: url(../../assets/img/grey.svg);
+  }
+}
