@@ -31,12 +31,10 @@ const renderField = (component, type, name, normalize, parse, disabled) => {
   );
 };
 
-const FormInput = props => {
-  const { attachTo, component, type, tooltip, normalize, parse, disabled } = props;
-
+const FormInput = ({ label, attachTo, component, type, tooltip, normalize, parse, disabled }) => {
   return (
     <FormField>
-      <FormLabel htmlFor={attachTo} text={props.label} tooltip={tooltip} />
+      <FormLabel htmlFor={attachTo} text={label} tooltip={tooltip} />
       {renderField(component, type, attachTo, normalize, parse, disabled)}
     </FormField>
   );
