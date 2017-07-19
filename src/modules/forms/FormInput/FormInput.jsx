@@ -17,25 +17,17 @@ const propTypes = {
   tooltip: PropTypes.string,
 };
 
-const renderField = (component, type, name, normalize, parse, disabled) => {
-  const props = {
-    name,
-    component,
-    type,
-    normalize,
-    parse,
-    disabled,
-  };
-  return (
-    <Field className="j-input" {...props} />
-  );
-};
-
-const FormInput = ({ label, attachTo, component, type, tooltip, normalize, parse, disabled }) => {
+const FormInput = (props) => {
+  const {
+    attachTo,
+    label,
+    tooltip,
+    ...others,
+  } = props;
   return (
     <FormField>
       <FormLabel htmlFor={attachTo} text={label} tooltip={tooltip} />
-      {renderField(component, type, attachTo, normalize, parse, disabled)}
+      <Field {...others} name={attachTo}/>
     </FormField>
   );
 };
