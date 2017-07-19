@@ -20,8 +20,8 @@ class Root extends Component {
       <Router>
         <div className="App">
           <Header>
-            <NavLink exact to="/" className="j-nav__item">API Definitions</NavLink>
-            <NavLink to="/new" className="j-nav__item">New API</NavLink>
+            <NavLink exact to="/" className="j-nav__item" activeClassName="j-nav__item--active">API Definitions</NavLink>
+            <NavLink to="/new" className="j-nav__item" activeClassName="j-nav__item--active">New API</NavLink>
           </Header>
 
 					<div className="Pages">
