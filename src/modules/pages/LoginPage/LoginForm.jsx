@@ -8,9 +8,15 @@ import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
 
-let LoginForm = () => {
+const LoginForm = prop => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log('SAVE');
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <Section>
         <FormRow>
           <FormInput component="input" attachTo="login" label="Login" type="email" />
@@ -28,18 +34,7 @@ let LoginForm = () => {
   );
 }
 
-LoginForm = reduxForm({
-  form: 'apiForm',
-  enableReinitialize: true, // this is needed!!
+export default reduxForm({
+  form: 'loginForm',
 })(LoginForm);
 
-LoginForm = connect(
-  state => {
-    return ({
-      initialValues: state.userSessionReducer.api,
-    });
-  },
-  null
-)(LoginForm);
-
-export default LoginForm;
