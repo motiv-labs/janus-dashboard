@@ -5,7 +5,6 @@ import Container from '../../Layout/Container/Container';
 import Title from '../../Layout/Title/Title';
 import LoginContainer from './loginContainer';
 
-// import './LoginPage.css';
 const LoginPage = () => {
   return (
     <Container>

@@ -30,7 +30,7 @@ class Root extends Component {
             <Switch>
               <Route exact path="/" component={ApiListPage}/>
               <Route path="/new" component={NewApiPage}/>
-              <Route path="/login" component={LoginPage}/>
+              <Route path="/log-in" component={LoginPage}/>
               <Route path="/:name" render={(props) => <EditApiPage {...props} />}/>
             </Switch>
           </div>
