@@ -1,6 +1,7 @@
 import {
-  DELETE_API_REQUEST,
-  DELETE_API_SUCCESS,
+  DELETE_ENDPOINT_START,
+  DELETE_ENDPOINT_SUCCESS,
+  DELETE_ENDPOINT_FAILURE,
   FETCH_API_REQUEST,
   FETCH_API_SUCCESS,
   FETCH_API_SCHEMA_REQUEST,
@@ -18,7 +19,7 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case DELETE_API_REQUEST:
+    case DELETE_ENDPOINT_START:
     case FETCH_API_REQUEST:
     case FETCH_API_SCHEMA_REQUEST:
     case SAVE_API_REQUEST: {
@@ -28,7 +29,7 @@ export default function reducer(state = initialState, action) {
       };
     }
 
-    case DELETE_API_SUCCESS: {
+    case DELETE_ENDPOINT_SUCCESS: {
       return {
         ...state,
         isFetching: false,

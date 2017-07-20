@@ -1,8 +1,8 @@
 import client from '../api';
 import apiSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
-  DELETE_API_REQUEST,
-  DELETE_API_SUCCESS,
+  DELETE_ENDPOINT_START,
+  DELETE_ENDPOINT_SUCCESS,
   FETCH_API_REQUEST,
   FETCH_API_SUCCESS,
   FETCH_API_SCHEMA_REQUEST,
@@ -24,11 +24,11 @@ const history = createHistory({
 });
 
 export const deleteAPIRequest = () => ({
-  type: DELETE_API_REQUEST,
+  type: DELETE_ENDPOINT_START,
 });
 
 export const deleteAPISuccess = () => ({
-  type: DELETE_API_SUCCESS,
+  type: DELETE_ENDPOINT_SUCCESS,
 });
 
 export const getAPIRequest = () => ({
