@@ -67,32 +67,33 @@ export const willClone = data => ({
   payload: data,
 });
 
-export const deleteAPI = (apiName, callback) => dispatch => {
+export const deleteAPI = (apiName, callback) => async dispatch => {
   dispatch(deleteAPIRequest());
 
-  return client.delete(`apis/${apiName}`)
-    .then(response => {
-      dispatch(deleteAPISuccess());
-      dispatch(openResponseModal({
-        status: response.status,
-        message: 'Successfuly deleted', 
-        statusText: response.statusText,
-      }));
-      dispatch(callback(apiName));
-    })
-    .catch((error) => {
-      dispatch(openResponseModal({
-        status: error.response.status,
-        statusText: error.response.statusText,
-        message: error.response.data.error,
-      }));
-      console.log('DELETE_API_ERROR', 'Infernal server error', error.response);
-    });
+  try {
+    const response = await client.delete(`apis/${apiName}`);
+
+    dispatch(deleteAPISuccess());
+    dispatch(openResponseModal({
+      status: response.status,
+      message: 'Successfuly deleted', 
+      statusText: response.statusText,
+    }));
+    dispatch(callback(apiName));
+  }
+  catch (error) {
+    dispatch(openResponseModal({
+      status: error.response.status,
+      statusText: error.response.statusText,
+      message: error.response.data.error,
+    }));
+    console.log('DELETE_API_ERROR', 'Infernal server error', error.response);
+  }
 };
 
 export const fetchAPI = pathname => dispatch => {
   dispatch(getAPIRequest());
-  
+
   return client.get(`apis${pathname}`)
     .then((response) => {
       dispatch(getAPISuccess(response.data));
@@ -104,7 +105,7 @@ export const fetchAPI = pathname => dispatch => {
 
 export const fetchApiSchema = pathname => dispatch => {
   dispatch(getApiSchemaRequest());
-  
+
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
   //   .then((response) => {
   //     dispatch(getApiSchemaSuccess(response.data));
@@ -112,13 +113,13 @@ export const fetchApiSchema = pathname => dispatch => {
   //   .catch((e) => {
   //     console.log('FETCH_API_SCHEMA_ERROR', 'Infernal server error', e);
   //   });
-  
+
   dispatch(getApiSchemaSuccess(apiSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
 export const updateAPI = (pathname, api) => dispatch => {
   dispatch(saveAPIRequest());
-  
+
   return client.put(`apis${pathname}`, api)
     .then((response) => {
       dispatch(saveAPISuccess(JSON.parse(response.config.data)));
@@ -155,7 +156,7 @@ export const updateAPI = (pathname, api) => dispatch => {
 
 export const saveAPI = (pathname, api) => dispatch => {
   dispatch(saveAPIRequest());
-  
+
   return client.post('apis', api)
     .then((response) => {
       dispatch(saveAPISuccess(JSON.parse(response.config.data)));
