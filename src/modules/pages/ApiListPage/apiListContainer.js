@@ -21,4 +21,3 @@ export default connect(
   mapStateToProps,
   { deleteAPI, fetchAPIs, refreshAPIs, setCurrentPageIndex },
 )(ApiList);
-
