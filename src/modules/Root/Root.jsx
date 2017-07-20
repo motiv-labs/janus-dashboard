@@ -23,14 +23,14 @@ class Root extends Component {
           <Header>
             <NavLink exact to="/" className="j-nav__item" activeClassName="j-nav__item--active">API Definitions</NavLink>
             <NavLink to="/new" className="j-nav__item" activeClassName="j-nav__item--active">New API</NavLink>
-            <NavLink to="/log-in" className="j-nav__item" activeClassName="j-nav__item--active">Login Page</NavLink>
+            <NavLink to="/login" className="j-nav__item" activeClassName="j-nav__item--active">Login Page</NavLink>
           </Header>
 
           <div className="Pages">
             <Switch>
               <Route exact path="/" component={ApiListPage}/>
               <Route path="/new" component={NewApiPage}/>
-              <Route path="/log-in" component={LoginPage}/>
+              <Route path="/login" component={LoginPage}/>
               <Route path="/:name" render={(props) => <EditApiPage {...props} />}/>
             </Switch>
           </div>
