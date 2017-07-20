@@ -25,7 +25,6 @@ const LoginForm = prop => {
           <FormInput component="input" attachTo="password" label="Password" type="password" />
         </FormRow>
       </Section>
-
       <FormRow centered>
         <Button label="Submit" type="submit"/>
       </FormRow>

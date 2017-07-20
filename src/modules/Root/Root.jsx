@@ -15,15 +15,21 @@ import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
 
+import block from '../../helpers/bem-cn';
+
+import { navClassName } from '../Layout/Nav/Nav';
+
+const nav = block(navClassName('item')()); 
+
 class Root extends Component {
   render() {
     return (
       <Router>
         <div className="App">
           <Header>
-            <NavLink exact to="/" className="j-nav__item" activeClassName="j-nav__item--active">API Definitions</NavLink>
-            <NavLink to="/new" className="j-nav__item" activeClassName="j-nav__item--active">New API</NavLink>
-            <NavLink to="/login" className="j-nav__item" activeClassName="j-nav__item--active">Login Page</NavLink>
+            <NavLink exact to="/" className={nav()} activeClassName={nav({active: true})()}>API Definitions</NavLink>
+            <NavLink to="/new" className={nav()} activeClassName={nav({active: true})()}>New API</NavLink>
+            <NavLink to="/login" className={nav()} activeClassName={nav({active: true})()}>Login Page</NavLink>
           </Header>
 
           <div className="Pages">
