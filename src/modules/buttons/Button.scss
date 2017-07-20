@@ -1,0 +1,17 @@
+@import 'index.scss';
+
+.j-button {
+  align-items: center;
+  border-radius: $hf-border-radius-button;
+  white-space: nowrap;
+  line-height: 1.5;
+  border-color: transparent;
+  color: $hf-color-white;
+  font-size: $hf-font-size-base;
+  padding: $hf-padding-button;
+  background-color: $hf-color-button-primary;
+  user-select: none;
+  cursor: pointer;
+}
+
+

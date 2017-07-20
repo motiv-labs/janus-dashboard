@@ -4,8 +4,9 @@ import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
 import FormRow from '../../forms/FormRow';
-import FormInput from '../../forms/FormInput';
+import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
+import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/RenderPlugins';
 
 let ApiForm = props => {
@@ -48,7 +49,7 @@ let ApiForm = props => {
       }
 
       <FormRow alignX>
-        <button className="save-btn" type="submit">Submit</button>
+        <Button type="submit" label="Submit"/>
       </FormRow>
     </form>
   );

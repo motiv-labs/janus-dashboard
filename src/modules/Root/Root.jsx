@@ -6,7 +6,6 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import Nav from '../Layout/Nav/Nav';
 import Header from '../Layout/Header/Header';
 import Footer from '../Layout/Footer/Footer';
 import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer';
@@ -16,28 +15,25 @@ import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
 
-import './Root.css';
-
 class Root extends Component {
   render() {
     return (
       <Router>
         <div className="App">
-          <Nav />
           <Header>
-            <NavLink exact to="/" className="nav-item">API List</NavLink>
-            <NavLink to="/new" className="nav-item">New API</NavLink>
-            <NavLink to="/login" className="nav-item">Login Page</NavLink>
+            <NavLink exact to="/" className="j-nav__item" activeClassName="j-nav__item--active">API Definitions</NavLink>
+            <NavLink to="/new" className="j-nav__item" activeClassName="j-nav__item--active">New API</NavLink>
+            <NavLink to="/log-in" className="j-nav__item" activeClassName="j-nav__item--active">Login Page</NavLink>
           </Header>
 
-					<div className="Pages">
+          <div className="Pages">
             <Switch>
               <Route exact path="/" component={ApiListPage}/>
               <Route path="/new" component={NewApiPage}/>
               <Route path="/login" component={LoginPage}/>
               <Route path="/:name" render={(props) => <EditApiPage {...props} />}/>
             </Switch>
-					</div>
+          </div>
 
           <Footer />
 
