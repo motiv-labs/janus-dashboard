@@ -5,7 +5,6 @@ import block from '../../helpers/bem-cn';
 import './Button.css';
 
 const propTypes = {
-  label: PropTypes.string,
   mod: PropTypes.string,
   type: PropTypes.string,
   onClick: PropTypes.func,
@@ -19,8 +18,7 @@ const b = block('j-button');
 
 const addMod = mod => mod ? { [mod]: !!mod } : {};
 
-const Button = ({ label, mod, type, onClick, children }) => {
-  const inner = children ? children : label;
+const Button = ({ mod, type, onClick, children }) => {
 
   return (
     <button
@@ -28,7 +26,7 @@ const Button = ({ label, mod, type, onClick, children }) => {
       type={type}
       onClick={onClick}
     >
-      {inner}
+      {children}
     </button>
   );
 };
