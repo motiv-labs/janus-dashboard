@@ -2,22 +2,49 @@
 
 .j-table {
   width: 100%;
+  text-align: left;
+
+  tbody {
+    border: $hf-border;
+  }
 
   &__row {
     background-color: $hf-color-white;
+
+    &:last-child {
+
+      .j-table__td {
+        padding-bottom: 70px;
+      }
+    }
   }
-  
+
+  &__th {
+    padding-top: $hf-padding-cell;
+    padding-bottom: $hf-padding-cell;
+    color: $hf-color-gray-medium;
+    font-weight: 700;
+  }
+
+  &__th,
   &__td {
     &:first-child {
       padding-left: $hf-padding-table;
-      font-weight: 700;
     }
 
     &:last-child {
       padding-right: $hf-padding-table;
     }
+  }
+  
+  &__td {
+    &:first-child {
+      font-weight: 700;
+    }
 
-    &__inner {
+    &-inner {
+      padding-top: $hf-padding-cell;
+      padding-bottom: $hf-padding-cell;
       border-bottom: $hf-border; 
     }
   }

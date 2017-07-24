@@ -36,7 +36,7 @@ class ApiList extends PureComponent {
   renderRows = list => {
     return list.map(api => {
       return (
-        <tr className={table('row') }  key={api.name}>
+        <tr className={table('row')}  key={api.name}>
           <Td className={table('td')}>{api.name}</Td>
           <Td className={table('td')}>{`${api.active}`}</Td>
           <Td className={table('td')}>{api.proxy.listen_path}</Td>
@@ -65,13 +65,13 @@ class ApiList extends PureComponent {
       <Table className={table}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Active</th>
-            <th>Listen Path</th>
-            <th>Upstream URL</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th className={table('th')}><div>Name</div></th>
+            <th className={table('th')}>Active</th>
+            <th className={table('th')}>Listen Path</th>
+            <th className={table('th')}>Upstream URL</th>
+            <th className={table('th')}></th>
+            <th className={table('th')}></th>
+            <th className={table('th')}></th>
           </tr>  
         </thead>
         <tbody>
