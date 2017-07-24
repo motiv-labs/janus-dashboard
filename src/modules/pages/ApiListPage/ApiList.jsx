@@ -9,6 +9,7 @@ import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
 import Td from '../../Layout/Table/Td';
 import Edit from '../../buttons/Edit';
+import Copy from '../../buttons/Copy';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -56,7 +57,9 @@ class ApiList extends PureComponent {
                   clone: api,
                 },
               }}
-            >Clone</Link>
+            >
+              <Copy />
+            </Link>
           </Td>
         </tr>
       );
