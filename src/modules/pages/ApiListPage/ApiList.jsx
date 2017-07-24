@@ -11,6 +11,7 @@ import Td from '../../Layout/Table/Td';
 import Edit from '../../buttons/Edit';
 import Copy from '../../buttons/Copy';
 import Detele from '../../buttons/Delete';
+import Checked from '../../buttons/Checked';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -41,10 +42,12 @@ class ApiList extends PureComponent {
       return (
         <tr className={table('row')} key={api.name}>
           <Td className={table('td')}>{api.name}</Td>
-          <Td className={table('td')}>{`${api.active}`}</Td>
           <Td className={table('td')}>{api.proxy.listen_path}</Td>
           <Td className={table('td')}>{api.proxy.upstream_url}</Td>
           <Td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</Td>
+          <Td className={table('td')}>
+            {api.active ? <Checked /> : null}
+          </Td>
           <Td className={table('td')}>
             <Link to={`/${api.name}`}>
               <Edit />
@@ -72,11 +75,11 @@ class ApiList extends PureComponent {
       <Table className={table}>
         <thead>
           <tr>
-            <th className={table('th')}><div>Name</div></th>
-            <th className={table('th')}>Active</th>
+            <th className={table('th')}><div>Api Name</div></th>
             <th className={table('th')}>Listen Path</th>
             <th className={table('th')}>Upstream URL</th>
             <th className={table('th')}></th>
+            <th className={table('th')}>Active</th>
             <th className={table('th')}></th>
             <th className={table('th')}></th>
           </tr>  
