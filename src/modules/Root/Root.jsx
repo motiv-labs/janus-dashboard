@@ -17,9 +17,7 @@ import EditApiPage from '../pages/EditPage/EditApiPage';
 
 import block from '../../helpers/bem-cn';
 
-import { navClassName } from '../Layout/Nav/Nav';
-
-const nav = block(navClassName('item')()); 
+const nav = block('j-header__nav-item');
 
 class Root extends Component {
   render() {
