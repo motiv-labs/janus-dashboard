@@ -10,6 +10,7 @@ import Table from '../../Layout/Table/Table';
 import Td from '../../Layout/Table/Td';
 import Edit from '../../buttons/Edit';
 import Copy from '../../buttons/Copy';
+import Detele from '../../buttons/Delete';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -38,7 +39,7 @@ class ApiList extends PureComponent {
   renderRows = list => {
     return list.map(api => {
       return (
-        <tr className={table('row')}  key={api.name}>
+        <tr className={table('row')} key={api.name}>
           <Td className={table('td')}>{api.name}</Td>
           <Td className={table('td')}>{`${api.active}`}</Td>
           <Td className={table('td')}>{api.proxy.listen_path}</Td>
