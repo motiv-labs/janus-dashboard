@@ -9,6 +9,7 @@
   }
 
   &__row {
+    min-height: 70px;
     background-color: $hf-color-white;
 
     &:last-child {
@@ -38,14 +39,19 @@
   }
   
   &__td {
+    vertical-align: middle;
+    height: 100%;
+
     &:first-child {
       font-weight: 700;
     }
 
     &-inner {
+      height: 100%;
       padding-top: $hf-padding-cell;
       padding-bottom: $hf-padding-cell;
       border-bottom: $hf-border; 
+      box-sizing: border-box;
     }
   }
 }
