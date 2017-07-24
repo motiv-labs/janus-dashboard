@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import Pagimagic from 'react-pagimagic';
 
+import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
+import Td from '../../Layout/Table/Td';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -13,6 +15,8 @@ const propTypes = {
   setCurrentPageIndex: PropTypes.func.isRequired,
   fetchAPIs: PropTypes.func.isRequired,
 };
+
+const table = block('j-table');
 
 class ApiList extends PureComponent {
   componentDidMount() {
@@ -32,16 +36,16 @@ class ApiList extends PureComponent {
   renderRows = list => {
     return list.map(api => {
       return (
-        <tr key={api.name}>
-          <td>{api.name}</td>
-          <td>{`${api.active}`}</td>
-          <td>{api.proxy.listen_path}</td>
-          <td>{api.proxy.upstream_url}</td>
-          <td>{`${this.isOauthEnabled(api.plugins)}`}</td>
-          <td>
+        <tr className={table('row') }  key={api.name}>
+          <Td className={table('td')}>{api.name}</Td>
+          <Td className={table('td')}>{`${api.active}`}</Td>
+          <Td className={table('td')}>{api.proxy.listen_path}</Td>
+          <Td className={table('td')}>{api.proxy.upstream_url}</Td>
+          <Td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</Td>
+          <Td className={table('td')}>
             <Link to={`/${api.name}`}>EDIT</Link>
-          </td>
-          <td>
+          </Td>
+          <Td className={table('td')}>
             <Link
               to={{
                 pathname: '/new',
@@ -50,7 +54,7 @@ class ApiList extends PureComponent {
                 },
               }}
             >Clone</Link>
-          </td>
+          </Td>
         </tr>
       );
     });
@@ -58,7 +62,7 @@ class ApiList extends PureComponent {
 
   renderTable = (list) => {
     return (
-      <Table>
+      <Table className={table}>
         <thead>
           <tr>
             <th>Name</th>

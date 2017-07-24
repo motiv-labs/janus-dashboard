@@ -1,0 +1,24 @@
+@import 'index.scss';
+
+.j-table {
+  width: 100%;
+
+  &__row {
+    background-color: $hf-color-white;
+  }
+  
+  &__td {
+    &:first-child {
+      padding-left: $hf-padding-table;
+      font-weight: 700;
+    }
+
+    &:last-child {
+      padding-right: $hf-padding-table;
+    }
+
+    &__inner {
+      border-bottom: $hf-border; 
+    }
+  }
+}
