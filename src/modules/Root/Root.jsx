@@ -25,14 +25,14 @@ class Root extends Component {
   render() {
     return (
       <Router>
-        <div className="App">
+        <div className="j-app">
           <Header>
             <NavLink exact to="/" className={nav()} activeClassName={nav({active: true})()}>API Definitions</NavLink>
             <NavLink to="/new" className={nav()} activeClassName={nav({active: true})()}>New API</NavLink>
             <NavLink to="/login" className={nav()} activeClassName={nav({active: true})()}>Login Page</NavLink>
           </Header>
 
-          <div className="Pages">
+          <div className="j-pages">
             <Switch>
               <Route exact path="/" component={ApiListPage}/>
               <Route path="/new" component={NewApiPage}/>
