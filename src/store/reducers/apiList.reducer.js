@@ -1,7 +1,7 @@
 import {
-  FETCH_APIS_REQUEST,
-  FETCH_APIS_SUCCESS,
-  REFRESH_APIS,
+  FETCH_ENDPOINTS_START,
+  FETCH_ENDPOINTS_SUCCESS,
+  REFRESH_ENDPOINTS,
   DISCARD_PAGINATION,
   SET_PAGINATION_PAGE,
 } from '../constants';
@@ -14,13 +14,13 @@ const initialState = {
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-    case FETCH_APIS_REQUEST: {
+    case FETCH_ENDPOINTS_START: {
       return {
         ...state,
         isFetching: true,
       };
     }
-    case FETCH_APIS_SUCCESS: {
+    case FETCH_ENDPOINTS_SUCCESS: {
       return {
         ...state,
         apiList: action.payload,
@@ -39,7 +39,7 @@ export default function reducer(state = initialState, action) {
         currentPageIndex: action.payload,
       };
     }
-    case REFRESH_APIS: {
+    case REFRESH_ENDPOINTS: {
       return {
         ...state,
         apiList: state.apiList.reduce((memo, item) => {

@@ -11,14 +11,14 @@ const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
   currentPageIndex: PropTypes.number.isRequired,
   setCurrentPageIndex: PropTypes.func.isRequired,
-  deleteAPI: PropTypes.func.isRequired,
-  fetchAPIs: PropTypes.func.isRequired,
-  refreshAPIs: PropTypes.func.isRequired,
+  deleteEndpoint: PropTypes.func.isRequired,
+  fetchEndpoints: PropTypes.func.isRequired,
+  refreshEndpoints: PropTypes.func.isRequired,
 };
 
 class ApiList extends PureComponent {
   componentDidMount() {
-    this.props.fetchAPIs();
+    this.props.fetchEndpoints();
   }
 
   isOauthEnabled(plugins) {
@@ -32,7 +32,7 @@ class ApiList extends PureComponent {
   };
 
   handleDelete = (apiName) => {
-    this.props.deleteAPI(apiName, this.props.refreshAPIs);
+    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
   };
 
   renderRows = list => {
@@ -72,7 +72,7 @@ class ApiList extends PureComponent {
     });
   }
 
-  renderTable = (list) => {
+  renderTable = list => {
     return (
       <Table>
         <thead>

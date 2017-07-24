@@ -1,15 +1,15 @@
 import client from '../api';
-import apiSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
+import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
   DELETE_ENDPOINT_START,
   DELETE_ENDPOINT_SUCCESS,
-  FETCH_API_REQUEST,
-  FETCH_API_SUCCESS,
-  FETCH_API_SCHEMA_REQUEST,
-  FETCH_API_SCHEMA_SUCCESS,
-  SAVE_API_REQUEST,
-  SAVE_API_SUCCESS,
-  RESET_API,
+  FETCH_ENDPOINT_START,
+  FETCH_ENDPOINT_SUCCESS,
+  FETCH_ENDPOINT_SCHEMA_START,
+  FETCH_ENDPOINT_SCHEMA_SUCCESS,
+  SAVE_ENDPOINT_START,
+  SAVE_ENDPOINT_SUCCESS,
+  RESET_ENDPOINT,
   WILL_CLONE,
 } from '../constants';
 import {
@@ -23,43 +23,43 @@ const history = createHistory({
   forceRefresh: true,
 });
 
-export const deleteAPIRequest = () => ({
+export const deleteEndpointRequest = () => ({
   type: DELETE_ENDPOINT_START,
 });
 
-export const deleteAPISuccess = () => ({
+export const deleteEndpointSuccess = () => ({
   type: DELETE_ENDPOINT_SUCCESS,
 });
 
-export const getAPIRequest = () => ({
-  type: FETCH_API_REQUEST,
+export const getEndpointRequest = () => ({
+  type: FETCH_ENDPOINT_START,
 });
 
-export const getAPISuccess = api => ({
-  type: FETCH_API_SUCCESS,
+export const getEndpointSuccess = api => ({
+  type: FETCH_ENDPOINT_SUCCESS,
   payload: api,
 });
 
-export const getApiSchemaRequest = () => ({
-  type: FETCH_API_SCHEMA_REQUEST,
+export const getEndpointSchemaRequest = () => ({
+  type: FETCH_ENDPOINT_SCHEMA_START,
 });
 
-export const getApiSchemaSuccess = api => ({
-  type: FETCH_API_SCHEMA_SUCCESS,
+export const getEndpointSchemaSuccess = api => ({
+  type: FETCH_ENDPOINT_SCHEMA_SUCCESS,
   payload: api,
 });
 
-export const saveAPIRequest = () => ({
-  type: SAVE_API_REQUEST,
+export const saveEndpointRequest = () => ({
+  type: SAVE_ENDPOINT_START,
 });
 
-export const saveAPISuccess = api => ({
-  type: SAVE_API_SUCCESS,
+export const saveEndpointSuccess = api => ({
+  type: SAVE_ENDPOINT_SUCCESS,
   payload: api,
 });
 
-export const resetAPI = () => ({
-  type: RESET_API,
+export const resetEndpoint = () => ({
+  type: RESET_ENDPOINT,
 });
 
 export const willClone = data => ({
@@ -67,13 +67,14 @@ export const willClone = data => ({
   payload: data,
 });
 
-export const deleteAPI = (apiName, callback) => async dispatch => {
-  dispatch(deleteAPIRequest());
+export const deleteEndpoint = (apiName, callback) => async dispatch => {
+  console.log('CALLBACK:: ', callback);
+  dispatch(deleteEndpointRequest());
 
   try {
     const response = await client.delete(`apis/${apiName}`);
 
-    dispatch(deleteAPISuccess());
+    dispatch(deleteEndpointSuccess());
     dispatch(openResponseModal({
       status: response.status,
       message: 'Successfuly deleted', 
@@ -82,29 +83,30 @@ export const deleteAPI = (apiName, callback) => async dispatch => {
     dispatch(callback(apiName));
   }
   catch (error) {
+    console.log('ERROR => ', error);
     dispatch(openResponseModal({
       status: error.response.status,
       statusText: error.response.statusText,
       message: error.response.data.error,
     }));
-    console.log('DELETE_API_ERROR', 'Infernal server error', error.response);
+    console.log('DELETE_ENDPOINT_ERROR', 'Infernal server error', error.response);
   }
 };
 
-export const fetchAPI = pathname => dispatch => {
-  dispatch(getAPIRequest());
+export const fetchEndpoint = pathname => dispatch => {
+  dispatch(getEndpointRequest());
 
   return client.get(`apis${pathname}`)
-    .then((response) => {
-      dispatch(getAPISuccess(response.data));
+    .then(response => {
+      dispatch(getEndpointSuccess(response.data));
     })
-    .catch((e) => {
-      console.log('FETCH_API_ERROR', 'Infernal server error', e);
+    .catch(error => {
+      console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
     });
 };
 
-export const fetchApiSchema = pathname => dispatch => {
-  dispatch(getApiSchemaRequest());
+export const fetchEndpointSchema = pathname => dispatch => {
+  dispatch(getEndpointSchemaRequest());
 
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
   //   .then((response) => {
@@ -114,22 +116,22 @@ export const fetchApiSchema = pathname => dispatch => {
   //     console.log('FETCH_API_SCHEMA_ERROR', 'Infernal server error', e);
   //   });
 
-  dispatch(getApiSchemaSuccess(apiSchema)); // @TODO: REMOVE when endpoint will be ready
+  dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
-export const updateAPI = (pathname, api) => dispatch => {
-  dispatch(saveAPIRequest());
+export const updateEndpoint = (pathname, api) => dispatch => {
+  dispatch(saveEndpointRequest());
 
   return client.put(`apis${pathname}`, api)
-    .then((response) => {
-      dispatch(saveAPISuccess(JSON.parse(response.config.data)));
+    .then(response => {
+      dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
       dispatch(openResponseModal({
         status: response.status,
         message: 'Successfuly saved', 
         statusText: response.statusText,
       }));
     })
-    .catch((error) => {
+    .catch(error => {
       if (error.response) {
         dispatch(openResponseModal({
           status: error.response.status,
@@ -154,12 +156,12 @@ export const updateAPI = (pathname, api) => dispatch => {
     });
 };
 
-export const saveAPI = (pathname, api) => dispatch => {
-  dispatch(saveAPIRequest());
+export const saveEndpoint = (pathname, api) => dispatch => {
+  dispatch(saveEndpointRequest());
 
   return client.post('apis', api)
-    .then((response) => {
-      dispatch(saveAPISuccess(JSON.parse(response.config.data)));
+    .then(response => {
+      dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
       dispatch(openResponseModal({
         status: response.status,
         message: 'Successfuly saved', 
@@ -167,7 +169,7 @@ export const saveAPI = (pathname, api) => dispatch => {
         redirectOnClose: () => (history.push('/')),
       }));
     })
-    .catch((error) => {
+    .catch(error => {
       if (error.response) {
         dispatch(openResponseModal({
           status: error.response.status,
@@ -191,5 +193,4 @@ export const saveAPI = (pathname, api) => dispatch => {
         console.log('Error', error.message);
       }
     });
-
 };

@@ -8,26 +8,26 @@ import NewApiForm from './NewApiForm';
 
 const propTypes = {
   api: PropTypes.object.isRequired,
-  fetchApiSchema: PropTypes.func.isRequired,
-  resetAPI: PropTypes.func.isRequired,
-  saveAPI: PropTypes.func.isRequired,
+  fetchEndpointSchema: PropTypes.func.isRequired,
+  resetEndpoint: PropTypes.func.isRequired,
+  saveEndpoint: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 class NewApiItem extends Component {
   componentWillMount() {
-    this.props.resetAPI();
+    this.props.resetEndpoint();
     
     if (this.hasToBeCloned()) {
       this.props.willClone(deleteProperty(this.props.location.state.clone, 'name')); 
     }
     else {
-      this.props.fetchApiSchema();
+      this.props.fetchEndpointSchema();
     }
   }
 
-  submit = (values) => {
-    this.props.saveAPI(this.props.location.pathname, values);
+  submit = values => {
+    this.props.saveEndpoint(this.props.location.pathname, values);
   }
 
   hasToBeCloned = () => {

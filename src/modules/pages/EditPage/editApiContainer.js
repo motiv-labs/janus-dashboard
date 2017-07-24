@@ -1,16 +1,16 @@
 import { connect } from 'react-redux';
 
 import {
-  deleteAPI,
-  fetchAPI,
-  refreshAPIs,
-  resetAPI,
-  updateAPI,
+  deleteEndpoint,
+  fetchEndpoint,
+  refreshEndpoints,
+  resetEndpoint,
+  updateEndpoint,
 } from '../../../store/actions';
 
 import ApiItem from './ApiItem';
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     api: state.apiReducer.api,
   };
@@ -18,5 +18,5 @@ const mapStateToProps = (state) => {
 
 export default connect(
   mapStateToProps,
-  { deleteAPI, fetchAPI, refreshAPIs, resetAPI, updateAPI },
+  { deleteEndpoint, fetchEndpoint, refreshEndpoints, resetEndpoint, updateEndpoint },
 )(ApiItem);

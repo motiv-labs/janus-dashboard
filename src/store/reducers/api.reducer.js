@@ -2,13 +2,13 @@ import {
   DELETE_ENDPOINT_START,
   DELETE_ENDPOINT_SUCCESS,
   DELETE_ENDPOINT_FAILURE,
-  FETCH_API_REQUEST,
-  FETCH_API_SUCCESS,
-  FETCH_API_SCHEMA_REQUEST,
-  FETCH_API_SCHEMA_SUCCESS,
-  SAVE_API_REQUEST,
-  SAVE_API_SUCCESS,
-  RESET_API,
+  FETCH_ENDPOINT_START,
+  FETCH_ENDPOINT_SUCCESS,
+  FETCH_ENDPOINT_SCHEMA_START,
+  FETCH_ENDPOINT_SCHEMA_SUCCESS,
+  SAVE_ENDPOINT_START,
+  SAVE_ENDPOINT_SUCCESS,
+  RESET_ENDPOINT,
   WILL_CLONE,
 } from '../constants';
 
@@ -20,9 +20,9 @@ const initialState = {
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case DELETE_ENDPOINT_START:
-    case FETCH_API_REQUEST:
-    case FETCH_API_SCHEMA_REQUEST:
-    case SAVE_API_REQUEST: {
+    case FETCH_ENDPOINT_START:
+    case FETCH_ENDPOINT_SCHEMA_START:
+    case SAVE_ENDPOINT_START: {
       return {
         ...state,
         isFetching: true,
@@ -35,9 +35,9 @@ export default function reducer(state = initialState, action) {
         isFetching: false,
       };
     }
-    case FETCH_API_SUCCESS:
-    case FETCH_API_SCHEMA_SUCCESS:
-    case SAVE_API_SUCCESS: {
+    case FETCH_ENDPOINT_SUCCESS:
+    case FETCH_ENDPOINT_SCHEMA_SUCCESS:
+    case SAVE_ENDPOINT_SUCCESS: {
       return {
         ...state,
         api: action.payload,
@@ -50,7 +50,7 @@ export default function reducer(state = initialState, action) {
         api: action.payload,
       };
     }
-    case RESET_API: {
+    case RESET_ENDPOINT: {
       return initialState;
     }
     default:
