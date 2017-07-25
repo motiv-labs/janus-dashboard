@@ -2,6 +2,7 @@ import React from 'react';
 
 import block from '../../../helpers/bem-cn';
 import Container from '../Container/Container';
+import Nav from '../Nav/Nav';
 
 import './Header.css';
 
@@ -15,9 +16,7 @@ const Header = ({ children }) => {
       </div>
       <div className={b('col', { 'middle': true })}>
         <Container>
-          <div className="j-header__nav">
-            {children}
-          </div>
+          <Nav />
         </Container>
       </div>
       <div className={b('col', { 'right': true })}>

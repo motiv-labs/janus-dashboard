@@ -10,24 +10,6 @@
   &__col {
     align-self: center;
   }
-
-  &__nav {
-    display: flex; 
-    height: $hf-height-header;
-
-    &-item {
-      display: flex;
-      height: 100%;
-      align-items: center;
-      padding: 0 $hf-padding-middle;
-      color: $hf-color-white;
-      text-decoration: none;
-
-      &--active {
-        background-color: $hf-color-white-pale; 
-      }
-    }
-  }
   
   &__logo {
     display: block;
