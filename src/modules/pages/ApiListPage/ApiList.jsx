@@ -82,7 +82,7 @@ class ApiList extends PureComponent {
       return (
         <Pagination 
           list={this.props.apiList}
-          itemsPerPage={3}
+          itemsPerPage={1}
           currentPageIndex={this.props.currentPageIndex}
           changePageIndex={this.props.setCurrentPageIndex}
           maximumVisiblePaginators={3}
