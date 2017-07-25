@@ -27,14 +27,14 @@ let ApiForm = props => {
           <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox"/>
           <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox"/>
 	      </FormRow>
-	    <Section>
-	    <FormRow>
-	      <FormLabel text="Health check" />
-	    </FormRow>
-	    <FormRow>
+	      <Section>
+	        <FormRow>
+	          <FormLabel text="Health check" />
+	        </FormRow>
+	        <FormRow>
             <FormInput component="input" label="url" attachTo="health_check.url" type="text"/>
             <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse}/>
-	    </FormRow>
+	        </FormRow>
         </Section>
       </Section>
 
@@ -44,7 +44,12 @@ let ApiForm = props => {
       }
 
       <FormRow centered>
-        <Button label="Submit" type="submit"/>
+        <Button
+          type="submit"
+          mod="primary"
+        >
+          Submit
+        </Button>
       </FormRow>
     </form>
   );
