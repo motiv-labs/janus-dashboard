@@ -3,6 +3,7 @@
 .j-search-bar {
   position: relative;
   width: 360px;
+  margin-right: $hf-padding-middle;
   background-color: $hf-color-white; 
 
   &__input {
