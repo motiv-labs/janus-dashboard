@@ -8,7 +8,14 @@ const b = block('j-row');
 
 const wrapChildren = (children) => {
   return children.map((item, index) => {
-    return <div className={b('item')}>{item}</div>
+    return (
+      <div
+        className={b('item')}
+        key={index}
+      >
+        {item}
+      </div>
+    );
   });
 };
 
