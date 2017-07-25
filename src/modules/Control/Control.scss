@@ -12,6 +12,7 @@ $urls: (
   width: $control-size;
   height: $control-size;
   background-repeat: no-repeat;
+  background-position: 50% 50%;
 }
 
 @each $type, $url in $urls {

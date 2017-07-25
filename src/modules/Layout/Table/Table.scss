@@ -4,7 +4,7 @@
   width: 100%;
   text-align: left;
 
-  tbody {
+  &__tbody {
     border: $hf-border;
   }
 
@@ -24,7 +24,7 @@
     padding-top: $hf-padding-cell;
     padding-bottom: $hf-padding-cell;
     color: $hf-color-gray-medium;
-    font-weight: 700;
+    font-weight: $hf-font-weight-bold;
   }
 
   &__th,
@@ -43,7 +43,7 @@
     height: 100%;
 
     &:first-child {
-      font-weight: 700;
+      font-weight: $hf-font-weight-bold;
     }
 
     &-inner {
