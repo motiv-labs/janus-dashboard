@@ -1,25 +1,21 @@
+$control-size: 20px;
+
+$urls: (
+  edit: url(../../assets/img/edit.svg),
+  checked: url(../../assets/img/checked.svg),
+  delete: url(../../assets/img/delete.svg),
+  copy: url(../../assets/img/copy.svg),
+);
+
 .j-control {
   display: inline-block;
-  width: 20px;
-  height: 20px;
+  width: $control-size;
+  height: $control-size;
   background-repeat: no-repeat;
+}
 
-  &--type {
-
-    &-edit {
-      background-image: url(../../assets/img/edit.svg);
-    }
-
-    &-checked {
-      background-image: url(../../assets/img/checked.svg);
-    }
-
-    &-delete {
-      background-image: url(../../assets/img/delete.svg);
-    }
-
-    &-copy {
-      background-image: url(../../assets/img/copy.svg);
-    }
+@each $type, $url in $urls {
+  .j-control--type-#{$type} {
+    background-image: $url;
   }
-} 
+}
