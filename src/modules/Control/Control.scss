@@ -1,0 +1,25 @@
+.j-control {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background-repeat: no-repeat;
+
+  &--type {
+
+    &-edit {
+      background-image: url(../../assets/img/edit.svg);
+    }
+
+    &-checked {
+      background-image: url(../../assets/img/checked.svg);
+    }
+
+    &-delete {
+      background-image: url(../../assets/img/delete.svg);
+    }
+
+    &-copy {
+      background-image: url(../../assets/img/copy.svg);
+    }
+  }
+} 

@@ -8,10 +8,7 @@ import Pagimagic from 'react-pagimagic';
 import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
 import Td from '../../Layout/Table/Td';
-import Edit from '../../buttons/Edit';
-import Copy from '../../buttons/Copy';
-import Detele from '../../buttons/Delete';
-import Checked from '../../buttons/Checked';
+import Control from '../../Control/Control';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -46,11 +43,11 @@ class ApiList extends PureComponent {
           <Td className={table('td')}>{api.proxy.upstream_url}</Td>
           <Td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</Td>
           <Td className={table('td')}>
-            {api.active ? <Checked /> : null}
+            {api.active ? <Control type="checked" /> : null}
           </Td>
           <Td className={table('td')}>
             <Link to={`/${api.name}`}>
-              <Edit />
+              <Control type="edit"/>
             </Link>
           </Td>
           <Td className={table('td')}>
@@ -62,7 +59,7 @@ class ApiList extends PureComponent {
                 },
               }}
             >
-              <Copy />
+              <Control type="copy"/>
             </Link>
           </Td>
         </tr>
