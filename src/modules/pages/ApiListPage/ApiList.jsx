@@ -3,9 +3,10 @@ import PropTypes from 'prop-types';
 import {
   Link,
 } from 'react-router-dom';
-import Pagimagic from 'react-pagimagic';
+import Pagination from 'react-pagimagic';
 
 import Table from '../../Layout/Table/Table';
+// import Pagination from '../../Pagination/Pagination';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -80,12 +81,11 @@ class ApiList extends PureComponent {
   render() {
     if (this.props.apiList.length > 0) {
       return (
-        <Pagimagic 
+        <Pagination 
           list={this.props.apiList}
           itemsPerPage={3}
           currentPageIndex={this.props.currentPageIndex}
           changePageIndex={this.props.setCurrentPageIndex}
-          className="your-class-if-its-necessary"
           maximumVisiblePaginators={3}
           renderChildren={this.renderTable}
           useDefaultStyles

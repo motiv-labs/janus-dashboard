@@ -5105,9 +5105,9 @@ react-modaliz@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/react-modaliz/-/react-modaliz-0.1.2.tgz#ebd3a53f31def71c83a8fb92946c83d5cffe5db5"
 
-react-pagimagic@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/react-pagimagic/-/react-pagimagic-0.5.0.tgz#913d5e02311fa3ccbe57adc592d0b9d9322f480a"
+react-pagimagic@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/react-pagimagic/-/react-pagimagic-0.6.1.tgz#070caeb1051e3f2e5889029a1e106a73725561d9"
 
 react-redux@^5.0.5:
   version "5.0.5"
