@@ -10,7 +10,6 @@ const Pagination = ({
   itemsPerPage,
   maximumVisiblePaginators,
   renderChildren,
-  // className
 }) => {
   return (
     <Pagimagic
@@ -18,11 +17,11 @@ const Pagination = ({
       itemsPerPage={itemsPerPage}
       currentPageIndex={currentPageIndex}
       changePageIndex={changePageIndex}
+      className="j-pagination"
       maximumVisiblePaginators={maximumVisiblePaginators}
       renderChildren={renderChildren}
-      useDefaultStyles
     />
   );
 };
 
-export default Pagimagic;
+export default Pagination;

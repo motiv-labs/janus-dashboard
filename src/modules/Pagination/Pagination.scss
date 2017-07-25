@@ -1,3 +1,23 @@
 @import 'index.scss';
 
-.j-pagination {}
+.j-pagination {
+  .Pagimagic-nav {
+    &-item {
+    	display: inline-block;
+      line-height: 30px;
+      background-color: $hf-color-white;
+	    border: $hf-border;
+	    font-size: 12px;
+	    text-align: center;
+  	  color: $hf-color-gray-medium;
+      padding: 0 8px;
+      transition: background-color 0.15s, color 0.15s, border-color 0.15s;
+
+      &.active {
+        background-color: $hellofresh-color;
+        border-color: $hellofresh-color;
+        color: $hf-color-white;
+      }
+    }
+  }
+}
