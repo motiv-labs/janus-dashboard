@@ -13,25 +13,25 @@ const Nav = () => {
     <div className={nav}>
       <NavLink
         exact
-        to={ROUTES.MAIN}
+        to={ROUTES.MAIN.path}
         className={nav('item')()}
         activeClassName={nav('item', { active: true })()}
       >
-        API Definitions
+        {ROUTES.MAIN.name}
       </NavLink>
       <NavLink
-        to={ROUTES.NEW}
+        to={ROUTES.NEW.path}
         className={nav('item')()}
         activeClassName={nav('item', { active: true })()}
       >
-        New API
+        {ROUTES.NEW.name}
       </NavLink>
       <NavLink
-        to={ROUTES.LOGIN}
+        to={ROUTES.LOGIN.path}
         className={nav('item')()}
         activeClassName={nav('item', { active: true })()}
       >
-        Login Page
+        {ROUTES.LOGIN.name}
       </NavLink>
     </div>
   );
