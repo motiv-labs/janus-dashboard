@@ -44,19 +44,19 @@ class ApiList extends PureComponent {
     return list.map(api => {
       return (
         <tr className={table('row')} key={api.name}>
-          <Td className={table('td')}>{api.name}</Td>
-          <Td className={table('td')}>{api.proxy.listen_path}</Td>
-          <Td className={table('td')}>{api.proxy.upstream_url}</Td>
-          <Td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</Td>
-          <Td className={table('td')}>
+          <td className={table('td')}>{api.name}</td>
+          <td className={table('td')}>{api.proxy.listen_path}</td>
+          <td className={table('td')}>{api.proxy.upstream_url}</td>
+          <td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</td>
+          <td className={table('td')}>
             {api.active ? <Control type="checked" /> : null}
-          </Td>
-          <Td className={table('td')}>
+          </td>
+          <td className={table('td')}>
             <Link to={`/${api.name}`}>
               <Control type="edit"/>
             </Link>
-          </Td>
-          <Td className={table('td')}>
+          </td>
+          <td className={table('td')}>
             <Link
               to={{
                 pathname: '/new',
@@ -67,8 +67,8 @@ class ApiList extends PureComponent {
             >
               <Control type="copy"/>
             </Link>
-          </Td>
-          <Td className={table('td')}>
+          </td>
+          <td className={table('td')}>
             <Link
               to={''}
               onClick={() => {
@@ -77,7 +77,7 @@ class ApiList extends PureComponent {
             >
               <Control type="delete"/>
             </Link>
-          </Td>
+          </td>
         </tr>
       );
     });
@@ -100,6 +100,11 @@ class ApiList extends PureComponent {
         <tbody className={table('tbody')}>
           { this.renderRows(list) }
         </tbody>
+        <tfoot className={table('tfoot')}>
+          <tr className={table('tfoot', { tr: true })}>
+            <td colSpan="8"></td>
+          </tr>
+        </tfoot>
       </Table>
     );
   }
