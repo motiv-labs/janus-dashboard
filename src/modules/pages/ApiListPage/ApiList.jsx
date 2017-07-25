@@ -14,14 +14,16 @@ const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
   currentPageIndex: PropTypes.number.isRequired,
   setCurrentPageIndex: PropTypes.func.isRequired,
-  fetchAPIs: PropTypes.func.isRequired,
+  deleteEndpoint: PropTypes.func.isRequired,
+  fetchEndpoints: PropTypes.func.isRequired,
+  refreshEndpoints: PropTypes.func.isRequired,
 };
 
 const table = block('j-table');
 
 class ApiList extends PureComponent {
   componentDidMount() {
-    this.props.fetchAPIs();
+    this.props.fetchEndpoints();
   }
 
   isOauthEnabled(plugins) {
@@ -32,7 +34,11 @@ class ApiList extends PureComponent {
     const oauth = plugins.find(plugin => plugin.name.indexOf('oauth2') > -1);
 
     return !!oauth && !!oauth.enabled;
-  }
+  };
+
+  handleDelete = (apiName) => {
+    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+  };
 
   renderRows = list => {
     return list.map(api => {
@@ -62,12 +68,22 @@ class ApiList extends PureComponent {
               <Control type="copy"/>
             </Link>
           </Td>
+          <Td className={table('td')}>
+            <Link
+              to={''}
+              onClick={() => {
+                this.handleDelete(api.name)
+              }}
+            >
+              <Control type="delete"/>
+            </Link>
+          </Td>
         </tr>
       );
     });
   }
 
-  renderTable = (list) => {
+  renderTable = list => {
     return (
       <Table className={table}>
         <thead>

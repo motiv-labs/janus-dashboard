@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import { isEmpty } from '../../../helpers';
@@ -9,28 +10,43 @@ import EditApiForm from './EditApiForm';
 
 const propTypes = {
   api: PropTypes.object.isRequired,
-  fetchAPI: PropTypes.func.isRequired,
-  resetAPI: PropTypes.func.isRequired,
-  updateAPI: PropTypes.func.isRequired,
+  deleteEndpoint: PropTypes.func.isRequired,
+  fetchEndpoint: PropTypes.func.isRequired,
+  refreshEndpoints: PropTypes.func.isRequired,
+  resetEndpoint: PropTypes.func.isRequired,
+  updateEndpoint: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 };
 
 class ApiItem extends Component {
   componentDidMount() {
-    this.props.resetAPI();
-    this.props.fetchAPI(this.props.location.pathname);
-  }
+    this.props.resetEndpoint();
+    this.props.fetchEndpoint(this.props.location.pathname);
+  };
 
-  submit = (values) => {
-    this.props.updateAPI(this.props.location.pathname, values);
-  }
-  
+  submit = values => {
+    this.props.updateEndpoint(this.props.location.pathname, values);
+  };
+
+  handleDelete = apiName => {
+    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+  };
+
   render() {
     if (!isEmpty(this.props.api)) {
       return (
         <div>
           <Section>
             <Subtitle>{this.props.api.name}</Subtitle>
+            
+            <Link
+              to={'/'}
+              onClick={() => {
+                this.handleDelete(this.props.api.name)
+              }}
+            >
+              Delete
+            </Link>
           </Section>
           <Section>
             <EditApiForm onSubmit={this.submit} />
