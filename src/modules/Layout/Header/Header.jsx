@@ -14,11 +14,9 @@ const Header = ({ children }) => {
       <div className={b('col', { 'left': true })}>
         <span className={b('logo')}></span>
       </div>
-      <div className={b('col', { 'middle': true })}>
-        <Container>
-          <Nav />
-        </Container>
-      </div>
+      <Container className={b('col', { 'middle': true })}>
+        <Nav />
+      </Container>
       <div className={b('col', { 'right': true })}>
         Lorem ipsum 
       </div>
