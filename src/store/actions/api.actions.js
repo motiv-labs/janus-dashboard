@@ -75,7 +75,7 @@ export const deleteEndpoint = (apiName, callback) => async dispatch => {
     const response = await client.delete(`apis/${apiName}`);
 
     dispatch(deleteEndpointSuccess());
-    dispatch(openResponseModal({
+    dispatch(openResponseModal({ // @FIXME: move to reducers
       status: response.status,
       message: 'Successfuly deleted', 
       statusText: response.statusText,
@@ -125,7 +125,7 @@ export const updateEndpoint = (pathname, api) => dispatch => {
   return client.put(`apis${pathname}`, api)
     .then(response => {
       dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
-      dispatch(openResponseModal({
+      dispatch(openResponseModal({ // @FIXME: move to reducers
         status: response.status,
         message: 'Successfuly saved', 
         statusText: response.statusText,
