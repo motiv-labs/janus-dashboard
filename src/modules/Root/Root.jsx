@@ -6,6 +6,8 @@ import {
   Switch,
 } from 'react-router-dom';
 
+import ROUTES from '../../configurations/routes';
+
 import Header from '../Layout/Header/Header';
 import Footer from '../Layout/Footer/Footer';
 import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer';
@@ -25,17 +27,17 @@ class Root extends Component {
       <Router>
         <div className="j-app">
           <Header>
-            <NavLink exact to="/" className={nav()} activeClassName={nav({active: true})()}>API Definitions</NavLink>
-            <NavLink to="/new" className={nav()} activeClassName={nav({active: true})()}>New API</NavLink>
-            <NavLink to="/login" className={nav()} activeClassName={nav({active: true})()}>Login Page</NavLink>
+            <NavLink exact to={ROUTES.MAIN} className={nav()} activeClassName={nav({active: true})()}>API Definitions</NavLink>
+            <NavLink to={ROUTES.NEW} className={nav()} activeClassName={nav({active: true})()}>New API</NavLink>
+            <NavLink to={ROUTES.LOGIN} className={nav()} activeClassName={nav({active: true})()}>Login Page</NavLink>
           </Header>
 
           <div className="j-pages">
             <Switch>
-              <Route exact path="/" component={ApiListPage}/>
-              <Route path="/new" component={NewApiPage}/>
-              <Route path="/login" component={LoginPage}/>
-              <Route path="/:name" render={(props) => <EditApiPage {...props} />}/>
+              <Route exact path={ROUTES.MAIN} component={ApiListPage}/>
+              <Route path={ROUTES.NEW} component={NewApiPage}/>
+              <Route path={ROUTES.LOGIN} component={LoginPage}/>
+              <Route path={ROUTES.EDIT} render={(props) => <EditApiPage {...props} />}/>
             </Switch>
           </div>
 
