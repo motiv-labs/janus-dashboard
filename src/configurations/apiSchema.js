@@ -1,6 +1,6 @@
 const schema = {
   name: '',
-  active: true,
+  active: false,
   proxy: {
     preserve_host: false,
     listen_path: '',
