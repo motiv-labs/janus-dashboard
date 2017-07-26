@@ -7,7 +7,7 @@ $urls: (
   copy: url(../../assets/img/copy.svg),
 );
 
-.j-control {
+.j-icon {
   display: block;
   width: $control-size;
   height: $control-size;
@@ -16,7 +16,7 @@ $urls: (
 }
 
 @each $type, $url in $urls {
-  .j-control--type-#{$type} {
+  .j-icon--type-#{$type} {
     background-image: $url;
   }
 }

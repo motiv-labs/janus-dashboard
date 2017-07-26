@@ -5,7 +5,7 @@ import block from '../../helpers/bem-cn';
 
 import './Icon.css';
 
-const b = block('j-control');
+const b = block('j-icon');
 
 const propTypes = {
   type: PropTypes.oneOf([
