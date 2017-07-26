@@ -1,26 +1,31 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import SearchingContainer from '../../SearchBar/searchContainer';
 import ApiListContainer from './apiListContainer';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
-import Subtitle from '../../Layout/Title/Subtitle';
+import Button from '../../buttons/Button';
 
 const ApiListPage = () => {
   return (
     <div>
       <Section>
-        <Title>APIs</Title>
-      </Section>
-      <Section>
-        <Subtitle>Some thing stuff other things</Subtitle>
-      </Section>
-      <Section>
-        <SearchingContainer />
-      </Section>
-      <Section>
-        <ApiListContainer />
+        <Section>
+          <Row>
+            <Title>APIs</Title>
+            <Row>
+              <SearchingContainer />
+              <Link to="/new">
+                <Button label="Create New Api"/>
+              </Link>
+            </Row>
+          </Row>
+        </Section>
+        <Section>
+          <ApiListContainer />
+        </Section>
       </Section>
     </div>
   );
