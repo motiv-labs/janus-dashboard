@@ -1,17 +1,18 @@
 import client from '../api';
 import {
-  FETCH_APIS_REQUEST,
-  FETCH_APIS_SUCCESS,
+  FETCH_ENDPOINTS_START,
+  FETCH_ENDPOINTS_SUCCESS,
   DISCARD_PAGINATION,
+  REFRESH_ENDPOINTS,
   SET_PAGINATION_PAGE,
 } from '../constants';
 
-export const getAPIsRequest = () => ({
-  type: FETCH_APIS_REQUEST,
+export const getEndpointsRequest = () => ({
+  type: FETCH_ENDPOINTS_START,
 });
 
-export const getAPIsSuccess = (apiList/*: Array<Object>*/) => ({
-  type: FETCH_APIS_SUCCESS,
+export const getEndpointsSuccess = apiList => ({
+  type: FETCH_ENDPOINTS_SUCCESS,
   payload: apiList,
 });
 
@@ -19,19 +20,24 @@ export const discardPagination = () => ({
   type: DISCARD_PAGINATION,
 });
 
-export const setCurrentPageIndex = (index/*: number*/) => ({
+export const setCurrentPageIndex = index => ({
   type: SET_PAGINATION_PAGE,
   payload: index,
 });
 
-export const fetchAPIs = () => dispatch => {
-  dispatch(getAPIsRequest());
+export const fetchEndpoints = () => dispatch => {
+  dispatch(getEndpointsRequest());
   
   return client.get('apis')
-    .then((response) => {
-      dispatch(getAPIsSuccess(response.data));
+    .then(response => {
+      dispatch(getEndpointsSuccess(response.data));
     });
     // .catch(() => {
     //   context.commit('SET_ERROR', 'Infernal server error');
     // });
 };
+
+export const refreshEndpoints = api => ({
+  type: REFRESH_ENDPOINTS,
+  payload: api,
+});

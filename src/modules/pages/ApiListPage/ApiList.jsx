@@ -11,12 +11,14 @@ const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
   currentPageIndex: PropTypes.number.isRequired,
   setCurrentPageIndex: PropTypes.func.isRequired,
-  fetchAPIs: PropTypes.func.isRequired,
+  deleteEndpoint: PropTypes.func.isRequired,
+  fetchEndpoints: PropTypes.func.isRequired,
+  refreshEndpoints: PropTypes.func.isRequired,
 };
 
 class ApiList extends PureComponent {
   componentDidMount() {
-    this.props.fetchAPIs();
+    this.props.fetchEndpoints();
   }
 
   isOauthEnabled(plugins) {
@@ -27,7 +29,11 @@ class ApiList extends PureComponent {
     const oauth = plugins.find(plugin => plugin.name.indexOf('oauth2') > -1);
 
     return !!oauth && !!oauth.enabled;
-  }
+  };
+
+  handleDelete = (apiName) => {
+    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+  };
 
   renderRows = list => {
     return list.map(api => {
@@ -51,12 +57,22 @@ class ApiList extends PureComponent {
               }}
             >Clone</Link>
           </td>
+          <td>
+            <Link
+              to={''}
+              onClick={() => {
+                this.handleDelete(api.name)
+              }}
+            >
+              Delete
+            </Link>
+          </td>
         </tr>
       );
     });
   }
 
-  renderTable = (list) => {
+  renderTable = list => {
     return (
       <Table>
         <thead>
@@ -65,6 +81,7 @@ class ApiList extends PureComponent {
             <th>Active</th>
             <th>Listen Path</th>
             <th>Upstream URL</th>
+            <th></th>
             <th></th>
             <th></th>
             <th></th>
