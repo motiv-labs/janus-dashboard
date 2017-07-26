@@ -25,16 +25,16 @@ export const setCurrentPageIndex = index => ({
   payload: index,
 });
 
-export const fetchEndpoints = () => dispatch => {
+export const fetchEndpoints = () => (dispatch) => {
   dispatch(getEndpointsRequest());
-  
+
   return client.get('apis')
-    .then(response => {
+    .then((response) => {
       dispatch(getEndpointsSuccess(response.data));
     });
-    // .catch(() => {
-    //   context.commit('SET_ERROR', 'Infernal server error');
-    // });
+  // .catch(() => {
+  //   context.commit('SET_ERROR', 'Infernal server error');
+  // });
 };
 
 export const refreshEndpoints = api => ({

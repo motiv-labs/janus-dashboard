@@ -1,13 +1,13 @@
 import React from 'react';
 
-const comboShot = one => two => three =>({
+const comboShot = one => two => three => ({
   ...one,
   ...two,
   ...three,
 });
 
-const horizontal = pr => pr ? { justifyContent: 'center' } : {};
-const vertical = pr => pr ? { alignItems: 'center' } : {};
+const horizontal = pr => (pr ? { justifyContent: 'center' } : {});
+const vertical = pr => (pr ? { alignItems: 'center' } : {});
 
 const basic = {
   padding: '6px 0',
@@ -16,12 +16,10 @@ const basic = {
   alignItems: 'flex-start',
 };
 
-const FormRow = ({ children, alignX, alignY }) => {
-  return (
-    <div style={comboShot(basic)(horizontal(alignX))(vertical(alignY))}>
-      { children }
-    </div>
-  );
-};
+const FormRow = ({ children, alignX, alignY }) => (
+  <div style={comboShot(basic)(horizontal(alignX))(vertical(alignY))}>
+    { children }
+  </div>
+);
 
 export default FormRow;

@@ -3,7 +3,7 @@ import reduxThunk from 'redux-thunk';
 
 import rootReducer from '../reducers';
 
-const vanillaPromise = store => next => action => {
+const vanillaPromise = store => next => (action) => {
   if (typeof action.then !== 'function') {
     return next(action);
   }
@@ -12,10 +12,10 @@ const vanillaPromise = store => next => action => {
 };
 
 const createStoreWithMiddleware = applyMiddleware(
-    vanillaPromise,
-    reduxThunk,
+  vanillaPromise,
+  reduxThunk,
 )(createStore);
 
-const configureStore = (initialState) => createStoreWithMiddleware(rootReducer, initialState);
+const configureStore = initialState => createStoreWithMiddleware(rootReducer, initialState);
 
 export default configureStore;

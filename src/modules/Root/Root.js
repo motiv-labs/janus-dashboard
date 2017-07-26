@@ -27,10 +27,10 @@ class Root extends Component {
 
           <div className="j-pages">
             <Switch>
-              <Route exact path={ROUTES.MAIN.path} component={ApiListPage}/>
-              <Route path={ROUTES.NEW.path} component={NewApiPage}/>
-              <Route path={ROUTES.LOGIN.path} component={LoginPage}/>
-              <Route path={ROUTES.EDIT.path} render={(props) => <EditApiPage {...props} />}/>
+              <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
+              <Route path={ROUTES.NEW.path} component={NewApiPage} />
+              <Route path={ROUTES.LOGIN.path} component={LoginPage} />
+              <Route path={ROUTES.EDIT.path} render={props => <EditApiPage {...props} />} />
             </Switch>
           </div>
 

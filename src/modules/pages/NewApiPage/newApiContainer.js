@@ -9,11 +9,9 @@ import {
 
 import NewApiItem from './NewApiItem';
 
-const mapStateToProps = state => {
-  return {
-    api: state.apiReducer.api,
-  };
-};
+const mapStateToProps = state => ({
+  api: state.apiReducer.api,
+});
 
 export default connect(
   mapStateToProps,

@@ -17,16 +17,15 @@ const propTypes = {
 class NewApiItem extends Component {
   componentWillMount() {
     this.props.resetEndpoint();
-    
+
     if (this.hasToBeCloned()) {
-      this.props.willClone(deleteProperty(this.props.location.state.clone, 'name')); 
-    }
-    else {
+      this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
+    } else {
       this.props.fetchEndpointSchema();
     }
   }
 
-  submit = values => {
+  submit = (values) => {
     this.props.saveEndpoint(this.props.location.pathname, values);
   }
 
@@ -37,7 +36,7 @@ class NewApiItem extends Component {
       };
     }
   }
-  
+
   render() {
     return (
       <div>
@@ -46,7 +45,7 @@ class NewApiItem extends Component {
       </div>
     );
   }
-};
+}
 
 NewApiItem.propTypes = propTypes;
 

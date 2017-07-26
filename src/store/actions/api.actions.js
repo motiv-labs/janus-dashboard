@@ -67,7 +67,7 @@ export const willClone = data => ({
   payload: data,
 });
 
-export const deleteEndpoint = (apiName, callback) => async dispatch => {
+export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
   console.log('CALLBACK:: ', callback);
   dispatch(deleteEndpointRequest());
 
@@ -77,12 +77,11 @@ export const deleteEndpoint = (apiName, callback) => async dispatch => {
     dispatch(deleteEndpointSuccess());
     dispatch(openResponseModal({ // @FIXME: move to reducers
       status: response.status,
-      message: 'Successfuly deleted', 
+      message: 'Successfuly deleted',
       statusText: response.statusText,
     }));
     dispatch(callback(apiName));
-  }
-  catch (error) {
+  } catch (error) {
     console.log('ERROR => ', error);
     dispatch(openResponseModal({
       status: error.response.status,
@@ -93,19 +92,19 @@ export const deleteEndpoint = (apiName, callback) => async dispatch => {
   }
 };
 
-export const fetchEndpoint = pathname => dispatch => {
+export const fetchEndpoint = pathname => (dispatch) => {
   dispatch(getEndpointRequest());
 
   return client.get(`apis${pathname}`)
-    .then(response => {
+    .then((response) => {
       dispatch(getEndpointSuccess(response.data));
     })
-    .catch(error => {
+    .catch((error) => {
       console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
     });
 };
 
-export const fetchEndpointSchema = pathname => dispatch => {
+export const fetchEndpointSchema = pathname => (dispatch) => {
   dispatch(getEndpointSchemaRequest());
 
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
@@ -119,19 +118,19 @@ export const fetchEndpointSchema = pathname => dispatch => {
   dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
-export const updateEndpoint = (pathname, api) => dispatch => {
+export const updateEndpoint = (pathname, api) => (dispatch) => {
   dispatch(saveEndpointRequest());
 
   return client.put(`apis${pathname}`, api)
-    .then(response => {
+    .then((response) => {
       dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
       dispatch(openResponseModal({ // @FIXME: move to reducers
         status: response.status,
-        message: 'Successfuly saved', 
+        message: 'Successfuly saved',
         statusText: response.statusText,
       }));
     })
-    .catch(error => {
+    .catch((error) => {
       if (error.response) {
         dispatch(openResponseModal({
           status: error.response.status,
@@ -142,34 +141,32 @@ export const updateEndpoint = (pathname, api) => dispatch => {
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
         console.error(error.response.data);
-      } 
-      else if (error.request) {
+      } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
         console.log(error.request);
-      }
-      else {
+      } else {
         // Something happened in setting up the request that triggered an Error
         console.log('Error', error.message);
       }
     });
 };
 
-export const saveEndpoint = (pathname, api) => dispatch => {
+export const saveEndpoint = (pathname, api) => (dispatch) => {
   dispatch(saveEndpointRequest());
 
   return client.post('apis', api)
-    .then(response => {
+    .then((response) => {
       dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
       dispatch(openResponseModal({
         status: response.status,
-        message: 'Successfuly saved', 
+        message: 'Successfuly saved',
         statusText: response.statusText,
         redirectOnClose: () => (history.push('/')),
       }));
     })
-    .catch(error => {
+    .catch((error) => {
       if (error.response) {
         dispatch(openResponseModal({
           status: error.response.status,
@@ -181,14 +178,12 @@ export const saveEndpoint = (pathname, api) => dispatch => {
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
         console.error(error.response.data);
-      } 
-      else if (error.request) {
+      } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
         console.log(error.request);
-      }
-      else {
+      } else {
         // Something happened in setting up the request that triggered an Error
         console.log('Error', error.message);
       }

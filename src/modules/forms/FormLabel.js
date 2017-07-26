@@ -27,7 +27,7 @@ const styles = {
 
 const FormLabel = (props) => {
   const { attachTo, text, tooltip } = props;
-  
+
   return (
     <label style={styles.label} htmlFor={attachTo}>
       {text} {tooltip && <Tooltip icon="?">{tooltip}</Tooltip>}

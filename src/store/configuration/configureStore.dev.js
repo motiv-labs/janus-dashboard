@@ -6,7 +6,7 @@ import rootReducer from '../reducers';
 
 const logger = createLogger();
 
-const vanillaPromise = store => next => action => {
+const vanillaPromise = store => next => (action) => {
   if (typeof action.then !== 'function') {
     return next(action);
   }
@@ -15,13 +15,11 @@ const vanillaPromise = store => next => action => {
 };
 
 const createStoreWithMiddleware = applyMiddleware(
-    vanillaPromise,
-    reduxThunk,
-    logger,
+  vanillaPromise,
+  reduxThunk,
+  logger,
 )(createStore);
 
-const configureStore = (initialState) => {
-  return createStoreWithMiddleware(rootReducer, initialState);
-};
+const configureStore = initialState => createStoreWithMiddleware(rootReducer, initialState);
 
 export default configureStore;

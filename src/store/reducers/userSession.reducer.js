@@ -7,7 +7,6 @@ const initialState = {};
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {
-
     case CHECK_LOGGED_STATUS: {
       return {
         ...state,

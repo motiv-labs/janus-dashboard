@@ -9,27 +9,25 @@ import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import Button from '../../buttons/Button';
 
-const ApiListPage = () => {
-  return (
-    <div>
+const ApiListPage = () => (
+  <div>
+    <Section>
       <Section>
-        <Section>
+        <Row>
+          <Title>APIs</Title>
           <Row>
-            <Title>APIs</Title>
-            <Row>
-              <SearchingContainer />
-              <Link to="/new">
-                <Button label="Create New Api"/>
-              </Link>
-            </Row>
+            <SearchingContainer />
+            <Link to="/new">
+              <Button label="Create New Api" />
+            </Link>
           </Row>
-        </Section>
-        <Section>
-          <ApiListContainer />
-        </Section>
+        </Row>
       </Section>
-    </div>
-  );
-};
+      <Section>
+        <ApiListContainer />
+      </Section>
+    </Section>
+  </div>
+);
 
 export default ApiListPage;

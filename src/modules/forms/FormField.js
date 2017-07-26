@@ -7,12 +7,10 @@ const styles = {
   },
 };
 
-const FormField = ({ children }) => {
-  return (
-    <div style={styles.block}>
-      { children }
-    </div>
-  );
-};
+const FormField = ({ children }) => (
+  <div style={styles.block}>
+    { children }
+  </div>
+);
 
 export default FormField;

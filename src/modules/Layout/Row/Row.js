@@ -6,25 +6,19 @@ import './Row.css';
 
 const b = block('j-row');
 
-const wrapChildren = (children) => {
-  return children.map((item, index) => {
-    return (
-      <div
-        className={b('item')}
-        key={index}
-      >
-        {item}
-      </div>
-    );
-  });
-};
+const wrapChildren = children => children.map((item, index) => (
+  <div
+    className={b('item')}
+    key={index}
+  >
+    {item}
+  </div>
+));
 
-const Row = ({ children }) => {
-  return (
-    <div className={b}>
-      {wrapChildren(children)}
-    </div>
-  );
-};
+const Row = ({ children }) => (
+  <div className={b}>
+    {wrapChildren(children)}
+  </div>
+);
 
 export default Row;

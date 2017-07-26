@@ -30,14 +30,14 @@ class PluginSection extends Component {
   };
 
   test = () => {
-    this.setState((prevState) => ({ isExpended: !prevState.isExpended }));
+    this.setState(prevState => ({ isExpended: !prevState.isExpended }));
   }
 
   render() {
     return (
       <Section>
         <FormRow alignY>
-          <span 
+          <span
             style={styles.plus}
             onClick={this.test}
           >

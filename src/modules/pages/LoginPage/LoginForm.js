@@ -8,7 +8,7 @@ import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
 
-const LoginForm = prop => {
+const LoginForm = (prop) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -26,11 +26,11 @@ const LoginForm = prop => {
         </FormRow>
       </Section>
       <FormRow centered>
-        <Button label="Submit" type="submit"/>
+        <Button label="Submit" type="submit" />
       </FormRow>
     </form>
   );
-}
+};
 
 export default reduxForm({
   form: 'loginForm',

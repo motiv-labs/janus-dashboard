@@ -5,12 +5,10 @@ const styles = {
   paddingBottom: '10px',
 };
 
-const Section = ({ children }) => {
-  return (
-    <div style={styles}>
-      {children}
-    </div>
-  );
-};
+const Section = ({ children }) => (
+  <div style={styles}>
+    {children}
+  </div>
+);
 
 export default Section;

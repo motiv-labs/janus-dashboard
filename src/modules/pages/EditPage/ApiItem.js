@@ -22,13 +22,13 @@ class ApiItem extends Component {
   componentDidMount() {
     this.props.resetEndpoint();
     this.props.fetchEndpoint(this.props.location.pathname);
-  };
+  }
 
-  submit = values => {
+  submit = (values) => {
     this.props.updateEndpoint(this.props.location.pathname, values);
   };
 
-  handleDelete = apiName => {
+  handleDelete = (apiName) => {
     this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
   };
 
@@ -38,11 +38,11 @@ class ApiItem extends Component {
         <div>
           <Section>
             <Subtitle>{this.props.api.name}</Subtitle>
-            
+
             <Link
               to={'/'}
               onClick={() => {
-                this.handleDelete(this.props.api.name)
+                this.handleDelete(this.props.api.name);
               }}
             >
               Delete
@@ -54,11 +54,10 @@ class ApiItem extends Component {
         </div>
       );
     }
-    
+
     return <div>Loading...</div>;
-    
   }
-};
+}
 
 ApiItem.propTypes = propTypes;
 

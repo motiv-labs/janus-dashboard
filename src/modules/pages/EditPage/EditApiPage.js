@@ -10,16 +10,14 @@ const propTypes = {
   location: PropTypes.object.isRequired,
 };
 
-const EditPage = ({ location }) => {
-  return (
-    <div>
-      <Section>
-        <Title>Edit</Title>
-      </Section>
-      <EditApiContainer location={location} />
-    </div>
-  );
-};
+const EditPage = ({ location }) => (
+  <div>
+    <Section>
+      <Title>Edit</Title>
+    </Section>
+    <EditApiContainer location={location} />
+  </div>
+);
 
 EditPage.propTypes = propTypes;
 

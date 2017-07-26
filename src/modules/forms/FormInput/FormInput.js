@@ -22,12 +22,12 @@ const FormInput = (props) => {
     attachTo,
     label,
     tooltip,
-    ...others,
+    ...others
   } = props;
   return (
     <FormField>
       <FormLabel htmlFor={attachTo} text={label} tooltip={tooltip} />
-      <Field {...others} name={attachTo}/>
+      <Field {...others} name={attachTo} />
     </FormField>
   );
 };
