@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import NewApiContainer from './newApiContainer';
 
 import Section from '../../Layout/Section/Section';
-import Container from '../../Layout/Container/Container';
 import Title from '../../Layout/Title/Title';
 
 const propTypes = {
@@ -13,14 +12,14 @@ const propTypes = {
 
 const EditPage = ({ location }) => {
   return (
-    <Container>
+    <div>
       <Section>
         <Title>New API</Title>
       </Section>
       <Section>
         <NewApiContainer location={location} />
       </Section>
-    </Container>
+    </div>
   );
 };
 

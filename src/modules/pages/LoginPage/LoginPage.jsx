@@ -1,18 +1,17 @@
 import React from 'react';
 
 import Section from '../../Layout/Section/Section';
-import Container from '../../Layout/Container/Container';
 import Title from '../../Layout/Title/Title';
 import LoginContainer from './loginContainer';
 
 const LoginPage = () => {
   return (
-    <Container>
+    <div>
       <Section>
         <Title>Login page</Title>
       </Section>
       <LoginContainer />
-    </Container>
+    </div>
   );
 };
 

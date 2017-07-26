@@ -1,10 +1,10 @@
-import 'index.scss';
+@import 'index.scss';
 
 .j-nav {
   display: flex; 
   height: $hf-height-header;
   
-  &-item {
+  &__item {
     display: flex;
     height: 100%;
     align-items: center;

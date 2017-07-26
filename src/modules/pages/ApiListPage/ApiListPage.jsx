@@ -4,13 +4,12 @@ import SearchingContainer from '../../SearchBar/searchContainer';
 import ApiListContainer from './apiListContainer';
 
 import Section from '../../Layout/Section/Section';
-import Container from '../../Layout/Container/Container';
 import Title from '../../Layout/Title/Title';
 import Subtitle from '../../Layout/Title/Subtitle';
 
 const ApiListPage = () => {
   return (
-    <Container>
+    <div>
       <Section>
         <Title>APIs</Title>
       </Section>
@@ -23,7 +22,7 @@ const ApiListPage = () => {
       <Section>
         <ApiListContainer />
       </Section>
-    </Container>
+    </div>
   );
 };
 
