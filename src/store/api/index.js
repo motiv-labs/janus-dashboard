@@ -1,3 +1,4 @@
+/* eslint-disable */
 import axios from 'axios';
 import { login } from './auth';
 import config from './config';
@@ -27,8 +28,6 @@ if (getAccessToken()) {
 }
 
 client.interceptors.response.use(undefined, (error) => {
-  // console.log('CONFIG:: ', config);
-
     if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
         return login(config.gateway.username, config.gateway.password).then((response) => {
             error.config.isRetryRequest = true;

@@ -12,6 +12,7 @@ const propTypes = {
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
+    willClone: PropTypes.func.isRequired,
 };
 
 class NewApiItem extends Component {
@@ -39,11 +40,11 @@ class NewApiItem extends Component {
 
     render() {
         return (
-      <div>
-        <Subtitle>{this.props.api.name}</Subtitle>
-        <NewApiForm onSubmit={this.submit} />
-      </div>
-    );
+            <div>
+                <Subtitle>{this.props.api.name}</Subtitle>
+                <NewApiForm onSubmit={this.submit} />
+            </div>
+        );
     }
 }
 

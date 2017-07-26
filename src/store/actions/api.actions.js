@@ -1,3 +1,4 @@
+import createHistory from 'history/createBrowserHistory';
 import client from '../api';
 import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
@@ -16,8 +17,6 @@ import {
   openResponseModal,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
-
-import createHistory from 'history/createBrowserHistory';
 
 const history = createHistory({
     forceRefresh: true,
@@ -68,7 +67,6 @@ export const willClone = data => ({
 });
 
 export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
-    console.log('CALLBACK:: ', callback);
     dispatch(deleteEndpointRequest());
 
     try {
@@ -82,13 +80,13 @@ export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
         }));
         dispatch(callback(apiName));
     } catch (error) {
-        console.log('ERROR => ', error);
+        // console.log('ERROR => ', error);
         dispatch(openResponseModal({
             status: error.response.status,
             statusText: error.response.statusText,
             message: error.response.data.error,
         }));
-        console.log('DELETE_ENDPOINT_ERROR', 'Infernal server error', error.response);
+        // console.log('DELETE_ENDPOINT_ERROR', 'Infernal server error', error.response);
     }
 };
 
@@ -96,15 +94,16 @@ export const fetchEndpoint = pathname => (dispatch) => {
     dispatch(getEndpointRequest());
 
     return client.get(`apis${pathname}`)
-    .then((response) => {
-        dispatch(getEndpointSuccess(response.data));
-    })
-    .catch((error) => {
-        console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
-    });
+        .then((response) => {
+            dispatch(getEndpointSuccess(response.data));
+        })
+        .catch((error) => {
+            // eslint-disable-next-line
+            console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+        });
 };
 
-export const fetchEndpointSchema = pathname => (dispatch) => {
+export const fetchEndpointSchema = () => (dispatch) => {
     dispatch(getEndpointSchemaRequest());
 
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
@@ -140,14 +139,17 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+            // eslint-disable-next-line
             console.error(error.response.data);
         } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
+            // eslint-disable-next-line
             console.log(error.request);
         } else {
         // Something happened in setting up the request that triggered an Error
+            // eslint-disable-next-line
             console.log('Error', error.message);
         }
     });
@@ -177,14 +179,17 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
         // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+            // eslint-disable-next-line
             console.error(error.response.data);
         } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
+            // eslint-disable-next-line
             console.log(error.request);
         } else {
         // Something happened in setting up the request that triggered an Error
+            // eslint-disable-next-line
             console.log('Error', error.message);
         }
     });

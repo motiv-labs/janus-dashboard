@@ -6,6 +6,7 @@ import FormRow from '../forms/FormRow';
 import FormLabel from '../forms/FormLabel';
 
 const propTypes = {
+    children: PropTypes.node,
     name: PropTypes.string.isRequired,
 };
 
@@ -35,24 +36,24 @@ class PluginSection extends Component {
 
     render() {
         return (
-      <Section>
-        <FormRow alignY>
-          <span
-            style={styles.plus}
-            onClick={this.test}
-          >
-            {this.state.isExpended ? '↑' : '↓'}
-          </span>
-          <FormLabel text={`${this.props.name} plugin`} />
-        </FormRow>
+            <Section>
+                <FormRow alignY>
+                    <span
+                        style={styles.plus}
+                        onClick={this.test}
+                    >
+                        {this.state.isExpended ? '↑' : '↓'}
+                    </span>
+                    <FormLabel text={`${this.props.name} plugin`} />
+                </FormRow>
 
-        {
-          this.state.isExpended &&
-            <FormRow>{ this.props.children }</FormRow>
-        }
+                {
+                    this.state.isExpended &&
+                        <FormRow>{ this.props.children }</FormRow>
+                }
 
-      </Section>
-    );
+            </Section>
+        );
     }
 }
 

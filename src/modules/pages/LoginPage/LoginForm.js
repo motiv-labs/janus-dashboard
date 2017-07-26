@@ -12,6 +12,7 @@ const LoginForm = (prop) => {
     const handleSubmit = (e) => {
         e.preventDefault();
 
+        // eslint-disable-next-line
         console.log('SAVE');
     };
 
