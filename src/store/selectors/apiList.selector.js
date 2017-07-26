@@ -11,6 +11,8 @@ const getFilteredApiList = (apiList, searchQuery) => apiList.filter((el) => {
     ) {
         return el;
     }
+
+    return false;
 });
 
 export const filteredApiList = createSelector(
