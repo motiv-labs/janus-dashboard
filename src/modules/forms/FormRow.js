@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const comboShot = one => two => three => ({
     ...one,
@@ -16,10 +17,18 @@ const basic = {
     alignItems: 'flex-start',
 };
 
+const propTypes = {
+    children: PropTypes.node.isRequired,
+    alignX: PropTypes.bool,
+    alignY: PropTypes.bool,
+};
+
 const FormRow = ({ children, alignX, alignY }) => (
   <div style={comboShot(basic)(horizontal(alignX))(vertical(alignY))}>
     { children }
   </div>
 );
+
+FormRow.propTypes = propTypes;
 
 export default FormRow;

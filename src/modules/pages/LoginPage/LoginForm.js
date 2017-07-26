@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux'; // @TODO: implement
 import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
-import FormLabel from '../../forms/FormLabel';
+// import FormLabel from '../../forms/FormLabel'; // @TODO: implement
 import Button from '../../buttons/Button';
 
-const LoginForm = (prop) => {
+const LoginForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
 

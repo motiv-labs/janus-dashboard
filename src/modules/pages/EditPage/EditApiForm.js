@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
@@ -10,11 +11,13 @@ import Button from '../../buttons/Button';
 
 import RenderPlugins from '../../forms/RenderPlugins';
 
-let ApiForm = (props) => {
-    const {
-        handleSubmit,
-    } = props;
+const propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+    initialValues: PropTypes.object,
+};
 
+let ApiForm = (props) => {
+    const { handleSubmit } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
 
     return (
@@ -54,6 +57,8 @@ let ApiForm = (props) => {
         </form>
     );
 };
+
+ApiForm.propTypes = propTypes;
 
 ApiForm = reduxForm({
     form: 'apiForm',
