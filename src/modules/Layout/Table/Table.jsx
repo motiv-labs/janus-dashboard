@@ -1,8 +1,10 @@
 import React from 'react';
 
-const Table = ({ children }) => {
+import './Table.css';
+
+const Table = ({ children, className }) => {
   return (
-    <table className="j-table">
+    <table className={className}>
       { children }
     </table>
   );

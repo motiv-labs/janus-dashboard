@@ -5,7 +5,9 @@ import {
 } from 'react-router-dom';
 import Pagimagic from 'react-pagimagic';
 
+import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
+import Icon from '../../Icon/Icon';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -15,6 +17,8 @@ const propTypes = {
   fetchEndpoints: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
 };
+
+const table = block('j-table');
 
 class ApiList extends PureComponent {
   componentDidMount() {
@@ -38,16 +42,20 @@ class ApiList extends PureComponent {
   renderRows = list => {
     return list.map(api => {
       return (
-        <tr key={api.name}>
-          <td>{api.name}</td>
-          <td>{`${api.active}`}</td>
-          <td>{api.proxy.listen_path}</td>
-          <td>{api.proxy.upstream_url}</td>
-          <td>{`${this.isOauthEnabled(api.plugins)}`}</td>
-          <td>
-            <Link to={`/${api.name}`}>EDIT</Link>
+        <tr className={table('row')} key={api.name}>
+          <td className={table('td')}>{api.name}</td>
+          <td className={table('td')}>{api.proxy.listen_path}</td>
+          <td className={table('td')}>{api.proxy.upstream_url}</td>
+          <td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</td>
+          <td className={table('td')}>
+            {api.active ? <Icon type="checked" /> : null}
           </td>
-          <td>
+          <td className={table('td')}>
+            <Link to={`/${api.name}`}>
+              <Icon type="edit"/>
+            </Link>
+          </td>
+          <td className={table('td')}>
             <Link
               to={{
                 pathname: '/new',
@@ -55,16 +63,18 @@ class ApiList extends PureComponent {
                   clone: api,
                 },
               }}
-            >Clone</Link>
+            >
+              <Icon type="copy"/>
+            </Link>
           </td>
-          <td>
+          <td className={table('td')}>
             <Link
               to={''}
               onClick={() => {
                 this.handleDelete(api.name)
               }}
             >
-              Delete
+              <Icon type="delete"/>
             </Link>
           </td>
         </tr>
@@ -74,22 +84,26 @@ class ApiList extends PureComponent {
 
   renderTable = list => {
     return (
-      <Table>
+      <Table className={table}>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Active</th>
-            <th>Listen Path</th>
-            <th>Upstream URL</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th className={table('th')}><div>Api Name</div></th>
+            <th className={table('th')}>Listen Path</th>
+            <th className={table('th')}>Upstream URL</th>
+            <th className={table('th')}></th>
+            <th className={table('th')}>Active</th>
+            <th className={table('th')}></th>
+            <th className={table('th')}></th>
           </tr>  
         </thead>
-        <tbody>
+        <tbody className={table('tbody')}>
           { this.renderRows(list) }
         </tbody>
+        <tfoot className={table('tfoot')}>
+          <tr className={table('tfoot', { tr: true })}>
+            <td colSpan="8"></td>
+          </tr>
+        </tfoot>
       </Table>
     );
   }
