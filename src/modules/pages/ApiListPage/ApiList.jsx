@@ -7,7 +7,7 @@ import Pagimagic from 'react-pagimagic';
 
 import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
-import Control from '../../Control/Control';
+import Icon from '../../Icon/Icon';
 
 const propTypes = {
   apiList: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -48,11 +48,11 @@ class ApiList extends PureComponent {
           <td className={table('td')}>{api.proxy.upstream_url}</td>
           <td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</td>
           <td className={table('td')}>
-            {api.active ? <Control type="checked" /> : null}
+            {api.active ? <Icon type="checked" /> : null}
           </td>
           <td className={table('td')}>
             <Link to={`/${api.name}`}>
-              <Control type="edit"/>
+              <Icon type="edit"/>
             </Link>
           </td>
           <td className={table('td')}>
@@ -64,7 +64,7 @@ class ApiList extends PureComponent {
                 },
               }}
             >
-              <Control type="copy"/>
+              <Icon type="copy"/>
             </Link>
           </td>
           <td className={table('td')}>
@@ -74,7 +74,7 @@ class ApiList extends PureComponent {
                 this.handleDelete(api.name)
               }}
             >
-              <Control type="delete"/>
+              <Icon type="delete"/>
             </Link>
           </td>
         </tr>

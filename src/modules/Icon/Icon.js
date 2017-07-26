@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import block from '../../helpers/bem-cn';
 
-import './Control.css';
+import './Icon.css';
 
 const b = block('j-control');
 
