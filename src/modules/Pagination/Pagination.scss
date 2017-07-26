@@ -17,10 +17,10 @@
       height: 30px;
       line-height: 30px;
       background-color: $hf-color-white;
-	    border: $hf-border;
-	    font-size: $hf-font-size-small;
-	    text-align: center;
-  	  color: $hf-color-gray-medium;
+      border: $hf-border;
+      font-size: $hf-font-size-small;
+      text-align: center;
+      color: $hf-color-gray-medium;
       padding: 0 8px;
       box-sizing: border-box;
       transition: background-color 0.05s, color 0.05s, border-color 0.05s;
@@ -29,7 +29,6 @@
       &--disabled {
         opacity: 0.5;
       }
-
 
       &--active {
         background-color: $hellofresh-color;
