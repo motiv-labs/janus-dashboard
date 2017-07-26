@@ -6,7 +6,7 @@ const propTypes = {
     closeModal: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
-    redirectOnClose: PropTypes.func.isRequired,
+    redirectOnClose: PropTypes.func,
     statusText: PropTypes.string.isRequired,
 };
 

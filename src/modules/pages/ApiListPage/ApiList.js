@@ -79,7 +79,7 @@ class ApiList extends PureComponent {
   ))
 
     renderTable = list => (
-    <Table className={table}>
+    <Table className={table()}>
       <thead>
         <tr>
           <th className={table('th')}><div>Api Name</div></th>
