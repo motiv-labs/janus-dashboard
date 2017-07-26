@@ -3,7 +3,6 @@ import Pagimagic from 'react-pagimagic';
 
 import './Pagination.css';
 
-// const arrow = () => {};
 const Pagination = ({ 
   list,
   currentPageIndex,
