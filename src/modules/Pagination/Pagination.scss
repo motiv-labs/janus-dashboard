@@ -1,5 +1,14 @@
 @import 'index.scss';
 
+@mixin alignCenter($width, $height) {
+  width: $width;
+  height: $height;
+  margin-top: -$height/2;
+  margin-left: -$width/2;
+  top: 50%;
+  left: 50%;
+}
+
 .j-pagination {
   &__nav {
     &-item {
@@ -40,12 +49,7 @@
           content: '';
           display: block;
           position: absolute;
-          width: 8px;
-          height: 13px;
-          left: 50%;
-          top: 50%;
-          margin-top: -6px;
-          margin-left: -4px; 
+          @include alignCenter(8px, 13px);
         }
       }
 
