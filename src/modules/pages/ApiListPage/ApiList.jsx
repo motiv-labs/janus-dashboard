@@ -7,7 +7,6 @@ import Pagimagic from 'react-pagimagic';
 
 import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
-import Td from '../../Layout/Table/Td';
 import Control from '../../Control/Control';
 
 const propTypes = {
