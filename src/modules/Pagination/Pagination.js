@@ -3,6 +3,7 @@ import Pagimagic from 'react-pagimagic';
 
 import './Pagination.css';
 
+// const arrow = () => {};
 const Pagination = ({ 
   list,
   currentPageIndex,
@@ -20,6 +21,7 @@ const Pagination = ({
       className="j-pagination"
       maximumVisiblePaginators={maximumVisiblePaginators}
       renderChildren={renderChildren}
+      arrow
     />
   );
 };

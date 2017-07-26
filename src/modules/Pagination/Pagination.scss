@@ -1,7 +1,7 @@
 @import 'index.scss';
 
 .j-pagination {
-  .Pagimagic-nav {
+  &__nav {
     &-item {
       display: inline-block;
       vertical-align: top;
@@ -17,7 +17,12 @@
       transition: background-color 0.05s, color 0.05s, border-color 0.05s;
       cursor: pointer;
 
-      &.active {
+      &--disabled {
+        opacity: 0.5;
+      }
+
+
+      &--active {
         background-color: $hellofresh-color;
         border-color: $hellofresh-color;
         color: $hf-color-white;
@@ -40,18 +45,19 @@
           left: 50%;
           top: 50%;
           margin-top: -6px;
-          margin-left: -4px;
-          background-image: url(../../assets/img/small-arrow.svg);
+          margin-left: -4px; 
         }
+      }
 
-        &.disabled {
-          opacity: 0.5;
+      &--prev {
+        &:before {
+          background-image: url(../../assets/img/small-arrow.svg);
         }
       }
 
       &--next {
         &:before {
-          transform: rotate(180deg);
+          background-image: url(../../assets/img/small-arrow-next.svg);
         }
       }
     }
