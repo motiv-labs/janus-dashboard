@@ -1,9 +1,9 @@
 export default {
-  gateway: {
-    uri: 'http://localhost:8081',
-    username: 'admin',
-    password: 'admin',
-  },
+    gateway: {
+        uri: 'http://localhost:8081',
+        username: 'admin',
+        password: 'admin',
+    },
 
   // gateway: {
   //   uri: process.env.GATEWAY_BASE_URI,

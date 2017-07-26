@@ -13,47 +13,47 @@ import {
 } from '../constants';
 
 const initialState = {
-  api: {},
-  isFetching: false,
+    api: {},
+    isFetching: false,
 };
 
 export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case DELETE_ENDPOINT_START:
-    case FETCH_ENDPOINT_START:
-    case FETCH_ENDPOINT_SCHEMA_START:
-    case SAVE_ENDPOINT_START: {
-      return {
-        ...state,
-        isFetching: true,
-      };
-    }
+    switch (action.type) {
+        case DELETE_ENDPOINT_START:
+        case FETCH_ENDPOINT_START:
+        case FETCH_ENDPOINT_SCHEMA_START:
+        case SAVE_ENDPOINT_START: {
+            return {
+                ...state,
+                isFetching: true,
+            };
+        }
 
-    case DELETE_ENDPOINT_SUCCESS: {
-      return {
-        ...state,
-        isFetching: false,
-      };
+        case DELETE_ENDPOINT_SUCCESS: {
+            return {
+                ...state,
+                isFetching: false,
+            };
+        }
+        case FETCH_ENDPOINT_SUCCESS:
+        case FETCH_ENDPOINT_SCHEMA_SUCCESS:
+        case SAVE_ENDPOINT_SUCCESS: {
+            return {
+                ...state,
+                api: action.payload,
+                isFetching: false,
+            };
+        }
+        case WILL_CLONE: {
+            return {
+                ...state,
+                api: action.payload,
+            };
+        }
+        case RESET_ENDPOINT: {
+            return initialState;
+        }
+        default:
+            return state;
     }
-    case FETCH_ENDPOINT_SUCCESS:
-    case FETCH_ENDPOINT_SCHEMA_SUCCESS:
-    case SAVE_ENDPOINT_SUCCESS: {
-      return {
-        ...state,
-        api: action.payload,
-        isFetching: false,
-      };
-    }
-    case WILL_CLONE: {
-      return {
-        ...state,
-        api: action.payload,
-      };
-    }
-    case RESET_ENDPOINT: {
-      return initialState;
-    }
-    default:
-      return state;
-  }
 }

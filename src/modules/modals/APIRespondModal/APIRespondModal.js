@@ -3,26 +3,26 @@ import PropTypes from 'prop-types';
 import Modaliz from 'react-modaliz';
 
 const propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  isOpen: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
-  statusText: PropTypes.string.isRequired,
+    closeModal: PropTypes.func.isRequired,
+    isOpen: PropTypes.bool.isRequired,
+    message: PropTypes.string.isRequired,
+    statusText: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
-  statusText: '',
+    statusText: '',
 };
 
 const APIRespondModal = (props) => {
-  const handleClose = () => {
-    props.closeModal();
+    const handleClose = () => {
+        props.closeModal();
 
-    if (props.redirectOnClose) {
-      props.redirectOnClose();
-    }
-  };
+        if (props.redirectOnClose) {
+            props.redirectOnClose();
+        }
+    };
 
-  return (
+    return (
     <Modaliz
       show={props.isOpen}
       simple

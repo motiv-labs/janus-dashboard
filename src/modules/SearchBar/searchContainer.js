@@ -8,7 +8,7 @@ import {
 import SearchBar from './SearchBar';
 
 const mapStateToProps = state => ({
-  searchQuery: state.searchReducer.searchQuery,
+    searchQuery: state.searchReducer.searchQuery,
 });
 
 export default connect(

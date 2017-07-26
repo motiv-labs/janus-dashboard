@@ -1,8 +1,8 @@
 import React from 'react';
 
 const styles = {
-  paddingTop: '10px',
-  paddingBottom: '10px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
 };
 
 const Section = ({ children }) => (

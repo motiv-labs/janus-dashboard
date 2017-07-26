@@ -4,5 +4,5 @@ import {
 } from '../constants';
 
 export const checkLoggedStatus = () => ({
-  type: CHECK_LOGGED_STATUS,
+    type: CHECK_LOGGED_STATUS,
 });

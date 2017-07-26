@@ -9,10 +9,10 @@ import searchReducer from './search.reducer';
 
 export default combineReducers({
   // here combine all reducers:
-  userSessionReducer,
-  apiResponseModalReducer,
-  apiListReducer,
-  apiReducer,
-  searchReducer,
-  form: formReducer,
+    userSessionReducer,
+    apiResponseModalReducer,
+    apiListReducer,
+    apiReducer,
+    searchReducer,
+    form: formReducer,
 });

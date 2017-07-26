@@ -10,13 +10,13 @@ import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/RenderPlugins';
 
 let ApiForm = (props) => {
-  const {
+    const {
     handleSubmit,
     initialValues,
   } = props;
-  const parse = value => (value === undefined ? undefined : parseInt(value));
+    const parse = value => (value === undefined ? undefined : parseInt(value));
 
-  return (
+    return (
     <form onSubmit={handleSubmit}>
       <Section>
         <FormRow>
@@ -61,13 +61,13 @@ let ApiForm = (props) => {
 };
 
 ApiForm = reduxForm({
-  form: 'apiForm',
-  enableReinitialize: true, // this is needed!!
+    form: 'apiForm',
+    enableReinitialize: true, // this is needed!!
 })(ApiForm);
 
 ApiForm = connect(
   state => ({
-    initialValues: state.apiReducer.api,
+      initialValues: state.apiReducer.api,
   }),
   null,
 )(ApiForm);

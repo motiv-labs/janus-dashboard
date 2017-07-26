@@ -9,32 +9,32 @@ import Subtitle from '../../Layout/Title/Subtitle';
 import EditApiForm from './EditApiForm';
 
 const propTypes = {
-  api: PropTypes.object.isRequired,
-  deleteEndpoint: PropTypes.func.isRequired,
-  fetchEndpoint: PropTypes.func.isRequired,
-  refreshEndpoints: PropTypes.func.isRequired,
-  resetEndpoint: PropTypes.func.isRequired,
-  updateEndpoint: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
+    api: PropTypes.object.isRequired,
+    deleteEndpoint: PropTypes.func.isRequired,
+    fetchEndpoint: PropTypes.func.isRequired,
+    refreshEndpoints: PropTypes.func.isRequired,
+    resetEndpoint: PropTypes.func.isRequired,
+    updateEndpoint: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
 };
 
 class ApiItem extends Component {
-  componentDidMount() {
-    this.props.resetEndpoint();
-    this.props.fetchEndpoint(this.props.location.pathname);
-  }
+    componentDidMount() {
+        this.props.resetEndpoint();
+        this.props.fetchEndpoint(this.props.location.pathname);
+    }
 
-  submit = (values) => {
-    this.props.updateEndpoint(this.props.location.pathname, values);
-  };
+    submit = (values) => {
+        this.props.updateEndpoint(this.props.location.pathname, values);
+    };
 
-  handleDelete = (apiName) => {
-    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
-  };
+    handleDelete = (apiName) => {
+        this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+    };
 
-  render() {
-    if (!isEmpty(this.props.api)) {
-      return (
+    render() {
+        if (!isEmpty(this.props.api)) {
+            return (
         <div>
           <Section>
             <Subtitle>{this.props.api.name}</Subtitle>
@@ -42,7 +42,7 @@ class ApiItem extends Component {
             <Link
               to={'/'}
               onClick={() => {
-                this.handleDelete(this.props.api.name);
+                  this.handleDelete(this.props.api.name);
               }}
             >
               Delete
@@ -53,10 +53,10 @@ class ApiItem extends Component {
           </Section>
         </div>
       );
-    }
+        }
 
-    return <div>Loading...</div>;
-  }
+        return <div>Loading...</div>;
+    }
 }
 
 ApiItem.propTypes = propTypes;

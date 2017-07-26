@@ -11,8 +11,8 @@ import { filteredApiList } from '../../../store/selectors';
 import ApiList from './ApiList';
 
 const mapStateToProps = state => ({
-  apiList: filteredApiList(state),
-  currentPageIndex: state.apiListReducer.currentPageIndex,
+    apiList: filteredApiList(state),
+    currentPageIndex: state.apiListReducer.currentPageIndex,
 });
 
 export default connect(

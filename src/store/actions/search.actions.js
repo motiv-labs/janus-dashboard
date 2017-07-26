@@ -3,6 +3,6 @@ import {
 } from '../constants';
 
 export const setSearchQuery = query/* : string */ => ({
-  type: SEARCH_QUERY,
-  payload: query,
+    type: SEARCH_QUERY,
+    payload: query,
 });

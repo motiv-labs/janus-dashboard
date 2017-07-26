@@ -9,13 +9,13 @@ import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
 
 const LoginForm = (prop) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
+    const handleSubmit = (e) => {
+        e.preventDefault();
 
-    console.log('SAVE');
-  };
+        console.log('SAVE');
+    };
 
-  return (
+    return (
     <form onSubmit={handleSubmit}>
       <Section>
         <FormRow>
@@ -33,5 +33,5 @@ const LoginForm = (prop) => {
 };
 
 export default reduxForm({
-  form: 'loginForm',
+    form: 'loginForm',
 })(LoginForm);

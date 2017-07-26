@@ -11,7 +11,7 @@ import FormLabel from './FormLabel';
 import FormInput from './FormInput/FormInput';
 
 const propTypes = {
-  plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
+    plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
 const RenderPlugin = ({ plugins }) => (
@@ -28,16 +28,16 @@ const RenderPlugin = ({ plugins }) => (
             <FormLabel text="Config" />
             {
               plugin.config && Object.keys(plugin.config).map((item) => {
-                const config = plugins[index].config[item];
+                  const config = plugins[index].config[item];
 
-                if (typeOf(config, 'Object')) {
-                  return (
+                  if (typeOf(config, 'Object')) {
+                      return (
                     <FormField key={item}>
                       <FormLabel text={item} />
                       {
                         Object.keys(config).map((el) => {
-                          if (typeOf(config[el], 'Object')) {
-                            return (
+                            if (typeOf(config[el], 'Object')) {
+                                return (
                               <FormField key={item}>
                                 <FormLabel text={item} />
                                 {
@@ -47,18 +47,18 @@ const RenderPlugin = ({ plugins }) => (
                                 }
                               </FormField>
                             );
-                          }
+                            }
 
-                          return (
+                            return (
                             <FormInput key={el} component="input" label={el} attachTo={`plugins[${index}].config[${item}][${el}]`} type="text" />
                           );
                         })
                       }
                     </FormField>
                   );
-                }
+                  }
 
-                return (
+                  return (
                   <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
                 );
               })

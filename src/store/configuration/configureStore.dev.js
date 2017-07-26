@@ -7,11 +7,11 @@ import rootReducer from '../reducers';
 const logger = createLogger();
 
 const vanillaPromise = store => next => (action) => {
-  if (typeof action.then !== 'function') {
-    return next(action);
-  }
+    if (typeof action.then !== 'function') {
+        return next(action);
+    }
 
-  return Promise.resolve(action).then(store.dispatch);
+    return Promise.resolve(action).then(store.dispatch);
 };
 
 const createStoreWithMiddleware = applyMiddleware(

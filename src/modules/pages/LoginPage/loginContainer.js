@@ -7,7 +7,7 @@ import {
 import LoginForm from './LoginForm';
 
 const mapStateToProps = state => ({
-  api: state.userSessionReducer.api,
+    api: state.userSessionReducer.api,
 });
 
 export default connect(

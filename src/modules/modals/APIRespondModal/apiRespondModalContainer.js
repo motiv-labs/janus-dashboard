@@ -8,11 +8,11 @@ import {
 import APIRespondModal from './APIRespondModal';
 
 const mapStateToProps = (state) => {
-  const { isOpen, status, message, redirectOnClose } = state.apiResponseModalReducer;
+    const { isOpen, status, message, redirectOnClose } = state.apiResponseModalReducer;
 
-  return {
-    isOpen, status, message, redirectOnClose,
-  };
+    return {
+        isOpen, status, message, redirectOnClose,
+    };
 };
 
 export default connect(

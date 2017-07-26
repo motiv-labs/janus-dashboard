@@ -19,8 +19,8 @@ import EditApiPage from '../pages/EditPage/EditApiPage';
 import './Root.css';
 
 class Root extends Component {
-  render() {
-    return (
+    render() {
+        return (
       <Router>
         <div className="j-app">
           <Header />
@@ -40,7 +40,7 @@ class Root extends Component {
         </div>
       </Router>
     );
-  }
+    }
 }
 
 export default Root;
