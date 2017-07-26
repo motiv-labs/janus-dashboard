@@ -15,6 +15,7 @@ $hf-box-shadow-header: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
 /* Fonts */
 $hf-font-family-sans-serif: 'roboto', sans-serif;
 $hf-font-size-base: 14px;
+$hf-font-size-small: ceil($hf-font-size-base*0.85);
 $hf-font-weight: 500;
 $hf-font-weight-bold: 700;
 $hf-font-size-title: $hf-font-size-base*2;
