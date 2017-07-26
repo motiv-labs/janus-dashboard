@@ -3,7 +3,6 @@
 .j-table {
   width: 100%;
   text-align: left;
-  overflow: hidden;
 
   &__tfoot {
     height: 70px;
@@ -22,8 +21,6 @@
 
   &__row {
     background-color: $hf-color-white;
-    // border-left: solid 60px $hf-color-white;
-    // border-right: solid 60px $hf-color-white;
   }
 
   &__th {
@@ -35,23 +32,12 @@
  
   &__td {
     vertical-align: middle;
-    // height: 100%;
     border-bottom: $hf-border;
     padding-top: $hf-padding-cell;
     padding-bottom: $hf-padding-cell;
-    // border-left: solid 60px $hf-color-white;
-    // border-right: solid 60px $hf-color-white;
 
     &:first-child {
       font-weight: $hf-font-weight-bold;
-
-      border-left: solid 60px $hf-color-white;
-      // border-left: solid 30px $hf-color-white;
     }
-
-    &:last-child {
-      border-right: solid 60px $hf-color-white;
-    }
-
   }
 }
