@@ -1,7 +1,6 @@
 import React from 'react';
 
 import block from '../../../helpers/bem-cn';
-import Container from '../Container/Container';
 import Nav from '../Nav/Nav';
 
 import './Header.css';
@@ -15,11 +14,7 @@ const Header = ({ children }) => {
         <span className={b('logo')}></span>
       </div>
       <div className={b('col', { 'middle': true })}>
-        <Container>
-          <Nav>
-            {children}
-          </Nav>
-        </Container>
+        <Nav />
       </div>
       <div className={b('col', { 'right': true })}>
         Lorem ipsum 

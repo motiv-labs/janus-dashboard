@@ -5,14 +5,12 @@ import SearchingContainer from '../../SearchBar/searchContainer';
 import ApiListContainer from './apiListContainer';
 
 import Section from '../../Layout/Section/Section';
-import Row from '../../Layout/Row/Row';
-import Container from '../../Layout/Container/Container';
 import Title from '../../Layout/Title/Title';
 import Button from '../../buttons/Button';
 
 const ApiListPage = () => {
   return (
-    <Container>
+    <div>
       <Section>
         <Section>
           <Row>
@@ -29,7 +27,7 @@ const ApiListPage = () => {
           <ApiListContainer />
         </Section>
       </Section>
-    </Container>
+    </div>
   );
 };
 
