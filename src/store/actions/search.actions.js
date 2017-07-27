@@ -1,5 +1,5 @@
 import {
-  SEARCH_QUERY,
+    SEARCH_QUERY,
 } from '../constants';
 
 export const setSearchQuery = query/* : string */ => ({

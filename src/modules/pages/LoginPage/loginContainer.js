@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
-  checkLoggedStatus,
+    checkLoggedStatus,
 } from '../../../store/actions';
 
 import LoginForm from './LoginForm';
@@ -11,6 +11,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps,
-  { checkLoggedStatus },
+    mapStateToProps,
+    { checkLoggedStatus },
 )(LoginForm);

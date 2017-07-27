@@ -30,7 +30,7 @@ const LoginForm = () => {
                 <Button label="Submit" type="submit" />
             </FormRow>
         </form>
-  );
+    );
 };
 
 export default reduxForm({

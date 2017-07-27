@@ -1,10 +1,10 @@
 import client from '../api';
 import {
-  FETCH_ENDPOINTS_START,
-  FETCH_ENDPOINTS_SUCCESS,
-  DISCARD_PAGINATION,
-  REFRESH_ENDPOINTS,
-  SET_PAGINATION_PAGE,
+    FETCH_ENDPOINTS_START,
+    FETCH_ENDPOINTS_SUCCESS,
+    DISCARD_PAGINATION,
+    REFRESH_ENDPOINTS,
+    SET_PAGINATION_PAGE,
 } from '../constants';
 
 export const getEndpointsRequest = () => ({

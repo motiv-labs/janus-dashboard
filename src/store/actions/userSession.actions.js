@@ -1,5 +1,5 @@
 import {
-  CHECK_LOGGED_STATUS,
+    CHECK_LOGGED_STATUS,
 //   LOGIN_SUCCESS, // @TODO: implement
 } from '../constants';
 

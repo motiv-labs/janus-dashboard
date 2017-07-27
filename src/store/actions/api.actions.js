@@ -2,19 +2,19 @@ import createHistory from 'history/createBrowserHistory';
 import client from '../api';
 import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
-  DELETE_ENDPOINT_START,
-  DELETE_ENDPOINT_SUCCESS,
-  FETCH_ENDPOINT_START,
-  FETCH_ENDPOINT_SUCCESS,
-  FETCH_ENDPOINT_SCHEMA_START,
-  FETCH_ENDPOINT_SCHEMA_SUCCESS,
-  SAVE_ENDPOINT_START,
-  SAVE_ENDPOINT_SUCCESS,
-  RESET_ENDPOINT,
-  WILL_CLONE,
+    DELETE_ENDPOINT_START,
+    DELETE_ENDPOINT_SUCCESS,
+    FETCH_ENDPOINT_START,
+    FETCH_ENDPOINT_SUCCESS,
+    FETCH_ENDPOINT_SCHEMA_START,
+    FETCH_ENDPOINT_SCHEMA_SUCCESS,
+    SAVE_ENDPOINT_START,
+    SAVE_ENDPOINT_SUCCESS,
+    RESET_ENDPOINT,
+    WILL_CLONE,
 } from '../constants';
 import {
-  openResponseModal,
+    openResponseModal,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 

@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 
 import {
-  deleteEndpoint,
-  fetchEndpoints,
-  refreshEndpoints,
-  setCurrentPageIndex,
+    deleteEndpoint,
+    fetchEndpoints,
+    refreshEndpoints,
+    setCurrentPageIndex,
 } from '../../../store/actions';
 import { filteredApiList } from '../../../store/selectors';
 
@@ -16,6 +16,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps,
-  { deleteEndpoint, fetchEndpoints, refreshEndpoints, setCurrentPageIndex },
+    mapStateToProps,
+    { deleteEndpoint, fetchEndpoints, refreshEndpoints, setCurrentPageIndex },
 )(ApiList);
