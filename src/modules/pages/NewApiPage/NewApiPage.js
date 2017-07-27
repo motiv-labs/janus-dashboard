@@ -11,14 +11,14 @@ const propTypes = {
 };
 
 const EditPage = ({ location }) => (
-  <div>
-    <Section>
-      <Title>New API</Title>
-    </Section>
-    <Section>
-      <NewApiContainer location={location} />
-    </Section>
-  </div>
+    <div>
+        <Section>
+            <Title>New API</Title>
+        </Section>
+        <Section>
+            <NewApiContainer location={location} />
+        </Section>
+    </div>
 );
 
 EditPage.propTypes = propTypes;

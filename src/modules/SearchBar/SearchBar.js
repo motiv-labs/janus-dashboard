@@ -21,19 +21,19 @@ const defaultProps = {
 const b = block('j-search-bar');
 
 const SearchBar = ({ discardPagination, placeholder, searchQuery, setSearchQuery }) => (
-  <div className={b}>
-    <span className={b('icon')} />
-    <input
-      className={b('input').mix('j-input')}
-      type="text"
-      placeholder={placeholder}
-      value={searchQuery}
-      onChange={({ target: { value } }) => {
-          discardPagination();
-          setSearchQuery(value);
-      }}
-    />
-  </div>
+    <div className={b}>
+        <span className={b('icon')} />
+        <input
+            className={b('input').mix('j-input')}
+            type="text"
+            placeholder={placeholder}
+            value={searchQuery}
+            onChange={({ target: { value } }) => {
+                discardPagination();
+                setSearchQuery(value);
+            }}
+        />
+    </div>
 );
 
 SearchBar.propTypes = propTypes;

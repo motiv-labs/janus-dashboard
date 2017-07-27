@@ -8,11 +8,20 @@
     },
     "extends": "@hellofresh/eslint-config-senf",
     "rules": {
+        "indent": [
+            "warn",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
         "jsx-a11y/no-static-element-interactions": 0,
         "radix": ["error", "as-needed"],
-        "react/jsx-indent": 0,
+        "react/jsx-indent": ["error", 4],
         "react/react-in-jsx-scope": 0,
-        "react/jsx-indent-props": 0,
+        "react/no-direct-mutation-state": 2,
+        "react/jsx-closing-bracket-location": ["error", "tag-aligned"],
+        "react/jsx-indent-props": ["error", 4],
         "no-use-before-define": 0,
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
         "import/prefer-default-export": 0,

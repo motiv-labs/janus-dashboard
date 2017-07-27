@@ -9,12 +9,12 @@ const propTypes = {
 };
 
 const Tooltip = props => (
-  <div className="j-tooltip">
-    {props.icon}
-    <span className="j-tooltip__text">
-      {props.children}
-    </span>
-  </div>
+    <div className="j-tooltip">
+        {props.icon}
+        <span className="j-tooltip__text">
+            {props.children}
+        </span>
+    </div>
 );
 
 Tooltip.propTypes = propTypes;

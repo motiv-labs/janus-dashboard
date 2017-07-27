@@ -19,11 +19,11 @@ const RenderPlugin = ({ plugins }) => (
         {
             plugins.map((plugin, index) => (
                 <PluginSection key={plugin.name} name={plugin.name}>
-                <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled />
-                <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
-                <FormField>
-                    <FormLabel text="Config" />
-                    {
+                    <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled />
+                    <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
+                    <FormField>
+                        <FormLabel text="Config" />
+                        {
                         plugin.config && Object.keys(plugin.config).map((item) => {
                             const config = plugins[index].config[item];
 
@@ -56,11 +56,11 @@ const RenderPlugin = ({ plugins }) => (
                             }
 
                             return (
-                            <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
+                                <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
                             );
                         })
                     }
-                </FormField>
+                    </FormField>
                 </PluginSection>
             ))
         }

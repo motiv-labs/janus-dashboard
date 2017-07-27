@@ -40,79 +40,79 @@ class ApiList extends PureComponent {
     };
 
     renderRows = list => list.map(api => (
-    <tr className={table('row')} key={api.name}>
-      <td className={table('td')}>{api.name}</td>
-      <td className={table('td')}>{api.proxy.listen_path}</td>
-      <td className={table('td')}>{api.proxy.upstream_url}</td>
-      <td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</td>
-      <td className={table('td')}>
-        {api.active ? <Icon type="checked" /> : null}
-      </td>
-      <td className={table('td')}>
-        <Link to={`/${api.name}`}>
-          <Icon type="edit" />
-        </Link>
-      </td>
-      <td className={table('td')}>
-        <Link
-          to={{
-              pathname: '/new',
-              state: {
-                  clone: api,
-              },
-          }}
-        >
-          <Icon type="copy" />
-        </Link>
-      </td>
-      <td className={table('td')}>
-        <Link
-          to={''}
-          onClick={() => {
-              this.handleDelete(api.name);
-          }}
-        >
-          <Icon type="delete" />
-        </Link>
-      </td>
-    </tr>
+        <tr className={table('row')} key={api.name}>
+            <td className={table('td')}>{api.name}</td>
+            <td className={table('td')}>{api.proxy.listen_path}</td>
+            <td className={table('td')}>{api.proxy.upstream_url}</td>
+            <td className={table('td')}>{`${this.isOauthEnabled(api.plugins)}`}</td>
+            <td className={table('td')}>
+                {api.active ? <Icon type="checked" /> : null}
+            </td>
+            <td className={table('td')}>
+                <Link to={`/${api.name}`}>
+                    <Icon type="edit" />
+                </Link>
+            </td>
+            <td className={table('td')}>
+                <Link
+                    to={{
+                        pathname: '/new',
+                        state: {
+                            clone: api,
+                        },
+                    }}
+                >
+                    <Icon type="copy" />
+                </Link>
+            </td>
+            <td className={table('td')}>
+                <Link
+                    to={''}
+                    onClick={() => {
+                        this.handleDelete(api.name);
+                    }}
+                >
+                    <Icon type="delete" />
+                </Link>
+            </td>
+        </tr>
   ))
 
     renderTable = list => (
-    <Table className={table()}>
-      <thead>
-        <tr>
-          <th className={table('th')}><div>Api Name</div></th>
-          <th className={table('th')}>Listen Path</th>
-          <th className={table('th')}>Upstream URL</th>
-          <th className={table('th')} />
-          <th className={table('th')}>Active</th>
-          <th className={table('th')} />
-          <th className={table('th')} />
-        </tr>
-      </thead>
-      <tbody className={table('tbody')}>
-        { this.renderRows(list) }
-      </tbody>
-      <tfoot className={table('tfoot')}>
-        <tr className={table('tfoot', { tr: true })}>
-          <td colSpan="8" />
-        </tr>
-      </tfoot>
-    </Table>
+        <Table className={table()}>
+            <thead>
+                <tr>
+                    <th className={table('th')}><div>Api Name</div></th>
+                    <th className={table('th')}>Listen Path</th>
+                    <th className={table('th')}>Upstream URL</th>
+                    <th className={table('th')} />
+                    <th className={table('th')}>Active</th>
+                    <th className={table('th')} />
+                    <th className={table('th')} />
+                </tr>
+            </thead>
+            <tbody className={table('tbody')}>
+                { this.renderRows(list) }
+            </tbody>
+            <tfoot className={table('tfoot')}>
+                <tr className={table('tfoot', { tr: true })}>
+                    <td colSpan="8" />
+                </tr>
+            </tfoot>
+        </Table>
   )
 
     render() {
         if (this.props.apiList.length > 0) {
             return (
-        <Pagination
-          list={this.props.apiList}
-          itemsPerPage={3}
-          currentPageIndex={this.props.currentPageIndex}
-          changePageIndex={this.props.setCurrentPageIndex}
-          maximumVisiblePaginators={3}
-          renderChildren={this.renderTable}
-        />
+                <Pagination
+                    list={this.props.apiList}
+                    itemsPerPage={3}
+                    currentPageIndex={this.props.currentPageIndex}
+                    changePageIndex={this.props.setCurrentPageIndex}
+                    maximumVisiblePaginators={3}
+                    renderChildren={this.renderTable}
+                />
       );
         }
 

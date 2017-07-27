@@ -17,19 +17,19 @@ const LoginForm = () => {
     };
 
     return (
-    <form onSubmit={handleSubmit}>
-      <Section>
-        <FormRow>
-          <FormInput component="input" attachTo="login" label="Login" type="email" />
-        </FormRow>
-        <FormRow>
-          <FormInput component="input" attachTo="password" label="Password" type="password" />
-        </FormRow>
-      </Section>
-      <FormRow centered>
-        <Button label="Submit" type="submit" />
-      </FormRow>
-    </form>
+        <form onSubmit={handleSubmit}>
+            <Section>
+                <FormRow>
+                    <FormInput component="input" attachTo="login" label="Login" type="email" />
+                </FormRow>
+                <FormRow>
+                    <FormInput component="input" attachTo="password" label="Password" type="password" />
+                </FormRow>
+            </Section>
+            <FormRow centered>
+                <Button label="Submit" type="submit" />
+            </FormRow>
+        </form>
   );
 };
 
