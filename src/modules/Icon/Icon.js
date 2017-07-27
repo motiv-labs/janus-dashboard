@@ -17,7 +17,7 @@ const propTypes = {
 };
 
 const Control = ({ type }) => (
-  <span className={b({ type })} />
+    <span className={b({ type })} />
 );
 
 Control.propTypes = propTypes;
