@@ -8,6 +8,7 @@
     },
     "extends": "@hellofresh/eslint-config-senf",
     "rules": {
+        "jsx-a11y/no-static-element-interactions": 0,
         "radix": ["error", "as-needed"],
         "react/jsx-indent": 0,
         "react/react-in-jsx-scope": 0,
