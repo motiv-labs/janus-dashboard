@@ -25,7 +25,7 @@ class ApiList extends PureComponent {
         this.props.fetchEndpoints();
     }
 
-    isOauthEnabled(plugins) {
+    isOauthEnabled = (plugins) => {
     // @TODO: find why
     // if (typeof this.isProtected !== 'undefined') {
     //   return this.isProtected;

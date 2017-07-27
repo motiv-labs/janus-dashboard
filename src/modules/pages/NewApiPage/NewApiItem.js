@@ -36,6 +36,8 @@ class NewApiItem extends Component {
                 clone: this.props.location.state.clone,
             };
         }
+
+        return false;
     }
 
     render() {
