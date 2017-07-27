@@ -35,24 +35,24 @@ class ApiItem extends Component {
     render() {
         if (!isEmpty(this.props.api)) {
             return (
-        <div>
-          <Section>
-            <Subtitle>{this.props.api.name}</Subtitle>
+                <div>
+                    <Section>
+                        <Subtitle>{this.props.api.name}</Subtitle>
 
-            <Link
-              to={'/'}
-              onClick={() => {
-                  this.handleDelete(this.props.api.name);
-              }}
-            >
-              Delete
-            </Link>
-          </Section>
-          <Section>
-            <EditApiForm onSubmit={this.submit} />
-          </Section>
-        </div>
-      );
+                        <Link
+                            to={'/'}
+                            onClick={() => {
+                                this.handleDelete(this.props.api.name);
+                            }}
+                        >
+                            Delete
+                        </Link>
+                    </Section>
+                    <Section>
+                        <EditApiForm onSubmit={this.submit} />
+                    </Section>
+                </div>
+            );
         }
 
         return <div>Loading...</div>;
