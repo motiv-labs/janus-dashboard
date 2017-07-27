@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
 
 import {
-  openResponseModal,
-  closeResponseModal,
+    openResponseModal,
+    closeResponseModal,
 } from '../../../store/actions';
 
 import APIRespondModal from './APIRespondModal';
@@ -16,6 +16,6 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(
-  mapStateToProps,
-  { openResponseModal, closeModal: closeResponseModal },
+    mapStateToProps,
+    { openResponseModal, closeModal: closeResponseModal },
 )(APIRespondModal);

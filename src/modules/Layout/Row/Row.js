@@ -21,9 +21,9 @@ const wrapChildren = children => children.map((item, index) => (
 ));
 
 const Row = ({ children }) => (
-  <div className={b}>
-    {wrapChildren(children)}
-  </div>
+    <div className={b}>
+        {wrapChildren(children)}
+    </div>
 );
 
 Row.propTypes = propTypes;

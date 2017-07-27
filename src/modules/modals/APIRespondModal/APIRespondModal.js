@@ -24,15 +24,15 @@ const APIRespondModal = (props) => {
     };
 
     return (
-    <Modaliz
-      show={props.isOpen}
-      simple
-      speed={500}
-      text={props.message}
-      title={props.statusText}
-      onClose={handleClose}
-    />
-  );
+        <Modaliz
+            show={props.isOpen}
+            simple
+            speed={500}
+            text={props.message}
+            title={props.statusText}
+            onClose={handleClose}
+        />
+    );
 };
 
 APIRespondModal.propTypes = propTypes;
