@@ -16,7 +16,7 @@ const propTypes = {
     initialValues: PropTypes.object,
 };
 
-let ApiForm = (props) => {
+const ApiForm = (props) => {
     const { handleSubmit } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
 
@@ -60,16 +60,14 @@ let ApiForm = (props) => {
 
 ApiForm.propTypes = propTypes;
 
-ApiForm = reduxForm({
+const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
 })(ApiForm);
 
-ApiForm = connect(
-  state => ({
-      initialValues: state.apiReducer.api,
-  }),
-  null,
-)(ApiForm);
-
-export default ApiForm;
+export default connect(
+    state => ({
+        initialValues: state.apiReducer.api,
+    }),
+    null,
+)(form);
