@@ -20,12 +20,12 @@ const wrapChildren = children => children.map((item, index) => (
     </div>
 ));
 
-wrapChildren.propTypes = propTypes;
-
 const Row = ({ children }) => (
   <div className={b}>
     {wrapChildren(children)}
   </div>
 );
+
+Row.propTypes = propTypes;
 
 export default Row;
