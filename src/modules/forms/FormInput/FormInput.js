@@ -19,17 +19,18 @@ const propTypes = {
 
 const FormInput = (props) => {
     const {
-    attachTo,
-    label,
-    tooltip,
-    ...others,
-  } = props;
+        attachTo,
+        label,
+        tooltip,
+        ...others,
+    } = props;
+
     return (
-    <FormField>
-      <FormLabel htmlFor={attachTo} text={label} tooltip={tooltip} />
-      <Field {...others} name={attachTo} />
-    </FormField>
-  );
+        <FormField>
+            <FormLabel htmlFor={attachTo} text={label} tooltip={tooltip} />
+            <Field {...others} name={attachTo} />
+        </FormField>
+    );
 };
 
 FormInput.propTypes = propTypes;

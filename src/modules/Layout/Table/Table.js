@@ -9,9 +9,9 @@ const propTypes = {
 };
 
 const Table = ({ children, className }) => (
-  <table className={className}>
-    { children }
-  </table>
+    <table className={className}>
+        { children }
+    </table>
 );
 
 Table.propTypes = propTypes;

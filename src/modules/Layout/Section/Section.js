@@ -11,9 +11,9 @@ const propTypes = {
 };
 
 const Section = ({ children }) => (
-  <div style={styles}>
-    {children}
-  </div>
+    <div style={styles}>
+        {children}
+    </div>
 );
 
 Section.propTypes = propTypes;

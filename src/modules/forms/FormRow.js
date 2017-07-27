@@ -24,9 +24,9 @@ const propTypes = {
 };
 
 const FormRow = ({ children, alignX, alignY }) => (
-  <div style={comboShot(basic)(horizontal(alignX))(vertical(alignY))}>
-    { children }
-  </div>
+    <div style={comboShot(basic)(horizontal(alignX))(vertical(alignY))}>
+        { children }
+    </div>
 );
 
 FormRow.propTypes = propTypes;

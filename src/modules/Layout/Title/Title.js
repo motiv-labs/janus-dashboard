@@ -8,7 +8,7 @@ const propTypes = {
 };
 
 const Title = ({ children }) => (
-  <h1 className="j-title">{ children }</h1>
+    <h1 className="j-title">{ children }</h1>
 );
 
 Title.propTypes = propTypes;

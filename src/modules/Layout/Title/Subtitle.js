@@ -6,7 +6,7 @@ const propTypes = {
 };
 
 const Subtitle = ({ children }) => (
-  <h2 className="j-subtitle">{ children }</h2>
+    <h2 className="j-subtitle">{ children }</h2>
 );
 
 Subtitle.propTypes = propTypes;

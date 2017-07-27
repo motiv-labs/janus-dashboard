@@ -19,13 +19,13 @@ const b = block('j-button');
 const addMod = mod => (mod ? { [mod]: !!mod } : {});
 
 const Button = ({ mod, type, onClick, children }) => (
-  <button
-    className={b(addMod(mod))}
-    type={type}
-    onClick={onClick}
-  >
-    {children}
-  </button>
+    <button
+        className={b(addMod(mod))}
+        type={type}
+        onClick={onClick}
+    >
+        {children}
+    </button>
 );
 
 Button.propTypes = propTypes;

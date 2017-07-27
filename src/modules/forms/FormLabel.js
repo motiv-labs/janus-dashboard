@@ -9,15 +9,14 @@ const propTypes = {
     tooltip: PropTypes.string,
 };
 
+// @TODO: remove after implement new styles
 const styles = {
     label: {
         position: 'relative',
         color: '#363636',
-    // display: 'block',
         fontSize: '16px',
         fontWeight: 600,
         lineHeight: '24px',
-    // marginBottom: '0.5em',
     },
     tooltip: {
         position: 'relative',
@@ -29,10 +28,14 @@ const FormLabel = (props) => {
     const { attachTo, text, tooltip } = props;
 
     return (
-    <label style={styles.label} htmlFor={attachTo}>
-      {text} {tooltip && <Tooltip icon="?">{tooltip}</Tooltip>}
-    </label>
-  );
+        <label style={styles.label} htmlFor={attachTo}>
+            {text}
+            {
+                tooltip &&
+                    <Tooltip icon="?">{tooltip}</Tooltip>
+            }
+        </label>
+    );
 };
 
 FormLabel.propTypes = propTypes;

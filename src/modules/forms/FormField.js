@@ -13,9 +13,9 @@ const propTypes = {
 };
 
 const FormField = ({ children }) => (
-  <div style={styles.block}>
-    { children }
-  </div>
+    <div style={styles.block}>
+        { children }
+    </div>
 );
 
 FormField.propTypes = propTypes;
