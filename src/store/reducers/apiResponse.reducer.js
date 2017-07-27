@@ -1,6 +1,6 @@
 import {
-  OPEN_RESPONSE_MODAL,
-  CLOSE_RESPONSE_MODAL,
+    OPEN_RESPONSE_MODAL,
+    CLOSE_RESPONSE_MODAL,
 } from '../constants';
 
 const initialState = {

@@ -12,8 +12,8 @@ const vanillaPromise = store => next => (action) => {
 };
 
 const createStoreWithMiddleware = applyMiddleware(
-  vanillaPromise,
-  reduxThunk,
+    vanillaPromise,
+    reduxThunk,
 )(createStore);
 
 const configureStore = initialState => createStoreWithMiddleware(rootReducer, initialState);

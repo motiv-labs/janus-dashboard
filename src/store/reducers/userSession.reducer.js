@@ -1,6 +1,6 @@
 import {
-  CHECK_LOGGED_STATUS,
-  LOGIN_SUCCESS,
+    CHECK_LOGGED_STATUS,
+    LOGIN_SUCCESS,
 } from '../constants';
 
 const initialState = {};

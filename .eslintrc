@@ -9,7 +9,7 @@
     "extends": "@hellofresh/eslint-config-senf",
     "rules": {
         "indent": [
-            "warn",
+            "error",
             4,
             {
                 "SwitchCase": 1
