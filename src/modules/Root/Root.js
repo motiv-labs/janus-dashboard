@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
+    BrowserRouter as Router,
+    Route,
+    Switch,
 } from 'react-router-dom';
 
 import ROUTES from '../../configurations/routes.config';
@@ -20,7 +20,7 @@ import './Root.css';
 
 const Root = () => <Router>
     <div className="j-app">
-        <Header />x
+        <Header />
         <div className="j-pages">
             <Switch>
                 <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />

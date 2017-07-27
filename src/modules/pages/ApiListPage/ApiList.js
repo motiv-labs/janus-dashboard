@@ -76,7 +76,7 @@ class ApiList extends PureComponent {
                 </Link>
             </td>
         </tr>
-  ))
+    ))
 
     renderTable = list => (
         <Table className={table()}>
@@ -100,7 +100,7 @@ class ApiList extends PureComponent {
                 </tr>
             </tfoot>
         </Table>
-  )
+    )
 
     render() {
         if (this.props.apiList.length > 0) {
@@ -113,7 +113,7 @@ class ApiList extends PureComponent {
                     maximumVisiblePaginators={3}
                     renderChildren={this.renderTable}
                 />
-      );
+            );
         }
 
         return <div>Loading...</div>;
