@@ -7,6 +7,7 @@ import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
 // import FormLabel from '../../forms/FormLabel'; // @TODO: implement
 import Button from '../../buttons/Button';
+import CompanyLogo from '../../CompanyLogo/CompanyLogo';
 
 const LoginForm = () => {
     const handleSubmit = (e) => {
@@ -18,9 +19,10 @@ const LoginForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <CompanyLogo className="JOHNNY" />
             <Section>
                 <FormRow>
-                    <FormInput component="input" attachTo="login" label="Login" type="email" />
+                    <FormInput component="input" attachTo="login" label="E-mail" type="email" />
                 </FormRow>
                 <FormRow>
                     <FormInput component="input" attachTo="password" label="Password" type="password" />
