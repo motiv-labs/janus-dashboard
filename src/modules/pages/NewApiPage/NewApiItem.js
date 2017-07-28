@@ -7,46 +7,48 @@ import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
 
 const propTypes = {
-  api: PropTypes.object.isRequired,
-  fetchEndpointSchema: PropTypes.func.isRequired,
-  resetEndpoint: PropTypes.func.isRequired,
-  saveEndpoint: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired,
+    api: PropTypes.object.isRequired,
+    fetchEndpointSchema: PropTypes.func.isRequired,
+    resetEndpoint: PropTypes.func.isRequired,
+    saveEndpoint: PropTypes.func.isRequired,
+    location: PropTypes.object.isRequired,
+    willClone: PropTypes.func.isRequired,
 };
 
 class NewApiItem extends Component {
-  componentWillMount() {
-    this.props.resetEndpoint();
-    
-    if (this.hasToBeCloned()) {
-      this.props.willClone(deleteProperty(this.props.location.state.clone, 'name')); 
-    }
-    else {
-      this.props.fetchEndpointSchema();
-    }
-  }
+    componentWillMount() {
+        this.props.resetEndpoint();
 
-  submit = values => {
-    this.props.saveEndpoint(this.props.location.pathname, values);
-  }
-
-  hasToBeCloned = () => {
-    if (this.props.location.state && !isEmpty(this.props.location.state.clone)) {
-      return {
-        clone: this.props.location.state.clone,
-      };
+        if (this.hasToBeCloned()) {
+            this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
+        } else {
+            this.props.fetchEndpointSchema();
+        }
     }
-  }
-  
-  render() {
-    return (
-      <div>
-        <Subtitle>{this.props.api.name}</Subtitle>
-        <NewApiForm onSubmit={this.submit} />
-      </div>
-    );
-  }
-};
+
+    submit = (values) => {
+        this.props.saveEndpoint(this.props.location.pathname, values);
+    }
+
+    hasToBeCloned = () => {
+        if (this.props.location.state && !isEmpty(this.props.location.state.clone)) {
+            return {
+                clone: this.props.location.state.clone,
+            };
+        }
+
+        return false;
+    }
+
+    render() {
+        return (
+            <div>
+                <Subtitle>{this.props.api.name}</Subtitle>
+                <NewApiForm onSubmit={this.submit} />
+            </div>
+        );
+    }
+}
 
 NewApiItem.propTypes = propTypes;
 

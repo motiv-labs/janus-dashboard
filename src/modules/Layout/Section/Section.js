@@ -1,16 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const styles = {
-  paddingTop: '10px',
-  paddingBottom: '10px',
+    paddingTop: '10px',
+    paddingBottom: '10px',
 };
 
-const Section = ({ children }) => {
-  return (
-    <div style={styles}>
-      {children}
-    </div>
-  );
+const propTypes = {
+    children: PropTypes.node.isRequired,
 };
+
+const Section = ({ children }) => (
+    <div style={styles}>
+        {children}
+    </div>
+);
+
+Section.propTypes = propTypes;
 
 export default Section;

@@ -5,31 +5,28 @@ import block from '../../helpers/bem-cn';
 import './Button.css';
 
 const propTypes = {
-  mod: PropTypes.string,
-  type: PropTypes.string,
-  onClick: PropTypes.func,
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node,
-  ]),
+    mod: PropTypes.string,
+    type: PropTypes.string,
+    onClick: PropTypes.func,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node,
+    ]),
 };
 
 const b = block('j-button');
 
-const addMod = mod => mod ? { [mod]: !!mod } : {};
+const addMod = mod => (mod ? { [mod]: !!mod } : {});
 
-const Button = ({ mod, type, onClick, children }) => {
-
-  return (
+const Button = ({ mod, type, onClick, children }) => (
     <button
-      className={b(addMod(mod))}
-      type={type}
-      onClick={onClick}
+        className={b(addMod(mod))}
+        type={type}
+        onClick={onClick}
     >
-      {children}
+        {children}
     </button>
-  );
-};
+);
 
 Button.propTypes = propTypes;
 

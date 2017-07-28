@@ -1,57 +1,57 @@
 import {
-  FETCH_ENDPOINTS_START,
-  FETCH_ENDPOINTS_SUCCESS,
-  REFRESH_ENDPOINTS,
-  DISCARD_PAGINATION,
-  SET_PAGINATION_PAGE,
+    FETCH_ENDPOINTS_START,
+    FETCH_ENDPOINTS_SUCCESS,
+    REFRESH_ENDPOINTS,
+    DISCARD_PAGINATION,
+    SET_PAGINATION_PAGE,
 } from '../constants';
 
 const initialState = {
-  apiList: [],
-  currentPageIndex: 0,
-  isFetching: false,
+    apiList: [],
+    currentPageIndex: 0,
+    isFetching: false,
 };
 
 export default function reducer(state = initialState, action) {
-  switch (action.type) {
-    case FETCH_ENDPOINTS_START: {
-      return {
-        ...state,
-        isFetching: true,
-      };
-    }
-    case FETCH_ENDPOINTS_SUCCESS: {
-      return {
-        ...state,
-        apiList: action.payload,
-        isFetching: false,
-      };
-    }
-    case DISCARD_PAGINATION: {
-      return {
-        ...state,
-        currentPageIndex: 0,
-      };
-    }
-    case SET_PAGINATION_PAGE: {
-      return {
-        ...state,
-        currentPageIndex: action.payload,
-      };
-    }
-    case REFRESH_ENDPOINTS: {
-      return {
-        ...state,
-        apiList: state.apiList.reduce((memo, item) => {
-          if (item.name !== action.payload) {
-            memo.push(item);
-          }
+    switch (action.type) {
+        case FETCH_ENDPOINTS_START: {
+            return {
+                ...state,
+                isFetching: true,
+            };
+        }
+        case FETCH_ENDPOINTS_SUCCESS: {
+            return {
+                ...state,
+                apiList: action.payload,
+                isFetching: false,
+            };
+        }
+        case DISCARD_PAGINATION: {
+            return {
+                ...state,
+                currentPageIndex: 0,
+            };
+        }
+        case SET_PAGINATION_PAGE: {
+            return {
+                ...state,
+                currentPageIndex: action.payload,
+            };
+        }
+        case REFRESH_ENDPOINTS: {
+            return {
+                ...state,
+                apiList: state.apiList.reduce((memo, item) => {
+                    if (item.name !== action.payload) {
+                        memo.push(item);
+                    }
 
-          return memo;
-        }, []),
-      };
+                    return memo;
+                }, []),
+            };
+        }
+        default:
+            return state;
     }
-    default:
-      return state;
-  }
 }

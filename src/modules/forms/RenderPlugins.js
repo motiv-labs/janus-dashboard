@@ -11,70 +11,61 @@ import FormLabel from './FormLabel';
 import FormInput from './FormInput/FormInput';
 
 const propTypes = {
-  plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
+    plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
 };
 
-const RenderPlugin = ({ plugins }) => {
-  return (
+const RenderPlugin = ({ plugins }) => (
     <Section>
-      {
-        plugins.map((plugin, index) => {
-          return (
-            <PluginSection key={plugin.name} name={plugin.name}>
-            
-              <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled/>
-              <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
-              
+        {
+            plugins.map((plugin, index) => (
+                <PluginSection key={plugin.name} name={plugin.name}>
+                    <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled />
+                    <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
+                    <FormField>
+                        <FormLabel text="Config" />
+                        {
+                        plugin.config && Object.keys(plugin.config).map((item) => {
+                            const config = plugins[index].config[item];
 
-              <FormField>
-                <FormLabel text="Config" />
-                {
-                  plugin.config && Object.keys(plugin.config).map(item => {
-                    const config = plugins[index].config[item];
-                    
-                    if (typeOf(config, 'Object')) {
-                      return (
-                        <FormField key={item}>
-                          <FormLabel text={item} />
-                          {
-                            Object.keys(config).map(el => {
-                              if (typeOf(config[el], 'Object')) {
+                            if (typeOf(config, 'Object')) {
                                 return (
-                                  <FormField key={item}>
-                                    <FormLabel text={item} />
-                                    {
-                                      Object.keys(config[el]).map(e => {
-                                        return (
-                                          <FormInput key={e} component="input" label={e} attachTo={`plugins[${index}].config[${item}][${el}][${e}]`} type="text" />
-                                        );
-                                      })
-                                    }
-                                  </FormField>
-                                );
-                              }
+                                    <FormField key={item}>
+                                        <FormLabel text={item} />
+                                        {
+                                            Object.keys(config).map((el) => {
+                                                if (typeOf(config[el], 'Object')) {
+                                                    return (
+                                                        <FormField key={item}>
+                                                            <FormLabel text={item} />
+                                                            {
+                                                                Object.keys(config[el]).map(e => (
+                                                                    <FormInput key={e} component="input" label={e} attachTo={`plugins[${index}].config[${item}][${el}][${e}]`} type="text" />
+                                                                ))
+                                                            }
+                                                        </FormField>
+                                                    );
+                                                }
 
-                              return (
-                                <FormInput key={el} component="input" label={el} attachTo={`plugins[${index}].config[${item}][${el}]`} type="text" />
-                              );
-                            })
-                          }
-                        </FormField>
-                      );
+                                                return (
+                                                    <FormInput key={el} component="input" label={el} attachTo={`plugins[${index}].config[${item}][${el}]`} type="text" />
+                                                );
+                                            })
+                                        }
+                                    </FormField>
+                                );
+                            }
+
+                            return (
+                                <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
+                            );
+                        })
                     }
-                    
-                    return (
-                      <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
-                    );
-                  })
-                }
-              </FormField>
-            </PluginSection>
-          );
-        })
-      }
+                    </FormField>
+                </PluginSection>
+            ))
+        }
     </Section>
-  );
-};
+);
 
 RenderPlugin.propTypes = propTypes;
 

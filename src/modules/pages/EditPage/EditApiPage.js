@@ -7,19 +7,17 @@ import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
 
 const propTypes = {
-  location: PropTypes.object.isRequired,
+    location: PropTypes.object.isRequired,
 };
 
-const EditPage = ({ location }) => {
-  return (
+const EditPage = ({ location }) => (
     <div>
-      <Section>
-        <Title>Edit</Title>
-      </Section>
-      <EditApiContainer location={location} />
+        <Section>
+            <Title>Edit</Title>
+        </Section>
+        <EditApiContainer location={location} />
     </div>
-  );
-};
+);
 
 EditPage.propTypes = propTypes;
 

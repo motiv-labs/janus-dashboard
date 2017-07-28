@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
+    BrowserRouter as Router,
+    Route,
+    Switch,
 } from 'react-router-dom';
 
 import ROUTES from '../../configurations/routes.config';
@@ -18,29 +18,20 @@ import EditApiPage from '../pages/EditPage/EditApiPage';
 
 import './Root.css';
 
-class Root extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="j-app">
-          <Header />
-
-          <div className="j-pages">
+const Root = () => <Router>
+    <div className="j-app">
+        <Header />
+        <div className="j-pages">
             <Switch>
-              <Route exact path={ROUTES.MAIN.path} component={ApiListPage}/>
-              <Route path={ROUTES.NEW.path} component={NewApiPage}/>
-              <Route path={ROUTES.LOGIN.path} component={LoginPage}/>
-              <Route path={ROUTES.EDIT.path} render={(props) => <EditApiPage {...props} />}/>
+                <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
+                <Route path={ROUTES.NEW.path} component={NewApiPage} />
+                <Route path={ROUTES.LOGIN.path} component={LoginPage} />
+                <Route path={ROUTES.EDIT.path} render={props => <EditApiPage {...props} />} />
             </Switch>
-          </div>
-
-          <Footer />
-
-          <APIRespondModalContainer />
         </div>
-      </Router>
-    );
-  }
-}
+        <Footer />
+        <APIRespondModalContainer />
+    </div>
+</Router>;
 
 export default Root;

@@ -1,27 +1,26 @@
 import {
-  CHECK_LOGGED_STATUS,
-  LOGIN_SUCCESS,
+    CHECK_LOGGED_STATUS,
+    LOGIN_SUCCESS,
 } from '../constants';
 
 const initialState = {};
 
 export default function reducer(state = initialState, action) {
-  switch (action.type) {
+    switch (action.type) {
+        case CHECK_LOGGED_STATUS: {
+            return {
+                ...state,
+            };
+        }
 
-    case CHECK_LOGGED_STATUS: {
-      return {
-        ...state,
-      };
+        case LOGIN_SUCCESS: {
+            return {
+                ...state,
+                loggedUser: action.payload,
+            };
+        }
+
+        default:
+            return state;
     }
-
-    case LOGIN_SUCCESS: {
-      return {
-        ...state,
-        loggedUser: action.payload,
-      };
-    }
-
-    default:
-      return state;
-  }
 }
