@@ -31,6 +31,7 @@
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.0.1",
     "npm-run-all": "^4.0.2",
+    "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
     "redux-logger": "^3.0.6"
@@ -45,5 +46,8 @@
     "lint:fix": "eslint --ext .jsx,.js ./src --fix",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  }
+  },
+  "pre-commit": [
+    "lint"
+  ]
 }
