@@ -5,7 +5,9 @@ import block from '../../helpers/bem-cn';
 import './Button.css';
 
 const propTypes = {
-    mod: PropTypes.string,
+    mod: PropTypes.oneOf([
+        'primary',
+    ]).isRequired,
     type: PropTypes.string,
     onClick: PropTypes.func,
     children: PropTypes.oneOfType([

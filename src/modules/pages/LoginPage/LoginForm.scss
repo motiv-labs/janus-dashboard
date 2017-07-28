@@ -1,0 +1,21 @@
+@import 'index.scss';
+
+$logo-width: 100px;
+$logo-height: 92px;
+
+.login-form {
+    position: relative;
+	width: 530px;
+	height: 387px;
+	background-color: $hf-color-white;
+	border: $hf-border;
+    border-radius: $hf-border-radius;
+
+    &__logo {
+        position: absolute;
+        width: $logo-width;
+        height: $logo-height;
+        margin-top: -$logo-height/2;
+        @include alignCenterX($logo-width);
+    }
+}
