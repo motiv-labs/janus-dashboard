@@ -6,6 +6,13 @@
         "es6": true
     },
     "rules": {
+        "indent": [
+            "error",
+            4,
+            {
+                "SwitchCase": 1
+            }
+        ],
         "no-bitwise": 2,
         "no-else-return": 2,
         "no-eq-null": 2,
@@ -19,14 +26,13 @@
         "no-use-before-define": 0,
         "no-unused-expressions": 0,
         "no-void": 2,
-        "brace-style": [2, "stroustrup"],
+        "brace-style": 2,
         "camelcase": [1, {"properties": "never"}],
         "consistent-return": 0,
         "comma-style": [2, "last"],
         "complexity": [1, 12],
         "func-names": 0,
         "guard-for-in": 2,
-        "indent": [2, 2, { "SwitchCase": 1 }],
         "max-len": [0, 120, 4],
         "new-cap": [2, {"newIsCap": true, "capIsNew": false}],
         "quotes": [2, "single"],
@@ -34,6 +40,7 @@
         "space-before-blocks": [2, "always"],
         "array-bracket-spacing": [2, "never"],
         "space-in-parens": [2, "never"],
+        "semi": "error",
         "strict": [0],
         "valid-jsdoc": 2,
         "wrap-iife": [2, "any"],
