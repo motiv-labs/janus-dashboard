@@ -22,7 +22,6 @@
   },
   "devDependencies": {
     "@hellofresh/eslint-config-senf": "~4.0.2",
-    "eslint-config-senf": "https://github.com/hellofresh/eslint-config-senf.git",
     "bem-cn": "^2.1.3",
     "eslint": "^4.3.0",
     "eslint-config-airbnb": "^15.1.0",

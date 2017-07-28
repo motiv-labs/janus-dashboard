@@ -2188,20 +2188,6 @@ eslint-config-react-app@^1.0.4:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/eslint-config-react-app/-/eslint-config-react-app-1.0.5.tgz#98337597bc01cc22991fcbdda07451f3b4511718"
 
-"eslint-config-senf@https://github.com/hellofresh/eslint-config-senf.git":
-  version "4.0.2"
-  resolved "https://github.com/hellofresh/eslint-config-senf.git#78da10112d6dff678ca3274d1bde8761fce4e12b"
-  dependencies:
-    babel-eslint "~7.0.0"
-    babel-plugin-module-resolver "~2.2.0"
-    eslint "~3.7.0"
-    eslint-config-airbnb "~12.0.0"
-    eslint-import-resolver-babel-module "~2.0.1"
-    eslint-plugin-babel "~3.3.0"
-    eslint-plugin-import "~1.16.0"
-    eslint-plugin-jsx-a11y "~2.2.3"
-    eslint-plugin-react "~6.4.1"
-
 eslint-import-resolver-babel-module@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/eslint-import-resolver-babel-module/-/eslint-import-resolver-babel-module-2.0.1.tgz#022b3838e28ade717292065ddf1c880cd7a664da"
