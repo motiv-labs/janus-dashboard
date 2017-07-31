@@ -1,8 +1,13 @@
 @import 'index.scss';
 
 .j-footer {
-  padding-top: $hf-padding-footer;
-  padding-bottom: $hf-padding-footer;
-  border-top: $hf-border;
-  text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: $hf-height-footer;
+    border-top: $hf-border;
+
+    &__inner {
+        line-height: $hf-line-height;
+    }
 }

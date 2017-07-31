@@ -7,7 +7,7 @@ const b = block('j-footer');
 
 const Footer = () => (
     <footer className={b}>
-        <p>
+        <p className={b('inner')()}>
             <strong>Janus</strong> by <a href="http://hellofresh.com">HelloFresh</a>. The source code is licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
         </p>
     </footer>

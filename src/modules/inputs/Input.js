@@ -1,15 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './Input.css';
 
-const propTypes = {
-    placeholder: PropTypes.string.isRequired,
-};
-
 const Input = (props) => {
-    // console.log(props)
-    const { type, meta, input } = props;
+    const { type, input } = props;
 
     return (
         <input

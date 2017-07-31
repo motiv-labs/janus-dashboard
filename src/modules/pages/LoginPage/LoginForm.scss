@@ -34,7 +34,12 @@ $form-padding-top: 70px;
         padding: $hf-padding-row 0;
     }
 
-    &__button-section {
-        margin-top: $hf-padding-big;
+    &__button {
+        padding-left: $hf-padding-big;
+        padding-right: $hf-padding-big;
+
+        &-section {
+            margin-top: $hf-padding-big;
+        }
     }
 }

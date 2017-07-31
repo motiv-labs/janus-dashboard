@@ -21,7 +21,7 @@ $hf-font-weight-bold: 700;
 $hf-font-size-title: $hf-font-size-base*2;
 
 $hf-line-height-title: 1.32;
-$hf-line-height-label: 1.71;
+$hf-line-height: 1.71;
 
 /* Sizes */
 $hf-gutter: 10px;
@@ -32,6 +32,7 @@ $hf-padding-main: $hf-gutter*2;
 $hf-padding-middle: $hf-gutter*1.5;
 $hf-padding-small: $hf-gutter/2;
 $hf-height-header: 50px;
+$hf-height-footer: 88px;
 
 $hf-border-radius: 4px;
 $hf-border: solid 1px $hellofresh-muted-color;

@@ -25,7 +25,7 @@ const LoginForm = () => {
 
     return (
         <form className={b} onSubmit={handleSubmit}>
-            <CompanyLogo className={b('logo')} />
+            <CompanyLogo className={b('logo')()} />
             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section>
                 <Row className={b('input')()} col>
@@ -38,7 +38,7 @@ const LoginForm = () => {
                 </Row>
             </Section>
             <Row className={b('button-section')()} alignCenter>
-                <Button mod="primary" type="submit">Submit</Button>
+                <Button className={b('button')()} mod="primary" type="submit">Login</Button>
             </Row>
         </form>
     );

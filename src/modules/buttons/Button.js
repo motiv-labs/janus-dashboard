@@ -5,6 +5,7 @@ import block from '../../helpers/bem-cn';
 import './Button.css';
 
 const propTypes = {
+    className: PropTypes.string,
     mod: PropTypes.oneOf([
         'primary',
     ]).isRequired,
@@ -20,9 +21,9 @@ const b = block('j-button');
 
 const addMod = mod => (mod ? { [mod]: !!mod } : {});
 
-const Button = ({ mod, type, onClick, children }) => (
+const Button = ({ mod, type, onClick, children, className }) => (
     <button
-        className={b(addMod(mod))}
+        className={b(addMod(mod)).mix(className)}
         type={type}
         onClick={onClick}
     >
