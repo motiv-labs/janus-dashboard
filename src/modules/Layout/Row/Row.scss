@@ -1,5 +1,20 @@
 .j-row {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &__item {
+        width: 100%;
+    }
+
+    &--centered {
+        text-align: center;
+    }
+}
+
+.j-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }

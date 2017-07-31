@@ -1,16 +1,16 @@
 import React from 'react';
 // import { connect } from 'react-redux'; // @TODO: implement
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
-import FormRow from '../../forms/FormRow';
-import FormInput from '../../forms/FormInput/FormInput';
-// import FormLabel from '../../forms/FormLabel'; // @TODO: implement
+import Row from '../../Layout/Row/Row';
+import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
 import CompanyLogo from '../../CompanyLogo/CompanyLogo';
 
+import Input from '../../inputs/Input';
 import './LoginForm.css';
 
 const b = block('login-form');
@@ -26,17 +26,20 @@ const LoginForm = () => {
     return (
         <form className={b} onSubmit={handleSubmit}>
             <CompanyLogo className={b('logo')} />
+            <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section>
-                <FormRow>
-                    <FormInput component="input" attachTo="login" label="E-mail" type="email" />
-                </FormRow>
-                <FormRow>
-                    <FormInput component="input" attachTo="password" label="Password" type="password" />
-                </FormRow>
+                <Row className={b('input')()} col>
+                    <Label>E-mail</Label>
+                    <Field type="email" name="email" component={Input} />
+                </Row>
+                <Row className={b('input')()} col>
+                    <Label>Password</Label>
+                    <Field type="password" name="password" component={Input} />
+                </Row>
             </Section>
-            <FormRow alignX>
+            <Row className={b('button-section')()} alignCenter>
                 <Button mod="primary" type="submit">Submit</Button>
-            </FormRow>
+            </Row>
         </form>
     );
 };

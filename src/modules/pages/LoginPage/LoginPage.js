@@ -5,12 +5,7 @@ import Title from '../../Layout/Title/Title';
 import LoginContainer from './loginContainer';
 
 const LoginPage = () => (
-    <div>
-        <Section>
-            <Title>Login page</Title>
-        </Section>
-        <LoginContainer />
-    </div>
+    <LoginContainer />
 );
 
 export default LoginPage;
