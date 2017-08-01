@@ -1,5 +1,4 @@
 import React from 'react';
-// import { connect } from 'react-redux'; // @TODO: implement
 import { Field, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
