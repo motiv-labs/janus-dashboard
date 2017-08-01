@@ -1,21 +1,17 @@
 @import 'index.scss';
 
-$form-width: 530px;
-$form-height: 387px;
 $logo-width: 100px;
 $logo-height: 92px;
 $form-padding-top: 70px;
 
 .login-form {
     position: absolute;
-    width: $form-width;
-    height: $form-height;
     padding: $form-padding-top $hf-padding-big $hf-padding-big;
     background-color: $hf-color-white;
     border: $hf-border;
     border-radius: $hf-border-radius;
     box-sizing: border-box;
-    @include alignCenter($form-width, $form-height);
+    @include alignCenter();
 
     &__logo {
         position: absolute;

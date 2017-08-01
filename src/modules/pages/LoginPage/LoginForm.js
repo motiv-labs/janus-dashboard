@@ -25,7 +25,7 @@ const LoginForm = () => {
     return (
         <form className={b} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
-            <Row alignCenter><p>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p></Row>
+            <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section>
                 <Row className={b('input')()} col>
                     <Label>E-mail</Label>
