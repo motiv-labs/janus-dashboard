@@ -29,7 +29,6 @@ if (getAccessToken()) {
 }
 
 client.interceptors.response.use(undefined, (error) => {
-    console.error('ERROR::: ', error)
     if (error.response.status === 401) {
         history.push('/login');
     }

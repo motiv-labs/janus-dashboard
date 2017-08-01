@@ -2,16 +2,14 @@ import React, { Component } from 'react';
 
 import LoginForm from './LoginForm';
 
-class FormWrapper extends Component {
-    submitLogin = (values) => {
-        this.props.loginUser(values);
+const FormWrapper = props => {
+    const submitLogin = (values) => {
+        props.loginUser(values);
     };
 
-    render() {
-        return (
-            <LoginForm onSubmit={this.submitLogin} />
-        );
-    }
+    return (
+        <LoginForm onSubmit={submitLogin} />
+    );
 };
 
 export default FormWrapper;
