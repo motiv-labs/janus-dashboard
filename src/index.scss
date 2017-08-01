@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 @import 'reset.scss';
 @import 'variables.scss';
+@import 'mixins.scss';
 
 body {
   font-family: $hf-font-family-sans-serif;

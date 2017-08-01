@@ -5,26 +5,41 @@ import block from '../../../helpers/bem-cn';
 
 import './Row.css';
 
-const b = block('j-row');
+const row = block('j-row');
+const column = block('j-col');
 
 const propTypes = {
     children: PropTypes.node.isRequired,
+    col: PropTypes.bool,
+    className: PropTypes.string,
 };
 
-const wrapChildren = children => children.map((item, index) => (
+const wrapChild = (child, cn) => (
     <div
-        className={b('item')}
+        className={cn('item')}
+    >
+        {child}
+    </div>
+);
+
+const wrapChildren = (children, cn) => children.map((item, index) => (
+    <div
+        className={cn('item')}
         key={index}
     >
         {item}
     </div>
 ));
 
-const Row = ({ children }) => (
-    <div className={b}>
-        {wrapChildren(children)}
-    </div>
-);
+const Row = ({ children, className, col, alignCenter }) => {
+    const cn = col ? column : row;
+
+    return (
+        <div className={alignCenter ? cn({ 'centered': true }).mix(className) : cn.mix(className)}>
+            { children.length > 1 ? wrapChildren(children, cn) : wrapChild(children, cn) }
+        </div>
+    );
+};
 
 Row.propTypes = propTypes;
 
