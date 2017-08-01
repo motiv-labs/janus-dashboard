@@ -1,7 +1,7 @@
 export default {
     gateway: {
         uri: 'http://localhost:8081',
-        username: 'admin',
+        username: 'admin2',
         password: 'admin',
     },
 

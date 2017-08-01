@@ -1,13 +1,17 @@
 import {
     CHECK_LOGGED_STATUS,
+    LOGIN_START,
     LOGIN_SUCCESS,
 } from '../constants';
 
-const initialState = {};
+const initialState = {
+    logged: false,
+};
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case CHECK_LOGGED_STATUS: {
+        case CHECK_LOGGED_STATUS:
+        case LOGIN_START: {
             return {
                 ...state,
             };
@@ -16,7 +20,7 @@ export default function reducer(state = initialState, action) {
         case LOGIN_SUCCESS: {
             return {
                 ...state,
-                loggedUser: action.payload,
+                logged: true,
             };
         }
 

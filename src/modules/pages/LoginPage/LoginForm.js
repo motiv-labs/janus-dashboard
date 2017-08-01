@@ -1,34 +1,32 @@
 import React from 'react';
-// import { connect } from 'react-redux'; // @TODO: implement
-import { reduxForm } from 'redux-form';
+import { connect } from 'react-redux';
+import { Field, reduxForm } from 'redux-form';
+
+import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
-import FormRow from '../../forms/FormRow';
-import FormInput from '../../forms/FormInput/FormInput';
-// import FormLabel from '../../forms/FormLabel'; // @TODO: implement
+import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
 
-const LoginForm = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
+import './LoginForm.css';
 
-        // eslint-disable-next-line
-        console.log('SAVE');
-    };
+const b = block('login-form');
 
+const LoginForm = ({ handleSubmit }) => {
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={b} onSubmit={handleSubmit}>
+            <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section>
-                <FormRow>
-                    <FormInput component="input" attachTo="login" label="Login" type="email" />
-                </FormRow>
-                <FormRow>
-                    <FormInput component="input" attachTo="password" label="Password" type="password" />
-                </FormRow>
+                <Row className={b('input')()} col>
+                    <Field type="text" name="username" component="input" />
+                </Row>
+                <Row className={b('input')()} col>
+                    <Field type="password" name="password" component="input" />
+                </Row>
             </Section>
-            <FormRow centered>
-                <Button label="Submit" type="submit" />
-            </FormRow>
+            <Row className={b('button-section')()} alignCenter>
+                <Button className={b('button')()} mod="primary" type="submit">Login</Button>
+            </Row>
         </form>
     );
 };

@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 import { reducer as formReducer } from 'redux-form';
+import { routerReducer } from 'react-router-redux';
+
 // here import all your reducers from all your modules
 import userSessionReducer from './userSession.reducer';
 import apiResponseModalReducer from './apiResponse.reducer';
@@ -15,4 +17,5 @@ export default combineReducers({
     apiReducer,
     searchReducer,
     form: formReducer,
+    routing: routerReducer,
 });
