@@ -7,7 +7,7 @@ import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
 import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
-import CompanyLogo from '../../CompanyLogo/CompanyLogo';
+import Logo from '../../Logo/Logo';
 
 import Input from '../../inputs/Input';
 import './LoginForm.css';
@@ -24,8 +24,8 @@ const LoginForm = () => {
 
     return (
         <form className={b} onSubmit={handleSubmit}>
-            <CompanyLogo className={b('logo')()} />
-            <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
+            <Logo className={b('logo')()} />
+            <Row alignCenter><p>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p></Row>
             <Section>
                 <Row className={b('input')()} col>
                     <Label>E-mail</Label>

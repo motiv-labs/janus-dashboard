@@ -2,18 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import block from '../../helpers/bem-cn';
-import './CompanyLogo.css';
+import './Logo.css';
 
-const b = block('company-logo');
+const b = block('j-logo');
 
 const propTypes = {
     className: PropTypes.string,
 };
 
-const CompanyLogo = ({ className }) => (
+const Logo = ({ className }) => (
     <span className={b.mix(className)}></span>
 );
 
-CompanyLogo.propTypes = propTypes;
+Logo.propTypes = propTypes;
 
-export default CompanyLogo;
+export default Logo;
