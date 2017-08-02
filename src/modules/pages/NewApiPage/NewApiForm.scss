@@ -9,11 +9,13 @@
     }
     &__section {
         border-bottom: $hf-border;
+        padding-bottom: $hf-padding-big;
 
         &-title {
             font-size: $hf-font-size-medium;
             font-weight: $hf-font-weight;
             line-height: $hf-line-medium;
+            padding-bottom: $hf-padding-main;
         }
     }
 }

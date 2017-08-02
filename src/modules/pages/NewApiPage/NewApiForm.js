@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
+import Input from '../../inputs/Input';
+import Label from '../../labels/Label';
+
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
@@ -47,8 +50,14 @@ const ApiForm = (props) => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>1. General</div>
                     <Row fullwidth>
-                        <FormInput component="input" label="API Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
-                        <FormInput component="input" label="Is Active?" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
+                        <Row col>
+                            <Label>API Name</Label>
+                            <Field
+                                name="name"
+                                type="text"
+                                component={Input}
+                            />
+                        </Row>
                     </Row>
                 </div>
                 <FormRow>
