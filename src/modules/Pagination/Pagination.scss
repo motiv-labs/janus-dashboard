@@ -1,13 +1,7 @@
 @import 'index.scss';
 
-@mixin alignCenter($width, $height) {
-  width: $width;
-  height: $height;
-  margin-top: -$height/2;
-  margin-left: -$width/2;
-  top: 50%;
-  left: 50%;
-}
+$paginator-width: 8px;
+$paginator-height: 13px;
 
 .j-pagination {
   &__nav {
@@ -48,7 +42,9 @@
           content: '';
           display: block;
           position: absolute;
-          @include alignCenter(8px, 13px);
+          width: $paginator-width;
+          height: $paginator-height;
+          @include alignCenter();
         }
       }
 

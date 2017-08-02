@@ -1,0 +1,11 @@
+@mixin alignCenter() {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin alignCenterX($width) {
+  width: $width;
+  margin-left: -$width/2;
+  left: 50%;
+}
