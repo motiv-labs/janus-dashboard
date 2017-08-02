@@ -9,6 +9,7 @@ import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import Input from '../../inputs/Input';
+import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 
@@ -109,6 +110,8 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
+
+                <Radio />
 
                 <FormRow>
                     <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />
