@@ -85,23 +85,36 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>3. Health check</div>
+                    <Row fullwidth>
+                        <Row col>
+                            <Label>Health URL (optional)</Label>
+                            <Field
+                                name="health_check.urlh"
+                                type="text"
+                                component={Input}
+                            />
+                            <Hint>The url that the Gateway will use to determine the health of the API. </Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Timeout (optional)</Label>
+                            <Field
+                                name="health_check.timeout"
+                                type="number"
+                                parse={parse}
+                                component={Input}
+                            />
+                            <Hint>The length of time that the Gateway should wait before displaying an error.</Hint>
+                        </Row>
+                    </Row>
+                </div>
+
                 <FormRow>
-
-
                     <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />
                     <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />
                     <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" normalize={v => !!v} />
                 </FormRow>
-                <Section>
-                    <FormRow>
-                        <FormLabel text="Health check" />
-                    </FormRow>
-                    <FormRow>
-                        <FormInput component="input" label="url" attachTo="health_check.url" type="text" />
-                        <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse} />
-                    </FormRow>
-                </Section>
-
 
                 {
                     !!initialValues.plugins &&
