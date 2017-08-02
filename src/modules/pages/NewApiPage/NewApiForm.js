@@ -46,9 +46,10 @@ const ApiForm = (props) => {
             <div className={b('inner')}>
                 <div className={b('section')}>
                     <div className={b('section-title')}>1. General</div>
-                    <FormRow>
-                        <FormInput component="input" label="Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
-                    </FormRow>
+                    <Row fullwidth>
+                        <FormInput component="input" label="API Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
+                        <FormInput component="input" label="Is Active?" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
+                    </Row>
                 </div>
                 <FormRow>
                     <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="LOREM IPSUM" />

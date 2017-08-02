@@ -7,6 +7,12 @@
     &--centered {
         text-align: center;
     }
+
+    &--fullwidth {
+        .j-row__item {
+            flex: 1;
+        }
+    }
 }
 
 .j-col {

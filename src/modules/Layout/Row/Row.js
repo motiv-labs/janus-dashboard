@@ -31,11 +31,11 @@ const wrapChildren = (children, cn) => children.map((item, index) => (
     </div>
 ));
 
-const Row = ({ children, className, col, alignCenter }) => {
+const Row = ({ children, className, col, alignCenter, fullwidth }) => {
     const cn = col ? column : row;
 
     return (
-        <div className={alignCenter ? cn({ 'centered': true }).mix(className) : cn.mix(className)}>
+        <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
             { children.length > 1 ? wrapChildren(children, cn) : wrapChild(children, cn) }
         </div>
     );
