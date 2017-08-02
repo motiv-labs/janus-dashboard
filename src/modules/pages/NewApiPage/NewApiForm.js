@@ -35,7 +35,7 @@ const ApiForm = (props) => {
     const parse = value => (value === undefined ? undefined : parseInt(value));
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={b} onSubmit={handleSubmit}>
             <Section>
                 <Row>
                     <Title>Create New API</Title>

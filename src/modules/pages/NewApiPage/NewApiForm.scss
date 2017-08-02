@@ -1,5 +1,7 @@
 @import 'index.scss';
 
+$col-width: 500px;
+
 .j-api-form {
     &__inner {
         padding: $hf-padding-big;
@@ -17,5 +19,9 @@
             line-height: $hf-line-medium;
             padding-bottom: $hf-padding-main;
         }
+    }
+
+    .j-row__item {
+        max-width: $col-width;
     }
 }
