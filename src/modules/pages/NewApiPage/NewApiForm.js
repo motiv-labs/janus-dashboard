@@ -10,6 +10,7 @@ import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import Input from '../../inputs/Input';
 import Label from '../../labels/Label';
+import Hint from '../../labels/Hint/Hint';
 
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
@@ -57,6 +58,7 @@ const ApiForm = (props) => {
                                 type="text"
                                 component={Input}
                             />
+                            <Hint>Must be unique</Hint>
                         </Row>
                     </Row>
                 </div>
