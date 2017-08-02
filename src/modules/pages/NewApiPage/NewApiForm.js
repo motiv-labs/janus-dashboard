@@ -44,9 +44,12 @@ const ApiForm = (props) => {
                 </Row>
             </Section>
             <div className={b('inner')}>
-                <FormRow>
-                    <FormInput component="input" label="Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
-                </FormRow>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>1. General</div>
+                    <FormRow>
+                        <FormInput component="input" label="Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
+                    </FormRow>
+                </div>
                 <FormRow>
                     <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="LOREM IPSUM" />
                     <FormInput component="input" label="Upstream URL" attachTo="proxy.upstream_url" type="text" />
