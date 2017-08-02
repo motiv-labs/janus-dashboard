@@ -6,6 +6,7 @@ import { reduxForm } from 'redux-form';
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
+import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
@@ -32,15 +33,15 @@ const ApiForm = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <Section>
-                <Title>Create New API</Title>
-                <FormRow alignX>
+                <Row>
+                    <Title>Create New API</Title>
                     <Button
                         type="submit"
                         mod="primary"
                     >
                         Submit
                     </Button>
-                </FormRow>
+                </Row>
                 <div className={b('inner')}>
                     <FormRow>
                         <FormInput component="input" label="Name" attachTo="name" type="text" tooltip="some another tooltip about something usefull" />
