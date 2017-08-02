@@ -1,0 +1,11 @@
+@import 'index.scss';
+
+.j-section {
+    padding-top: $hf-padding-big;
+    padding-bottom: $hf-padding-big;
+
+    &--small {
+        padding-top: $hf-gutter;
+        padding-bottom: $hf-gutter;
+    }
+}
