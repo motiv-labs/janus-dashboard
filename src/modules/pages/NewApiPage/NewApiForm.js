@@ -62,9 +62,32 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>2. Proxy</div>
+                    <Row fullwidth>
+                        <Row col>
+                            <Label>Listen Path</Label>
+                            <Field
+                                name="proxy.listen_path"
+                                type="text"
+                                component={Input}
+                            />
+                            <Hint>The public url that is exposed by the Gateway</Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Upstream URL</Label>
+                            <Field
+                                name="proxy.upstream_url"
+                                type="text"
+                                component={Input}
+                            />
+                            <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
+                        </Row>
+                    </Row>
+                </div>
                 <FormRow>
-                    <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="LOREM IPSUM" />
-                    <FormInput component="input" label="Upstream URL" attachTo="proxy.upstream_url" type="text" />
+
+
                     <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />
                     <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />
                     <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" normalize={v => !!v} />
