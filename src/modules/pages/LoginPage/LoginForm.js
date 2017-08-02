@@ -26,7 +26,7 @@ const LoginForm = () => {
         <form className={b} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
-            <Section>
+            <Section small>
                 <Row className={b('input')()} col>
                     <Label>E-mail</Label>
                     <Field type="email" name="email" component={Input} />
