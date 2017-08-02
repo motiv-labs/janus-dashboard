@@ -1,0 +1,9 @@
+@import 'index.scss';
+
+.j-api-form {
+    &__inner {
+        border: $hf-border;
+        border-radius: $hf-border-radius;
+        background-color: $hf-color-white;
+    }
+}
