@@ -61,6 +61,31 @@ const ApiForm = (props) => {
                             />
                             <Hint>Must be unique</Hint>
                         </Row>
+                        <Row col>
+                            <Label>Is Active?</Label>
+                            <Row className={b('radio-wrap')()}>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="active"
+                                        component={Radio}
+                                        value={'true'}
+                                        type="radio"
+                                        id="is-active"
+                                    />
+                                    <Label htmlFor="is-active">Yes</Label>
+                                </Row>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="active"
+                                        component={Radio}
+                                        value={'false'}
+                                        type="radio"
+                                        id="is-not-active"
+                                    />
+                                    <Label htmlFor="is-not-active">No</Label>
+                                </Row>
+                            </Row>
+                        </Row>
                     </Row>
                 </div>
                 <div className={b('section')}>
@@ -114,7 +139,32 @@ const ApiForm = (props) => {
                 </div>
 
                 <FormRow>
-                    <label>
+                    <Row col>
+                        <Label>Preserve Host?</Label>
+                        <Row>
+                            <Row>
+                                <Field
+                                    name="proxy.preserve_host"
+                                    component={Radio}
+                                    value={'true'}
+                                    type="radio"
+                                    id="preserve-host-true"
+                                />
+                                <Label htmlFor="preserve-host-true">Yes</Label>
+                            </Row>
+                            <Row>
+                                <Field
+                                    name="proxy.preserve_host"
+                                    component={Radio}
+                                    value={'false'}
+                                    type="radio"
+                                    id="preserve-host-false"
+                                />
+                                <Label htmlFor="preserve-host-false">No</Label>
+                            </Row>
+                        </Row>
+                    </Row>
+                    {/*<label>
                         <Field
                             name="proxy.preserve_host"
                             component={Radio}
@@ -133,7 +183,7 @@ const ApiForm = (props) => {
                             id="false"
                         />
                         Nein
-                    </label>
+                    </label>*/}
 
                     {/*<FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />*/}
                     <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />

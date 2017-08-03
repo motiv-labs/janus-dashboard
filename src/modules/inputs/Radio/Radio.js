@@ -29,7 +29,6 @@ const Radio = props => {
                         </svg>
                     </div>
                 </div>
-                {/*<label className="j-m-radio__label" htmlFor="testRadio-2">Label 1</label>*/}
             </div>
         </div>
     );

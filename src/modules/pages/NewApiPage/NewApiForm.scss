@@ -1,6 +1,7 @@
 @import 'index.scss';
 
 $col-width: 500px;
+$radio-width: 125px;
 
 .j-api-form {
     &__inner {
@@ -23,5 +24,14 @@ $col-width: 500px;
 
     .j-row__item {
         max-width: $col-width;
+    }
+
+    &__radio {
+        display: flex;
+        max-width: $radio-width;
+
+        &-row {
+            display: flex;
+        }
     }
 }

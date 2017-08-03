@@ -34,11 +34,20 @@ const wrapChildren = (children, cn) => children.map((item, index) => (
 const Row = ({ children, className, col, alignCenter, fullwidth }) => {
     const cn = col ? column : row;
 
-    return (
-        <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
-            { children.length > 1 ? wrapChildren(children, cn) : wrapChild(children, cn) }
-        </div>
-    );
+    if (children.length > 1) {
+        return (
+            <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
+                { wrapChildren(children, cn) }
+            </div>
+        );
+    }
+    return wrapChild(children, cn);
+
+    // return (
+        // <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
+        //     { children.length > 1 ? wrapChildren(children, cn) : wrapChild(children, cn) }
+        // </div>
+    // );
 };
 
 Row.propTypes = propTypes;

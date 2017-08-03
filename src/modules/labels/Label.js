@@ -8,12 +8,13 @@ const propTypes = {
         PropTypes.node,
         PropTypes.string,
     ]).isRequired,
+    htmlFor: PropTypes.string,
 };
 
-const Label = ({ children }) => (
-    <div className="j-label">
+const Label = ({ children, htmlFor }) => (
+    <label className="j-label" htmlFor={htmlFor}>
         { children }
-    </div>
+    </label>
 );
 
 Label.propTypes = propTypes;
