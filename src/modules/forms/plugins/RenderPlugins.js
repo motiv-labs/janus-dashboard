@@ -1,18 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Select from 'react-select';
-import 'react-select/dist/react-select.css';
 
 import { typeOf } from '../../../helpers';
 
 import PluginSection from '../../PluginSection/PluginSection';
+import SelectPlugin from '../../selects/SelectPlugin/SelectPlugin';
 
 import Section from '../../Layout/Section/Section';
 import FormField from '../FormField';
 import FormLabel from '../FormLabel';
 import FormInput from '../FormInput/FormInput';
 
-import './RenderPlugins.css';
+// import './RenderPlugins.css';
 
 const propTypes = {
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
@@ -27,10 +26,8 @@ const RenderPlugin = ({ plugins, handlePluginActivation }) => {
 
     return (
         <Section>
-            <Select
-                className="j-select"
+            <SelectPlugin
                 name="form-field-name"
-                value="one"
                 options={names}
                 onChange={handlePluginActivation}
             />

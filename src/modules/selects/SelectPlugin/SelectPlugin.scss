@@ -1,0 +1,7 @@
+@import 'index.scss';
+
+.j-select {
+    .Select-option.is-focused {
+        background-color: $hf-color-snot-green;
+    }
+}
