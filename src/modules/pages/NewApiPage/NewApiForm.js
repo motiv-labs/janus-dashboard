@@ -164,26 +164,6 @@ const ApiForm = (props) => {
                             </Row>
                         </Row>
                     </Row>
-                    {/*<label>
-                        <Field
-                            name="proxy.preserve_host"
-                            component={Radio}
-                            value={'true'}
-                            type="radio"
-                            id="true"
-                        />
-                        Ja
-                    </label>
-                    <label>
-                        <Field
-                            name="proxy.preserve_host"
-                            component={Radio}
-                            value={'false'}
-                            type="radio"
-                            id="false"
-                        />
-                        Nein
-                    </label>*/}
 
                     {/*<FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />*/}
                     <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />
