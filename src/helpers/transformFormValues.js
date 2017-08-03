@@ -11,11 +11,17 @@ import R from 'ramda';
  * @returns {Object}
  */
 
-const transformFormValues = values => {
+const transformFormValues = (values, toBoolean) => {
     const convertToBooleans = (val, key, obj) => {
-        if (val === 'true') return true;
-        if (val === 'false') return false;
-        if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val);
+        if (toBoolean) {
+            if (val === 'true') return true;
+            if (val === 'false') return false;
+            if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val);
+        } else {
+            if (val === true) return 'true';
+            if (val === false) return 'false';
+            if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val);
+        }
 
         return val;
     };

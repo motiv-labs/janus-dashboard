@@ -28,7 +28,7 @@ class NewApiItem extends Component {
     }
 
     submit = values => {
-        const transformedValues = transformFormValues(values);
+        const transformedValues = transformFormValues(values, true);
 
         this.props.saveEndpoint(this.props.location.pathname, transformedValues);
     }

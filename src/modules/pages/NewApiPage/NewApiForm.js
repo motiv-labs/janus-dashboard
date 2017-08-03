@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
@@ -249,7 +250,7 @@ const form = reduxForm({
 
 export default connect(
     state => ({
-        initialValues: state.apiReducer.api,
+        initialValues: transformFormValues(state.apiReducer.api),
     }),
     null,
 )(form);
