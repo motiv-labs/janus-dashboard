@@ -15,7 +15,7 @@ import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 
 import Button from '../../buttons/Button';
-import RenderPlugins from '../../forms/RenderPlugins';
+import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 import './NewApiForm.css';
 

@@ -9,7 +9,7 @@ import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
 
-import RenderPlugins from '../../forms/RenderPlugins';
+import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 const propTypes = {
     handleSubmit: PropTypes.func.isRequired,

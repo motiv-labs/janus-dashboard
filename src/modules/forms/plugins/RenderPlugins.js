@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-import { typeOf } from '../../helpers';
+import { typeOf } from '../../../helpers';
 
-import PluginSection from '../PluginSection/PluginSection';
+import PluginSection from '../../PluginSection/PluginSection';
 
-import Section from '../Layout/Section/Section';
-import FormField from './FormField';
-import FormLabel from './FormLabel';
-import FormInput from './FormInput/FormInput';
+import Section from '../../Layout/Section/Section';
+import FormField from '../FormField';
+import FormLabel from '../FormLabel';
+import FormInput from '../FormInput/FormInput';
 
 import './RenderPlugins.css';
 
