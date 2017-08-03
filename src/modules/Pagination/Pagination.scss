@@ -39,7 +39,7 @@
           content: '';
           display: block;
           position: absolute;
-          @include alignCenter(8px, 13px);
+          @include alignCenter();
         }
       }
 
