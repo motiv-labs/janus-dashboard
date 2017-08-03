@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
+import 'react-select/dist/react-select.css';
 
 import { typeOf } from '../../helpers';
 
@@ -13,17 +14,22 @@ import FormInput from './FormInput/FormInput';
 
 const propTypes = {
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
+    handlePluginActivation: PropTypes.func.isRequired,
 };
 
-const RenderPlugin = ({ plugins }) => {
-    const names = plugins.map(plugin => plugin.name);
-    console.error(names);
+const RenderPlugin = ({ plugins, handlePluginActivation }) => {
+    const names = plugins.map(plugin => ({
+        label: plugin.name,
+        value: plugin.name,
+    }));
+
     return (
         <Section>
             <Select
                 name="form-field-name"
                 value="one"
                 options={names}
+                onChange={handlePluginActivation}
             />
             {
                 plugins.map((plugin, index) => (

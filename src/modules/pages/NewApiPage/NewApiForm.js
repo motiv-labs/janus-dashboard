@@ -14,9 +14,6 @@ import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 
-import FormRow from '../../forms/FormRow';
-import FormInput from '../../forms/FormInput/FormInput';
-import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/RenderPlugins';
 
@@ -35,6 +32,13 @@ const ApiForm = (props) => {
         initialValues,
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
+    const activatePlugin = value => {
+        initialValues.plugins.map((plugin, index) => {
+            if (plugin.name === value.value) {
+                props.dispatch(props.change(`plugins[${index}].enabled`, true));
+            }
+        });
+    };
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -52,7 +56,7 @@ const ApiForm = (props) => {
             <div className={b('inner')}>
                 <div className={b('section')}>
                     <div className={b('section-title')}>1. General</div>
-                    <Row className={b('row')} fullwidth>
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>API Name</Label>
                             <Field
@@ -91,7 +95,7 @@ const ApiForm = (props) => {
                 </div>
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
-                    <Row className={b('row')} fullwidth>
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>Listen Path</Label>
                             <Field
@@ -112,7 +116,7 @@ const ApiForm = (props) => {
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
                         </Row>
                     </Row>
-                    <Row className={b('row')} fullwidth>
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>Methods</Label>
                             <Field
@@ -150,7 +154,7 @@ const ApiForm = (props) => {
                             <Hint>Preserve the host header the client used for the incoming request.</Hint>
                         </Row>
                     </Row>
-                    <Row className={b('row')} fullwidth>
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>Append Path?</Label>
                             <Row className={b('radio-wrap')()}>
@@ -233,7 +237,7 @@ const ApiForm = (props) => {
 
                 {
                     !!initialValues.plugins &&
-                        <RenderPlugins plugins={initialValues.plugins} />
+                        <RenderPlugins plugins={initialValues.plugins} handlePluginActivation={activatePlugin} />
                 }
 
             </div>
