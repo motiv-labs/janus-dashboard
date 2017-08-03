@@ -17,7 +17,7 @@ const schema = {
     plugins: [
         {
             name: 'cors',
-            enabled: true,
+            enabled: false,
             config: {
                 domains: ['*'],
                 methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
@@ -27,7 +27,7 @@ const schema = {
         },
         {
             name: 'rate_limit',
-            enabled: true,
+            enabled: false,
             config: {
                 limit: '10-S',
                 policy: 'local',
@@ -35,18 +35,18 @@ const schema = {
         },
         {
             name: 'oauth2',
-            enabled: true,
+            enabled: false,
             config: {
                 server_name: 'local',
             },
         },
         {
             name: 'compression',
-            enabled: true,
+            enabled: false,
         },
         {
             name: 'request_transformer',
-            enabled: true,
+            enabled: false,
             config: {
                 add: {
                     headers: {
