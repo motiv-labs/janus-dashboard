@@ -16,6 +16,7 @@
     "react-pagimagic": "^1.0.1",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
+    "react-select": "^1.0.0-rc.5",
     "redux": "^3.6.0",
     "redux-form": "^6.8.0",
     "redux-thunk": "^2.2.0",

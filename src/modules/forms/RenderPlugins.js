@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Select from 'react-select';
 
 import { typeOf } from '../../helpers';
 
@@ -19,6 +20,11 @@ const RenderPlugin = ({ plugins }) => {
     console.error(names);
     return (
         <Section>
+            <Select
+                name="form-field-name"
+                value="one"
+                options={names}
+            />
             {
                 plugins.map((plugin, index) => (
                     <PluginSection key={plugin.name} name={plugin.name}>
