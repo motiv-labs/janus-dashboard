@@ -53,7 +53,7 @@ class RenderPlugin extends Component {
                         </Row>
                 }
 
-                <Row className={b('row')}>
+                <Row className={b('row')()}>
                     <Button
                         type="button"
                         mod="primary"
