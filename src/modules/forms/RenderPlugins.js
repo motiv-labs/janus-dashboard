@@ -12,6 +12,8 @@ import FormField from './FormField';
 import FormLabel from './FormLabel';
 import FormInput from './FormInput/FormInput';
 
+import './RenderPlugins.css';
+
 const propTypes = {
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
     handlePluginActivation: PropTypes.func.isRequired,
@@ -26,6 +28,7 @@ const RenderPlugin = ({ plugins, handlePluginActivation }) => {
     return (
         <Section>
             <Select
+                className="j-select"
                 name="form-field-name"
                 value="one"
                 options={names}
