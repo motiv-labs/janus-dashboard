@@ -5,20 +5,22 @@ $radio-width: 125px;
 
 .j-api-form {
     &__inner {
-        padding: $hf-padding-big;
+        padding-left: $hf-padding-big;
+        padding-right: $hf-padding-big;
         border: $hf-border;
         border-radius: $hf-border-radius;
         background-color: $hf-color-white;
     }
     &__section {
         border-bottom: $hf-border;
+        padding-top: $hf-padding-big;
         padding-bottom: $hf-padding-big;
 
         &-title {
             font-size: $hf-font-size-medium;
             font-weight: $hf-font-weight;
             line-height: $hf-line-medium;
-            padding-bottom: $hf-padding-main;
+            padding-bottom: $hf-gutter;
         }
     }
 
@@ -33,5 +35,10 @@ $radio-width: 125px;
         &-row {
             display: flex;
         }
+    }
+
+    &__row {
+        padding-top: $hf-gutter;
+        padding-bottom: $hf-gutter;
     }
 }

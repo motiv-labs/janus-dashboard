@@ -51,7 +51,7 @@ const ApiForm = (props) => {
             <div className={b('inner')}>
                 <div className={b('section')}>
                     <div className={b('section-title')}>1. General</div>
-                    <Row fullwidth>
+                    <Row className={b('row')} fullwidth>
                         <Row col>
                             <Label>API Name</Label>
                             <Field
@@ -90,7 +90,7 @@ const ApiForm = (props) => {
                 </div>
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
-                    <Row fullwidth>
+                    <Row className={b('row')} fullwidth>
                         <Row col>
                             <Label>Listen Path</Label>
                             <Field
@@ -111,10 +111,102 @@ const ApiForm = (props) => {
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
                         </Row>
                     </Row>
+                    <Row className={b('row')} fullwidth>
+                        <Row col>
+                            <Label>Methods</Label>
+                            <Field
+                                name="health_check.url"
+                                type="text"
+                                placeholder="select methods"
+                                component={Input}
+                            />
+                            <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Preserve Host?</Label>
+                            <Row className={b('radio-wrap')()}>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.preserve_host"
+                                        component={Radio}
+                                        value={'true'}
+                                        type="radio"
+                                        id="preserve-host-true"
+                                    />
+                                    <Label htmlFor="preserve-host-true">Yes</Label>
+                                </Row>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.preserve_host"
+                                        component={Radio}
+                                        value={'false'}
+                                        type="radio"
+                                        id="preserve-host-false"
+                                    />
+                                    <Label htmlFor="preserve-host-false">No</Label>
+                                </Row>
+                            </Row>
+                            <Hint>Preserve the host header the client used for the incoming request.</Hint>
+                        </Row>
+                    </Row>
+                    <Row className={b('row')} fullwidth>
+                        <Row col>
+                            <Label>Append Path?</Label>
+                            <Row className={b('radio-wrap')()}>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.append_path"
+                                        component={Radio}
+                                        value={'true'}
+                                        type="radio"
+                                        id="append-path-true"
+                                    />
+                                    <Label htmlFor="append-path-true">Yes</Label>
+                                </Row>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.append_path"
+                                        component={Radio}
+                                        value={'false'}
+                                        type="radio"
+                                        id="append-path-false"
+                                    />
+                                    <Label htmlFor="append-path-false">No</Label>
+                                </Row>
+                            </Row>
+                            <Hint>Appends the path from the listen_path when forwarding the request to the upstream_url.</Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Strips Path?</Label>
+                            <Row className={b('radio-wrap')()}>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.strip_path"
+                                        component={Radio}
+                                        value={'true'}
+                                        type="radio"
+                                        id="strip-path-true"
+                                    />
+                                    <Label htmlFor="strip-path-true">Yes</Label>
+                                </Row>
+                                <Row className={b('radio')()}>
+                                    <Field
+                                        name="proxy.strip_path"
+                                        component={Radio}
+                                        value={'false'}
+                                        type="radio"
+                                        id="strip-path-false"
+                                    />
+                                    <Label htmlFor="strip-path-false">No</Label>
+                                </Row>
+                            </Row>
+                            <Hint> Strip the path out of the listen_path when forwarding the request to the upstream_url.</Hint>
+                        </Row>
+                    </Row>
                 </div>
                 <div className={b('section')}>
                     <div className={b('section-title')}>3. Health check</div>
-                    <Row fullwidth>
+                    <Row className={b('row')} fullwidth>
                         <Row col>
                             <Label>Health URL (optional)</Label>
                             <Field
@@ -137,38 +229,6 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
-
-                <FormRow>
-                    <Row col>
-                        <Label>Preserve Host?</Label>
-                        <Row>
-                            <Row>
-                                <Field
-                                    name="proxy.preserve_host"
-                                    component={Radio}
-                                    value={'true'}
-                                    type="radio"
-                                    id="preserve-host-true"
-                                />
-                                <Label htmlFor="preserve-host-true">Yes</Label>
-                            </Row>
-                            <Row>
-                                <Field
-                                    name="proxy.preserve_host"
-                                    component={Radio}
-                                    value={'false'}
-                                    type="radio"
-                                    id="preserve-host-false"
-                                />
-                                <Label htmlFor="preserve-host-false">No</Label>
-                            </Row>
-                        </Row>
-                    </Row>
-
-                    {/*<FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />*/}
-                    <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />
-                    <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" normalize={v => !!v} />
-                </FormRow>
 
                 {
                     !!initialValues.plugins &&
