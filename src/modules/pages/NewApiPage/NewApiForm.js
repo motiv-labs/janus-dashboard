@@ -211,7 +211,7 @@ const ApiForm = (props) => {
                 </div>
                 <div className={b('section')}>
                     <div className={b('section-title')}>3. Health check</div>
-                    <Row className={b('row')} fullwidth>
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>Health URL (optional)</Label>
                             <Field
@@ -234,12 +234,19 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>4. Plugins</div>
 
-                {
-                    !!initialValues.plugins &&
-                        <RenderPlugins plugins={initialValues.plugins} handlePluginActivation={activatePlugin} />
-                }
+                    {
+                        !!initialValues.plugins &&
+                            <RenderPlugins
+                                className={b()}
+                                plugins={initialValues.plugins}
+                                handlePluginActivation={activatePlugin}
+                            />
+                    }
 
+                </div>
             </div>
         </form>
     );

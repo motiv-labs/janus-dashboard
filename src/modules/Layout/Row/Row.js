@@ -14,9 +14,9 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const wrapChild = (child, cn) => (
+const wrapChild = (child, cn, className) => (
     <div
-        className={cn('item')}
+        className={cn('item').mix(className)}
     >
         {child}
     </div>
@@ -41,7 +41,7 @@ const Row = ({ children, className, col, alignCenter, fullwidth }) => {
             </div>
         );
     }
-    return wrapChild(children, cn);
+    return wrapChild(children, cn, className);
 
     // return (
         // <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
