@@ -11,7 +11,7 @@ const schema = {
         hosts: ['hellofresh.*'],
     },
     health_check: {
-        url: 'http://localhost:9089/status',
+        url: '',
         timeout: 3,
     },
     plugins: [

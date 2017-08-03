@@ -71,6 +71,7 @@ const ApiForm = (props) => {
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
+                                placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
                             />
                             <Hint>The public url that is exposed by the Gateway</Hint>
@@ -94,6 +95,7 @@ const ApiForm = (props) => {
                             <Field
                                 name="health_check.url"
                                 type="text"
+                                placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
                             />
                             <Hint>The url that the Gateway will use to determine the health of the API. </Hint>
