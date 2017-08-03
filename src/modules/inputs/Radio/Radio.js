@@ -6,10 +6,18 @@ import './Radio.css';
 
 const radio = block('j-radio');
 
-const Radio = () => {
+const Radio = props => {
+    const { meta, input, id, name, type, ...others } = props;
+
     return (
         <div className={radio('wrap')}>
-            <input type="radio" name="testRadio" id="testRadio-2" className={radio('input')} />
+            <input
+                className={radio('input')}
+                type={type}
+                name={name}
+                id={id}
+                {...input}
+            />
             <div className={radio('d1')}>
                 <div className={radio('d2')}>
                     <div>
@@ -21,7 +29,7 @@ const Radio = () => {
                         </svg>
                     </div>
                 </div>
-                <label className="j-m-radio__label" htmlFor="testRadio-2">Label 1</label>
+                {/*<label className="j-m-radio__label" htmlFor="testRadio-2">Label 1</label>*/}
             </div>
         </div>
     );

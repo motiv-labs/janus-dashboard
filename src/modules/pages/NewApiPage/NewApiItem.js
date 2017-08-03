@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { deleteProperty } from 'picklock';
 
+import transformFormValues from '../../../helpers/transformFormValues';
 import { isEmpty } from '../../../helpers';
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
@@ -26,8 +27,10 @@ class NewApiItem extends Component {
         }
     }
 
-    submit = (values) => {
-        this.props.saveEndpoint(this.props.location.pathname, values);
+    submit = values => {
+        const transformedValues = transformFormValues(values);
+
+        this.props.saveEndpoint(this.props.location.pathname, transformedValues);
     }
 
     hasToBeCloned = () => {

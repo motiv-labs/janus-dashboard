@@ -92,7 +92,7 @@ const ApiForm = (props) => {
                         <Row col>
                             <Label>Health URL (optional)</Label>
                             <Field
-                                name="health_check.urlh"
+                                name="health_check.url"
                                 type="text"
                                 component={Input}
                             />
@@ -111,10 +111,29 @@ const ApiForm = (props) => {
                     </Row>
                 </div>
 
-                <Radio />
-
                 <FormRow>
-                    <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />
+                    <label>
+                        <Field
+                            name="proxy.preserve_host"
+                            component={Radio}
+                            value={'true'}
+                            type="radio"
+                            id="true"
+                        />
+                        Ja
+                    </label>
+                    <label>
+                        <Field
+                            name="proxy.preserve_host"
+                            component={Radio}
+                            value={'false'}
+                            type="radio"
+                            id="false"
+                        />
+                        Nein
+                    </label>
+
+                    {/*<FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" normalize={v => !!v} />*/}
                     <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" normalize={v => !!v} />
                     <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" normalize={v => !!v} />
                 </FormRow>

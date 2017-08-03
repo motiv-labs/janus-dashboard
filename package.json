@@ -8,6 +8,7 @@
     "history": "^4.6.3",
     "node-sass-chokidar": "^0.0.3",
     "picklock": "^0.5.1",
+    "ramda": "^0.24.1",
     "react": "^15.6.0",
     "react-dom": "^15.6.0",
     "react-history": "^0.18.2",
