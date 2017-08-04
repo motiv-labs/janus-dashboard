@@ -71,7 +71,7 @@ class RenderPlugin extends Component {
                     selectedPlugins.map(pluginName => {
                         switch (pluginName) {
                             case 'cors':
-                                return <CorsPlugin key={pluginName} />;
+                                return <CorsPlugin key={pluginName} className={b()} />;
                             case 'rate_limit':
                                 return <p key={pluginName}>RATE</p>;
                             case 'oauth2':
