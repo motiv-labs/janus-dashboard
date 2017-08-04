@@ -248,6 +248,14 @@ const ApiForm = (props) => {
 
                 </div>
             </div>
+            <Row className={b('row')()}>
+                <Button
+                    type="submit"
+                    mod="primary"
+                >
+                    Create API
+                </Button>
+            </Row>
         </form>
     );
 };

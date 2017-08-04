@@ -29,7 +29,7 @@ class RenderPlugin extends Component {
     }
 
     showPlugins = () => {
-        this.setState(prevState => ({ visiblePlugins: !prevState.visiblePlugins }));
+        this.setState({ visiblePlugins: true });
     }
 
     render() {
@@ -44,7 +44,7 @@ class RenderPlugin extends Component {
             <div>
                 {
                     this.state.visiblePlugins &&
-                        <Row className={b('row')}>
+                        <Row className={b('row')()}>
                             <SelectPlugin
                                 name="form-field-name"
                                 options={names}
