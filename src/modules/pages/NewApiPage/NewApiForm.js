@@ -277,7 +277,7 @@ const form = reduxForm({
 export default connect(
     state => {
         const plugins = selector(state, 'plugins');
-        console.error('ST', plugins);
+
         return {
             initialValues: transformFormValues(state.apiReducer.api),
             selectedPlugins: state.apiReducer.selectedPlugins,

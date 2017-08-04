@@ -9,7 +9,7 @@ const styles = {
 };
 
 const propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
 };
 
 const FormField = ({ children }) => (

@@ -9,6 +9,8 @@ import SelectPlugin from '../../selects/SelectPlugin/SelectPlugin';
 import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
 
+import CorsPlugin from './Cors/CorsPlugin';
+
 import Section from '../../Layout/Section/Section';
 import FormField from '../FormField';
 import FormLabel from '../FormLabel';
@@ -40,7 +42,7 @@ class RenderPlugin extends Component {
             label: plugin.name,
             value: plugin.name,
         }));
-        console.error(selectedPlugins);
+        // console.error(selectedPlugins);
 
         return (
             <div>
@@ -69,15 +71,15 @@ class RenderPlugin extends Component {
                     selectedPlugins.map(pluginName => {
                         switch (pluginName) {
                             case 'cors':
-                                return <p>CORS</p>;
+                                return <CorsPlugin key={pluginName} />;
                             case 'rate_limit':
-                                return <p>RATE</p>;
+                                return <p key={pluginName}>RATE</p>;
                             case 'oauth2':
-                                return <p>oAuth2</p>;
+                                return <p key={pluginName}>oAuth2</p>;
                             case 'compression':
-                                return <p>Compression</p>;
+                                return <p key={pluginName}>Compression</p>;
                             case 'request_transformer':
-                                return <p>Transformers</p>;
+                                return <p key={pluginName}>Transformers</p>;
                         }
                     })
                 }
