@@ -63,13 +63,22 @@ class RenderPlugin extends Component {
                     </Button>
                 </Row>
 
+                {/*<PluginOAuth />*/}
+                <div>
+                    {
+                        plugins.map((plugin, index) => {
+                            if (plugin.name === 'oauth2' && plugin.enabled) {
+                                return 'oAuth';
+                            }
+                        })
+                    }
+                </div>
+
                 {
                     plugins.map((plugin, index) => (
                         <PluginSection key={plugin.name} name={plugin.name}>
-                            <FormInput component="input" label="Plugin" attachTo={`plugins[${index}].name`} type="text" disabled />
                             <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
                             <FormField>
-                                <FormLabel text="Config" />
                                 {
                                 plugin.config && Object.keys(plugin.config).map((item) => {
                                     const config = plugins[index].config[item];

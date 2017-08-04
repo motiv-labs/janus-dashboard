@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
@@ -30,10 +30,11 @@ const ApiForm = (props) => {
     const {
         handleSubmit,
         initialValues,
+        plugins
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const activatePlugin = value => {
-        initialValues.plugins.map((plugin, index) => {
+        plugins.map((plugin, index) => {
             if (plugin.name === value.value) {
                 props.dispatch(props.change(`plugins[${index}].enabled`, true));
             }
@@ -238,10 +239,10 @@ const ApiForm = (props) => {
                     <div className={b('section-title')}>4. Plugins</div>
 
                     {
-                        !!initialValues.plugins &&
+                        !!plugins &&
                             <RenderPlugins
                                 className={b()}
-                                plugins={initialValues.plugins}
+                                plugins={plugins}
                                 handlePluginActivation={activatePlugin}
                             />
                     }
@@ -262,14 +263,21 @@ const ApiForm = (props) => {
 
 ApiForm.propTypes = propTypes;
 
+const selector = formValueSelector('apiForm');
+
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
 })(ApiForm);
 
 export default connect(
-    state => ({
-        initialValues: transformFormValues(state.apiReducer.api),
-    }),
+    state => {
+        const plugins = selector(state, 'plugins');
+        console.error('ST', plugins);
+        return {
+            initialValues: transformFormValues(state.apiReducer.api),
+            plugins,
+        };
+    },
     null,
 )(form);

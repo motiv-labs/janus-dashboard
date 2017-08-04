@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
+import Row from '../Layout/Row/Row';
+import Label from '../labels/Label';
+import Input from '../inputs/Input';
+
 import Section from '../Layout/Section/Section';
 import FormRow from '../forms/FormRow';
 import FormLabel from '../forms/FormLabel';
@@ -10,24 +14,9 @@ const propTypes = {
     name: PropTypes.string.isRequired,
 };
 
-const styles = {
-    plus: {
-        display: 'inline-block',
-        width: '30px',
-        height: '30px',
-        lineHeight: '30px',
-        marginRight: '20px',
-        backgroundColor: '#7957d5',
-        borderRadius: '3px',
-        color: '#fff',
-        textAlign: 'center',
-        cursor: 'pointer',
-    },
-};
-
 class PluginSection extends Component {
     state = {
-        isExpended: false,
+        isExpended: true,
     };
 
     test = () => {
@@ -37,21 +26,13 @@ class PluginSection extends Component {
     render() {
         return (
             <Section>
-                <FormRow alignY>
-                    <span
-                        style={styles.plus}
-                        onClick={this.test}
-                    >
-                        {this.state.isExpended ? '↑' : '↓'}
-                    </span>
-                    <FormLabel text={`${this.props.name} plugin`} />
-                </FormRow>
-
-                {
-                    this.state.isExpended &&
-                        <FormRow>{ this.props.children }</FormRow>
-                }
-
+                <Row>
+                    <Row col>
+                        <Label>Plugin Name</Label>
+                        <Input input={{value: this.props.name}} disabled />
+                    </Row>
+                </Row>
+                <FormRow>{ this.props.children }</FormRow>
             </Section>
         );
     }
