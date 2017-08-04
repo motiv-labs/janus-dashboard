@@ -21,6 +21,7 @@ const propTypes = {
     className: PropTypes.string,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
     handlePluginActivation: PropTypes.func.isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 class RenderPlugin extends Component {
@@ -33,12 +34,13 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, plugins, handlePluginActivation } = this.props;
+        const { className, plugins, selectedPlugins, handlePluginActivation } = this.props;
         const b = block(className);
         const names = plugins.map(plugin => ({
             label: plugin.name,
             value: plugin.name,
         }));
+        console.error(selectedPlugins);
 
         return (
             <div>
@@ -63,8 +65,12 @@ class RenderPlugin extends Component {
                     </Button>
                 </Row>
 
+                {
+                    selectedPlugins.map(pluginName => <p>{pluginName}</p>)
+                }
+
                 {/*<PluginOAuth />*/}
-                <div>
+                {/*<div>
                     {
                         plugins.map((plugin, index) => {
                             if (plugin.name === 'oauth2' && plugin.enabled) {
@@ -72,7 +78,7 @@ class RenderPlugin extends Component {
                             }
                         })
                     }
-                </div>
+                </div>*/}
 
                 {
                     plugins.map((plugin, index) => (

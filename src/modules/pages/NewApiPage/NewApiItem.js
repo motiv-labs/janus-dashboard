@@ -12,6 +12,7 @@ const propTypes = {
     fetchEndpointSchema: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
+    selectPlugin: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
     willClone: PropTypes.func.isRequired,
 };
@@ -44,10 +45,11 @@ class NewApiItem extends Component {
     }
 
     render() {
+        const { api, selectPlugin } = this.props;
         return (
             <div>
-                <Subtitle>{this.props.api.name}</Subtitle>
-                <NewApiForm onSubmit={this.submit} />
+                <Subtitle>{api.name}</Subtitle>
+                <NewApiForm onSubmit={this.submit} selectPlugin={selectPlugin} />
             </div>
         );
     }

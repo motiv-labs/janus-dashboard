@@ -4,7 +4,6 @@ import './Input.css';
 
 const Input = (props) => {
     const { type, input, placeholder, disabled } = props;
-    console.error('VALUE::::: ', props);
 
     return (
         <input

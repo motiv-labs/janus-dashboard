@@ -30,13 +30,16 @@ const ApiForm = (props) => {
     const {
         handleSubmit,
         initialValues,
-        plugins
+        plugins,
+        selectPlugin,
+        selectedPlugins,
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const activatePlugin = value => {
         plugins.map((plugin, index) => {
-            if (plugin.name === value.value) {
+            if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
                 props.dispatch(props.change(`plugins[${index}].enabled`, true));
+                selectPlugin(plugin.name);
             }
         });
     };
@@ -243,6 +246,7 @@ const ApiForm = (props) => {
                             <RenderPlugins
                                 className={b()}
                                 plugins={plugins}
+                                selectedPlugins={selectedPlugins}
                                 handlePluginActivation={activatePlugin}
                             />
                     }
@@ -276,6 +280,7 @@ export default connect(
         console.error('ST', plugins);
         return {
             initialValues: transformFormValues(state.apiReducer.api),
+            selectedPlugins: state.apiReducer.selectedPlugins,
             plugins,
         };
     },

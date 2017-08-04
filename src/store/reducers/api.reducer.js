@@ -8,12 +8,14 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
 } from '../constants';
 
 const initialState = {
     api: {},
+    selectedPlugins: [],
     isFetching: false,
 };
 
@@ -28,7 +30,6 @@ export default function reducer(state = initialState, action) {
                 isFetching: true,
             };
         }
-
         case DELETE_ENDPOINT_SUCCESS: {
             return {
                 ...state,
@@ -42,6 +43,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 api: action.payload,
                 isFetching: false,
+            };
+        }
+        case SELECT_PLUGIN: {
+            return {
+                ...state,
+                selectedPlugins: state.selectedPlugins.concat(action.payload),
             };
         }
         case WILL_CLONE: {

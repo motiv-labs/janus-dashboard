@@ -10,6 +10,7 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
 } from '../constants';
@@ -55,6 +56,11 @@ export const saveEndpointRequest = () => ({
 export const saveEndpointSuccess = api => ({
     type: SAVE_ENDPOINT_SUCCESS,
     payload: api,
+});
+
+export const selectPlugin = pluginName/*: string*/ => ({
+    type: SELECT_PLUGIN,
+    payload: pluginName,
 });
 
 export const resetEndpoint = () => ({
