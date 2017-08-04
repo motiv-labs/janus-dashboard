@@ -66,7 +66,20 @@ class RenderPlugin extends Component {
                 </Row>
 
                 {
-                    selectedPlugins.map(pluginName => <p>{pluginName}</p>)
+                    selectedPlugins.map(pluginName => {
+                        switch (pluginName) {
+                            case 'cors':
+                                return <p>CORS</p>;
+                            case 'rate_limit':
+                                return <p>RATE</p>;
+                            case 'oauth2':
+                                return <p>oAuth2</p>;
+                            case 'compression':
+                                return <p>Compression</p>;
+                            case 'request_transformer':
+                                return <p>Transformers</p>;
+                        }
+                    })
                 }
 
                 {/*<PluginOAuth />*/}
