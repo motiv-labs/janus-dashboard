@@ -1,5 +1,8 @@
 @import 'index.scss';
 
+$paginator-width: 8px;
+$paginator-height: 13px;
+
 .j-pagination {
   &__nav {
     &-item {
@@ -39,7 +42,9 @@
           content: '';
           display: block;
           position: absolute;
-          @include alignCenter(8px, 13px);
+          width: $paginator-width;
+          height: $paginator-height;
+          @include alignCenter();
         }
       }
 

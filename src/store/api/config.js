@@ -1,8 +1,8 @@
 export default {
     gateway: {
         uri: 'http://localhost:8081',
-        username: 'admin',
-        password: 'admin',
+        // username: 'admin2', // @TODO: remove later
+        // password: 'admin', // @TODO: remove later
     },
 
   // gateway: {

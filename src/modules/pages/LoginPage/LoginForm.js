@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Field, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
@@ -8,20 +9,17 @@ import Row from '../../Layout/Row/Row';
 import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
-
 import Input from '../../inputs/Input';
+
 import './LoginForm.css';
 
 const b = block('login-form');
 
-const LoginForm = () => {
-    const handleSubmit = (e) => {
-        e.preventDefault();
+const propTypes = {
+    handleSubmit: PropTypes.func.isRequired,
+};
 
-        // eslint-disable-next-line
-        console.log('SAVE');
-    };
-
+const LoginForm = ({ handleSubmit }) => {
     return (
         <form className={b} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
@@ -29,7 +27,11 @@ const LoginForm = () => {
             <Section>
                 <Row className={b('input')()} col>
                     <Label>E-mail</Label>
-                    <Field type="email" name="email" component={Input} />
+                    {/*
+                        @TODO:  change type 'text' => 'email' (later).
+                                We need type 'text' because of username='admin' for local testing
+                    */}
+                    <Field type="text" name="username" component={Input} />
                 </Row>
                 <Row className={b('input')()} col>
                     <Label>Password</Label>
@@ -42,6 +44,8 @@ const LoginForm = () => {
         </form>
     );
 };
+
+LoginForm.propTypes = propTypes;
 
 export default reduxForm({
     form: 'loginForm',
