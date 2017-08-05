@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     api: {},
-    selectedPlugins: ['cors'],
+    selectedPlugins: ['oauth2'],
     isFetching: false,
 };
 
