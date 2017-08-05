@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { login } from './auth';
 import config from './config';
+import history from '../configuration/history';
 
 const headers = {
     Accept: 'application/vnd.janus.v1+json',
@@ -28,16 +29,17 @@ if (getAccessToken()) {
 }
 
 client.interceptors.response.use(undefined, (error) => {
-    if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
-        return login(config.gateway.username, config.gateway.password).then((response) => {
-            error.config.isRetryRequest = true;
-            error.config.headers.Authorization = `Bearer ${response.data.token}`;
-            setAccessToken(response.data.token);
-            return client(error.config);
-        });
+    if (error.response.status === 401) {
+        history.push('/login');
     }
-
-    throw error;
+    // if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
+    //     return login(config.gateway.username, config.gateway.password).then((response) => {
+    //         error.config.isRetryRequest = true;
+    //         error.config.headers.Authorization = `Bearer ${response.data.token}`;
+    //         setAccessToken(response.data.token);
+    //         return client(error.config);
+    //     });
+    // }
 });
 
 export default client;
