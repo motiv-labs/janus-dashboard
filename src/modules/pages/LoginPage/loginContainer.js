@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 
 import {
     checkLoggedStatus,
+    loginUser,
 } from '../../../store/actions';
 
-import LoginForm from './LoginForm';
+import FormWrapper from './FormWrapper';
 
 const mapStateToProps = state => ({
     api: state.userSessionReducer.api,
@@ -12,5 +13,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { checkLoggedStatus },
-)(LoginForm);
+    { checkLoggedStatus, loginUser },
+)(FormWrapper);

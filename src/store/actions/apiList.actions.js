@@ -29,12 +29,13 @@ export const fetchEndpoints = () => (dispatch) => {
     dispatch(getEndpointsRequest());
 
     return client.get('apis')
-    .then((response) => {
-        dispatch(getEndpointsSuccess(response.data));
-    });
-  // .catch(() => {
-  //   context.commit('SET_ERROR', 'Infernal server error');
-  // });
+        .then((response) => {
+            dispatch(getEndpointsSuccess(response.data));
+        })
+        .catch((e) => {
+            // context.commit('SET_ERROR', 'Infernal server error');
+            console.log('ERRROR', e);
+        });
 };
 
 export const refreshEndpoints = api => ({
