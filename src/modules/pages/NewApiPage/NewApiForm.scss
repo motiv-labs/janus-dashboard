@@ -16,6 +16,10 @@ $radio-width: 125px;
         padding-top: $hf-padding-big;
         padding-bottom: $hf-padding-big;
 
+        &:last-child {
+            border-bottom: none;
+        }
+
         &-title {
             font-size: $hf-font-size-medium;
             font-weight: $hf-font-weight;

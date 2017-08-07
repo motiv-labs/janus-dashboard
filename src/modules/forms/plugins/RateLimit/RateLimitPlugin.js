@@ -9,21 +9,23 @@ import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import Radio from '../../../inputs/Radio/Radio';
 import Hint from '../../../labels/Hint/Hint';
+import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
 };
 
-const RateLimitPlugin = ({ className }) => {
+const RateLimitPlugin = ({ className, name }) => {
     const b = block(className);
 
     return (
         <div className={b('section')()}>
-            <Row>
+            <Row fullwidth>
                 <Row col>
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Rate Limit'}} disabled />
                 </Row>
+                <ControlBar name={name} />
             </Row>
         </div>
     );

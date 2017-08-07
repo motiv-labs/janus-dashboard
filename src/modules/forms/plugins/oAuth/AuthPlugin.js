@@ -8,21 +8,23 @@ import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import Hint from '../../../labels/Hint/Hint';
+import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
 };
 
-const AuthPlugin = ({ className }) => {
+const AuthPlugin = ({ className, name }) => {
     const b = block(className);
 
     return (
         <div className={b('section')()}>
-            <Row>
+            <Row fullwidth>
                 <Row col>
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'oAuth'}} disabled />
                 </Row>
+                <ControlBar name={name} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>
