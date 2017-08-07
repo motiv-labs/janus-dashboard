@@ -14,9 +14,11 @@ const ControlBar = ({ name, enabled }) => {
     return (
         <div className={b('wrapper')}>
             <div className={b()}>
-                <Tumbler
-                    name={name}
-                />
+                <div className={b('item')}>
+                    <Tumbler
+                        name={name}
+                    />
+                </div>
                 <span><Icon type="delete" /></span>
             </div>
         </div>

@@ -5,6 +5,10 @@
     align-items: center;
     height: $hf-height-input;
 
+    &__item {
+        margin-right: $hf-padding-main;
+    }
+
     &__wrapper {
         display: flex;
         flex-direction: column;
