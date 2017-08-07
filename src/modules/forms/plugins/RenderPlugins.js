@@ -58,27 +58,6 @@ class RenderPlugin extends Component {
         return (
             <div>
                 {
-                    this.state.visiblePlugins &&
-                        <Row className={b('row')()}>
-                            <SelectPlugin
-                                name="form-field-name"
-                                options={names}
-                                onChange={handlePluginActivation}
-                            />
-                        </Row>
-                }
-
-                <Row className={b('row')()}>
-                    <Button
-                        type="button"
-                        mod="primary"
-                        onClick={this.showPlugins}
-                    >
-                        + Add Plugin
-                    </Button>
-                </Row>
-
-                {
                     selectedPlugins.map(pluginName => {
                         switch (pluginName) {
                             case 'cors':
@@ -124,6 +103,27 @@ class RenderPlugin extends Component {
                         }
                     })
                 }
+
+                {
+                    this.state.visiblePlugins &&
+                        <Row className={b('row')()}>
+                            <SelectPlugin
+                                name="form-field-name"
+                                options={names}
+                                onChange={handlePluginActivation}
+                            />
+                        </Row>
+                }
+
+                <Row className={b('row')()}>
+                    <Button
+                        type="button"
+                        mod="primary"
+                        onClick={this.showPlugins}
+                    >
+                        + Add Plugin
+                    </Button>
+                </Row>
 
                 {/*<PluginOAuth />*/}
                 {/*<div>

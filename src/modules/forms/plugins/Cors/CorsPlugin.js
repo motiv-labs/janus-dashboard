@@ -19,7 +19,7 @@ const CorsPlugin = ({ className, name }) => {
 
     return (
         <div className={b('section')()}>
-            <Row>
+            <Row fullwidth>
                 <Row col>
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'CORS'}} disabled />
