@@ -5,12 +5,13 @@
   display: grid;
   padding: 0 $hf-padding-main;
   background-color: $hellofresh-color;
-  box-shadow: $hf-box-shadow-header; 
+  box-shadow: $hf-box-shadow-header;
+  height: $hf-height-header;
 
   &__col {
     align-self: center;
   }
-  
+
   &__logo {
     display: block;
     width: 30px;

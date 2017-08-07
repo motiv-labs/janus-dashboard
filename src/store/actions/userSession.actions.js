@@ -1,5 +1,5 @@
 import history from '../configuration/history';
-import client, { setAccessToken } from '../api';
+import client, { getAccessToken, setAccessToken } from '../api';
 import {
     CHECK_LOGGED_STATUS,
     LOGIN_START,
@@ -18,14 +18,24 @@ export const loginSuccess = () => ({
     type: LOGIN_SUCCESS,
 });
 
+export const getUserStatus = () => dispatch => {
+    dispatch(checkLoggedStatus());
+
+    if (getAccessToken()) {
+        dispatch(loginSuccess());
+    } else {
+        history.push('/login');
+    }
+};
+
 export const loginUser = userData => dispatch => {
     dispatch(loginRequest());
 
     return client.post('login', userData)
         .then((response) => {
-            dispatch(loginSuccess());
             setAccessToken(response.data.token);
             history.push('/');
+            dispatch(getUserStatus());
         })
         .catch((error) => {
             // eslint-disable-next-line
