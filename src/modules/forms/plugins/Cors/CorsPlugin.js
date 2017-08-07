@@ -8,12 +8,13 @@ import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import Hint from '../../../labels/Hint/Hint';
+import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
 };
 
-const CorsPlugin = ({ className }) => {
+const CorsPlugin = ({ className, name }) => {
     const b = block(className);
 
     return (
@@ -23,6 +24,7 @@ const CorsPlugin = ({ className }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'CORS'}} disabled />
                 </Row>
+                <ControlBar name={name} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>

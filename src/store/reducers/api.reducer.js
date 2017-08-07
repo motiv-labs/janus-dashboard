@@ -15,7 +15,7 @@ import {
 
 const initialState = {
     api: {},
-    selectedPlugins: ['oauth2'],
+    selectedPlugins: [],
     isFetching: false,
 };
 

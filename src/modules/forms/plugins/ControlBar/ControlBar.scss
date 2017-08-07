@@ -1,0 +1,14 @@
+@import 'index.scss';
+
+.j-plugin-controls {
+    display: flex;
+    align-items: center;
+    height: $hf-height-input;
+
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        height: 100%;
+    }
+}

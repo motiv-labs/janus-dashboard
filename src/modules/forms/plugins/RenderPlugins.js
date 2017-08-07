@@ -10,7 +10,10 @@ import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
 
 import CorsPlugin from './Cors/CorsPlugin';
+import RateLimitPlugin from './RateLimit/RateLimitPlugin';
 import AuthPlugin from './oAuth/AuthPlugin';
+import CompressionPlugin from './Compression/CompressionPlugin';
+import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin';
 
 import Section from '../../Layout/Section/Section';
 import FormField from '../FormField';
@@ -36,6 +39,14 @@ class RenderPlugin extends Component {
         this.setState({ visiblePlugins: true });
     }
 
+    getPluginIndex = (plugins, pluginName) => {
+        const pluginIndex = plugins.findIndex(plugin => {
+            return plugin.name === pluginName;
+        });
+
+        return pluginIndex;
+    }
+
     render() {
         const { className, plugins, selectedPlugins, handlePluginActivation } = this.props;
         const b = block(className);
@@ -43,7 +54,6 @@ class RenderPlugin extends Component {
             label: plugin.name,
             value: plugin.name,
         }));
-        // console.error(selectedPlugins);
 
         return (
             <div>
@@ -72,15 +82,45 @@ class RenderPlugin extends Component {
                     selectedPlugins.map(pluginName => {
                         switch (pluginName) {
                             case 'cors':
-                                return <CorsPlugin key={pluginName} className={b()} />;
+                                return (
+                                    <CorsPlugin
+                                        key={pluginName}
+                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
+                                        className={b()}
+                                    />
+                                );
                             case 'rate_limit':
-                                return <p key={pluginName}>RATE</p>;
+                                return (
+                                    <RateLimitPlugin
+                                        key={pluginName}
+                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
+                                        className={b()}
+                                    />
+                                );
                             case 'oauth2':
-                                return <AuthPlugin key={pluginName} className={b()} />;
+                                return (
+                                    <AuthPlugin
+                                        key={pluginName}
+                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
+                                        className={b()}
+                                    />
+                                );
                             case 'compression':
-                                return <p key={pluginName}>Compression</p>;
+                                return (
+                                    <CompressionPlugin
+                                        key={pluginName}
+                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
+                                        className={b()}
+                                    />
+                                );
                             case 'request_transformer':
-                                return <p key={pluginName}>Transformers</p>;
+                                return (
+                                    <RequestTransformerPlugin
+                                        key={pluginName}
+                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
+                                        className={b()}
+                                    />
+                                );
                         }
                     })
                 }
@@ -96,7 +136,7 @@ class RenderPlugin extends Component {
                     }
                 </div>*/}
 
-                {
+                {/*
                     plugins.map((plugin, index) => (
                         <PluginSection key={plugin.name} name={plugin.name}>
                             <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
@@ -141,7 +181,7 @@ class RenderPlugin extends Component {
                             </FormField>
                         </PluginSection>
                     ))
-                }
+                */}
             </div>
         );
     };
