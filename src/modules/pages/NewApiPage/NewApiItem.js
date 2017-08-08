@@ -30,7 +30,6 @@ class NewApiItem extends Component {
     }
 
     submit = values => {
-        console.error(values, this.props.selectedPlugins);
         const transformedValues = transformFormValues(values, true);
         const plugins = transformedValues.plugins;
         const selectedPlugins = this.props.selectedPlugins;
@@ -43,8 +42,6 @@ class NewApiItem extends Component {
             ...transformedValues,
             plugins: addedPlugins,
         };
-
-        console.error('SELECTED', addedPlugins);
 
         this.props.saveEndpoint(this.props.location.pathname, computedPlugins);
     }
