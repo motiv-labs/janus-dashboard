@@ -38,7 +38,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                 <Row col>
                     <Label>Domains</Label>
                     <Field
-                        name=""
+                        name={`${name}.config.domains`}
                         type="text"
                         placeholder="Choose"
                         component={Input}
@@ -61,7 +61,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                 <Row col>
                     <Label>Request Headers</Label>
                     <Field
-                        name=""
+                        name={`${name}.config.request_headers`}
                         type="text"
                         placeholder="eg. http://gw.hellofresh.com/"
                         component={Input}
@@ -71,7 +71,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                 <Row col>
                     <Label>Exposed Headers</Label>
                     <Field
-                        name=""
+                        name={`${name}.config.exposed_headers`}
                         type="text"
                         component={Input}
                     />
