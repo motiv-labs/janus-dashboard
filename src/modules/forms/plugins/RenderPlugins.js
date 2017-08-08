@@ -26,7 +26,7 @@ import FormInput from '../FormInput/FormInput';
 const propTypes = {
     className: PropTypes.string,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
-    handlePluginActivation: PropTypes.func.isRequired,
+    handlePluginInclude: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
@@ -48,7 +48,7 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, plugins, selectedPlugins, handlePluginActivation } = this.props;
+        const { className, plugins, selectedPlugins, handlePluginInclude } = this.props;
         const b = block(className);
         const names = plugins.map(plugin => ({
             label: plugin.name,
@@ -110,7 +110,7 @@ class RenderPlugin extends Component {
                             <SelectPlugin
                                 name="form-field-name"
                                 options={names}
-                                onChange={handlePluginActivation}
+                                onChange={handlePluginInclude}
                             />
                         </Row>
                 }

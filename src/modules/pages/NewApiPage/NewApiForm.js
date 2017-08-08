@@ -35,7 +35,7 @@ const ApiForm = (props) => {
         selectedPlugins,
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
-    const activatePlugin = value => {
+    const includePlugin = value => {
         plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
                 // props.dispatch(props.change(`plugins[${index}].enabled`, true));
@@ -247,7 +247,8 @@ const ApiForm = (props) => {
                                 className={b()}
                                 plugins={plugins}
                                 selectedPlugins={selectedPlugins}
-                                handlePluginActivation={activatePlugin}
+                                handlePluginInclude={includePlugin}
+                                hand
                             />
                     }
 
