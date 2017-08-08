@@ -28,7 +28,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Request Transformer'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );

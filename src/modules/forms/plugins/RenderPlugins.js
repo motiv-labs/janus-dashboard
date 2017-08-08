@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
-import { typeOf } from '../../../helpers';
 
-import PluginSection from '../../PluginSection/PluginSection';
 import SelectPlugin from '../../selects/SelectPlugin/SelectPlugin';
 import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
@@ -14,11 +12,6 @@ import RateLimitPlugin from './RateLimit/RateLimitPlugin';
 import AuthPlugin from './oAuth/AuthPlugin';
 import CompressionPlugin from './Compression/CompressionPlugin';
 import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin';
-
-import Section from '../../Layout/Section/Section';
-import FormField from '../FormField';
-import FormLabel from '../FormLabel';
-import FormInput from '../FormInput/FormInput';
 
 const propTypes = {
     className: PropTypes.string,
@@ -46,7 +39,7 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude } = this.props;
+        const { className, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
         const b = block(className);
         const names = plugins.map(plugin => ({
             label: plugin.name,
@@ -60,8 +53,9 @@ class RenderPlugin extends Component {
                         const opts = {
                             className: b(),
                             key: pluginName,
-                            name: `plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`,
+                            name: `plugins[${this.getPluginIndex(plugins, pluginName)}]`,
                             handlePluginExclude,
+                            plugin: initialValues.plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginName,
                         };
 
@@ -96,6 +90,8 @@ class RenderPlugin extends Component {
                                         {...opts}
                                     />
                                 );
+                            default:
+                                return null;
                         }
                     })
                 }

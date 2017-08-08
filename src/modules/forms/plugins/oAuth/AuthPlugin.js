@@ -27,7 +27,7 @@ const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'oAuth'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>

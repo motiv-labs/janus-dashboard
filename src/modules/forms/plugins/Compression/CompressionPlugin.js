@@ -34,7 +34,7 @@ const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName })
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Compression'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );
