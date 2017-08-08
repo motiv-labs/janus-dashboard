@@ -22,4 +22,6 @@ const SelectPlugin = ({ name, onChange, options }) => {
     );
 };
 
+SelectPlugin.propTypes = propTypes;
+
 export default SelectPlugin;

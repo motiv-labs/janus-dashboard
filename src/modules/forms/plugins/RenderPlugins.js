@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
-import { typeOf } from '../../../helpers';
 
-import PluginSection from '../../PluginSection/PluginSection';
 import SelectPlugin from '../../selects/SelectPlugin/SelectPlugin';
 import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
@@ -14,11 +12,6 @@ import RateLimitPlugin from './RateLimit/RateLimitPlugin';
 import AuthPlugin from './oAuth/AuthPlugin';
 import CompressionPlugin from './Compression/CompressionPlugin';
 import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin';
-
-import Section from '../../Layout/Section/Section';
-import FormField from '../FormField';
-import FormLabel from '../FormLabel';
-import FormInput from '../FormInput/FormInput';
 
 const propTypes = {
     className: PropTypes.string,
@@ -52,7 +45,6 @@ class RenderPlugin extends Component {
             label: plugin.name,
             value: plugin.name,
         }));
-        console.warn('INITIAL', initialValues);
 
         return (
             <div>
@@ -98,6 +90,8 @@ class RenderPlugin extends Component {
                                         {...opts}
                                     />
                                 );
+                            default:
+                                return null;
                         }
                     })
                 }

@@ -17,9 +17,7 @@ class MultiSelect extends Component {
     getState = () => this.state;
 
     handleSelectChange = value => {
-        console.error('VL', value);
         this.setState((prevState, props) => ({ value }), this.props.input.onChange(value.split(',')));
-        // this.props.input.onChange({ value })
     }
 
     render() {
