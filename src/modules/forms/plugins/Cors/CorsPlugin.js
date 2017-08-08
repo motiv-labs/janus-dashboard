@@ -20,12 +20,10 @@ const propTypes = {
 
 const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
-    console.error(plugin.config.methods);
     const selectOptions = plugin.config.methods.map(item => ({
         label: item,
         value: item,
     }));
-    // console.error(`${name}.config.methods`)
 
     return (
         <div className={b('section')()}>
