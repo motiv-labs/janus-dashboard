@@ -12,6 +12,9 @@ import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
+    handlePluginExclude: PropTypes.func.isRequired,
 };
 
 const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
@@ -24,7 +27,7 @@ const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'oAuth'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>

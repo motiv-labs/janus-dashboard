@@ -250,6 +250,7 @@ const ApiForm = (props) => {
                             <RenderPlugins
                                 className={b()}
                                 plugins={plugins}
+                                initialValues={initialValues}
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
                                 handlePluginExclude={removePlugin}

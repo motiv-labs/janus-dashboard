@@ -9,13 +9,23 @@ import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
+import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
 
 const propTypes = {
     className: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
+    handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const CorsPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
+const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
+    console.error(plugin.config.methods);
+    const selectOptions = plugin.config.methods.map(item => ({
+        label: item,
+        value: item,
+    }));
+    // console.error(`${name}.config.methods`)
 
     return (
         <div className={b('section')()}>
@@ -24,7 +34,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'CORS'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>
@@ -40,10 +50,11 @@ const CorsPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
                 <Row col>
                     <Label>Methods</Label>
                     <Field
-                        name=""
+                        name={`${name}.config.methods`}
                         type="text"
                         placeholder="Choose one or more methods"
-                        component={Input}
+                        options={selectOptions}
+                        component={MultiSelect}
                     />
                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
                 </Row>

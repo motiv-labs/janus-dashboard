@@ -13,6 +13,9 @@ import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
+    handlePluginExclude: PropTypes.func.isRequired,
 };
 
 const RequestTransformerPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
@@ -25,7 +28,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Request Transformer'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );

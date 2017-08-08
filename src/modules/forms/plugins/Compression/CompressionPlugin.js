@@ -13,6 +13,9 @@ import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
+    handlePluginExclude: PropTypes.func.isRequired,
 };
 
 const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
@@ -31,7 +34,7 @@ const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName })
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Compression'}} disabled />
                 </Row>
-                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
+                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );
