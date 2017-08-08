@@ -10,6 +10,7 @@ import Input from '../../../inputs/Input';
 import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
+import TagSelect from '../../../selects/TagSelect/TagSelect';
 
 const propTypes = {
     className: PropTypes.string,
@@ -20,7 +21,11 @@ const propTypes = {
 
 const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
-    const selectOptions = plugin.config.methods.map(item => ({
+    const selectMethodOptions = plugin.config.methods.map(item => ({
+        label: item,
+        value: item,
+    }));
+    const selectTagsOptions = plugin.config.request_headers.map(item => ({
         label: item,
         value: item,
     }));
@@ -51,7 +56,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                         name={`${name}.config.methods`}
                         type="text"
                         placeholder="Choose one or more methods"
-                        options={selectOptions}
+                        options={selectMethodOptions}
                         component={MultiSelect}
                     />
                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -63,8 +68,9 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.request_headers`}
                         type="text"
-                        placeholder="eg. http://gw.hellofresh.com/"
-                        component={Input}
+                        placeholder="eg. Origin, Authorization, Content-Type"
+                        options={selectTagsOptions}
+                        component={TagSelect}
                     />
                     <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
                 </Row>

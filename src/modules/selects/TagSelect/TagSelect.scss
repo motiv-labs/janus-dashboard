@@ -1,0 +1,24 @@
+@import 'index.scss';
+
+.j-tags-select {
+    .Select-value {
+        background-color: $hellofresh-color;
+        border: none;
+        border-radius: $hf-border-radius;
+        margin-top: 0;
+        vertical-align: middle;
+        color: $hf-color-white;
+
+        &-icon {
+            float: right
+        }
+
+        &-label {
+            font-size: $hf-font-size-base;
+            line-height: $hf-line-height;
+        }
+    }
+    .Select-option.is-focused {
+        background-color: $hf-color-snot-green;
+    }
+}
