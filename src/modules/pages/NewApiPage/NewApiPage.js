@@ -7,8 +7,8 @@ const propTypes = {
     location: PropTypes.object.isRequired,
 };
 
-const EditPage = ({ location }) => <NewApiContainer location={location} />;
+const NewApiPage = ({ location }) => <NewApiContainer location={location} />;
 
-EditPage.propTypes = propTypes;
+NewApiPage.propTypes = propTypes;
 
-export default EditPage;
+export default NewApiPage;

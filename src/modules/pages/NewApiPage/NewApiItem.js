@@ -13,6 +13,7 @@ const propTypes = {
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
     selectPlugin: PropTypes.func.isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
     location: PropTypes.object.isRequired,
     willClone: PropTypes.func.isRequired,
 };
@@ -29,9 +30,23 @@ class NewApiItem extends Component {
     }
 
     submit = values => {
+        console.error(values, this.props.selectedPlugins);
         const transformedValues = transformFormValues(values, true);
+        const plugins = transformedValues.plugins;
+        const selectedPlugins = this.props.selectedPlugins;
 
-        this.props.saveEndpoint(this.props.location.pathname, transformedValues);
+        const addedPlugins = plugins.filter((plugin) => {
+            return selectedPlugins.indexOf(plugin.name) !== -1;
+        });
+
+        const computedPlugins = {
+            ...transformedValues,
+            plugins: addedPlugins,
+        };
+
+        console.error('SELECTED', addedPlugins);
+
+        this.props.saveEndpoint(this.props.location.pathname, computedPlugins);
     }
 
     hasToBeCloned = () => {
