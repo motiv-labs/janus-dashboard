@@ -20,9 +20,6 @@ import FormField from '../FormField';
 import FormLabel from '../FormLabel';
 import FormInput from '../FormInput/FormInput';
 
-// import './RenderPlugins.css';
-// const b = block('j-plugins');
-
 const propTypes = {
     className: PropTypes.string,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),

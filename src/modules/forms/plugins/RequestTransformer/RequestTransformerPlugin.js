@@ -13,6 +13,9 @@ import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {
     className: PropTypes.string,
+    name: PropTypes.string.isRequired,
+    pluginName: PropTypes.string.isRequired,
+    handlePluginExclude: PropTypes.func.isRequired,
 };
 
 const RequestTransformerPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
