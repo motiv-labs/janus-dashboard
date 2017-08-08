@@ -31,6 +31,7 @@ const ApiForm = (props) => {
         handleSubmit,
         initialValues,
         plugins,
+        excludePlugin,
         selectPlugin,
         selectedPlugins,
     } = props;
@@ -42,6 +43,9 @@ const ApiForm = (props) => {
                 selectPlugin(plugin.name);
             }
         });
+    };
+    const removePlugin = value => {
+        excludePlugin(value);
     };
 
     return (
@@ -248,7 +252,7 @@ const ApiForm = (props) => {
                                 plugins={plugins}
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
-                                hand
+                                handlePluginExclude={removePlugin}
                             />
                     }
 

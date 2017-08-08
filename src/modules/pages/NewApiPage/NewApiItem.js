@@ -12,6 +12,7 @@ const propTypes = {
     fetchEndpointSchema: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
+    excludePlugin: PropTypes.func.isRequired,
     selectPlugin: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
     location: PropTypes.object.isRequired,
@@ -57,11 +58,11 @@ class NewApiItem extends Component {
     }
 
     render() {
-        const { api, selectPlugin } = this.props;
+        const { api, excludePlugin, selectPlugin } = this.props;
         return (
             <div>
                 <Subtitle>{api.name}</Subtitle>
-                <NewApiForm onSubmit={this.submit} selectPlugin={selectPlugin} />
+                <NewApiForm onSubmit={this.submit} excludePlugin={excludePlugin} selectPlugin={selectPlugin} />
             </div>
         );
     }

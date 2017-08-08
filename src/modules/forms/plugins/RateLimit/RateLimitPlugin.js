@@ -15,7 +15,7 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const RateLimitPlugin = ({ className, name }) => {
+const RateLimitPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
@@ -25,7 +25,7 @@ const RateLimitPlugin = ({ className, name }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Rate Limit'}} disabled />
                 </Row>
-                <ControlBar name={name} />
+                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );

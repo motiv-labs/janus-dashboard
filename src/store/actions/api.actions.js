@@ -10,6 +10,7 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
@@ -60,6 +61,11 @@ export const saveEndpointSuccess = api => ({
 
 export const selectPlugin = pluginName/*: string*/ => ({
     type: SELECT_PLUGIN,
+    payload: pluginName,
+});
+
+export const excludePlugin = pluginName/*: string*/ => ({
+    type: EXCLUDE_PLUGIN,
     payload: pluginName,
 });
 

@@ -4,6 +4,7 @@ import {
     fetchEndpointSchema,
     resetEndpoint,
     saveEndpoint,
+    excludePlugin,
     selectPlugin,
     willClone,
 } from '../../../store/actions';
@@ -17,5 +18,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { fetchEndpointSchema, resetEndpoint, saveEndpoint, selectPlugin, willClone },
+    { fetchEndpointSchema, resetEndpoint, saveEndpoint, excludePlugin, selectPlugin, willClone },
 )(NewApiItem);

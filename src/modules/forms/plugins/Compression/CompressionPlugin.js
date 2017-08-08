@@ -15,7 +15,7 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const CompressionPlugin = ({ className, name }) => {
+const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
@@ -31,7 +31,7 @@ const CompressionPlugin = ({ className, name }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Compression'}} disabled />
                 </Row>
-                <ControlBar name={name} />
+                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );

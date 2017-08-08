@@ -15,7 +15,7 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const RequestTransformerPlugin = ({ className, name }) => {
+const RequestTransformerPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
@@ -25,7 +25,7 @@ const RequestTransformerPlugin = ({ className, name }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'Request Transformer'}} disabled />
                 </Row>
-                <ControlBar name={name} />
+                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
         </div>
     );

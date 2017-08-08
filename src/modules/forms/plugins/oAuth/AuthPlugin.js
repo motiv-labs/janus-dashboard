@@ -14,7 +14,7 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const AuthPlugin = ({ className, name }) => {
+const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
@@ -24,7 +24,7 @@ const AuthPlugin = ({ className, name }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'oAuth'}} disabled />
                 </Row>
-                <ControlBar name={name} />
+                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>

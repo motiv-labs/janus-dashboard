@@ -26,6 +26,7 @@ import FormInput from '../FormInput/FormInput';
 const propTypes = {
     className: PropTypes.string,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
+    handlePluginExclude: PropTypes.func.isRequired,
     handlePluginInclude: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -48,7 +49,7 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, plugins, selectedPlugins, handlePluginInclude } = this.props;
+        const { className, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude } = this.props;
         const b = block(className);
         const names = plugins.map(plugin => ({
             label: plugin.name,
@@ -59,45 +60,43 @@ class RenderPlugin extends Component {
             <div>
                 {
                     selectedPlugins.map(pluginName => {
+                        const opts = {
+                            className: b(),
+                            key: pluginName,
+                            name: `plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`,
+                            handlePluginExclude,
+                            pluginName,
+                        };
+
                         switch (pluginName) {
                             case 'cors':
                                 return (
                                     <CorsPlugin
-                                        key={pluginName}
-                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
-                                        className={b()}
+                                        {...opts}
                                     />
                                 );
                             case 'rate_limit':
                                 return (
                                     <RateLimitPlugin
-                                        key={pluginName}
-                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
-                                        className={b()}
+                                        {...opts}
                                     />
                                 );
                             case 'oauth2':
                                 return (
                                     <AuthPlugin
-                                        key={pluginName}
-                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
-                                        className={b()}
+                                        {...opts}
                                     />
                                 );
                             case 'compression':
                                 return (
                                     <CompressionPlugin
-                                        key={pluginName}
-                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
-                                        className={b()}
+                                        {...opts}
                                     />
                                 );
                             case 'request_transformer':
                                 return (
                                     <RequestTransformerPlugin
-                                        key={pluginName}
-                                        name={`plugins[${this.getPluginIndex(plugins, pluginName)}].enabled`}
-                                        className={b()}
+                                        {...opts}
                                     />
                                 );
                         }

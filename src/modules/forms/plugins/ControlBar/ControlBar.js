@@ -10,7 +10,7 @@ import './ControlBar.css';
 
 const b = block('j-plugin-controls');
 
-const ControlBar = ({ name, enabled }) => {
+const ControlBar = ({ name, enabled, removePlugin }) => {
     return (
         <div className={b('wrapper')}>
             <div className={b()}>
@@ -19,7 +19,7 @@ const ControlBar = ({ name, enabled }) => {
                         name={name}
                     />
                 </div>
-                <span><Icon type="delete" /></span>
+                <span onClick={removePlugin}><Icon type="delete" /></span>
             </div>
         </div>
     );

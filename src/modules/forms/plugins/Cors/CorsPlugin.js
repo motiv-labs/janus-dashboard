@@ -14,7 +14,7 @@ const propTypes = {
     className: PropTypes.string,
 };
 
-const CorsPlugin = ({ className, name }) => {
+const CorsPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
@@ -24,7 +24,7 @@ const CorsPlugin = ({ className, name }) => {
                     <Label>Plugin Name</Label>
                     <Input input={{value: 'CORS'}} disabled />
                 </Row>
-                <ControlBar name={name} />
+                <ControlBar name={name} removePlugin={() => handlePluginExclude(pluginName)} />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>

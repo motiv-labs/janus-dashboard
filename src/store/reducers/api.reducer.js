@@ -1,3 +1,5 @@
+import R from 'ramda';
+
 import {
     DELETE_ENDPOINT_START,
     DELETE_ENDPOINT_SUCCESS,
@@ -8,6 +10,7 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
@@ -43,6 +46,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 api: action.payload,
                 isFetching: false,
+            };
+        }
+        case EXCLUDE_PLUGIN: {
+            return {
+                ...state,
+                selectedPlugins: R.without(action.payload, state.selectedPlugins),
             };
         }
         case SELECT_PLUGIN: {
