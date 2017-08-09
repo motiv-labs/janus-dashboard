@@ -29,7 +29,10 @@ const schema = {
             name: 'rate_limit',
             enabled: false,
             config: {
-                limit: '10-S',
+                // limit: '10-S',
+                limit: {
+                    units: ['ns', 'us', 'ms', 's', 'm', 'h'],
+                },
                 policy: 'local',
             },
         },
