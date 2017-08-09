@@ -29,6 +29,10 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
         label: item,
         value: item,
     }));
+    const optionsTransformer = config => config.map(item => ({
+        label: item,
+        value: item,
+    }));
 
     return (
         <div className={b('section')()}>
@@ -56,7 +60,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                         name={`${name}.config.methods`}
                         type="text"
                         placeholder="Choose one or more methods"
-                        options={selectMethodOptions}
+                        options={optionsTransformer(plugin.config.methods)}
                         component={MultiSelect}
                     />
                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -69,7 +73,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                         name={`${name}.config.request_headers`}
                         type="text"
                         placeholder="eg. Origin, Authorization, Content-Type"
-                        options={selectTagsOptions}
+                        options={optionsTransformer(plugin.config.request_headers)}
                         component={TagSelect}
                     />
                     <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
@@ -79,7 +83,9 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.exposed_headers`}
                         type="text"
-                        component={Input}
+                        placeholder="eg. X-Debug-Token, X-Debug-Token-Link"
+                        options={optionsTransformer(plugin.config.exposed_headers)}
+                        component={TagSelect}
                     />
                     <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
                 </Row>
