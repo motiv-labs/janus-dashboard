@@ -16,6 +16,7 @@ import TagSelect from '../../../selects/TagSelect/TagSelect';
 const propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
+    plugin: PropTypes.object.isRequired,
     pluginName: PropTypes.string.isRequired,
     handlePluginExclude: PropTypes.func.isRequired,
 };
