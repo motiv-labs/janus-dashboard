@@ -18,7 +18,7 @@ const ApiListPage = () => (
                     <Row>
                         <SearchingContainer />
                         <Link to="/new">
-                            <Button label="Create New Api" />
+                            <Button mod="primary" label="Create New Api">+ Create New API</Button>
                         </Link>
                     </Row>
                 </Row>
