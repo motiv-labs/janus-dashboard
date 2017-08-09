@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
+import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
 
 import Row from '../../../Layout/Row/Row';
@@ -17,7 +18,7 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
+const AuthPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
 
     return (
@@ -31,11 +32,11 @@ const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>
-                    <Label>Servewr Name</Label>
+                    <Label>Server Name</Label>
                     <Field
-                        name="config.server_name"
+                        name={`${name}.config.server_name`}
                         type="text"
-                        placeholder="Choose"
+                        placeholder={SETUP.placeholders.auth.server_name}
                         component={Input}
                     />
                     <Hint>The server that the Gateway will use as the oauth provider for requests to the listen_path.</Hint>
