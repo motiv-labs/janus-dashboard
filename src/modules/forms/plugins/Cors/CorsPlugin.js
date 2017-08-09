@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
+import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
 
 import Row from '../../../Layout/Row/Row';
@@ -41,7 +42,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.domains`}
                         type="text"
-                        placeholder="Choose"
+                        placeholder={SETUP.placeholders.cors.domains}
                         component={Input}
                     />
                     <Hint>A list of all domains from which the endpoint will accept requests</Hint>
@@ -51,7 +52,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.methods`}
                         type="text"
-                        placeholder="Choose one or more methods"
+                        placeholder={SETUP.placeholders.cors.methods}
                         options={optionsTransformer(plugin.config.methods)}
                         component={MultiSelect}
                     />
@@ -64,7 +65,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.request_headers`}
                         type="text"
-                        placeholder="eg. Origin, Authorization, Content-Type"
+                        placeholder={SETUP.placeholders.cors.request_headers}
                         options={optionsTransformer(plugin.config.request_headers)}
                         component={TagSelect}
                     />
@@ -75,7 +76,7 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                     <Field
                         name={`${name}.config.exposed_headers`}
                         type="text"
-                        placeholder="eg. X-Debug-Token, X-Debug-Token-Link"
+                        placeholder={SETUP.placeholders.cors.request_headers}
                         options={optionsTransformer(plugin.config.exposed_headers)}
                         component={TagSelect}
                     />
