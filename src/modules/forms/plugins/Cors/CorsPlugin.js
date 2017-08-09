@@ -21,14 +21,6 @@ const propTypes = {
 
 const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
-    const selectMethodOptions = plugin.config.methods.map(item => ({
-        label: item,
-        value: item,
-    }));
-    const selectTagsOptions = plugin.config.request_headers.map(item => ({
-        label: item,
-        value: item,
-    }));
     const optionsTransformer = config => config.map(item => ({
         label: item,
         value: item,
