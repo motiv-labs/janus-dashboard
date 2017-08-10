@@ -28,8 +28,12 @@
     padding-bottom: $hf-padding-cell;
     color: $hf-color-gray-medium;
     font-weight: $hf-font-weight-bold;
+
+    &:first-child {
+        padding-left: $hf-padding-big;
+    }
   }
- 
+
   &__td {
     vertical-align: middle;
     border-bottom: $hf-border;
@@ -38,6 +42,11 @@
 
     &:first-child {
       font-weight: $hf-font-weight-bold;
+      padding-left: $hf-padding-big;
+    }
+
+    &:last-child {
+        padding-right: $hf-padding-big;
     }
   }
 }

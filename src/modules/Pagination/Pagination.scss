@@ -5,6 +5,9 @@ $paginator-height: 13px;
 
 .j-pagination {
   &__nav {
+    padding-top: $hf-padding-main;
+    padding-bottom: $hf-padding-main;
+
     &-item {
       display: inline-block;
       vertical-align: top;
