@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import R from 'ramda';
-// import Select from 'react-select';
-import Select from '../../../selects/SimpleSelect/SimpleSelect';
 
 import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
@@ -16,7 +14,6 @@ import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
-// import Select from '../../../selects/SelectPlugin/SelectPlugin';
 
 const propTypes = {
     className: PropTypes.string,
@@ -62,7 +59,7 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                                 name={`${name}.config.limit.units`}
                                 type="text"
                                 options={optionsTransformer(plugin.config.limit.units)}
-                                component={Select}
+                                component={SimpleSelect}
                             />
                         </Row>
                     </Row>
@@ -74,7 +71,7 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                         name={`${name}.config.policy`}
                         type="text"
                         options={plugin.config.policy}
-                        component={Select}
+                        component={SimpleSelect}
                     />
                     <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
                 </Row>
