@@ -40,11 +40,16 @@ export default function reducer(state = initialState, action) {
             };
         }
         case FETCH_ENDPOINT_SUCCESS:
-        case FETCH_ENDPOINT_SCHEMA_SUCCESS:
-        case SAVE_ENDPOINT_SUCCESS: {
+        case FETCH_ENDPOINT_SCHEMA_SUCCESS: {
             return {
                 ...state,
                 api: action.payload,
+                isFetching: false,
+            };
+        }
+        case SAVE_ENDPOINT_SUCCESS: {
+            return {
+                ...state,
                 isFetching: false,
             };
         }

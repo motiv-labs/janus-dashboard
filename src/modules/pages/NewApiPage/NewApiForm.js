@@ -287,6 +287,7 @@ export default connect(
         return {
             initialValues: transformFormValues(state.apiReducer.api),
             selectedPlugins: state.apiReducer.selectedPlugins,
+            keepDirtyOnReinitialize: false,
             plugins,
         };
     },
