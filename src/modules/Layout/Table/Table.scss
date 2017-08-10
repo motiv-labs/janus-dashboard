@@ -1,43 +1,52 @@
 @import 'index.scss';
 
 .j-table {
-  width: 100%;
-  text-align: left;
+    width: 100%;
+    text-align: left;
 
-  &__tfoot {
-    height: 70px;
-    border: $hf-border;
-    border-top: none;
+    &__tfoot {
+        height: 70px;
+        border: $hf-border;
+        border-top: none;
 
-    &--tr {
-      background-color: $hf-color-white;
+        &--tr {
+            background-color: $hf-color-white;
+        }
     }
-  }
 
-  &__tbody {
-    border: $hf-border;
-    border-bottom: none;
-  }
-
-  &__row {
-    background-color: $hf-color-white;
-  }
-
-  &__th {
-    padding-top: $hf-padding-cell;
-    padding-bottom: $hf-padding-cell;
-    color: $hf-color-gray-medium;
-    font-weight: $hf-font-weight-bold;
-  }
- 
-  &__td {
-    vertical-align: middle;
-    border-bottom: $hf-border;
-    padding-top: $hf-padding-cell;
-    padding-bottom: $hf-padding-cell;
-
-    &:first-child {
-      font-weight: $hf-font-weight-bold;
+    &__tbody {
+        border: $hf-border;
+        border-bottom: none;
     }
-  }
+
+    &__row {
+        background-color: $hf-color-white;
+    }
+
+    &__th {
+        padding-top: $hf-padding-cell;
+        padding-bottom: $hf-padding-cell;
+        color: $hf-color-gray-medium;
+        font-weight: $hf-font-weight-bold;
+
+        &:first-child {
+            padding-left: $hf-padding-big;
+        }
+    }
+
+    &__td {
+        vertical-align: middle;
+        border-bottom: $hf-border;
+        padding-top: $hf-padding-cell;
+        padding-bottom: $hf-padding-cell;
+
+        &:first-child {
+            font-weight: $hf-font-weight-bold;
+            padding-left: $hf-padding-big;
+        }
+
+        &:last-child {
+            padding-right: $hf-padding-big;
+        }
+    }
 }
