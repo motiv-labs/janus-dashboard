@@ -27,20 +27,11 @@ const propTypes = {
 };
 
 const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
-    console.warn('PLUGIN:', plugin);
     const b = block(className);
-    const optionsTransformer = config => {
-        console.warn('config', config);
-        // if (R.type(config) === 'Object') {
-        //     return [].concat(config);
-        // }
-
-        return config;
-        // return config.map(item => ({
-        //     value: item.value,
-        //     label: item.label,
-        // }));
-    };
+    const optionsTransformer = config => config.map(item => ({
+        label: item,
+        value: item,
+    }));
 
     console.error('HERE', optionsTransformer(plugin.config.policy));
 
@@ -67,17 +58,22 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                         </Row>
                         <Row col>
                             <Label>Limit Unit</Label>
-                            <Input input={{value: 'Rate Limit'}} disabled />
+                            <Field
+                                name={`${name}.config.limit.units`}
+                                type="text"
+                                options={optionsTransformer(plugin.config.limit.units)}
+                                component={Select}
+                            />
                         </Row>
                     </Row>
-                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                    <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
                 <Row col>
                     <Label>Policy</Label>
                     <Field
                         name={`${name}.config.policy`}
                         type="text"
-                        options={optionsTransformer(plugin.config.policy)}
+                        options={plugin.config.policy}
                         component={Select}
                     />
                     <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
