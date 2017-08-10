@@ -50,6 +50,10 @@ class RenderPlugin extends Component {
             <div>
                 {
                     selectedPlugins.map(pluginName => {
+                        console.warn('/_/_/_/_/_/_/_/_/_/_/');
+                        console.log(initialValues.plugins);
+                        console.log(this.getPluginIndex(plugins, pluginName));
+                        console.warn('X', initialValues.plugins[this.getPluginIndex(plugins, pluginName)]);
                         const opts = {
                             className: b(),
                             key: pluginName,

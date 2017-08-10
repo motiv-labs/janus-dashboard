@@ -23,10 +23,13 @@ const propTypes = {
 
 const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
-    const optionsTransformer = config => config.map(item => ({
-        label: item,
-        value: item,
-    }));
+    const optionsTransformer = config => {
+        console.error('CONFIG CORS:: ', config);
+        return config.map(item => ({
+            label: item,
+            value: item,
+        }));
+    };
 
     return (
         <div className={b('section')()}>

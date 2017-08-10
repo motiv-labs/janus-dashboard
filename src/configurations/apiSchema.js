@@ -31,9 +31,17 @@ const schema = {
             config: {
                 // limit: '10-S',
                 limit: {
-                    units: ['ns', 'us', 'ms', 's', 'm', 'h'],
+                    // units: ['ns', 'us', 'ms', 's', 'm', 'h'],
+                    units: ['S', 'M', 'H'],
                 },
-                policy: 'local',
+                policy: [
+                    {
+                        local: 'local'
+                    },
+                    {
+                        redis: 'destributed'
+                    }
+                ],
             },
         },
         {
@@ -55,7 +63,33 @@ const schema = {
                     headers: {
                         TEST: 'TEST',
                     },
-                    querystring: 'test',
+                    querystring: {
+                        test: 'test'
+                    },
+                },
+                append: {
+                    headers: {
+                        TEST: 'TEST',
+                    },
+                    querystring: {
+                        test: 'test'
+                    },
+                },
+                replace: {
+                    headers: {
+                        TEST: 'TEST',
+                    },
+                    querystring: {
+                        test: 'test'
+                    },
+                },
+                remove: {
+                    headers: {
+                        TEST: 'TEST',
+                    },
+                    querystring: {
+                        test: 'test'
+                    },
                 },
             },
         },

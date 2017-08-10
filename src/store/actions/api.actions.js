@@ -172,6 +172,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
 
     return client.post('apis', api)
     .then((response) => {
+        // console.warn('RESPONSE:', JSON.parse(response))
         dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
         dispatch(openResponseModal({
             status: response.status,
