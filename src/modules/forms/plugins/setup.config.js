@@ -8,6 +8,9 @@ export default {
         },
         auth: {
             server_name: 'Choose',
+        },
+        rate_limit: {
+
         }
     },
 };

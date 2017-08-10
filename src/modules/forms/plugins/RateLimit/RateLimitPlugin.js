@@ -55,14 +55,22 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>
-                    <Label>Domains</Label>
-                    {/*<Field
-                        name={`${name}.config.domains`}
-                        type="text"
-                        placeholder={SETUP.placeholders.cors.domains}
-                        component={Input}
-                    />
-                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>*/}
+                    <Row>
+                        <Row col>
+                            <Label>Limit Value</Label>
+                            <Field
+                                type="number"
+                                name={`${name}.config.limit.value`}
+                                placeholder=""
+                                component={Input}
+                            />
+                        </Row>
+                        <Row col>
+                            <Label>Limit Unit</Label>
+                            <Input input={{value: 'Rate Limit'}} disabled />
+                        </Row>
+                    </Row>
+                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>
                 </Row>
                 <Row col>
                     <Label>Policy</Label>
