@@ -27,7 +27,8 @@
     "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "stylelint": "^8.0.0"
   },
   "scripts": {
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
@@ -35,8 +36,8 @@
     "start-js": "react-scripts start",
     "start": "PORT=8082 npm-run-all -p watch-css start-js",
     "build": "npm run build-css && npm run lint:fix &&react-scripts build",
-    "lint": "eslint --ext .jsx,.js ./src",
-    "lint:fix": "eslint --ext .jsx,.js ./src --fix",
+    "lint": "eslint --ext .jsx,.js ./src && stylelint '**/*.scss'",
+    "lint:fix": "eslint --ext .jsx,.js ./src --fix && stylelint '**/*.scss' --fix",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },

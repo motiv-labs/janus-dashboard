@@ -4,64 +4,64 @@ $paginator-width: 8px;
 $paginator-height: 13px;
 
 .j-pagination {
-  &__nav {
-    padding-top: $hf-padding-main;
-    padding-bottom: $hf-padding-main;
+    &__nav {
+        padding-top: $hf-padding-main;
+        padding-bottom: $hf-padding-main;
 
-    &-item {
-      display: inline-block;
-      vertical-align: top;
-      height: 30px;
-      line-height: 30px;
-      background-color: $hf-color-white;
-      border: $hf-border;
-      font-size: $hf-font-size-small;
-      text-align: center;
-      color: $hf-color-gray-medium;
-      padding: 0 8px;
-      box-sizing: border-box;
-      transition: background-color 0.05s, color 0.05s, border-color 0.05s;
-      cursor: pointer;
+        &-item {
+            display: inline-block;
+            vertical-align: top;
+            height: 30px;
+            line-height: 30px;
+            background-color: $hf-color-white;
+            border: $hf-border;
+            font-size: $hf-font-size-small;
+            text-align: center;
+            color: $hf-color-gray-medium;
+            padding: 0 8px;
+            box-sizing: border-box;
+            transition: background-color 0.05s, color 0.05s, border-color 0.05s;
+            cursor: pointer;
 
-      &--disabled {
-        opacity: 0.5;
-      }
+            &--disabled {
+                opacity: 0.5;
+            }
 
-      &--active {
-        background-color: $hellofresh-color;
-        border-color: $hellofresh-color;
-        color: $hf-color-white;
-      }
+            &--active {
+                background-color: $hellofresh-color;
+                border-color: $hellofresh-color;
+                color: $hf-color-white;
+            }
 
-      &--prev,
-      &--next {
-        position: relative;
-        width: 20px;
-        height: 30px;
-        border: none;
-        background: none;
+            &--prev,
+            &--next {
+                position: relative;
+                width: 20px;
+                height: 30px;
+                border: none;
+                background: none;
 
-        &:before {
-          content: '';
-          display: block;
-          position: absolute;
-          width: $paginator-width;
-          height: $paginator-height;
-          @include alignCenter();
+                &:before {
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    width: $paginator-width;
+                    height: $paginator-height;
+                    @include alignCenter();
+                }
+            }
+
+            &--prev {
+                &:before {
+                    background-image: url(../../assets/img/small-arrow.svg);
+                }
+            }
+
+            &--next {
+                &:before {
+                    background-image: url(../../assets/img/small-arrow-next.svg);
+                }
+            }
         }
-      }
-
-      &--prev {
-        &:before {
-          background-image: url(../../assets/img/small-arrow.svg);
-        }
-      }
-
-      &--next {
-        &:before {
-          background-image: url(../../assets/img/small-arrow-next.svg);
-        }
-      }
     }
-  }
 }
