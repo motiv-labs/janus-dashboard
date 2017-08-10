@@ -54,9 +54,8 @@ export const saveEndpointRequest = () => ({
     type: SAVE_ENDPOINT_START,
 });
 
-export const saveEndpointSuccess = api => ({
+export const saveEndpointSuccess = () => ({
     type: SAVE_ENDPOINT_SUCCESS,
-    payload: api,
 });
 
 export const selectPlugin = pluginName/*: string*/ => ({
@@ -132,9 +131,11 @@ export const fetchEndpointSchema = () => (dispatch) => {
 export const updateEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
-    return client.put(`apis${pathname}`, api)
+    const readyApi = api;
+
+    return client.put(`apis${pathname}`, readyApi)
     .then((response) => {
-        dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({ // @FIXME: move to reducers
             status: response.status,
             message: 'Successfuly saved',

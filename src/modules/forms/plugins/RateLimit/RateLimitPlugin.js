@@ -30,8 +30,6 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
         value: item,
     }));
 
-    console.error('HERE', optionsTransformer(plugin.config.policy));
-
     return (
         <div className={b('section')()}>
             <Row fullwidth>
