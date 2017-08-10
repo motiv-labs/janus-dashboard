@@ -36,10 +36,12 @@ const schema = {
                 },
                 policy: [
                     {
-                        local: 'local'
+                        label: 'local',
+                        value: 'local',
                     },
                     {
-                        redis: 'destributed'
+                        label: 'destributed',
+                        value: 'redis',
                     }
                 ],
             },

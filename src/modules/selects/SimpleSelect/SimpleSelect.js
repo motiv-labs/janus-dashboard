@@ -48,19 +48,45 @@ const propTypes = {
 //     );
 // };
 class SimpleSelect extends Component {
+    state = {
+        selectValue: ''
+    }
     handleOnChange = value => {
         console.log(value);
         this.props.input.onChange(value.value);
     }
+    // render() {
+    //     console.error('THIS>PROPS>', this.props);
+    //     return (
+    //         <Select
+    //             {...this.props}
+    //             value={this.props.input.value}
+    //             className="j-select"
+    //             onChange={this.handleOnChange}
+    //             onBlur={this.handleOnChange}
+    //         />
+    //     );
+    // }
+    updateValue = (newValue) => {
+        console.log('State changed to ' + newValue);
+        this.setState({
+            selectValue: newValue
+        });
+    }
+
     render() {
         console.error('THIS>PROPS>', this.props);
         return (
             <Select
-                {...this.props}
-                value={this.props.input.value}
-                className="j-select"
-                onChange={this.handleOnChange}
-                onBlur={this.handleOnChange}
+                {...this.props.input}
+                value={this.state.selectValue}
+                onChange={this.updateValue}
+                simpleValue
+                options={this.props.options}
+                onBlur={() => {
+                    {/*console.error(th)*/}
+                    this.props.input.onBlur(this.state.selectValue);
+                }}
             />
         );
     }

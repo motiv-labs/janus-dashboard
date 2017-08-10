@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import R from 'ramda';
 // import Select from 'react-select';
 import Select from '../../../selects/SimpleSelect/SimpleSelect';
 
@@ -26,19 +27,22 @@ const propTypes = {
 };
 
 const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
-    console.error('PLUGIN:', plugin);
+    console.warn('PLUGIN:', plugin);
     const b = block(className);
     const optionsTransformer = config => {
-        console.error('CONFIG:: ', config);
-        return config.map(item => ({
-            label: item,
-            value: item,
-        }));
-        // return [
-        //     {value: 'bla', label: 'bla'},
-        //     {value: 'local', label: 'local'},
-        // ];
+        console.warn('config', config);
+        // if (R.type(config) === 'Object') {
+        //     return [].concat(config);
+        // }
+
+        return config;
+        // return config.map(item => ({
+        //     value: item.value,
+        //     label: item.label,
+        // }));
     };
+
+    console.error('HERE', optionsTransformer(plugin.config.policy));
 
     return (
         <div className={b('section')()}>
