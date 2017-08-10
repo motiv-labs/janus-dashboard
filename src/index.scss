@@ -4,15 +4,15 @@
 @import 'mixins.scss';
 
 body {
-  font-family: $hf-font-family-sans-serif;
-  background-color: $hf-color-bg;
+    font-family: $hf-font-family-sans-serif;
+    background-color: $hf-color-bg;
 }
 
 a {
-  color: $hellofresh-color;
-  text-decoration: none;
+    color: $hellofresh-color;
+    text-decoration: none;
 }
 
 strong {
-  font-weight: 700;
+    font-weight: 700;
 }
