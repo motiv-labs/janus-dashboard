@@ -59,6 +59,24 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     </Row>
                 </Row>
             </Row>
+            <Row className={b('row')()} fullwidth>
+                <HeadersSection
+                    name={`${name}.config.append.headers`}
+                    config={plugin.config.append.headers}
+                />
+            </Row>
+            <Row className={b('row')()} fullwidth>
+                <HeadersSection
+                    name={`${name}.config.replace.headers`}
+                    config={plugin.config.replace.headers}
+                />
+            </Row>
+            <Row className={b('row')()} fullwidth>
+                <HeadersSection
+                    name={`${name}.config.remove.headers`}
+                    config={plugin.config.remove.headers}
+                />
+            </Row>
         </div>
     );
 };

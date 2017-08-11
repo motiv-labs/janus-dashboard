@@ -66,11 +66,11 @@ const schema = {
                     headers: {
                         0: {
                             key: 'One',
-                            value: 'TEST_val',
+                            value: 'add_val',
                         },
                         1: {
                             key: 'Two',
-                            value: 'TEST__jkj_val',
+                            value: 'add_blabla',
                         }
                     },
                     querystring: {
@@ -79,7 +79,14 @@ const schema = {
                 },
                 append: {
                     headers: {
-                        TEST: 'TEST',
+                        0: {
+                            key: 'One',
+                            value: 'append_1',
+                        },
+                        1: {
+                            key: 'Two',
+                            value: 'append_ssdsd',
+                        }
                     },
                     querystring: {
                         test: 'test',
@@ -87,7 +94,10 @@ const schema = {
                 },
                 replace: {
                     headers: {
-                        TEST: 'TEST',
+                        0: {
+                            key: 'One',
+                            value: 'replacaecde',
+                        },
                     },
                     querystring: {
                         test: 'test',
@@ -95,7 +105,10 @@ const schema = {
                 },
                 remove: {
                     headers: {
-                        TEST: 'TEST',
+                        0: {
+                            key: 'One',
+                            value: 'sasasa',
+                        },
                     },
                     querystring: {
                         test: 'test',
