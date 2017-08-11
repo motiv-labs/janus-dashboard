@@ -64,8 +64,14 @@ const schema = {
             config: {
                 add: {
                     headers: {
-                        TEST: 'TEST_val',
-                        test1: 'test2_val',
+                        0: {
+                            key: 'One',
+                            value: 'TEST_val',
+                        },
+                        1: {
+                            key: 'Two',
+                            value: 'TEST__jkj_val',
+                        }
                     },
                     querystring: {
                         test: 'test',

@@ -40,7 +40,7 @@ class HeadersSection extends Component {
                             <Row key={key}>
                                 <Row col>
                                     <Field
-                                        name={`${this.props.name}['${key}']`}
+                                        name={`${this.props.name}['${key}'].key`}
                                         type="text"
                                         placeholder="Key"
                                         component={Input}
@@ -48,7 +48,7 @@ class HeadersSection extends Component {
                                 </Row>
                                 <Row col>
                                     <Field
-                                        name={`${this.props.name}['${key}']`}
+                                        name={`${this.props.name}['${key}'].value`}
                                         type="text"
                                         placeholder="Value"
                                         component={Input}
