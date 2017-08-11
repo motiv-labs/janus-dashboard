@@ -18,7 +18,7 @@ import {
 
 const initialState = {
     api: {},
-    selectedPlugins: ['rate_limit'],
+    selectedPlugins: [],
     isFetching: false,
 };
 
