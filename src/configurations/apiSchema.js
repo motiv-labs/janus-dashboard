@@ -64,10 +64,11 @@ const schema = {
             config: {
                 add: {
                     headers: {
-                        TEST: 'TEST',
+                        TEST: 'TEST_val',
+                        test1: 'test2_val',
                     },
                     querystring: {
-                        test: 'test'
+                        test: 'test',
                     },
                 },
                 append: {
@@ -75,7 +76,7 @@ const schema = {
                         TEST: 'TEST',
                     },
                     querystring: {
-                        test: 'test'
+                        test: 'test',
                     },
                 },
                 replace: {
@@ -83,7 +84,7 @@ const schema = {
                         TEST: 'TEST',
                     },
                     querystring: {
-                        test: 'test'
+                        test: 'test',
                     },
                 },
                 remove: {
@@ -91,7 +92,7 @@ const schema = {
                         TEST: 'TEST',
                     },
                     querystring: {
-                        test: 'test'
+                        test: 'test',
                     },
                 },
             },

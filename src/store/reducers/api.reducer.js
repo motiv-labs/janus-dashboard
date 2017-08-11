@@ -18,7 +18,7 @@ import {
 
 const initialState = {
     api: {},
-    selectedPlugins: [],
+    selectedPlugins: ['request_transformer'],
     isFetching: false,
 };
 

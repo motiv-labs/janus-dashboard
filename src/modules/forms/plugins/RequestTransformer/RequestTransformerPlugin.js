@@ -10,6 +10,7 @@ import Input from '../../../inputs/Input';
 import Radio from '../../../inputs/Radio/Radio';
 import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
+import HeadersSection from './HeadersSection/HeadersSection';
 
 const propTypes = {
     className: PropTypes.string,
@@ -18,7 +19,7 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const RequestTransformerPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
+const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
 
     return (
@@ -29,6 +30,34 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     <Input input={{value: 'Request Transformer'}} disabled />
                 </Row>
                 <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
+            </Row>
+            <Row className={b('row')()} fullwidth>
+                <HeadersSection
+                    name={`${name}.config.add.headers`}
+                    config={plugin.config.add.headers}
+                />
+                <Row col>
+                    <Label>Limit Value</Label>
+                    <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
+                    <Row>
+                        <Row col>
+                            <Field
+                                name={`${name}.config.limit.value`}
+                                type="text"
+                                placeholder="Key"
+                                component={Input}
+                            />
+                        </Row>
+                        <Row col>
+                            <Field
+                                name={`${name}.config.limit.units`}
+                                type="text"
+                                placeholder="Value"
+                                component={Input}
+                            />
+                        </Row>
+                    </Row>
+                </Row>
             </Row>
         </div>
     );
