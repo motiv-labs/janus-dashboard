@@ -1,4 +1,6 @@
 import createHistory from 'history/createBrowserHistory';
+import R from 'ramda';
+
 import client from '../api';
 import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
@@ -131,9 +133,7 @@ export const fetchEndpointSchema = () => (dispatch) => {
 export const updateEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
-    const readyApi = api;
-
-    return client.put(`apis${pathname}`, readyApi)
+    return client.put(`apis${pathname}`, api)
     .then((response) => {
         dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({ // @FIXME: move to reducers
@@ -171,10 +171,26 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 export const saveEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
-    return client.post('apis', api)
+    const preparedPlugins = api.plugins.map(plugin => {
+        if (plugin.name === 'rate_limit') {
+            const { value, units } = plugin.config.limit;
+            const concatenation = `${value}-${units}`;
+            // set the path for the lens
+            const lens = R.lensPath(['config', 'limit']);
+            // substitude the plugin.config.limit
+            const updatedPlugin = R.set(lens, concatenation, plugin);
+
+            return updatedPlugin;
+        }
+        return plugin;
+    });
+    // substitude updated list of plugins
+    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+
+    return client.post('apis', preparedApi)
     .then((response) => {
-        // console.warn('RESPONSE:', JSON.parse(response))
-        dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({
             status: response.status,
             message: 'Successfuly saved',
