@@ -65,9 +65,6 @@ class HeadersSection extends Component {
     renderHeaders = ({ fields }) => {
         return (
             <div>
-                <li>
-                    <button type="button" onClick={() => this.props.config.push({})}>Add Member</button>
-                </li>
 
                 <FieldArray name={`${this.props.name}`} component={this.renderMembers}/>
             {/*{
@@ -108,7 +105,7 @@ class HeadersSection extends Component {
         return (
             <Row col>
                 <Row>
-                    <Label>Limit Value <button type="button" onClick={this.getSt}>state</button></Label>
+                    <Label>Limit Value</Label>
                     {/*<button type="button" onClick={this.handleAddHeader}>ADD</button>*/}
                 </Row>
 
