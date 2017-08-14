@@ -63,57 +63,57 @@ const schema = {
             enabled: false,
             config: {
                 add: {
-                    headers: {
-                        0: {
+                    headers: [
+                        {
                             key: 'One',
                             value: 'add_val',
                         },
-                        1: {
+                        {
                             key: 'Two',
                             value: 'add_blabla',
                         },
-                        2: {
+                        {
                             key: 'trhee',
                             value: 'add_blabla',
                         }
-                    },
+                    ],
                     querystring: {
                         test: 'test',
                     },
                 },
                 append: {
-                    headers: {
-                        0: {
+                    headers: [
+                        {
                             key: 'One',
                             value: 'append_1',
                         },
-                        1: {
+                        {
                             key: 'Two',
                             value: 'append_ssdsd',
                         }
-                    },
+                    ],
                     querystring: {
                         test: 'test',
                     },
                 },
                 replace: {
-                    headers: {
-                        0: {
+                    headers: [
+                        {
                             key: 'One',
                             value: 'replacaecde',
                         },
-                    },
+                    ],
                     querystring: {
                         test: 'test',
                     },
                 },
                 remove: {
-                    headers: {
-                        0: {
+                    headers: [
+                        {
                             key: 'One',
                             value: 'sasasa',
                         },
-                    },
+                    ],
                     querystring: {
                         test: 'test',
                     },

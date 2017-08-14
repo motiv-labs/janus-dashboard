@@ -183,24 +183,37 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             return updatedPlugin;
         }
         if (plugin.name === 'request_transformer') {
-            const objectOfObjects = plugin.config.add.headers;
-            const allProps/*: Array<Object> */ = R.values(objectOfObjects);
+            console.error('request_transformer');
+            const config = plugin.config.add.headers;
+            console.log('objectOfObjects', config);
+            // const allProps/*: Array<Object> */ = R.values(objectOfObjects);
             let keys = [];
             let values = [];
+
+            config.map(item => {
+                const arr = R.values(item);
+                console.warn('ARR::::::: ', arr);
+
+                keys.push(arr[0]);
+                values.push(arr[1]);
+            });
 
             // extract keys and values and fill respectively arrays
             // so in future we will be able to create brand new object
             // with key-value pairs from those two arrays.
-            const transformer = (obj) => {
-                const vals = R.values(obj);
+            // const transformer = (obj) => {
+            //     const vals = R.values(obj);
+            //     console.log('save endpoint', obj)
 
-                keys.push(vals[0]);
-                values.push(vals[1]);
-            };
+            //     keys.push(vals[0]);
+            //     values.push(vals[1]);
+            // };
 
             const transformedHeaders = R.zipObj(keys, values);
+            console.error('transformedHeaders', transformedHeaders);
             const lens = R.lensPath(['config', 'add', 'headers']);
             const updatedPlugin = R.set(lens, transformedHeaders, plugin);
+            console.warn('updatedPlugin', updatedPlugin);
 
             return updatedPlugin;
         }
