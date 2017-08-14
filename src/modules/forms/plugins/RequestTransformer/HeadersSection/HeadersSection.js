@@ -36,6 +36,41 @@ class HeadersSection extends Component {
             };
         });
     }
+    renderMembers = ({ fields }) => (
+    <ul>
+        <li>
+        <button type="button" onClick={() => fields.push({})}>Add Member</button>
+        </li>
+        {
+            fields.map((member, index) => {
+                console.warn('s/_/_/_/_/_/_/_/_/_/_/_/_/');
+                console.error('MEMBER:: ', member);
+                console.warn('e/_/_/_/_/_/_/_/_/_/_/_/_/');
+                return <li key={index}>
+                    <button
+                        type="button"
+                        title="Remove Member"
+                        onClick={() => fields.remove(index)}
+                    />
+                    <h4>Member #{index + 1}</h4>
+
+                    <Field
+                        name={`${member}.key`}
+                        type="text"
+                        component={Input}
+                        label="First Name"
+                    />
+                    <Field
+                        name={`${member}.value`}
+                        type="text"
+                        component={Input}
+                        label="Last Name"
+                    />
+                </li>;
+            })
+        }
+    </ul>
+    )
 
     handleRemoveHeader = (i) => {
         console.clear();
@@ -66,10 +101,11 @@ class HeadersSection extends Component {
                 <li>
                     <button type="button" onClick={() => this.props.config.push({})}>Add Member</button>
                 </li>
-                {fields.map((member, index) => <span>{index}</span>)}
-            {
+
+                <FieldArray name={`${this.props.name}`} component={this.renderMembers}/>
+            {/*{
                 this.props.config.map((item, key) => {
-                // console.warn(`${this.props.name}['${key}']`);
+                    console.warn(`${this.props.name}['${key}']`);
 
                     return (
                         <Row key={key}>
@@ -96,7 +132,7 @@ class HeadersSection extends Component {
                         </Row>
                     );
                 })
-            }
+            }*/}
             </div>
         );
     }
