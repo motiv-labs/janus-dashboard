@@ -113,7 +113,7 @@ const schema = {
                             key: 'One',
                             value: 'sasasa',
                         },
-                    ],
+                    ]   ,
                     querystring: {
                         test: 'test',
                     },

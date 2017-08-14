@@ -15,11 +15,12 @@ import HeadersSection from './HeadersSection/HeadersSection';
 const propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
+    pluginFromValues: PropTypes.object.isRequired,
     pluginName: PropTypes.string.isRequired,
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
+const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin, pluginFromValues, pluginName }) => {
     const b = block(className);
 
     return (
@@ -34,7 +35,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.add.headers`}
-                    config={plugin.config.add.headers}
+                    config={pluginFromValues.config.add.headers}
                 />
                 <Row col>
                     <Label>Limit Value</Label>
@@ -59,7 +60,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
             </Row>
-            <Row className={b('row')()} fullwidth>
+            {/*<Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.append.headers`}
                     config={plugin.config.append.headers}
@@ -76,7 +77,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.remove.headers`}
                     config={plugin.config.remove.headers}
                 />
-            </Row>
+            </Row>*/}
         </div>
     );
 };

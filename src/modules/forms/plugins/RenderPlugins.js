@@ -60,6 +60,7 @@ class RenderPlugin extends Component {
                             name: `plugins[${this.getPluginIndex(plugins, pluginName)}]`,
                             handlePluginExclude,
                             plugin: initialValues.plugins[this.getPluginIndex(plugins, pluginName)],
+                            pluginFromValues: plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginName,
                         };
 
