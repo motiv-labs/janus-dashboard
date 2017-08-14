@@ -29,9 +29,8 @@ class HeadersSection extends Component {
             <Row col>
                 <Row>
                 <Label>Limit Value</Label>
-                <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
-                {/*<KeyValueRow name={this.props.name} />*/}
+
                 {
                     Object.keys(config).map(key => {
                         console.warn(`${this.props.name}['${key}']`);
@@ -58,6 +57,8 @@ class HeadersSection extends Component {
                         );
                     })
                 }
+
+                <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 {/*<Row>
                     <Row col>
                         <Field

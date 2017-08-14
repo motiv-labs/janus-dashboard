@@ -71,6 +71,10 @@ const schema = {
                         1: {
                             key: 'Two',
                             value: 'add_blabla',
+                        },
+                        2: {
+                            key: 'trhee',
+                            value: 'add_blabla',
                         }
                     },
                     querystring: {

@@ -38,7 +38,6 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                 />
                 <Row col>
                     <Label>Limit Value</Label>
-                    <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                     <Row>
                         <Row col>
                             <Field
@@ -57,6 +56,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                             />
                         </Row>
                     </Row>
+                    <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
             </Row>
             <Row className={b('row')()} fullwidth>
