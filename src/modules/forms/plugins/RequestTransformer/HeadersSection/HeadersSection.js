@@ -18,6 +18,7 @@ const row = block('j-row');
 const propTypes = {
     name: PropTypes.string.isRequired,
     keyName: PropTypes.string.isRequired,
+    title: PropTypes.string,
     valueName: PropTypes.string.isRequired,
 };
 
@@ -42,7 +43,6 @@ class HeadersSection extends Component {
                                         name={`${member}.key`}
                                         type="text"
                                         component={Input}
-                                        label="First Name"
                                     />
                                 </div>
                                 <div className={row('item', {'pair': true})}>
@@ -50,7 +50,6 @@ class HeadersSection extends Component {
                                         name={`${member}.value`}
                                         type="text"
                                         component={Input}
-                                        label="Last Name"
                                     />
                                 </div>
                                 <div className={row('control')()}>
@@ -67,78 +66,29 @@ class HeadersSection extends Component {
         </ul>
     )
 
-    renderHeaders = ({ fields }) => {
+    renderHeaders = ({ fields, title }) => {
         return (
             <div>
-
                 <FieldArray
                     name={`${this.props.name}`}
-                    title="Limit Value"
+                    title={title}
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                     component={this.renderMembers}
                 />
-            {/*{
-                this.props.config.map((item, key) => {
-                    console.warn(`${this.props.name}['${key}']`);
-
-                    return (
-                        <Row key={key}>
-                            <Row col>
-                                <Field
-                                    name={`${this.props.name}['${key}'].key`}
-                                    type="text"
-                                    placeholder="Key"
-                                    component={Input}
-                                />
-                            </Row>
-                            <Row col>
-                                <Field
-                                    name={`${this.props.name}['${key}'].value`}
-                                    type="text"
-                                    placeholder="Value"
-                                    component={Input}
-                                />
-                            </Row>
-                            <button type="button" onClick={() => {
-                                this.handleRemoveHeader(key);
-                            }}
-                            >REMOVE</button>
-                        </Row>
-                    );
-                })
-            }*/}
             </div>
         );
     }
 
     render() {
+        const { title } = this.props;
+
         return (
             <Row col>
-
-                <FieldArray name="headers" component={this.renderHeaders}/>
-
-                {/*{
-                    this.renderHeaders(this.state.config)
-                }*/}
-
-                {/*<Row>
-                    <Row col>
-                        <Field
-                            name={`${this.props.name}`}
-                            type="text"
-                            placeholder="Key"
-                            component={Input}
-                        />
-                    </Row>
-                    <Row col>
-                        <Field
-                            name={`${this.props.name}`}
-                            type="text"
-                            placeholder="Value"
-                            component={Input}
-                        />
-                    </Row>
-                </Row>*/}
+                <FieldArray
+                    name="headers"
+                    component={this.renderHeaders}
+                    title={title}
+                />
             </Row>
         );
     }

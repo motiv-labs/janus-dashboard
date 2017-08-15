@@ -36,6 +36,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                 <HeadersSection
                     name={`${name}.config.add.headers`}
                     config={pluginFromValues.config.add.headers}
+                    title="Add Header"
                 />
                 <Row col>
                     <Label>Limit Value</Label>
@@ -64,18 +65,21 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                 <HeadersSection
                     name={`${name}.config.append.headers`}
                     config={pluginFromValues.config.append.headers}
+                    title="Append Header"
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.replace.headers`}
                     config={pluginFromValues.config.replace.headers}
+                    title="Replace Header"
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.remove.headers`}
                     config={pluginFromValues.config.remove.headers}
+                    title="Remove Header"
                 />
             </Row>
         </div>

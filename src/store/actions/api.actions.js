@@ -201,6 +201,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
                  * }
                  */
                 const headers = item.headers;
+                const querystring = item.querystring;
 
                 // we will fill this arrays with keys and values respectively
                 let keys = [];
