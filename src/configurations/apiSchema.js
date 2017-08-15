@@ -70,38 +70,19 @@ const schema = {
                     },
                 },
                 append: {
-                    headers: [
-                        {
-                            key: 'One',
-                            value: 'append_1',
-                        },
-                        {
-                            key: 'Two',
-                            value: 'append_ssdsd',
-                        }
-                    ],
+                    headers: [],
                     querystring: {
                         test: 'test',
                     },
                 },
                 replace: {
-                    headers: [
-                        {
-                            key: 'One',
-                            value: 'replacaecde',
-                        },
-                    ],
+                    headers: [],
                     querystring: {
                         test: 'test',
                     },
                 },
                 remove: {
-                    headers: [
-                        {
-                            key: 'One',
-                            value: 'sasasa',
-                        },
-                    ]   ,
+                    headers: []   ,
                     querystring: {
                         test: 'test',
                     },

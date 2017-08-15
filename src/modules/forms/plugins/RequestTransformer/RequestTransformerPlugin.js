@@ -60,24 +60,24 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
             </Row>
-            {/*<Row className={b('row')()} fullwidth>
+            <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.append.headers`}
-                    config={plugin.config.append.headers}
+                    config={pluginFromValues.config.append.headers}
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.replace.headers`}
-                    config={plugin.config.replace.headers}
+                    config={pluginFromValues.config.replace.headers}
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.remove.headers`}
-                    config={plugin.config.remove.headers}
+                    config={pluginFromValues.config.remove.headers}
                 />
-            </Row>*/}
+            </Row>
         </div>
     );
 };
