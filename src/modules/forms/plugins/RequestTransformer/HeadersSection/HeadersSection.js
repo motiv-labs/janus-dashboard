@@ -10,6 +10,8 @@ import Label from '../../../../labels/Label';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../labels/Hint/Hint';
 import KeyValueRow from '../KeyValueRow/KeyValueRow';
+import Control from '../../../../buttons/Control/Control';
+import Icon from '../../../../Icon/Icon';
 
 const propTypes = {
     name: PropTypes.string.isRequired,
@@ -26,37 +28,44 @@ class HeadersSection extends Component {
         this.setState({config: this.props.config});
     }
 
-    renderMembers = ({ fields }) => (
+    renderMembers = ({ fields, hint, title }) => (
         <ul>
-            <li>
-            <button type="button" onClick={() => fields.push({})}>Add Member</button>
-            </li>
+            <Row>
+                <Label>{ title }</Label>
+                <Control
+                    onClick={() => fields.push({})}
+                    icon="add"
+                />
+            </Row>
             {
                 fields.map((member, index) => {
-                    console.warn('s/_/_/_/_/_/_/_/_/_/_/_/_/');
-                    console.error('MEMBER:: ', member);
-                    console.warn('e/_/_/_/_/_/_/_/_/_/_/_/_/');
-                    return <li key={index}>
-                        <button
-                            type="button"
-                            title="Remove Member"
-                            onClick={() => fields.remove(index)}
-                        />
-                        <h4>Member #{index + 1}</h4>
-
-                        <Field
-                            name={`${member}.key`}
-                            type="text"
-                            component={Input}
-                            label="First Name"
-                        />
-                        <Field
-                            name={`${member}.value`}
-                            type="text"
-                            component={Input}
-                            label="Last Name"
-                        />
-                    </li>;
+                    return (
+                        <Row key={index} col>
+                            <Hint>{ hint }</Hint>
+                            <Row>
+                                <Row col>
+                                    <Field
+                                        name={`${member}.key`}
+                                        type="text"
+                                        component={Input}
+                                        label="First Name"
+                                    />
+                                </Row>
+                                <Row col>
+                                    <Field
+                                        name={`${member}.value`}
+                                        type="text"
+                                        component={Input}
+                                        label="Last Name"
+                                    />
+                                </Row>
+                                <Control
+                                    onClick={() => fields.remove(index)}
+                                    icon="remove"
+                                />
+                            </Row>
+                        </Row>
+                    );
                 })
             }
         </ul>
@@ -66,7 +75,12 @@ class HeadersSection extends Component {
         return (
             <div>
 
-                <FieldArray name={`${this.props.name}`} component={this.renderMembers}/>
+                <FieldArray
+                    name={`${this.props.name}`}
+                    title="Limit Value"
+                    hint="A list of headers that the Gateway should append to the request and the value for each."
+                    component={this.renderMembers}
+                />
             {/*{
                 this.props.config.map((item, key) => {
                     console.warn(`${this.props.name}['${key}']`);
@@ -104,10 +118,6 @@ class HeadersSection extends Component {
     render() {
         return (
             <Row col>
-                <Row>
-                    <Label>Limit Value</Label>
-                    {/*<button type="button" onClick={this.handleAddHeader}>ADD</button>*/}
-                </Row>
 
                 <FieldArray name="headers" component={this.renderHeaders}/>
 

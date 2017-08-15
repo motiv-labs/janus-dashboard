@@ -1,10 +1,12 @@
 $control-size: 20px;
+$red-scarlet: #d0011b;
 
 $urls: (
     edit: url(../../assets/img/edit.svg),
     checked: url(../../assets/img/checked.svg),
     delete: url(../../assets/img/delete.svg),
     copy: url(../../assets/img/copy.svg),
+    add: url(../../assets/img/plus.svg),
 );
 
 .j-icon {
@@ -13,6 +15,11 @@ $urls: (
     height: $control-size;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+
+    &--type-remove {
+        height: 2px;
+        background-color: $red-scarlet;
+    }
 }
 
 @each $type, $url in $urls {
