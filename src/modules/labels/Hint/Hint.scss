@@ -4,4 +4,8 @@
     font-size: $hf-font-size-small;
     color: $hf-color-gray-medium;
     line-height: $hf-line-medium;
+
+    &--title {
+        margin-bottom: $hf-gutter;
+    }
 }

@@ -24,14 +24,14 @@ const propTypes = {
 class HeadersSection extends Component {
     renderMembers = ({ fields, hint, title }) => (
         <ul>
-            <Row>
+            <div className={row()}>
                 <Label>{ title }</Label>
                 <Control
                     onClick={() => fields.push({})}
                     icon="add"
                 />
-            </Row>
-            <Hint>{ hint }</Hint>
+            </div>
+            <Hint title>{ hint }</Hint>
             {
                 fields.map((member, index) => {
                     return (

@@ -60,23 +60,11 @@ const schema = {
         },
         {
             name: 'request_transformer',
+
             enabled: false,
             config: {
                 add: {
-                    headers: [
-                        {
-                            key: 'One',
-                            value: 'add_val',
-                        },
-                        {
-                            key: 'Two',
-                            value: 'add_blabla',
-                        },
-                        {
-                            key: 'trhee',
-                            value: 'add_blabla',
-                        }
-                    ],
+                    headers: [],
                     querystring: {
                         test: 'test',
                     },

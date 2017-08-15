@@ -1,14 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import block from '../../../helpers/bem-cn';
+
 import './Hint.css';
+
+const b = block('j-hint');
 
 const propTypes = {
     children: PropTypes.string.isRequired,
+    title: PropTypes.bool,
 };
 
-const Hint = ({ children }) => (
-    <div className="j-hint">{ children }</div>
+const Hint = ({ children, title }) => (
+    <div className={b({ title })}>{ children }</div>
 );
 
 Hint.propTypes = propTypes;
