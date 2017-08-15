@@ -2,5 +2,20 @@
     &__control {
         display: flex;
         align-items: center;
+        margin-left: $hf-gutter;
+    }
+
+    &__item {
+        &--pair {
+            .j-input {
+                border-radius: 0 $hf-border-radius $hf-border-radius 0;
+            }
+            &:first-child {
+                .j-input {
+                    border-radius: $hf-border-radius 0 0 $hf-border-radius;
+                    border-right: none;
+                }
+            }
+        }
     }
 }

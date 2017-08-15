@@ -22,14 +22,6 @@ const propTypes = {
 };
 
 class HeadersSection extends Component {
-    state = {
-        config: [],
-    }
-
-    componentDidMount = () => {
-        this.setState({config: this.props.config});
-    }
-
     renderMembers = ({ fields, hint, title }) => (
         <ul>
             <Row>
@@ -45,7 +37,7 @@ class HeadersSection extends Component {
                         <Row key={index} col>
                             <Hint>{ hint }</Hint>
                             <div className={row()}>
-                                <div className={row('item')}>
+                                <div className={row('item', {'pair': true})}>
                                     <Field
                                         name={`${member}.key`}
                                         type="text"
@@ -53,7 +45,7 @@ class HeadersSection extends Component {
                                         label="First Name"
                                     />
                                 </div>
-                                <div className={row('item')}>
+                                <div className={row('item', {'pair': true})}>
                                     <Field
                                         name={`${member}.value`}
                                         type="text"
