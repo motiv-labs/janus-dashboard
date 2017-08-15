@@ -65,27 +65,22 @@ const schema = {
             config: {
                 add: {
                     headers: [],
-                    querystring: {
-                        test: 'test',
-                    },
+                    querystring: [
+                        'first string',
+                        'second string'
+                    ],
                 },
                 append: {
                     headers: [],
-                    querystring: {
-                        test: 'test',
-                    },
+                    querystring: [],
                 },
                 replace: {
                     headers: [],
-                    querystring: {
-                        test: 'test',
-                    },
+                    querystring: [],
                 },
                 remove: {
                     headers: []   ,
-                    querystring: {
-                        test: 'test',
-                    },
+                    querystring: [],
                 },
             },
         },
