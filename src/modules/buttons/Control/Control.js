@@ -17,7 +17,7 @@ const propTypes = {
     onClick: PropTypes.func.isRequired,
 };
 
-const Control = ({ icon, onClick }) => (
+const Control = ({ className, icon, onClick }) => (
     <button className={b()} type="button" onClick={onClick}>
         <Icon className={b('icon')()} type={icon} />
     </button>

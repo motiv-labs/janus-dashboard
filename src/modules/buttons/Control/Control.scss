@@ -14,7 +14,6 @@ $control-icon-size: ceil($hf-gutter*1.6);
     &__icon {
         display: inline-block;
         width: 16px;
-        height: 16px;
-        vertical-align: top;
+        vertical-align: middle;
     }
 }

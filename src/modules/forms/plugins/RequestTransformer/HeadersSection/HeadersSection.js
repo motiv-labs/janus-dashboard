@@ -3,7 +3,7 @@ import R from 'ramda';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
-// import block from '../../../../helpers/bem-cn';
+import block from '../../../../../helpers/bem-cn';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
@@ -12,6 +12,8 @@ import Hint from '../../../../labels/Hint/Hint';
 import KeyValueRow from '../KeyValueRow/KeyValueRow';
 import Control from '../../../../buttons/Control/Control';
 import Icon from '../../../../Icon/Icon';
+
+const row = block('j-row');
 
 const propTypes = {
     name: PropTypes.string.isRequired,
@@ -42,28 +44,30 @@ class HeadersSection extends Component {
                     return (
                         <Row key={index} col>
                             <Hint>{ hint }</Hint>
-                            <Row>
-                                <Row col>
+                            <div className={row()}>
+                                <div className={row('item')}>
                                     <Field
                                         name={`${member}.key`}
                                         type="text"
                                         component={Input}
                                         label="First Name"
                                     />
-                                </Row>
-                                <Row col>
+                                </div>
+                                <div className={row('item')}>
                                     <Field
                                         name={`${member}.value`}
                                         type="text"
                                         component={Input}
                                         label="Last Name"
                                     />
-                                </Row>
-                                <Control
-                                    onClick={() => fields.remove(index)}
-                                    icon="remove"
-                                />
-                            </Row>
+                                </div>
+                                <div className={row('control')()}>
+                                    <Control
+                                        onClick={() => fields.remove(index)}
+                                        icon="remove"
+                                    />
+                                </div>
+                            </div>
                         </Row>
                     );
                 })
