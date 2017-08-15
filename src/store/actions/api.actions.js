@@ -183,89 +183,30 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             return updatedPlugin;
         }
         if (plugin.name === 'request_transformer') {
-            console.error('request_transformer');
-            // const config = plugin.config.add.headers;
-            // console.log('objectOfObjects', config);
-            // const allProps/*: Array<Object> */ = R.values(objectOfObjects);
-
-            // console.error('=========>>>>>>>', R.values(plugin.config))
-            const headings = Object.keys(plugin.config);
-            const _config = plugin.config;
-            // console.error('=========>>>>>>>', headings)
+            // get all options names
+            const options = Object.keys(plugin.config);
+            // convert all values of plugin's config to array of objects
+            // so then we will be able to map through them:
             const config = R.values(plugin.config);
+            const allTransformedHeaders = config.map((item, index) => {
+                // headers comes as an array of objects:
+                /**
+                 * @example #1
+                 *
+                 * add: {
+                 *     header: [
+                 *         {someKey: 'someValue'},
+                 *         {someAnotherKey: 'someAnotherValue'},
+                 *     ]
+                 * }
+                 */
+                const headers = item.headers;
 
-            /*
-            config.map((item, index) => {
-                console.error('/_/_/_/', item.headers)
-                const config = item.headers;
-
+                // we will fill this arrays with keys and values respectively
                 let keys = [];
                 let values = [];
 
-                config.map(item => {
-                    const arr = R.values(item);
-
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
-
-                const transformedHeaders = R.zipObj(keys, values);
-                console.error('===>::: ', transformedHeaders)
-                const lens = R.lensPath(['config', headings[index], 'headers']);
-                R.set(lens, transformedHeaders, plugin);
-                // const updatedPlugin = R.set(lens, transformedHeaders, plugin);
-                // console.error('UPDATED PLUFINN', updatedPlugin)
-
-                // return updatedPlugin;
-            });
-            */
-            const arrayOfTransformedHeaders = config.map((item, index) => {
-                console.error('/_/_/_/', item.headers);
-                const config = item.headers;
-
-                let keys = [];
-                let values = [];
-
-                config.map(item => {
-                    const arr = R.values(item);
-
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
-
-                const transformedHeaders = R.zipObj(keys, values);
-                console.error('===>::: ', transformedHeaders);
-
-                return transformedHeaders;
-
-                // const updatedPlugin = R.set(lens, transformedHeaders, plugin);
-                // console.error('UPDATED PLUFINN', updatedPlugin)
-
-                // return updatedPlugin;
-            });
-
-            // const arrayOfTransformedHeaders = _arrayOfTransformedHeaders.filter(item => !R.isEmpty(item));
-            const _arrayOfTransformedHeaders = arrayOfTransformedHeaders.reduce((acc, item, index) => {
-                // if (!R.isEmpty(item)) {
-                //     //
-                // }
-                console.warn(index, item, acc);
-                const lens = R.lensPath(['config', headings[index], 'headers']);
-                return R.set(lens, item, acc);
-            }, plugin);
-
-            console.error('TRANSFORMED ARRAY', _arrayOfTransformedHeaders);
-
-            return _arrayOfTransformedHeaders;
-
-            /*
-            const JOHNNY = Object.keys(_config).reduce((acc, item) => {
-                console.error('ITEM', item)
-                const headers = plugin.config[item].headers;
-                let keys = [];
-                let values = [];
-                // acc[item] = _config[item]
-
+                // fill key/values arrays
                 headers.map(item => {
                     const arr = R.values(item);
 
@@ -273,30 +214,31 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
                     values.push(arr[1]);
                 });
 
+                // and now we are creating object that should be placed instead of
+                // array of the objects from example #1
+                /**
+                 * @example #2
+                 *
+                 * add: {
+                 *     headers: {
+                 *         someKey: 'someValue',
+                 *         someAnotherKey: 'someAnotherValue',
+                 *     }
+                 * }
+                 */
                 const transformedHeaders = R.zipObj(keys, values);
-                console.error('===>::: ', transformedHeaders)
-                const lens = R.lensPath(['config', item, 'headers']);
-                R.set(lens, transformedHeaders, plugin);
 
-                return acc;
-            }, {});
-            console.error('JOHNYY ==> ', JOHNNY)
-            */
+                return transformedHeaders;
+            });
 
+            // step by step we updating plugins config:
+            const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
+                const lens = R.lensPath(['config', options[index], 'headers']);
 
+                return R.set(lens, item, acc);
+            }, plugin);
 
-            // extract keys and values and fill respectively arrays
-            // so in future we will be able to create brand new object
-            // with key-value pairs from those two arrays.
-            // const transformer = (obj) => {
-            //     const vals = R.values(obj);
-            //     console.log('save endpoint', obj)
-
-            //     keys.push(vals[0]);
-            //     values.push(vals[1]);
-            // };
-
-
+            return updatedPlugin;
         }
 
         return plugin;
