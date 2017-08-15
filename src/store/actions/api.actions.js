@@ -184,19 +184,106 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
         }
         if (plugin.name === 'request_transformer') {
             console.error('request_transformer');
-            const config = plugin.config.add.headers;
-            console.log('objectOfObjects', config);
+            // const config = plugin.config.add.headers;
+            // console.log('objectOfObjects', config);
             // const allProps/*: Array<Object> */ = R.values(objectOfObjects);
-            let keys = [];
-            let values = [];
 
-            config.map(item => {
-                const arr = R.values(item);
-                console.warn('ARR::::::: ', arr);
+            // console.error('=========>>>>>>>', R.values(plugin.config))
+            const headings = Object.keys(plugin.config);
+            const _config = plugin.config;
+            // console.error('=========>>>>>>>', headings)
+            const config = R.values(plugin.config);
 
-                keys.push(arr[0]);
-                values.push(arr[1]);
+            /*
+            config.map((item, index) => {
+                console.error('/_/_/_/', item.headers)
+                const config = item.headers;
+
+                let keys = [];
+                let values = [];
+
+                config.map(item => {
+                    const arr = R.values(item);
+
+                    keys.push(arr[0]);
+                    values.push(arr[1]);
+                });
+
+                const transformedHeaders = R.zipObj(keys, values);
+                console.error('===>::: ', transformedHeaders)
+                const lens = R.lensPath(['config', headings[index], 'headers']);
+                R.set(lens, transformedHeaders, plugin);
+                // const updatedPlugin = R.set(lens, transformedHeaders, plugin);
+                // console.error('UPDATED PLUFINN', updatedPlugin)
+
+                // return updatedPlugin;
             });
+            */
+            const arrayOfTransformedHeaders = config.map((item, index) => {
+                console.error('/_/_/_/', item.headers);
+                const config = item.headers;
+
+                let keys = [];
+                let values = [];
+
+                config.map(item => {
+                    const arr = R.values(item);
+
+                    keys.push(arr[0]);
+                    values.push(arr[1]);
+                });
+
+                const transformedHeaders = R.zipObj(keys, values);
+                console.error('===>::: ', transformedHeaders);
+
+                return transformedHeaders;
+
+                // const updatedPlugin = R.set(lens, transformedHeaders, plugin);
+                // console.error('UPDATED PLUFINN', updatedPlugin)
+
+                // return updatedPlugin;
+            });
+
+            // const arrayOfTransformedHeaders = _arrayOfTransformedHeaders.filter(item => !R.isEmpty(item));
+            const _arrayOfTransformedHeaders = arrayOfTransformedHeaders.reduce((acc, item, index) => {
+                // if (!R.isEmpty(item)) {
+                //     //
+                // }
+                console.warn(index, item, acc);
+                const lens = R.lensPath(['config', headings[index], 'headers']);
+                return R.set(lens, item, acc);
+            }, plugin);
+
+            console.error('TRANSFORMED ARRAY', _arrayOfTransformedHeaders);
+
+            return _arrayOfTransformedHeaders;
+
+            /*
+            const JOHNNY = Object.keys(_config).reduce((acc, item) => {
+                console.error('ITEM', item)
+                const headers = plugin.config[item].headers;
+                let keys = [];
+                let values = [];
+                // acc[item] = _config[item]
+
+                headers.map(item => {
+                    const arr = R.values(item);
+
+                    keys.push(arr[0]);
+                    values.push(arr[1]);
+                });
+
+                const transformedHeaders = R.zipObj(keys, values);
+                console.error('===>::: ', transformedHeaders)
+                const lens = R.lensPath(['config', item, 'headers']);
+                R.set(lens, transformedHeaders, plugin);
+
+                return acc;
+            }, {});
+            console.error('JOHNYY ==> ', JOHNNY)
+            */
+
+
 
             // extract keys and values and fill respectively arrays
             // so in future we will be able to create brand new object
@@ -209,13 +296,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             //     values.push(vals[1]);
             // };
 
-            const transformedHeaders = R.zipObj(keys, values);
-            console.error('transformedHeaders', transformedHeaders);
-            const lens = R.lensPath(['config', 'add', 'headers']);
-            const updatedPlugin = R.set(lens, transformedHeaders, plugin);
-            console.warn('updatedPlugin', updatedPlugin);
 
-            return updatedPlugin;
         }
 
         return plugin;
