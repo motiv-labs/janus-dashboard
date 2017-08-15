@@ -31,11 +31,11 @@ class HeadersSection extends Component {
                     icon="add"
                 />
             </Row>
+            <Hint>{ hint }</Hint>
             {
                 fields.map((member, index) => {
                     return (
                         <Row key={index} col>
-                            <Hint>{ hint }</Hint>
                             <div className={row()}>
                                 <div className={row('item', {'pair': true})}>
                                     <Field
@@ -121,7 +121,6 @@ class HeadersSection extends Component {
                     this.renderHeaders(this.state.config)
                 }*/}
 
-                <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 {/*<Row>
                     <Row col>
                         <Field
