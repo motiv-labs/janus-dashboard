@@ -1,8 +1,47 @@
 @import 'index.scss';
 
 $icon-size: ceil($hf-gutter*3.5);
+$status-font-size: ceil($hf-font-size-base*0.71);
+$status-size: $hf-gutter*2;
 
 .j-healthcheck {
+    &__list {
+        background-color: $hf-color-white;
+        border: $hf-border;
+        border-radius: $hf-border-radius;
+        padding-left: $hf-padding-big;
+        padding-right: $hf-padding-big;
+
+        &-item {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+            padding-top: $hf-padding-main;
+            padding-bottom: $hf-padding-main;
+            border-bottom: $hf-border;
+
+            &:last-child {
+                border-bottom: none;
+            }
+
+            &__name {
+                line-height: $hf-line-height-title;
+            }
+
+            &__status {
+                font-size: $status-font-size;
+                font-weight: $hf-font-weight-bold;
+                text-transform: uppercase;
+                height: $status-size;
+                line-height: $status-size;
+                color: $hf-color-white;
+                background-color: red;
+                border-radius: $hf-border-radius-small;
+                padding-left: $hf-gutter;
+                padding-right: $hf-gutter;
+            }
+        }
+    }
     &__correct {
         display: flex;
         flex-direction: column;

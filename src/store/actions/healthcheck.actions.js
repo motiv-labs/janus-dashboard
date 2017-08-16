@@ -1,7 +1,10 @@
+import R from 'ramda';
 import client from '../api';
 import {
     FETCH_HEALTHCHECK_START,
     FETCH_HEALTHCHECK_SUCCESS,
+    DISCARD_PAGINATION,
+    SET_PAGINATION_PAGE,
 } from '../constants';
 import {
     openResponseModal,
@@ -11,9 +14,18 @@ export const getHealthcheckRequest = () => ({
     type: FETCH_HEALTHCHECK_START,
 });
 
-export const getHealthcheckSuccess = (text, status) => ({
+export const getHealthcheckSuccess = (text, status, list) => ({
     type: FETCH_HEALTHCHECK_SUCCESS,
-    payload: { text, status },
+    payload: { text, status, list },
+});
+
+export const discardPagination = () => ({
+    type: DISCARD_PAGINATION,
+});
+
+export const setCurrentPageIndex = index => ({
+    type: SET_PAGINATION_PAGE,
+    payload: index,
 });
 
 export const fetchHealthCheck = () => async (dispatch) => {
@@ -50,10 +62,25 @@ export const fetchHealthCheck = () => async (dispatch) => {
         };
         const { response } = mockResponse;
 
+        const objectToArray = obj => {
+            const list = Object.keys(obj).reduce((acc, key) => {
+                const o = {
+                    service: key,
+                    status: obj[key],
+                };
+
+                acc.push(o);
+
+                return acc;
+            }, []);
+
+            return list;
+        };
+
         if (response.status === 200) {
-            dispatch(getHealthcheckSuccess('Available', true));
+            dispatch(getHealthcheckSuccess('Available', true, []));
         } else {
-            dispatch(getHealthcheckSuccess(response.jsonBody.status, false));
+            dispatch(getHealthcheckSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
         }
 
         console.error('HEALTH_CHECK', response);
