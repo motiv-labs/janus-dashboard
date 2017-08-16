@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 
-// import './MultiSelect.css';
-
 const propTypes = {
     options: PropTypes.arrayOf(PropTypes.object).isRequired,
 };

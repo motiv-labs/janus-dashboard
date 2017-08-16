@@ -40,7 +40,6 @@ const ApiForm = (props) => {
     const includePlugin = value => {
         plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
-                // props.dispatch(props.change(`plugins[${index}].enabled`, true));
                 selectPlugin(plugin.name);
             }
         });
