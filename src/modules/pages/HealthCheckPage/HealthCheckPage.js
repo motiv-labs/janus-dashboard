@@ -17,7 +17,7 @@ const HealthCheckPage = ({ location }) => (
         <Section>
             <Section>
                 <Row>
-                    <Title>APIs</Title>
+                    <Title>Health Check</Title>
                     <Row>
                         <SearchingContainer />
                     </Row>

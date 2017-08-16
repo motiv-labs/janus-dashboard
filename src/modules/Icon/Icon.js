@@ -8,16 +8,18 @@ import './Icon.css';
 const b = block('j-icon');
 
 const propTypes = {
+    className: PropTypes.string,
     type: PropTypes.oneOf([
         'edit',
         'checked',
         'delete',
         'copy',
+        'correct',
     ]),
 };
 
-const Control = ({ type }) => (
-    <span className={b({ type })} />
+const Control = ({ className, type }) => (
+    <span className={b({ type }).mix(className)} />
 );
 
 Control.propTypes = propTypes;

@@ -4,6 +4,14 @@ import {
   Link,
 } from 'react-router-dom';
 
+import block from '../../../helpers/bem-cn';
+
+import Correct from './Correct';
+
+import './HealthCheckList.css';
+
+const b = block('j-healthcheck');
+
 class HealthCheckList extends PureComponent {
     componentDidMount() {
         this.props.fetchHealthCheck();
@@ -11,7 +19,9 @@ class HealthCheckList extends PureComponent {
 
     render() {
         return (
-            <div>HealthCheckList</div>
+            <div className={b('pane').mix('j-pane')}>
+                <Correct className={b('correct')()} />
+            </div>
         );
     }
 };
