@@ -13,6 +13,7 @@ import Input from '../../inputs/Input';
 import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
+import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
@@ -46,6 +47,12 @@ const ApiForm = (props) => {
     };
     const removePlugin = value => {
         excludePlugin(value);
+    };
+    const optionsTransformer = config => {
+        return config.map(item => ({
+            label: item,
+            value: item,
+        }));
     };
 
     return (
@@ -128,10 +135,11 @@ const ApiForm = (props) => {
                         <Row col>
                             <Label>Methods</Label>
                             <Field
-                                name="health_check.url"
+                                name="proxy.methods"
                                 type="text"
-                                placeholder="select methods"
-                                component={Input}
+                                placeholder="Choose one or more methods"
+                                options={optionsTransformer(initialValues.proxy.methods)}
+                                component={MultiSelect}
                             />
                             <Hint>HTTP methods that are supported for the endpoint.</Hint>
                         </Row>

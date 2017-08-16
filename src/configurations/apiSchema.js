@@ -7,7 +7,7 @@ const schema = {
         upstream_url: '',
         strip_path: false,
         append_path: false,
-        methods: ['ALL'],
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
         hosts: ['hellofresh.*'],
     },
     health_check: {

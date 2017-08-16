@@ -24,7 +24,6 @@ const propTypes = {
 const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
     const b = block(className);
     const optionsTransformer = config => {
-        console.error('CONFIG CORS:: ', config);
         return config.map(item => ({
             label: item,
             value: item,
