@@ -18,7 +18,7 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const AuthPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
+const AuthPlugin = ({ className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
 
     return (
