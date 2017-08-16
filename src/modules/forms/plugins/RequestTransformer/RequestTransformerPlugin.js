@@ -18,7 +18,7 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin, pluginFromValues, pluginName }) => {
+const RequestTransformerPlugin = ({ className, name, handlePluginExclude, pluginFromValues, pluginName }) => {
     const b = block(className);
 
     return (
