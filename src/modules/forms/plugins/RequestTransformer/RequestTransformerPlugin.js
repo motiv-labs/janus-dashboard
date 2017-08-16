@@ -11,6 +11,7 @@ import Radio from '../../../inputs/Radio/Radio';
 import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import HeadersSection from './HeadersSection/HeadersSection';
+import QueryStringSection from './QueryStringSection/QueryStringSection';
 
 const propTypes = {
     className: PropTypes.string,
@@ -37,35 +38,20 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.add.headers`}
                     config={pluginFromValues.config.add.headers}
                     title="Add Header"
+                    hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
-                <Row col>
-                    <Label>Limit Value</Label>
-                    <Row>
-                        <Row col>
-                            <Field
-                                name={`${name}.config.limit.value`}
-                                type="text"
-                                placeholder="Key"
-                                component={Input}
-                            />
-                        </Row>
-                        <Row col>
-                            <Field
-                                name={`${name}.config.limit.units`}
-                                type="text"
-                                placeholder="Value"
-                                component={Input}
-                            />
-                        </Row>
-                    </Row>
-                    <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
-                </Row>
+                <QueryStringSection
+                    name={`${name}.config.add.querystring`}
+                    config={pluginFromValues.config.add.querystring}
+                    title="Add Query String"
+                />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
                     name={`${name}.config.append.headers`}
                     config={pluginFromValues.config.append.headers}
                     title="Append Header"
+                    hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
@@ -73,6 +59,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.replace.headers`}
                     config={pluginFromValues.config.replace.headers}
                     title="Replace Header"
+                    hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
@@ -80,6 +67,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.remove.headers`}
                     config={pluginFromValues.config.remove.headers}
                     title="Remove Header"
+                    hint="A list of headers that the Gateway should remove when forwarding the request to the  upstream_url."
                 />
             </Row>
         </div>

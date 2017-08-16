@@ -17,11 +17,12 @@ const row = block('j-row');
 
 const propTypes = {
     name: PropTypes.string.isRequired,
+    keyName: PropTypes.string.isRequired,
     title: PropTypes.string,
-    hint: PropTypes.string,
+    valueName: PropTypes.string.isRequired,
 };
 
-class HeadersSection extends Component {
+class QueryStringSection extends Component {
     renderMembers = ({ fields, hint, title }) => (
         <ul>
             <div className={row()}>
@@ -44,13 +45,6 @@ class HeadersSection extends Component {
                                         component={Input}
                                     />
                                 </div>
-                                <div className={row('item', {'pair': true})}>
-                                    <Field
-                                        name={`${member}.value`}
-                                        type="text"
-                                        component={Input}
-                                    />
-                                </div>
                                 <div className={row('control')()}>
                                     <Control
                                         onClick={() => fields.remove(index)}
@@ -65,13 +59,13 @@ class HeadersSection extends Component {
         </ul>
     )
 
-    renderHeaders = ({ fields, hint, title }) => {
+    renderHeaders = ({ fields, title }) => {
         return (
             <div>
                 <FieldArray
                     name={`${this.props.name}`}
                     title={title}
-                    hint={hint}
+                    hint="A list of headers that the Gateway should append to the request and the value for each."
                     component={this.renderMembers}
                 />
             </div>
@@ -79,7 +73,7 @@ class HeadersSection extends Component {
     }
 
     render() {
-        const { title, hint} = this.props;
+        const { title } = this.props;
 
         return (
             <Row col>
@@ -87,11 +81,10 @@ class HeadersSection extends Component {
                     name="headers"
                     component={this.renderHeaders}
                     title={title}
-                    hint={hint}
                 />
             </Row>
         );
     }
 };
 
-export default HeadersSection;
+export default QueryStringSection;
