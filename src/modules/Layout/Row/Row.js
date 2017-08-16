@@ -42,12 +42,6 @@ const Row = ({ children, className, col, alignCenter, fullwidth }) => {
         );
     }
     return wrapChild(children, cn, className);
-
-    // return (
-        // <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
-        //     { children.length > 1 ? wrapChildren(children, cn) : wrapChild(children, cn) }
-        // </div>
-    // );
 };
 
 Row.propTypes = propTypes;

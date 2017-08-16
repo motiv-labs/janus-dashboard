@@ -9,7 +9,6 @@ import './Control.css';
 const b = block('j-control');
 
 const propTypes = {
-    // children: PropTypes.any.isRequired,
     icon: PropTypes.oneOf([
         'add',
         'remove',
