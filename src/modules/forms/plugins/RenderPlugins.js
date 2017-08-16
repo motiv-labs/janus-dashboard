@@ -15,6 +15,7 @@ import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlu
 
 const propTypes = {
     className: PropTypes.string,
+    initialValues: PropTypes.object,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
     handlePluginExclude: PropTypes.func.isRequired,
     handlePluginInclude: PropTypes.func.isRequired,
