@@ -50,10 +50,6 @@ class RenderPlugin extends Component {
             <div>
                 {
                     selectedPlugins.map(pluginName => {
-                        console.warn('/_/_/_/_/_/_/_/_/_/_/');
-                        console.log(initialValues.plugins);
-                        console.log(this.getPluginIndex(plugins, pluginName));
-                        console.warn('X', initialValues.plugins[this.getPluginIndex(plugins, pluginName)]);
                         const opts = {
                             className: b(),
                             key: pluginName,
@@ -121,64 +117,6 @@ class RenderPlugin extends Component {
                         + Add Plugin
                     </Button>
                 </Row>
-
-                {/*<PluginOAuth />*/}
-                {/*<div>
-                    {
-                        plugins.map((plugin, index) => {
-                            if (plugin.name === 'oauth2' && plugin.enabled) {
-                                return 'oAuth';
-                            }
-                        })
-                    }
-                </div>*/}
-
-                {/*
-                    plugins.map((plugin, index) => (
-                        <PluginSection key={plugin.name} name={plugin.name}>
-                            <FormInput component="input" label="Enabled" attachTo={`plugins[${index}].enabled`} type="checkbox" normalize={v => !!v} />
-                            <FormField>
-                                {
-                                plugin.config && Object.keys(plugin.config).map((item) => {
-                                    const config = plugins[index].config[item];
-
-                                    if (typeOf(config, 'Object')) {
-                                        return (
-                                            <FormField key={item}>
-                                                <FormLabel text={item} />
-                                                {
-                                                    Object.keys(config).map((el) => {
-                                                        if (typeOf(config[el], 'Object')) {
-                                                            return (
-                                                                <FormField key={item}>
-                                                                    <FormLabel text={item} />
-                                                                    {
-                                                                        Object.keys(config[el]).map(e => (
-                                                                            <FormInput key={e} component="input" label={e} attachTo={`plugins[${index}].config[${item}][${el}][${e}]`} type="text" />
-                                                                        ))
-                                                                    }
-                                                                </FormField>
-                                                            );
-                                                        }
-
-                                                        return (
-                                                            <FormInput key={el} component="input" label={el} attachTo={`plugins[${index}].config[${item}][${el}]`} type="text" />
-                                                        );
-                                                    })
-                                                }
-                                            </FormField>
-                                        );
-                                    }
-
-                                    return (
-                                        <FormInput key={item} component="input" label={item} attachTo={`plugins[${index}].config[${item}]`} type="text" />
-                                    );
-                                })
-                            }
-                            </FormField>
-                        </PluginSection>
-                    ))
-                */}
             </div>
         );
     };
