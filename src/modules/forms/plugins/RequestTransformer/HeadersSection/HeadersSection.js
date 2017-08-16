@@ -20,7 +20,7 @@ const propTypes = {
 
 class HeadersSection extends Component {
     renderMembers = ({ fields, hint, title }) => (
-        <ul>
+        <div>
             <div className={row()}>
                 <Label>{ title }</Label>
                 <Control
@@ -59,19 +59,17 @@ class HeadersSection extends Component {
                     );
                 })
             }
-        </ul>
+        </div>
     )
 
     renderHeaders = ({ fields, hint, title }) => {
         return (
-            <div>
-                <FieldArray
-                    name={`${this.props.name}`}
-                    title={title}
-                    hint={hint}
-                    component={this.renderMembers}
-                />
-            </div>
+            <FieldArray
+                name={`${this.props.name}`}
+                title={title}
+                hint={hint}
+                component={this.renderMembers}
+            />
         );
     }
 
