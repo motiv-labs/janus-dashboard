@@ -36,6 +36,11 @@ $radio-width: 125px;
         display: flex;
         max-width: $radio-width;
 
+        &-wrap {
+            height: $hf-height-input;
+            align-items: center;
+        }
+
         &-row {
             display: flex;
         }
@@ -44,5 +49,10 @@ $radio-width: 125px;
     &__row {
         padding-top: $hf-gutter;
         padding-bottom: $hf-gutter;
+
+        &--button-row {
+            padding-top: $hf-padding-big;
+            padding-bottom: $hf-padding-big;
+        }
     }
 }

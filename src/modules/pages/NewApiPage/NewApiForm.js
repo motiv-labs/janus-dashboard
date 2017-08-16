@@ -259,7 +259,7 @@ const ApiForm = (props) => {
 
                 </div>
             </div>
-            <Row className={b('row')()}>
+            <Row className={b('row',{ 'button-row': true })()}>
                 <Button
                     type="submit"
                     mod="primary"
