@@ -17,7 +17,7 @@ $urls: (
     background-position: 50% 50%;
 
     &--type-remove {
-        height: 2px;
+        height: ceil($control-size/10);
         background-color: $red-scarlet;
     }
 }
