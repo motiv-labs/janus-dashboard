@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import R from 'ramda';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
@@ -9,9 +8,7 @@ import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../labels/Hint/Hint';
-import KeyValueRow from '../KeyValueRow/KeyValueRow';
 import Control from '../../../../buttons/Control/Control';
-import Icon from '../../../../Icon/Icon';
 
 const row = block('j-row');
 
@@ -93,5 +90,7 @@ class HeadersSection extends Component {
         );
     }
 };
+
+HeadersSection.propTypes = propTypes;
 
 export default HeadersSection;

@@ -16,7 +16,7 @@ class TagSelect extends Component {
     }
 
     render() {
-        const { multi, multiValue, options } = this.state;
+        const { multi, multiValue } = this.state;
         return (
             <Creatable
                 {...this.props}
