@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import SearchingContainer from '../../SearchBar/searchContainer';
 import HealthCheckContainer from './healthCheckContainer';
 
 import Section from '../../Layout/Section/Section';
+import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 
 const propTypes = {
@@ -13,10 +15,17 @@ const propTypes = {
 const HealthCheckPage = ({ location }) => (
     <div>
         <Section>
-            <Title>Health Check</Title>
-        </Section>
-        <Section>
-            <HealthCheckContainer location={location} />
+            <Section>
+                <Row>
+                    <Title>APIs</Title>
+                    <Row>
+                        <SearchingContainer />
+                    </Row>
+                </Row>
+            </Section>
+            <Section>
+                <HealthCheckContainer />
+            </Section>
         </Section>
     </div>
 );

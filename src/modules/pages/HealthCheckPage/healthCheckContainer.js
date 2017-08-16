@@ -1,20 +1,17 @@
 import { connect } from 'react-redux';
 
 import {
-    deleteEndpoint,
-    fetchEndpoint,
-    refreshEndpoints,
-    resetEndpoint,
-    updateEndpoint,
+    fetchHealthCheck,
 } from '../../../store/actions';
 
-import ApiItem from './Item';
+import HealthCheckList from './HealthCheckList';
 
-const mapStateToProps = state => ({
-    api: state.apiReducer.api,
-});
+// const mapStateToProps = state => ({
+//     api: state.apiReducer.api,
+// });
 
 export default connect(
-    mapStateToProps,
-    { deleteEndpoint, fetchEndpoint, refreshEndpoints, resetEndpoint, updateEndpoint },
-)(ApiItem);
+    // mapStateToProps,
+    null,
+    { fetchHealthCheck },
+)(HealthCheckList);
