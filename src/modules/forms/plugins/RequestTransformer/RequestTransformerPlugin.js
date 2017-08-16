@@ -44,6 +44,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.add.querystring`}
                     config={pluginFromValues.config.add.querystring}
                     title="Add Query String"
+                    hint="A list of querystrings that the Gateway should add to the request and the value for each."
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
@@ -53,6 +54,12 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Append Header"
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
+                <QueryStringSection
+                    name={`${name}.config.append.querystring`}
+                    config={pluginFromValues.config.append.querystring}
+                    title="Append Query String"
+                    hint="A list of querystrings that the Gateway should append to the request and the value for each."
+                />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
@@ -61,6 +68,12 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Replace Header"
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
+                <QueryStringSection
+                    name={`${name}.config.replace.querystring`}
+                    config={pluginFromValues.config.replace.querystring}
+                    title="Replace Query String"
+                    hint="A list of new values for existing querystrings that the Gateway should update when forwarding  the request to the upstream_url."
+                />
             </Row>
             <Row className={b('row')()} fullwidth>
                 <HeadersSection
@@ -68,6 +81,12 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     config={pluginFromValues.config.remove.headers}
                     title="Remove Header"
                     hint="A list of headers that the Gateway should remove when forwarding the request to the  upstream_url."
+                />
+                <QueryStringSection
+                    name={`${name}.config.remove.querystring`}
+                    config={pluginFromValues.config.remove.querystring}
+                    title="Remove Query String"
+                    hint="A list of querystrings that the Gateway should remove when forwarding the request to the  upstream_url."
                 />
             </Row>
         </div>

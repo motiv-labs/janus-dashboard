@@ -65,10 +65,7 @@ const schema = {
             config: {
                 add: {
                     headers: [],
-                    querystring: [
-                        'first string',
-                        'second string'
-                    ],
+                    querystring: [],
                 },
                 append: {
                     headers: [],

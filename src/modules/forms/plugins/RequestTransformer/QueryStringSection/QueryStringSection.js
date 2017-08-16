@@ -17,9 +17,8 @@ const row = block('j-row');
 
 const propTypes = {
     name: PropTypes.string.isRequired,
-    keyName: PropTypes.string.isRequired,
     title: PropTypes.string,
-    valueName: PropTypes.string.isRequired,
+    hint: PropTypes.string,
 };
 
 class QueryStringSection extends Component {
@@ -28,7 +27,7 @@ class QueryStringSection extends Component {
             <div className={row()}>
                 <Label>{ title }</Label>
                 <Control
-                    onClick={() => fields.push({})}
+                    onClick={() => fields.push()}
                     icon="add"
                 />
             </div>
@@ -38,9 +37,9 @@ class QueryStringSection extends Component {
                     return (
                         <Row key={index} col>
                             <div className={row()}>
-                                <div className={row('item', {'pair': true})}>
+                                <div className={row('item')}>
                                     <Field
-                                        name={`${member}.key`}
+                                        name={`${member}`}
                                         type="text"
                                         component={Input}
                                     />
@@ -59,13 +58,13 @@ class QueryStringSection extends Component {
         </ul>
     )
 
-    renderHeaders = ({ fields, title }) => {
+    renderHeaders = ({ fields, hint, title }) => {
         return (
             <div>
                 <FieldArray
                     name={`${this.props.name}`}
                     title={title}
-                    hint="A list of headers that the Gateway should append to the request and the value for each."
+                    hint={hint}
                     component={this.renderMembers}
                 />
             </div>
@@ -73,7 +72,7 @@ class QueryStringSection extends Component {
     }
 
     render() {
-        const { title } = this.props;
+        const { hint, title } = this.props;
 
         return (
             <Row col>
@@ -81,6 +80,7 @@ class QueryStringSection extends Component {
                     name="headers"
                     component={this.renderHeaders}
                     title={title}
+                    hint={hint}
                 />
             </Row>
         );
