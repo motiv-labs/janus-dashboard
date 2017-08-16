@@ -6,12 +6,11 @@ import {
 
 import HealthCheckList from './HealthCheckList';
 
-// const mapStateToProps = state => ({
-//     api: state.apiReducer.api,
-// });
+const mapStateToProps = state => ({
+    status: state.healthcheckReducer.status,
+});
 
 export default connect(
-    // mapStateToProps,
-    null,
+    mapStateToProps,
     { fetchHealthCheck },
 )(HealthCheckList);

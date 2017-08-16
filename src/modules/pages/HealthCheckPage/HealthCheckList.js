@@ -17,10 +17,18 @@ class HealthCheckList extends PureComponent {
         this.props.fetchHealthCheck();
     }
 
+    renderHealthcheckInfo = status => {
+        if (status) {
+            return <Correct className={b('correct')()} />;
+        }
+
+        return <div>Ooops...</div>;
+    }
+
     render() {
         return (
             <div className={b('pane').mix('j-pane')}>
-                <Correct className={b('correct')()} />
+                { this.renderHealthcheckInfo(this.props.status) }
             </div>
         );
     }

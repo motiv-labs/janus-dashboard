@@ -21,15 +21,6 @@ export const getEndpointsSuccess = apiList => ({
     payload: apiList,
 });
 
-export const getHealthcheckRequest = () => ({
-    type: FETCH_HEALTHCHECK_START,
-});
-
-export const getHealthcheckSuccess = hch => ({
-    type: FETCH_HEALTHCHECK_SUCCESS,
-    payload: hch,
-});
-
 export const discardPagination = () => ({
     type: DISCARD_PAGINATION,
 });
@@ -39,25 +30,7 @@ export const setCurrentPageIndex = index => ({
     payload: index,
 });
 
-export const fetchHealthCheck = () => async (dispatch) => {
-    dispatch(getHealthcheckRequest());
-
-    try {
-        const response = await client.get('status');
-        console.error('HEALTH_CHECK', response);
-
-        dispatch(getHealthcheckSuccess());
-    } catch (error) {
-        dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
-            message: error.response.data.error,
-        }));
-    }
-};
-
 export const fetchEndpoints = () => dispatch => {
-    dispatch(fetchHealthCheck()); // @TODO: place in the right place
     dispatch(getEndpointsRequest());
 
     return client.get('apis')

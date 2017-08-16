@@ -4,7 +4,8 @@ import {
 } from '../constants';
 
 const initialState = {
-    //
+    status: null,
+    statusText: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -18,7 +19,8 @@ export default function reducer(state = initialState, action) {
         case FETCH_HEALTHCHECK_SUCCESS: {
             return {
                 ...state,
-                apiList: action.payload,
+                status: action.payload.status,
+                statusText: action.payload.text,
                 isFetching: false,
             };
         }
