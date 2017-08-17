@@ -63,7 +63,7 @@ export const fetchHealthCheckList = () => async (dispatch) => {
     dispatch(getHealthcheckListRequest());
 
     try {
-        // const response = await client.get('status');
+        const response = await client.get('status');
         const mockResponse = {
             'request': {
                 'method': 'GET',
@@ -93,15 +93,13 @@ export const fetchHealthCheckList = () => async (dispatch) => {
                 }
             }
         };
-        const { response } = mockResponse;
+        // const { response } = mockResponse;
 
         if (response.status === 200) {
             dispatch(getHealthcheckListSuccess('Available', true, []));
         } else {
             dispatch(getHealthcheckListSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
         }
-        // console.error('HEALTH_CHECK', response);
-
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,
@@ -115,7 +113,7 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
     dispatch(getHealthcheckRequest());
 
     try {
-        // const response = await client.get(`status/${name}`);
+        const response = await client.get(`status/${name}`);
         const mockResponse = {
             'request': {
                 'method': 'GET',
@@ -145,7 +143,7 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
                 }
             }
         };
-        const { response } = mockResponse;
+        // const { response } = mockResponse;
 
         dispatch(
             getHealthcheckSuccess(
@@ -154,9 +152,6 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
                 objectToArray(response.jsonBody.failures)
             )
         );
-
-        // console.error('HEALTH_CHECK_ITEM response.jsonBody', response.jsonBody);
-
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,
