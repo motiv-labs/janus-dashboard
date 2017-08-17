@@ -57,4 +57,3 @@ export default connect(
     mapStateToProps,
     null,
 )(HealthCheckPage);
-// export default HealthCheckPage;

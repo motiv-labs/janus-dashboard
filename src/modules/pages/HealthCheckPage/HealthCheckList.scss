@@ -49,7 +49,8 @@ $status-size: $hf-gutter*2;
             }
         }
     }
-    &__correct {
+    &__correct,
+    &__incorrect {
         display: flex;
         flex-direction: column;
         align-items: center;
