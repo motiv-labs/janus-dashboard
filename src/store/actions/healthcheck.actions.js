@@ -12,6 +12,21 @@ import {
     openResponseModal,
 } from './index';
 
+export const objectToArray = obj => {
+    const list = Object.keys(obj).reduce((acc, key) => {
+        const o = {
+            name: key,
+            message: obj[key],
+        };
+
+        acc.push(o);
+
+        return acc;
+    }, []);
+
+    return list;
+};
+
 export const getHealthcheckListRequest = () => ({
     type: FETCH_HEALTHCHECK_LIST_START,
 });
@@ -25,9 +40,9 @@ export const getHealthcheckRequest = () => ({
     type: FETCH_HEALTHCHECK_START,
 });
 
-export const getHealthcheckSuccess = (text, status, list) => ({
+export const getHealthcheckSuccess = (name, status, list) => ({
     type: FETCH_HEALTHCHECK_SUCCESS,
-    payload: { text, status, list },
+    payload: { name, status, list },
 });
 
 export const discardPagination = () => ({
@@ -75,21 +90,6 @@ export const fetchHealthCheckList = () => async (dispatch) => {
         };
         const { response } = mockResponse;
 
-        const objectToArray = obj => {
-            const list = Object.keys(obj).reduce((acc, key) => {
-                const o = {
-                    name: key,
-                    message: obj[key],
-                };
-
-                acc.push(o);
-
-                return acc;
-            }, []);
-
-            return list;
-        };
-
         if (response.status === 200) {
             dispatch(getHealthcheckListSuccess('Available', true, []));
         } else {
@@ -111,7 +111,7 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
     dispatch(getHealthcheckRequest());
 
     try {
-        const response = await client.get(`status/${name}`);
+        // const response = await client.get(`status/${name}`);
         const mockResponse = {
             'request': {
                 'method': 'GET',
@@ -141,26 +141,17 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
                 }
             }
         };
-        // const { response } = mockResponse;
+        const { response } = mockResponse;
 
-        const objectToArray = obj => {
-            const list = Object.keys(obj).reduce((acc, key) => {
-                const o = {
-                    name: key,
-                    message: obj[key],
-                };
+        dispatch(
+            getHealthcheckSuccess(
+                name,
+                response.jsonBody.status,
+                objectToArray(response.jsonBody.failures)
+            )
+        );
 
-                acc.push(o);
-
-                return acc;
-            }, []);
-
-            return list;
-        };
-
-        dispatch(getHealthcheckListSuccess());
-
-        console.error('HEALTH_CHECK response.jsonBody', response.jsonBody);
+        console.error('HEALTH_CHECK_ITEM response.jsonBody', response.jsonBody);
 
     } catch (error) {
         dispatch(openResponseModal({

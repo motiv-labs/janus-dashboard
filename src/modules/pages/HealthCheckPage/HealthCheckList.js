@@ -27,7 +27,6 @@ class HealthCheckList extends PureComponent {
     }
 
     test = name => {
-        console.log(name);
         this.props.fetchHealthCheckItem(name);
     }
 
@@ -51,7 +50,7 @@ class HealthCheckList extends PureComponent {
                 {
                     this.props.healthcheckList.map(item => {
                         return (
-                            <div className={bItem()}>
+                            <div className={bItem()} key={item.name}>
                                 <div className={bItem('name')}>{item.name}</div>
                                 <div className={bItem('message')}>{item.message}</div>
                                 <div className={bItem('details')} onClick={() => this.test(item.name)}>Show Details</div>
