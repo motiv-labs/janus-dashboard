@@ -84,6 +84,11 @@ $status-size: $hf-gutter*2;
         &__list {
             &__heading {
                 text-align: left;
+
+                &__name {
+                    color: $hf-color-gray-medium;
+                    font-weight: $hf-font-weight-bold;
+                }
             }
 
             &__item {

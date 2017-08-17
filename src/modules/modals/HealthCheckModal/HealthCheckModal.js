@@ -55,8 +55,8 @@ const HealthCheckModal = ({
             <table className={b('list')()}>
                 <thead>
                     <tr className={b('list', 'heading')()}>
-                        <th>Name</th>
-                        <th>Problem</th>
+                        <th className={b('list', 'heading', 'name')()}>Name</th>
+                        <th className={b('list', 'heading', 'name')()}>Problem</th>
                     </tr>
                 </thead>
                 <tbody>
