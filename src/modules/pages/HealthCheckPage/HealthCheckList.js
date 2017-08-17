@@ -15,6 +15,10 @@ const b = block('j-healthcheck');
 const bList = block(b('list')());
 const bItem = block(b('list-item')());
 
+const propTypes = {
+    fetchHealthCheck: PropTypes.func.isRequired,
+};
+
 class HealthCheckList extends PureComponent {
     componentDidMount() {
         this.props.fetchHealthCheck();
@@ -42,7 +46,7 @@ class HealthCheckList extends PureComponent {
                         return (
                             <div className={bItem()}>
                                 <div className={bItem('name')}>{item.service}</div>
-                                <div className={bItem('status')}>Some status</div>
+                                <div className={bItem('status')}>Partialy Available</div>
                             </div>
                         );
                     })
@@ -65,5 +69,7 @@ class HealthCheckList extends PureComponent {
         return this.renderHealthcheckInfo(this.props.status);
     }
 };
+
+HealthCheckList.propTypes = propTypes;
 
 export default HealthCheckList;
