@@ -13,6 +13,7 @@ const initialState = {
     healthcheckList: [],
     currentPageIndex: 0,
     isFetching: false,
+    problemEndpoint: null,
 };
 
 export default function reducer(state = initialState, action) {
@@ -33,9 +34,10 @@ export default function reducer(state = initialState, action) {
                 isFetching: false,
             };
         }
-        case FETCH_HEALTHCHECK_LIST_SUCCESS: {
+        case FETCH_HEALTHCHECK_SUCCESS: {
             return {
                 ...state,
+                problemEndpoint: action.payload,
             };
         }
         case DISCARD_PAGINATION: {
