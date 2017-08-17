@@ -1,6 +1,7 @@
 import R from 'ramda';
 import client from '../api';
 import {
+    CLEAR_HEALTHCHECK_DETAILS,
     FETCH_HEALTHCHECK_LIST_START,
     FETCH_HEALTHCHECK_LIST_SUCCESS,
     FETCH_HEALTHCHECK_START,
@@ -43,6 +44,10 @@ export const getHealthcheckRequest = () => ({
 export const getHealthcheckSuccess = (name, status, list) => ({
     type: FETCH_HEALTHCHECK_SUCCESS,
     payload: { name, status, list },
+});
+
+export const clearHealthCheckDetails = () => ({
+    type: CLEAR_HEALTHCHECK_DETAILS,
 });
 
 export const discardPagination = () => ({

@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import R from 'ramda';
 import {
   Link,
 } from 'react-router-dom';
@@ -8,6 +9,7 @@ import block from '../../../helpers/bem-cn';
 
 import Correct from './Correct';
 import Pagination from '../../Pagination/Pagination';
+import HealthCheckModal from '../../modals/HealthCheckModal/HealthCheckModal';
 
 import './HealthCheckList.css';
 
@@ -16,6 +18,7 @@ const bList = block(b('list')());
 const bItem = block(b('list-item')());
 
 const propTypes = {
+    clearHealthCheckDetails: PropTypes.func.isRequired,
     fetchHealthCheckList: PropTypes.func.isRequired,
     fetchHealthCheckItem: PropTypes.func.isRequired,
     healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -37,6 +40,12 @@ class HealthCheckList extends PureComponent {
     }
 
     renderHealthcheckInfo = status => {
+        const {
+            clearHealthCheckDetails,
+            problemToDisplay,
+            healthcheckList
+        } = this.props;
+
         if (status) {
             return (
                 <div className={b('pane').mix('j-pane')}>
@@ -48,7 +57,7 @@ class HealthCheckList extends PureComponent {
         return (
             <div className={bList()}>
                 {
-                    this.props.healthcheckList.map(item => {
+                    healthcheckList.map(item => {
                         return (
                             <div className={bItem()} key={item.name}>
                                 <div className={bItem('name')}>{item.name}</div>
@@ -58,6 +67,15 @@ class HealthCheckList extends PureComponent {
                         );
                     })
                 }
+
+                <HealthCheckModal
+                    className={b('modal')()}
+                    isOpen={!R.isEmpty(problemToDisplay)}
+                    closeModal={clearHealthCheckDetails}
+                    message={problemToDisplay.status}
+                    statusText={problemToDisplay.name}
+                    problems={problemToDisplay.list}
+                />
             </div>
         );
         // return (
@@ -73,7 +91,7 @@ class HealthCheckList extends PureComponent {
     }
 
     render() {
-        // console.error(this.props);
+        // console.error(R.isEmpty(this.props.problemToDisplay), this.props);
         return this.renderHealthcheckInfo(this.props.status);
     }
 };

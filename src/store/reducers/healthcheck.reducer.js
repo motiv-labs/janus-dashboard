@@ -1,4 +1,5 @@
 import {
+    CLEAR_HEALTHCHECK_DETAILS,
     FETCH_HEALTHCHECK_LIST_START,
     FETCH_HEALTHCHECK_LIST_SUCCESS,
     FETCH_HEALTHCHECK_START,
@@ -13,7 +14,7 @@ const initialState = {
     healthcheckList: [],
     currentPageIndex: 0,
     isFetching: false,
-    problemEndpoint: null,
+    problemEndpoint: {},
 };
 
 export default function reducer(state = initialState, action) {
@@ -38,6 +39,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 problemEndpoint: action.payload,
+            };
+        }
+        case CLEAR_HEALTHCHECK_DETAILS: {
+            return {
+                ...state,
+                problemEndpoint: {},
             };
         }
         case DISCARD_PAGINATION: {

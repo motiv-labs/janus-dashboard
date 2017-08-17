@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
+    clearHealthCheckDetails,
     fetchHealthCheckList,
     fetchHealthCheckItem,
     setCurrentPageIndex,
@@ -12,10 +13,11 @@ import HealthCheckList from './HealthCheckList';
 const mapStateToProps = state => ({
     healthcheckList: filteredHealthcheckList(state),
     status: state.healthcheckReducer.status,
+    problemToDisplay: state.healthcheckReducer.problemEndpoint,
     currentPageIndex: state.healthcheckReducer.currentPageIndex,
 });
 
 export default connect(
     mapStateToProps,
-    { fetchHealthCheckList, fetchHealthCheckItem, setCurrentPageIndex },
+    { clearHealthCheckDetails, fetchHealthCheckList, fetchHealthCheckItem, setCurrentPageIndex },
 )(HealthCheckList);

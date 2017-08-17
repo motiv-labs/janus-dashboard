@@ -1,7 +1,7 @@
 @import 'index.scss';
 
 $icon-size: ceil($hf-gutter*3.5);
-$status-font-size: ceil($hf-font-size-base*0.71);
+$status-font-size: ceil($hf-font-size-base*0.71); // 10px;
 $status-size: $hf-gutter*2;
 
 .j-healthcheck {
@@ -61,6 +61,29 @@ $status-size: $hf-gutter*2;
         &__text {
             font-weight: $hf-font-weight;
             line-height: 1.5;
+        }
+    }
+    &__modal {
+        &__head {
+            margin-bottom: $hf-gutter*3;
+        }
+
+        &__subtitle {
+            display: inline-block;
+            height: $status-size;
+            line-height: $status-size;
+            border-radius: $hf-border-radius-small;
+            padding-left: $hf-gutter;
+            padding-right: $hf-gutter;
+            color: $hf-color-white;
+            text-transform: uppercase;
+            background-color: $hf-color-orange;
+        }
+
+        &__text {
+            font-size: $hf-font-size-medium;
+            line-height: $hf-line-height-medium;
+            color: $hf-color-gray-medium;
         }
     }
 }
