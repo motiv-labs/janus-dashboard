@@ -26,6 +26,11 @@ $status-size: $hf-gutter*2;
 
             &__name {
                 line-height: $hf-line-height-title;
+                flex: 1;
+            }
+
+            &__message {
+                flex: 2;
             }
 
             &__details {

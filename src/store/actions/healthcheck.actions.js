@@ -48,9 +48,9 @@ export const fetchHealthCheck = () => async (dispatch) => {
                     'timestamp': '2017-07-03T14:48:14.563630521Z',
                     'failures': {
                         'rabbitmq': 'Failed during RabbitMQ health check',
-                        'someAnotherService': 'Failed during RabbitMQ health check',
-                        'yetAnotherService-1': 'Failed during RabbitMQ health check',
-                        'lastButNotLeastService': 'Failed during RabbitMQ health check'
+                        'someAnotherEndpoint': 'Failed during someAnotherService health check',
+                        'yetAnotherEndpoint-1': 'Failed during yetAnotherEndpoint health check',
+                        'lastButNotLeastEndpoint': 'Failed during lastButNotLeastEndpoint health check'
                     },
                     'system': {
                         'version': 'go1.8.3',

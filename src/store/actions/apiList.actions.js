@@ -9,6 +9,7 @@ import {
     SET_PAGINATION_PAGE,
 } from '../constants';
 import {
+    fetchHealthCheck,
     openResponseModal,
 } from './index';
 
@@ -32,6 +33,7 @@ export const setCurrentPageIndex = index => ({
 
 export const fetchEndpoints = () => dispatch => {
     dispatch(getEndpointsRequest());
+    dispatch(fetchHealthCheck());
 
     return client.get('apis')
         .then((response) => {

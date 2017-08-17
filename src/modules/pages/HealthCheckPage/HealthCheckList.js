@@ -68,7 +68,7 @@ class HealthCheckList extends PureComponent {
     }
 
     render() {
-        console.error(this.props);
+        // console.error(this.props);
         return this.renderHealthcheckInfo(this.props.status);
     }
 };
