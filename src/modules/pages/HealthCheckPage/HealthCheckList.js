@@ -16,13 +16,19 @@ const bList = block(b('list')());
 const bItem = block(b('list-item')());
 
 const propTypes = {
-    fetchHealthCheck: PropTypes.func.isRequired,
+    fetchHealthCheckList: PropTypes.func.isRequired,
+    fetchHealthCheckItem: PropTypes.func.isRequired,
     healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 class HealthCheckList extends PureComponent {
     componentDidMount() {
-        this.props.fetchHealthCheck();
+        this.props.fetchHealthCheckList();
+    }
+
+    test = name => {
+        console.log(name);
+        this.props.fetchHealthCheckItem(name);
     }
 
     renderList = () => {
@@ -48,7 +54,7 @@ class HealthCheckList extends PureComponent {
                             <div className={bItem()}>
                                 <div className={bItem('name')}>{item.name}</div>
                                 <div className={bItem('message')}>{item.message}</div>
-                                <div className={bItem('details')}>Show Details</div>
+                                <div className={bItem('details')} onClick={() => this.test(item.name)}>Show Details</div>
                             </div>
                         );
                     })

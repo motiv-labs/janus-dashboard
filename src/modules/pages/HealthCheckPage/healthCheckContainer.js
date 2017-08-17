@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 
 import {
-    fetchHealthCheck,
+    fetchHealthCheckList,
+    fetchHealthCheckItem,
     setCurrentPageIndex,
 } from '../../../store/actions';
 import { filteredHealthcheckList } from '../../../store/selectors';
@@ -16,5 +17,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { fetchHealthCheck, setCurrentPageIndex },
+    { fetchHealthCheckList, fetchHealthCheckItem, setCurrentPageIndex },
 )(HealthCheckList);
