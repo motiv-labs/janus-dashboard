@@ -17,6 +17,7 @@ const bItem = block(b('list-item')());
 
 const propTypes = {
     fetchHealthCheck: PropTypes.func.isRequired,
+    healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 class HealthCheckList extends PureComponent {
@@ -45,8 +46,9 @@ class HealthCheckList extends PureComponent {
                     this.props.healthcheckList.map(item => {
                         return (
                             <div className={bItem()}>
-                                <div className={bItem('name')}>{item.service}</div>
-                                <div className={bItem('status')}>Partialy Available</div>
+                                <div className={bItem('name')}>{item.name}</div>
+                                <div className={bItem('message')}>{item.message}</div>
+                                <div className={bItem('details')}>Show Details</div>
                             </div>
                         );
                     })
@@ -66,6 +68,7 @@ class HealthCheckList extends PureComponent {
     }
 
     render() {
+        console.error(this.props);
         return this.renderHealthcheckInfo(this.props.status);
     }
 };

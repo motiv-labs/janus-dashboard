@@ -5,7 +5,7 @@ const getSearchQuery = state => state.searchReducer.searchQuery;
 
 const getFilteredHealthcheckList = (list, searchQuery) => list.filter((el) => {
     if (
-        el.service.toLowerCase().includes(searchQuery.toLowerCase())
+        el.name.toLowerCase().includes(searchQuery.toLowerCase())
     ) {
         return el;
     }

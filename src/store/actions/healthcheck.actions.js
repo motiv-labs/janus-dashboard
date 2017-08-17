@@ -67,8 +67,8 @@ export const fetchHealthCheck = () => async (dispatch) => {
         const objectToArray = obj => {
             const list = Object.keys(obj).reduce((acc, key) => {
                 const o = {
-                    service: key,
-                    status: obj[key],
+                    name: key,
+                    message: obj[key],
                 };
 
                 acc.push(o);

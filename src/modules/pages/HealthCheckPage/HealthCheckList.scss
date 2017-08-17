@@ -28,7 +28,7 @@ $status-size: $hf-gutter*2;
                 line-height: $hf-line-height-title;
             }
 
-            &__status {
+            &__details {
                 font-size: $status-font-size;
                 font-weight: $hf-font-weight-bold;
                 text-transform: uppercase;
@@ -39,6 +39,7 @@ $status-size: $hf-gutter*2;
                 border-radius: $hf-border-radius-small;
                 padding-left: $hf-gutter;
                 padding-right: $hf-gutter;
+                cursor: pointer;
             }
         }
     }
