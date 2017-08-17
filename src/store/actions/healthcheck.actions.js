@@ -80,7 +80,7 @@ export const fetchHealthCheckList = () => async (dispatch) => {
                     'failures': {
                         'rabbitmq': 'Failed during RabbitMQ health check',
                         'someAnotherEndpoint': 'Failed during someAnotherService health check',
-                        'yetAnotherEndpoint-1': 'Failed during yetAnotherEndpoint health check',
+                        'example': 'Failed during yetAnotherEndpoint health check',
                         'lastButNotLeastEndpoint': 'Failed during lastButNotLeastEndpoint health check'
                     },
                     'system': {

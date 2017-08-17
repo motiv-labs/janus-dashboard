@@ -34,6 +34,7 @@ $status-size: $hf-gutter*2;
             }
 
             &__details {
+                margin-right: $hf-gutter*5;
                 font-size: $status-font-size;
                 font-weight: $hf-font-weight-bold;
                 text-transform: uppercase;

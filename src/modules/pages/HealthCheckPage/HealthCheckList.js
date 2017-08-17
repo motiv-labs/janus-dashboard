@@ -8,6 +8,7 @@ import {
 import block from '../../../helpers/bem-cn';
 
 import Correct from './Correct';
+import Icon from '../../Icon/Icon';
 import Pagination from '../../Pagination/Pagination';
 import HealthCheckModal from '../../modals/HealthCheckModal/HealthCheckModal';
 
@@ -63,6 +64,9 @@ class HealthCheckList extends PureComponent {
                                 <div className={bItem('name')}>{item.name}</div>
                                 <div className={bItem('message')}>{item.message}</div>
                                 <div className={bItem('details')} onClick={() => this.test(item.name)}>Show Details</div>
+                                <Link to={`/${item.name}`}>
+                                    <Icon type="edit" />
+                                </Link>
                             </div>
                         );
                     })
