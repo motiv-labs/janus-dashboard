@@ -15,9 +15,7 @@ const ApiListPage = ({ healthcheckStatus }) => {
     const renderHealthcheckInfo = () => {
         if (!healthcheckStatus && healthcheckStatus !== null) {
             return (
-                <div className="j-pane">
-                    <Incorrect className="j-healthcheck__incorrect" />
-                </div>
+                <Incorrect />
             );
         }
 

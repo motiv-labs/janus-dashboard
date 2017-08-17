@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import {
   Link,
@@ -18,18 +18,40 @@ const style = {
     fontSize: '30px',
 };
 
-const Incorrect = ({ className }) => {
-    const b = block(className);
+class Incorrect extends PureComponent {
+    state = {
+        isOpen: true,
+    }
 
-    return (
-        <div className={b()}>
-            {/*<Icon type="correct" className={b('icon')()} />*/}
-            <h1 style={style}>!</h1> {/* @TODO: REMOVE after designer will provide icon */}
-            <p className={b('text')}>
-                Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
-            </p>
-        </div>
-    );
+    handleClose = () => {
+        console.log('CLOSE');
+        this.setState(prevState => ({ isOpen: false }));
+    }
+
+    renderInfo = () => {
+        const b = block('j-healthcheck__incorrect');
+
+        if (this.state.isOpen) {
+            return (
+                <div className={b.mix('j-pane')}>
+                    {/*<Icon type="correct" className={b('icon')()} />*/}
+                    <h1 style={style}>!</h1> {/* @TODO: REMOVE after designer will provide icon */}
+                    <p className={b('text')}>
+                        Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
+                    </p>
+                    <button onClick={this.handleClose}>&times;</button>
+                </div>
+            );
+        }
+
+        return null;
+    }
+
+    render() {
+        return (
+            this.renderInfo()
+        );
+    }
 };
 
 Incorrect.propTypes = propTypes;
