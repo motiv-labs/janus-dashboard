@@ -4,24 +4,26 @@
 
 ## Build Setup
 
-``` bash
-# install dependencies
-npm install
+```bash
+# install dependencies and build project using dockerized version of node (requires docker installed)
+make all-docker
 
-# serve with hot reload at localhost:8080
-npm run dev
+# serve built project using dockerized version of node (requires docker installed)
+# serves on docker internal port 5000, see host port with "docker ps" after start
+make serve-docker
 
-# build for production with minification
-npm run build
+# serve with hot reload using dockerized version of node (requires docker installed)
+# serves on docker internal port 8082, see host port with "docker ps" after start
+make run-docker
 
-# build for production and view the bundle analyzer report
-npm run build --report
+# install dependencies and build project using local version of node
+make
+# or
+npm install && npm run build
 
-# run unit tests
-npm run unit
+# serve built project on port 5000
+yarn global add serve && serve -s build
 
-# run all tests
-npm test
+# serve with hot reload on port 8082
+npm run start
 ```
-
-For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
