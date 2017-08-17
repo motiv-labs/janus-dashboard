@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import SearchingContainer from '../../SearchBar/searchContainer';
 import HealthCheckContainer from './healthCheckContainer';
@@ -12,24 +13,48 @@ const propTypes = {
     location: PropTypes.object.isRequired,
 };
 
-const HealthCheckPage = ({ location }) => (
-    <div>
-        <Section>
-            <Section>
+const HealthCheckPage = ({ location, status }) => {
+    const renderTop = () => {
+        if (!status && status !== null) {
+            return (
                 <Row>
-                    <Title>Health Check</Title>
+                    <Title>Health Check Problems</Title>
                     <Row>
                         <SearchingContainer />
                     </Row>
                 </Row>
-            </Section>
+            );
+        }
+
+        return (
+            <Row>
+                <Title>Health Check</Title>
+            </Row>
+        );
+    };
+
+    return (
+        <div>
             <Section>
-                <HealthCheckContainer />
+                <Section>
+                    { renderTop() }
+                </Section>
+                <Section>
+                    <HealthCheckContainer />
+                </Section>
             </Section>
-        </Section>
-    </div>
-);
+        </div>
+    );
+};
 
 HealthCheckPage.propTypes = propTypes;
 
-export default HealthCheckPage;
+const mapStateToProps = state => ({
+    status: state.healthcheckReducer.status,
+});
+
+export default connect(
+    mapStateToProps,
+    null,
+)(HealthCheckPage);
+// export default HealthCheckPage;

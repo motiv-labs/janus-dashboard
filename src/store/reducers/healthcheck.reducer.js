@@ -36,6 +36,7 @@ export default function reducer(state = initialState, action) {
             };
         }
         case FETCH_HEALTHCHECK_SUCCESS: {
+            console.error('PAYLOAD', action.payload);
             return {
                 ...state,
                 problemEndpoint: action.payload,

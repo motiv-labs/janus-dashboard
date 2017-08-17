@@ -62,7 +62,10 @@ const HealthCheckModal = ({
                 <tbody>
                     {
                         problems.map(item => (
-                            <tr className={b('list', 'item')()}>
+                            <tr
+                                className={b('list', 'item')()}
+                                key={item.name}
+                            >
                                 <td className={b('list', 'item', 'name')}>
                                     {item.name}
                                 </td>

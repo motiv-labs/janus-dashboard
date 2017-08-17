@@ -100,8 +100,7 @@ export const fetchHealthCheckList = () => async (dispatch) => {
         } else {
             dispatch(getHealthcheckListSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
         }
-
-        console.error('HEALTH_CHECK', response);
+        // console.error('HEALTH_CHECK', response);
 
     } catch (error) {
         dispatch(openResponseModal({
@@ -156,7 +155,7 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
             )
         );
 
-        console.error('HEALTH_CHECK_ITEM response.jsonBody', response.jsonBody);
+        // console.error('HEALTH_CHECK_ITEM response.jsonBody', response.jsonBody);
 
     } catch (error) {
         dispatch(openResponseModal({
