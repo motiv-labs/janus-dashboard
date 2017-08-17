@@ -65,6 +65,17 @@ $status-size: $hf-gutter*2;
             line-height: 1.5;
         }
     }
+    &__incorrect {
+        position: relative;
+
+        &__close {
+            position: absolute;
+            right: 13px;
+            top: 13px;
+            background: none;
+            border: none;
+        }
+    }
     &__modal {
         &__head {
             margin-bottom: $hf-gutter*3;

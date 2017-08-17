@@ -39,7 +39,9 @@ class Incorrect extends PureComponent {
                     <p className={b('text')}>
                         Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
                     </p>
-                    <button onClick={this.handleClose}>&times;</button>
+                    <button className={b('close')} onClick={this.handleClose}>
+                        <Icon type="close" />
+                    </button>
                 </div>
             );
         }

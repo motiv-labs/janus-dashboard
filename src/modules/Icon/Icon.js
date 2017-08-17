@@ -13,6 +13,7 @@ const propTypes = {
         'edit',
         'checked',
         'delete',
+        'close',
         'copy',
         'correct',
     ]),
