@@ -52,11 +52,28 @@ const HealthCheckModal = ({
                 <h1 className={b('title').mix(m('title'))}>{statusText}</h1>
                 <h2 className={b('subtitle')}>{message}</h2>
             </div>
-            {
-                problems.map(item => (
-                    <p className={b('text')}>{item.name} : {item.message}</p>
-                ))
-            }
+            <table className={b('list')()}>
+                <thead>
+                    <tr className={b('list', 'heading')()}>
+                        <th>Name</th>
+                        <th>Problem</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {
+                        problems.map(item => (
+                            <tr className={b('list', 'item')()}>
+                                <td className={b('list', 'item', 'name')}>
+                                    {item.name}
+                                </td>
+                                <td className={b('list', 'item', 'details')}>
+                                    {item.message}
+                                </td>
+                            </tr>
+                        ))
+                    }
+                </tbody>
+            </table>
         </Modaliz>
     );
 };

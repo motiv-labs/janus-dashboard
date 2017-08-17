@@ -68,6 +68,36 @@ $status-size: $hf-gutter*2;
             margin-bottom: $hf-gutter*3;
         }
 
+        &__list {
+            &__heading {
+                text-align: left;
+            }
+
+            &__item {
+                border-bottom: $hf-border;
+
+                &__name,
+                &__details {
+                    padding-top: $hf-gutter;
+                    padding-bottom: $hf-gutter;
+                }
+
+                &__name {
+                    padding-right: $hf-gutter;
+                }
+
+                &__details {
+                    font-size: $hf-font-size-medium;
+                    line-height: $hf-line-height-medium;
+                    color: $hf-color-gray-medium;
+                }
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+        }
+
         &__subtitle {
             display: inline-block;
             height: $status-size;
@@ -78,12 +108,6 @@ $status-size: $hf-gutter*2;
             color: $hf-color-white;
             text-transform: uppercase;
             background-color: $hf-color-orange;
-        }
-
-        &__text {
-            font-size: $hf-font-size-medium;
-            line-height: $hf-line-height-medium;
-            color: $hf-color-gray-medium;
         }
     }
 }
