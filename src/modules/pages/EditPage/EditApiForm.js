@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
+import Subtitle from '../../Layout/Title/Subtitle';
+
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
 import FormLabel from '../../forms/FormLabel';
 import Button from '../../buttons/Button';
+import Icon from '../../Icon/Icon';
 
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 const propTypes = {
+    api: PropTypes.object.isRequired,
+    handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
 };
@@ -22,6 +28,29 @@ const ApiForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Section>
+                <Subtitle>{props.api.name}</Subtitle>
+                <Link
+                    to={'/'}
+                    onClick={() => {
+                        props.handleDelete(props.api.name);
+                    }}
+                >
+                    <Button
+                        type="button"
+                        mod="danger"
+                    >
+                        <Icon type="delete-white" />
+                        Delete
+                    </Button>
+                </Link>
+                <Button
+                    type="submit"
+                    mod="primary"
+                >
+                    Save
+                </Button>
+            </Section>
             <Section>
                 <FormRow>
                     <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="some another tooltip about something usefull" />
@@ -51,7 +80,7 @@ const ApiForm = (props) => {
                     type="submit"
                     mod="primary"
                 >
-                    Submit
+                    Save
                 </Button>
             </FormRow>
         </form>
