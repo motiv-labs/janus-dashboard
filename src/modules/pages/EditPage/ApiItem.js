@@ -41,22 +41,20 @@ class ApiItem extends Component {
                 <div>
                     <Section>
                         <Subtitle>{this.props.api.name}</Subtitle>
-
-
-                        <Button
-                            type="submit"
-                            mod="danger"
+                        <Link
+                            to={'/'}
+                            onClick={() => {
+                                this.handleDelete(this.props.api.name);
+                            }}
                         >
-                            <Link
-                                to={'/'}
-                                onClick={() => {
-                                    this.handleDelete(this.props.api.name);
-                                }}
+                            <Button
+                                type="submit"
+                                mod="danger"
                             >
                                 <Icon type="delete-white" />
                                 Delete
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </Section>
                     <Section>
                         <EditApiForm onSubmit={this.submit} />

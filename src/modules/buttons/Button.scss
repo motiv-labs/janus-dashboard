@@ -1,6 +1,7 @@
 @import 'index.scss';
 
 .j-button {
+    display: flex;
     align-items: center;
     border-radius: $hf-border-radius-button;
     white-space: nowrap;
@@ -26,6 +27,10 @@
 
     &--danger {
         background-color: $hf-color-button-danger;
+    }
+
+    .j-icon {
+        margin-right: 8px;
     }
 }
 
