@@ -13,6 +13,7 @@ const propTypes = {
         'edit', // green pencil
         'checked',
         'delete', // red bucket
+        'delete-white', // white bucket
         'copy',
         'add', // green plus
         'remove', // red minus

@@ -10,10 +10,22 @@
     user-select: none;
     cursor: pointer;
 
-    &--primary {
+    &--primary,
+    &--danger {
         border-color: transparent;
         color: $hf-color-white;
+
+        a {
+            color: $hf-color-white;
+        }
+    }
+
+    &--primary {
         background-color: $hf-color-button-primary;
+    }
+
+    &--danger {
+        background-color: $hf-color-button-danger;
     }
 }
 

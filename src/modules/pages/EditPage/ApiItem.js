@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import { isEmpty } from '../../../helpers';
 
+import Button from '../../buttons/Button';
+import Icon from '../../Icon/Icon';
+
 import Section from '../../Layout/Section/Section';
 import Subtitle from '../../Layout/Title/Subtitle';
 import EditApiForm from './EditApiForm';
@@ -39,14 +42,21 @@ class ApiItem extends Component {
                     <Section>
                         <Subtitle>{this.props.api.name}</Subtitle>
 
-                        <Link
-                            to={'/'}
-                            onClick={() => {
-                                this.handleDelete(this.props.api.name);
-                            }}
+
+                        <Button
+                            type="submit"
+                            mod="danger"
                         >
-                            Delete
-                        </Link>
+                            <Link
+                                to={'/'}
+                                onClick={() => {
+                                    this.handleDelete(this.props.api.name);
+                                }}
+                            >
+                                <Icon type="delete-white" />
+                                Delete
+                            </Link>
+                        </Button>
                     </Section>
                     <Section>
                         <EditApiForm onSubmit={this.submit} />

@@ -41,6 +41,7 @@ class RenderPlugin extends Component {
 
     render() {
         const { className, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
+        console.error(className);
         const b = block(className);
         const names = plugins.map(plugin => ({
             label: plugin.name,

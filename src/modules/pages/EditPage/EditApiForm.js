@@ -41,10 +41,10 @@ const ApiForm = (props) => {
                 </Section>
             </Section>
 
-            {
+            {/*{
                 !!props.initialValues.plugins &&
                     <RenderPlugins plugins={props.initialValues.plugins} />
-            }
+            }*/}
 
             <FormRow centered>
                 <Button
