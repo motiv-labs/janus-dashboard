@@ -44,8 +44,6 @@ const HealthCheckModal = ({
             className={m()}
             show={isOpen}
             speed={500}
-            text={message}
-            title={statusText}
             onClose={handleClose}
         >
             <div className={b('head')()}>
