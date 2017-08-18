@@ -63,7 +63,44 @@ export const fetchHealthCheckList = () => async (dispatch) => {
     dispatch(getHealthcheckListRequest());
 
     try {
-        const response = await client.get('status');
+        // const response = await client.get('status');
+        const mockResponse = {
+            'request': {
+                'method': 'GET',
+                'urlPath': '/status-partial'
+            },
+            'response': {
+                'status': 400,
+                'headers': {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                'jsonBody': {
+                    'status': 'Partially Available',
+                    'timestamp': '2017-07-03T14:48:14.563630521Z',
+                    'failures': {
+                        'rabbitmq': 'Failed during RabbitMQ health check',
+                        'rabbitmq-2': 'Failed during RabbitMQ health check',
+                        'rabbitmq-3': 'Failed during RabbitMQ health check',
+                        'rabbitmq-4': 'Failed during RabbitMQ health check',
+                        'someAnotherEndpoint': 'Failed during someAnotherService health check',
+                        'example': 'Failed during yetAnotherEndpoint health check',
+                        'example-1': 'Failed during yetAnotherEndpoint health check',
+                        'example-2': 'Failed during yetAnotherEndpoint health check',
+                        'example-3': 'Failed during yetAnotherEndpoint health check',
+                        'example-4': 'Failed during yetAnotherEndpoint health check',
+                        'lastButNotLeastEndpoint': 'Failed during lastButNotLeastEndpoint health check'
+                    },
+                    'system': {
+                        'version': 'go1.8.3',
+                        'goroutines_count': 15,
+                        'total_alloc_bytes': 46186776,
+                        'heap_objects_count': 44186,
+                        'alloc_bytes': 5733552
+                    }
+                }
+            }
+        };
+        const { response } = mockResponse;
 
         if (response.status === 200) {
             dispatch(getHealthcheckListSuccess('Available', true, []));
@@ -83,7 +120,37 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
     dispatch(getHealthcheckRequest());
 
     try {
-        const response = await client.get(`status/${name}`);
+        // const response = await client.get(`status/${name}`);
+        const mockResponse = {
+            'request': {
+                'method': 'GET',
+                'urlPath': '/status-partial'
+            },
+            'response': {
+                'status': 400,
+                'headers': {
+                    'Content-Type': 'application/json; charset=utf-8'
+                },
+                'jsonBody': {
+                    'status': 'Partially Available',
+                    'timestamp': '2017-07-03T14:48:14.563630521Z',
+                    'failures': {
+                        'rabbitmq': 'Failed during RabbitMQ health check',
+                        'someAnotherService': 'Failed during someAnotherService health check',
+                        'yetAnotherService-1': 'Failed during yetAnotherService health check',
+                        'lastButNotLeastService': 'Failed during lastButNotLeastService health check'
+                    },
+                    'system': {
+                        'version': 'go1.8.3',
+                        'goroutines_count': 15,
+                        'total_alloc_bytes': 46186776,
+                        'heap_objects_count': 44186,
+                        'alloc_bytes': 5733552
+                    }
+                }
+            }
+        };
+        const { response } = mockResponse;
 
         dispatch(
             getHealthcheckSuccess(
