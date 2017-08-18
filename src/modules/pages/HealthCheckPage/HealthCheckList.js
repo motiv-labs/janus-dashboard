@@ -84,21 +84,9 @@ class HealthCheckList extends PureComponent {
                 />
             </div>
         );
-        // return (
-        //     <Pagination
-        //         list={this.props.apiList}
-        //         itemsPerPage={3}
-        //         currentPageIndex={this.props.currentPageIndex}
-        //         changePageIndex={this.props.setCurrentPageIndex}
-        //         maximumVisiblePaginators={3}
-        //         renderChildren={this.renderTable}
-        //     />
-        // );
     }
 
     render() {
-        // console.error(R.isEmpty(this.props.problemToDisplay), this.props);
-        // return this.renderHealthcheckInfo(this.props.status);
         return (
             <Pagination
                 list={this.props.healthcheckList}
