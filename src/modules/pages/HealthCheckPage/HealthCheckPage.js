@@ -11,6 +11,7 @@ import Title from '../../Layout/Title/Title';
 
 const propTypes = {
     location: PropTypes.object.isRequired,
+    status: PropTypes.bool,
 };
 
 const HealthCheckPage = ({ location, status }) => {

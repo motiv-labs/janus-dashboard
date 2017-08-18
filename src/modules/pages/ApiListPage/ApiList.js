@@ -103,7 +103,6 @@ class ApiList extends PureComponent {
     )
 
     render() {
-        console.error(this.props.apiList);
         if (this.props.apiList.length > 0) {
             return (
                 <Pagination
