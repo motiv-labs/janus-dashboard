@@ -79,8 +79,15 @@ export const fetchHealthCheckList = () => async (dispatch) => {
         //             'timestamp': '2017-07-03T14:48:14.563630521Z',
         //             'failures': {
         //                 'rabbitmq': 'Failed during RabbitMQ health check',
+        //                 'rabbitmq-2': 'Failed during RabbitMQ health check',
+        //                 'rabbitmq-3': 'Failed during RabbitMQ health check',
+        //                 'rabbitmq-4': 'Failed during RabbitMQ health check',
         //                 'someAnotherEndpoint': 'Failed during someAnotherService health check',
         //                 'example': 'Failed during yetAnotherEndpoint health check',
+        //                 'example-1': 'Failed during yetAnotherEndpoint health check',
+        //                 'example-2': 'Failed during yetAnotherEndpoint health check',
+        //                 'example-3': 'Failed during yetAnotherEndpoint health check',
+        //                 'example-4': 'Failed during yetAnotherEndpoint health check',
         //                 'lastButNotLeastEndpoint': 'Failed during lastButNotLeastEndpoint health check'
         //             },
         //             'system': {

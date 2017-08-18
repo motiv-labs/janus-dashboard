@@ -20,9 +20,11 @@ const bItem = block(b('list-item')());
 
 const propTypes = {
     clearHealthCheckDetails: PropTypes.func.isRequired,
+    currentPageIndex: PropTypes.number.isRequired,
     fetchHealthCheckList: PropTypes.func.isRequired,
     fetchHealthCheckItem: PropTypes.func.isRequired,
     healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    setCurrentPageIndex: PropTypes.func.isRequired,
 };
 
 class HealthCheckList extends PureComponent {
@@ -40,11 +42,11 @@ class HealthCheckList extends PureComponent {
         );
     }
 
-    renderHealthcheckInfo = status => {
+    renderHealthcheckInfo = list => {
         const {
             clearHealthCheckDetails,
             problemToDisplay,
-            healthcheckList
+            status,
         } = this.props;
 
         if (status) {
@@ -58,7 +60,7 @@ class HealthCheckList extends PureComponent {
         return (
             <div className={bList()}>
                 {
-                    healthcheckList.map(item => {
+                    list.map(item => {
                         return (
                             <div className={bItem()} key={item.name}>
                                 <div className={bItem('name')}>{item.name}</div>
@@ -96,7 +98,17 @@ class HealthCheckList extends PureComponent {
 
     render() {
         // console.error(R.isEmpty(this.props.problemToDisplay), this.props);
-        return this.renderHealthcheckInfo(this.props.status);
+        // return this.renderHealthcheckInfo(this.props.status);
+        return (
+            <Pagination
+                list={this.props.healthcheckList}
+                itemsPerPage={3}
+                currentPageIndex={this.props.currentPageIndex}
+                changePageIndex={this.props.setCurrentPageIndex}
+                maximumVisiblePaginators={3}
+                renderChildren={this.renderHealthcheckInfo}
+            />
+        );
     }
 };
 
