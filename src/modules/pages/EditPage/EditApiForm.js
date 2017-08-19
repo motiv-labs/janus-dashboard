@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 
 import Section from '../../Layout/Section/Section';
+import Title from '../../Layout/Title/Title';
 import Subtitle from '../../Layout/Title/Subtitle';
+import Row from '../../Layout/Row/Row';
 
 import FormRow from '../../forms/FormRow';
 import FormInput from '../../forms/FormInput/FormInput';
@@ -28,6 +30,33 @@ const ApiForm = (props) => {
 
     return (
         <form onSubmit={handleSubmit}>
+            <Section>
+                <Row>
+                    <Title>Edit API</Title>
+                    <div>
+                        <Link
+                            to={'/'}
+                            onClick={() => {
+                                props.handleDelete(props.api.name);
+                            }}
+                        >
+                            <Button
+                                type="button"
+                                mod="danger"
+                            >
+                                <Icon type="delete-white" />
+                                Delete
+                            </Button>
+                        </Link>
+                        <Button
+                            type="submit"
+                            mod="primary"
+                        >
+                            Save
+                        </Button>
+                    </div>
+                </Row>
+            </Section>
             <Section>
                 <Subtitle>{props.api.name}</Subtitle>
                 <Link
