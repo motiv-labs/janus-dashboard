@@ -24,7 +24,6 @@ class Incorrect extends PureComponent {
     }
 
     handleClose = () => {
-        console.log('CLOSE');
         this.setState(prevState => ({ isOpen: false }));
     }
 
