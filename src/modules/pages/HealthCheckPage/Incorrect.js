@@ -28,7 +28,7 @@ class Incorrect extends PureComponent {
         this.setState(prevState => ({ isOpen: false }));
     }
 
-    renderInfo = () => {
+    render() {
         const b = block('j-healthcheck__incorrect');
 
         if (this.state.isOpen) {
@@ -47,12 +47,6 @@ class Incorrect extends PureComponent {
         }
 
         return null;
-    }
-
-    render() {
-        return (
-            this.renderInfo()
-        );
     }
 };
 
