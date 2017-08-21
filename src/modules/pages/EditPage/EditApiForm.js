@@ -35,7 +35,7 @@ const propTypes = {
 };
 
 const ApiForm = (props) => {
-    console.error('THIS.PROPS: ', props);
+    // console.error('THIS.PROPS: ', props);
     const { initialValues, handleSubmit } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
 
@@ -229,6 +229,31 @@ const ApiForm = (props) => {
                                 </Row>
                             </Row>
                             <Hint> Strip the path out of the listen_path when forwarding the request to the upstream_url.</Hint>
+                        </Row>
+                    </Row>
+                </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>3. Health check</div>
+                    <Row className={b('row')()} fullwidth>
+                        <Row col>
+                            <Label>Health URL (optional)</Label>
+                            <Field
+                                name="health_check.url"
+                                type="text"
+                                placeholder="eg. http://gw.hellofresh.com/"
+                                component={Input}
+                            />
+                            <Hint>The url that the Gateway will use to determine the health of the API. </Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Timeout (optional)</Label>
+                            <Field
+                                name="health_check.timeout"
+                                type="number"
+                                parse={parse}
+                                component={Input}
+                            />
+                            <Hint>The length of time that the Gateway should wait before displaying an error.</Hint>
                         </Row>
                     </Row>
                 </div>
