@@ -343,14 +343,15 @@ const ApiForm = (props) => {
                     <RenderPlugins plugins={props.initialValues.plugins} />
             }*/}
 
-            <FormRow centered>
+
+            <Row className={b('row',{ 'button-row': true })()}>
                 <Button
                     type="submit"
                     mod="primary"
                 >
                     Save
                 </Button>
-            </FormRow>
+            </Row>
         </form>
     );
 };
