@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
+import R from 'ramda';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-import { isEmpty } from '../../../helpers';
+import transformFormValues from '../../../helpers/transformFormValues';
 
 import Button from '../../buttons/Button';
 import Icon from '../../Icon/Icon';
@@ -28,7 +29,10 @@ class ApiItem extends Component {
     }
 
     submit = (values) => {
-        this.props.updateEndpoint(this.props.location.pathname, values);
+        const transformedValues = transformFormValues(values, true);
+
+        this.props.updateEndpoint(this.props.location.pathname, transformedValues);
+        // this.props.saveEndpoint(this.props.location.pathname, values);
     };
 
     handleDelete = (apiName) => {
@@ -36,7 +40,7 @@ class ApiItem extends Component {
     };
 
     render() {
-        if (!isEmpty(this.props.api)) {
+        if (!R.isEmpty(this.props.api)) {
             return (
                 <EditApiForm
                     api={this.props.api}
