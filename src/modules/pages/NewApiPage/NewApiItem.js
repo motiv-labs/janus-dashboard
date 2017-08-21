@@ -60,10 +60,15 @@ class NewApiItem extends Component {
 
     render() {
         const { api, excludePlugin, selectPlugin } = this.props;
+
         return (
             <div>
                 <Subtitle>{api.name}</Subtitle>
-                <NewApiForm onSubmit={this.submit} excludePlugin={excludePlugin} selectPlugin={selectPlugin} />
+                <NewApiForm
+                    onSubmit={this.submit}
+                    excludePlugin={excludePlugin}
+                    selectPlugin={selectPlugin}
+                />
             </div>
         );
     }

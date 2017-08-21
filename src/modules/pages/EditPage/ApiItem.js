@@ -15,6 +15,8 @@ import EditApiForm from './EditApiForm';
 const propTypes = {
     api: PropTypes.object.isRequired,
     deleteEndpoint: PropTypes.func.isRequired,
+    excludePlugin: PropTypes.func.isRequired,
+    selectPlugin: PropTypes.func.isRequired,
     fetchEndpoint: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
@@ -45,6 +47,9 @@ class ApiItem extends Component {
                 <EditApiForm
                     api={this.props.api}
                     handleDelete={this.handleDelete}
+                    excludePlugin={this.props.excludePlugin}
+                    selectPlugin={this.props.selectPlugin}
+                    selectedPlugins={this.props.selectedPlugins}
                     onSubmit={this.submit}
                 />
             );

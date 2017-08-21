@@ -29,15 +29,35 @@ const b = block('j-api-form');
 
 const propTypes = {
     api: PropTypes.object.isRequired,
+    excludePlugin: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
+    selectPlugin: PropTypes.func.isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const ApiForm = (props) => {
-    // console.error('THIS.PROPS: ', props);
-    const { initialValues, handleSubmit } = props;
+    console.error('THIS.PROPS: ', props);
+    const {
+        excludePlugin,
+        initialValues,
+        handleSubmit,
+        plugins,
+        selectPlugin,
+        selectedPlugins,
+    } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
+    const includePlugin = value => {
+        plugins.map((plugin, index) => {
+            if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
+                selectPlugin(plugin.name);
+            }
+        });
+    };
+    const removePlugin = value => {
+        excludePlugin(value);
+    };
 
     const optionsTransformer = config => {
         return config.map(item => ({
@@ -257,6 +277,22 @@ const ApiForm = (props) => {
                         </Row>
                     </Row>
                 </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>4. Plugins</div>
+
+                    {
+                        !!plugins &&
+                            <RenderPlugins
+                                className={b()}
+                                plugins={plugins}
+                                initialValues={initialValues}
+                                selectedPlugins={selectedPlugins}
+                                handlePluginInclude={includePlugin}
+                                handlePluginExclude={removePlugin}
+                            />
+                    }
+
+                </div>
             </div>
 
 
@@ -321,14 +357,23 @@ const ApiForm = (props) => {
 
 ApiForm.propTypes = propTypes;
 
+const selector = formValueSelector('apiForm');
+
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
 })(ApiForm);
 
 export default connect(
-    state => ({
-        initialValues: transformFormValues(state.apiReducer.api),
-    }),
+    state => {
+        const plugins = selector(state, 'plugins');
+
+        return {
+            initialValues: transformFormValues(state.apiReducer.api),
+            selectedPlugins: state.apiReducer.selectedPlugins,
+            keepDirtyOnReinitialize: false,
+            plugins,
+        };
+    },
     null,
 )(form);
