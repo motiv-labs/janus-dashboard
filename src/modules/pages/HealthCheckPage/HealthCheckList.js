@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import {
-  Link,
-} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
 
