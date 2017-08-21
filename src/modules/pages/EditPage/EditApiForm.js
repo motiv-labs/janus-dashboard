@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
+import transformFormValues from '../../../helpers/transformFormValues';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -302,7 +303,7 @@ const form = reduxForm({
 
 export default connect(
     state => ({
-        initialValues: state.apiReducer.api,
+        initialValues: transformFormValues(state.apiReducer.api),
     }),
     null,
 )(form);
