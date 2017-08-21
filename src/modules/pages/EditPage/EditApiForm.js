@@ -67,7 +67,7 @@ const ApiForm = (props) => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form className={b} onSubmit={handleSubmit}>
             <Section>
                 <Row>
                     <Title>Edit API</Title>
@@ -296,7 +296,7 @@ const ApiForm = (props) => {
             </div>
 
 
-            <Section>
+            {/*<Section>
                 <Subtitle>{props.api.name}</Subtitle>
                 <Link
                     to={'/'}
@@ -336,7 +336,7 @@ const ApiForm = (props) => {
                         <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse} />
                     </FormRow>
                 </Section>
-            </Section>
+            </Section>*/}
 
             {/*{
                 !!props.initialValues.plugins &&
