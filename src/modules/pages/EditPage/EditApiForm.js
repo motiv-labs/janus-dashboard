@@ -71,7 +71,7 @@ const ApiForm = (props) => {
             <Section>
                 <Row>
                     <Title>Edit API</Title>
-                    <div>
+                    <div className="j-buttons__wrapper">
                         <Link
                             to={'/'}
                             onClick={() => {
