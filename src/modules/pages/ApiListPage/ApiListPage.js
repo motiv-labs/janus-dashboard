@@ -9,13 +9,13 @@ import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import Button from '../../buttons/Button';
-import Incorrect from '../HealthCheckPage/Incorrect';
+import UnhealthyReport from '../HealthCheckPage/UnhealthyReport';
 
 const ApiListPage = ({ healthcheckStatus }) => {
     const renderHealthcheckInfo = () => {
         if (!healthcheckStatus && healthcheckStatus !== null) {
             return (
-                <Incorrect />
+                <UnhealthyReport />
             );
         }
 

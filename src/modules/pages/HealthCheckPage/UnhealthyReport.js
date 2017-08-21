@@ -18,7 +18,7 @@ const style = {
     fontSize: '30px',
 };
 
-class Incorrect extends PureComponent {
+class UnhealthyReport extends PureComponent {
     state = {
         isOpen: true,
     }
@@ -49,6 +49,6 @@ class Incorrect extends PureComponent {
     }
 };
 
-Incorrect.propTypes = propTypes;
+UnhealthyReport.propTypes = propTypes;
 
-export default Incorrect;
+export default UnhealthyReport;
