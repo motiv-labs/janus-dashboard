@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import R from 'ramda';
 import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
-import { isEmpty } from '../../../helpers';
+
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
 
@@ -48,7 +49,7 @@ class NewApiItem extends Component {
     }
 
     hasToBeCloned = () => {
-        if (this.props.location.state && !isEmpty(this.props.location.state.clone)) {
+        if (this.props.location.state && !R.isEmpty(this.props.location.state.clone)) {
             return {
                 clone: this.props.location.state.clone,
             };
