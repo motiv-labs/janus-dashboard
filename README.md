@@ -27,3 +27,15 @@ yarn global add serve && serve -s build
 # serve with hot reload on port 8082
 npm run start
 ```
+
+## Configuration
+
+In order to set up your URL, you should create `config.js` file and put it in the root:
+
+```javascript
+var MAIN_CONFIG =  {
+    gateway: {
+        uri: 'http://your-url.com',
+    },
+};
+```
