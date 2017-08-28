@@ -120,28 +120,31 @@ export const fetchEndpoint = pathname => async (dispatch) => {
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
                 console.error('endpointSchema::: ', pluginFromSchema);
                 const { value, units } = pluginFromSchema.config.limit;
+                const policyFromSchema = pluginFromSchema.config.policy;
 
                 const schemaConfigLimit = pluginFromSchema.config.limit;
                 const valueOfLimit = plugin.config.limit.split('-')[0]*1;
-                console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit);
-                // @TODO: take received actual plugin.config.limit and merge with schema:
-                // take actual value and add an array of units;
+                // console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit);
+                // @TODO: policy should be also an array like in schema;
+
+
                 const updatedLimit = {
                     value: valueOfLimit,
                     units,
                 };
-                console.error('uodatedLimit:: ', updatedLimit);
+                // console.error('uodatedLimit:: ', updatedLimit);
 
 
                 // const { value, units } = plugin.config.limit;
                 // const concatenation = `${value}-${units}`;
                 // set the path for the lens
                 const lens = R.lensPath(['config', 'limit']);
+                const lens2 = R.lensPath(['config', 'policy']);
                 // substitude the plugin.config.limit
                 const updatedPlugin = R.set(lens, updatedLimit, plugin);
 
-                console.error('response.data.plugins.map(plugin => ', updatedPlugin);
-                return updatedPlugin;
+                // console.error('response.data.plugins.map(plugin => ', updatedPlugin);
+                return R.set(lens2, policyFromSchema , updatedPlugin);
             }
 
             return plugin;
@@ -150,7 +153,7 @@ export const fetchEndpoint = pathname => async (dispatch) => {
         // const preparedApi = response.data;
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
-        console.warn('preparedApi2 ===> ', preparedApi);
+        // console.warn('preparedApi2 ===> ', endpointSchema, preparedApi);
 
 
         // const preparedPlugins = preparedApi.plugins.map(item => {

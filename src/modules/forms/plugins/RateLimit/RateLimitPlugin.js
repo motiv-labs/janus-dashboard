@@ -28,6 +28,7 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
             value: item,
         }));
     };
+    console.error('PLUGIN??????', plugin);
 
     return (
         <div className={b('section')()}>

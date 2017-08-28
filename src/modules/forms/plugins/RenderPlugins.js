@@ -42,7 +42,7 @@ class RenderPlugin extends Component {
 
     render() {
         const { className, apiSchema, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
-        console.error(plugins);
+        // console.error(plugins);
         const b = block(className);
         const names = apiSchema.plugins.map(plugin => ({
             label: plugin.name,
@@ -88,6 +88,7 @@ class RenderPlugin extends Component {
                                         {...opts}
                                     />
                                 );
+                                {/*@TODO: FIX SOMETHING WOTH REQUEST TRANSFORM*/}
                             case 'request_transformer':
                                 return (
                                     <RequestTransformerPlugin

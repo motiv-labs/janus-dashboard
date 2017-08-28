@@ -52,7 +52,7 @@ const ApiForm = (props) => {
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const includePlugin = value => {
-        console.clear();
+        // console.clear();
         apiSchema.plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
                 selectPlugin(plugin.name);
@@ -63,12 +63,24 @@ const ApiForm = (props) => {
         excludePlugin(value);
     };
 
+    const getValues = () => {
+        console.warn('/_/_/_/ VALUES /_/_/_/', initialValues.proxy.methods);
+        return initialValues.proxy.methods;
+    };
+
     const optionsTransformer = config => {
-        return config.map(item => ({
+        console.error('/////////');
+        console.warn(config);
+        console.error('/////////');
+        const opts = config.map(item => ({
             label: item,
             value: item,
         }));
+        console.warn('/_/_/_/ OPTIONS /_/_/_/', opts);
+
+        return opts;
     };
+    console.error('=========++>', initialValues.proxy.methods);
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -169,7 +181,8 @@ const ApiForm = (props) => {
                                 name="proxy.methods"
                                 type="text"
                                 placeholder="Choose one or more methods"
-                                options={optionsTransformer(initialValues.proxy.methods)}
+                                value={getValues()}
+                                options={optionsTransformer(apiSchema.proxy.methods)}
                                 component={MultiSelect}
                             />
                             <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -342,9 +355,10 @@ export default connect(
         // console.warn('____', transformFormValues(api).plugins);
         // console.warn('____', state.apiReducer.api);
         // console.warn(updatedApi)
-        console.error(defaultPlugins);
-        console.log(apiPlugins);
-        console.warn(updatedPlugins);
+
+        // console.error(defaultPlugins);
+        // console.log(apiPlugins);
+        // console.warn(updatedPlugins);
 
         return {
             // initialValues: transformFormValues(state.apiReducer.api),

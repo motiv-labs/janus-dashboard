@@ -19,48 +19,54 @@ const propTypes = {
 };
 
 class HeadersSection extends Component {
-    renderMembers = ({ fields, hint, title }) => (
-        <div>
-            <div className={row()}>
-                <Label>{ title }</Label>
-                <Control
-                    onClick={() => fields.push({})}
-                    icon="add"
-                />
+    renderMembers = ({ fields, hint, title }) => {
+        console.error('___________________');
+        console.log('fields', fields);
+        console.error('___________________');
+        return (
+            <div>
+                <div className={row()}>
+                    <Label>{ title }</Label>
+                    <Control
+                        onClick={() => fields.push({})}
+                        icon="add"
+                    />
+                </div>
+                <Hint title>{ hint }</Hint>
+                {
+                    fields.map((member, index) => {
+                        console.warn(member);
+                        return (
+                            <Row key={index} col>
+                                <div className={row()}>
+                                    <div className={row('item', {'pair': true})}>
+                                        <Field
+                                            name={`${member}.key`}
+                                            type="text"
+                                            component={Input}
+                                        />
+                                    </div>
+                                    <div className={row('item', {'pair': true})}>
+                                        <Field
+                                            name={`${member}.value`}
+                                            type="text"
+                                            component={Input}
+                                        />
+                                    </div>
+                                    <div className={row('control')()}>
+                                        <Control
+                                            onClick={() => fields.remove(index)}
+                                            icon="remove"
+                                        />
+                                    </div>
+                                </div>
+                            </Row>
+                        );
+                    })
+                }
             </div>
-            <Hint title>{ hint }</Hint>
-            {
-                fields.map((member, index) => {
-                    return (
-                        <Row key={index} col>
-                            <div className={row()}>
-                                <div className={row('item', {'pair': true})}>
-                                    <Field
-                                        name={`${member}.key`}
-                                        type="text"
-                                        component={Input}
-                                    />
-                                </div>
-                                <div className={row('item', {'pair': true})}>
-                                    <Field
-                                        name={`${member}.value`}
-                                        type="text"
-                                        component={Input}
-                                    />
-                                </div>
-                                <div className={row('control')()}>
-                                    <Control
-                                        onClick={() => fields.remove(index)}
-                                        icon="remove"
-                                    />
-                                </div>
-                            </div>
-                        </Row>
-                    );
-                })
-            }
-        </div>
-    )
+        );
+    };
 
     renderHeaders = ({ fields, hint, title }) => {
         return (

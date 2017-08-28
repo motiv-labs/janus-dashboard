@@ -140,6 +140,7 @@ const ApiForm = (props) => {
                                 name="proxy.methods"
                                 type="text"
                                 placeholder="Choose one or more methods"
+                                value={[]}
                                 options={optionsTransformer(initialValues.proxy.methods)}
                                 component={MultiSelect}
                             />

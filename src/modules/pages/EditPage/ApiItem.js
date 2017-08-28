@@ -35,7 +35,7 @@ class ApiItem extends Component {
 
     fillSelected = (arr) => {
         const selectedPlugins = arr.map(item => item.name);
-        console.error('API ITEM did mount:', selectedPlugins);
+        // console.error('API ITEM did mount:', selectedPlugins);
         this.props.fillSelected(selectedPlugins);
     }
 
@@ -57,7 +57,7 @@ class ApiItem extends Component {
         // const YYY = this.props.api.plugins.map(item => item.name)
         if (!R.isEmpty(this.props.api)) {
             const r = this.props.api.plugins.map(item => item.name);
-            console.warn(r);
+            // console.warn(r);
             return (
                 <EditApiForm
                     api={this.props.api}

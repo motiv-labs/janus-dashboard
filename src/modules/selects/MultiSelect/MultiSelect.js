@@ -11,7 +11,13 @@ const propTypes = {
 class MultiSelect extends Component {
     state = {
         options: this.props.options,
+        // value: this.props.input.value,
         value: [],
+    }
+
+    componentWillReceiveProps = nextProps => {
+        console.error('____NEXT_PROPS:', nextProps);
+        this.setState({ value: nextProps.input.value });
     }
 
     handleSelectChange = value => {
@@ -19,6 +25,8 @@ class MultiSelect extends Component {
     }
 
     render() {
+        console.warn('MULTI_THIS>PROPS:', this.props);
+        console.error('MULTI__THIS>STATE: ', this.state);
         return (
             <Select
                 {...this.props}
