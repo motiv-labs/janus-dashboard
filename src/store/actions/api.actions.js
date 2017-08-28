@@ -123,7 +123,7 @@ export const fetchEndpoint = pathname => async (dispatch) => {
 
                 const schemaConfigLimit = pluginFromSchema.config.limit;
                 const valueOfLimit = plugin.config.limit.split('-')[0]*1;
-                console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit)
+                console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit);
                 // @TODO: take received actual plugin.config.limit and merge with schema:
                 // take actual value and add an array of units;
                 const updatedLimit = {
@@ -150,7 +150,7 @@ export const fetchEndpoint = pathname => async (dispatch) => {
         // const preparedApi = response.data;
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
-        console.warn('preparedApi2 ===> ', preparedApi)
+        console.warn('preparedApi2 ===> ', preparedApi);
 
 
         // const preparedPlugins = preparedApi.plugins.map(item => {

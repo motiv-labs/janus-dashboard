@@ -40,7 +40,7 @@ const propTypes = {
 };
 
 const ApiForm = (props) => {
-    console.error('THIS>PROPS', props)
+    console.error('THIS>PROPS', props);
     const {
         apiSchema,
         excludePlugin,
@@ -342,9 +342,9 @@ export default connect(
         // console.warn('____', transformFormValues(api).plugins);
         // console.warn('____', state.apiReducer.api);
         // console.warn(updatedApi)
-        console.error(defaultPlugins)
-        console.log(apiPlugins)
-        console.warn(updatedPlugins)
+        console.error(defaultPlugins);
+        console.log(apiPlugins);
+        console.warn(updatedPlugins);
 
         return {
             // initialValues: transformFormValues(state.apiReducer.api),
