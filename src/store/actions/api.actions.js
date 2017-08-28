@@ -186,7 +186,7 @@ export const fetchEndpointSchema = () => (dispatch) => {
     dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
-export const updateEndpoint = (pathname, api) => (dispatch) => {
+export const updateEndpoint_OLD = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
     return client.put(`apis${pathname}`, api)
@@ -225,6 +225,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 };
 
 export const saveEndpoint = (pathname, api) => (dispatch) => {
+    console.error('__________SAVE____________', pathname);
     dispatch(saveEndpointRequest());
 
     const preparedPlugins = api.plugins.map(plugin => {
@@ -302,6 +303,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
+    // return client.post('apis', api)
     return client.post('apis', preparedApi)
         .then((response) => {
             // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
@@ -311,6 +313,123 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
                 message: 'Successfuly saved',
                 statusText: response.statusText,
                 redirectOnClose: () => (history.push('/')),
+            }));
+        })
+        .catch((error) => {
+            if (error.response) {
+                dispatch(openResponseModal({
+                    status: error.response.status,
+                    statusText: error.response.statusText,
+                    message: error.response.data,
+                }));
+
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+                // eslint-disable-next-line
+                console.error(error.response.data);
+            } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+                // eslint-disable-next-line
+                console.log(error.request);
+            } else {
+            // Something happened in setting up the request that triggered an Error
+                // eslint-disable-next-line
+                console.log('Error', error.message);
+            }
+        });
+};
+
+
+export const updateEndpoint = (pathname, api) => (dispatch) => {
+    console.error('_________UPD_______');
+    dispatch(saveEndpointRequest());
+
+    const preparedPlugins = api.plugins.map(plugin => {
+        if (plugin.name === 'rate_limit') {
+            const { value, units } = plugin.config.limit;
+            const concatenation = `${value}-${units}`;
+            // set the path for the lens
+            const lens = R.lensPath(['config', 'limit']);
+            // substitude the plugin.config.limit
+            const updatedPlugin = R.set(lens, concatenation, plugin);
+
+            return updatedPlugin;
+        }
+        if (plugin.name === 'request_transformer') {
+            // get all options names
+            const options = Object.keys(plugin.config);
+            // convert all values of plugin's config to array of objects
+            // so then we will be able to map through them:
+            const config = R.values(plugin.config);
+            const allTransformedHeaders = config.map((item, index) => {
+                // headers comes as an array of objects:
+                /**
+                 * @example #1
+                 *
+                 * add: {
+                 *     header: [
+                 *         {someKey: 'someValue'},
+                 *         {someAnotherKey: 'someAnotherValue'},
+                 *     ]
+                 * }
+                 */
+                const headers = item.headers;
+
+                // we will fill this arrays with keys and values respectively
+                let keys = [];
+                let values = [];
+
+                // fill key/values arrays
+                headers.map(item => {
+                    const arr = R.values(item);
+
+                    keys.push(arr[0]);
+                    values.push(arr[1]);
+                });
+
+                // and now we are creating object that should be placed instead of
+                // array of the objects from example #1
+                /**
+                 * @example #2
+                 *
+                 * add: {
+                 *     headers: {
+                 *         someKey: 'someValue',
+                 *         someAnotherKey: 'someAnotherValue',
+                 *     }
+                 * }
+                 */
+                const transformedHeaders = R.zipObj(keys, values);
+
+                return transformedHeaders;
+            });
+
+            // step by step we updating plugins config:
+            const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
+                const lens = R.lensPath(['config', options[index], 'headers']);
+
+                return R.set(lens, item, acc);
+            }, plugin);
+
+            return updatedPlugin;
+        }
+
+        return plugin;
+    });
+    // substitude updated list of plugins
+    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+
+    return client.put(`apis${pathname}`, preparedApi)
+        .then((response) => {
+            // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+            dispatch(saveEndpointSuccess());
+            dispatch(openResponseModal({
+                status: response.status,
+                message: 'Successfuly saved',
+                statusText: response.statusText,
             }));
         })
         .catch((error) => {

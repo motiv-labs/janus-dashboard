@@ -39,13 +39,30 @@ class ApiItem extends Component {
         this.props.fillSelected(selectedPlugins);
     }
 
-    submit = (values) => {
+    submit = values => {
         const transformedValues = transformFormValues(values, true);
+        const plugins = transformedValues.plugins;
+        const selectedPlugins = this.props.selectedPlugins;
 
-        // this.props.updateEndpoint(this.props.location.pathname, transformedValues);
-        this.props.saveEndpoint(this.props.location.pathname, transformedValues);
-        // this.props.saveEndpoint(this.props.location.pathname, values);
-    };
+        const addedPlugins = plugins.filter((plugin) => {
+            return selectedPlugins.indexOf(plugin.name) !== -1;
+        });
+
+        const computedPlugins = {
+            ...transformedValues,
+            plugins: addedPlugins,
+        };
+
+        this.props.updateEndpoint(this.props.location.pathname, computedPlugins);
+    }
+
+    // submit = (values) => {
+    //     const transformedValues = transformFormValues(values, true);
+
+    //     // this.props.updateEndpoint(this.props.location.pathname, transformedValues);
+    //     this.props.updateEndpoint(this.props.location.pathname, transformedValues);
+    //     // this.props.saveEndpoint(this.props.location.pathname, values);
+    // };
 
     handleDelete = (apiName) => {
         this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
