@@ -8,6 +8,7 @@ import {
     FETCH_ENDPOINT_SUCCESS,
     FETCH_ENDPOINT_SCHEMA_START,
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
+    FILL_SELECTED_PLUGINS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
     EXCLUDE_PLUGIN,
@@ -18,9 +19,13 @@ import {
 
 const initialState = {
     api: {},
+    apiSchema: {},
     selectedPlugins: [],
     isFetching: false,
 };
+
+export const adjust = api => api;
+export const fillSelectedPlugins = api => api.plugins.map(item => item.name);
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -39,14 +44,30 @@ export default function reducer(state = initialState, action) {
                 isFetching: false,
             };
         }
-        case FETCH_ENDPOINT_SUCCESS:
         case FETCH_ENDPOINT_SCHEMA_SUCCESS: {
             return {
                 ...state,
                 api: action.payload,
+                apiSchema: action.payload,
                 isFetching: false,
             };
         }
+        case FETCH_ENDPOINT_SUCCESS: {
+            // console.error('FETCH_ENDPOINT_SUCCESS', action.payload);
+            return {
+                ...state,
+                api: adjust(action.payload),
+                selectedPlugins: fillSelectedPlugins(action.payload),
+                // selectedPlugins: action.payload,
+                isFetching: false,
+            };
+        }
+        // case FILL_SELECTED_PLUGINS: {
+        //     return {
+        //         ...state,
+        //         selectedPlugins: action.payload,
+        //     };
+        // }
         case SAVE_ENDPOINT_SUCCESS: {
             return {
                 ...state,

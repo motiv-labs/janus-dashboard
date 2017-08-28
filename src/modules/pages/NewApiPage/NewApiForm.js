@@ -23,6 +23,7 @@ import './NewApiForm.css';
 const b = block('j-api-form');
 
 const propTypes = {
+    apiSchema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
 };
@@ -31,11 +32,13 @@ const ApiForm = (props) => {
     const {
         handleSubmit,
         initialValues,
+        apiSchema,
         plugins,
         excludePlugin,
         selectPlugin,
         selectedPlugins,
     } = props;
+    console.error('NEW APU': selectedPlugins);
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const includePlugin = value => {
         plugins.map((plugin, index) => {
@@ -256,6 +259,7 @@ const ApiForm = (props) => {
                         !!plugins &&
                             <RenderPlugins
                                 className={b()}
+                                apiSchema={apiSchema}
                                 plugins={plugins}
                                 initialValues={initialValues}
                                 selectedPlugins={selectedPlugins}
@@ -293,6 +297,7 @@ export default connect(
 
         return {
             initialValues: transformFormValues(state.apiReducer.api),
+            apiSchema: state.apiReducer.apiSchema,
             selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,

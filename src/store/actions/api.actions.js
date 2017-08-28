@@ -10,6 +10,7 @@ import {
     FETCH_ENDPOINT_SUCCESS,
     FETCH_ENDPOINT_SCHEMA_START,
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
+    FILL_SELECTED_PLUGINS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
     EXCLUDE_PLUGIN,
@@ -79,6 +80,11 @@ export const willClone = data => ({
     payload: data,
 });
 
+export const fillSelected = selectedPlugins => ({
+    type: FILL_SELECTED_PLUGINS,
+    payload: selectedPlugins,
+});
+
 export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
     dispatch(deleteEndpointRequest());
 
@@ -103,17 +109,64 @@ export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
     }
 };
 
-export const fetchEndpoint = pathname => (dispatch) => {
+export const fetchEndpoint = pathname => async (dispatch) => {
     dispatch(getEndpointRequest());
 
-    return client.get(`apis${pathname}`)
-        .then((response) => {
-            dispatch(getEndpointSuccess(response.data));
-        })
-        .catch((error) => {
-            // eslint-disable-next-line
-            console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+    try {
+        const response = await client.get(`apis${pathname}`);
+        const preparedPlugins = response.data.plugins.map(plugin => {
+            if (plugin.name === 'rate_limit') {
+                // console.clear();
+                const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
+                console.error('endpointSchema::: ', pluginFromSchema);
+                const { value, units } = pluginFromSchema.config.limit;
+
+                const schemaConfigLimit = pluginFromSchema.config.limit;
+                const valueOfLimit = plugin.config.limit.split('-')[0]*1;
+                console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit)
+                // @TODO: take received actual plugin.config.limit and merge with schema:
+                // take actual value and add an array of units;
+                const updatedLimit = {
+                    value: valueOfLimit,
+                    units,
+                };
+                console.error('uodatedLimit:: ', updatedLimit);
+
+
+                // const { value, units } = plugin.config.limit;
+                // const concatenation = `${value}-${units}`;
+                // set the path for the lens
+                const lens = R.lensPath(['config', 'limit']);
+                // substitude the plugin.config.limit
+                const updatedPlugin = R.set(lens, updatedLimit, plugin);
+
+                console.error('response.data.plugins.map(plugin => ', updatedPlugin);
+                return updatedPlugin;
+            }
+
+            return plugin;
         });
+
+        // const preparedApi = response.data;
+        const lens = R.lensPath(['plugins']);
+        const preparedApi = R.set(lens, preparedPlugins, response.data);
+        console.warn('preparedApi2 ===> ', preparedApi)
+
+
+        // const preparedPlugins = preparedApi.plugins.map(item => {
+        //     if (item.name === 'rate_limit') {
+        //         const { limit, policy } = item.config;
+        //         //
+        //         console.error('TARGET PLUGIN:', limit.split('-'));
+        //     }
+        //     return item;
+        // });
+        // console.error(preparedPlugins)
+
+        dispatch(getEndpointSuccess(preparedApi));
+    } catch (error) {
+        console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+    }
 };
 
 export const fetchEndpointSchema = () => (dispatch) => {
@@ -134,38 +187,38 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
     return client.put(`apis${pathname}`, api)
-    .then((response) => {
-        dispatch(saveEndpointSuccess());
-        dispatch(openResponseModal({ // @FIXME: move to reducers
-            status: response.status,
-            message: 'Successfuly saved',
-            statusText: response.statusText,
-        }));
-    })
-    .catch((error) => {
-        if (error.response) {
-            dispatch(openResponseModal({
-                status: error.response.status,
-                statusText: error.response.statusText,
-                message: error.response.data,
+        .then((response) => {
+            dispatch(saveEndpointSuccess());
+            dispatch(openResponseModal({ // @FIXME: move to reducers
+                status: response.status,
+                message: 'Successfuly saved',
+                statusText: response.statusText,
             }));
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-            // eslint-disable-next-line
-            console.error(error.response.data);
-        } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        // http.ClientRequest in node.js
-            // eslint-disable-next-line
-            console.log(error.request);
-        } else {
-        // Something happened in setting up the request that triggered an Error
-            // eslint-disable-next-line
-            console.log('Error', error.message);
-        }
-    });
+        })
+        .catch((error) => {
+            if (error.response) {
+                dispatch(openResponseModal({
+                    status: error.response.status,
+                    statusText: error.response.statusText,
+                    message: error.response.data,
+                }));
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+                // eslint-disable-next-line
+                console.error(error.response.data);
+            } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+                // eslint-disable-next-line
+                console.log(error.request);
+            } else {
+            // Something happened in setting up the request that triggered an Error
+                // eslint-disable-next-line
+                console.log('Error', error.message);
+            }
+        });
 };
 
 export const saveEndpoint = (pathname, api) => (dispatch) => {
@@ -247,39 +300,39 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
     return client.post('apis', preparedApi)
-    .then((response) => {
-        // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
-        dispatch(saveEndpointSuccess());
-        dispatch(openResponseModal({
-            status: response.status,
-            message: 'Successfuly saved',
-            statusText: response.statusText,
-            redirectOnClose: () => (history.push('/')),
-        }));
-    })
-    .catch((error) => {
-        if (error.response) {
+        .then((response) => {
+            // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+            dispatch(saveEndpointSuccess());
             dispatch(openResponseModal({
-                status: error.response.status,
-                statusText: error.response.statusText,
-                message: error.response.data,
+                status: response.status,
+                message: 'Successfuly saved',
+                statusText: response.statusText,
+                redirectOnClose: () => (history.push('/')),
             }));
+        })
+        .catch((error) => {
+            if (error.response) {
+                dispatch(openResponseModal({
+                    status: error.response.status,
+                    statusText: error.response.statusText,
+                    message: error.response.data,
+                }));
 
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-            // eslint-disable-next-line
-            console.error(error.response.data);
-        } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        // http.ClientRequest in node.js
-            // eslint-disable-next-line
-            console.log(error.request);
-        } else {
-        // Something happened in setting up the request that triggered an Error
-            // eslint-disable-next-line
-            console.log('Error', error.message);
-        }
-    });
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+                // eslint-disable-next-line
+                console.error(error.response.data);
+            } else if (error.request) {
+            // The request was made but no response was received
+            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+            // http.ClientRequest in node.js
+                // eslint-disable-next-line
+                console.log(error.request);
+            } else {
+            // Something happened in setting up the request that triggered an Error
+                // eslint-disable-next-line
+                console.log('Error', error.message);
+            }
+        });
 };

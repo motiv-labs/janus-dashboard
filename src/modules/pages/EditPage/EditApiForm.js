@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import R from 'ramda';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
@@ -29,17 +30,19 @@ const b = block('j-api-form');
 
 const propTypes = {
     api: PropTypes.object.isRequired,
+    apiSchema: PropTypes.object.isRequired,
     excludePlugin: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
     selectPlugin: PropTypes.func.isRequired,
-    selectedPlugins: PropTypes.arrayOf(PropTypes.object).isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const ApiForm = (props) => {
-    console.error('THIS.PROPS: ', props);
+    console.error('THIS>PROPS', props)
     const {
+        apiSchema,
         excludePlugin,
         initialValues,
         handleSubmit,
@@ -49,7 +52,8 @@ const ApiForm = (props) => {
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const includePlugin = value => {
-        plugins.map((plugin, index) => {
+        console.clear();
+        apiSchema.plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
                 selectPlugin(plugin.name);
             }
@@ -284,6 +288,7 @@ const ApiForm = (props) => {
                         !!plugins &&
                             <RenderPlugins
                                 className={b()}
+                                apiSchema={apiSchema}
                                 plugins={plugins}
                                 initialValues={initialValues}
                                 selectedPlugins={selectedPlugins}
@@ -294,55 +299,6 @@ const ApiForm = (props) => {
 
                 </div>
             </div>
-
-
-            {/*<Section>
-                <Subtitle>{props.api.name}</Subtitle>
-                <Link
-                    to={'/'}
-                    onClick={() => {
-                        props.handleDelete(props.api.name);
-                    }}
-                >
-                    <Button
-                        type="button"
-                        mod="danger"
-                    >
-                        <Icon type="delete-white" />
-                        Delete
-                    </Button>
-                </Link>
-                <Button
-                    type="submit"
-                    mod="primary"
-                >
-                    Save
-                </Button>
-            </Section>
-            <Section>
-                <FormRow>
-                    <FormInput component="input" label="Listen Path" attachTo="proxy.listen_path" type="text" tooltip="some another tooltip about something usefull" />
-                    <FormInput component="input" label="Upstream URL" attachTo="proxy.upstream_url" type="text" />
-                    <FormInput component="input" label="Preserve HOST" attachTo="proxy.preserve_host" type="checkbox" tooltip="some another tooltip about something usefull" />
-                    <FormInput component="input" label="Strip Path" attachTo="proxy.strip_path" type="checkbox" />
-                    <FormInput component="input" label="Append Path" attachTo="proxy.append_path" type="checkbox" />
-                </FormRow>
-                <Section>
-                    <FormRow>
-                        <FormLabel text="Health check" />
-                    </FormRow>
-                    <FormRow>
-                        <FormInput component="input" label="url" attachTo="health_check.url" type="text" />
-                        <FormInput component="input" label="timeout" attachTo="health_check.timeout" type="text" parse={parse} />
-                    </FormRow>
-                </Section>
-            </Section>*/}
-
-            {/*{
-                !!props.initialValues.plugins &&
-                    <RenderPlugins plugins={props.initialValues.plugins} />
-            }*/}
-
 
             <Row className={b('row',{ 'button-row': true })()}>
                 <Button
@@ -369,8 +325,32 @@ export default connect(
     state => {
         const plugins = selector(state, 'plugins');
 
+        const api = state.apiReducer.api;
+        const apiPlugins = api.plugins;
+        const defaultPlugins = state.apiReducer.apiSchema.plugins;
+
+        const updatedPlugins = defaultPlugins.map(item => {
+            const res = apiPlugins.filter(pl => pl.name === item.name);
+
+            return res.length > 0 ? res[0] : item;
+        });
+
+        const lens = R.lensPath(['plugins']);
+        // substitude the plugin.config.limit
+        const updatedApi = R.set(lens, updatedPlugins, api);
+        // const x = api.plugins.map((item, index) => item.name === )
+        // console.warn('____', transformFormValues(api).plugins);
+        // console.warn('____', state.apiReducer.api);
+        // console.warn(updatedApi)
+        console.error(defaultPlugins)
+        console.log(apiPlugins)
+        console.warn(updatedPlugins)
+
         return {
-            initialValues: transformFormValues(state.apiReducer.api),
+            // initialValues: transformFormValues(state.apiReducer.api),
+            initialValues: transformFormValues(updatedApi),
+            // ***FOR SOME REASON NAME of the plugin DISCARDS while saving
+            apiSchema: state.apiReducer.apiSchema,
             selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
