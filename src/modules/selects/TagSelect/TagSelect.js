@@ -18,6 +18,7 @@ class TagSelect extends Component {
         if (nextProps.edit) {
             this.setState({ multiValue: nextProps.input.value });
         }
+        // @TODO: delete CORS then add back and buggy
     }
 
     handleOnChange = value => {
