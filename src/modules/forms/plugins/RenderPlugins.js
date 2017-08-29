@@ -16,6 +16,7 @@ import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlu
 const propTypes = {
     className: PropTypes.string,
     apiSchema: PropTypes.object.isRequired,
+    edit: PropTypes.bool,
     initialValues: PropTypes.object,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
     handlePluginExclude: PropTypes.func.isRequired,
@@ -41,7 +42,7 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, apiSchema, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
+        const { className, apiSchema, edit, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
         // console.error(plugins);
         const b = block(className);
         const names = apiSchema.plugins.map(plugin => ({
@@ -62,6 +63,7 @@ class RenderPlugin extends Component {
                             pluginFromValues: plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginName,
                             apiSchema,
+                            edit,
                         };
 
                         switch (pluginName) {

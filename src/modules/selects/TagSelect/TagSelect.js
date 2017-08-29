@@ -11,8 +11,13 @@ class TagSelect extends Component {
     }
 
     componentWillReceiveProps = nextProps => {
-        console.error('____NEXT_PROPS:', nextProps);
-        this.setState({ multiValue: nextProps.input.value });
+        // console.error('____NEXT_PROPS:', nextProps);
+        // if (nextProps.input.value !== this.props.input.value) {
+        //     this.setState({ multiValue: nextProps.input.value });
+        // }
+        if (nextProps.edit) {
+            this.setState({ multiValue: nextProps.input.value });
+        }
     }
 
     handleOnChange = value => {

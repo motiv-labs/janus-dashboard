@@ -16,13 +16,14 @@ import TagSelect from '../../../selects/TagSelect/TagSelect';
 const propTypes = {
     apiSchema: PropTypes.object.isRequired,
     className: PropTypes.string,
+    edit: PropTypes.bool,
     name: PropTypes.string.isRequired,
     plugin: PropTypes.object.isRequired,
     pluginName: PropTypes.string.isRequired,
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, pluginName }) => {
+const CorsPlugin = ({ apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName }) => {
     // console.error('this.props(CORS_PLUGIN): ', name, pluginName, apiSchema.plugins[0].config)
     const b = block(className);
     const optionsTransformer = config => {
@@ -63,6 +64,7 @@ const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, p
                     <Field
                         name={`${name}.config.methods`}
                         type="text"
+                        edit={edit}
                         placeholder={SETUP.placeholders.cors.methods}
                         value={() => getValues('methods')}
                         options={optionsTransformer(allValues('methods'))}
@@ -77,6 +79,7 @@ const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, p
                     <Field
                         name={`${name}.config.request_headers`}
                         type="text"
+                        edit={edit}
                         value={() => getValues('request_headers')}
                         placeholder={SETUP.placeholders.cors.request_headers}
                         options={optionsTransformer(allValues('request_headers'))}
@@ -89,8 +92,10 @@ const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, p
                     <Field
                         name={`${name}.config.exposed_headers`}
                         type="text"
+                        edit={edit}
+                        value={() => getValues('exposed_headers')}
                         placeholder={SETUP.placeholders.cors.request_headers}
-                        options={optionsTransformer(plugin.config.exposed_headers)}
+                        options={optionsTransformer(allValues('exposed_headers'))}
                         component={TagSelect}
                     />
                     <Hint>Value for the Access-Control-Expose-Headers header.</Hint>

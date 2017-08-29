@@ -40,7 +40,7 @@ const propTypes = {
 };
 
 const ApiForm = (props) => {
-    console.error('THIS>PROPS', props);
+    // console.error('THIS>PROPS', props);
     const {
         apiSchema,
         excludePlugin,
@@ -177,6 +177,7 @@ const ApiForm = (props) => {
                                 name="proxy.methods"
                                 type="text"
                                 placeholder="Choose one or more methods"
+                                edit
                                 value={getValues('methods')}
                                 options={optionsTransformer(apiSchema.proxy.methods)}
                                 component={MultiSelect}
@@ -303,6 +304,7 @@ const ApiForm = (props) => {
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
                                 handlePluginExclude={removePlugin}
+                                edit
                             />
                     }
 

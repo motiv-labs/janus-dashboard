@@ -15,11 +15,24 @@ class MultiSelect extends Component {
         value: [],
     }
 
-    componentDidMount = () => console.error('MultiSelect did mount', this.props)
+    componentDidMount = () => {
+        // console.error('MultiSelect did mount', this.props)
+        // this.setState({ value: this.props.input.value });
+    }
 
     componentWillReceiveProps = nextProps => {
-        console.error('____NEXT_PROPS:', nextProps);
-        this.setState({ value: nextProps.input.value });
+        // console.error('MultiSelect:');
+        // console.error(this.props.input.name);
+        // console.error('MultiSelect____PROPS:', this.props.input.value);
+        // console.error('MultiSelect____NEXT_PROPS:', nextProps.input.value);
+        // console.error('NEXT_PROPS:', nextProps);
+        // if (nextProps.input.value !== this.props.input.value) {
+        //     this.setState({ value: nextProps.input.value });
+        // }
+        if (nextProps.edit) {
+            this.setState({ value: nextProps.input.value });
+        }
+        // this.setState({ value: nextProps.input.value });
     }
 
     handleSelectChange = value => {
@@ -27,8 +40,8 @@ class MultiSelect extends Component {
     }
 
     render() {
-        console.warn('MULTI_THIS>PROPS:', this.props);
-        console.error('MULTI__THIS>STATE: ', this.state);
+        // console.warn('MULTI_THIS>PROPS:', this.props);
+        // console.error('MULTI__THIS>STATE: ', this.state);
         return (
             <Select
                 {...this.props}
