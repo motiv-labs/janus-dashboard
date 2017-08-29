@@ -15,6 +15,8 @@ class MultiSelect extends Component {
         value: [],
     }
 
+    componentDidMount = () => console.error('MultiSelect did mount', this.props)
+
     componentWillReceiveProps = nextProps => {
         console.error('____NEXT_PROPS:', nextProps);
         this.setState({ value: nextProps.input.value });

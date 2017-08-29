@@ -61,6 +61,7 @@ class RenderPlugin extends Component {
                             plugin: initialValues.plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginFromValues: plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginName,
+                            apiSchema,
                         };
 
                         switch (pluginName) {

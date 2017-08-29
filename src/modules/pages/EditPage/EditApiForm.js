@@ -63,24 +63,20 @@ const ApiForm = (props) => {
         excludePlugin(value);
     };
 
-    const getValues = () => {
-        console.warn('/_/_/_/ VALUES /_/_/_/', initialValues.proxy.methods);
-        return initialValues.proxy.methods;
+    const getValues = key => {
+        // console.warn('/_/_/_/ VALUES /_/_/_/', initialValues.proxyß[key]);
+        return initialValues.proxy[key];
     };
 
     const optionsTransformer = config => {
-        console.error('/////////');
-        console.warn(config);
-        console.error('/////////');
         const opts = config.map(item => ({
             label: item,
             value: item,
         }));
-        console.warn('/_/_/_/ OPTIONS /_/_/_/', opts);
 
         return opts;
     };
-    console.error('=========++>', initialValues.proxy.methods);
+    // console.error('=========++>', initialValues.proxy.methods);
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -181,7 +177,7 @@ const ApiForm = (props) => {
                                 name="proxy.methods"
                                 type="text"
                                 placeholder="Choose one or more methods"
-                                value={getValues()}
+                                value={getValues('methods')}
                                 options={optionsTransformer(apiSchema.proxy.methods)}
                                 component={MultiSelect}
                             />

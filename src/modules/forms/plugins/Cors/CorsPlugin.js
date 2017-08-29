@@ -14,6 +14,7 @@ import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../selects/TagSelect/TagSelect';
 
 const propTypes = {
+    apiSchema: PropTypes.object.isRequired,
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
     plugin: PropTypes.object.isRequired,
@@ -21,13 +22,20 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
+const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, pluginName }) => {
+    // console.error('this.props(CORS_PLUGIN): ', name, pluginName, apiSchema.plugins[0].config)
     const b = block(className);
     const optionsTransformer = config => {
         return config.map(item => ({
             label: item,
             value: item,
         }));
+    };
+    const getValues = key => {
+        return plugin.config[key];
+    };
+    const allValues = key => {
+        return apiSchema.plugins[0].config[key];
     };
 
     return (
@@ -56,7 +64,8 @@ const CorsPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }
                         name={`${name}.config.methods`}
                         type="text"
                         placeholder={SETUP.placeholders.cors.methods}
-                        options={optionsTransformer(plugin.config.methods)}
+                        value={() => getValues('methods')}
+                        options={optionsTransformer(allValues('methods'))}
                         component={MultiSelect}
                     />
                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
