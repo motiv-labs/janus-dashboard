@@ -37,9 +37,9 @@
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
     "start-js": "react-scripts start",
     "start": "PORT=8082 npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && npm run lint:fix &&react-scripts build",
+    "build": "npm run build-css && npm run fix &&react-scripts build",
     "lint": "eslint --ext .jsx,.js ./src && stylelint '**/*.scss'",
-    "lint:fix": "eslint --ext .jsx,.js ./src --fix && stylelint '**/*.scss' --fix",
+    "fix": "eslint --ext .jsx,.js ./src --fix && stylelint '**/*.scss' --fix",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
