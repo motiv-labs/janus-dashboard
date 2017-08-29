@@ -18,5 +18,12 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { fetchEndpointSchema, resetEndpoint, saveEndpoint, excludePlugin, selectPlugin, willClone },
+    {
+        fetchEndpointSchema,
+        resetEndpoint,
+        saveEndpoint,
+        excludePlugin,
+        selectPlugin,
+        willClone,
+    },
 )(NewApiItem);

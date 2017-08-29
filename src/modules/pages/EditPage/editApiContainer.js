@@ -33,6 +33,9 @@ export default connect(
         refreshEndpoints,
         resetEndpoint,
         saveEndpoint,
+        fetchEndpoint,
+        refreshEndpoints,
+        resetEndpoint,
         updateEndpoint,
     },
 )(ApiItem);

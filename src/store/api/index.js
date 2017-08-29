@@ -9,7 +9,7 @@ const headers = {
 };
 
 const client = axios.create({
-    baseURL: config.gateway.uri,
+    baseURL: process.env.NODE_ENV !== 'production' ? config.gateway.uri : MAIN_CONFIG.gateway.uri,
     headers,
 });
 
