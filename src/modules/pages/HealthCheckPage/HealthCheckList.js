@@ -7,7 +7,7 @@ import block from '../../../helpers/bem-cn';
 
 import Correct from './Correct';
 import Icon from '../../Icon/Icon';
-import Pagination from '../../Pagination/Pagination';
+import PaginatedList from '../../PaginatedList/PaginatedList';
 import HealthCheckModal from '../../modals/HealthCheckModal/HealthCheckModal';
 
 import './HealthCheckList.css';
@@ -80,7 +80,7 @@ class HealthCheckList extends PureComponent {
 
     render() {
         return (
-            <Pagination
+            <PaginatedList
                 list={this.props.healthcheckList}
                 itemsPerPage={3}
                 currentPageIndex={this.props.currentPageIndex}
