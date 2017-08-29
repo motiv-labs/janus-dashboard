@@ -72,6 +72,7 @@ class RenderPlugin extends Component {
                                     />
                                 );
                             case 'rate_limit':
+                                {/*@FIXME: limit units & policy*/}
                                 return (
                                     <RateLimitPlugin
                                         {...opts}

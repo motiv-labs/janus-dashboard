@@ -77,8 +77,9 @@ const CorsPlugin = ({ apiSchema, className, name, handlePluginExclude, plugin, p
                     <Field
                         name={`${name}.config.request_headers`}
                         type="text"
+                        value={() => getValues('request_headers')}
                         placeholder={SETUP.placeholders.cors.request_headers}
-                        options={optionsTransformer(plugin.config.request_headers)}
+                        options={optionsTransformer(allValues('request_headers'))}
                         component={TagSelect}
                     />
                     <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>

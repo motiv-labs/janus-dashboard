@@ -10,6 +10,11 @@ class TagSelect extends Component {
         options: this.props.options,
     }
 
+    componentWillReceiveProps = nextProps => {
+        console.error('____NEXT_PROPS:', nextProps);
+        this.setState({ multiValue: nextProps.input.value });
+    }
+
     handleOnChange = value => {
         this.setState((prevState, props) => ({ multiValue: value }));
         this.props.input.onChange(value.split(','));
