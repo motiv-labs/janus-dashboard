@@ -3,24 +3,12 @@ import PropTypes from 'prop-types';
 
 import NewApiContainer from './newApiContainer';
 
-import Section from '../../Layout/Section/Section';
-import Title from '../../Layout/Title/Title';
-
 const propTypes = {
     location: PropTypes.object.isRequired,
 };
 
-const EditPage = ({ location }) => (
-    <div>
-        <Section>
-            <Title>New API</Title>
-        </Section>
-        <Section>
-            <NewApiContainer location={location} />
-        </Section>
-    </div>
-);
+const NewApiPage = ({ location }) => <NewApiContainer location={location} />;
 
-EditPage.propTypes = propTypes;
+NewApiPage.propTypes = propTypes;
 
-export default EditPage;
+export default NewApiPage;

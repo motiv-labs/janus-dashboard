@@ -1,3 +1,5 @@
+import R from 'ramda';
+
 import {
     DELETE_ENDPOINT_START,
     DELETE_ENDPOINT_SUCCESS,
@@ -8,12 +10,15 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    EXCLUDE_PLUGIN,
+    SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
 } from '../constants';
 
 const initialState = {
     api: {},
+    selectedPlugins: [],
     isFetching: false,
 };
 
@@ -28,7 +33,6 @@ export default function reducer(state = initialState, action) {
                 isFetching: true,
             };
         }
-
         case DELETE_ENDPOINT_SUCCESS: {
             return {
                 ...state,
@@ -36,12 +40,29 @@ export default function reducer(state = initialState, action) {
             };
         }
         case FETCH_ENDPOINT_SUCCESS:
-        case FETCH_ENDPOINT_SCHEMA_SUCCESS:
-        case SAVE_ENDPOINT_SUCCESS: {
+        case FETCH_ENDPOINT_SCHEMA_SUCCESS: {
             return {
                 ...state,
                 api: action.payload,
                 isFetching: false,
+            };
+        }
+        case SAVE_ENDPOINT_SUCCESS: {
+            return {
+                ...state,
+                isFetching: false,
+            };
+        }
+        case EXCLUDE_PLUGIN: {
+            return {
+                ...state,
+                selectedPlugins: R.without(action.payload, state.selectedPlugins),
+            };
+        }
+        case SELECT_PLUGIN: {
+            return {
+                ...state,
+                selectedPlugins: state.selectedPlugins.concat(action.payload),
             };
         }
         case WILL_CLONE: {

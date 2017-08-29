@@ -6,4 +6,3 @@ block.setup({
 });
 
 export default block;
-

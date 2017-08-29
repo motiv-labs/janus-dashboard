@@ -5,23 +5,27 @@ $hellofresh-highlight: rgba(254, 254, 254, 0.15);
 $hf-color-bg: rgba(250, 250, 250, 1);
 $hf-color-white: #fff;
 $hf-color-black: #000;
+$hf-color-snot-green: rgba(143, 195, 0, .15);
 $hf-color-gray-medium: #7f7f7f;
 $hf-color-gray-pale: #f5f5f5;
 $hf-color-white-pale: rgba(255, 255, 255, 0.15);
 
 /* Shadows */
 $hf-box-shadow-header: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+$hf-box-shadow-tumbler: 0 1px 4px 0 rgba(0, 0, 0, 0.3);
 
 /* Fonts */
 $hf-font-family-sans-serif: 'roboto', sans-serif;
 $hf-font-size-base: 14px;
-$hf-font-size-small: ceil($hf-font-size-base*0.85);
+$hf-font-size-medium: ceil($hf-font-size-base*1.14); // 16px
+$hf-font-size-small: ceil($hf-font-size-base*0.85); // 12px
 $hf-font-weight: 500;
 $hf-font-weight-bold: 700;
 $hf-font-size-title: $hf-font-size-base*2;
 
 $hf-line-height-title: 1.32;
 $hf-line-height: 1.71;
+$hf-line-medium: 1.5;
 
 /* Sizes */
 $hf-gutter: 10px;
@@ -46,6 +50,10 @@ $hf-padding-row: $hf-gutter*1.2;
 $hf-padding-footer: $hf-padding-middle*2;
 $hf-color-button-primary: $hellofresh-color;
 $hf-border-radius-button: $hf-border-radius;
+
+
+/* Timing */
+$hf-time: 0.15s;
 
 
 /* Extends */

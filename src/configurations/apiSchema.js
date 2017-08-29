@@ -7,17 +7,17 @@ const schema = {
         upstream_url: '',
         strip_path: false,
         append_path: false,
-        methods: ['ALL'],
+        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
         hosts: ['hellofresh.*'],
     },
     health_check: {
-        url: 'http://localhost:9089/status',
+        url: '',
         timeout: 3,
     },
     plugins: [
         {
             name: 'cors',
-            enabled: true,
+            enabled: false,
             config: {
                 domains: ['*'],
                 methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
@@ -27,32 +27,55 @@ const schema = {
         },
         {
             name: 'rate_limit',
-            enabled: true,
+            enabled: false,
             config: {
-                limit: '10-S',
-                policy: 'local',
+                limit: {
+                    value: 0,
+                    units: ['S', 'M', 'H'],
+                },
+                policy: [
+                    {
+                        label: 'local',
+                        value: 'local',
+                    },
+                    {
+                        label: 'destributed',
+                        value: 'redis',
+                    }
+                ],
             },
         },
         {
             name: 'oauth2',
-            enabled: true,
+            enabled: false,
             config: {
                 server_name: 'local',
             },
         },
         {
             name: 'compression',
-            enabled: true,
+            enabled: false,
         },
         {
             name: 'request_transformer',
-            enabled: true,
+
+            enabled: false,
             config: {
                 add: {
-                    headers: {
-                        TEST: 'TEST',
-                    },
-                    querystring: 'test',
+                    headers: [],
+                    querystring: [],
+                },
+                append: {
+                    headers: [],
+                    querystring: [],
+                },
+                replace: {
+                    headers: [],
+                    querystring: [],
+                },
+                remove: {
+                    headers: []   ,
+                    querystring: [],
                 },
             },
         },

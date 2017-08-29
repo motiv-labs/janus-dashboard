@@ -1,0 +1,72 @@
+@import 'index.scss';
+
+$size: 4px;
+$height: $size*4;
+$width: $size*7;
+$circleSize: $size*4;
+
+.j-tumbler {
+    position: relative;
+    width: $width;
+
+    &__icon {
+        position: relative;
+        z-index: 0;
+        height: $height;
+
+        &:before,
+        &:after {
+            @include pseudo();
+            box-sizing: border-box;
+        }
+
+        &:before {
+            width: $width;
+            height: $height;
+            background-color: $hf-color-gray-pale;
+            border-radius: $height;
+            border: solid 1px darken($hf-color-gray-pale, 7%);
+            top: 0;
+            z-index: 1;
+            transition: background-color $hf-time, border-color $hf-time;
+        }
+
+        &:after {
+            background-color: $hf-color-white;
+            width: $circleSize;
+            height: $circleSize;
+            border-radius: 50%;
+            top: 0;
+            left: 0;
+            z-index: 2;
+            box-shadow: $hf-box-shadow-tumbler;
+            transform: translateX(0);
+            transition: all .15s;
+        }
+    }
+
+    &__checkbox {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        left: 0;
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        opacity: 0;
+        pointer-events: all;
+        z-index: 2;
+        cursor: pointer;
+
+        &:checked + .j-tumbler__icon {
+            &:before {
+                background-color: $hellofresh-color;
+                border: solid 1px darken($hellofresh-color, 7%);
+            }
+            &:after {
+                left: $width;
+                transform: translateX(-100%);
+            }
+        }
+    }
+}

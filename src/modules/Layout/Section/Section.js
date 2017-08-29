@@ -1,17 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const styles = {
-    paddingTop: '10px',
-    paddingBottom: '10px',
-};
+import block from '../../../helpers/bem-cn';
+
+import './Section.css';
+
+const b = block('j-section');
 
 const propTypes = {
     children: PropTypes.node.isRequired,
+    small: PropTypes.bool,
 };
 
-const Section = ({ children }) => (
-    <div style={styles}>
+const Section = ({ children, small }) => (
+    <div className={b({ small })}>
         {children}
     </div>
 );

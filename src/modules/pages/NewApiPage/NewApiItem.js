@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { deleteProperty } from 'picklock';
 
+import transformFormValues from '../../../helpers/transformFormValues';
 import { isEmpty } from '../../../helpers';
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
@@ -11,6 +12,9 @@ const propTypes = {
     fetchEndpointSchema: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
+    excludePlugin: PropTypes.func.isRequired,
+    selectPlugin: PropTypes.func.isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
     location: PropTypes.object.isRequired,
     willClone: PropTypes.func.isRequired,
 };
@@ -26,8 +30,21 @@ class NewApiItem extends Component {
         }
     }
 
-    submit = (values) => {
-        this.props.saveEndpoint(this.props.location.pathname, values);
+    submit = values => {
+        const transformedValues = transformFormValues(values, true);
+        const plugins = transformedValues.plugins;
+        const selectedPlugins = this.props.selectedPlugins;
+
+        const addedPlugins = plugins.filter((plugin) => {
+            return selectedPlugins.indexOf(plugin.name) !== -1;
+        });
+
+        const computedPlugins = {
+            ...transformedValues,
+            plugins: addedPlugins,
+        };
+
+        this.props.saveEndpoint(this.props.location.pathname, computedPlugins);
     }
 
     hasToBeCloned = () => {
@@ -41,10 +58,11 @@ class NewApiItem extends Component {
     }
 
     render() {
+        const { api, excludePlugin, selectPlugin } = this.props;
         return (
             <div>
-                <Subtitle>{this.props.api.name}</Subtitle>
-                <NewApiForm onSubmit={this.submit} />
+                <Subtitle>{api.name}</Subtitle>
+                <NewApiForm onSubmit={this.submit} excludePlugin={excludePlugin} selectPlugin={selectPlugin} />
             </div>
         );
     }
