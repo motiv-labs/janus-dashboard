@@ -6,7 +6,7 @@ import {
 
 import block from '../../../helpers/bem-cn';
 import Table from '../../Layout/Table/Table';
-import Pagination from '../../Pagination/Pagination';
+import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
 
 const propTypes = {
@@ -105,7 +105,7 @@ class ApiList extends PureComponent {
     render() {
         if (this.props.apiList.length > 0) {
             return (
-                <Pagination
+                <PaginatedList
                     list={this.props.apiList}
                     itemsPerPage={3}
                     currentPageIndex={this.props.currentPageIndex}

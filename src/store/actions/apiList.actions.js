@@ -2,10 +2,16 @@ import client from '../api';
 import {
     FETCH_ENDPOINTS_START,
     FETCH_ENDPOINTS_SUCCESS,
+    FETCH_HEALTHCHECK_LIST_START,
+    FETCH_HEALTHCHECK_LIST_SUCCESS,
     DISCARD_PAGINATION,
     REFRESH_ENDPOINTS,
     SET_PAGINATION_PAGE,
 } from '../constants';
+import {
+    fetchHealthCheckList,
+    openResponseModal,
+} from './index';
 
 export const getEndpointsRequest = () => ({
     type: FETCH_ENDPOINTS_START,
@@ -25,8 +31,9 @@ export const setCurrentPageIndex = index => ({
     payload: index,
 });
 
-export const fetchEndpoints = () => (dispatch) => {
+export const fetchEndpoints = () => dispatch => {
     dispatch(getEndpointsRequest());
+    dispatch(fetchHealthCheckList());
 
     return client.get('apis')
         .then((response) => {
