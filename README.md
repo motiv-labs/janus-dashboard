@@ -1,6 +1,6 @@
 # janus-dashboard
 
-> A Vue.js project
+> Dashbord for [Janus](https://github.com/hellofresh/janus) project
 
 ## Build Setup
 
