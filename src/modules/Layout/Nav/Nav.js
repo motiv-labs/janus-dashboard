@@ -19,18 +19,12 @@ const Nav = () => (
             {ROUTES.MAIN.name}
         </NavLink>
         <NavLink
-            to={ROUTES.NEW.path}
+            exact
+            to={ROUTES.HEALTHCHECK.path}
             className={nav('item')()}
             activeClassName={nav('item', { active: true })()}
         >
-            {ROUTES.NEW.name}
-        </NavLink>
-        <NavLink
-            to={ROUTES.LOGIN.path}
-            className={nav('item')()}
-            activeClassName={nav('item', { active: true })()}
-        >
-            {ROUTES.LOGIN.name}
+            {ROUTES.HEALTHCHECK.name}
         </NavLink>
     </div>
 );

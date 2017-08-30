@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Pagimagic from 'react-pagimagic';
 
-import './Pagination.css';
+import './PaginatedList.css';
 
 const propTypes = {
     changePageIndex: PropTypes.func.isRequired,
@@ -13,7 +13,7 @@ const propTypes = {
     renderChildren: PropTypes.func.isRequired,
 };
 
-const Pagination = ({
+const PaginatedList = ({
     list,
     currentPageIndex,
     changePageIndex,
@@ -33,6 +33,6 @@ const Pagination = ({
     />
 );
 
-Pagination.propTypes = propTypes;
+PaginatedList.propTypes = propTypes;
 
-export default Pagination;
+export default PaginatedList;

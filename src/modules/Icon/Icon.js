@@ -10,12 +10,14 @@ const b = block('j-icon');
 const propTypes = {
     className: PropTypes.string,
     type: PropTypes.oneOf([
-        'edit', // green pencil
+        'add', // green plus
         'checked',
+        'close',
+        'copy',
+        'correct',
         'delete', // red bucket
         'delete-white', // white bucket
-        'copy',
-        'add', // green plus
+        'edit', // green pencil
         'remove', // red minus
     ]).isRequired,
 };
