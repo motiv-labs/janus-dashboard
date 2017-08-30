@@ -47,6 +47,7 @@ const ApiForm = (props) => {
         initialValues,
         handleSubmit,
         plugins,
+        response,
         selectPlugin,
         selectedPlugins,
     } = props;
@@ -304,6 +305,7 @@ const ApiForm = (props) => {
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
                                 handlePluginExclude={removePlugin}
+                                response={response}
                                 edit
                             />
                     }
@@ -363,6 +365,7 @@ export default connect(
             initialValues: transformFormValues(updatedApi),
             // ***FOR SOME REASON NAME of the plugin DISCARDS while saving
             apiSchema: state.apiReducer.apiSchema,
+            response: state.apiReducer.response,
             selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,

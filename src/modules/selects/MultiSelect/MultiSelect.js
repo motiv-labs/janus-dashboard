@@ -40,7 +40,7 @@ class MultiSelect extends Component {
     }
 
     render() {
-        // console.warn('MULTI_THIS>PROPS:', this.props);
+        console.warn('MULTI_THIS>PROPS:', this.props);
         // console.error('MULTI__THIS>STATE: ', this.state);
         return (
             <Select

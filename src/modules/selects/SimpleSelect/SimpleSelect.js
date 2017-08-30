@@ -8,8 +8,10 @@ const propTypes = {
 
 class SimpleSelect extends Component {
     state = {
-        selectValue: ''
+        selectValue: this.props.input.value ? this.props.input.value : '',
     }
+
+    componentWillReceiveProps = nextProps => console.error('//////', nextProps)
 
     updateValue = (newValue) => {
         this.setState({
@@ -18,6 +20,7 @@ class SimpleSelect extends Component {
     }
 
     render() {
+        console.error('SimpleSelect ===> ', this.props);
         return (
             <Select
                 className="j-select"
@@ -25,6 +28,8 @@ class SimpleSelect extends Component {
                 value={this.state.selectValue}
                 onChange={this.updateValue}
                 simpleValue
+                searchable={this.props.searchable}
+                clearable={this.props.clearable}
                 options={this.props.options}
                 onBlur={() => {
                     this.props.input.onBlur(this.state.selectValue);

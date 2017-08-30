@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import Select from 'react-select';
 
 import block from '../../../../helpers/bem-cn';
 
@@ -11,6 +12,8 @@ import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
 
+import SelectUnit from './SelectUnit';
+
 const propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
@@ -19,17 +22,33 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
+const RateLimitPlugin = ({
+    className,
+    name,
+    handlePluginExclude,
+    plugin,
+    pluginFromValues,
+    pluginName,
+    response,
+}) => {
     const b = block(className);
     const optionsTransformer = config => {
-        console.error('CONFIG:', config);
+        console.error('CONFIG:', name, response, config);
         return config.map(item => ({
             label: item,
             value: item,
         }));
     };
-    console.error('PLUGIN??????', plugin);
+    const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
+    console.error('PLUGIN??????', pluginFromValues, plugin);
+    // console.error('RESPO NSE', getConfig().policy)
+    // const getUnit = () => {
+    //     return response.plugins
+    //         .filter(pl => pl.name === plugin.name)[0]
+    //         .config.limit.split('-')[1];
+    // };
 
+    // console.log('----____/////', getUnit());
     return (
         <div className={b('section')()}>
             <Row fullwidth>
@@ -54,8 +73,10 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                         <Row col>
                             <Label>Limit Unit</Label>
                             <Field
-                                name={`${name}.config.limit.units`}
+                                name={`${name}.config.limit.unit`}
                                 type="text"
+                                searchable={false}
+                                clearable={false}
                                 options={optionsTransformer(plugin.config.limit.units)}
                                 component={SimpleSelect}
                             />
@@ -66,9 +87,11 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                 <Row col>
                     <Label>Policy</Label>
                     <Field
-                        name={`${name}.config.policy`}
+                        name={`${name}.config.policy.selected`}
                         type="text"
-                        options={plugin.config.policy}
+                        searchable={false}
+                        clearable={false}
+                        options={plugin.config.policy.options}
                         component={SimpleSelect}
                     />
                     <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>

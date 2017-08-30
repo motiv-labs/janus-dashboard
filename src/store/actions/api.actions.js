@@ -39,9 +39,12 @@ export const getEndpointRequest = () => ({
     type: FETCH_ENDPOINT_START,
 });
 
-export const getEndpointSuccess = api => ({
+export const getEndpointSuccess = (api, response) => ({
     type: FETCH_ENDPOINT_SUCCESS,
-    payload: api,
+    payload: {
+        api,
+        response,
+    },
 });
 
 export const getEndpointSchemaRequest = () => ({
@@ -119,17 +122,23 @@ export const fetchEndpoint = pathname => async (dispatch) => {
                 // console.clear();
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
                 console.error('endpointSchema::: ', pluginFromSchema);
-                const { value, units } = pluginFromSchema.config.limit;
+                const { value, unit, units } = pluginFromSchema.config.limit;
                 const policyFromSchema = pluginFromSchema.config.policy;
 
                 const schemaConfigLimit = pluginFromSchema.config.limit;
-                const valueOfLimit = plugin.config.limit.split('-')[0]*1;
+
+                const arr = plugin.config.limit.split('-');
+                const valueOfLimit = arr[0]*1;
+                const valueOfUnit = arr[1];
+                console.error('valueOfUnit',arr);
+                console.log(plugin.config.policy);
                 // console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit);
                 // @TODO: policy should be also an array like in schema;
 
 
                 const updatedLimit = {
                     value: valueOfLimit,
+                    unit: valueOfUnit,
                     units,
                 };
                 // console.error('uodatedLimit:: ', updatedLimit);
@@ -140,11 +149,16 @@ export const fetchEndpoint = pathname => async (dispatch) => {
                 // set the path for the lens
                 const lens = R.lensPath(['config', 'limit']);
                 const lens2 = R.lensPath(['config', 'policy']);
+                const lens3 = R.lensPath(['config', 'policy', 'selected']);
                 // substitude the plugin.config.limit
                 const updatedPlugin = R.set(lens, updatedLimit, plugin);
+                const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+                console.error('/_/_/_/_/_/');
+                console.error('R.set(lens2, policyFromSchema , updatedPlugin);', R.set(lens2, policyFromSchema , updatedPlugin));
+                console.error('/_/_/_/_/_/');
 
                 // console.error('response.data.plugins.map(plugin => ', updatedPlugin);
-                return R.set(lens2, policyFromSchema , updatedPlugin);
+                return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
             }
 
             return plugin;
@@ -166,7 +180,7 @@ export const fetchEndpoint = pathname => async (dispatch) => {
         // });
         // console.error(preparedPlugins)
 
-        dispatch(getEndpointSuccess(preparedApi));
+        dispatch(getEndpointSuccess(preparedApi, response.data));
     } catch (error) {
         console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
     }
@@ -230,14 +244,17 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
 
     const preparedPlugins = api.plugins.map(plugin => {
         if (plugin.name === 'rate_limit') {
-            const { value, units } = plugin.config.limit;
-            const concatenation = `${value}-${units}`;
+            const { limit, policy } = plugin.config;
+            const { value, unit } = limit;
+            const concatenation = `${value}-${unit}`;
             // set the path for the lens
             const lens = R.lensPath(['config', 'limit']);
+            const lens2 = R.lensPath(['config', 'policy']);
             // substitude the plugin.config.limit
             const updatedPlugin = R.set(lens, concatenation, plugin);
+            console.error('>>>>>>>', updatedPlugin);
 
-            return updatedPlugin;
+            return R.set(lens2, policy.selected, updatedPlugin);
         }
         if (plugin.name === 'request_transformer') {
             // get all options names
@@ -349,14 +366,17 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 
     const preparedPlugins = api.plugins.map(plugin => {
         if (plugin.name === 'rate_limit') {
-            const { value, units } = plugin.config.limit;
-            const concatenation = `${value}-${units}`;
+            const { limit, policy } = plugin.config;
+            const { value, unit } = limit;
+            const concatenation = `${value}-${unit}`;
             // set the path for the lens
             const lens = R.lensPath(['config', 'limit']);
+            const lens2 = R.lensPath(['config', 'policy']);
             // substitude the plugin.config.limit
             const updatedPlugin = R.set(lens, concatenation, plugin);
+            console.error('>>>>>>>', updatedPlugin);
 
-            return updatedPlugin;
+            return R.set(lens2, policy.selected, updatedPlugin);
         }
         if (plugin.name === 'request_transformer') {
             // get all options names

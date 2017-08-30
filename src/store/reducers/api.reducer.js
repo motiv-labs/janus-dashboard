@@ -56,8 +56,9 @@ export default function reducer(state = initialState, action) {
             // console.error('FETCH_ENDPOINT_SUCCESS', action.payload);
             return {
                 ...state,
-                api: adjust(action.payload),
-                selectedPlugins: fillSelectedPlugins(action.payload),
+                api: adjust(action.payload.api),
+                response: action.payload.response,
+                selectedPlugins: fillSelectedPlugins(action.payload.api),
                 // selectedPlugins: action.payload,
                 isFetching: false,
             };
