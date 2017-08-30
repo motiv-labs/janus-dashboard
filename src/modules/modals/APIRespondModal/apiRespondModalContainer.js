@@ -17,5 +17,8 @@ const mapStateToProps = (state) => {
 
 export default connect(
     mapStateToProps,
-    { openResponseModal, closeModal: closeResponseModal },
+    {
+        openResponseModal,
+        closeModal: closeResponseModal,
+    },
 )(APIRespondModal);

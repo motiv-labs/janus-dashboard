@@ -17,5 +17,10 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { deleteEndpoint, fetchEndpoints, refreshEndpoints, setCurrentPageIndex },
+    {
+        deleteEndpoint,
+        fetchEndpoints,
+        refreshEndpoints,
+        setCurrentPageIndex,
+    },
 )(ApiList);

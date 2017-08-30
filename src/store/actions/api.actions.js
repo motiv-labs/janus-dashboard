@@ -1,4 +1,6 @@
 import createHistory from 'history/createBrowserHistory';
+import R from 'ramda';
+
 import client from '../api';
 import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
 import {
@@ -10,6 +12,8 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    EXCLUDE_PLUGIN,
+    SELECT_PLUGIN,
     RESET_ENDPOINT,
     WILL_CLONE,
 } from '../constants';
@@ -52,9 +56,18 @@ export const saveEndpointRequest = () => ({
     type: SAVE_ENDPOINT_START,
 });
 
-export const saveEndpointSuccess = api => ({
+export const saveEndpointSuccess = () => ({
     type: SAVE_ENDPOINT_SUCCESS,
-    payload: api,
+});
+
+export const selectPlugin = pluginName/*: string*/ => ({
+    type: SELECT_PLUGIN,
+    payload: pluginName,
+});
+
+export const excludePlugin = pluginName/*: string*/ => ({
+    type: EXCLUDE_PLUGIN,
+    payload: pluginName,
 });
 
 export const resetEndpoint = () => ({
@@ -122,7 +135,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 
     return client.put(`apis${pathname}`, api)
     .then((response) => {
-        dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({ // @FIXME: move to reducers
             status: response.status,
             message: 'Successfuly saved',
@@ -158,9 +171,85 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 export const saveEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest());
 
-    return client.post('apis', api)
+    const preparedPlugins = api.plugins.map(plugin => {
+        if (plugin.name === 'rate_limit') {
+            const { value, units } = plugin.config.limit;
+            const concatenation = `${value}-${units}`;
+            // set the path for the lens
+            const lens = R.lensPath(['config', 'limit']);
+            // substitude the plugin.config.limit
+            const updatedPlugin = R.set(lens, concatenation, plugin);
+
+            return updatedPlugin;
+        }
+        if (plugin.name === 'request_transformer') {
+            // get all options names
+            const options = Object.keys(plugin.config);
+            // convert all values of plugin's config to array of objects
+            // so then we will be able to map through them:
+            const config = R.values(plugin.config);
+            const allTransformedHeaders = config.map((item, index) => {
+                // headers comes as an array of objects:
+                /**
+                 * @example #1
+                 *
+                 * add: {
+                 *     header: [
+                 *         {someKey: 'someValue'},
+                 *         {someAnotherKey: 'someAnotherValue'},
+                 *     ]
+                 * }
+                 */
+                const headers = item.headers;
+
+                // we will fill this arrays with keys and values respectively
+                let keys = [];
+                let values = [];
+
+                // fill key/values arrays
+                headers.map(item => {
+                    const arr = R.values(item);
+
+                    keys.push(arr[0]);
+                    values.push(arr[1]);
+                });
+
+                // and now we are creating object that should be placed instead of
+                // array of the objects from example #1
+                /**
+                 * @example #2
+                 *
+                 * add: {
+                 *     headers: {
+                 *         someKey: 'someValue',
+                 *         someAnotherKey: 'someAnotherValue',
+                 *     }
+                 * }
+                 */
+                const transformedHeaders = R.zipObj(keys, values);
+
+                return transformedHeaders;
+            });
+
+            // step by step we updating plugins config:
+            const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
+                const lens = R.lensPath(['config', options[index], 'headers']);
+
+                return R.set(lens, item, acc);
+            }, plugin);
+
+            return updatedPlugin;
+        }
+
+        return plugin;
+    });
+    // substitude updated list of plugins
+    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+
+    return client.post('apis', preparedApi)
     .then((response) => {
-        dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+        dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({
             status: response.status,
             message: 'Successfuly saved',

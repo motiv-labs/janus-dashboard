@@ -30,7 +30,7 @@
         "camelcase": [1, {"properties": "never"}],
         "consistent-return": 0,
         "comma-style": [2, "last"],
-        "complexity": [1, 12],
+        "complexity": [0, 12],
         "func-names": 0,
         "guard-for-in": 2,
         "max-len": [0, 120, 4],

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 
 import block from '../../helpers/bem-cn';
 
-import '../forms/FormInput/FormInput.css';
 import './SearchBar.css';
 
 const propTypes = {

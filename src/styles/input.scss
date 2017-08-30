@@ -1,0 +1,32 @@
+@import 'variables.scss';
+
+.j-input {
+    height: $hf-height-input;
+    border: $hf-border;
+    border-radius: $hf-border-radius;
+    padding: $hf-padding-input;
+    background-color: $hf-color-white;
+    font-family: $hf-font-family-sans-serif;
+    font-size: $hf-font-size-base;
+    color: $hf-color-black;
+    box-sizing: border-box;
+
+    &::placeholder {
+        color: $hf-color-gray-medium;
+    }
+
+    &:disabled {
+        background-color: $hf-color-gray-pale;
+    }
+}
+
+.Select {
+    &-control {
+        height: $hf-height-input;
+    }
+    &-placeholder {
+        font-family: $hf-font-family-sans-serif;
+        font-size: $hf-font-size-base;
+        color: $hf-color-gray-medium;
+    }
+}
