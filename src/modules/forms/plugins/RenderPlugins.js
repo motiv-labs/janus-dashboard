@@ -42,7 +42,21 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, apiSchema, edit, plugins, response, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
+        const {
+            className,
+            /**
+             * @FIXME: something wrong with receiving apiSchema
+             * as a prop
+             */
+            apiSchema,
+            edit,
+            plugins,
+            response,
+            selectedPlugins,
+            handlePluginExclude,
+            handlePluginInclude,
+            initialValues,
+        } = this.props;
         // console.error(plugins);
         const b = block(className);
         const names = apiSchema.plugins.map(plugin => ({

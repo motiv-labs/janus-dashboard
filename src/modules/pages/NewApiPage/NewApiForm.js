@@ -38,7 +38,7 @@ const ApiForm = (props) => {
         selectPlugin,
         selectedPlugins,
     } = props;
-    console.error('NEW APU': selectedPlugins);
+    console.error('NEW API', props);
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const includePlugin = value => {
         plugins.map((plugin, index) => {

@@ -25,6 +25,7 @@ class NewApiItem extends Component {
         this.props.resetEndpoint();
 
         if (this.hasToBeCloned()) {
+            this.props.fetchEndpointSchema();
             this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
         } else {
             this.props.fetchEndpointSchema();
