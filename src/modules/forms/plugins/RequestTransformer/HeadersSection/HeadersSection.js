@@ -20,9 +20,6 @@ const propTypes = {
 
 class HeadersSection extends Component {
     renderMembers = ({ fields, hint, title }) => {
-        console.error('___________________');
-        console.log('fields', fields);
-        console.error('___________________');
         return (
             <div>
                 <div className={row()}>
@@ -35,7 +32,6 @@ class HeadersSection extends Component {
                 <Hint title>{ hint }</Hint>
                 {
                     fields.map((member, index) => {
-                        console.warn(member);
                         return (
                             <Row key={index} col>
                                 <div className={row()}>
@@ -68,29 +64,18 @@ class HeadersSection extends Component {
         );
     };
 
-    renderHeaders = ({ fields, hint, title }) => {
-        return (
-            <FieldArray
-                name={`${this.props.name}`}
-                title={title}
-                hint={hint}
-                component={this.renderMembers}
-            />
-        );
-    }
-
     render() {
         const { title, hint} = this.props;
 
         return (
-            <Row col>
+            <div className="j-col__item">
                 <FieldArray
-                    name="headers"
-                    component={this.renderHeaders}
+                    name={`${this.props.name}`}
+                    component={this.renderMembers}
                     title={title}
                     hint={hint}
                 />
-            </Row>
+            </div>
         );
     }
 };

@@ -53,22 +53,14 @@ export default function reducer(state = initialState, action) {
             };
         }
         case FETCH_ENDPOINT_SUCCESS: {
-            // console.error('FETCH_ENDPOINT_SUCCESS', action.payload);
             return {
                 ...state,
                 api: adjust(action.payload.api),
                 response: action.payload.response,
                 selectedPlugins: fillSelectedPlugins(action.payload.api),
-                // selectedPlugins: action.payload,
                 isFetching: false,
             };
         }
-        // case FILL_SELECTED_PLUGINS: {
-        //     return {
-        //         ...state,
-        //         selectedPlugins: action.payload,
-        //     };
-        // }
         case SAVE_ENDPOINT_SUCCESS: {
             return {
                 ...state,

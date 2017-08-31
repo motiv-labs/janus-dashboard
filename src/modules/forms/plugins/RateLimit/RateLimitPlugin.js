@@ -33,22 +33,13 @@ const RateLimitPlugin = ({
 }) => {
     const b = block(className);
     const optionsTransformer = config => {
-        console.error('CONFIG:', name, response, config);
         return config.map(item => ({
             label: item,
             value: item,
         }));
     };
     const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
-    console.error('PLUGIN??????', pluginFromValues, plugin);
-    // console.error('RESPO NSE', getConfig().policy)
-    // const getUnit = () => {
-    //     return response.plugins
-    //         .filter(pl => pl.name === plugin.name)[0]
-    //         .config.limit.split('-')[1];
-    // };
 
-    // console.log('----____/////', getUnit());
     return (
         <div className={b('section')()}>
             <Row fullwidth>

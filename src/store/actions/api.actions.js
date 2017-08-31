@@ -56,8 +56,9 @@ export const getEndpointSchemaSuccess = api => ({
     payload: api,
 });
 
-export const saveEndpointRequest = () => ({
+export const saveEndpointRequest = api => ({
     type: SAVE_ENDPOINT_START,
+    payload: api,
 });
 
 export const saveEndpointSuccess = () => ({
@@ -119,33 +120,21 @@ export const fetchEndpoint = pathname => async (dispatch) => {
         const response = await client.get(`apis${pathname}`);
         const preparedPlugins = response.data.plugins.map(plugin => {
             if (plugin.name === 'rate_limit') {
-                // console.clear();
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-                console.error('endpointSchema::: ', pluginFromSchema);
                 const { value, unit, units } = pluginFromSchema.config.limit;
                 const policyFromSchema = pluginFromSchema.config.policy;
-
                 const schemaConfigLimit = pluginFromSchema.config.limit;
-
                 const arr = plugin.config.limit.split('-');
                 const valueOfLimit = arr[0]*1;
                 const valueOfUnit = arr[1];
-                console.error('valueOfUnit',arr);
-                console.log(plugin.config.policy);
-                // console.error('___PLUGIN___', schemaConfigLimit, valueOfLimit);
                 // @TODO: policy should be also an array like in schema;
-
 
                 const updatedLimit = {
                     value: valueOfLimit,
                     unit: valueOfUnit,
                     units,
                 };
-                // console.error('uodatedLimit:: ', updatedLimit);
 
-
-                // const { value, units } = plugin.config.limit;
-                // const concatenation = `${value}-${units}`;
                 // set the path for the lens
                 const lens = R.lensPath(['config', 'limit']);
                 const lens2 = R.lensPath(['config', 'policy']);
@@ -153,32 +142,46 @@ export const fetchEndpoint = pathname => async (dispatch) => {
                 // substitude the plugin.config.limit
                 const updatedPlugin = R.set(lens, updatedLimit, plugin);
                 const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
-                console.error('/_/_/_/_/_/');
-                console.error('R.set(lens2, policyFromSchema , updatedPlugin);', R.set(lens2, policyFromSchema , updatedPlugin));
-                console.error('/_/_/_/_/_/');
 
-                // console.error('response.data.plugins.map(plugin => ', updatedPlugin);
                 return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+            }
+            if (plugin.name === 'request_transformer') {
+                const transformHeadersToArray = obj => R.toPairs(obj)
+                    .reduce((acc, item) => {
+                        const header = {
+                            key: item[0],
+                            value: item[1],
+                        };
+
+                        acc.push(header);
+
+                        return acc;
+                    }, []);
+
+                const configWithTransformedHeaders = R.toPairs(plugin.config)
+                    .reduce((acc, item) => {
+                        const transformedHeaders = transformHeadersToArray(item[1].headers);
+
+                        acc[item[0]] = {
+                            headers: transformedHeaders,
+                            querystring: item[1].querystring,
+                        };
+
+                        return acc;
+                    }, {});
+
+                // set path for lens and substitude config in plugin:
+                const lens = R.lensPath(['config']);
+                const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
+
+                return updatedPlugin;
             }
 
             return plugin;
         });
 
-        // const preparedApi = response.data;
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
-        // console.warn('preparedApi2 ===> ', endpointSchema, preparedApi);
-
-
-        // const preparedPlugins = preparedApi.plugins.map(item => {
-        //     if (item.name === 'rate_limit') {
-        //         const { limit, policy } = item.config;
-        //         //
-        //         console.error('TARGET PLUGIN:', limit.split('-'));
-        //     }
-        //     return item;
-        // });
-        // console.error(preparedPlugins)
 
         dispatch(getEndpointSuccess(preparedApi, response.data));
     } catch (error) {
@@ -200,47 +203,8 @@ export const fetchEndpointSchema = () => (dispatch) => {
     dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
-export const updateEndpoint_OLD = (pathname, api) => (dispatch) => {
-    dispatch(saveEndpointRequest());
-
-    return client.put(`apis${pathname}`, api)
-        .then((response) => {
-            dispatch(saveEndpointSuccess());
-            dispatch(openResponseModal({ // @FIXME: move to reducers
-                status: response.status,
-                message: 'Successfuly saved',
-                statusText: response.statusText,
-            }));
-        })
-        .catch((error) => {
-            if (error.response) {
-                dispatch(openResponseModal({
-                    status: error.response.status,
-                    statusText: error.response.statusText,
-                    message: error.response.data,
-                }));
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-                // eslint-disable-next-line
-                console.error(error.response.data);
-            } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-                // eslint-disable-next-line
-                console.log(error.request);
-            } else {
-            // Something happened in setting up the request that triggered an Error
-                // eslint-disable-next-line
-                console.log('Error', error.message);
-            }
-        });
-};
-
 export const saveEndpoint = (pathname, api) => (dispatch) => {
-    console.error('__________SAVE____________', pathname);
-    dispatch(saveEndpointRequest());
+    dispatch(saveEndpointRequest(api));
 
     const preparedPlugins = api.plugins.map(plugin => {
         if (plugin.name === 'rate_limit') {
@@ -252,7 +216,6 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             const lens2 = R.lensPath(['config', 'policy']);
             // substitude the plugin.config.limit
             const updatedPlugin = R.set(lens, concatenation, plugin);
-            console.error('>>>>>>>', updatedPlugin);
 
             return R.set(lens2, policy.selected, updatedPlugin);
         }
