@@ -80,6 +80,7 @@ class NewApiItem extends Component {
                         selectedPlugins={r}
                         excludePlugin={this.props.excludePlugin}
                         selectPlugin={this.props.selectPlugin}
+                        disabled={false}
                         onSubmit={this.submit}
                     />
                 );

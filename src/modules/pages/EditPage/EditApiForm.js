@@ -118,7 +118,7 @@ const ApiForm = (props) => {
                                 name="name"
                                 type="text"
                                 component={Input}
-                                disabled
+                                disabled={props.disabled}
                             />
                         </Row>
                         <Row col>
