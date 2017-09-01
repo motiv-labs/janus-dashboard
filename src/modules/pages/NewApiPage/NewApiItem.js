@@ -7,6 +7,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
+import EditApiForm from '../EditPage/EditApiForm';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -23,6 +24,7 @@ const propTypes = {
 class NewApiItem extends Component {
     componentWillMount() {
         this.props.resetEndpoint();
+        console.error('------', this.props.location.pathname);
 
         if (this.hasToBeCloned()) {
             this.props.fetchEndpointSchema();
@@ -31,6 +33,10 @@ class NewApiItem extends Component {
             this.props.fetchEndpointSchema();
         }
     }
+
+    handleDelete = apiName => {
+        this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+    };
 
     submit = values => {
         const transformedValues = transformFormValues(values, true);
@@ -59,17 +65,43 @@ class NewApiItem extends Component {
         return false;
     }
 
+    renderForm = () => {
+        if (this.hasToBeCloned()) {
+            if (!R.isEmpty(this.props.api)) {
+                console.error('go to EDIT =>c ', this.props);
+                const r = this.props.api.plugins.map(item => item.name);
+
+                return (
+                    <EditApiForm
+                        api={this.props.api}
+
+                        handleDelete={this.handleDelete}
+
+                        selectedPlugins={r}
+                        excludePlugin={this.props.excludePlugin}
+                        selectPlugin={this.props.selectPlugin}
+                        onSubmit={this.submit}
+                    />
+                );
+            }
+        } else {
+            return (
+                <NewApiForm
+                    onSubmit={this.submit}
+                    excludePlugin={this.props.excludePlugin}
+                    selectPlugin={this.props.selectPlugin}
+                />
+            );
+        }
+    }
+
     render() {
         const { api, excludePlugin, selectPlugin } = this.props;
 
         return (
             <div>
                 <Subtitle>{api.name}</Subtitle>
-                <NewApiForm
-                    onSubmit={this.submit}
-                    excludePlugin={excludePlugin}
-                    selectPlugin={selectPlugin}
-                />
+                { this.renderForm() }
             </div>
         );
     }
