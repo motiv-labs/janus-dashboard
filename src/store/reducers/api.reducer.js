@@ -82,7 +82,9 @@ export default function reducer(state = initialState, action) {
         case WILL_CLONE: {
             return {
                 ...state,
-                api: action.payload,
+                api: action.payload.api,
+                response: action.payload.response,
+                selectedPlugins: fillSelectedPlugins(action.payload.api),
             };
         }
         case RESET_ENDPOINT: {

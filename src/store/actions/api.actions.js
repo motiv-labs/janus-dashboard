@@ -79,10 +79,80 @@ export const resetEndpoint = () => ({
     type: RESET_ENDPOINT,
 });
 
-export const willClone = data => ({
-    type: WILL_CLONE,
-    payload: data,
-});
+export const willClone = data => {
+    const preparedPlugins = data.plugins.map(plugin => {
+        if (plugin.name === 'rate_limit') {
+            const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
+            const { value, unit, units } = pluginFromSchema.config.limit;
+            const policyFromSchema = pluginFromSchema.config.policy;
+            const schemaConfigLimit = pluginFromSchema.config.limit;
+            const arr = plugin.config.limit.split('-');
+            const valueOfLimit = arr[0]*1;
+            const valueOfUnit = arr[1];
+            // @TODO: policy should be also an array like in schema;
+
+            const updatedLimit = {
+                value: valueOfLimit,
+                unit: valueOfUnit,
+                units,
+            };
+
+            // set the path for the lens
+            const lens = R.lensPath(['config', 'limit']);
+            const lens2 = R.lensPath(['config', 'policy']);
+            const lens3 = R.lensPath(['config', 'policy', 'selected']);
+            // substitude the plugin.config.limit
+            const updatedPlugin = R.set(lens, updatedLimit, plugin);
+            const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+
+            return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+        }
+        if (plugin.name === 'request_transformer') {
+            const transformHeadersToArray = obj => R.toPairs(obj)
+                .reduce((acc, item) => {
+                    const header = {
+                        key: item[0],
+                        value: item[1],
+                    };
+
+                    acc.push(header);
+
+                    return acc;
+                }, []);
+
+            const configWithTransformedHeaders = R.toPairs(plugin.config)
+                .reduce((acc, item) => {
+                    const transformedHeaders = transformHeadersToArray(item[1].headers);
+
+                    acc[item[0]] = {
+                        headers: transformedHeaders,
+                        querystring: item[1].querystring,
+                    };
+
+                    return acc;
+                }, {});
+
+            // set path for lens and substitude config in plugin:
+            const lens = R.lensPath(['config']);
+            const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
+
+            return updatedPlugin;
+        }
+
+        return plugin;
+    });
+
+    const lens = R.lensPath(['plugins']);
+    const preparedApi = R.set(lens, preparedPlugins, data);
+
+    return {
+        type: WILL_CLONE,
+        payload: {
+            api: preparedApi,
+            response: data,
+        },
+    };
+};
 
 export const fillSelected = selectedPlugins => ({
     type: FILL_SELECTED_PLUGINS,
