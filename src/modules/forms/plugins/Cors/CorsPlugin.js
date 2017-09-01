@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 
@@ -23,86 +23,93 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const CorsPlugin = ({ apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName }) => {
-    // console.error('this.props(CORS_PLUGIN): ', name, pluginName, apiSchema.plugins[0].config)
-    const b = block(className);
-    const optionsTransformer = config => {
-        return config.map(item => ({
-            label: item,
-            value: item,
-        }));
-    };
-    const getValues = key => {
-        return plugin.config[key];
-    };
-    const allValues = key => {
-        return apiSchema.plugins[0].config[key];
-    };
+class CorsPlugin extends PureComponent {
+    componentDidMount = () => {
+        this.setState({});
+    }
 
-    return (
-        <div className={b('section')()}>
-            <Row fullwidth>
-                <Row col>
-                    <Label>Plugin Name</Label>
-                    <Input input={{value: 'CORS'}} disabled />
+    render() {
+        const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
+        // console.error('this.props(CORS_PLUGIN): ', name, pluginName, apiSchema.plugins[0].config)
+        const b = block(className);
+        const optionsTransformer = config => {
+            return config.map(item => ({
+                label: item,
+                value: item,
+            }));
+        };
+        const getValues = key => {
+            return plugin.config[key];
+        };
+        const allValues = key => {
+            return apiSchema.plugins[0].config[key];
+        };
+
+        return (
+            <div className={b('section')()}>
+                <Row fullwidth>
+                    <Row col>
+                        <Label>Plugin Name</Label>
+                        <Input input={{value: 'CORS'}} disabled />
+                    </Row>
+                    <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
                 </Row>
-                <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
-            </Row>
-            <Row className={b('row')()} fullwidth>
-                <Row col>
-                    <Label>Domains</Label>
-                    <Field
-                        name={`${name}.config.domains`}
-                        type="text"
-                        placeholder={SETUP.placeholders.cors.domains}
-                        component={Input}
-                    />
-                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                <Row className={b('row')()} fullwidth>
+                    <Row col>
+                        <Label>Domains</Label>
+                        <Field
+                            name={`${name}.config.domains`}
+                            type="text"
+                            placeholder={SETUP.placeholders.cors.domains}
+                            component={Input}
+                        />
+                        <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                    </Row>
+                    <Row col>
+                        <Label>Methods</Label>
+                        <Field
+                            name={`${name}.config.methods`}
+                            type="text"
+                            edit={edit}
+                            placeholder={SETUP.placeholders.cors.methods}
+                            value={() => getValues('methods')}
+                            options={optionsTransformer(allValues('methods'))}
+                            component={MultiSelect}
+                        />
+                        <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                    </Row>
                 </Row>
-                <Row col>
-                    <Label>Methods</Label>
-                    <Field
-                        name={`${name}.config.methods`}
-                        type="text"
-                        edit={edit}
-                        placeholder={SETUP.placeholders.cors.methods}
-                        value={() => getValues('methods')}
-                        options={optionsTransformer(allValues('methods'))}
-                        component={MultiSelect}
-                    />
-                    <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                <Row className={b('row')()} fullwidth>
+                    <Row col>
+                        <Label>Request Headers</Label>
+                        <Field
+                            name={`${name}.config.request_headers`}
+                            type="text"
+                            edit={edit}
+                            value={() => getValues('request_headers')}
+                            placeholder={SETUP.placeholders.cors.request_headers}
+                            options={optionsTransformer(allValues('request_headers'))}
+                            component={TagSelect}
+                        />
+                        <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
+                    </Row>
+                    <Row col>
+                        <Label>Exposed Headers</Label>
+                        <Field
+                            name={`${name}.config.exposed_headers`}
+                            type="text"
+                            edit={edit}
+                            value={() => getValues('exposed_headers')}
+                            placeholder={SETUP.placeholders.cors.request_headers}
+                            options={optionsTransformer(allValues('exposed_headers'))}
+                            component={TagSelect}
+                        />
+                        <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
+                    </Row>
                 </Row>
-            </Row>
-            <Row className={b('row')()} fullwidth>
-                <Row col>
-                    <Label>Request Headers</Label>
-                    <Field
-                        name={`${name}.config.request_headers`}
-                        type="text"
-                        edit={edit}
-                        value={() => getValues('request_headers')}
-                        placeholder={SETUP.placeholders.cors.request_headers}
-                        options={optionsTransformer(allValues('request_headers'))}
-                        component={TagSelect}
-                    />
-                    <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
-                </Row>
-                <Row col>
-                    <Label>Exposed Headers</Label>
-                    <Field
-                        name={`${name}.config.exposed_headers`}
-                        type="text"
-                        edit={edit}
-                        value={() => getValues('exposed_headers')}
-                        placeholder={SETUP.placeholders.cors.request_headers}
-                        options={optionsTransformer(allValues('exposed_headers'))}
-                        component={TagSelect}
-                    />
-                    <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
-                </Row>
-            </Row>
-        </div>
-    );
+            </div>
+        );
+    };
 };
 
 CorsPlugin.propTypes = propTypes;
