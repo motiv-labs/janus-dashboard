@@ -82,6 +82,7 @@ class ApiItem extends Component {
                     excludePlugin={this.props.excludePlugin}
                     selectPlugin={this.props.selectPlugin}
                     selectedPlugins={r}
+                    disabled={true}
                     onSubmit={this.submit}
                 />
             );
