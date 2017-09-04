@@ -18,7 +18,6 @@ const Header = ({ logged }) => {
                     <Nav />
                 </div>
                 <div className={b('col', { right: true })}>
-                    Lorem ipsum
                 </div>
             </header>
         );

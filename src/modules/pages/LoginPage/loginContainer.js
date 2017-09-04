@@ -9,6 +9,7 @@ import FormWrapper from './FormWrapper';
 
 const mapStateToProps = state => ({
     api: state.userSessionReducer.api,
+    errorMsg: state.userSessionReducer.errorMsg,
 });
 
 export default connect(
