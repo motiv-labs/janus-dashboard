@@ -11,8 +11,6 @@ class SimpleSelect extends Component {
         selectValue: this.props.input.value ? this.props.input.value : '',
     }
 
-    componentWillReceiveProps = nextProps => console.error('//////', nextProps)
-
     updateValue = (newValue) => {
         this.setState({
             selectValue: newValue
@@ -20,7 +18,6 @@ class SimpleSelect extends Component {
     }
 
     render() {
-        console.error('SimpleSelect ===> ', this.props);
         return (
             <Select
                 className="j-select"

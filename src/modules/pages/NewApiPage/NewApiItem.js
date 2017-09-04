@@ -97,7 +97,7 @@ class NewApiItem extends Component {
     }
 
     render() {
-        const { api, excludePlugin, selectPlugin } = this.props;
+        const { api } = this.props;
 
         return (
             <div>

@@ -8,7 +8,6 @@ import {
     FETCH_ENDPOINT_SUCCESS,
     FETCH_ENDPOINT_SCHEMA_START,
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
-    FILL_SELECTED_PLUGINS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
     EXCLUDE_PLUGIN,
@@ -80,9 +79,6 @@ export default function reducer(state = initialState, action) {
             };
         }
         case WILL_CLONE: {
-            // console.clear();
-            console.error('NEED TO BE CLONED');
-            console.warn(action.payload);
             return {
                 ...state,
                 api: action.payload.api,

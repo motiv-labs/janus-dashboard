@@ -10,7 +10,6 @@ import transformFormValues from '../../../helpers/transformFormValues';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
-import Subtitle from '../../Layout/Title/Subtitle';
 import Row from '../../Layout/Row/Row';
 import Input from '../../inputs/Input';
 import Radio from '../../inputs/Radio/Radio';
@@ -19,10 +18,6 @@ import Hint from '../../labels/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../buttons/Button';
 import Icon from '../../Icon/Icon';
-
-import FormRow from '../../forms/FormRow';
-import FormInput from '../../forms/FormInput/FormInput';
-import FormLabel from '../../forms/FormLabel';
 
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
@@ -66,7 +61,6 @@ const ApiForm = (props) => {
     };
 
     const getValues = key => {
-        // console.warn('/_/_/_/ VALUES /_/_/_/', initialValues.proxyß[key]);
         return initialValues.proxy[key];
     };
 
@@ -78,7 +72,6 @@ const ApiForm = (props) => {
 
         return opts;
     };
-    // console.error('=========++>', initialValues.proxy.methods);
 
     return (
         <form className={b} onSubmit={handleSubmit}>

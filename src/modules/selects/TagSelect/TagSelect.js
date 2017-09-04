@@ -12,10 +12,6 @@ class TagSelect extends Component {
     }
 
     componentWillReceiveProps = nextProps => {
-        console.error('____NEXT_PROPS:', nextProps);
-        // if (nextProps.input.value !== this.props.input.value) {
-        //     this.setState({ multiValue: nextProps.input.value });
-        // }
         if (nextProps.edit) {
             // because it could be user custom tag, we need to put in
             // into list of options:
@@ -39,7 +35,6 @@ class TagSelect extends Component {
                 options: computedOptions(nextProps.input.value, nextProps.options),
             });
         }
-        // @TODO: delete CORS then add back and buggy
     }
 
     handleOnChange = value => {
@@ -48,8 +43,6 @@ class TagSelect extends Component {
     }
 
     render() {
-        // console.clear();
-        // console.error('CORS PLUGIN', this.state);
         const { multi, multiValue } = this.state;
         return (
             <Creatable

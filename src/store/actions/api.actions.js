@@ -83,9 +83,8 @@ export const willClone = data => {
     const preparedPlugins = data.plugins.map(plugin => {
         if (plugin.name === 'rate_limit') {
             const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-            const { value, unit, units } = pluginFromSchema.config.limit;
+            const { units } = pluginFromSchema.config.limit;
             const policyFromSchema = pluginFromSchema.config.policy;
-            const schemaConfigLimit = pluginFromSchema.config.limit;
             const getUpdatedLimit = limit => {
                 if (R.type(limit) === 'Object') {
                     return {
@@ -206,9 +205,8 @@ export const fetchEndpoint = pathname => async (dispatch) => {
         const preparedPlugins = response.data.plugins.map(plugin => {
             if (plugin.name === 'rate_limit') {
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-                const { value, unit, units } = pluginFromSchema.config.limit;
+                const { units } = pluginFromSchema.config.limit;
                 const policyFromSchema = pluginFromSchema.config.policy;
-                const schemaConfigLimit = pluginFromSchema.config.limit;
                 const arr = plugin.config.limit.split('-');
                 const valueOfLimit = arr[0]*1;
                 const valueOfUnit = arr[1];

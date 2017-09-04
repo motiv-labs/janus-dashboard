@@ -1,15 +1,9 @@
 import React, { Component } from 'react';
 import R from 'ramda';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 
-import Button from '../../buttons/Button';
-import Icon from '../../Icon/Icon';
-
-import Section from '../../Layout/Section/Section';
-import Subtitle from '../../Layout/Title/Subtitle';
 import EditApiForm from './EditApiForm';
 
 const propTypes = {
@@ -56,25 +50,14 @@ class ApiItem extends Component {
         this.props.updateEndpoint(this.props.location.pathname, computedPlugins);
     }
 
-    // submit = (values) => {
-    //     const transformedValues = transformFormValues(values, true);
-
-    //     // this.props.updateEndpoint(this.props.location.pathname, transformedValues);
-    //     this.props.updateEndpoint(this.props.location.pathname, transformedValues);
-    //     // this.props.saveEndpoint(this.props.location.pathname, values);
-    // };
-
     handleDelete = (apiName) => {
         this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
     };
 
     render() {
-        // console.error('API ITEM api:', this.props.api);
-
-        // const YYY = this.props.api.plugins.map(item => item.name)
         if (!R.isEmpty(this.props.api)) {
             const r = this.props.api.plugins.map(item => item.name);
-            // console.warn(r);
+
             return (
                 <EditApiForm
                     api={this.props.api}
