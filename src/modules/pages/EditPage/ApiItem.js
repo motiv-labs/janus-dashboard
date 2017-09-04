@@ -35,7 +35,7 @@ class ApiItem extends Component {
 
     fillSelected = (arr) => {
         const selectedPlugins = arr.map(item => item.name);
-        // console.error('API ITEM did mount:', selectedPlugins);
+
         this.props.fillSelected(selectedPlugins);
     }
 
@@ -84,6 +84,7 @@ class ApiItem extends Component {
                     selectedPlugins={r}
                     disabled={true}
                     onSubmit={this.submit}
+                    location={this.props.location}
                 />
             );
         }

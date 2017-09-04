@@ -35,12 +35,12 @@ const propTypes = {
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
+    location: PropTypes.object,
     selectPlugin: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const ApiForm = (props) => {
-    // console.error('THIS>PROPS', props);
     const {
         api,
         apiSchema,
@@ -51,10 +51,10 @@ const ApiForm = (props) => {
         response,
         selectPlugin,
         selectedPlugins,
+        location,
     } = props;
     const parse = value => (value === undefined ? undefined : parseInt(value));
     const includePlugin = value => {
-        // console.clear();
         apiSchema.plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
                 selectPlugin(plugin.name);
@@ -102,20 +102,23 @@ const ApiForm = (props) => {
                                 Copy
                             </Button>
                         </Link>
-                        <Link
-                            to={'/'}
-                            onClick={() => {
-                                props.handleDelete(props.api.name);
-                            }}
-                        >
-                            <Button
-                                type="button"
-                                mod="danger"
-                            >
-                                <Icon type="delete-white" />
-                                Delete
-                            </Button>
-                        </Link>
+                        {
+                            location &&
+                                <Link
+                                    to={'/'}
+                                    onClick={() => {
+                                        props.handleDelete(props.api.name);
+                                    }}
+                                >
+                                    <Button
+                                        type="button"
+                                        mod="danger"
+                                    >
+                                        <Icon type="delete-white" />
+                                        Delete
+                                    </Button>
+                                </Link>
+                        }
                         <Button
                             type="submit"
                             mod="primary"
