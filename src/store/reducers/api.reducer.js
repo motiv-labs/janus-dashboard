@@ -80,7 +80,7 @@ export default function reducer(state = initialState, action) {
             };
         }
         case WILL_CLONE: {
-            console.clear();
+            // console.clear();
             console.error('NEED TO BE CLONED');
             console.warn(action.payload);
             return {

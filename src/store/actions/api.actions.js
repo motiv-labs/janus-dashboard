@@ -84,17 +84,29 @@ export const willClone = data => {
         if (plugin.name === 'rate_limit') {
             const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
             const { value, unit, units } = pluginFromSchema.config.limit;
+            console.clear();
+            console.error('pluginFromSchema.config.policy', pluginFromSchema.config.policy);
+
             const policyFromSchema = pluginFromSchema.config.policy;
             const schemaConfigLimit = pluginFromSchema.config.limit;
-            const arr = plugin.config.limit.split('-');
-            const valueOfLimit = arr[0]*1;
-            const valueOfUnit = arr[1];
-            // @TODO: policy should be also an array like in schema;
+            const getUpdatedLimit = limit => {
+                if (R.type(limit) === 'Object') {
+                    return {
+                        value: limit.value,
+                        unit: limit.unit,
+                        units,
+                    };
+                }
 
-            const updatedLimit = {
-                value: valueOfLimit,
-                unit: valueOfUnit,
-                units,
+                const arr = limit.split('-');
+                const valueOfLimit = arr[0]*1;
+                const valueOfUnit = arr[1];
+
+                return {
+                    value: valueOfLimit,
+                    unit: valueOfUnit,
+                    units,
+                };
             };
 
             // set the path for the lens
@@ -102,7 +114,7 @@ export const willClone = data => {
             const lens2 = R.lensPath(['config', 'policy']);
             const lens3 = R.lensPath(['config', 'policy', 'selected']);
             // substitude the plugin.config.limit
-            const updatedPlugin = R.set(lens, updatedLimit, plugin);
+            const updatedPlugin = R.set(lens, getUpdatedLimit(plugin.config.limit), plugin);
             const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
 
             return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
