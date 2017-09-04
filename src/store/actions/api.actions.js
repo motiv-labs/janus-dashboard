@@ -84,9 +84,6 @@ export const willClone = data => {
         if (plugin.name === 'rate_limit') {
             const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
             const { value, unit, units } = pluginFromSchema.config.limit;
-            console.clear();
-            console.error('pluginFromSchema.config.policy', pluginFromSchema.config.policy);
-
             const policyFromSchema = pluginFromSchema.config.policy;
             const schemaConfigLimit = pluginFromSchema.config.limit;
             const getUpdatedLimit = limit => {
@@ -116,8 +113,14 @@ export const willClone = data => {
             // substitude the plugin.config.limit
             const updatedPlugin = R.set(lens, getUpdatedLimit(plugin.config.limit), plugin);
             const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+            const getSelectedPolicy = policy => {
+                if (R.type(policy) === 'Object') {
+                    return policy.selected;
+                }
+                return policy;
+            };
 
-            return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+            return R.set(lens3, getSelectedPolicy(plugin.config.policy), pluginWithPolicyFromSchema);
         }
         if (plugin.name === 'request_transformer') {
             const transformHeadersToArray = obj => R.toPairs(obj)
