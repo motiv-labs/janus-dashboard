@@ -15,10 +15,10 @@ class MultiSelect extends Component {
         value: [],
     }
 
-    componentDidMount = () => {
-        // console.error('MultiSelect did mount', this.props)
-        // this.setState({ value: this.props.input.value });
-    }
+    // componentDidMount = () => {
+    //     // console.error('MultiSelect did mount', this.props)
+    //     // this.setState({ value: this.props.input.value });
+    // }
 
     componentWillReceiveProps = nextProps => {
         // console.error('MultiSelect:');
