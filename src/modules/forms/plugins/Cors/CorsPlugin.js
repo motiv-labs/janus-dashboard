@@ -29,11 +29,7 @@ class CorsPlugin extends PureComponent {
     }
 
     render() {
-        // console.clear();
-        // console.error('CORS PLUGIN');
-
         const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
-        // console.error('this.props(CORS_PLUGIN): ', name, pluginName, apiSchema.plugins[0].config)
         const b = block(className);
         const optionsTransformer = config => {
             return config.map(item => ({

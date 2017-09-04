@@ -12,8 +12,6 @@ import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
 
-import SelectUnit from './SelectUnit';
-
 const propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
