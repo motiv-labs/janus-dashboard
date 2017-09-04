@@ -42,6 +42,7 @@ const propTypes = {
 const ApiForm = (props) => {
     // console.error('THIS>PROPS', props);
     const {
+        api,
         apiSchema,
         excludePlugin,
         initialValues,
@@ -85,6 +86,22 @@ const ApiForm = (props) => {
                 <Row>
                     <Title>Edit API</Title>
                     <div className="j-buttons__wrapper">
+                        <Link
+                            to={{
+                                pathname: '/new',
+                                state: {
+                                    clone: api,
+                                },
+                            }}
+                        >
+                            <Button
+                                type="button"
+                                mod="primary"
+                            >
+                                <Icon type="copy-white" />
+                                Copy
+                            </Button>
+                        </Link>
                         <Link
                             to={'/'}
                             onClick={() => {
