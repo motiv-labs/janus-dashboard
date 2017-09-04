@@ -93,11 +93,6 @@ class ApiList extends PureComponent {
             <div className={table('tbody')}>
                 { this.renderRows(list) }
             </div>
-            <div className={table('tfoot')}>
-                <div className={table('tfoot', { tr: true })}>
-                    <div></div>
-                </div>
-            </div>
         </div>
     )
 
