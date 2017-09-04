@@ -199,7 +199,7 @@ const ApiForm = (props) => {
                                 type="text"
                                 placeholder="Choose one or more methods"
                                 edit
-                                value={getValues('methods')}
+                                value={() => getValues('methods')}
                                 options={optionsTransformer(apiSchema.proxy.methods)}
                                 component={MultiSelect}
                             />
