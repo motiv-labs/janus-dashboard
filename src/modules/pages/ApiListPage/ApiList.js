@@ -46,7 +46,7 @@ class ApiList extends PureComponent {
             <div className={table('td', {name: true})}>{api.name}</div>
             <div className={table('td')}>{api.proxy.listen_path}</div>
             <div className={table('td')}>{api.proxy.upstream_url}</div>
-            <div className={table('td')}>
+            <div className={table('td', {active: true})}>
                 {api.active ? <Icon type="checked" /> : null}
             </div>
             <div className={table('td')}>
@@ -81,24 +81,22 @@ class ApiList extends PureComponent {
 
     renderTable = list => (
         <div className={table()}>
-            <div>
-                <tr>
-                    <th className={table('th')}><div>Api Name</div></th>
-                    <th className={table('th')}>Listen Path</th>
-                    <th className={table('th')}>Upstream URL</th>
-                    <th className={table('th')} />
-                    <th className={table('th')}>Active</th>
-                    <th className={table('th')} />
-                    <th className={table('th')} />
-                </tr>
+            <div className={table('head')}>
+                <div className={table('row')}>
+                    <div className={table('th')}><div>Api Name</div></div>
+                    <div className={table('th')}>Listen Path</div>
+                    <div className={table('th')}>Upstream URL</div>
+                    <div className={table('th', {active: true})}>Active</div>
+                    <div className={table('th')} />
+                </div>
             </div>
             <div className={table('tbody')}>
                 { this.renderRows(list) }
             </div>
             <div className={table('tfoot')}>
-                <tr className={table('tfoot', { tr: true })}>
-                    <div colSpan="8" />
-                </tr>
+                <div className={table('tfoot', { tr: true })}>
+                    <div></div>
+                </div>
             </div>
         </div>
     )
