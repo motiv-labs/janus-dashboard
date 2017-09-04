@@ -17,9 +17,9 @@ const Header = ({ logged }) => {
                 <div className={b('col', { middle: true })}>
                     <Nav />
                 </div>
-                <div className={b('col', { right: true })}>
+                {/*<div className={b('col', { right: true })}>
                     Lorem ipsum
-                </div>
+                </div>*/}
             </header>
         );
     }
