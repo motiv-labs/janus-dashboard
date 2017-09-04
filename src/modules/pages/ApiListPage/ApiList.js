@@ -43,13 +43,13 @@ class ApiList extends PureComponent {
 
     renderRows = list => list.map(api => (
         <div className={table('row')} key={api.name}>
-            <td className={table('td', {name: true})}>{api.name}</td>
-            <td className={table('td')}>{api.proxy.listen_path}</td>
-            <td className={table('td')}>{api.proxy.upstream_url}</td>
-            <td className={table('td')}>
+            <div className={table('td', {name: true})}>{api.name}</div>
+            <div className={table('td')}>{api.proxy.listen_path}</div>
+            <div className={table('td')}>{api.proxy.upstream_url}</div>
+            <div className={table('td')}>
                 {api.active ? <Icon type="checked" /> : null}
-            </td>
-            <td className={table('td')}>
+            </div>
+            <div className={table('td')}>
                 <div className={table('controls')}>
                     <Link to={`/${api.name}`} className={table('controls-item')}>
                         <Icon type="edit" />
@@ -75,7 +75,7 @@ class ApiList extends PureComponent {
                         <Icon type="delete" />
                     </Link>
                 </div>
-            </td>
+            </div>
         </div>
     ))
 
@@ -97,7 +97,7 @@ class ApiList extends PureComponent {
             </div>
             <div className={table('tfoot')}>
                 <tr className={table('tfoot', { tr: true })}>
-                    <td colSpan="8" />
+                    <div colSpan="8" />
                 </tr>
             </div>
         </div>
