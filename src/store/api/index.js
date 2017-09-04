@@ -3,6 +3,7 @@ import axios from 'axios';
 import { login } from './auth';
 import config from './config';
 import history from '../configuration/history';
+import { parseJwt } from '../../helpers';
 
 const headers = {
     Accept: 'application/vnd.janus.v1+json',
@@ -18,7 +19,20 @@ export const setAccessToken = (token) => {
     client.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
-export const getAccessToken = () => localStorage.getItem('access_token');
+export const getAccessToken = () => {
+    const token = localStorage.getItem('access_token');
+
+    if (token) {
+        const expirationTime = parseJwt(token).exp * 1000;
+        const dateNow = new Date();
+
+        if (expirationTime > dateNow.getTime()) {
+            return token;
+        }
+    }
+
+    return token
+};
 
 export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
 
