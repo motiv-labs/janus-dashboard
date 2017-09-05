@@ -60,14 +60,10 @@ const ApiForm = (props) => {
         excludePlugin(value);
     };
     const getValues = key => initialValues.proxy[key];
-    const optionsTransformer = config => {
-        const opts = config.map(item => ({
-            label: item,
-            value: item,
-        }));
-
-        return opts;
-    };
+    const optionsTransformer = config => config.map(item => ({
+        label: item,
+        value: item,
+    }));
 
     return (
         <form className={b} onSubmit={handleSubmit}>
