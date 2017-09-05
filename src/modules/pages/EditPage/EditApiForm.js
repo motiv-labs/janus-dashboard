@@ -48,7 +48,7 @@ const ApiForm = (props) => {
         selectedPlugins,
         location,
     } = props;
-    const parse = value => (value === undefined ? undefined : parseInt(value));
+    const parse = value => value === undefined ? undefined : parseInt(value);
     const includePlugin = value => {
         apiSchema.plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
@@ -59,11 +59,7 @@ const ApiForm = (props) => {
     const removePlugin = value => {
         excludePlugin(value);
     };
-
-    const getValues = key => {
-        return initialValues.proxy[key];
-    };
-
+    const getValues = key => initialValues.proxy[key];
     const optionsTransformer = config => {
         const opts = config.map(item => ({
             label: item,
