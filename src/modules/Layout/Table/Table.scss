@@ -4,49 +4,59 @@
     width: 100%;
     text-align: left;
 
-    &__tfoot {
-        height: 70px;
-        border: $hf-border;
-        border-top: none;
-
-        &--tr {
-            background-color: $hf-color-white;
-        }
+    &__tbody,
+    &__head {
+        padding-left: $hf-padding-big;
+        padding-right: $hf-padding-big;
     }
-
     &__tbody {
         border: $hf-border;
-        border-bottom: none;
-    }
-
-    &__row {
         background-color: $hf-color-white;
     }
 
-    &__th {
-        padding-top: $hf-padding-cell;
-        padding-bottom: $hf-padding-cell;
-        color: $hf-color-gray-medium;
-        font-weight: $hf-font-weight-bold;
+    &__row {
+        border-bottom: $hf-border;
+        display: grid;
+        grid-template-columns: 35% 25% 25% 5% 10%;
 
-        &:first-child {
-            padding-left: $hf-padding-big;
+        &:last-child {
+            border-bottom: none;
         }
     }
 
+    &__td,
+    &__th {
+        &--active {
+            display: flex;
+            justify-content: center;
+        }
+    }
+    &__th {
+        padding-top: $hf-padding-main;
+        padding-bottom: $hf-padding-main;
+        color: $hf-color-gray-medium;
+    }
     &__td {
-        vertical-align: middle;
-        border-bottom: $hf-border;
         padding-top: $hf-padding-cell;
         padding-bottom: $hf-padding-cell;
+        font-size: $hf-font-size-base;
+        align-self: center;
+        text-overflow: ellipsis;
+        overflow: hidden;
 
-        &:first-child {
+        &--name {
             font-weight: $hf-font-weight-bold;
-            padding-left: $hf-padding-big;
+            font-size: $hf-font-size-medium;
         }
+    }
 
-        &:last-child {
-            padding-right: $hf-padding-big;
+    &__controls {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: $hf-gutter;
+
+        &-item {
+            justify-self: center;
         }
     }
 }
