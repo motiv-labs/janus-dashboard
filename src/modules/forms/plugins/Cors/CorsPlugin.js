@@ -38,7 +38,6 @@ class CorsPlugin extends PureComponent {
             }));
         };
         const getValues = key => plugin.config[key];
-
         const allValues = key => apiSchema.plugins[0].config[key];
 
         return (
