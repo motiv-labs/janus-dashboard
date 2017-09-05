@@ -187,13 +187,11 @@ export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
         }));
         dispatch(callback(apiName));
     } catch (error) {
-        // console.log('ERROR => ', error);
         dispatch(openResponseModal({
             status: error.response.status,
             statusText: error.response.statusText,
             message: error.response.data.error,
         }));
-        // console.log('DELETE_ENDPOINT_ERROR', 'Infernal server error', error.response);
     }
 };
 
@@ -368,7 +366,6 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
-    // return client.post('apis', api)
     return client.post('apis', preparedApi)
         .then((response) => {
             // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
@@ -409,7 +406,6 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
 
 
 export const updateEndpoint = (pathname, api) => (dispatch) => {
-    console.error('_________UPD_______');
     dispatch(saveEndpointRequest());
 
     const preparedPlugins = preparePlugins(api);
@@ -418,7 +414,6 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 
     return client.put(`apis${pathname}`, preparedApi)
         .then((response) => {
-            // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
             dispatch(saveEndpointSuccess());
             dispatch(openResponseModal({
                 status: response.status,
