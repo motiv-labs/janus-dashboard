@@ -31,18 +31,17 @@ export const setCurrentPageIndex = index => ({
     payload: index,
 });
 
-export const fetchEndpoints = () => dispatch => {
+export const fetchEndpoints = () => async dispatch => {
     dispatch(getEndpointsRequest());
     dispatch(fetchHealthCheckList());
 
-    return client.get('apis')
-        .then((response) => {
-            dispatch(getEndpointsSuccess(response.data));
-        })
-        .catch((e) => {
-            // context.commit('SET_ERROR', 'Infernal server error');
-            console.log('ERRROR', e);
-        });
+    try {
+        const response = await client.get('apis');
+
+        dispatch(getEndpointsSuccess(response.data));
+    } catch (error) {
+        console.log('ERRROR', error);
+    }
 };
 
 export const refreshEndpoints = api => ({
