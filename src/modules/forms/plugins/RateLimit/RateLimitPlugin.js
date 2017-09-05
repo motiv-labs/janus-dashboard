@@ -30,12 +30,10 @@ const RateLimitPlugin = ({
     response,
 }) => {
     const b = block(className);
-    const optionsTransformer = config => {
-        return config.map(item => ({
-            label: item,
-            value: item,
-        }));
-    };
+    const optionsTransformer = config => config.map(item => ({
+        label: item,
+        value: item,
+    }));
     const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
 
     return (
