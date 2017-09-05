@@ -303,7 +303,6 @@ const ApiForm = (props) => {
                 </div>
                 <div className={b('section')}>
                     <div className={b('section-title')}>4. Plugins</div>
-
                     {
                         !!plugins &&
                             <RenderPlugins
@@ -318,10 +317,8 @@ const ApiForm = (props) => {
                                 edit
                             />
                     }
-
                 </div>
             </div>
-
             <Row className={b('row',{ 'button-row': true })()}>
                 <Button
                     type="submit"
@@ -346,11 +343,9 @@ const form = reduxForm({
 export default connect(
     state => {
         const plugins = selector(state, 'plugins');
-
         const api = state.apiReducer.api;
         const apiPlugins = api.plugins;
         const defaultPlugins = state.apiReducer.apiSchema.plugins;
-
         const updatedPlugins = defaultPlugins.map(item => {
             const res = apiPlugins.filter(pl => pl.name === item.name);
 
@@ -360,19 +355,10 @@ export default connect(
         const lens = R.lensPath(['plugins']);
         // substitude the plugin.config.limit
         const updatedApi = R.set(lens, updatedPlugins, api);
-        // const x = api.plugins.map((item, index) => item.name === )
-        // console.warn('____', transformFormValues(api).plugins);
-        // console.warn('____', state.apiReducer.api);
-        // console.warn(updatedApi)
-
-        // console.error(defaultPlugins);
-        // console.log(apiPlugins);
-        // console.warn(updatedPlugins);
 
         return {
-            // initialValues: transformFormValues(state.apiReducer.api),
             initialValues: transformFormValues(updatedApi),
-            // ***FOR SOME REASON NAME of the plugin DISCARDS while saving
+            // FIXME name of the plugin is discarded while saving
             apiSchema: state.apiReducer.apiSchema,
             response: state.apiReducer.response,
             selectedPlugins: state.apiReducer.selectedPlugins,
