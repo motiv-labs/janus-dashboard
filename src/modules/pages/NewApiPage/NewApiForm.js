@@ -28,7 +28,7 @@ const propTypes = {
     initialValues: PropTypes.object,
 };
 
-const ApiForm = (props) => {
+const ApiForm = props => {
     const {
         handleSubmit,
         initialValues,
@@ -38,8 +38,7 @@ const ApiForm = (props) => {
         selectPlugin,
         selectedPlugins,
     } = props;
-    console.error('NEW API', props);
-    const parse = value => (value === undefined ? undefined : parseInt(value));
+    const parse = value => value && parseInt(value);
     const includePlugin = value => {
         plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {

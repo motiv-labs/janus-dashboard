@@ -24,14 +24,14 @@ const propTypes = {
 class NewApiItem extends Component {
     componentWillMount() {
         this.props.resetEndpoint();
-        console.error('------', this.props.location.pathname);
 
         if (this.hasToBeCloned()) {
             this.props.fetchEndpointSchema();
             this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
-        } else {
-            this.props.fetchEndpointSchema();
+            return;
         }
+
+        this.props.fetchEndpointSchema();
     }
 
     handleDelete = apiName => {
@@ -42,11 +42,9 @@ class NewApiItem extends Component {
         const transformedValues = transformFormValues(values, true);
         const plugins = transformedValues.plugins;
         const selectedPlugins = this.props.selectedPlugins;
-
         const addedPlugins = plugins.filter((plugin) => {
             return selectedPlugins.indexOf(plugin.name) !== -1;
         });
-
         const computedPlugins = {
             ...transformedValues,
             plugins: addedPlugins,
@@ -66,34 +64,29 @@ class NewApiItem extends Component {
     }
 
     renderForm = () => {
-        if (this.hasToBeCloned()) {
-            if (!R.isEmpty(this.props.api)) {
-                console.error('go to EDIT =>c ', this.props);
-                const r = this.props.api.plugins.map(item => item.name);
+        if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
+            const r = this.props.api.plugins.map(item => item.name);
 
-                return (
-                    <EditApiForm
-                        api={this.props.api}
-
-                        handleDelete={this.handleDelete}
-
-                        selectedPlugins={r}
-                        excludePlugin={this.props.excludePlugin}
-                        selectPlugin={this.props.selectPlugin}
-                        disabled={false}
-                        onSubmit={this.submit}
-                    />
-                );
-            }
-        } else {
             return (
-                <NewApiForm
-                    onSubmit={this.submit}
+                <EditApiForm
+                    api={this.props.api}
+                    handleDelete={this.handleDelete}
+                    selectedPlugins={r}
                     excludePlugin={this.props.excludePlugin}
                     selectPlugin={this.props.selectPlugin}
+                    disabled={false}
+                    onSubmit={this.submit}
                 />
             );
         }
+
+        return (
+            <NewApiForm
+                onSubmit={this.submit}
+                excludePlugin={this.props.excludePlugin}
+                selectPlugin={this.props.selectPlugin}
+            />
+        );
     }
 
     render() {

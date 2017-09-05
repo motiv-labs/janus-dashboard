@@ -18,7 +18,6 @@ import ApiItem from './ApiItem';
 const mapStateToProps = state => ({
     api: state.apiReducer.api,
     selectedPlugins: state.apiReducer.selectedPlugins,
-    // selectedPlugins: state.apiReducer.api.plugins.map(item => item.name),
 });
 
 export default connect(
