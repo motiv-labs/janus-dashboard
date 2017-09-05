@@ -16,12 +16,13 @@ import './LoginForm.css';
 const b = block('login-form');
 
 const propTypes = {
+    errorMsg: PropTypes.string,
     handleSubmit: PropTypes.func.isRequired,
 };
 
-const LoginForm = ({ handleSubmit }) => {
+const LoginForm = ({ errorMsg, handleSubmit }) => {
     return (
-        <form className={b} onSubmit={handleSubmit}>
+        <form className={b({error: !!errorMsg})} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section small>
@@ -37,6 +38,10 @@ const LoginForm = ({ handleSubmit }) => {
                     <Label>Password</Label>
                     <Field type="password" name="password" component={Input} />
                 </Row>
+                {
+                    errorMsg &&
+                        <div className="error-message">{errorMsg}</div>
+                }
             </Section>
             <Row className={b('button-section')()} alignCenter>
                 <Button className={b('button')()} mod="primary" type="submit">Login</Button>

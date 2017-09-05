@@ -13,6 +13,14 @@ $form-padding-top: 70px;
     box-sizing: border-box;
     @include alignCenter();
 
+    &--error {
+        border-color: $hf-color-red;
+
+        .j-input {
+            border-color: $hf-color-red;
+        }
+    }
+
     &__logo {
         position: absolute;
         width: $logo-width;

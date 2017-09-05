@@ -2,13 +2,15 @@ import React from 'react';
 
 import LoginForm from './LoginForm';
 
-const FormWrapper = props => {
+const FormWrapper = ({ errorMsg, loginUser }) => {
     const submitLogin = (values) => {
-        props.loginUser(values);
+        loginUser(values);
     };
-
     return (
-        <LoginForm onSubmit={submitLogin} />
+        <LoginForm
+            onSubmit={submitLogin}
+            errorMsg={errorMsg}
+        />
     );
 };
 
