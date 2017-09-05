@@ -35,14 +35,14 @@ class HeadersSection extends Component {
                         return (
                             <Row key={index} col>
                                 <div className={row()}>
-                                    <div className={row('item', {'pair': true})}>
+                                    <div className={row('item', {pair: true})}>
                                         <Field
                                             name={`${member}.key`}
                                             type="text"
                                             component={Input}
                                         />
                                     </div>
-                                    <div className={row('item', {'pair': true})}>
+                                    <div className={row('item', {pair: true})}>
                                         <Field
                                             name={`${member}.value`}
                                             type="text"
