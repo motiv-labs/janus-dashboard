@@ -50,11 +50,13 @@ const ApiForm = (props) => {
     } = props;
     const parse = value => value && parseInt(value);
     const includePlugin = value => {
-        apiSchema.plugins.map((plugin, index) => {
-            if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
+        apiSchema.plugins
+            .filter((plugin, index) => {
+                return plugin.name === value.value && !selectedPlugins.includes(plugin.name);
+            })
+            .map((plugin, index) => {
                 selectPlugin(plugin.name);
-            }
-        });
+            });
     };
     const removePlugin = value => {
         excludePlugin(value);

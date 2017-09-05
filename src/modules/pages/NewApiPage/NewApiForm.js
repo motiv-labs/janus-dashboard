@@ -40,21 +40,21 @@ const ApiForm = props => {
     } = props;
     const parse = value => value && parseInt(value);
     const includePlugin = value => {
-        plugins.map((plugin, index) => {
-            if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {
+        apiSchema.plugins
+            .filter((plugin, index) => {
+                return plugin.name === value.value && !selectedPlugins.includes(plugin.name);
+            })
+            .map((plugin, index) => {
                 selectPlugin(plugin.name);
-            }
-        });
+            });
     };
     const removePlugin = value => {
         excludePlugin(value);
     };
-    const optionsTransformer = config => {
-        return config.map(item => ({
-            label: item,
-            value: item,
-        }));
-    };
+    const optionsTransformer = config => config.map(item => ({
+        label: item,
+        value: item,
+    }));
 
     return (
         <form className={b} onSubmit={handleSubmit}>
