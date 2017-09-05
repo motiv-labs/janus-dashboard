@@ -286,83 +286,85 @@ export const fetchEndpointSchema = () => (dispatch) => {
     dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
+export const preparePlugins = api => api.plugins.map(plugin => {
+    if (plugin.name === 'rate_limit') {
+        const { limit, policy } = plugin.config;
+        const { value, unit } = limit;
+        const concatenation = `${value}-${unit}`;
+        // set the path for the lens
+        const lens = R.lensPath(['config', 'limit']);
+        const lens2 = R.lensPath(['config', 'policy']);
+        // substitude the plugin.config.limit
+        const updatedPlugin = R.set(lens, concatenation, plugin);
+
+        return R.set(lens2, policy.selected, updatedPlugin);
+    }
+    if (plugin.name === 'request_transformer') {
+        // get all options names
+        const options = Object.keys(plugin.config);
+        // convert all values of plugin's config to array of objects
+        // so then we will be able to map through them:
+        const config = R.values(plugin.config);
+        const allTransformedHeaders = config.map((item, index) => {
+            // headers comes as an array of objects:
+            /**
+             * @example #1
+             *
+             * add: {
+             *     header: [
+             *         {someKey: 'someValue'},
+             *         {someAnotherKey: 'someAnotherValue'},
+             *     ]
+             * }
+             */
+            const headers = item.headers;
+
+            // we will fill this arrays with keys and values respectively
+            let keys = [];
+            let values = [];
+
+            // fill key/values arrays
+            headers.map(item => {
+                const arr = R.values(item);
+
+                keys.push(arr[0]);
+                values.push(arr[1]);
+            });
+
+            // and now we are creating object that should be placed instead of
+            // array of the objects from example #1
+            /**
+             * @example #2
+             *
+             * add: {
+             *     headers: {
+             *         someKey: 'someValue',
+             *         someAnotherKey: 'someAnotherValue',
+             *     }
+             * }
+             */
+            const transformedHeaders = R.zipObj(keys, values);
+
+            return transformedHeaders;
+        });
+
+        // step by step we updating plugins config:
+        const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
+            const lens = R.lensPath(['config', options[index], 'headers']);
+
+            return R.set(lens, item, acc);
+        }, plugin);
+
+        return updatedPlugin;
+    }
+
+    return plugin;
+});
+
 export const saveEndpoint = (pathname, api) => (dispatch) => {
     dispatch(saveEndpointRequest(api));
 
-    const preparedPlugins = api.plugins.map(plugin => {
-        if (plugin.name === 'rate_limit') {
-            const { limit, policy } = plugin.config;
-            const { value, unit } = limit;
-            const concatenation = `${value}-${unit}`;
-            // set the path for the lens
-            const lens = R.lensPath(['config', 'limit']);
-            const lens2 = R.lensPath(['config', 'policy']);
-            // substitude the plugin.config.limit
-            const updatedPlugin = R.set(lens, concatenation, plugin);
-
-            return R.set(lens2, policy.selected, updatedPlugin);
-        }
-        if (plugin.name === 'request_transformer') {
-            // get all options names
-            const options = Object.keys(plugin.config);
-            // convert all values of plugin's config to array of objects
-            // so then we will be able to map through them:
-            const config = R.values(plugin.config);
-            const allTransformedHeaders = config.map((item, index) => {
-                // headers comes as an array of objects:
-                /**
-                 * @example #1
-                 *
-                 * add: {
-                 *     header: [
-                 *         {someKey: 'someValue'},
-                 *         {someAnotherKey: 'someAnotherValue'},
-                 *     ]
-                 * }
-                 */
-                const headers = item.headers;
-
-                // we will fill this arrays with keys and values respectively
-                let keys = [];
-                let values = [];
-
-                // fill key/values arrays
-                headers.map(item => {
-                    const arr = R.values(item);
-
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
-
-                // and now we are creating object that should be placed instead of
-                // array of the objects from example #1
-                /**
-                 * @example #2
-                 *
-                 * add: {
-                 *     headers: {
-                 *         someKey: 'someValue',
-                 *         someAnotherKey: 'someAnotherValue',
-                 *     }
-                 * }
-                 */
-                const transformedHeaders = R.zipObj(keys, values);
-
-                return transformedHeaders;
-            });
-
-            // step by step we updating plugins config:
-            const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
-                const lens = R.lensPath(['config', options[index], 'headers']);
-
-                return R.set(lens, item, acc);
-            }, plugin);
-
-            return updatedPlugin;
-        }
-
-        return plugin;
-    });
+    const preparedPlugins = preparePlugins(api);
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
@@ -410,81 +412,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
     console.error('_________UPD_______');
     dispatch(saveEndpointRequest());
 
-    const preparedPlugins = api.plugins.map(plugin => {
-        if (plugin.name === 'rate_limit') {
-            const { limit, policy } = plugin.config;
-            const { value, unit } = limit;
-            const concatenation = `${value}-${unit}`;
-            // set the path for the lens
-            const lens = R.lensPath(['config', 'limit']);
-            const lens2 = R.lensPath(['config', 'policy']);
-            // substitude the plugin.config.limit
-            const updatedPlugin = R.set(lens, concatenation, plugin);
-            console.error('>>>>>>>', updatedPlugin);
-
-            return R.set(lens2, policy.selected, updatedPlugin);
-        }
-        if (plugin.name === 'request_transformer') {
-            // get all options names
-            const options = Object.keys(plugin.config);
-            // convert all values of plugin's config to array of objects
-            // so then we will be able to map through them:
-            const config = R.values(plugin.config);
-            const allTransformedHeaders = config.map((item, index) => {
-                // headers comes as an array of objects:
-                /**
-                 * @example #1
-                 *
-                 * add: {
-                 *     header: [
-                 *         {someKey: 'someValue'},
-                 *         {someAnotherKey: 'someAnotherValue'},
-                 *     ]
-                 * }
-                 */
-                const headers = item.headers;
-
-                // we will fill this arrays with keys and values respectively
-                let keys = [];
-                let values = [];
-
-                // fill key/values arrays
-                headers.map(item => {
-                    const arr = R.values(item);
-
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
-
-                // and now we are creating object that should be placed instead of
-                // array of the objects from example #1
-                /**
-                 * @example #2
-                 *
-                 * add: {
-                 *     headers: {
-                 *         someKey: 'someValue',
-                 *         someAnotherKey: 'someAnotherValue',
-                 *     }
-                 * }
-                 */
-                const transformedHeaders = R.zipObj(keys, values);
-
-                return transformedHeaders;
-            });
-
-            // step by step we updating plugins config:
-            const updatedPlugin = allTransformedHeaders.reduce((acc, item, index) => {
-                const lens = R.lensPath(['config', options[index], 'headers']);
-
-                return R.set(lens, item, acc);
-            }, plugin);
-
-            return updatedPlugin;
-        }
-
-        return plugin;
-    });
+    const preparedPlugins = preparePlugins(api);
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
