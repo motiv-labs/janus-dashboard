@@ -37,12 +37,9 @@ class CorsPlugin extends PureComponent {
                 value: item,
             }));
         };
-        const getValues = key => {
-            return plugin.config[key];
-        };
-        const allValues = key => {
-            return apiSchema.plugins[0].config[key];
-        };
+        const getValues = key => plugin.config[key];
+
+        const allValues = key => apiSchema.plugins[0].config[key];
 
         return (
             <div className={b('section')()}>
