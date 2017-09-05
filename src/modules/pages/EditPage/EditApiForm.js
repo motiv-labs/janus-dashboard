@@ -48,7 +48,7 @@ const ApiForm = (props) => {
         selectedPlugins,
         location,
     } = props;
-    const parse = value => value === undefined ? undefined : parseInt(value);
+    const parse = value => value && parseInt(value);
     const includePlugin = value => {
         apiSchema.plugins.map((plugin, index) => {
             if (plugin.name === value.value && !selectedPlugins.includes(plugin.name)) {

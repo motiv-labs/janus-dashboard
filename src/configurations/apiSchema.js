@@ -42,7 +42,7 @@ const schema = {
                             value: 'local',
                         },
                         {
-                            label: 'destributed',
+                            label: 'distributed',
                             value: 'redis',
                         },
                     ],
