@@ -22,16 +22,14 @@ export const setAccessToken = (token) => {
 export const getAccessToken = () => {
     const token = localStorage.getItem('access_token');
 
-    if (token) {
-        const expirationTime = parseJwt(token).exp * 1000;
-        const dateNow = new Date();
+    if (!token) return;
 
-        if (expirationTime > dateNow.getTime()) {
-            return token;
-        }
+    const expirationTime = parseJwt(token).exp * 1000;
+    const dateNow = new Date();
+
+    if (expirationTime > dateNow.getTime()) {
+        return token;
     }
-
-    return token
 };
 
 export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
