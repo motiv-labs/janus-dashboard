@@ -195,7 +195,7 @@ export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
     }
 };
 
-export const fetchEndpoint = pathname => async (dispatch) => {
+export const fetchEndpoint = pathname => async dispatch => {
     dispatch(getEndpointRequest());
 
     try {
@@ -366,42 +366,41 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
-    return client.post('apis', preparedApi)
-        .then((response) => {
-            // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
-            dispatch(saveEndpointSuccess());
-            dispatch(openResponseModal({
-                status: response.status,
-                message: 'Successfuly saved',
-                statusText: response.statusText,
-                redirectOnClose: () => (history.push('/')),
-            }));
-        })
-        .catch((error) => {
-            if (error.response) {
-                dispatch(openResponseModal({
-                    status: error.response.status,
-                    statusText: error.response.statusText,
-                    message: error.response.data,
-                }));
+    try {
+        const response = client.post('apis', preparedApi);
 
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-                // eslint-disable-next-line
-                console.error(error.response.data);
-            } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-                // eslint-disable-next-line
-                console.log(error.request);
-            } else {
-            // Something happened in setting up the request that triggered an Error
-                // eslint-disable-next-line
-                console.log('Error', error.message);
-            }
-        });
+        dispatch(saveEndpointSuccess());
+        dispatch(openResponseModal({
+            status: response.status,
+            message: 'Successfuly saved',
+            statusText: response.statusText,
+            redirectOnClose: () => (history.push('/')),
+        }));
+    } catch (error) {
+        if (error.response) {
+            dispatch(openResponseModal({
+                status: error.response.status,
+                statusText: error.response.statusText,
+                message: error.response.data,
+            }));
+
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
+            // eslint-disable-next-line
+            console.error(error.response.data);
+        } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+            // eslint-disable-next-line
+            console.log(error.request);
+        } else {
+        // Something happened in setting up the request that triggered an Error
+            // eslint-disable-next-line
+            console.log('Error', error.message);
+        }
+    }
 };
 
 

@@ -28,17 +28,16 @@ export const getUserStatus = () => dispatch => {
     }
 };
 
-export const loginUser = userData => dispatch => {
+export const loginUser = userData => async dispatch => {
     dispatch(loginRequest());
 
-    return client.post('login', userData)
-        .then((response) => {
-            setAccessToken(response.data.token);
-            history.push('/');
-            dispatch(getUserStatus());
-        })
-        .catch((error) => {
-            // eslint-disable-next-line
-            console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
-        });
+    try {
+        const response = await client.post('login', userData);
+
+        setAccessToken(response.data.token);
+        history.push('/');
+        dispatch(getUserStatus());
+    } catch (error) {
+        console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+    }
 };
