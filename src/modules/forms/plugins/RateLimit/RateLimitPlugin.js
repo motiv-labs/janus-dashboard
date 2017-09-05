@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
+import Select from 'react-select';
 
 import block from '../../../../helpers/bem-cn';
 
@@ -19,12 +20,21 @@ const propTypes = {
     handlePluginExclude: PropTypes.func.isRequired,
 };
 
-const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginName }) => {
+const RateLimitPlugin = ({
+    className,
+    name,
+    handlePluginExclude,
+    plugin,
+    pluginFromValues,
+    pluginName,
+    response,
+}) => {
     const b = block(className);
     const optionsTransformer = config => config.map(item => ({
         label: item,
         value: item,
     }));
+    const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
 
     return (
         <div className={b('section')()}>
@@ -50,8 +60,10 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                         <Row col>
                             <Label>Limit Unit</Label>
                             <Field
-                                name={`${name}.config.limit.units`}
+                                name={`${name}.config.limit.unit`}
                                 type="text"
+                                searchable={false}
+                                clearable={false}
                                 options={optionsTransformer(plugin.config.limit.units)}
                                 component={SimpleSelect}
                             />
@@ -62,9 +74,11 @@ const RateLimitPlugin = ({ className, name, handlePluginExclude, plugin, pluginN
                 <Row col>
                     <Label>Policy</Label>
                     <Field
-                        name={`${name}.config.policy`}
+                        name={`${name}.config.policy.selected`}
                         type="text"
-                        options={plugin.config.policy}
+                        searchable={false}
+                        clearable={false}
+                        options={plugin.config.policy.options}
                         component={SimpleSelect}
                     />
                     <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>

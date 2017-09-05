@@ -14,6 +14,12 @@ class MultiSelect extends Component {
         value: [],
     }
 
+    componentWillReceiveProps = nextProps => {
+        if (nextProps.edit) {
+            this.setState({ value: nextProps.input.value });
+        }
+    }
+
     handleSelectChange = value => {
         this.setState((prevState, props) => ({ value }), this.props.input.onChange(value.split(',')));
     }

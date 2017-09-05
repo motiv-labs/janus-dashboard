@@ -9,6 +9,7 @@ $hf-color-snot-green: rgba(143, 195, 0, .15);
 $hf-color-gray-medium: #7f7f7f;
 $hf-color-gray-pale: #f5f5f5;
 $hf-color-white-pale: rgba(255, 255, 255, 0.15);
+$hf-color-red: #d0011b;
 $hf-color-orange: #ffc700;
 
 /* Shadows */
@@ -51,6 +52,7 @@ $hf-padding-cell: 25px;
 $hf-padding-row: $hf-gutter*1.2;
 $hf-padding-footer: $hf-padding-middle*2;
 $hf-color-button-primary: $hellofresh-color;
+$hf-color-button-danger: $hf-color-red;
 $hf-border-radius-button: $hf-border-radius;
 
 

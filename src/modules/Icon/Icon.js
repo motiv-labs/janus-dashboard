@@ -13,9 +13,11 @@ const propTypes = {
         'add', // green plus
         'checked',
         'close',
-        'copy',
+        'copy', // green files
+        'copy-white', // white files
         'correct',
         'delete', // red bucket
+        'delete-white', // white bucket
         'edit', // green pencil
         'remove', // red minus
     ]).isRequired,

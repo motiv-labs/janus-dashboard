@@ -8,6 +8,7 @@ const propTypes = {
     className: PropTypes.string,
     mod: PropTypes.oneOf([
         'primary',
+        'danger',
     ]).isRequired,
     type: PropTypes.string,
     onClick: PropTypes.func,

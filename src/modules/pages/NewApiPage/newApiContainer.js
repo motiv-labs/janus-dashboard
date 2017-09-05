@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 
 import {
+    deleteEndpoint,
     fetchEndpointSchema,
     resetEndpoint,
+    refreshEndpoints,
     saveEndpoint,
     excludePlugin,
     selectPlugin,
@@ -19,10 +21,12 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     {
+        deleteEndpoint,
         fetchEndpointSchema,
         resetEndpoint,
         saveEndpoint,
         excludePlugin,
+        refreshEndpoints,
         selectPlugin,
         willClone,
     },

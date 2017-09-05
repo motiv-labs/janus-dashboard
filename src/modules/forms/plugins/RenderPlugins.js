@@ -15,6 +15,8 @@ import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlu
 
 const propTypes = {
     className: PropTypes.string,
+    apiSchema: PropTypes.object.isRequired,
+    edit: PropTypes.bool,
     initialValues: PropTypes.object,
     plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
     handlePluginExclude: PropTypes.func.isRequired,
@@ -40,9 +42,23 @@ class RenderPlugin extends Component {
     }
 
     render() {
-        const { className, plugins, selectedPlugins, handlePluginExclude, handlePluginInclude, initialValues } = this.props;
+        const {
+            className,
+            /**
+             * @FIXME: something wrong with receiving apiSchema
+             * as a prop
+             */
+            apiSchema,
+            edit,
+            plugins,
+            response,
+            selectedPlugins,
+            handlePluginExclude,
+            handlePluginInclude,
+            initialValues,
+        } = this.props;
         const b = block(className);
-        const names = plugins.map(plugin => ({
+        const names = apiSchema.plugins.map(plugin => ({
             label: plugin.name,
             value: plugin.name,
         }));
@@ -59,6 +75,9 @@ class RenderPlugin extends Component {
                             plugin: initialValues.plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginFromValues: plugins[this.getPluginIndex(plugins, pluginName)],
                             pluginName,
+                            apiSchema,
+                            edit,
+                            response,
                         };
 
                         switch (pluginName) {

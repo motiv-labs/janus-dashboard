@@ -8,7 +8,7 @@ const propTypes = {
 
 class SimpleSelect extends Component {
     state = {
-        selectValue: ''
+        selectValue: this.props.input.value ? this.props.input.value : '',
     }
 
     updateValue = (newValue) => {
@@ -25,6 +25,8 @@ class SimpleSelect extends Component {
                 value={this.state.selectValue}
                 onChange={this.updateValue}
                 simpleValue
+                searchable={this.props.searchable}
+                clearable={this.props.clearable}
                 options={this.props.options}
                 onBlur={() => {
                     this.props.input.onBlur(this.state.selectValue);

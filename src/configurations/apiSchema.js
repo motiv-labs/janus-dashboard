@@ -31,18 +31,22 @@ const schema = {
             config: {
                 limit: {
                     value: 0,
+                    unit: '',
                     units: ['S', 'M', 'H'],
                 },
-                policy: [
-                    {
-                        label: 'local',
-                        value: 'local',
-                    },
-                    {
-                        label: 'destributed',
-                        value: 'redis',
-                    }
-                ],
+                policy: {
+                    selected: '',
+                    options: [
+                        {
+                            label: 'local',
+                            value: 'local',
+                        },
+                        {
+                            label: 'distributed',
+                            value: 'redis',
+                        },
+                    ],
+                },
             },
         },
         {

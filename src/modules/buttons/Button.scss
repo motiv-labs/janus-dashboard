@@ -1,6 +1,7 @@
 @import 'index.scss';
 
 .j-button {
+    display: flex;
     align-items: center;
     border-radius: $hf-border-radius-button;
     white-space: nowrap;
@@ -11,10 +12,35 @@
     user-select: none;
     cursor: pointer;
 
-    &--primary {
+    &s__wrapper {
+        display: flex;
+        margin-left: 10px;
+
+        .j-button {
+            margin-left: 10px;
+        }
+    }
+
+    &--primary,
+    &--danger {
         border-color: transparent;
         color: $hf-color-white;
+
+        a {
+            color: $hf-color-white;
+        }
+    }
+
+    &--primary {
         background-color: $hf-color-button-primary;
+    }
+
+    &--danger {
+        background-color: $hf-color-button-danger;
+    }
+
+    .j-icon {
+        margin-right: 8px;
     }
 }
 

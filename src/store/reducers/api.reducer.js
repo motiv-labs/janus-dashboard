@@ -18,9 +18,13 @@ import {
 
 const initialState = {
     api: {},
+    apiSchema: {},
     selectedPlugins: [],
     isFetching: false,
 };
+
+export const adjust = api => api;
+export const fillSelectedPlugins = api => api.plugins.map(item => item.name);
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -39,11 +43,20 @@ export default function reducer(state = initialState, action) {
                 isFetching: false,
             };
         }
-        case FETCH_ENDPOINT_SUCCESS:
         case FETCH_ENDPOINT_SCHEMA_SUCCESS: {
             return {
                 ...state,
                 api: action.payload,
+                apiSchema: action.payload,
+                isFetching: false,
+            };
+        }
+        case FETCH_ENDPOINT_SUCCESS: {
+            return {
+                ...state,
+                api: adjust(action.payload.api),
+                response: action.payload.response,
+                selectedPlugins: fillSelectedPlugins(action.payload.api),
                 isFetching: false,
             };
         }
@@ -68,7 +81,9 @@ export default function reducer(state = initialState, action) {
         case WILL_CLONE: {
             return {
                 ...state,
-                api: action.payload,
+                api: action.payload.api,
+                response: action.payload.response,
+                selectedPlugins: fillSelectedPlugins(action.payload.api),
             };
         }
         case RESET_ENDPOINT: {
