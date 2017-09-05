@@ -93,27 +93,24 @@ export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
         }));
         dispatch(callback(apiName));
     } catch (error) {
-        // console.log('ERROR => ', error);
         dispatch(openResponseModal({
             status: error.response.status,
             statusText: error.response.statusText,
             message: error.response.data.error,
         }));
-        // console.log('DELETE_ENDPOINT_ERROR', 'Infernal server error', error.response);
     }
 };
 
-export const fetchEndpoint = pathname => (dispatch) => {
+export const fetchEndpoint = pathname => async dispatch => {
     dispatch(getEndpointRequest());
 
-    return client.get(`apis${pathname}`)
-        .then((response) => {
-            dispatch(getEndpointSuccess(response.data));
-        })
-        .catch((error) => {
-            // eslint-disable-next-line
-            console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
-        });
+    try {
+        const response = await client.get(`apis${pathname}`);
+
+        dispatch(getEndpointSuccess(response.data));
+    } catch (error) {
+        console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+    }
 };
 
 export const fetchEndpointSchema = () => (dispatch) => {
@@ -130,19 +127,19 @@ export const fetchEndpointSchema = () => (dispatch) => {
     dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
 };
 
-export const updateEndpoint = (pathname, api) => (dispatch) => {
+export const updateEndpoint = (pathname, api) => async dispatch => {
     dispatch(saveEndpointRequest());
 
-    return client.put(`apis${pathname}`, api)
-    .then((response) => {
+    try {
+        const response = await client.put(`apis${pathname}`, api);
+
         dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({ // @FIXME: move to reducers
             status: response.status,
             message: 'Successfuly saved',
             statusText: response.statusText,
         }));
-    })
-    .catch((error) => {
+    } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
                 status: error.response.status,
@@ -165,10 +162,10 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
             // eslint-disable-next-line
             console.log('Error', error.message);
         }
-    });
+    }
 };
 
-export const saveEndpoint = (pathname, api) => (dispatch) => {
+export const saveEndpoint = (pathname, api) => async dispatch => {
     dispatch(saveEndpointRequest());
 
     const preparedPlugins = api.plugins.map(plugin => {
@@ -246,9 +243,9 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
-    return client.post('apis', preparedApi)
-    .then((response) => {
-        // dispatch(saveEndpointSuccess(JSON.parse(response.config.data)));
+    try {
+        const response = client.post('apis', preparedApi);
+
         dispatch(saveEndpointSuccess());
         dispatch(openResponseModal({
             status: response.status,
@@ -256,8 +253,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             statusText: response.statusText,
             redirectOnClose: () => (history.push('/')),
         }));
-    })
-    .catch((error) => {
+    } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
                 status: error.response.status,
@@ -281,5 +277,5 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
             // eslint-disable-next-line
             console.log('Error', error.message);
         }
-    });
+    }
 };
