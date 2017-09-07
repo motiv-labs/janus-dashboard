@@ -40,7 +40,7 @@ export const loginUser = userData => async dispatch => {
     try {
         const response = await client.post('login', userData);
 
-        setAccessToken(response.data.token);
+        setAccessToken(response.data.access_token);
         history.push('/');
         dispatch(getUserStatus());
     } catch (error) {
