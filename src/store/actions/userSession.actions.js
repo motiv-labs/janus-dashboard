@@ -89,7 +89,7 @@ export const loginUser = userData => async dispatch => {
         // const response = await client.get('auth/github/authorize?response_type=code&client_id=07d212d657ed8f988287');
         // const response = await client.get('status');
 
-        // setAccessToken(response.data.token);
+        // setAccessToken(response.data.access_token);
         // history.push('/');
         // dispatch(getUserStatus());
     } catch (error) {
