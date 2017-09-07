@@ -6,6 +6,42 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
 } from '../constants';
+import axios from 'axios';
+
+export const GET_TOKEN = (code, state) => async dispatch => {
+    console.clear();
+    console.error(code, state);
+    try {
+        const testHeaders = {
+            Accept: 'application/vnd.janus.v1+json',
+        };
+        const b = {
+            client_id: 'fab6013f6101e65a811c',
+            client_secret: '06d760766b6c4d259cf0fee80cba7116f6f2a3da',
+            redirect_uri: 'http://localhost:8082',
+            code,
+            state,
+        };
+        const ha = await axios({
+            method: 'post',
+            url: 'https://github.com/login/oauth/access_token',
+            withCredentials: true,
+            credentials: 'same-origin',
+            mode: 'no-cors',
+        }, b);
+        const client2 = axios.create({
+            url: 'https://github.com/login/oauth',
+            // headers: testHeaders,
+            data: {
+                code,
+                state,
+            }
+        });
+        const response = await ha;
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 export const checkLoggedStatus = () => ({
     type: CHECK_LOGGED_STATUS,
@@ -30,7 +66,7 @@ export const getUserStatus = () => dispatch => {
     if (getAccessToken()) {
         dispatch(loginSuccess());
     } else {
-        history.push('/login');
+        // history.push('/login');
     }
 };
 
@@ -38,11 +74,24 @@ export const loginUser = userData => async dispatch => {
     dispatch(loginRequest());
 
     try {
-        const response = await client.post('login', userData);
+        /*
+        https://github.com/login/oauth/authorize?response_type=code&client_id=07d212d657ed8f988287
+        */
+        // const response = await client.post('login', userData);
+        const testHeaders = {
+            Accept: 'application/vnd.janus.v1+json',
+        };
+        const client2 = axios.create({
+            baseURL: 'https://github.com/login/oauth',
+            headers: testHeaders,
+        });
+        const response = await client2.get('authorize?response_type=code&client_id=07d212d657ed8f988287');
+        // const response = await client.get('auth/github/authorize?response_type=code&client_id=07d212d657ed8f988287');
+        // const response = await client.get('status');
 
-        setAccessToken(response.data.token);
-        history.push('/');
-        dispatch(getUserStatus());
+        // setAccessToken(response.data.token);
+        // history.push('/');
+        // dispatch(getUserStatus());
     } catch (error) {
         dispatch(loginFailure());
         console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);

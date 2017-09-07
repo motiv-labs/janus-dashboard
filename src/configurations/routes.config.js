@@ -19,4 +19,8 @@ export default {
         path: '/:name',
         name: '',
     },
+    GITHUB_AUTH: {
+        path: '/auth/callback',
+        name: '',
+    },
 };

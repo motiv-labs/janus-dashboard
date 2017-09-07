@@ -42,7 +42,7 @@ if (getAccessToken()) {
 
 client.interceptors.response.use(undefined, (error) => {
     if (error.response.status === 401) {
-        history.push('/login');
+        // history.push('/login');
     }
     // if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
     //     return login(config.gateway.username, config.gateway.password).then((response) => {
