@@ -27,7 +27,7 @@ const LoginForm = ({ errorMsg, handleSubmit }) => {
             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
             <Section small>
                 <Row className={b('input')()} col>
-                    <Label>E-mail</Label>
+                    <Label>Login</Label>
                     {/*
                         @TODO:  change type 'text' => 'email' (later).
                                 We need type 'text' because of username='admin' for local testing
