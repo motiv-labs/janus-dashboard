@@ -8,7 +8,7 @@ import {
     SET_PAGINATION_PAGE,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     status: null,
     statusText: '',
     healthcheckList: [],

@@ -6,7 +6,7 @@ import {
     SET_PAGINATION_PAGE,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     apiList: [],
     currentPageIndex: 0,
     isFetching: false,
