@@ -2,7 +2,7 @@ import {
     SEARCH_QUERY,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     searchQuery: '',
 };
 
