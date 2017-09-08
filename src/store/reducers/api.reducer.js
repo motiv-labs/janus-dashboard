@@ -16,7 +16,7 @@ import {
     WILL_CLONE,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     api: {},
     apiSchema: {},
     selectedPlugins: [],
@@ -37,7 +37,8 @@ export default function reducer(state = initialState, action) {
                 isFetching: true,
             };
         }
-        case DELETE_ENDPOINT_SUCCESS: {
+        case DELETE_ENDPOINT_SUCCESS:
+        case SAVE_ENDPOINT_SUCCESS: {
             return {
                 ...state,
                 isFetching: false,
@@ -57,12 +58,6 @@ export default function reducer(state = initialState, action) {
                 api: adjust(action.payload.api),
                 response: action.payload.response,
                 selectedPlugins: fillSelectedPlugins(action.payload.api),
-                isFetching: false,
-            };
-        }
-        case SAVE_ENDPOINT_SUCCESS: {
-            return {
-                ...state,
                 isFetching: false,
             };
         }
