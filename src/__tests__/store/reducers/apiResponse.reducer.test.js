@@ -1,17 +1,17 @@
-import apiList, { initialState } from '../../../store/reducers/apiResponse.reducer';
+import apiResponseReducer, { initialState } from '../../../store/reducers/apiResponse.reducer';
 import { CLOSE_RESPONSE_MODAL, OPEN_RESPONSE_MODAL } from '../../../store/constants/apiResponse.constants';
 
 const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
 
-describe('apiList', () => {
+describe('apiResponseReducer', () => {
     it('returns the initial state by default', () => {
-        const result = apiList(initialState, {});
+        const result = apiResponseReducer(initialState, {});
 
         expect(result).toEqual(initialState);
     });
 
     it('returns the initial state when user closes the modal', () => {
-        const result = apiList(Math.random(), { type: CLOSE_RESPONSE_MODAL });
+        const result = apiResponseReducer(Math.random(), { type: CLOSE_RESPONSE_MODAL });
 
         expect(result).toEqual(initialState);
     });
@@ -28,7 +28,7 @@ describe('apiList', () => {
             statusText,
         };
 
-        const result = apiList(initialState, { type: OPEN_RESPONSE_MODAL, payload });
+        const result = apiResponseReducer(initialState, { type: OPEN_RESPONSE_MODAL, payload });
 
         expect(result.message).toEqual(message);
         expect(result.redirectOnClose).toEqual(redirectOnClose);
