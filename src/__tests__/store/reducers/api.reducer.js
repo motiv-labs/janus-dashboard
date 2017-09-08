@@ -1,16 +1,16 @@
 import apiReducer, { initialState } from '../../../store/reducers/api.reducer';
 import {
     DELETE_ENDPOINT_START,
-    TE_ENDPOINT_SUCCESS,
-    UDE_PLUGIN,
-    H_ENDPOINT_SCHEMA_START,
+    DELETE_ENDPOINT_SUCCESS,
+    EXCLUDE_PLUGIN,
+    FETCH_ENDPOINT_SCHEMA_START,
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     FETCH_ENDPOINT_START,
-    H_ENDPOINT_SUCCESS,
+    FETCH_ENDPOINT_SUCCESS,
     RESET_ENDPOINT,
-    _ENDPOINT_START,
-    _ENDPOINT_SUCCESS,
-    ELECT_PLUGIN,
+    SAVE_ENDPOINT_START,
+    SAVE_ENDPOINT_SUCCESS,
+    SELECT_PLUGIN,
 } from '../../../store/constants/api.constants';
 
 describe('apiReducer', () => {
