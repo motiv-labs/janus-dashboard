@@ -3,7 +3,7 @@ import {
     CLOSE_RESPONSE_MODAL,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     isOpen: false,
     status: null,
     statusText: '',
