@@ -87,6 +87,12 @@ export const loginFailure = () => ({
     payload: 'The login or password you entered is incorrect.'
 });
 
+export const authorizeThroughGithub = () => async dispatch => {
+    console.clear()
+    console.error('JOHNNY');
+    window.location.href = "https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org";
+};
+
 export const getUserStatus = () => dispatch => {
     dispatch(checkLoggedStatus());
 

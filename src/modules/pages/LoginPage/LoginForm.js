@@ -12,6 +12,7 @@ import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
 import Input from '../../inputs/Input';
+import Icon from '../../Icon/Icon';
 
 import './LoginForm.css';
 
@@ -22,7 +23,7 @@ const propTypes = {
     handleSubmit: PropTypes.func.isRequired,
 };
 
-const LoginForm = ({ errorMsg, handleSubmit }) => {
+const LoginForm = ({ errorMsg, handleSubmit, authorizeThroughGithub }) => {
     return (
         <form className={b({error: !!errorMsg})} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
@@ -48,26 +49,15 @@ const LoginForm = ({ errorMsg, handleSubmit }) => {
             <Row className={b('button-section')()} alignCenter>
                 <Button className={b('button')()} mod="primary" type="submit">Login</Button>
             </Row>
-            {/*<a href="https://github.com/login/oauth/authorize?response_type=code&client_id=07d212d657ed8f988287&state=TY2OTZhZGFk">Connect Your Account</a>*/}
-            <a href="https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org">Connect Your Account</a>
-            {/*<button type="button" onClick={getJohnny}>Connect</button>*/}
+            <Row className={b('button-section')()} alignCenter>
+                <Button className={b('button')()} mod="primary" type="button" onClick={authorizeThroughGithub}>
+                    <Icon type="github"/>
+                    Login in with Github
+                </Button>
+            </Row>
         </form>
     );
 };
-
-// const LoginForm = ({ errorMsg, handleSubmit }) => {
-//     console.log(OAuthSignInButton)
-//     return (
-//         <form className={b({error: !!errorMsg})} onSubmit={handleSubmit}>
-//             <Logo className={b('logo')()} />
-//             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
-//             <OAuthSignInButton
-//             >Custom Label</OAuthSignInButton>
-//         </form>
-//     );
-// };
-// const LoginForm = () => <OAuthSignInButton>Custom Label</OAuthSignInButton>;
-// export default connect(({auth}) => ({auth}))(LoginForm);
 
 LoginForm.propTypes = propTypes;
 

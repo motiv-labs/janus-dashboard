@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import {
     checkLoggedStatus,
     loginUser,
+    authorizeThroughGithub,
 } from '../../../store/actions';
 
 import FormWrapper from './FormWrapper';
@@ -14,5 +15,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { checkLoggedStatus, loginUser },
+    { checkLoggedStatus, loginUser, authorizeThroughGithub },
 )(FormWrapper);

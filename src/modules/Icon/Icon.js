@@ -19,6 +19,7 @@ const propTypes = {
         'delete', // red bucket
         'delete-white', // white bucket
         'edit', // green pencil
+        'github',
         'remove', // red minus
     ]).isRequired,
 };
