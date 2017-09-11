@@ -6,7 +6,7 @@ import {
 } from '../constants';
 
 const initialState = {
-    logged: true,
+    logged: false,
     errorMsg: null,
 };
 
@@ -30,7 +30,7 @@ export default function reducer(state = initialState, action) {
         case LOGIN_FAILURE: {
             return {
                 ...state,
-                logged: true,
+                logged: false,
                 errorMsg: action.payload,
             };
         }

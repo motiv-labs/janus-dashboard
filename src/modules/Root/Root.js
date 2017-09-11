@@ -27,11 +27,12 @@ import './Root.css';
 
 class Root extends Component {
     componentDidMount() {
-        // this.props.getUserStatus();
+        console.error('ROOT COMPONENT DID MOUNT');
+
+        this.props.getUserStatus();
     }
 
     render() {
-        console.log('===>', AuthorizationCallback);
         return (
             <ConnectedRouter history={history}>
                 <div className="j-app">

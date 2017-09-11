@@ -7,6 +7,12 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
 } from '../constants';
+import { getRandomString } from '../../helpers/getRandomString';
+
+// TODO: move to config
+const clientId = 'fab6013f6101e65a811c';
+const scope = 'read:org';
+const state = getRandomString();
 
 // // Open the page in a new window, then redirect back to a page that calls our global `oauth2Callback` function.
 // window.open(githubAuth.token.getUri())
@@ -36,7 +42,6 @@ export const getJWTtoken = (hash) => async dispatch => {
 
     const extractParameter = (hash, parameter, url) => getParameterByName(parameter, url);
     const code = extractParameter(hash, 'code');
-    const clientId = 'fab6013f6101e65a811c';
 
     try {
         const response = await axios.post(
@@ -55,16 +60,19 @@ export const getJWTtoken = (hash) => async dispatch => {
         /**
          * [ ] 1. https://gw-staging.hellofresh.com/auth/github/token -> variable
          * [ ] 2. http://ops-gateway002.staging.hellofresh.io:8081 -> var
-         * [ ] 3. in HTML link (https://gw-staging.hellofresh.com/auth/github/authoraze) -> var
-         * [ ] 4. client_id,
-         * [ ] 5. scope,
-         * [ ] 6. state => Math.random().toString();
-         * [ ] 7. button for Github
-         * [ ] 8. remove fields
+         * [x] 3. in HTML link (https://gw-staging.hellofresh.com/auth/github/authoraze) -> var
+         * [v] 4. client_id,
+         * [v] 5. scope,
+         * [v] 6. state => Math.random().toString();
+         * [x] 7. button for Github
+         * [x] 8. remove fields
          * 9. THE END
          */
 
         console.log('ACCESS_TOKEN', JWTtoken);
+        setAccessToken(JWTtoken);
+        history.push('/');
+        dispatch(getUserStatus());
     } catch (error) {
         console.log(error);
     }
@@ -88,9 +96,7 @@ export const loginFailure = () => ({
 });
 
 export const authorizeThroughGithub = () => async dispatch => {
-    console.clear();
-    console.error('JOHNNY');
-    window.location.href = 'https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org';
+    window.location.href = `https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
 export const getUserStatus = () => dispatch => {
@@ -99,7 +105,7 @@ export const getUserStatus = () => dispatch => {
     if (getAccessToken()) {
         dispatch(loginSuccess());
     } else {
-        // history.push('/login');
+        history.push('/login');
     }
 };
 
