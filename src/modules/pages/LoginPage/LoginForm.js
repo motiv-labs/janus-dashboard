@@ -49,7 +49,7 @@ const LoginForm = ({ errorMsg, handleSubmit, getJohnny }) => {
                 <Button className={b('button')()} mod="primary" type="submit">Login</Button>
             </Row>
             {/*<a href="https://github.com/login/oauth/authorize?response_type=code&client_id=07d212d657ed8f988287&state=TY2OTZhZGFk">Connect Your Account</a>*/}
-            <a href="https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c">Connect Your Account</a>
+            <a href="https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org">Connect Your Account</a>
             <button type="button" onClick={getJohnny}>Connect</button>
         </form>
     );

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import history from '../configuration/history';
 import client, { getAccessToken, setAccessToken } from '../api';
 import {
@@ -6,78 +7,64 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
 } from '../constants';
-import axios from 'axios';
-
-// const credentials = {
-//     client: {
-//         id: '<client-id>',
-//         secret: '<client-secret>',
-//     },
-//     auth: {
-//         tokenHost: 'https://api.oauth.com',
-//     }
-// };
-// const oauth2 = require('simple-oauth2').create(credentials);
-// console.error('OAUTH2', oauth2)
-
-// var OAuth = require('@zalando/oauth2-client-js');
-// var google = new OAuth.Provider({
-//     id: 'google',   // required
-//     authorization_url: 'https://google.com/auth' // required
-// });
-
-// var ClientOAuth2 = require('client-oauth2');
-
-// var githubAuth = new ClientOAuth2({
-//     clientId: 'fab6013f6101e65a811c',
-//     clientSecret: '06d760766b6c4d259cf0fee80cba7116f6f2a3da',
-//     accessTokenUri: 'https://github.com/login/oauth/access_token',
-//     authorizationUri: 'https://github.com/login/oauth/authorize',
-
-//     redirectUri: 'http://localhost:8082/auth/callback',
-//     //   scopes: ['notifications', 'gist']
-// });
-
-// window.oauth2Callback = function (uri) {
-//     githubAuth.token
-//         .getToken(uri)
-//         .then(function (user) {
-//             console.log(user); //=> { accessToken: '...', tokenType: 'bearer', ... }
-
-//             // Make a request to the github API for the current user.
-//             return popsicle.request(user.sign({
-//                 method: 'get',
-//                 url: 'https://api.github.com/user'
-//             })).then(function (res) {
-//                 console.log(res); //=> { body: { ... }, status: 200, headers: { ... } }
-//             });
-//         });
-// };
 
 // // Open the page in a new window, then redirect back to a page that calls our global `oauth2Callback` function.
 // window.open(githubAuth.token.getUri())
-export const GET_JOHNNY = (code) => async dispatch => {
-    console.error('GET_JOHHNY', code);
-    const body = {
-        // state: 'JOHNNY',
-        client_id: 'fab6013f6101e65a811c',
-        client_secret: '06d760766b6c4d259cf0fee80cba7116f6f2a3da',
-        code
+export const GET_JOHNNY = (hash) => async dispatch => {
+    const getParameterByName = (name, url) => {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, '\\$&');
+        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
     };
 
+    const extractToken = (string) => {
+        const param = 'access_token';
+        const name = param.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp(name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(string);
+
+        if (!results) return null;
+        if (!results[2]) return '';
+
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    };
+
+    const extractParameter = (hash, parameter, url) => getParameterByName(parameter, url);
+    const code = extractParameter(hash, 'code');
+    const clientId = 'fab6013f6101e65a811c';
+
     try {
-        // const response = await axios.post('https://gw-staging.hellofresh.com/auth/github/authorize', body);
-        // const response = fetch('https://gw-staging.hellofresh.com/auth/github/authorize', body)
-        const response = fetch(`https://gw-staging.hellofresh.com/auth/github/token?client_id=fab6013f6101e65a811c&code=${code}`, {
-            method: 'POST'
-        });
+        const response = await axios.post(
+            `https://gw-staging.hellofresh.com/auth/github/token?client_id=${clientId}&code=${code}`
+        );
+        // extract access_token
+        const accessToken = await extractToken(response.data);
+        // set Authorization headers
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        const finalResponse = await axios.post(
+            'http://ops-gateway002.staging.hellofresh.io:8081/login?provider=github',
+        );
+        // receive JWT token to use Janus-GW
+        const JWTtoken = finalResponse.data.access_token;
 
-        // (1) extract access_token
-        // (2) POSTR request to: https://gw-staging.hellofresh.com/login?provider=github
-        //      header: Bearer: github token itself
-        // (3) receive JWT token to use Janus-GW
+        /**
+         * [ ] 1. https://gw-staging.hellofresh.com/auth/github/token -> variable
+         * [ ] 2. http://ops-gateway002.staging.hellofresh.io:8081 -> var
+         * [ ] 3. in HTML link (https://gw-staging.hellofresh.com/auth/github/authoraze) -> var
+         * [ ] 4. client_id,
+         * [ ] 5. scope,
+         * [ ] 6. state => Math.random().toString();
+         * [ ] 7. button for Github
+         * [ ] 8. remove fields
+         * 9. THE END
+         */
 
-        console.log(response);
+        console.log('ACCESS_TOKEN', JWTtoken);
     } catch (error) {
         console.log(error);
     }
