@@ -1,6 +1,6 @@
 import axios from 'axios';
 import history from '../configuration/history';
-import client, { getAccessToken, setAccessToken } from '../api';
+import { getAccessToken, setAccessToken } from '../api';
 import {
     CHECK_LOGGED_STATUS,
     LOGIN_START,
