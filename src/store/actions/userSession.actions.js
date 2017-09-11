@@ -88,9 +88,9 @@ export const loginFailure = () => ({
 });
 
 export const authorizeThroughGithub = () => async dispatch => {
-    console.clear()
+    console.clear();
     console.error('JOHNNY');
-    window.location.href = "https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org";
+    window.location.href = 'https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org';
 };
 
 export const getUserStatus = () => dispatch => {
