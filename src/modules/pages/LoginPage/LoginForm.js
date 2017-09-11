@@ -22,7 +22,7 @@ const propTypes = {
     handleSubmit: PropTypes.func.isRequired,
 };
 
-const LoginForm = ({ errorMsg, handleSubmit, getJohnny }) => {
+const LoginForm = ({ errorMsg, handleSubmit }) => {
     return (
         <form className={b({error: !!errorMsg})} onSubmit={handleSubmit}>
             <Logo className={b('logo')()} />
@@ -50,7 +50,7 @@ const LoginForm = ({ errorMsg, handleSubmit, getJohnny }) => {
             </Row>
             {/*<a href="https://github.com/login/oauth/authorize?response_type=code&client_id=07d212d657ed8f988287&state=TY2OTZhZGFk">Connect Your Account</a>*/}
             <a href="https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=JOHNNY&client_id=fab6013f6101e65a811c&scope=read:org">Connect Your Account</a>
-            <button type="button" onClick={getJohnny}>Connect</button>
+            {/*<button type="button" onClick={getJohnny}>Connect</button>*/}
         </form>
     );
 };

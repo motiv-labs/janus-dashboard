@@ -1,11 +1,11 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 
-import { GET_JOHNNY } from '../../../store/actions';
+import { getJWTtoken } from '../../../store/actions';
 
 // class AuthorizationCallback extends PureComponent {
 const AuthorizationCallback = props => {
-    props.GET_JOHNNY(document.location.hash);
+    props.getJWTtoken(document.location.hash);
 };
 // export default AuthorizationCallback;
 
@@ -16,5 +16,5 @@ const AuthorizationCallback = props => {
 
 export default connect(
     null, // mapStateToProps
-    { GET_JOHNNY }, // mapDispatchToProps
+    { getJWTtoken },
 )(AuthorizationCallback);

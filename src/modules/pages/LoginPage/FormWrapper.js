@@ -2,7 +2,7 @@ import React from 'react';
 
 import LoginForm from './LoginForm';
 
-const FormWrapper = ({ errorMsg, loginUser, GET_JOHNNY }) => {
+const FormWrapper = ({ errorMsg, loginUser }) => {
     const submitLogin = (values) => {
         loginUser(values);
     };
@@ -10,7 +10,6 @@ const FormWrapper = ({ errorMsg, loginUser, GET_JOHNNY }) => {
         <LoginForm
             onSubmit={submitLogin}
             errorMsg={errorMsg}
-            getJohnny={GET_JOHNNY}
         />
     );
 };

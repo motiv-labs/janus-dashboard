@@ -10,7 +10,7 @@ import {
 
 // // Open the page in a new window, then redirect back to a page that calls our global `oauth2Callback` function.
 // window.open(githubAuth.token.getUri())
-export const GET_JOHNNY = (hash) => async dispatch => {
+export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
