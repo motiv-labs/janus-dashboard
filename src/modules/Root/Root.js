@@ -27,8 +27,6 @@ import './Root.css';
 
 class Root extends Component {
     componentDidMount() {
-        console.error('ROOT COMPONENT DID MOUNT');
-
         this.props.getUserStatus();
     }
 
