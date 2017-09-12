@@ -30,12 +30,11 @@ npm run start
 
 ## Configuration
 
-In order to set up your URL, you should create `config.js` file and put it in the root:
+In order to set up your url you need to create `.env` file in the root:
 
 ```javascript
-var MAIN_CONFIG =  {
-    gateway: {
-        uri: 'http://your-url.com',
-    },
-};
+/**
+ * .env
+ */
+REACT_APP_BASE_URL='http://your-url.com'
 ```
