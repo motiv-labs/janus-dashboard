@@ -13,9 +13,9 @@ import { getRandomString } from '../../helpers/getRandomString';
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const scope =  process.env.REACT_APP_SCOPE;
 const state = getRandomString();
-const URL_EXCHANGE_CODE_ON_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL;
-const URL_GET_ACCESS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL;
-const URL_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL;
+const URL_GET_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL;
+const URL_GET_JANUS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL;
+const URL_GITHUB_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL;
 
 export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
@@ -48,14 +48,14 @@ export const getJWTtoken = (hash) => async dispatch => {
     try {
         dispatch(requestStart());
         const response = await axios.post(
-            `${URL_EXCHANGE_CODE_ON_TOKEN}?client_id=${clientId}&code=${code}`
+            `${URL_GET_GITHUB_TOKEN}?client_id=${clientId}&code=${code}`
         );
         // extract access_token
         const accessToken = await extractToken(response.data);
         // set Authorization headers
         axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
         const finalResponse = await axios.post(
-            `${URL_GET_ACCESS_TOKEN}/login?provider=github`,
+            `${URL_GET_JANUS_TOKEN}/login?provider=github`,
         );
         // receive JWT token to use Janus-GW
         const JWTtoken = finalResponse.data.access_token;
@@ -88,7 +88,7 @@ export const loginFailure = () => ({
 
 export const authorizeThroughGithub = () => async dispatch => {
     dispatch(requestStart());
-    window.location.href = `${URL_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
+    window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
 export const getUserStatus = () => dispatch => {
