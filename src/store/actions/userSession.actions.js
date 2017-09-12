@@ -11,8 +11,10 @@ import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
 
 // TODO: move to config
-const clientId = 'fab6013f6101e65a811c';
-const scope = 'read:org';
+// const clientId = 'fab6013f6101e65a811c';
+// const scope = 'read:org';
+const clientId = process.env.REACT_APP_CLIENT_ID;
+const scope =  process.env.REACT_APP_SCOPE;
 const state = getRandomString();
 
 // // Open the page in a new window, then redirect back to a page that calls our global `oauth2Callback` function.
@@ -63,9 +65,9 @@ export const getJWTtoken = (hash) => async dispatch => {
          * [ ] 1. https://gw-staging.hellofresh.com/auth/github/token -> variable
          * [ ] 2. http://ops-gateway002.staging.hellofresh.io:8081 -> var
          * [x] 3. in HTML link (https://gw-staging.hellofresh.com/auth/github/authoraze) -> var
-         * [v] 4. client_id,
-         * [v] 5. scope,
-         * [v] 6. state => Math.random().toString();
+         * [x] 4. client_id,
+         * [x] 5. scope,
+         * [x] 6. state => Math.random().toString();
          * [x] 7. button for Github
          * [x] 8. remove fields
          * 9. THE END
