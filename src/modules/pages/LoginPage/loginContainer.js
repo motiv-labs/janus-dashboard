@@ -6,7 +6,7 @@ import {
     authorizeThroughGithub,
 } from '../../../store/actions';
 
-import FormWrapper from './FormWrapper';
+import FormWrapper from './LoginForm';
 
 const mapStateToProps = state => ({
     api: state.userSessionReducer.api,

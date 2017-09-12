@@ -20,10 +20,9 @@ const b = block('login-form');
 
 const propTypes = {
     errorMsg: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
 };
 
-const LoginForm = ({ errorMsg, handleSubmit, authorizeThroughGithub }) => {
+const LoginForm = ({ errorMsg, authorizeThroughGithub }) => {
     return (
         <form className={b({error: !!errorMsg})} onSubmit={authorizeThroughGithub}>
             <Logo className={b('logo')()} />
