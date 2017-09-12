@@ -10,15 +10,12 @@ import {
 import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
 
-// TODO: move to config
-// const clientId = 'fab6013f6101e65a811c';
-// const scope = 'read:org';
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const scope =  process.env.REACT_APP_SCOPE;
 const state = getRandomString();
+const URL_EXCHANGE_CODE_ON_TOKEN = process.env.REACT_APP_EXCHANGE_CODE_ON_TOKEN_URL;
+const URL_GET_ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN_URL;
 
-// // Open the page in a new window, then redirect back to a page that calls our global `oauth2Callback` function.
-// window.open(githubAuth.token.getUri())
 export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
         if (!url) url = window.location.href;
@@ -49,31 +46,18 @@ export const getJWTtoken = (hash) => async dispatch => {
     try {
         dispatch(requestStart());
         const response = await axios.post(
-            `https://gw-staging.hellofresh.com/auth/github/token?client_id=${clientId}&code=${code}`
+            `${URL_EXCHANGE_CODE_ON_TOKEN}?client_id=${clientId}&code=${code}`
         );
         // extract access_token
         const accessToken = await extractToken(response.data);
         // set Authorization headers
         axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
         const finalResponse = await axios.post(
-            'http://ops-gateway002.staging.hellofresh.io:8081/login?provider=github',
+            `${URL_GET_ACCESS_TOKEN}/login?provider=github`,
         );
         // receive JWT token to use Janus-GW
         const JWTtoken = finalResponse.data.access_token;
 
-        /**
-         * [ ] 1. https://gw-staging.hellofresh.com/auth/github/token -> variable
-         * [ ] 2. http://ops-gateway002.staging.hellofresh.io:8081 -> var
-         * [x] 3. in HTML link (https://gw-staging.hellofresh.com/auth/github/authoraze) -> var
-         * [x] 4. client_id,
-         * [x] 5. scope,
-         * [x] 6. state => Math.random().toString();
-         * [x] 7. button for Github
-         * [x] 8. remove fields
-         * 9. THE END
-         */
-
-        console.log('ACCESS_TOKEN', JWTtoken);
         setAccessToken(JWTtoken);
         history.push('/');
         dispatch(getUserStatus());
