@@ -99,6 +99,7 @@ export const loginFailure = () => ({
 });
 
 export const authorizeThroughGithub = () => async dispatch => {
+    dispatch(requestStart());
     window.location.href = `https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
