@@ -15,8 +15,13 @@ export default {
         path: '/login',
         name: 'Login Page',
     },
+    GITHUB_AUTH: {
+        path: '/auth/github/callback',
+        name: '',
+    },
     EDIT: {
         path: '/:name',
         name: '',
     },
+
 };

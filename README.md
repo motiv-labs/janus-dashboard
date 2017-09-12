@@ -30,11 +30,4 @@ npm run start
 
 ## Configuration
 
-In order to set up your url you need to create `.env` file in the root:
-
-```javascript
-/**
- * .env
- */
-REACT_APP_BASE_URL='http://your-url.com'
-```
+In order to set up your application you need to create `.env` file in the root and copy there content of `.env.example` with your settings.

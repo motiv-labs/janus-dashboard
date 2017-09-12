@@ -1,50 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 
-import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
-import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
-import Input from '../../inputs/Input';
+import Icon from '../../Icon/Icon';
 
 import './LoginForm.css';
 
 const b = block('login-form');
 
 const propTypes = {
+    authorizeThroughGithub: PropTypes.func.isRequired,
     errorMsg: PropTypes.string,
-    handleSubmit: PropTypes.func.isRequired,
+    isFetching: PropTypes.bool.isRequired,
 };
 
-const LoginForm = ({ errorMsg, handleSubmit }) => {
+const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
+    if (isFetching) {
+        return <div>Loading... Ein Moment, bitte</div>;
+    }
+
     return (
-        <form className={b({error: !!errorMsg})} onSubmit={handleSubmit}>
+        <form className={b({error: !!errorMsg})} onSubmit={authorizeThroughGithub}>
             <Logo className={b('logo')()} />
             <p className={b('greeting')}>Enter your HelloFresh credentials to login to <strong>Janus Gateway</strong></p>
-            <Section small>
-                <Row className={b('input')()} col>
-                    <Label>Login</Label>
-                    {/*
-                        @TODO:  change type 'text' => 'email' (later).
-                                We need type 'text' because of username='admin' for local testing
-                    */}
-                    <Field type="text" name="username" component={Input} />
-                </Row>
-                <Row className={b('input')()} col>
-                    <Label>Password</Label>
-                    <Field type="password" name="password" component={Input} />
-                </Row>
-                {
-                    errorMsg &&
-                        <div className="error-message">{errorMsg}</div>
-                }
-            </Section>
             <Row className={b('button-section')()} alignCenter>
-                <Button className={b('button')()} mod="primary" type="submit">Login</Button>
+                <Button className={b('button')()} mod="primary" type="button" onClick={authorizeThroughGithub}>
+                    <Icon type="github"/>
+                    Login with Github
+                </Button>
             </Row>
         </form>
     );

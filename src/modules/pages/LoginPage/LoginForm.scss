@@ -43,6 +43,8 @@ $form-padding-top: 70px;
         padding-right: $hf-padding-big;
 
         &-section {
+            display: flex;
+            justify-content: center;
             margin-top: $hf-padding-big;
         }
     }

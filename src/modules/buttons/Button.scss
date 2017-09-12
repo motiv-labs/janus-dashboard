@@ -22,7 +22,8 @@
     }
 
     &--primary,
-    &--danger {
+    &--danger,
+    &--github {
         border-color: transparent;
         color: $hf-color-white;
 
@@ -37,6 +38,10 @@
 
     &--danger {
         background-color: $hf-color-button-danger;
+    }
+
+    &--github {
+        background-color: $hf-color-github;
     }
 
     .j-icon {

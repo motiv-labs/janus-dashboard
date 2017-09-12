@@ -21,6 +21,7 @@ import HealthCheckPage from '../pages/HealthCheckPage/HealthCheckPage';
 import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
+import AuthorizationCallback from '../pages/AuthorizationCallback/AuthorizationCallback';
 
 import './Root.css';
 
@@ -37,6 +38,7 @@ class Root extends Component {
                     <div className="j-pages">
                         <Switch>
                             <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
+                            <Route path={ROUTES.GITHUB_AUTH.path} component={AuthorizationCallback} />
                             <Route path={ROUTES.HEALTHCHECK.path} component={HealthCheckPage} />
                             <Route path={ROUTES.NEW.path} component={NewApiPage} />
                             <Route path={ROUTES.LOGIN.path} component={LoginPage} />
