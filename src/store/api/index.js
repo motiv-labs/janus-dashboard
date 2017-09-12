@@ -1,7 +1,6 @@
 /* eslint-disable */
 import axios from 'axios';
 import { login } from './auth';
-import config from './config';
 import history from '../configuration/history';
 import { parseJwt } from '../../helpers';
 
