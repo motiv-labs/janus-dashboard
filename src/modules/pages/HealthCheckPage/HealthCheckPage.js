@@ -37,12 +37,10 @@ const HealthCheckPage = ({ location, status }) => {
     return (
         <div>
             <Section>
-                <Section>
-                    { renderTop() }
-                </Section>
-                <Section>
-                    <HealthCheckContainer />
-                </Section>
+                { renderTop() }
+            </Section>
+            <Section>
+                <HealthCheckContainer />
             </Section>
         </div>
     );
