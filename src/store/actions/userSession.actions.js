@@ -15,13 +15,15 @@ const scope =  process.env.REACT_APP_SCOPE;
 const state = getRandomString();
 const URL_EXCHANGE_CODE_ON_TOKEN = process.env.REACT_APP_EXCHANGE_CODE_ON_TOKEN_URL;
 const URL_GET_ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN_URL;
+const URL_AUTHORIZE = process.env.REACT_APP_AUTHORIZE_URL;
 
 export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
         if (!url) url = window.location.href;
         name = name.replace(/[\[\]]/g, '\\$&');
-        var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
-            results = regex.exec(url);
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+        const results = regex.exec(url);
+
         if (!results) return null;
         if (!results[2]) return '';
 
@@ -86,7 +88,7 @@ export const loginFailure = () => ({
 
 export const authorizeThroughGithub = () => async dispatch => {
     dispatch(requestStart());
-    window.location.href = `https://gw-staging.hellofresh.com/auth/github/authorize?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
+    window.location.href = `${URL_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
 export const getUserStatus = () => dispatch => {
