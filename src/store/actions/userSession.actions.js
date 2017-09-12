@@ -7,6 +7,7 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
 } from '../constants';
+import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
 
 // TODO: move to config
@@ -44,6 +45,7 @@ export const getJWTtoken = (hash) => async dispatch => {
     const code = extractParameter(hash, 'code');
 
     try {
+        dispatch(requestStart());
         const response = await axios.post(
             `https://gw-staging.hellofresh.com/auth/github/token?client_id=${clientId}&code=${code}`
         );
@@ -73,6 +75,7 @@ export const getJWTtoken = (hash) => async dispatch => {
         setAccessToken(JWTtoken);
         history.push('/');
         dispatch(getUserStatus());
+        dispatch(requestComplete());
     } catch (error) {
         console.log(error);
     }
