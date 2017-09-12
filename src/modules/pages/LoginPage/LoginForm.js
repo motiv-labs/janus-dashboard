@@ -31,7 +31,7 @@ const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
             <Row className={b('button-section')()} alignCenter>
                 <Button className={b('button')()} mod="primary" type="button" onClick={authorizeThroughGithub}>
                     <Icon type="github"/>
-                    Login in with Github
+                    Login with Github
                 </Button>
             </Row>
         </form>
