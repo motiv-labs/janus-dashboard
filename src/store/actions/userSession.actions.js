@@ -13,9 +13,9 @@ import { getRandomString } from '../../helpers/getRandomString';
 const clientId = process.env.REACT_APP_CLIENT_ID;
 const scope =  process.env.REACT_APP_SCOPE;
 const state = getRandomString();
-const URL_EXCHANGE_CODE_ON_TOKEN = process.env.REACT_APP_EXCHANGE_CODE_ON_TOKEN_URL;
-const URL_GET_ACCESS_TOKEN = process.env.REACT_APP_ACCESS_TOKEN_URL;
-const URL_AUTHORIZE = process.env.REACT_APP_AUTHORIZE_URL;
+const URL_EXCHANGE_CODE_ON_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL;
+const URL_GET_ACCESS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL;
+const URL_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL;
 
 export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
