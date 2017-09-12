@@ -1,17 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Field, reduxForm } from 'redux-form';
-import { connect } from 'react-redux';
-// import { OAuthSignInButton } from 'redux-auth/default-theme';
+import { reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 
-import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
-import Label from '../../labels/Label';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
-import Input from '../../inputs/Input';
 import Icon from '../../Icon/Icon';
 
 import './LoginForm.css';
