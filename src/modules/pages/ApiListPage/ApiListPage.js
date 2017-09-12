@@ -25,21 +25,19 @@ const ApiListPage = ({ healthcheckStatus }) => {
     return (
         <div>
             <Section>
-                <Section>
+                <Row>
+                    <Title>APIs</Title>
                     <Row>
-                        <Title>APIs</Title>
-                        <Row>
-                            <SearchingContainer />
-                            <Link to="/new">
-                                <Button mod="primary" label="Create New Api">+ Create New API</Button>
-                            </Link>
-                        </Row>
+                        <SearchingContainer />
+                        <Link to="/new">
+                            <Button mod="primary" label="Create New Api">+ Create New API</Button>
+                        </Link>
                     </Row>
-                </Section>
-                { renderHealthcheckInfo() }
-                <Section>
-                    <ApiListContainer />
-                </Section>
+                </Row>
+            </Section>
+            { renderHealthcheckInfo() }
+            <Section>
+                <ApiListContainer />
             </Section>
         </div>
     );
