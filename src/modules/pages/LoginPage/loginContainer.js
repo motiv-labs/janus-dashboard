@@ -11,6 +11,7 @@ import FormWrapper from './LoginForm';
 const mapStateToProps = state => ({
     api: state.userSessionReducer.api,
     errorMsg: state.userSessionReducer.errorMsg,
+    isFetching: state.requestReducer.isFetching,
 });
 
 export default connect(

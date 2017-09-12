@@ -19,10 +19,16 @@ import './LoginForm.css';
 const b = block('login-form');
 
 const propTypes = {
+    authorizeThroughGithub: PropTypes.func.isRequired,
     errorMsg: PropTypes.string,
+    isFetching: PropTypes.bool.isRequired,
 };
 
-const LoginForm = ({ errorMsg, authorizeThroughGithub }) => {
+const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
+    if (isFetching) {
+        return <div>Loading... Ein Moment, bitte</div>;
+    }
+
     return (
         <form className={b({error: !!errorMsg})} onSubmit={authorizeThroughGithub}>
             <Logo className={b('logo')()} />
