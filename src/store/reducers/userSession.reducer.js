@@ -6,8 +6,8 @@ import {
 } from '../constants';
 
 const initialState = {
-    logged: false,
     errorMsg: null,
+    user: '',
 };
 
 export default function reducer(state = initialState, action) {
@@ -22,16 +22,16 @@ export default function reducer(state = initialState, action) {
         case LOGIN_SUCCESS: {
             return {
                 ...state,
-                logged: true,
                 errorMsg: null,
+                user: action.payload,
             };
         }
 
         case LOGIN_FAILURE: {
             return {
                 ...state,
-                logged: false,
                 errorMsg: action.payload,
+                user: '',
             };
         }
 

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 import history from '../configuration/history';
 import { getAccessToken, setAccessToken } from '../api';
 import {
@@ -79,8 +80,9 @@ export const loginRequest = () => ({
     type: LOGIN_START,
 });
 
-export const loginSuccess = () => ({
+export const loginSuccess = userName => ({
     type: LOGIN_SUCCESS,
+    payload: userName,
 });
 
 export const loginFailure = () => ({
@@ -95,9 +97,10 @@ export const authorizeThroughGithub = () => async dispatch => {
 
 export const getUserStatus = () => dispatch => {
     dispatch(checkLoggedStatus());
+    const JWTtoken = getAccessToken();
 
-    if (getAccessToken()) {
-        dispatch(loginSuccess());
+    if (JWTtoken) {
+        dispatch(loginSuccess(jwt.decode(JWTtoken).sub));
     } else {
         history.push('/login');
     }

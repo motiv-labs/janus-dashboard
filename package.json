@@ -6,6 +6,7 @@
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.6.3",
+    "jsonwebtoken": "^8.0.1",
     "node-sass-chokidar": "^0.0.3",
     "picklock": "^0.5.1",
     "ramda": "^0.24.1",

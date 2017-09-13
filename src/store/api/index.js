@@ -1,8 +1,8 @@
 /* eslint-disable */
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 import { login } from './auth';
 import history from '../configuration/history';
-import { parseJwt } from '../../helpers';
 
 const headers = {
     Accept: 'application/vnd.janus.v1+json',
@@ -23,7 +23,7 @@ export const getAccessToken = () => {
 
     if (!token) return;
 
-    const expirationTime = parseJwt(token).exp * 1000;
+    const expirationTime = jwt.decode(token).exp * 1000;
     const dateNow = new Date();
 
     if (expirationTime > dateNow.getTime()) {

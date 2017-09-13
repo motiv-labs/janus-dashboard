@@ -43,8 +43,8 @@ class ApiList extends PureComponent {
         this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
     };
 
-    renderRows = list => list.map(api => (
-        <div className={table('row')} key={api.name}>
+    renderRows = list => list.map((api, index) => (
+        <div className={table('row')} key={`${index}-${api.name}`}>
             <div className={table('td', {name: true})}>{api.name}</div>
             <div className={table('td')}>{api.proxy.listen_path}</div>
             <div className={table('td')}>{api.proxy.upstream_url}</div>
