@@ -65,7 +65,7 @@ export const getJWTtoken = (hash) => async dispatch => {
 
         setAccessToken(JWTtoken);
         history.push('/');
-        dispatch(getUserStatus(JWTtoken));
+        dispatch(getUserStatus());
         dispatch(requestComplete());
     } catch (error) {
         console.log(error);
@@ -95,10 +95,11 @@ export const authorizeThroughGithub = () => async dispatch => {
     window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
-export const getUserStatus = JWTtoken => dispatch => {
+export const getUserStatus = () => dispatch => {
     dispatch(checkLoggedStatus());
+    const JWTtoken = getAccessToken();
 
-    if (getAccessToken()) {
+    if (JWTtoken) {
         dispatch(loginSuccess(parseJwt(JWTtoken).sub));
     } else {
         history.push('/login');
