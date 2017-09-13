@@ -5,9 +5,11 @@ import {
 } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
+
 import Table from '../../Layout/Table/Table';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
+import Preloader from '../../Preloader/Preloader';
 
 import '../../Layout/Table/Table.css';
 
@@ -110,7 +112,7 @@ class ApiList extends PureComponent {
             );
         }
 
-        return <div>Loading...</div>;
+        return <Preloader />;
     }
 }
 

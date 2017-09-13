@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import transformFormValues from '../../../helpers/transformFormValues';
 
 import EditApiForm from './EditApiForm';
+import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -72,7 +73,7 @@ class ApiItem extends Component {
             );
         }
 
-        return <div>Loading...</div>;
+        return <Preloader />;
     }
 }
 

@@ -8,6 +8,7 @@ import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
 import Icon from '../../Icon/Icon';
+import Preloader from '../../Preloader/Preloader';
 
 import './LoginForm.css';
 
@@ -21,7 +22,7 @@ const propTypes = {
 
 const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
     if (isFetching) {
-        return <div>Loading... Ein Moment, bitte</div>;
+        return <Preloader />;
     }
 
     return (
