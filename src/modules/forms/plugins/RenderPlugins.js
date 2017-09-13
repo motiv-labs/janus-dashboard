@@ -59,7 +59,7 @@ class RenderPlugin extends Component {
         } = this.props;
         const b = block(className);
         const names = apiSchema.plugins.map(plugin => ({
-            label: plugin.name,
+            label: plugin.label,
             value: plugin.name,
         }));
 
