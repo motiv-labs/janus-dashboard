@@ -1,12 +1,13 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
 import history from '../configuration/history';
-import { getAccessToken, setAccessToken } from '../api';
+import { getAccessToken, removeAccessToken, setAccessToken } from '../api';
 import {
     CHECK_LOGGED_STATUS,
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
+    LOGOUT,
 } from '../constants';
 import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
@@ -93,6 +94,14 @@ export const loginFailure = () => ({
 export const authorizeThroughGithub = () => async dispatch => {
     dispatch(requestStart());
     window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
+};
+
+export const logout = () => dispatch => {
+    removeAccessToken();
+    dispatch(getUserStatus());
+    dispatch({
+        type: LOGOUT,
+    });
 };
 
 export const getUserStatus = () => dispatch => {

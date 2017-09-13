@@ -7,7 +7,7 @@ import {
 
 import { ConnectedRouter } from 'react-router-redux';
 
-import { getUserStatus } from '../../store/actions';
+import { getUserStatus, logout } from '../../store/actions';
 
 import ROUTES from '../../configurations/routes.config';
 import history from '../../store/configuration/history';
@@ -34,7 +34,7 @@ class Root extends Component {
         return (
             <ConnectedRouter history={history}>
                 <div className="j-app">
-                    <Header user={this.props.user} />
+                    <Header user={this.props.user} logout={this.props.logout} />
                     <div className="j-pages">
                         <Switch>
                             <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
@@ -59,5 +59,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { getUserStatus },
+    { getUserStatus, logout },
 )(Root);

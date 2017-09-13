@@ -3,6 +3,7 @@ import {
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
+    LOGOUT,
 } from '../constants';
 
 const initialState = {
@@ -31,6 +32,13 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 errorMsg: action.payload,
+                user: '',
+            };
+        }
+
+        case LOGOUT: {
+            return {
+                ...state,
                 user: '',
             };
         }
