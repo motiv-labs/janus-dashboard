@@ -34,7 +34,7 @@ class Root extends Component {
         return (
             <ConnectedRouter history={history}>
                 <div className="j-app">
-                    <Header logged={this.props.logged} user={this.props.user} />
+                    <Header user={this.props.user} />
                     <div className="j-pages">
                         <Switch>
                             <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
@@ -54,7 +54,6 @@ class Root extends Component {
 };
 
 const mapStateToProps = state => ({
-    logged: state.userSessionReducer.logged,
     user: state.userSessionReducer.user,
 });
 
