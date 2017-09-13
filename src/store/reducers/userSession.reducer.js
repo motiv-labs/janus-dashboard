@@ -25,6 +25,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 logged: true,
                 errorMsg: null,
+                user: action.payload,
             };
         }
 

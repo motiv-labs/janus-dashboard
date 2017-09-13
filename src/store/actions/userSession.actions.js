@@ -9,6 +9,7 @@ import {
 } from '../constants';
 import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
+import { parseJwt } from '../../helpers';
 
 /* eslint-disable */
 const clientId = MAIN_CONFIG.gateway.client_id;
@@ -64,7 +65,7 @@ export const getJWTtoken = (hash) => async dispatch => {
 
         setAccessToken(JWTtoken);
         history.push('/');
-        dispatch(getUserStatus());
+        dispatch(getUserStatus(JWTtoken));
         dispatch(requestComplete());
     } catch (error) {
         console.log(error);
@@ -79,8 +80,9 @@ export const loginRequest = () => ({
     type: LOGIN_START,
 });
 
-export const loginSuccess = () => ({
+export const loginSuccess = userName => ({
     type: LOGIN_SUCCESS,
+    payload: userName,
 });
 
 export const loginFailure = () => ({
@@ -93,11 +95,11 @@ export const authorizeThroughGithub = () => async dispatch => {
     window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`;
 };
 
-export const getUserStatus = () => dispatch => {
+export const getUserStatus = JWTtoken => dispatch => {
     dispatch(checkLoggedStatus());
 
     if (getAccessToken()) {
-        dispatch(loginSuccess());
+        dispatch(loginSuccess(parseJwt(JWTtoken).sub));
     } else {
         history.push('/login');
     }
