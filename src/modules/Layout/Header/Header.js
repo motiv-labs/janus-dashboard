@@ -26,7 +26,7 @@ const Header = ({ logged, user }) => {
                 <div className={b('col', { right: true })}>
                     {
                         user &&
-                            <span>
+                            <span className={b('user')}>
                                 {user}
                             </span>
                     }
