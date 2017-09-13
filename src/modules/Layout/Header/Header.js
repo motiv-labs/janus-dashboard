@@ -25,9 +25,12 @@ const Header = ({ user }) => {
                 <div className={b('col', { right: true })}>
                     {
                         user &&
-                            <span className={b('user-name')}>
-                                {user}
-                            </span>
+                            <div className={b('user')}>
+                                <div className={b('user-name')}>
+                                    {user}
+                                    <div className={b('user-menu')} onClick="">Logout</div>
+                                </div>
+                            </div>
                     }
                 </div>
             </header>
