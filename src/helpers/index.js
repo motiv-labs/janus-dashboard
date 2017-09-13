@@ -1,5 +1,3 @@
-export * from './parseJwt';
-
 export const isEmpty = prop => (
   prop === null ||
     prop === undefined ||

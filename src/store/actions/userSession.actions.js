@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 import history from '../configuration/history';
 import { getAccessToken, setAccessToken } from '../api';
 import {
@@ -9,7 +10,6 @@ import {
 } from '../constants';
 import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
-import { parseJwt } from '../../helpers';
 
 /* eslint-disable */
 const clientId = MAIN_CONFIG.gateway.client_id;
@@ -100,7 +100,7 @@ export const getUserStatus = () => dispatch => {
     const JWTtoken = getAccessToken();
 
     if (JWTtoken) {
-        dispatch(loginSuccess(parseJwt(JWTtoken).sub));
+        dispatch(loginSuccess(jwt.decode(JWTtoken).sub));
     } else {
         history.push('/login');
     }
