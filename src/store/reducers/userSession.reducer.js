@@ -8,6 +8,7 @@ import {
 const initialState = {
     logged: false,
     errorMsg: null,
+    user: null,
 };
 
 export default function reducer(state = initialState, action) {
