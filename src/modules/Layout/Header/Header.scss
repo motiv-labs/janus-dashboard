@@ -12,20 +12,6 @@
         align-self: center;
     }
 
-    &__logo {
-        display: block;
-        width: 30px;
-        height: 40px;
-        background-image: url(../../../assets/img/janus-logo.png);
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
-    grid-template-columns: 1fr $hf-width-container 1fr;
-    display: grid;
-    padding: 0 $hf-padding-main;
-    background-color: $hellofresh-color;
-    box-shadow: $hf-box-shadow-header;
-
     &__col {
         align-self: center;
     }
@@ -34,7 +20,7 @@
         display: block;
         width: 30px;
         height: 40px;
-        background-image: url(../../../assets/img/janus-logo.png);
+        background-image: url(../../../assets/img/janus-logo-white.svg);
         background-repeat: no-repeat;
         background-size: contain;
     }
