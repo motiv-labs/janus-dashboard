@@ -30,7 +30,7 @@ class HealthCheckList extends PureComponent {
         this.props.fetchHealthCheckList();
     }
 
-    handleShowDetailes = name => {
+    handleShowDetails = name => {
         this.props.fetchHealthCheckItem(name);
     }
 
@@ -57,7 +57,7 @@ class HealthCheckList extends PureComponent {
                             <div className={bItem()} key={item.name}>
                                 <div className={bItem('name')}>{item.name}</div>
                                 <div className={bItem('message')}>{item.message}</div>
-                                <div className={bItem('details')} onClick={() => this.handleShowDetailes(item.name)}>Show Details</div>
+                                <div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>
                                 <Link to={`/${item.name}`}>
                                     <Icon type="edit" />
                                 </Link>
