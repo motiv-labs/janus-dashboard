@@ -20,6 +20,8 @@ import {
 } from '../constants';
 import {
     openResponseModal,
+    openConfirmationModal,
+    closeConfirmationModal,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
@@ -357,6 +359,14 @@ export const preparePlugins = api => api.plugins.map(plugin => {
 });
 
 export const saveEndpoint = (pathname, api) => (dispatch) => {
+    dispatch(openConfirmationModal('save', () => confirmedSaveEndpoint(dispatch, pathname, api)));
+};
+
+export const updateEndpoint = (pathname, api) => (dispatch) => {
+    dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api)));
+};
+
+export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest(api));
 
     const preparedPlugins = preparePlugins(api);
@@ -367,12 +377,8 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
         const response = client.post('apis', preparedApi);
 
         dispatch(saveEndpointSuccess());
-        dispatch(openResponseModal({
-            status: response.status,
-            message: 'Successfuly saved',
-            statusText: response.statusText,
-            redirectOnClose: () => (history.push('/')),
-        }));
+        dispatch(closeConfirmationModal());
+        history.push('/');
     } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
@@ -400,8 +406,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     }
 };
 
-
-export const updateEndpoint = (pathname, api) => (dispatch) => {
+export const confirmedUpdateEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest());
 
     const preparedPlugins = preparePlugins(api);
@@ -411,11 +416,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
     return client.put(`apis${pathname}`, preparedApi)
         .then((response) => {
             dispatch(saveEndpointSuccess());
-            dispatch(openResponseModal({
-                status: response.status,
-                message: 'Successfuly saved',
-                statusText: response.statusText,
-            }));
+            dispatch(closeConfirmationModal());
         })
         .catch((error) => {
             if (error.response) {
