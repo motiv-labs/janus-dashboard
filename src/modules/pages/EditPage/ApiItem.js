@@ -52,7 +52,7 @@ class ApiItem extends Component {
     }
 
     handleDelete = (apiName) => {
-        this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+        this.props.deleteEndpoint(apiName);
     };
 
     render() {

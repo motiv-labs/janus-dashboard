@@ -172,28 +172,6 @@ export const fillSelected = selectedPlugins => ({
     payload: selectedPlugins,
 });
 
-export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
-    dispatch(deleteEndpointRequest());
-
-    try {
-        const response = await client.delete(`apis/${apiName}`);
-
-        dispatch(deleteEndpointSuccess());
-        dispatch(openResponseModal({ // @FIXME: move to reducers
-            status: response.status,
-            message: 'Successfuly deleted',
-            statusText: response.statusText,
-        }));
-        dispatch(callback(apiName));
-    } catch (error) {
-        dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
-            message: error.response.data.error,
-        }));
-    }
-};
-
 export const fetchEndpoint = pathname => async dispatch => {
     dispatch(getEndpointRequest());
 
@@ -366,6 +344,10 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
     dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api)));
 };
 
+export const deleteEndpoint = (apiName) => (dispatch) => {
+    dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName)));
+};
+
 export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest(api));
 
@@ -443,4 +425,22 @@ export const confirmedUpdateEndpoint = (dispatch, pathname, api) => {
                 console.log('Error', error.message);
             }
         });
+};
+
+export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
+    dispatch(deleteEndpointRequest());
+
+    try {
+        const response = await client.delete(`apis/${apiName}`);
+
+        dispatch(deleteEndpointSuccess());
+        dispatch(closeConfirmationModal());
+        history.push('/');
+    } catch (error) {
+        dispatch(openResponseModal({
+            status: error.response.status,
+            statusText: error.response.statusText,
+            message: error.response.data.error,
+        }));
+    }
 };
