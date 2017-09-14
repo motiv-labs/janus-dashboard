@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import Select from 'react-select';
+import R from 'ramda';
 
 import block from '../../../../helpers/bem-cn';
 
@@ -30,10 +31,14 @@ const RateLimitPlugin = ({
     response,
 }) => {
     const b = block(className);
-    const optionsTransformer = config => config.map(item => ({
-        label: item,
-        value: item,
-    }));
+    const createOptions = (list1, list2) => {
+        const combinedListOfUnitsAndLabels = R.zip(list1, list2);
+
+        return combinedListOfUnitsAndLabels.map(item => ({
+            label: item[1],
+            value: item[0],
+        }));
+    };
     const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
 
     return (
@@ -64,7 +69,7 @@ const RateLimitPlugin = ({
                                 type="text"
                                 searchable={false}
                                 clearable={false}
-                                options={optionsTransformer(plugin.config.limit.units)}
+                                options={createOptions(plugin.config.limit.units, plugin.config.limit.labels)}
                                 component={SimpleSelect}
                             />
                         </Row>

@@ -35,6 +35,7 @@ const schema = {
                     value: 0,
                     unit: '',
                     units: ['S', 'M', 'H'],
+                    labels: ['Seconds', 'Minutes', 'Hours'],
                 },
                 policy: {
                     selected: '',
