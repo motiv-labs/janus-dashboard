@@ -9,10 +9,11 @@ import './Header.css';
 const b = block('j-header');
 
 const propTypes = {
+    logout: PropTypes.func.isRequired,
     user: PropTypes.string.isRequired,
 };
 
-const Header = ({ user }) => {
+const Header = ({ logout, user }) => {
     if (user) {
         return (
             <header className={b}>
@@ -25,9 +26,12 @@ const Header = ({ user }) => {
                 <div className={b('col', { right: true })}>
                     {
                         user &&
-                            <span className={b('user-name')}>
-                                {user}
-                            </span>
+                            <div className={b('user')}>
+                                <div className={b('user-name')}>
+                                    {user}
+                                    <div className={b('user-menu')} onClick={logout}>Logout</div>
+                                </div>
+                            </div>
                     }
                 </div>
             </header>

@@ -1,5 +1,7 @@
 @import 'index.scss';
 
+$padding: $hf-gutter;
+
 .j-header {
     grid-template-columns: 1fr $hf-width-container 1fr;
     display: grid;
@@ -25,8 +27,49 @@
         background-size: contain;
     }
 
-    &__user-name {
-        color: $hf-color-white;
+    &__user {
+        display: flex;
+        height: $hf-height-header;
+
+        &-name {
+            position: relative;
+            display: flex;
+            align-items: center;
+            color: $hf-color-white;
+            cursor: pointer;
+
+            &:hover {
+                .j-header__user-menu {
+                    display: block;
+                }
+            }
+        }
+
+        &-menu {
+            display: none;
+            position: absolute;
+            color: $hellofresh-color;
+            background-color: $hf-color-white;
+            border-radius: $hf-border-radius;
+            border: $hf-border;
+            padding: $padding $padding*2;
+            right: ceil(-$padding);
+            top: 100%;
+
+            &:before {
+                content: '';
+                display: block;
+                position: absolute;
+                left: 50%;
+                top: -9px;
+                transform: translateX(-50%);
+                width: 0;
+                height: 0;
+                border-style: solid;
+                border-width: 0 10px 10px 10px;
+                border-color: transparent transparent $hf-color-white transparent;
+            }
+        }
     }
 }
 
