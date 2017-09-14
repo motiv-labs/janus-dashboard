@@ -22,6 +22,7 @@ const propTypes = {
 };
 
 const RateLimitPlugin = ({
+    apiSchema,
     className,
     name,
     handlePluginExclude,
@@ -31,6 +32,8 @@ const RateLimitPlugin = ({
     response,
 }) => {
     const b = block(className);
+    const getLabels = plugins => plugins.filter(pl => pl.name === plugin.name)[0].config.limit.labels;
+
     const createOptions = (list1, list2) => {
         const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
@@ -39,7 +42,6 @@ const RateLimitPlugin = ({
             value: item[0],
         }));
     };
-    const getConfig = () => response.plugins.filter(pl => pl.name === plugin.name)[0].config;
 
     return (
         <div className={b('section')()}>
@@ -69,7 +71,7 @@ const RateLimitPlugin = ({
                                 type="text"
                                 searchable={false}
                                 clearable={false}
-                                options={createOptions(plugin.config.limit.units, plugin.config.limit.labels)}
+                                options={createOptions(plugin.config.limit.units, getLabels(apiSchema.plugins))}
                                 component={SimpleSelect}
                             />
                         </Row>
