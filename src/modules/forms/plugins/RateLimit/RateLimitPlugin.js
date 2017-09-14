@@ -12,6 +12,8 @@ import Hint from '../../../labels/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
 
+const grid = block('j-grid');
+
 const propTypes = {
     className: PropTypes.string,
     name: PropTypes.string.isRequired,
@@ -47,7 +49,7 @@ const RateLimitPlugin = ({
             </Row>
             <Row className={b('row')()} fullwidth>
                 <Row col>
-                    <Row>
+                    <div className={grid('row', { 2: true })}>
                         <Row col>
                             <Label>Limit Value</Label>
                             <Field
@@ -68,7 +70,7 @@ const RateLimitPlugin = ({
                                 component={SimpleSelect}
                             />
                         </Row>
-                    </Row>
+                    </div>
                     <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
                 </Row>
                 <Row col>
