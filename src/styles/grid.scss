@@ -3,7 +3,7 @@
 .j-grid {
     &__row {
         display: grid;
-        grid-gap: $hf-gutter;
+        grid-gap: $hf-padding-big;
 
         &--2 {
             grid-template-columns: 1fr 1fr;
