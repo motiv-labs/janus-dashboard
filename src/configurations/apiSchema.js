@@ -7,7 +7,7 @@ const schema = {
         upstream_url: '',
         strip_path: false,
         append_path: false,
-        methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+        methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
         hosts: ['hellofresh.*'],
     },
     health_check: {
@@ -21,7 +21,7 @@ const schema = {
             enabled: false,
             config: {
                 domains: ['*'],
-                methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+                methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
                 request_headers: ['Origin', 'Authorization', 'Content-Type'],
                 exposed_headers: ['X-Debug-Token', 'X-Debug-Token-Link'],
             },
