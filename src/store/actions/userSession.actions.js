@@ -13,12 +13,12 @@ import { requestStart, requestComplete } from './request.actions';
 import { getRandomString } from '../../helpers/getRandomString';
 
 /* eslint-disable */
-const clientId = MAIN_CONFIG.gateway.client_id;
-const scope = MAIN_CONFIG.gateway.scope;
+const clientId = process.env.REACT_APP_CLIENT_ID || MAIN_CONFIG.gateway.client_id;
+const scope = process.env.REACT_APP_SCOPE || MAIN_CONFIG.gateway.scope;
 const state = getRandomString();
-const URL_GET_GITHUB_TOKEN = MAIN_CONFIG.gateway.github_token_url;
-const URL_GET_JANUS_TOKEN = MAIN_CONFIG.gateway.janus_token_url;
-const URL_GITHUB_AUTHORIZE = MAIN_CONFIG.gateway.github_authorize_url;
+const URL_GET_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL || MAIN_CONFIG.gateway.github_token_url;
+const URL_GET_JANUS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL || MAIN_CONFIG.gateway.janus_token_url;
+const URL_GITHUB_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL || MAIN_CONFIG.gateway.github_authorize_url;
 /* eslint-enable */
 
 export const getJWTtoken = (hash) => async dispatch => {
