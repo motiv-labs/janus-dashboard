@@ -52,7 +52,23 @@
         z-index: 0;
     }
 
-    &__body {}
+    &__inner {}
+    &__title {
+        font-size: $hf-font-size-title;
+        line-height: $hf-line-height-title;
+        text-align: left;
+        color: $hf-color-black;
+    }
+    &__body {
+        padding-top: $hf-padding-big;
+        padding-bottom: $hf-padding-big;
+    }
+    &__text {
+        font-size: $hf-font-size-medium;
+        line-height: $hf-line-height-medium;
+        text-align: left;
+        color: $hf-color-gray-medium;
+    }
 
     &__buttons-group {
         justify-content: flex-end;

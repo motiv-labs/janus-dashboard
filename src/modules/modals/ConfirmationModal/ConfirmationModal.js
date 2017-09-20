@@ -53,8 +53,15 @@ const ConfirmationModal = ({
             onClose={handleClose}
             discardDefaults
         >
-            <div className={b('body')}>
-                {message}
+            <div className={b('inner')}>
+                <div className={b('title')}>
+                    Here should be title of an action
+                </div>
+                <div className={b('body')}>
+                    <div className={b('text')}>
+                        {message}
+                    </div>
+                </div>
             </div>
             <div className={b('buttons-group').mix('j-buttons__wrapper')}>
                 <Button mod="default" onClick={handleClose}>Cancel</Button>
