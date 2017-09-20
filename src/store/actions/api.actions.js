@@ -345,7 +345,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
 };
 
 export const deleteEndpoint = (apiName) => (dispatch) => {
-    dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName)));
+    dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
 };
 
 export const confirmedSaveEndpoint = (dispatch, pathname, api) => {

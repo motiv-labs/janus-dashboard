@@ -14,7 +14,7 @@ export const closeResponseModal = () => ({
     type: CLOSE_RESPONSE_MODAL,
 });
 
-export const openConfirmationModal = (action, callback) => {
+export const openConfirmationModal = (action, callback, apiName) => {
     const createConfirmationContent = action => {
         switch (action) {
             case 'save': {
@@ -37,7 +37,7 @@ export const openConfirmationModal = (action, callback) => {
                 return {
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: 'delete',
-                    title: 'Delete',
+                    title: `Delete ${apiName ? apiName + '?' : ''}`,
                     onConfirm: callback,
                 };
             }
