@@ -10,6 +10,7 @@ const initialState = {
     needConfirm: false,
     status: null,
     statusText: '',
+    title: '',
     message: '',
 };
 
@@ -30,7 +31,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 message: action.payload.message,
                 status: action.payload.status,
-                statusText: action.payload.statusText,
+                title: action.payload.title,
                 needConfirm: true,
                 onConfirm: action.payload.onConfirm,
             };

@@ -19,6 +19,7 @@ const propTypes = {
     closeModal: PropTypes.func.isRequired,
     needConfirm: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     // status: PropTypes.string.isRequired,
     // statusText: PropTypes.string.isRequired,
 };
@@ -35,15 +36,12 @@ const ConfirmationModal = ({
     message,
     needConfirm,
     onConfirm,
-    // status,
+    title,
     // statusText,
 }) => {
     const handleClose = () => {
         closeModal();
     };
-    // const handleConfirm = () => {
-    //     onConfirm();
-    // };
 
     return (
         <Modaliz
@@ -55,7 +53,7 @@ const ConfirmationModal = ({
         >
             <div className={b('inner')}>
                 <div className={b('title')}>
-                    Here should be title of an action
+                    {title}
                 </div>
                 <div className={b('body')}>
                     <div className={b('text')}>
@@ -79,14 +77,14 @@ const mapStateToProps = (state) => {
         message,
         needConfirm,
         onConfirm,
-        // status,
+        title,
     } = state.apiResponseModalReducer;
 
     return {
         message,
         needConfirm,
         onConfirm,
-        // status,
+        title,
     };
 };
 

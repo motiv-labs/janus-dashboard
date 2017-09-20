@@ -20,24 +20,24 @@ export const openConfirmationModal = (action, callback) => {
             case 'save': {
                 return {
                     message: 'Are you sure you want to save?',
-                    status: 'status',
-                    statusText: 'statusText',
+                    status: 'save',
+                    title: 'Save',
                     onConfirm: callback,
                 };
             }
             case 'update': {
                 return {
                     message: 'Are you sure you want to update?',
-                    status: 'status',
-                    statusText: 'statusText',
+                    status: 'update',
+                    title: 'Update',
                     onConfirm: callback,
                 };
             }
             case 'delete': {
                 return {
                     message: 'Are you sure you want to delete? This can\'t be undone',
-                    status: 'status',
-                    statusText: 'statusText',
+                    status: 'delete',
+                    title: 'Delete',
                     onConfirm: callback,
                 };
             }
