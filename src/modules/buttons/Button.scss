@@ -32,6 +32,15 @@
         }
     }
 
+    &--default {
+        border-color: transparent;
+        color: $hf-color-black;
+
+        a {
+            color: $hf-color-black;
+        }
+    }
+
     &--primary {
         background-color: $hf-color-button-primary;
     }

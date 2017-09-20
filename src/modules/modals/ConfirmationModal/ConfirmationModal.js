@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modaliz from 'react-modaliz';
 
+import Button from '../../buttons/Button';
+
 import {
     // openConfirmationModal,
     closeConfirmationModal,
@@ -44,9 +46,13 @@ const ConfirmationModal = ({
             speed={500}
             onClose={handleClose}
         >
-            {message}
-            <button onClick={handleClose}>Cancel</button>
-            <button onClick={onConfirm}>OK</button>
+            <div>
+                {message}
+            </div>
+            <div className="j-buttons__wrapper">
+                <Button mod="default" onClick={handleClose}>Cancel</Button>
+                <Button mod="primary" onClick={onConfirm}>OK</Button>
+            </div>
         </Modaliz>
     );
 };
