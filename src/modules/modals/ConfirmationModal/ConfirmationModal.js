@@ -51,6 +51,7 @@ const ConfirmationModal = ({
             show={needConfirm}
             speed={500}
             onClose={handleClose}
+            discardDefaults
         >
             <div className={b('body')}>
                 {message}
