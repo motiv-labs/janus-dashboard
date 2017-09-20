@@ -22,10 +22,7 @@ import {
     openResponseModal,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
-
-const history = createHistory({
-    forceRefresh: true,
-});
+import history from '../configuration/history';
 
 export const deleteEndpointRequest = () => ({
     type: DELETE_ENDPOINT_START,
