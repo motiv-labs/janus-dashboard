@@ -21,7 +21,7 @@ const defaultProps = {
     message: '',
 };
 
-const APIRespondModal = ({
+const ConfirmationModal = ({
     // className,
     closeModal,
     message,
@@ -51,8 +51,8 @@ const APIRespondModal = ({
     );
 };
 
-APIRespondModal.propTypes = propTypes;
-APIRespondModal.defaultProps = defaultProps;
+ConfirmationModal.propTypes = propTypes;
+ConfirmationModal.defaultProps = defaultProps;
 
 const mapStateToProps = (state) => {
     const {
@@ -76,4 +76,4 @@ export default connect(
         // openConfirmationModal,
         closeModal: closeConfirmationModal,
     },
-)(APIRespondModal);
+)(ConfirmationModal);
