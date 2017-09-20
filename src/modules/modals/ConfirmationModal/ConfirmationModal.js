@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Modaliz from 'react-modaliz';
 
+import block from '../../../helpers/bem-cn';
+
 import Button from '../../buttons/Button';
+
+import './ConfirmationModal.css';
 
 import {
     // openConfirmationModal,
@@ -23,6 +27,8 @@ const defaultProps = {
     message: '',
 };
 
+const b = block('j-confirmation');
+
 const ConfirmationModal = ({
     // className,
     closeModal,
@@ -41,15 +47,15 @@ const ConfirmationModal = ({
 
     return (
         <Modaliz
-            className="j-confirmation"
+            className={b()}
             show={needConfirm}
             speed={500}
             onClose={handleClose}
         >
-            <div>
+            <div className={b('body')}>
                 {message}
             </div>
-            <div className="j-buttons__wrapper">
+            <div className={b('buttons-group').mix('j-buttons__wrapper')}>
                 <Button mod="default" onClick={handleClose}>Cancel</Button>
                 <Button mod="primary" onClick={onConfirm}>OK</Button>
             </div>

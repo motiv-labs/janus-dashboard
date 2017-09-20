@@ -1,0 +1,15 @@
+@import 'index.scss';
+
+.j-confirmation {
+    &-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    &__body {}
+
+    &__buttons-group {
+        justify-content: flex-end;
+    }
+}
