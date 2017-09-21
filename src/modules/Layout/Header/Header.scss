@@ -3,7 +3,7 @@
 $padding: $hf-gutter;
 
 .j-header {
-    grid-template-columns: 1fr $hf-width-container 1fr;
+    grid-template-columns: 100px 1fr 100px;
     display: grid;
     padding: 0 $hf-padding-main;
     background-color: $hellofresh-color;
