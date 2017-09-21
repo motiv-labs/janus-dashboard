@@ -6,10 +6,10 @@ ADD . /usr/src/app
 
 # Install dependencies
 WORKDIR /usr/src/app
-RUN npm install
 
-# Build the app
-RUN npm run build --production --quiet
+RUN npm set progress=false && \
+    npm install && \
+    npm run build --production --quiet
 
 # Expose the app port
 EXPOSE 8082
