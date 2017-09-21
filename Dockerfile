@@ -1,22 +1,18 @@
-FROM node:7-alpine AS builder
+FROM node:8-alpine
 
-ARG GATEWAY_BASE_URI="'localhost:8080'"
-ARG GATEWAY_USERNAME="admin"
-ARG GATEWAY_PASSWORD="admin"
+# Prepare app directory
+RUN mkdir -p /usr/src/app
+ADD . /usr/src/app
 
-ENV GATEWAY_BASE_URI="${GATEWAY_BASE_URI}"
-ENV GATEWAY_USERNAME="${GATEWAY_USERNAME}"
-ENV GATEWAY_PASSWORD="${GATEWAY_PASSWORD}"
+# Install dependencies
+WORKDIR /usr/src/app
 
-RUN mkdir /src
-WORKDIR /src
-COPY . /src
+RUN npm set progress=false && \
+    npm install && \
+    npm run build --production --quiet
 
-RUN npm install --quiet
-RUN npm run build --quiet
+# Expose the app port
+EXPOSE 8082
 
-# ---
-
-FROM abiosoft/caddy
-COPY --from=builder /src/dist /srv
-COPY ./Caddyfile /etc/Caddyfile
+# Start the app
+CMD npm start
