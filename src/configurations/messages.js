@@ -1,5 +1,5 @@
 export default {
     success: {
-        message: 'Successfuly saved',
+        message: 'Successfully saved',
     },
 };

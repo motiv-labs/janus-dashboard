@@ -9,7 +9,7 @@ const headers = {
 };
 
 const client = axios.create({
-    baseURL: MAIN_CONFIG.gateway.uri,
+    baseURL: process.env.REACT_APP_JANUS_URI || MAIN_CONFIG.gateway.uri,
     headers,
 });
 
