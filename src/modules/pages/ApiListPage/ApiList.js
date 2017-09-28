@@ -91,10 +91,22 @@ class ApiList extends PureComponent {
         <div className={table()}>
             <div className={table('head')}>
                 <div className={table('row')}>
-                    <div className={table('th')} onClick={() => this.sortList('name')}><div>Api Name</div></div>
+                    <div
+                        className={table('th').mix('ascending-container')}
+                        onClick={() => this.sortList('name')}
+                    >
+                        <div>Api Name</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')}>Listen Path</div>
                     <div className={table('th')}>Upstream URL</div>
-                    <div className={table('th', {active: true})} onClick={() => this.sortList('active')}>Active</div>
+                    <div
+                        className={table('th', {active: true}).mix('ascending-container')}
+                        onClick={() => this.sortList('active')}
+                    >
+                        <div>Active</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')} />
                 </div>
             </div>

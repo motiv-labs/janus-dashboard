@@ -1,5 +1,7 @@
 @import 'index.scss';
 
+$icon-width: 8px;
+
 .j-table {
     width: 100%;
     text-align: left;
@@ -57,6 +59,37 @@
 
         &-item {
             justify-self: center;
+        }
+    }
+}
+
+.ascending {
+    &-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    &-icon {
+        position: relative;
+        width: $icon-width;
+        height: 14px;
+        margin-left: $hf-gutter;
+
+        &:before,
+        &:after {
+            @include pseudo();
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 ceil($icon-width/2) 5px ceil($icon-width/2);
+            border-color: transparent transparent $hf-color-gray-medium transparent;
+        }
+        &:before {
+            top: 0;
+        }
+        &:after {
+            bottom: 0;
+            transform: rotate(180deg);
         }
     }
 }
