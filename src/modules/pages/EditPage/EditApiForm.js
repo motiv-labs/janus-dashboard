@@ -89,23 +89,16 @@ const ApiForm = (props) => {
                                 Copy
                             </Button>
                         </Link>
-                        {
-                            location &&
-                                <Link
-                                    to={'/'}
-                                    onClick={() => {
-                                        props.handleDelete(props.api.name);
-                                    }}
-                                >
-                                    <Button
-                                        type="button"
-                                        mod="danger"
-                                    >
-                                        <Icon type="delete-white" />
-                                        Delete
-                                    </Button>
-                                </Link>
-                        }
+                        <Button
+                            type="button"
+                            mod="danger"
+                            onClick={() => {
+                                props.handleDelete(props.api.name);
+                            }}
+                        >
+                            <Icon type="delete-white" />
+                            Delete
+                        </Button>
                         <Button
                             type="submit"
                             mod="primary"

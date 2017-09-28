@@ -20,6 +20,8 @@ import {
 } from '../constants';
 import {
     openResponseModal,
+    openConfirmationModal,
+    closeConfirmationModal,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
@@ -169,28 +171,6 @@ export const fillSelected = selectedPlugins => ({
     type: FILL_SELECTED_PLUGINS,
     payload: selectedPlugins,
 });
-
-export const deleteEndpoint = (apiName, callback) => async (dispatch) => {
-    dispatch(deleteEndpointRequest());
-
-    try {
-        const response = await client.delete(`apis/${apiName}`);
-
-        dispatch(deleteEndpointSuccess());
-        dispatch(openResponseModal({ // @FIXME: move to reducers
-            status: response.status,
-            message: 'Successfuly deleted',
-            statusText: response.statusText,
-        }));
-        dispatch(callback(apiName));
-    } catch (error) {
-        dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
-            message: error.response.data.error,
-        }));
-    }
-};
 
 export const fetchEndpoint = pathname => async dispatch => {
     dispatch(getEndpointRequest());
@@ -357,6 +337,18 @@ export const preparePlugins = api => api.plugins.map(plugin => {
 });
 
 export const saveEndpoint = (pathname, api) => (dispatch) => {
+    dispatch(openConfirmationModal('save', () => confirmedSaveEndpoint(dispatch, pathname, api)));
+};
+
+export const updateEndpoint = (pathname, api) => (dispatch) => {
+    dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api)));
+};
+
+export const deleteEndpoint = (apiName) => (dispatch) => {
+    dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
+};
+
+export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest(api));
 
     const preparedPlugins = preparePlugins(api);
@@ -367,12 +359,8 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
         const response = client.post('apis', preparedApi);
 
         dispatch(saveEndpointSuccess());
-        dispatch(openResponseModal({
-            status: response.status,
-            message: 'Successfuly saved',
-            statusText: response.statusText,
-            redirectOnClose: () => (history.push('/')),
-        }));
+        dispatch(closeConfirmationModal());
+        history.push('/');
     } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
@@ -400,8 +388,7 @@ export const saveEndpoint = (pathname, api) => (dispatch) => {
     }
 };
 
-
-export const updateEndpoint = (pathname, api) => (dispatch) => {
+export const confirmedUpdateEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest());
 
     const preparedPlugins = preparePlugins(api);
@@ -411,11 +398,7 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
     return client.put(`apis${pathname}`, preparedApi)
         .then((response) => {
             dispatch(saveEndpointSuccess());
-            dispatch(openResponseModal({
-                status: response.status,
-                message: 'Successfuly saved',
-                statusText: response.statusText,
-            }));
+            dispatch(closeConfirmationModal());
         })
         .catch((error) => {
             if (error.response) {
@@ -442,4 +425,22 @@ export const updateEndpoint = (pathname, api) => (dispatch) => {
                 console.log('Error', error.message);
             }
         });
+};
+
+export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
+    dispatch(deleteEndpointRequest());
+
+    try {
+        const response = await client.delete(`apis/${apiName}`);
+
+        dispatch(deleteEndpointSuccess());
+        dispatch(closeConfirmationModal());
+        history.push('/');
+    } catch (error) {
+        dispatch(openResponseModal({
+            status: error.response.status,
+            statusText: error.response.statusText,
+            message: error.response.data.error,
+        }));
+    }
 };

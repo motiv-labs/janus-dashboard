@@ -15,6 +15,7 @@ import history from '../../store/configuration/history';
 import Header from '../Layout/Header/Header';
 import Footer from '../Layout/Footer/Footer';
 import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer';
+import ConfirmationModal from '../modals/ConfirmationModal/ConfirmationModal';
 
 import LoginPage from '../pages/LoginPage/LoginPage';
 import HealthCheckPage from '../pages/HealthCheckPage/HealthCheckPage';
@@ -47,6 +48,7 @@ class Root extends Component {
                     </div>
                     <Footer />
                     <APIRespondModalContainer />
+                    <ConfirmationModal />
                 </div>
             </ConnectedRouter>
         );
