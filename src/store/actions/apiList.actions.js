@@ -7,6 +7,7 @@ import {
     DISCARD_PAGINATION,
     REFRESH_ENDPOINTS,
     SET_PAGINATION_PAGE,
+    SET_SORTING_FILTER,
 } from '../constants';
 import {
     fetchHealthCheckList,
@@ -29,6 +30,11 @@ export const discardPagination = () => ({
 export const setCurrentPageIndex = index => ({
     type: SET_PAGINATION_PAGE,
     payload: index,
+});
+
+export const setSortingFilter = filter => ({
+    type: SET_SORTING_FILTER,
+    payload: filter,
 });
 
 export const fetchEndpoints = () => async dispatch => {
