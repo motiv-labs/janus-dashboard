@@ -10,18 +10,14 @@ import Button from '../../buttons/Button';
 import './ConfirmationModal.css';
 
 import {
-    // openConfirmationModal,
     closeConfirmationModal,
 } from '../../../store/actions';
 
 const propTypes = {
-    // className: PropTypes.string,
     closeModal: PropTypes.func.isRequired,
     needConfirm: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    // status: PropTypes.string.isRequired,
-    // statusText: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -31,13 +27,11 @@ const defaultProps = {
 const b = block('j-confirmation');
 
 const ConfirmationModal = ({
-    // className,
     closeModal,
     message,
     needConfirm,
     onConfirm,
     title,
-    // statusText,
 }) => {
     const handleClose = () => {
         closeModal();
@@ -91,7 +85,6 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     {
-        // openConfirmationModal,
         closeModal: closeConfirmationModal,
     },
 )(ConfirmationModal);
