@@ -83,10 +83,8 @@ class ApiList extends PureComponent {
     ))
 
     sortList = filter => {
-        // console.clear();
-
-        console.error('SORT', filter);
         this.props.setSortingFilter(filter);
+        this.props.setAscendingFilter();
     }
 
     renderTable = list => (

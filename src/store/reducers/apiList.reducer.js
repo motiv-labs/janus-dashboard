@@ -5,6 +5,7 @@ import {
     DISCARD_PAGINATION,
     SET_PAGINATION_PAGE,
     SET_SORTING_FILTER,
+    SET_ASCEND_FILTER,
 } from '../constants';
 
 const initialState = {
@@ -46,6 +47,12 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 sortingFilter: action.payload,
+            };
+        }
+        case SET_ASCEND_FILTER: {
+            return {
+                ...state,
+                sortAscend: !state.sortAscend,
             };
         }
         case REFRESH_ENDPOINTS: {

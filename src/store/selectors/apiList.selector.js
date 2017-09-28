@@ -4,17 +4,25 @@ import R from 'ramda';
 const getApiList = state => state.apiListReducer.apiList;
 const getSearchQuery = state => state.searchReducer.searchQuery;
 const getSortingFilter = state => state.apiListReducer.sortingFilter;
-const sortAscend = state => state.apiListReducer.sortAscend;
+const getAscendFilter = state => state.apiListReducer.sortAscend;
 
-const sortByNameCaseInsensitive = R.sortBy(R.compose(R.toLower, R.prop('name')));
-const sortByActive = R.sortBy(R.prop('active'));
+const sortByNameCaseInsensitive = asc => R.sort(
+    asc
+        ? R.ascend(R.compose(R.toLower, R.prop('name')))
+        : R.descend(R.compose(R.toLower, R.prop('name')))
+);
+const sortByActive = asc => R.sort(
+    asc
+        ? R.ascend(R.prop('active'))
+        : R.descend(R.prop('active'))
+);
 
-const getFilteredApiList = (apiList, searchQuery, sortingFilter) => {
+const getFilteredApiList = (apiList, searchQuery, sortingFilter, sortAscend) => {
     const sortedList = (list, filterName, ascend) => {
         if (filterName === 'name') {
-            return sortByNameCaseInsensitive(list);
+            return sortByNameCaseInsensitive(sortAscend)(list);
         } else if (filterName === 'active') {
-            return sortByActive(list);
+            return sortByActive(sortAscend)(list);
         }
         return list;
     };
@@ -36,5 +44,6 @@ export const filteredApiList = createSelector(
     getApiList,
     getSearchQuery,
     getSortingFilter,
+    getAscendFilter,
     getFilteredApiList,
 );
