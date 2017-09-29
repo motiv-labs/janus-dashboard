@@ -1,6 +1,7 @@
 @import 'index.scss';
 
 $icon-width: 8px;
+$icon-height: 14px;
 
 .j-table {
     width: 100%;
@@ -72,7 +73,7 @@ $icon-width: 8px;
     &-icon {
         position: relative;
         width: $icon-width;
-        height: 14px;
+        height: $icon-height;
         margin-left: $hf-gutter;
 
         &:before,
