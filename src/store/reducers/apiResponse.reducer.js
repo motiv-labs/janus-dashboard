@@ -38,25 +38,29 @@ const setToasterMessage = info => `"${info.apiName}" has been successfuly ${info
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case OPEN_RESPONSE_MODAL: {
+            const { message, redirectOnClose, status, statusText } = action.payload;
+
             return {
                 ...state,
-                message: action.payload.message,
-                redirectOnClose: action.payload.redirectOnClose,
-                status: action.payload.status,
-                statusText: action.payload.statusText,
+                message,
+                redirectOnClose,
+                status,
+                statusText,
                 isOpen: true,
             };
         }
         case OPEN_CONFIRMATION_MODAL: {
+            const { apiName, message, status, title, onConfirm } = action.payload;
+
             return {
                 ...state,
                 confirmationModal: {
-                    apiName: action.payload.apiName,
-                    message: action.payload.message,
-                    status: action.payload.status,
-                    title: action.payload.title,
+                    apiName,
+                    message,
+                    status,
+                    title,
+                    onConfirm,
                     needConfirm: true,
-                    onConfirm: action.payload.onConfirm,
                 },
             };
         }
