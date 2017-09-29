@@ -3,7 +3,24 @@ import {
     CLOSE_RESPONSE_MODAL,
     OPEN_CONFIRMATION_MODAL,
     CLOSE_CONFIRMATION_MODAL,
+    CLEAR_CONFIRMATION_MODAL,
+    OPEN_TOASTER,
+    CLOSE_TOASTER,
 } from '../constants';
+
+const confirmationModalState = {
+    apiName: null,
+    message: '',
+    needConfirm: false,
+    status: null,
+    title: '',
+    onConfirm: null,
+};
+
+const toasterState = {
+    isOpen: false,
+    message: '',
+};
 
 const initialState = {
     isOpen: false,
@@ -12,7 +29,11 @@ const initialState = {
     statusText: '',
     title: '',
     message: '',
+    confirmationModal: confirmationModalState,
+    toaster: toasterState,
 };
+
+const setToasterMessage = info => `"${info.apiName}" has been successfuly ${info.status}d`;
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -29,15 +50,47 @@ export default function reducer(state = initialState, action) {
         case OPEN_CONFIRMATION_MODAL: {
             return {
                 ...state,
-                message: action.payload.message,
-                status: action.payload.status,
-                title: action.payload.title,
-                needConfirm: true,
-                onConfirm: action.payload.onConfirm,
+                confirmationModal: {
+                    apiName: action.payload.apiName,
+                    message: action.payload.message,
+                    status: action.payload.status,
+                    title: action.payload.title,
+                    needConfirm: true,
+                    onConfirm: action.payload.onConfirm,
+                },
             };
         }
-        case CLOSE_RESPONSE_MODAL:
+        case OPEN_TOASTER: {
+            return {
+                ...state,
+                toaster: {
+                    isOpen: true,
+                    message: setToasterMessage(state.confirmationModal),
+                }
+            };
+        }
         case CLOSE_CONFIRMATION_MODAL: {
+            return {
+                ...state,
+                confirmationModal: {
+                    ...state.confirmationModal,
+                    needConfirm: false,
+                }
+            };
+        }
+        case CLEAR_CONFIRMATION_MODAL: {
+            return {
+                ...state,
+                confirmationModal,
+            };
+        }
+        case CLOSE_TOASTER: {
+            return {
+                ...state,
+                toaster,
+            };
+        }
+        case CLOSE_RESPONSE_MODAL: {
             return initialState;
         }
         default:
