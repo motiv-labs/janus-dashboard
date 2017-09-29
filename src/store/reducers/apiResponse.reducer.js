@@ -81,13 +81,13 @@ export default function reducer(state = initialState, action) {
         case CLEAR_CONFIRMATION_MODAL: {
             return {
                 ...state,
-                confirmationModal,
+                confirmationModal: confirmationModalState,
             };
         }
         case CLOSE_TOASTER: {
             return {
                 ...state,
-                toaster,
+                toaster: toasterState,
             };
         }
         case CLOSE_RESPONSE_MODAL: {
