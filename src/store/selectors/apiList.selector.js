@@ -19,25 +19,30 @@ const sortByActive = asc => R.sort(
 
 const getFilteredApiList = (apiList, searchQuery, sortingFilter, sortAscend) => {
     const sortedList = (list, filterName, ascend) => {
-        if (filterName === 'name') {
-            return sortByNameCaseInsensitive(sortAscend)(list);
-        } else if (filterName === 'active') {
-            return sortByActive(sortAscend)(list);
+        switch (filterName) {
+            case 'name': {
+                return sortByNameCaseInsensitive(sortAscend)(list);
+            }
+            case 'active': {
+                return sortByActive(sortAscend)(list);
+            }
+            default:
+                return list;
         }
-        return list;
     };
-
-    return sortedList(apiList, sortingFilter).filter((el) => {
-        if (
-            el.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    const listFilteredAccordingToSearchQuery = list => list.filter(el => {
+        const searchIsActive = el.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
             el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            el.proxy.upstream_url.toLowerCase().includes(searchQuery.toLowerCase())
-        ) {
-            return el;
-        }
+            el.proxy.upstream_url.toLowerCase().includes(searchQuery.toLowerCase());
 
-        return false;
+        return (searchIsActive) ? el : false;
     });
+
+    return R.compose(listFilteredAccordingToSearchQuery, sortedList)(
+        apiList,
+        sortingFilter,
+        sortAscend,
+    );
 };
 
 export const filteredApiList = createSelector(
