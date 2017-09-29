@@ -3,6 +3,9 @@ import {
     CLOSE_RESPONSE_MODAL,
     OPEN_CONFIRMATION_MODAL,
     CLOSE_CONFIRMATION_MODAL,
+    CLEAR_CONFIRMATION_MODAL,
+    OPEN_TOASTER,
+    CLOSE_TOASTER,
 } from '../constants';
 
 export const openResponseModal = data => ({
@@ -27,6 +30,7 @@ export const openConfirmationModal = (action, callback, apiName) => {
             }
             case 'update': {
                 return {
+                    apiName,
                     message: 'Are you sure you want to update?',
                     status: 'update',
                     title: 'Update',
@@ -38,6 +42,7 @@ export const openConfirmationModal = (action, callback, apiName) => {
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
+                    apiName: apiName,
                     onConfirm: callback,
                 };
             }
@@ -52,4 +57,16 @@ export const openConfirmationModal = (action, callback, apiName) => {
 
 export const closeConfirmationModal = () => ({
     type: CLOSE_CONFIRMATION_MODAL,
+});
+
+export const clearConfirmationModal = () => ({
+    type: CLEAR_CONFIRMATION_MODAL,
+});
+
+export const showToaster = () => ({
+    type: OPEN_TOASTER,
+});
+
+export const closeToaster = () => ({
+    type: CLOSE_TOASTER,
 });

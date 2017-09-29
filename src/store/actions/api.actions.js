@@ -19,9 +19,12 @@ import {
     WILL_CLONE,
 } from '../constants';
 import {
-    openResponseModal,
-    openConfirmationModal,
+    clearConfirmationModal,
     closeConfirmationModal,
+    fetchEndpoints,
+    openConfirmationModal,
+    openResponseModal,
+    showToaster,
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
@@ -336,15 +339,15 @@ export const preparePlugins = api => api.plugins.map(plugin => {
     return plugin;
 });
 
-export const saveEndpoint = (pathname, api) => (dispatch) => {
+export const saveEndpoint = (pathname, api) => dispatch => {
     dispatch(openConfirmationModal('save', () => confirmedSaveEndpoint(dispatch, pathname, api)));
 };
 
-export const updateEndpoint = (pathname, api) => (dispatch) => {
-    dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api)));
+export const updateEndpoint = (pathname, api) => dispatch => {
+    dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api), api.name));
 };
 
-export const deleteEndpoint = (apiName) => (dispatch) => {
+export const deleteEndpoint = apiName => dispatch => {
     dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
 };
 
@@ -360,7 +363,9 @@ export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
 
         dispatch(saveEndpointSuccess());
         dispatch(closeConfirmationModal());
+        dispatch(fetchEndpoints());
         history.push('/');
+        dispatch(showToaster());
     } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
@@ -399,6 +404,7 @@ export const confirmedUpdateEndpoint = (dispatch, pathname, api) => {
         .then((response) => {
             dispatch(saveEndpointSuccess());
             dispatch(closeConfirmationModal());
+            dispatch(showToaster());
         })
         .catch((error) => {
             if (error.response) {
@@ -435,7 +441,9 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
 
         dispatch(deleteEndpointSuccess());
         dispatch(closeConfirmationModal());
+        dispatch(fetchEndpoints());
         history.push('/');
+        dispatch(showToaster());
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,

@@ -21,6 +21,7 @@ const propTypes = {
         'edit', // green pencil
         'github',
         'remove', // red minus
+        'successful-white', // white success symbol
     ]).isRequired,
 };
 
