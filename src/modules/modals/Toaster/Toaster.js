@@ -35,36 +35,34 @@ const Toaster = props => {
         }, props.timeout || 2000);
     };
 
-    if (props.isOpen) {
-        closeLater();
+    if (!props.isOpen) return null;
 
-        return (
-            <div className={b()}>
-                <div className={b('left-part')}>
-                    <Icon
-                        className={b('icon')()}
-                        type="successful-white"
-                    />
-                </div>
-                <div className={b('right-part')}>
-                    {props.message}
-                </div>
-                <div
-                    className={b('close')}
-                    onClick={handleCloseToaster}
-                >
-                    <Icon
-                        type="close"
-                    />
-                </div>
+    closeLater();
+
+    return (
+        <div className={b()}>
+            <div className={b('left-part')}>
+                <Icon
+                    className={b('icon')()}
+                    type="successful-white"
+                />
             </div>
-        );
-    }
-
-    return null;
+            <div className={b('right-part')}>
+                {props.message}
+            </div>
+            <div
+                className={b('close')}
+                onClick={handleCloseToaster}
+            >
+                <Icon
+                    type="close"
+                />
+            </div>
+        </div>
+    );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     const {
         isOpen,
         message,
