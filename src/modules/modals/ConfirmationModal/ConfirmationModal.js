@@ -10,7 +10,7 @@ import Button from '../../buttons/Button';
 import './ConfirmationModal.css';
 
 import {
-    closeConfirmationModal,
+    clearConfirmationModal,
 } from '../../../store/actions';
 
 const propTypes = {
@@ -72,7 +72,7 @@ const mapStateToProps = (state) => {
         needConfirm,
         onConfirm,
         title,
-    } = state.apiResponseModalReducer;
+    } = state.apiResponseModalReducer.confirmationModal;
 
     return {
         message,
@@ -85,6 +85,6 @@ const mapStateToProps = (state) => {
 export default connect(
     mapStateToProps,
     {
-        closeModal: closeConfirmationModal,
+        closeModal: clearConfirmationModal,
     },
 )(ConfirmationModal);
