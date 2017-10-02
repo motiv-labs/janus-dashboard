@@ -52,32 +52,30 @@ class ApiList extends PureComponent {
             <div className={table('td', {active: true})}>
                 {api.active ? <Icon type="checked" /> : null}
             </div>
-            <div className={table('td')}>
-                <div className={table('controls')}>
-                    <Link to={`/${api.name}`} className={table('controls-item')}>
-                        <Icon type="edit" ariaLabel="Edit" />
-                    </Link>
-                    <Link
-                        to={{
-                            pathname: '/new',
-                            state: {
-                                clone: api,
-                            },
-                        }}
-                        className={table('controls-item')}
-                    >
-                        <Icon type="copy" />
-                    </Link>
-                    <Link
-                        to={''}
-                        className={table('controls-item')}
-                        onClick={() => {
-                            this.handleDelete(api.name);
-                        }}
-                    >
-                        <Icon type="delete" />
-                    </Link>
-                </div>
+            <div className={table('td').mix(table('controls'))}>
+                <Link to={`/${api.name}`} className={table('controls-item')}>
+                    <Icon type="edit" ariaLabel="Edit" />
+                </Link>
+                <Link
+                    to={{
+                        pathname: '/new',
+                        state: {
+                            clone: api,
+                        },
+                    }}
+                    className={table('controls-item')}
+                >
+                    <Icon type="copy" />
+                </Link>
+                <Link
+                    to={''}
+                    className={table('controls-item')}
+                    onClick={() => {
+                        this.handleDelete(api.name);
+                    }}
+                >
+                    <Icon type="delete" />
+                </Link>
             </div>
         </div>
     ))
