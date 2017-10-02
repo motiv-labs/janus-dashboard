@@ -35,7 +35,7 @@ const propTypes = {
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const ApiForm = (props) => {
+const EditApiForm = (props) => {
     const {
         api,
         apiSchema,
@@ -316,14 +316,14 @@ const ApiForm = (props) => {
     );
 };
 
-ApiForm.propTypes = propTypes;
+EditApiForm.propTypes = propTypes;
 
 const selector = formValueSelector('apiForm');
 
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
-})(ApiForm);
+})(EditApiForm);
 
 export default connect(
     state => {
