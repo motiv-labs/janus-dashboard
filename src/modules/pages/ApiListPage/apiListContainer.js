@@ -5,6 +5,8 @@ import {
     fetchEndpoints,
     refreshEndpoints,
     setCurrentPageIndex,
+    setSortingFilter,
+    setAscendingFilter,
 } from '../../../store/actions';
 import { filteredApiList } from '../../../store/selectors';
 
@@ -22,5 +24,7 @@ export default connect(
         fetchEndpoints,
         refreshEndpoints,
         setCurrentPageIndex,
+        setSortingFilter,
+        setAscendingFilter,
     },
 )(ApiList);

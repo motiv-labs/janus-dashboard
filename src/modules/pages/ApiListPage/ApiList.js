@@ -20,6 +20,7 @@ const propTypes = {
     deleteEndpoint: PropTypes.func.isRequired,
     fetchEndpoints: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
+    setSortingFilter: PropTypes.func.isRequired,
 };
 
 const table = block('j-table');
@@ -81,14 +82,31 @@ class ApiList extends PureComponent {
         </div>
     ))
 
+    sortList = filter => {
+        this.props.setSortingFilter(filter);
+        this.props.setAscendingFilter();
+    }
+
     renderTable = list => (
         <div className={table()}>
             <div className={table('head')}>
                 <div className={table('row')}>
-                    <div className={table('th')}><div>Api Name</div></div>
+                    <div
+                        className={table('th').mix('ascending-container')}
+                        onClick={() => this.sortList('name')}
+                    >
+                        <div>Api Name</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')}>Listen Path</div>
                     <div className={table('th')}>Upstream URL</div>
-                    <div className={table('th', {active: true})}>Active</div>
+                    <div
+                        className={table('th', {active: true}).mix('ascending-container')}
+                        onClick={() => this.sortList('active')}
+                    >
+                        <div>Active</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')} />
                 </div>
             </div>
