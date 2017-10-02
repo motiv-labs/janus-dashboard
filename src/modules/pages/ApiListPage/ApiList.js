@@ -65,7 +65,7 @@ class ApiList extends PureComponent {
                     }}
                     className={table('controls-item')}
                 >
-                    <Icon type="copy" />
+                    <Icon type="copy" ariaLabel="Copy" />
                 </Link>
                 <Link
                     to={''}
@@ -74,7 +74,7 @@ class ApiList extends PureComponent {
                         this.handleDelete(api.name);
                     }}
                 >
-                    <Icon type="delete" />
+                    <Icon type="delete" ariaLabel="Delete" />
                 </Link>
             </div>
         </div>
