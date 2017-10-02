@@ -8,6 +8,7 @@ import './Icon.css';
 const b = block('j-icon');
 
 const propTypes = {
+    ariaLabel: PropTypes.string,
     className: PropTypes.string,
     type: PropTypes.oneOf([
         'add', // green plus
@@ -25,8 +26,8 @@ const propTypes = {
     ]).isRequired,
 };
 
-const Control = ({ className, type }) => (
-    <span className={b({ type }).mix(className)} />
+const Control = ({ ariaLabel, className, type }) => (
+    <span className={b({ type }).mix(className).mix(ariaLabel && 'j-tooltiped')} aria-label={ariaLabel}/>
 );
 
 Control.propTypes = propTypes;

@@ -55,7 +55,7 @@ class ApiList extends PureComponent {
             <div className={table('td')}>
                 <div className={table('controls')}>
                     <Link to={`/${api.name}`} className={table('controls-item')}>
-                        <Icon type="edit" />
+                        <Icon type="edit" ariaLabel="Edit" />
                     </Link>
                     <Link
                         to={{
