@@ -11,6 +11,7 @@ import EditApiForm from '../EditPage/EditApiForm';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
+    apiSchema: PropTypes.object.isRequired,
     fetchEndpointSchema: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
@@ -65,11 +66,14 @@ class NewApiItem extends Component {
 
     renderForm = () => {
         if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
+            console.warn('IF');
+
             const r = this.props.api.plugins.map(item => item.name);
 
             return (
                 <EditApiForm
                     api={this.props.api}
+                    apiSchema={this.props.apiSchema}
                     handleDelete={this.handleDelete}
                     selectedPlugins={r}
                     excludePlugin={this.props.excludePlugin}
@@ -79,17 +83,23 @@ class NewApiItem extends Component {
                 />
             );
         }
+        console.warn('ELSE');
+
 
         return (
             <NewApiForm
+                apiSchema={this.props.apiSchema}
                 onSubmit={this.submit}
                 excludePlugin={this.props.excludePlugin}
                 selectPlugin={this.props.selectPlugin}
+                selectedPlugins={this.props.selectedPlugins}
             />
         );
     }
 
     render() {
+        console.error('New Api Item => render() => this.props::: ', this.props);
+
         const { api } = this.props;
 
         return (

@@ -26,9 +26,12 @@ const propTypes = {
     apiSchema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-const ApiForm = props => {
+const NewApiForm = props => {
+    console.error('NEW API FORM', props);
+
     const {
         handleSubmit,
         initialValues,
@@ -38,6 +41,9 @@ const ApiForm = props => {
         selectPlugin,
         selectedPlugins,
     } = props;
+    console.clear();
+    console.error('PLUGINS', !!plugins);
+
     const parse = value => value && parseInt(value);
     const includePlugin = value => {
         apiSchema.plugins
@@ -276,14 +282,14 @@ const ApiForm = props => {
     );
 };
 
-ApiForm.propTypes = propTypes;
+NewApiForm.propTypes = propTypes;
 
 const selector = formValueSelector('apiForm');
 
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
-})(ApiForm);
+})(NewApiForm);
 
 export default connect(
     state => {
@@ -291,8 +297,6 @@ export default connect(
 
         return {
             initialValues: transformFormValues(state.apiReducer.api),
-            apiSchema: state.apiReducer.apiSchema,
-            selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

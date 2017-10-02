@@ -56,6 +56,10 @@ class ApiItem extends Component {
     };
 
     render() {
+        // console.clear();
+
+        console.error('Edit Page => Api Item => render()');
+
         if (!R.isEmpty(this.props.api)) {
             const r = this.props.api.plugins.map(item => item.name);
 
