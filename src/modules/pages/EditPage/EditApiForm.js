@@ -99,12 +99,6 @@ const ApiForm = (props) => {
                             <Icon type="delete-white" />
                             Delete
                         </Button>
-                        <Button
-                            type="submit"
-                            mod="primary"
-                        >
-                            Save
-                        </Button>
                     </div>
                 </Row>
             </Section>

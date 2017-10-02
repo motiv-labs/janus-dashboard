@@ -61,12 +61,6 @@ const ApiForm = props => {
             <Section>
                 <Row>
                     <Title>Create New API</Title>
-                    <Button
-                        type="submit"
-                        mod="primary"
-                    >
-                        Create API
-                    </Button>
                 </Row>
             </Section>
             <div className={b('inner')}>
