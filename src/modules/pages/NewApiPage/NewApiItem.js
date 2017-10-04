@@ -67,7 +67,12 @@ class NewApiItem extends Component {
     }
 
     renderForm = () => {
-        if (R.isEmpty(this.props.initialValues)) return <Preloader />;
+        console.error('this.props.apiSchema => ', this.props.apiSchema);
+
+        if (
+            R.isEmpty(this.props.initialValues) ||
+            R.isEmpty(this.props.apiSchema)
+        ) return <Preloader />;
 
         if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
             console.warn('IF');
@@ -79,6 +84,7 @@ class NewApiItem extends Component {
                     api={this.props.api}
                     apiSchema={this.props.apiSchema}
                     handleDelete={this.handleDelete}
+                    initialValues={this.props.initialValues}
                     selectedPlugins={r}
                     excludePlugin={this.props.excludePlugin}
                     selectPlugin={this.props.selectPlugin}

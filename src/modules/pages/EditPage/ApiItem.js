@@ -59,7 +59,21 @@ class ApiItem extends Component {
         this.props.deleteEndpoint(apiName);
     };
 
-    // createInitialValues = (apiSchema) => {}
+    createInitialValues = (api, apiSchema) => {
+        const apiPlugins = api.plugins;
+        const defaultPlugins = apiSchema.plugins;
+        const updatedPlugins = defaultPlugins.map(item => {
+            const res = apiPlugins.filter(pl => pl.name === item.name);
+
+            return res.length > 0 ? res[0] : item;
+        });
+
+        const lens = R.lensPath(['plugins']);
+        // substitude the plugin.config.limit
+        const updatedApi = R.set(lens, updatedPlugins, api);
+
+        return transformFormValues(updatedApi);
+    }
 
     render() {
         // console.clear();
@@ -78,6 +92,7 @@ class ApiItem extends Component {
                 apiSchema={this.props.apiSchema}
                 handleDelete={this.handleDelete}
                 excludePlugin={this.props.excludePlugin}
+                initialValues={this.createInitialValues(this.props.api, this.props.apiSchema)}
                 selectPlugin={this.props.selectPlugin}
                 selectedPlugins={r}
                 disabled={true}
