@@ -27,7 +27,7 @@ class NewApiItem extends Component {
         this.props.resetEndpoint();
 
         if (this.hasToBeCloned()) {
-            this.props.fetchEndpointSchema(true);
+            this.props.fetchEndpointSchema();
             this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
             return;
         }
@@ -73,6 +73,8 @@ class NewApiItem extends Component {
             return (
                 <EditApiForm
                     api={this.props.api}
+                    apiSchema={this.props.apiSchema}
+                    initialValues={transformFormValues(this.props.api)}
                     handleDelete={this.handleDelete}
                     selectedPlugins={r}
                     excludePlugin={this.props.excludePlugin}
