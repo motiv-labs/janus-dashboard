@@ -9,14 +9,17 @@ import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
+    apiSchema: PropTypes.object.isRequired,
     deleteEndpoint: PropTypes.func.isRequired,
     excludePlugin: PropTypes.func.isRequired,
     fetchEndpointSchema: PropTypes.func.isRequired,
     fillSelected: PropTypes.func.isRequired,
     selectPlugin: PropTypes.func.isRequired,
+    selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
     fetchEndpoint: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
+    response: PropTypes.object,
     updateEndpoint: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
 };
@@ -28,11 +31,12 @@ class ApiItem extends Component {
         this.props.fetchEndpoint(this.props.location.pathname);
     }
 
-    fillSelected = (arr) => {
-        const selectedPlugins = arr.map(item => item.name);
+    // TODO: useless???
+    // fillSelected = (arr) => {
+    //     const selectedPlugins = arr.map(item => item.name);
 
-        this.props.fillSelected(selectedPlugins);
-    }
+    //     this.props.fillSelected(selectedPlugins);
+    // }
 
     submit = values => {
         const transformedValues = transformFormValues(values, true);
@@ -55,29 +59,33 @@ class ApiItem extends Component {
         this.props.deleteEndpoint(apiName);
     };
 
+    // createInitialValues = (apiSchema) => {}
+
     render() {
         // console.clear();
 
-        console.error('Edit Page => Api Item => render()');
+        console.error('Edit Page => Api Item => render()', this.props.api.name);
+        if (
+            R.isEmpty(this.props.api) ||
+            R.isEmpty(this.props.apiSchema)
+        ) return <Preloader />;
 
-        if (!R.isEmpty(this.props.api)) {
-            const r = this.props.api.plugins.map(item => item.name);
+        const r = this.props.api.plugins.map(item => item.name);
 
-            return (
-                <EditApiForm
-                    api={this.props.api}
-                    handleDelete={this.handleDelete}
-                    excludePlugin={this.props.excludePlugin}
-                    selectPlugin={this.props.selectPlugin}
-                    selectedPlugins={r}
-                    disabled={true}
-                    onSubmit={this.submit}
-                    location={this.props.location}
-                />
-            );
-        }
-
-        return <Preloader />;
+        return (
+            <EditApiForm
+                api={this.props.api}
+                apiSchema={this.props.apiSchema}
+                handleDelete={this.handleDelete}
+                excludePlugin={this.props.excludePlugin}
+                selectPlugin={this.props.selectPlugin}
+                selectedPlugins={r}
+                disabled={true}
+                onSubmit={this.submit}
+                location={this.props.location}
+                response={this.props.response}
+            />
+        );
     }
 }
 

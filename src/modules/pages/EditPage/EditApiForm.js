@@ -36,6 +36,8 @@ const propTypes = {
 };
 
 const EditApiForm = (props) => {
+    console.error('EDIT API FORM props >>>> ', props);
+
     const {
         api,
         apiSchema,
@@ -344,9 +346,9 @@ export default connect(
         return {
             initialValues: transformFormValues(updatedApi),
             // FIXME name of the plugin is discarded while saving
-            apiSchema: state.apiReducer.apiSchema,
-            response: state.apiReducer.response,
-            selectedPlugins: state.apiReducer.selectedPlugins,
+            // apiSchema: state.apiReducer.apiSchema,
+            // response: state.apiReducer.response,
+            // selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

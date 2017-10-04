@@ -295,7 +295,6 @@ export default connect(
         const plugins = selector(state, 'plugins');
 
         return {
-            // initialValues: transformFormValues(state.apiReducer.api),
             keepDirtyOnReinitialize: false,
             plugins,
         };

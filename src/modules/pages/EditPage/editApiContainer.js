@@ -17,6 +17,9 @@ import ApiItem from './ApiItem';
 
 const mapStateToProps = state => ({
     api: state.apiReducer.api,
+    // initialValues:
+    apiSchema: state.apiReducer.apiSchema,
+    response: state.apiReducer.response,
     selectedPlugins: state.apiReducer.selectedPlugins,
 });
 
