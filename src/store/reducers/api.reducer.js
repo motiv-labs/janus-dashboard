@@ -46,7 +46,6 @@ export default function reducer(state = initialState, action) {
         case FETCH_ENDPOINT_SCHEMA_SUCCESS: {
             return {
                 ...state,
-                api: action.payload,
                 apiSchema: action.payload,
                 isFetching: false,
             };
