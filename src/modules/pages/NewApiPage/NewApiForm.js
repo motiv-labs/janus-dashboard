@@ -290,9 +290,9 @@ export default connect(
         const plugins = selector(state, 'plugins');
 
         return {
-            initialValues: transformFormValues(state.apiReducer.api),
-            apiSchema: state.apiReducer.apiSchema,
-            selectedPlugins: state.apiReducer.selectedPlugins,
+            // initialValues: transformFormValues(state.apiReducer.api),
+            // apiSchema: state.apiReducer.apiSchema,
+            // selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

@@ -256,19 +256,38 @@ export const setInitialEndpoint = endpointSchema => ({
     payload: endpointSchema,
 });
 
-export const fetchEndpointSchema = flag => (dispatch) => {
+export const fetchEndpointSchema = flag => async (dispatch) => {
     dispatch(getEndpointSchemaRequest());
 
-  // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
-  //   .then((response) => {
-  //     dispatch(getApiSchemaSuccess(response.data));
-  //   })
-  //   .catch((e) => {
-  //     console.log('FETCH_API_SCHEMA_ERROR', 'Infernal server error', e);
-  //   });
+    try {
+        // Get all server names
+        const response = await client.get('/oauth/servers');
+        const serverNames = await response.data.reduce((acc, item) => {
+            acc.push(item.name);
 
-    dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
-    flag && dispatch(setInitialEndpoint(endpointSchema));
+            return acc;
+        }, []);
+        const pluginsFromApiSchemaWithUpdatedOAuthPlugin = await endpointSchema.plugins.map(item => {
+            if (item.name === 'oauth2') {
+                const lens = R.lensPath(['config', 'server_name']);
+
+                return R.set(lens, serverNames, item);
+            }
+
+            return item;
+        });
+        const lens = R.lensPath(['plugins']);
+        const endpointSchemaWithUpdatedOAuthPlugin = R.set(
+            lens,
+            pluginsFromApiSchemaWithUpdatedOAuthPlugin,
+            endpointSchema
+        );
+
+        flag && dispatch(setInitialEndpoint(endpointSchemaWithUpdatedOAuthPlugin));
+        dispatch(getEndpointSchemaSuccess(endpointSchemaWithUpdatedOAuthPlugin)); // @TODO: REMOVE when endpoint will be ready
+    } catch (error) {
+        console.log('FETCH_SERVER_NAMES_ERROR', error);
+    }
 };
 
 export const preparePlugins = api => api.plugins.map(plugin => {

@@ -8,6 +8,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
 import EditApiForm from '../EditPage/EditApiForm';
+import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -22,7 +23,7 @@ const propTypes = {
 };
 
 class NewApiItem extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.resetEndpoint();
 
         if (this.hasToBeCloned()) {
@@ -64,6 +65,8 @@ class NewApiItem extends Component {
     }
 
     renderForm = () => {
+        if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
+
         if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
             const r = this.props.api.plugins.map(item => item.name);
 
@@ -83,8 +86,11 @@ class NewApiItem extends Component {
         return (
             <NewApiForm
                 onSubmit={this.submit}
+                apiSchema={this.props.apiSchema}
+                initialValues={transformFormValues(this.props.apiSchema)}
                 excludePlugin={this.props.excludePlugin}
                 selectPlugin={this.props.selectPlugin}
+                selectedPlugins={this.props.selectedPlugins}
             />
         );
     }
