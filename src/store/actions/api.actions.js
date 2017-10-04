@@ -13,6 +13,7 @@ import {
     FILL_SELECTED_PLUGINS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    SET_DEFAULT_ENDPOINT,
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
@@ -250,7 +251,12 @@ export const fetchEndpoint = pathname => async dispatch => {
     }
 };
 
-export const fetchEndpointSchema = () => (dispatch) => {
+export const setInitialEndpoint = endpointSchema => ({
+    type: SET_DEFAULT_ENDPOINT,
+    payload: endpointSchema,
+});
+
+export const fetchEndpointSchema = flag => (dispatch) => {
     dispatch(getEndpointSchemaRequest());
 
   // return client.get(`apis${pathname}`) // @TODO: RESTORE when endpoint will be ready
@@ -262,6 +268,7 @@ export const fetchEndpointSchema = () => (dispatch) => {
   //   });
 
     dispatch(getEndpointSchemaSuccess(endpointSchema)); // @TODO: REMOVE when endpoint will be ready
+    flag && dispatch(setInitialEndpoint(endpointSchema));
 };
 
 export const preparePlugins = api => api.plugins.map(plugin => {

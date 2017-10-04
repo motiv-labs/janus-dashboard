@@ -26,12 +26,12 @@ class NewApiItem extends Component {
         this.props.resetEndpoint();
 
         if (this.hasToBeCloned()) {
-            this.props.fetchEndpointSchema();
+            this.props.fetchEndpointSchema(true);
             this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
             return;
         }
 
-        this.props.fetchEndpointSchema();
+        this.props.fetchEndpointSchema(true);
     }
 
     handleDelete = apiName => {
