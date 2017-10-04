@@ -10,6 +10,7 @@ import {
     FETCH_ENDPOINT_SCHEMA_SUCCESS,
     SAVE_ENDPOINT_START,
     SAVE_ENDPOINT_SUCCESS,
+    SET_DEFAULT_ENDPOINT,
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
@@ -48,6 +49,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 apiSchema: action.payload,
                 isFetching: false,
+            };
+        }
+        case SET_DEFAULT_ENDPOINT: {
+            return {
+                ...state,
+                api: action.payload,
             };
         }
         case FETCH_ENDPOINT_SUCCESS: {
