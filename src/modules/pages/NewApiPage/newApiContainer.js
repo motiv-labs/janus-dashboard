@@ -10,12 +10,14 @@ import {
     selectPlugin,
     willClone,
 } from '../../../store/actions';
+import transformFormValues from '../../../helpers/transformFormValues';
 
 import NewApiItem from './NewApiItem';
 
 const mapStateToProps = state => ({
     api: state.apiReducer.api,
     apiSchema: state.apiReducer.apiSchema,
+    initialValues: transformFormValues(state.apiReducer.api),
     selectedPlugins: state.apiReducer.selectedPlugins,
 });
 

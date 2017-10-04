@@ -25,13 +25,11 @@ const b = block('j-api-form');
 const propTypes = {
     apiSchema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    initialValues: PropTypes.object,
+    initialValues: PropTypes.object.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 const NewApiForm = props => {
-    console.error('NEW API FORM', props);
-
     const {
         handleSubmit,
         initialValues,
@@ -41,7 +39,8 @@ const NewApiForm = props => {
         selectPlugin,
         selectedPlugins,
     } = props;
-    console.clear();
+    // console.clear();
+    console.error('NEW API FORM', props);
     console.error('PLUGINS', !!plugins);
 
     const parse = value => value && parseInt(value);
@@ -296,7 +295,7 @@ export default connect(
         const plugins = selector(state, 'plugins');
 
         return {
-            initialValues: transformFormValues(state.apiReducer.api),
+            // initialValues: transformFormValues(state.apiReducer.api),
             keepDirtyOnReinitialize: false,
             plugins,
         };
