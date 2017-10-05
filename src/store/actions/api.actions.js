@@ -347,7 +347,11 @@ export const preparePlugins = api => api.plugins.map(plugin => {
 });
 
 export const saveEndpoint = (pathname, api) => dispatch => {
-    dispatch(openConfirmationModal('save', () => confirmedSaveEndpoint(dispatch, pathname, api)));
+    dispatch(openConfirmationModal(
+        'save',
+        () => confirmedSaveEndpoint(dispatch, pathname, api),
+        api.name,
+    ));
 };
 
 export const updateEndpoint = (pathname, api) => dispatch => {

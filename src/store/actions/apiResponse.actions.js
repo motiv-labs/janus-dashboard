@@ -22,6 +22,7 @@ export const openConfirmationModal = (action, callback, apiName) => {
         switch (action) {
             case 'save': {
                 return {
+                    apiName,
                     message: 'Are you sure you want to save?',
                     status: 'save',
                     title: 'Save',
