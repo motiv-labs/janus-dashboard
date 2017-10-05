@@ -3,4 +3,18 @@
 .j-input {
     width: 100%;
     height: $hf-height-input;
+
+    &--error{
+        color: red !important;
+        border-color: red !important;
+        position: relative;
+
+        & + .warning {
+            display: block;
+        }
+    }
+}
+
+.warning {
+    display: none;
 }

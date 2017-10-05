@@ -5,6 +5,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
+import validation from '../../../helpers/validation';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -55,6 +56,7 @@ const ApiForm = props => {
         label: item,
         value: item,
     }));
+    const checkError = p => value => value && !validation(p)(value) ? 'Error' : undefined;
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -113,18 +115,23 @@ const ApiForm = props => {
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
+                                validate={checkError('/')}
                             />
                             <Hint>The public url that is exposed by the Gateway</Hint>
                         </Row>
-                        <Row col>
-                            <Label>Upstream URL</Label>
+                        <div className="j-col">
+                            <div className="j-col__item">
+                                <Label>Upstream URL</Label>
+                            </div>
                             <Field
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
+                                validate={checkError('http://')}
                             />
+                            <span className="warning">Johnny</span>
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
-                        </Row>
+                        </div>
                     </Row>
                     <Row className={b('row')()} fullwidth>
                         <Row col>
