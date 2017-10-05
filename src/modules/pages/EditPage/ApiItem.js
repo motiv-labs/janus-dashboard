@@ -68,12 +68,9 @@ class ApiItem extends Component {
 
             return res.length > 0 ? res[0] : item;
         });
-
         const lens = R.lensPath(['plugins']);
         // substitude the plugin.config.limit
         const updatedApi = R.set(lens, updatedPlugins, api);
-
-        const r = this.props.api.plugins.map(item => item.name);
 
         return (
             <EditApiForm
