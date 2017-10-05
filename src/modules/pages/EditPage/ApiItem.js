@@ -56,9 +56,7 @@ class ApiItem extends Component {
     };
 
     render() {
-        if (
-            R.isEmpty(this.props.api)
-        ) return <Preloader />;
+        if (R.isEmpty(this.props.api)) return <Preloader />;
 
         const api = this.props.api;
         const apiPlugins = api.plugins;

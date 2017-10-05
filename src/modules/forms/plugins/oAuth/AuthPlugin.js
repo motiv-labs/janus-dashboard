@@ -23,7 +23,6 @@ const propTypes = {
 
 const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginName }) => {
     const b = block(className);
-    // console.warn('apiSchema: ', apiSchema.plugins);
     const defaultPlugins = apiSchema.plugins;
     const predicate = R.propEq('name', pluginName);
     const defaultPlugin = R.filter(predicate, defaultPlugins)[0];
@@ -49,12 +48,6 @@ const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginNam
             <Row className={b('row')()} fullwidth>
                 <Row col>
                     <Label>Server Name</Label>
-                    {/*<Field
-                        name={`${name}.config.server_name`}
-                        type="text"
-                        placeholder={SETUP.placeholders.auth.server_name}
-                        component={Input}
-                    />*/}
                     <Field
                         name={`${name}.config.server_name`}
                         type="text"

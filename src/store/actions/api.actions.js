@@ -207,14 +207,6 @@ export const fetchEndpoint = pathname => async dispatch => {
 
                 return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
             }
-            if (plugin.name === 'oauth2') {
-                console.error('plugiomns', plugin);
-                console.warn('endpointSchema', endpointSchema);
-
-                // const serverName = plugin.config.server_name,
-                // const lens = R.lensPath(['config', 'policy', 'selected']);
-
-            }
             if (plugin.name === 'request_transformer') {
                 const transformHeadersToArray = obj => R.toPairs(obj)
                     .reduce((acc, item) => {
