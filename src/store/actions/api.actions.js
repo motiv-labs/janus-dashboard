@@ -207,6 +207,14 @@ export const fetchEndpoint = pathname => async dispatch => {
 
                 return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
             }
+            if (plugin.name === 'oauth2') {
+                console.error('plugiomns', plugin);
+                console.warn('endpointSchema', endpointSchema);
+
+                // const serverName = plugin.config.server_name,
+                // const lens = R.lensPath(['config', 'policy', 'selected']);
+
+            }
             if (plugin.name === 'request_transformer') {
                 const transformHeadersToArray = obj => R.toPairs(obj)
                     .reduce((acc, item) => {
@@ -269,7 +277,7 @@ export const fetchEndpointSchema = flag => async (dispatch) => {
         }, []);
         const pluginsFromApiSchemaWithUpdatedOAuthPlugin = await endpointSchema.plugins.map(item => {
             if (item.name === 'oauth2') {
-                const lens = R.lensPath(['config', 'server_name']);
+                const lens = R.lensPath(['config', 'server_names']);
 
                 return R.set(lens, serverNames, item);
             }
@@ -302,6 +310,9 @@ export const preparePlugins = api => api.plugins.map(plugin => {
         const updatedPlugin = R.set(lens, concatenation, plugin);
 
         return R.set(lens2, policy.selected, updatedPlugin);
+    }
+    if (plugin.name === 'oauth2') {
+        return R.dissocPath(['config', 'server_names'], plugin);
     }
     if (plugin.name === 'request_transformer') {
         // get all options names
