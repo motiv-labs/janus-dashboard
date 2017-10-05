@@ -2,9 +2,7 @@ import React from 'react';
 
 import './Input.css';
 
-const Input = (props) => {
-    console.error('PROPS', props);
-
+const Input = props => {
     const { type, input, placeholder, disabled, meta: { error, touched }, warning } = props;
 
     return (

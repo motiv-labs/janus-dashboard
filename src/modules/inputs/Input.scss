@@ -4,17 +4,20 @@
     width: 100%;
     height: $hf-height-input;
 
+    &__warning {
+        display: none;
+        color: $hf-color-red !important;
+        font-size: $hf-font-size-base;
+        line-height: $hf-line-height;
+    }
+
     &--error{
-        color: red !important;
-        border-color: red !important;
+        color: $hf-color-red !important;
+        border-color: $hf-color-red !important;
         position: relative;
 
-        & + .warning {
+        & + .j-input__warning {
             display: block;
         }
     }
-}
-
-.warning {
-    display: none;
 }

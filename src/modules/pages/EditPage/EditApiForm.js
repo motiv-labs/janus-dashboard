@@ -7,6 +7,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 import transformFormValues from '../../../helpers/transformFormValues';
+import validation from '../../../helpers/validation';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -66,6 +67,7 @@ const ApiForm = (props) => {
         label: item,
         value: item,
     }));
+    const checkOnPattern = pattern => value => value && !validation(pattern)(value) ? true : undefined;
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -145,25 +147,32 @@ const ApiForm = (props) => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
                     <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>Listen Path</Label>
+                        <div className="j-col">
+                            <div className="j-col__item">
+                                <Label>Listen Path</Label>
+                            </div>
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
+                                validate={checkOnPattern('/')}
                             />
+                            <span className="j-input__warning">Listen path should start from '/'</span>
                             <Hint>The public url that is exposed by the Gateway</Hint>
-                        </Row>
-                        <Row col>
-                            <Label>Upstream URL</Label>
+                        </div>
+                        <div className="j-col">
+                            <div className="j-col__item">
+                                <Label>Upstream URL</Label>
+                            </div>
                             <Field
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
+                                validate={checkOnPattern(['http://', 'https://'])}
                             />
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
-                        </Row>
+                        </div>
                     </Row>
                     <Row className={b('row')()} fullwidth>
                         <Row col>

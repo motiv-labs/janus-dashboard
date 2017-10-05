@@ -56,7 +56,7 @@ const ApiForm = props => {
         label: item,
         value: item,
     }));
-    const checkError = p => value => value && !validation(p)(value) ? 'Error' : undefined;
+    const checkOnPattern = pattern => value => value && !validation(pattern)(value) ? true : undefined;
 
     return (
         <form className={b} onSubmit={handleSubmit}>
@@ -108,17 +108,20 @@ const ApiForm = props => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
                     <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>Listen Path</Label>
+                        <div className="j-col">
+                            <div className="j-col__item">
+                                <Label>Listen Path</Label>
+                            </div>
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
-                                validate={checkError('/')}
+                                validate={checkOnPattern('/')}
                             />
+                            <span className="j-input__warning">Listen path should start from '/'</span>
                             <Hint>The public url that is exposed by the Gateway</Hint>
-                        </Row>
+                        </div>
                         <div className="j-col">
                             <div className="j-col__item">
                                 <Label>Upstream URL</Label>
@@ -127,9 +130,9 @@ const ApiForm = props => {
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
-                                validate={checkError('http://')}
+                                validate={checkOnPattern(['http://', 'https://'])}
                             />
-                            <span className="warning">Johnny</span>
+                            <span className="j-input__warning">Upstream url should start as url ('http://' or 'https://')</span>
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
                         </div>
                     </Row>
