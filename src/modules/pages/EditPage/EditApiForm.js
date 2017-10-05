@@ -23,6 +23,7 @@ import Icon from '../../Icon/Icon';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 const b = block('j-api-form');
+const col = block('j-col');
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -147,8 +148,8 @@ const ApiForm = (props) => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
                     <Row className={b('row')()} fullwidth>
-                        <div className="j-col">
-                            <div className="j-col__item">
+                        <div className={col()}>
+                            <div className={col('item')}>
                                 <Label>Listen Path</Label>
                             </div>
                             <Field
@@ -161,8 +162,8 @@ const ApiForm = (props) => {
                             <span className="j-input__warning">Listen path should start from '/'</span>
                             <Hint>The public url that is exposed by the Gateway</Hint>
                         </div>
-                        <div className="j-col">
-                            <div className="j-col__item">
+                        <div className={col()}>
+                            <div className={col('item')}>
                                 <Label>Upstream URL</Label>
                             </div>
                             <Field
