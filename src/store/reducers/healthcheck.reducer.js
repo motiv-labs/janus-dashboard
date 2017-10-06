@@ -13,7 +13,6 @@ import {
 
 const initialState = {
     status: null,
-    // statusText: '',
     healthcheckList: [],
     currentPageIndex: 0,
     isFetching: false,
