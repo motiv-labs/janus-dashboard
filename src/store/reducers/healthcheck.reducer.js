@@ -1,3 +1,4 @@
+import R from 'ramda';
 import {
     CLEAR_HEALTHCHECK_DETAILS,
     FETCH_HEALTHCHECK_LIST_START,
@@ -19,6 +20,18 @@ const initialState = {
 
 const checkStatus = status => status === 'Available';
 
+const convertToList = obj => {
+    const convert = item => ({
+        name: item[0],
+        description: item[1],
+    });
+
+    return R.compose(
+        R.map(convert),
+        R.toPairs
+    )(obj);
+};
+
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_HEALTHCHECK_LIST_START:
@@ -34,7 +47,7 @@ export default function reducer(state = initialState, action) {
                 status: checkStatus(action.payload.status),
                 statusName: action.payload.status,
                 // statusText: action.payload.text,
-                healthcheckList: action.payload.failures,
+                healthcheckList: convertToList(action.payload.failures),
                 isFetching: false,
             };
         }

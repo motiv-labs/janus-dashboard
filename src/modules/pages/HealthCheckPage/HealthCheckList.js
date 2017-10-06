@@ -57,8 +57,8 @@ class HealthCheckList extends PureComponent {
                         return (
                             <div className={bItem()} key={item.name}>
                                 <div className={bItem('name')}>{item.name}</div>
-                                <div className={bItem('message')}>{item.message}</div>
-                                <div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>
+                                <div className={bItem('message')}>{item.description}</div>
+                                {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
                                 <Link to={`/${item.name}`}>
                                     <Icon type="edit" />
                                 </Link>
@@ -67,23 +67,24 @@ class HealthCheckList extends PureComponent {
                     })
                 }
 
-                <HealthCheckModal
+                {/*<HealthCheckModal
                     className={b('modal')()}
                     isOpen={!R.isEmpty(problemToDisplay)}
                     closeModal={clearHealthCheckDetails}
                     message={problemToDisplay.status}
                     statusText={problemToDisplay.name}
                     problems={problemToDisplay.list}
-                />
+                />*/}
             </div>
         );
     }
 
     render() {
+        console.error('PROPS', this.props);
         return (
             <PaginatedList
                 list={this.props.healthcheckList}
-                itemsPerPage={3}
+                itemsPerPage={10}
                 currentPageIndex={this.props.currentPageIndex}
                 changePageIndex={this.props.setCurrentPageIndex}
                 maximumVisiblePaginators={3}
