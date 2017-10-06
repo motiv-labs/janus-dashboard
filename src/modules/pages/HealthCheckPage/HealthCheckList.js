@@ -15,6 +15,7 @@ import './HealthCheckList.css';
 const b = block('j-healthcheck');
 const bList = block(b('list')());
 const bItem = block(b('list-item')());
+const table = block('j-table');
 
 const propTypes = {
     clearHealthCheckDetails: PropTypes.func.isRequired,
@@ -34,12 +35,51 @@ class HealthCheckList extends PureComponent {
         this.props.fetchHealthCheckItem(name);
     }
 
-    renderHealthcheckInfo = list => {
+    renderRows = list => list.map(item => (
+        <div className={bItem()} key={item.name}>
+            <div className={bItem('name')}>{item.name}</div>
+            <div className={bItem('message')}>{item.description}</div>
+            {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
+            <Link to={`/${item.name}`}>
+                <Icon type="edit" />
+            </Link>
+        </div>
+    ));
+
+    renderTable = list => {
         const {
             clearHealthCheckDetails,
             problemToDisplay,
             status,
             statusName,
+        } = this.props;
+
+        return (
+            <div className={table()}>
+                <div className={table('head')}>
+                    <div className={table('row')}>
+                        <div
+                            className={table('th')}
+                        >
+                            <div>Api Name</div>
+                        </div>
+                        <div className={table('th')}>Description</div>
+                        <div className={table('th')} />
+                    </div>
+                </div>
+                <div className={table('tbody')}>
+                    { this.renderRows(list) }
+                </div>
+            </div>
+        );
+    }
+
+    render() {
+        const {
+            currentPageIndex,
+            healthcheckList,
+            setCurrentPageIndex,
+            status,
         } = this.props;
 
         if (status) {
@@ -51,44 +91,13 @@ class HealthCheckList extends PureComponent {
         }
 
         return (
-            <div className={bList()}>
-                {
-                    list.map(item => {
-                        return (
-                            <div className={bItem()} key={item.name}>
-                                <div className={bItem('name')}>{item.name}</div>
-                                <div className={bItem('message')}>{item.description}</div>
-                                {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
-                                <Link to={`/${item.name}`}>
-                                    <Icon type="edit" />
-                                </Link>
-                            </div>
-                        );
-                    })
-                }
-
-                {/*<HealthCheckModal
-                    className={b('modal')()}
-                    isOpen={!R.isEmpty(problemToDisplay)}
-                    closeModal={clearHealthCheckDetails}
-                    message={problemToDisplay.status}
-                    statusText={problemToDisplay.name}
-                    problems={problemToDisplay.list}
-                />*/}
-            </div>
-        );
-    }
-
-    render() {
-        console.error('PROPS', this.props);
-        return (
             <PaginatedList
-                list={this.props.healthcheckList}
+                list={healthcheckList}
                 itemsPerPage={10}
-                currentPageIndex={this.props.currentPageIndex}
-                changePageIndex={this.props.setCurrentPageIndex}
+                currentPageIndex={currentPageIndex}
+                changePageIndex={setCurrentPageIndex}
                 maximumVisiblePaginators={3}
-                renderChildren={this.renderHealthcheckInfo}
+                renderChildren={this.renderTable}
             />
         );
     }
