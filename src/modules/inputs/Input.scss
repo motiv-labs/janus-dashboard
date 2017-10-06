@@ -3,4 +3,21 @@
 .j-input {
     width: 100%;
     height: $hf-height-input;
+
+    &__warning {
+        display: none;
+        color: $hf-color-red !important;
+        font-size: $hf-font-size-base;
+        line-height: $hf-line-height;
+    }
+
+    &--error{
+        color: $hf-color-red !important;
+        border-color: $hf-color-red !important;
+        position: relative;
+
+        & + .j-input__warning {
+            display: block;
+        }
+    }
 }
