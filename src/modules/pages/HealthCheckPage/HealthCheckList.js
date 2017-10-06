@@ -23,7 +23,9 @@ const propTypes = {
     fetchHealthCheckList: PropTypes.func.isRequired,
     fetchHealthCheckItem: PropTypes.func.isRequired,
     healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    setAscendingFilter: PropTypes.func.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
+    setSortingFilter: PropTypes.func.isRequired,
 };
 
 class HealthCheckList extends PureComponent {
@@ -46,6 +48,11 @@ class HealthCheckList extends PureComponent {
         </div>
     ));
 
+    sortList = filter => {
+        this.props.setSortingFilter(filter);
+        this.props.setAscendingFilter();
+    }
+
     renderTable = list => {
         const {
             clearHealthCheckDetails,
@@ -59,9 +66,11 @@ class HealthCheckList extends PureComponent {
                 <div className={table('head')}>
                     <div className={table('row')}>
                         <div
-                            className={table('th')}
+                            className={table('th').mix('ascending-container')}
+                            onClick={() => this.sortList('name')}
                         >
                             <div>Api Name</div>
+                            <div className="ascending-icon"></div>
                         </div>
                         <div className={table('th')}>Description</div>
                         <div className={table('th')} />

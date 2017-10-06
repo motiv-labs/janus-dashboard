@@ -4,7 +4,9 @@ import {
     clearHealthCheckDetails,
     fetchHealthCheckList,
     fetchHealthCheckItem,
+    setAscendingFilter,
     setCurrentPageIndex,
+    setSortingFilter,
 } from '../../../store/actions';
 import { filteredHealthcheckList } from '../../../store/selectors';
 
@@ -20,5 +22,12 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { clearHealthCheckDetails, fetchHealthCheckList, fetchHealthCheckItem, setCurrentPageIndex },
+    {
+        clearHealthCheckDetails,
+        fetchHealthCheckList,
+        fetchHealthCheckItem,
+        setAscendingFilter,
+        setCurrentPageIndex,
+        setSortingFilter,
+    },
 )(HealthCheckList);

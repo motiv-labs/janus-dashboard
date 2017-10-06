@@ -7,6 +7,8 @@ import {
     FETCH_HEALTHCHECK_SUCCESS,
     DISCARD_PAGINATION,
     SET_PAGINATION_PAGE,
+    SET_SORTING_FILTER,
+    SET_ASCEND_FILTER,
 } from '../constants';
 
 const initialState = {
@@ -16,6 +18,8 @@ const initialState = {
     currentPageIndex: 0,
     isFetching: false,
     problemEndpoint: {},
+    sortingFilter: '',
+    sortAscend: true,
 };
 
 const checkStatus = status => status === 'Available';
@@ -73,6 +77,18 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 currentPageIndex: action.payload,
+            };
+        }
+        case SET_SORTING_FILTER: {
+            return {
+                ...state,
+                sortingFilter: action.payload,
+            };
+        }
+        case SET_ASCEND_FILTER: {
+            return {
+                ...state,
+                sortAscend: !state.sortAscend,
             };
         }
         default:

@@ -8,6 +8,8 @@ import {
     FETCH_HEALTHCHECK_SUCCESS,
     DISCARD_PAGINATION,
     SET_PAGINATION_PAGE,
+    SET_SORTING_FILTER,
+    SET_ASCEND_FILTER,
 } from '../constants';
 import {
     openResponseModal,
@@ -59,62 +61,23 @@ export const setCurrentPageIndex = index => ({
     payload: index,
 });
 
+export const setSortingFilter = filter => ({
+    type: SET_SORTING_FILTER,
+    payload: filter,
+});
+
+export const setAscendingFilter = () => ({
+    type: SET_ASCEND_FILTER,
+});
+
 export const fetchHealthCheckList = () => async (dispatch) => {
     dispatch(getHealthcheckListRequest());
 
     try {
         const response = await client.get('status');
-        console.error('Health', response.data);
         const { failures, status } = response.data;
-        dispatch(getHealthcheckListSuccess(status, failures));
-        /*
-        if (response.status === 200) {
-            dispatch(getHealthcheckListSuccess('Available', true, []));
-        } else {
-            dispatch(getHealthcheckListSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
-        }
-        */
 
-        /**
-         * @TODO: remove when this mock won't be needed anymore
-         */
-        // const mockResponse = {
-        //     'request': {
-        //         'method': 'GET',
-        //         'urlPath': '/status-partial'
-        //     },
-        //     'response': {
-        //         'status': 400,
-        //         'headers': {
-        //             'Content-Type': 'application/json; charset=utf-8'
-        //         },
-        //         'jsonBody': {
-        //             'status': 'Partially Available',
-        //             'timestamp': '2017-07-03T14:48:14.563630521Z',
-        //             'failures': {
-        //                 'rabbitmq': 'Failed during RabbitMQ health check',
-        //                 'rabbitmq-2': 'Failed during RabbitMQ health check',
-        //                 'rabbitmq-3': 'Failed during RabbitMQ health check',
-        //                 'rabbitmq-4': 'Failed during RabbitMQ health check',
-        //                 'someAnotherEndpoint': 'Failed during someAnotherService health check',
-        //                 'example': 'Failed during yetAnotherEndpoint health check',
-        //                 'example-1': 'Failed during yetAnotherEndpoint health check',
-        //                 'example-2': 'Failed during yetAnotherEndpoint health check',
-        //                 'example-3': 'Failed during yetAnotherEndpoint health check',
-        //                 'example-4': 'Failed during yetAnotherEndpoint health check',
-        //                 'lastButNotLeastEndpoint': 'Failed during lastButNotLeastEndpoint health check'
-        //             },
-        //             'system': {
-        //                 'version': 'go1.8.3',
-        //                 'goroutines_count': 15,
-        //                 'total_alloc_bytes': 46186776,
-        //                 'heap_objects_count': 44186,
-        //                 'alloc_bytes': 5733552
-        //             }
-        //         }
-        //     }
-        // };
-        // const { response } = mockResponse;
+        dispatch(getHealthcheckListSuccess(status, failures));
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,
