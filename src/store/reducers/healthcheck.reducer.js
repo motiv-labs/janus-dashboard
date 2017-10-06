@@ -10,12 +10,14 @@ import {
 
 const initialState = {
     status: null,
-    statusText: '',
+    // statusText: '',
     healthcheckList: [],
     currentPageIndex: 0,
     isFetching: false,
     problemEndpoint: {},
 };
+
+const checkStatus = status => status === 'Available';
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -29,9 +31,10 @@ export default function reducer(state = initialState, action) {
         case FETCH_HEALTHCHECK_LIST_SUCCESS: {
             return {
                 ...state,
-                status: action.payload.status,
-                statusText: action.payload.text,
-                healthcheckList: action.payload.list,
+                status: checkStatus(action.payload.status),
+                statusName: action.payload.status,
+                // statusText: action.payload.text,
+                healthcheckList: action.payload.failures,
                 isFetching: false,
             };
         }

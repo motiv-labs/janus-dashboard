@@ -32,9 +32,9 @@ export const getHealthcheckListRequest = () => ({
     type: FETCH_HEALTHCHECK_LIST_START,
 });
 
-export const getHealthcheckListSuccess = (text, status, list) => ({
+export const getHealthcheckListSuccess = (status, failures) => ({
     type: FETCH_HEALTHCHECK_LIST_SUCCESS,
-    payload: { text, status, list },
+    payload: { status, failures },
 });
 
 export const getHealthcheckRequest = () => ({
@@ -64,6 +64,17 @@ export const fetchHealthCheckList = () => async (dispatch) => {
 
     try {
         const response = await client.get('status');
+        console.error('Health', response.data);
+        const { failures, status } = response.data;
+        dispatch(getHealthcheckListSuccess(status, failures));
+        /*
+        if (response.status === 200) {
+            dispatch(getHealthcheckListSuccess('Available', true, []));
+        } else {
+            dispatch(getHealthcheckListSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
+        }
+        */
+
         /**
          * @TODO: remove when this mock won't be needed anymore
          */
@@ -104,12 +115,6 @@ export const fetchHealthCheckList = () => async (dispatch) => {
         //     }
         // };
         // const { response } = mockResponse;
-
-        if (response.status === 200) {
-            dispatch(getHealthcheckListSuccess('Available', true, []));
-        } else {
-            dispatch(getHealthcheckListSuccess(response.jsonBody.status, false, objectToArray(response.jsonBody.failures)));
-        }
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,

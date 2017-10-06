@@ -39,6 +39,7 @@ class HealthCheckList extends PureComponent {
             clearHealthCheckDetails,
             problemToDisplay,
             status,
+            statusName,
         } = this.props;
 
         if (status) {

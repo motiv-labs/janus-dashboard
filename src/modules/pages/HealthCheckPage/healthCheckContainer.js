@@ -13,7 +13,8 @@ import HealthCheckList from './HealthCheckList';
 const mapStateToProps = state => ({
     healthcheckList: filteredHealthcheckList(state),
     status: state.healthcheckReducer.status,
-    problemToDisplay: state.healthcheckReducer.problemEndpoint,
+    statusName: state.healthcheckReducer.statusName,
+    // problemToDisplay: state.healthcheckReducer.problemEndpoint,
     currentPageIndex: state.healthcheckReducer.currentPageIndex,
 });
 
