@@ -53,35 +53,26 @@ class HealthCheckList extends PureComponent {
         this.props.setAscendingFilter();
     }
 
-    renderTable = list => {
-        const {
-            clearHealthCheckDetails,
-            problemToDisplay,
-            status,
-            statusName,
-        } = this.props;
-
-        return (
-            <div className={table()}>
-                <div className={table('head')}>
-                    <div className={table('row')}>
-                        <div
-                            className={table('th').mix('ascending-container')}
-                            onClick={() => this.sortList('name')}
-                        >
-                            <div>Api Name</div>
-                            <div className="ascending-icon"></div>
-                        </div>
-                        <div className={table('th')}>Description</div>
-                        <div className={table('th')} />
+    renderTable = list => (
+        <div className={table()}>
+            <div className={table('head')}>
+                <div className={table('row')}>
+                    <div
+                        className={table('th').mix('ascending-container')}
+                        onClick={() => this.sortList('name')}
+                    >
+                        <div>Api Name</div>
+                        <div className="ascending-icon"></div>
                     </div>
-                </div>
-                <div className={table('tbody')}>
-                    { this.renderRows(list) }
+                    <div className={table('th')}>Description</div>
+                    <div className={table('th')} />
                 </div>
             </div>
-        );
-    }
+            <div className={table('tbody')}>
+                { this.renderRows(list) }
+            </div>
+        </div>
+    );
 
     render() {
         const {
