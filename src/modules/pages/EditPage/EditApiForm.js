@@ -337,25 +337,8 @@ const form = reduxForm({
 export default connect(
     state => {
         const plugins = selector(state, 'plugins');
-        const api = state.apiReducer.api;
-        const apiPlugins = api.plugins;
-        const defaultPlugins = state.apiReducer.apiSchema.plugins;
-        const updatedPlugins = defaultPlugins.map(item => {
-            const res = apiPlugins.filter(pl => pl.name === item.name);
-
-            return res.length > 0 ? res[0] : item;
-        });
-
-        const lens = R.lensPath(['plugins']);
-        // substitude the plugin.config.limit
-        const updatedApi = R.set(lens, updatedPlugins, api);
 
         return {
-            initialValues: transformFormValues(updatedApi),
-            // FIXME name of the plugin is discarded while saving
-            apiSchema: state.apiReducer.apiSchema,
-            response: state.apiReducer.response,
-            selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

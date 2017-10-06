@@ -56,24 +56,34 @@ class ApiItem extends Component {
     };
 
     render() {
-        if (!R.isEmpty(this.props.api)) {
-            const r = this.props.api.plugins.map(item => item.name);
+        if (R.isEmpty(this.props.api)) return <Preloader />;
 
-            return (
-                <EditApiForm
-                    api={this.props.api}
-                    handleDelete={this.handleDelete}
-                    excludePlugin={this.props.excludePlugin}
-                    selectPlugin={this.props.selectPlugin}
-                    selectedPlugins={r}
-                    disabled={true}
-                    onSubmit={this.submit}
-                    location={this.props.location}
-                />
-            );
-        }
+        const api = this.props.api;
+        const apiPlugins = api.plugins;
+        const defaultPlugins = this.props.apiSchema.plugins;
+        const updatedPlugins = defaultPlugins.map(item => {
+            const res = apiPlugins.filter(pl => pl.name === item.name);
 
-        return <Preloader />;
+            return res.length > 0 ? res[0] : item;
+        });
+        const lens = R.lensPath(['plugins']);
+        // substitude the plugin.config.limit
+        const updatedApi = R.set(lens, updatedPlugins, api);
+
+        return (
+            <EditApiForm
+                api={this.props.api}
+                apiSchema={this.props.apiSchema}
+                handleDelete={this.handleDelete}
+                excludePlugin={this.props.excludePlugin}
+                initialValues={transformFormValues(updatedApi)}
+                selectPlugin={this.props.selectPlugin}
+                selectedPlugins={this.props.selectedPlugins}
+                disabled={true}
+                onSubmit={this.submit}
+                location={this.props.location}
+            />
+        );
     }
 }
 

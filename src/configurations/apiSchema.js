@@ -57,7 +57,8 @@ const schema = {
             label: 'oAuth',
             enabled: false,
             config: {
-                server_name: 'local',
+                server_name: '',
+                server_names: [],
             },
         },
         {
