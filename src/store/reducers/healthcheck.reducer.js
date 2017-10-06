@@ -1,3 +1,4 @@
+import R from 'ramda';
 import {
     CLEAR_HEALTHCHECK_DETAILS,
     FETCH_HEALTHCHECK_LIST_START,
@@ -6,15 +7,32 @@ import {
     FETCH_HEALTHCHECK_SUCCESS,
     DISCARD_PAGINATION,
     SET_PAGINATION_PAGE,
+    SET_SORTING_FILTER,
+    SET_ASCEND_FILTER,
 } from '../constants';
 
 const initialState = {
     status: null,
-    statusText: '',
     healthcheckList: [],
     currentPageIndex: 0,
     isFetching: false,
     problemEndpoint: {},
+    sortingFilter: '',
+    sortAscend: true,
+};
+
+const checkStatus = status => status === 'Available';
+
+const convertToList = obj => {
+    const convert = item => ({
+        name: item[0],
+        description: item[1],
+    });
+
+    return R.compose(
+        R.map(convert),
+        R.toPairs
+    )(obj);
 };
 
 export default function reducer(state = initialState, action) {
@@ -29,9 +47,9 @@ export default function reducer(state = initialState, action) {
         case FETCH_HEALTHCHECK_LIST_SUCCESS: {
             return {
                 ...state,
-                status: action.payload.status,
-                statusText: action.payload.text,
-                healthcheckList: action.payload.list,
+                status: checkStatus(action.payload.status),
+                statusName: action.payload.status,
+                healthcheckList: convertToList(action.payload.failures),
                 isFetching: false,
             };
         }
@@ -57,6 +75,18 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 currentPageIndex: action.payload,
+            };
+        }
+        case SET_SORTING_FILTER: {
+            return {
+                ...state,
+                sortingFilter: action.payload,
+            };
+        }
+        case SET_ASCEND_FILTER: {
+            return {
+                ...state,
+                sortAscend: !state.sortAscend,
             };
         }
         default:
