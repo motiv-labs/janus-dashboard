@@ -262,20 +262,27 @@ export const fetchEndpointSchema = flag => async (dispatch) => {
     try {
         // Get all server names
         const response = await client.get('/oauth/servers');
-        const serverNames = await response.data.reduce((acc, item) => {
+        const serverNames = response.data.reduce((acc, item) => {
             acc.push(item.name);
 
             return acc;
         }, []);
-        const pluginsFromApiSchemaWithUpdatedOAuthPlugin = await endpointSchema.plugins.map(item => {
-            if (item.name === 'oauth2') {
-                const lens = R.lensPath(['config', 'server_names']);
+        const lensOAuth = R.lensPath(['config', 'server_names']);
+        const updatePlugin = (lens, serverNames, list) => pluginName => {
+            const comparator = string => el => el.name === string;
+            const getPluginIndex = comparator => list => list.findIndex(comparator);
 
-                return R.set(lens, serverNames, item);
-            }
-
-            return item;
-        });
+            return R.adjust(
+                R.set(lens, serverNames),
+                getPluginIndex(comparator(pluginName))(list),
+                list,
+            );
+        };
+        const pluginsFromApiSchemaWithUpdatedOAuthPlugin = updatePlugin(
+            lensOAuth,
+            serverNames,
+            endpointSchema.plugins,
+        )('oauth2');
         const lens = R.lensPath(['plugins']);
         const endpointSchemaWithUpdatedOAuthPlugin = R.set(
             lens,
