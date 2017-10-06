@@ -49,7 +49,6 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 status: checkStatus(action.payload.status),
                 statusName: action.payload.status,
-                // statusText: action.payload.text,
                 healthcheckList: convertToList(action.payload.failures),
                 isFetching: false,
             };
