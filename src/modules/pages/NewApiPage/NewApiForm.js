@@ -5,7 +5,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
-import validation from '../../../helpers/validation';
+import checkOnPattern from '../../../helpers/pattern-check';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -57,7 +57,6 @@ const ApiForm = props => {
         label: item,
         value: item,
     }));
-    const checkOnPattern = pattern => value => value && !validation(pattern)(value) ? true : undefined;
 
     return (
         <form className={b} onSubmit={handleSubmit}>
