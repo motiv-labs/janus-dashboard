@@ -81,7 +81,6 @@ describe('apiReducer', () => {
         const result = apiReducer(initialState, { type: FETCH_ENDPOINT_SCHEMA_SUCCESS, payload });
 
         expect(result.isFetching).toEqual(false);
-        expect(result.api).toEqual(payload);
         expect(result.apiSchema).toEqual(payload);
     });
 
