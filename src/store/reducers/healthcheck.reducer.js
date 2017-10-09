@@ -21,7 +21,7 @@ export const initialState = {
     sortAscend: true,
 };
 
-const checkStatus = status => status === 'Available';
+export const checkStatus = status => status === 'Available';
 
 const convertToList = obj => {
     const convert = item => ({

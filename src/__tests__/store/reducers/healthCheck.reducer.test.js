@@ -9,6 +9,8 @@ import {
     SET_PAGINATION_PAGE,
 } from '../../../store/constants';
 
+import { checkStatus } from '../../../store/reducers/healthcheck.reducer';
+
 const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
 
 describe('healthCheckRducer', () => {
@@ -32,20 +34,24 @@ describe('healthCheckRducer', () => {
 
     it('returns the health check list info', () => {
         const status = getRandomString();
-        const statusText = getRandomString();
-        const healthcheckList = [];
+        const failures = [];
         const isFetching = false;
         const payload = {
-            status,
-            text: statusText,
-            list: healthcheckList,
+            failures,
             isFetching,
+            status,
         };
-        const result = healthCheckRducer(initialState, { type: FETCH_HEALTHCHECK_LIST_SUCCESS, payload });
+        const result = healthCheckRducer(
+            initialState,
+            {
+                type: FETCH_HEALTHCHECK_LIST_SUCCESS,
+                payload,
+            }
+        );
 
-        expect(result.status).toEqual(status);
-        expect(result.statusText).toEqual(statusText);
-        expect(result.healthcheckList).toEqual(healthcheckList);
+        expect(result.status).toEqual(checkStatus(status));
+        expect(result.statusName).toEqual(status);
+        expect(result.healthcheckList).toEqual(failures);
         expect(result.isFetching).toBe(isFetching);
     });
 
