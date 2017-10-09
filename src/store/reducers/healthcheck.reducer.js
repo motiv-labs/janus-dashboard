@@ -11,7 +11,7 @@ import {
     SET_ASCEND_FILTER,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     status: null,
     healthcheckList: [],
     currentPageIndex: 0,
@@ -21,7 +21,7 @@ const initialState = {
     sortAscend: true,
 };
 
-const checkStatus = status => status === 'Available';
+export const checkStatus = status => status === 'Available';
 
 const convertToList = obj => {
     const convert = item => ({

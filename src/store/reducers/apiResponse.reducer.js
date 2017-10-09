@@ -22,7 +22,7 @@ const toasterState = {
     message: '',
 };
 
-const initialState = {
+export const initialState = {
     isOpen: false,
     needConfirm: false,
     status: null,

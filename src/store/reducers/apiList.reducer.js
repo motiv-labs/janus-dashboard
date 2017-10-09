@@ -8,7 +8,7 @@ import {
     SET_ASCEND_FILTER,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     apiList: [],
     currentPageIndex: 0,
     isFetching: false,
