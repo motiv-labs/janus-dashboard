@@ -15,6 +15,8 @@ import {
     WILL_CLONE,
 } from '../../../store/constants/api.constants';
 
+import touchedReducerProps from '../../../helpers/touchedReducerProperties';
+
 describe('apiReducer', () => {
     describe('Default', () => {
         const result = apiReducer(initialState, {});
@@ -24,7 +26,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(4);
+            expect(touchedReducerProps(result)).toBe(4);
         });
     });
 
@@ -36,7 +38,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(4);
+            expect(touchedReducerProps(result)).toBe(4);
         });
     });
 
@@ -49,7 +51,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -62,7 +64,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -75,7 +77,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -88,7 +90,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -101,7 +103,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -114,7 +116,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -138,7 +140,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(2);
+            expect(touchedReducerProps(result)).toBe(2);
         });
     });
 
@@ -154,7 +156,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -171,7 +173,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -201,7 +203,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(4);
+            expect(touchedReducerProps(result)).toBe(4);
         });
     });
 
@@ -230,7 +232,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(3);
+            expect(touchedReducerProps(result)).toBe(3);
         });
     });
 
@@ -246,7 +248,7 @@ describe('apiReducer', () => {
         });
 
         it('should handle only change exact amount of reducer properties', () => {
-            expect(Object.keys(result).length).toBe(1);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 });
