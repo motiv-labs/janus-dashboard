@@ -1,8 +1,10 @@
+@import 'index.scss';
 $control-size: 20px;
 $red-scarlet: #d0011b;
 
 $urls: (
     edit: url(../../assets/img/edit.svg),
+    github: url(../../assets/img/github-icon.svg),
     checked: url(../../assets/img/checked.svg),
     delete: url(../../assets/img/delete.svg),
     delete-white: url(../../assets/img/delete-white.svg),
@@ -11,6 +13,7 @@ $urls: (
     copy-white: url(../../assets/img/copy-white.svg),
     correct: url(../../assets/img/correct.svg),
     add: url(../../assets/img/plus.svg),
+    successful-white: url(../../assets/img/successful-white.svg),
 );
 
 .j-icon {
@@ -19,6 +22,7 @@ $urls: (
     height: $control-size;
     background-repeat: no-repeat;
     background-position: 50% 50%;
+    background-size: 100%;
 
     &--type-remove {
         height: ceil($control-size/10);

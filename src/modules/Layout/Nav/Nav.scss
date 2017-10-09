@@ -1,9 +1,11 @@
 @import 'index.scss';
 
 .j-nav {
-    display: flex; 
+    display: flex;
     height: $hf-height-header;
-  
+    max-width: $hf-width-container;
+    margin: 0 auto;
+
     &__item {
         display: flex;
         height: 100%;
@@ -13,7 +15,7 @@
         text-decoration: none;
 
         &--active {
-            background-color: $hf-color-white-pale; 
+            background-color: $hf-color-white-pale;
         }
     }
 }

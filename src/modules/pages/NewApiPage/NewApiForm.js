@@ -5,6 +5,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
+import checkOnPattern from '../../../helpers/pattern-check';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -21,6 +22,7 @@ import RenderPlugins from '../../forms/plugins/RenderPlugins';
 import './NewApiForm.css';
 
 const b = block('j-api-form');
+const col = block('j-col');
 
 const propTypes = {
     apiSchema: PropTypes.object.isRequired,
@@ -61,12 +63,6 @@ const ApiForm = props => {
             <Section>
                 <Row>
                     <Title>Create New API</Title>
-                    <Button
-                        type="submit"
-                        mod="primary"
-                    >
-                        Create API
-                    </Button>
                 </Row>
             </Section>
             <div className={b('inner')}>
@@ -112,25 +108,33 @@ const ApiForm = props => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
                     <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>Listen Path</Label>
+                        <div className={col()}>
+                            <div className={col('item')}>
+                                <Label>Listen Path</Label>
+                            </div>
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
+                                validate={checkOnPattern('/')}
                             />
+                            <span className="j-input__warning">Listen path should start from '/'</span>
                             <Hint>The public url that is exposed by the Gateway</Hint>
-                        </Row>
-                        <Row col>
-                            <Label>Upstream URL</Label>
+                        </div>
+                        <div className={col()}>
+                            <div className={col('item')}>
+                                <Label>Upstream URL</Label>
+                            </div>
                             <Field
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
+                                validate={checkOnPattern(['http://', 'https://'])}
                             />
+                            <span className="j-input__warning">Upstream url should start as url ('http://' or 'https://')</span>
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
-                        </Row>
+                        </div>
                     </Row>
                     <Row className={b('row')()} fullwidth>
                         <Row col>
@@ -296,9 +300,6 @@ export default connect(
         const plugins = selector(state, 'plugins');
 
         return {
-            initialValues: transformFormValues(state.apiReducer.api),
-            apiSchema: state.apiReducer.apiSchema,
-            selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

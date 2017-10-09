@@ -8,6 +8,7 @@ import './Icon.css';
 const b = block('j-icon');
 
 const propTypes = {
+    ariaLabel: PropTypes.string,
     className: PropTypes.string,
     type: PropTypes.oneOf([
         'add', // green plus
@@ -19,12 +20,14 @@ const propTypes = {
         'delete', // red bucket
         'delete-white', // white bucket
         'edit', // green pencil
+        'github',
         'remove', // red minus
+        'successful-white', // white success symbol
     ]).isRequired,
 };
 
-const Control = ({ className, type }) => (
-    <span className={b({ type }).mix(className)} />
+const Control = ({ ariaLabel, className, type }) => (
+    <span className={b({ type }).mix(className).mix(ariaLabel && 'j-tooltiped')} aria-label={ariaLabel}/>
 );
 
 Control.propTypes = propTypes;

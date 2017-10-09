@@ -8,6 +8,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 import Subtitle from '../../Layout/Title/Subtitle';
 import NewApiForm from './NewApiForm';
 import EditApiForm from '../EditPage/EditApiForm';
+import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -22,7 +23,7 @@ const propTypes = {
 };
 
 class NewApiItem extends Component {
-    componentWillMount() {
+    componentDidMount() {
         this.props.resetEndpoint();
 
         if (this.hasToBeCloned()) {
@@ -31,7 +32,7 @@ class NewApiItem extends Component {
             return;
         }
 
-        this.props.fetchEndpointSchema();
+        this.props.fetchEndpointSchema(true);
     }
 
     handleDelete = apiName => {
@@ -64,14 +65,28 @@ class NewApiItem extends Component {
     }
 
     renderForm = () => {
+        if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
+
         if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
-            const r = this.props.api.plugins.map(item => item.name);
+            const api = this.props.api;
+            const apiPlugins = api.plugins;
+            const defaultPlugins = this.props.apiSchema.plugins;
+            const updatedPlugins = defaultPlugins.map(item => {
+                const res = apiPlugins.filter(pl => pl.name === item.name);
+
+                return res.length > 0 ? res[0] : item;
+            });
+            const lens = R.lensPath(['plugins']);
+            // substitude the plugin.config.limit
+            const updatedApi = R.set(lens, updatedPlugins, api);
 
             return (
                 <EditApiForm
                     api={this.props.api}
+                    apiSchema={this.props.apiSchema}
+                    initialValues={transformFormValues(updatedApi)}
                     handleDelete={this.handleDelete}
-                    selectedPlugins={r}
+                    selectedPlugins={this.props.selectedPlugins}
                     excludePlugin={this.props.excludePlugin}
                     selectPlugin={this.props.selectPlugin}
                     disabled={false}
@@ -83,8 +98,11 @@ class NewApiItem extends Component {
         return (
             <NewApiForm
                 onSubmit={this.submit}
+                apiSchema={this.props.apiSchema}
+                initialValues={transformFormValues(this.props.apiSchema)}
                 excludePlugin={this.props.excludePlugin}
                 selectPlugin={this.props.selectPlugin}
+                selectedPlugins={this.props.selectedPlugins}
             />
         );
     }

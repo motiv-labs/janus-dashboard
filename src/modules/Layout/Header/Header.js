@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
 import Nav from '../Nav/Nav';
@@ -7,8 +8,13 @@ import './Header.css';
 
 const b = block('j-header');
 
-const Header = ({ logged }) => {
-    if (logged) {
+const propTypes = {
+    logout: PropTypes.func.isRequired,
+    user: PropTypes.string.isRequired,
+};
+
+const Header = ({ logout, user }) => {
+    if (user) {
         return (
             <header className={b}>
                 <div className={b('col', { left: true })}>
@@ -18,6 +24,15 @@ const Header = ({ logged }) => {
                     <Nav />
                 </div>
                 <div className={b('col', { right: true })}>
+                    {
+                        user &&
+                            <div className={b('user')}>
+                                <div className={b('user-name')}>
+                                    {user}
+                                    <div className={b('user-menu')} onClick={logout}>Logout</div>
+                                </div>
+                            </div>
+                    }
                 </div>
             </header>
         );
@@ -27,5 +42,7 @@ const Header = ({ logged }) => {
         <header className={b}></header>
     );
 };
+
+Header.propTypes = propTypes;
 
 export default Header;

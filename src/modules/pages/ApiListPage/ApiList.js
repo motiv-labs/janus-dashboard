@@ -5,9 +5,11 @@ import {
 } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
+
 import Table from '../../Layout/Table/Table';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
+import Preloader from '../../Preloader/Preloader';
 
 import '../../Layout/Table/Table.css';
 
@@ -18,6 +20,7 @@ const propTypes = {
     deleteEndpoint: PropTypes.func.isRequired,
     fetchEndpoints: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
+    setSortingFilter: PropTypes.func.isRequired,
 };
 
 const table = block('j-table');
@@ -41,52 +44,67 @@ class ApiList extends PureComponent {
         this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
     };
 
-    renderRows = list => list.map(api => (
-        <div className={table('row')} key={api.name}>
+    renderRows = list => list.map((api, index) => (
+        <div className={table('row')} key={`${index}-${api.name}`}>
             <div className={table('td', {name: true})}>{api.name}</div>
             <div className={table('td')}>{api.proxy.listen_path}</div>
             <div className={table('td')}>{api.proxy.upstream_url}</div>
             <div className={table('td', {active: true})}>
                 {api.active ? <Icon type="checked" /> : null}
             </div>
-            <div className={table('td')}>
-                <div className={table('controls')}>
-                    <Link to={`/${api.name}`} className={table('controls-item')}>
-                        <Icon type="edit" />
-                    </Link>
-                    <Link
-                        to={{
-                            pathname: '/new',
-                            state: {
-                                clone: api,
-                            },
-                        }}
-                        className={table('controls-item')}
-                    >
-                        <Icon type="copy" />
-                    </Link>
-                    <Link
-                        to={''}
-                        className={table('controls-item')}
-                        onClick={() => {
-                            this.handleDelete(api.name);
-                        }}
-                    >
-                        <Icon type="delete" />
-                    </Link>
-                </div>
+            <div className={table('td').mix(table('controls'))}>
+                <Link to={`/${api.name}`} className={table('controls-item')}>
+                    <Icon type="edit" ariaLabel="Edit" />
+                </Link>
+                <Link
+                    to={{
+                        pathname: '/new',
+                        state: {
+                            clone: api,
+                        },
+                    }}
+                    className={table('controls-item')}
+                >
+                    <Icon type="copy" ariaLabel="Copy" />
+                </Link>
+                <Link
+                    to={''}
+                    className={table('controls-item')}
+                    onClick={() => {
+                        this.handleDelete(api.name);
+                    }}
+                >
+                    <Icon type="delete" ariaLabel="Delete" />
+                </Link>
             </div>
         </div>
     ))
+
+    sortList = filter => {
+        this.props.setSortingFilter(filter);
+        this.props.setAscendingFilter();
+    }
 
     renderTable = list => (
         <div className={table()}>
             <div className={table('head')}>
                 <div className={table('row')}>
-                    <div className={table('th')}><div>Api Name</div></div>
+                    <div
+                        className={table('th').mix('ascending-container')}
+                        onClick={() => this.sortList('name')}
+                    >
+                        <div>Api Name</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')}>Listen Path</div>
                     <div className={table('th')}>Upstream URL</div>
-                    <div className={table('th', {active: true})}>Active</div>
+                    <div
+                        className={table('th', {active: true}).mix('ascending-container')}
+                        onClick={() => this.sortList('active')}
+                    >
+                        <div>Active</div>
+                        <div className="ascending-icon"></div>
+                    </div>
                     <div className={table('th')} />
                 </div>
             </div>
@@ -101,7 +119,7 @@ class ApiList extends PureComponent {
             return (
                 <PaginatedList
                     list={this.props.apiList}
-                    itemsPerPage={3}
+                    itemsPerPage={10}
                     currentPageIndex={this.props.currentPageIndex}
                     changePageIndex={this.props.setCurrentPageIndex}
                     maximumVisiblePaginators={3}
@@ -110,7 +128,7 @@ class ApiList extends PureComponent {
             );
         }
 
-        return <div>Loading...</div>;
+        return <Preloader />;
     }
 }
 

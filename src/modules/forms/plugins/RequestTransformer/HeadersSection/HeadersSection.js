@@ -40,6 +40,7 @@ class HeadersSection extends Component {
                                             name={`${member}.key`}
                                             type="text"
                                             component={Input}
+                                            placeholder="Key"
                                         />
                                     </div>
                                     <div className={row('item', {pair: true})}>
@@ -47,6 +48,7 @@ class HeadersSection extends Component {
                                             name={`${member}.value`}
                                             type="text"
                                             component={Input}
+                                            placeholder="Value"
                                         />
                                     </div>
                                     <div className={row('control')()}>

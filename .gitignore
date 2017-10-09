@@ -9,3 +9,4 @@ yarn-error.log*
 test/unit/coverage
 src/**/*.css
 public/config.js
+.env

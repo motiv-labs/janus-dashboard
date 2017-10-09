@@ -15,6 +15,7 @@ import './HealthCheckList.css';
 const b = block('j-healthcheck');
 const bList = block(b('list')());
 const bItem = block(b('list-item')());
+const table = block('j-table');
 
 const propTypes = {
     clearHealthCheckDetails: PropTypes.func.isRequired,
@@ -22,7 +23,9 @@ const propTypes = {
     fetchHealthCheckList: PropTypes.func.isRequired,
     fetchHealthCheckItem: PropTypes.func.isRequired,
     healthcheckList: PropTypes.arrayOf(PropTypes.object).isRequired,
+    setAscendingFilter: PropTypes.func.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
+    setSortingFilter: PropTypes.func.isRequired,
 };
 
 class HealthCheckList extends PureComponent {
@@ -30,14 +33,52 @@ class HealthCheckList extends PureComponent {
         this.props.fetchHealthCheckList();
     }
 
-    handleShowDetailes = name => {
+    handleShowDetails = name => {
         this.props.fetchHealthCheckItem(name);
     }
 
-    renderHealthcheckInfo = list => {
+    renderRows = list => list.map(item => (
+        <div className={bItem()} key={item.name}>
+            <div className={bItem('name')}>{item.name}</div>
+            <div className={bItem('message')}>{item.description}</div>
+            {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
+            <Link to={`/${item.name}`}>
+                <Icon type="edit" />
+            </Link>
+        </div>
+    ));
+
+    sortList = filter => {
+        this.props.setSortingFilter(filter);
+        this.props.setAscendingFilter();
+    }
+
+    renderTable = list => (
+        <div className={table()}>
+            <div className={table('head')}>
+                <div className={table('row')}>
+                    <div
+                        className={table('th').mix('ascending-container')}
+                        onClick={() => this.sortList('name')}
+                    >
+                        <div>Api Name</div>
+                        <div className="ascending-icon"></div>
+                    </div>
+                    <div className={table('th')}>Description</div>
+                    <div className={table('th')} />
+                </div>
+            </div>
+            <div className={table('tbody')}>
+                { this.renderRows(list) }
+            </div>
+        </div>
+    );
+
+    render() {
         const {
-            clearHealthCheckDetails,
-            problemToDisplay,
+            currentPageIndex,
+            healthcheckList,
+            setCurrentPageIndex,
             status,
         } = this.props;
 
@@ -50,43 +91,13 @@ class HealthCheckList extends PureComponent {
         }
 
         return (
-            <div className={bList()}>
-                {
-                    list.map(item => {
-                        return (
-                            <div className={bItem()} key={item.name}>
-                                <div className={bItem('name')}>{item.name}</div>
-                                <div className={bItem('message')}>{item.message}</div>
-                                <div className={bItem('details')} onClick={() => this.handleShowDetailes(item.name)}>Show Details</div>
-                                <Link to={`/${item.name}`}>
-                                    <Icon type="edit" />
-                                </Link>
-                            </div>
-                        );
-                    })
-                }
-
-                <HealthCheckModal
-                    className={b('modal')()}
-                    isOpen={!R.isEmpty(problemToDisplay)}
-                    closeModal={clearHealthCheckDetails}
-                    message={problemToDisplay.status}
-                    statusText={problemToDisplay.name}
-                    problems={problemToDisplay.list}
-                />
-            </div>
-        );
-    }
-
-    render() {
-        return (
             <PaginatedList
-                list={this.props.healthcheckList}
-                itemsPerPage={3}
-                currentPageIndex={this.props.currentPageIndex}
-                changePageIndex={this.props.setCurrentPageIndex}
+                list={healthcheckList}
+                itemsPerPage={10}
+                currentPageIndex={currentPageIndex}
+                changePageIndex={setCurrentPageIndex}
                 maximumVisiblePaginators={3}
-                renderChildren={this.renderHealthcheckInfo}
+                renderChildren={this.renderTable}
             />
         );
     }

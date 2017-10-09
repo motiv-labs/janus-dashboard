@@ -9,6 +9,8 @@ const propTypes = {
     mod: PropTypes.oneOf([
         'primary',
         'danger',
+        'default',
+        'github',
     ]).isRequired,
     type: PropTypes.string,
     onClick: PropTypes.func,

@@ -7,6 +7,7 @@ import { Field, formValueSelector, reduxForm } from 'redux-form';
 
 import block from '../../../helpers/bem-cn';
 import transformFormValues from '../../../helpers/transformFormValues';
+import checkOnPattern from '../../../helpers/pattern-check';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -22,6 +23,7 @@ import Icon from '../../Icon/Icon';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 const b = block('j-api-form');
+const col = block('j-col');
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -89,28 +91,15 @@ const ApiForm = (props) => {
                                 Copy
                             </Button>
                         </Link>
-                        {
-                            location &&
-                                <Link
-                                    to={'/'}
-                                    onClick={() => {
-                                        props.handleDelete(props.api.name);
-                                    }}
-                                >
-                                    <Button
-                                        type="button"
-                                        mod="danger"
-                                    >
-                                        <Icon type="delete-white" />
-                                        Delete
-                                    </Button>
-                                </Link>
-                        }
                         <Button
-                            type="submit"
-                            mod="primary"
+                            type="button"
+                            mod="danger"
+                            onClick={() => {
+                                props.handleDelete(props.api.name);
+                            }}
                         >
-                            Save
+                            <Icon type="delete-white" />
+                            Delete
                         </Button>
                     </div>
                 </Row>
@@ -158,25 +147,32 @@ const ApiForm = (props) => {
                 <div className={b('section')}>
                     <div className={b('section-title')}>2. Proxy</div>
                     <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>Listen Path</Label>
+                        <div className={col()}>
+                            <div className={col('item')}>
+                                <Label>Listen Path</Label>
+                            </div>
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
+                                validate={checkOnPattern('/')}
                             />
+                            <span className="j-input__warning">Listen path should start from '/'</span>
                             <Hint>The public url that is exposed by the Gateway</Hint>
-                        </Row>
-                        <Row col>
-                            <Label>Upstream URL</Label>
+                        </div>
+                        <div className={col()}>
+                            <div className={col('item')}>
+                                <Label>Upstream URL</Label>
+                            </div>
                             <Field
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
+                                validate={checkOnPattern(['http://', 'https://'])}
                             />
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
-                        </Row>
+                        </div>
                     </Row>
                     <Row className={b('row')()} fullwidth>
                         <Row col>
@@ -341,25 +337,8 @@ const form = reduxForm({
 export default connect(
     state => {
         const plugins = selector(state, 'plugins');
-        const api = state.apiReducer.api;
-        const apiPlugins = api.plugins;
-        const defaultPlugins = state.apiReducer.apiSchema.plugins;
-        const updatedPlugins = defaultPlugins.map(item => {
-            const res = apiPlugins.filter(pl => pl.name === item.name);
-
-            return res.length > 0 ? res[0] : item;
-        });
-
-        const lens = R.lensPath(['plugins']);
-        // substitude the plugin.config.limit
-        const updatedApi = R.set(lens, updatedPlugins, api);
 
         return {
-            initialValues: transformFormValues(updatedApi),
-            // FIXME name of the plugin is discarded while saving
-            apiSchema: state.apiReducer.apiSchema,
-            response: state.apiReducer.response,
-            selectedPlugins: state.apiReducer.selectedPlugins,
             keepDirtyOnReinitialize: false,
             plugins,
         };

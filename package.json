@@ -6,10 +6,12 @@
   "dependencies": {
     "axios": "^0.16.2",
     "history": "^4.6.3",
+    "jsonwebtoken": "^8.0.1",
     "node-sass-chokidar": "^0.0.3",
     "picklock": "^0.5.1",
     "ramda": "^0.24.1",
     "react": "^15.6.0",
+    "react-bubble-preloader": "^1.3.2",
     "react-dom": "^15.6.0",
     "react-history": "^0.18.2",
     "react-modaliz": "^0.1.2",

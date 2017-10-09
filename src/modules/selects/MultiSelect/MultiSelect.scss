@@ -2,12 +2,16 @@
 
 .j-multiselect {
     &.Select--multi {
+        .Select-multi-value-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: ceil($hf-gutter/2);
+        }
         .Select-value {
             background-color: $hellofresh-color;
             border: none;
             border-radius: $hf-border-radius;
-            margin-top: 0;
-            vertical-align: middle;
+            margin-top: ceil($hf-gutter/2);
             color: $hf-color-white;
 
             &-icon {

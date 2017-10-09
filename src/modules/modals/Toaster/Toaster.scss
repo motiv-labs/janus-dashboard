@@ -1,0 +1,51 @@
+@import 'index.scss';
+
+$toaster-height: 85px;
+$toaster-width: 845px;
+
+.j-toaster {
+    display: flex;
+    width: 90vw;
+    max-width: $toaster-width;
+    min-height: $toaster-height;
+    background-color: $hf-color-white;
+    font-size: 50px;
+    font-weight: 900;
+    position: fixed;
+    z-index: 1000;
+    top: 65px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: $hf-border-radius;
+    box-shadow: $hf-box-shadow;
+
+    &__left-part {
+        position: relative;
+        display: flex;
+        width: $toaster-height;
+        align-items: center;
+        justify-content: center;
+        background-color: $hellofresh-color;
+    }
+
+    &__right-part {
+        display: flex;
+        font-size: $hf-font-size-base;
+        color: $hf-color-black;
+        padding: $hf-padding-big;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__icon {
+        width: 30px;
+        height: 30px;
+    }
+
+    &__close {
+        position: absolute;
+        top: $hf-gutter;
+        right: $hf-gutter;
+        cursor: pointer;
+    }
+}

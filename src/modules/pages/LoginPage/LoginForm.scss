@@ -43,7 +43,8 @@ $form-padding-top: 70px;
         padding-right: $hf-padding-big;
 
         &-section {
-            margin-top: $hf-padding-big;
+            display: flex;
+            justify-content: center;
         }
     }
 }

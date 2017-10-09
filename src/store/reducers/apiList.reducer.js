@@ -4,12 +4,16 @@ import {
     REFRESH_ENDPOINTS,
     DISCARD_PAGINATION,
     SET_PAGINATION_PAGE,
+    SET_SORTING_FILTER,
+    SET_ASCEND_FILTER,
 } from '../constants';
 
 export const initialState = {
     apiList: [],
     currentPageIndex: 0,
     isFetching: false,
+    sortingFilter: '',
+    sortAscend: true,
 };
 
 export default function reducer(state = initialState, action) {
@@ -37,6 +41,18 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 currentPageIndex: action.payload,
+            };
+        }
+        case SET_SORTING_FILTER: {
+            return {
+                ...state,
+                sortingFilter: action.payload,
+            };
+        }
+        case SET_ASCEND_FILTER: {
+            return {
+                ...state,
+                sortAscend: !state.sortAscend,
             };
         }
         case REFRESH_ENDPOINTS: {

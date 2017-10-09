@@ -1,5 +1,8 @@
 @import 'index.scss';
 
+$icon-width: 8px;
+$icon-height: 14px;
+
 .j-table {
     width: 100%;
     text-align: left;
@@ -17,7 +20,7 @@
     &__row {
         border-bottom: $hf-border;
         display: grid;
-        grid-template-columns: 35% 25% 25% 5% 10%;
+        grid-template-columns: 35% 25% 20% 10% 10%;
 
         &:last-child {
             border-bottom: none;
@@ -54,9 +57,41 @@
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: $hf-gutter;
+        overflow: initial;
 
         &-item {
             justify-self: center;
+        }
+    }
+}
+
+.ascending {
+    &-container {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+    &-icon {
+        position: relative;
+        width: $icon-width;
+        height: $icon-height;
+        margin-left: $hf-gutter;
+
+        &:before,
+        &:after {
+            @include pseudo();
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 ceil($icon-width/2) 5px ceil($icon-width/2);
+            border-color: transparent transparent $hf-color-gray-medium transparent;
+        }
+        &:before {
+            top: 0;
+        }
+        &:after {
+            bottom: 0;
+            transform: rotate(180deg);
         }
     }
 }

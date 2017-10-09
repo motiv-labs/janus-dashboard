@@ -9,6 +9,7 @@ import apiResponseModalReducer from './apiResponse.reducer';
 import apiListReducer from './apiList.reducer';
 import apiReducer from './api.reducer';
 import searchReducer from './search.reducer';
+import requestReducer from './request.reducer';
 
 export default combineReducers({
   // here combine all reducers:
@@ -18,6 +19,7 @@ export default combineReducers({
     apiListReducer,
     apiReducer,
     searchReducer,
+    requestReducer,
     form: formReducer,
     routing: routerReducer,
 });

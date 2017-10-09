@@ -1,16 +1,15 @@
 /* eslint-disable */
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 import { login } from './auth';
-import config from './config';
 import history from '../configuration/history';
-import { parseJwt } from '../../helpers';
 
 const headers = {
     Accept: 'application/vnd.janus.v1+json',
 };
 
 const client = axios.create({
-    baseURL: process.env.NODE_ENV !== 'production' ? config.gateway.uri : MAIN_CONFIG.gateway.uri,
+    baseURL: process.env.REACT_APP_JANUS_URI || MAIN_CONFIG.gateway.uri,
     headers,
 });
 
@@ -24,7 +23,7 @@ export const getAccessToken = () => {
 
     if (!token) return;
 
-    const expirationTime = parseJwt(token).exp * 1000;
+    const expirationTime = jwt.decode(token).exp * 1000;
     const dateNow = new Date();
 
     if (expirationTime > dateNow.getTime()) {
@@ -35,6 +34,10 @@ export const getAccessToken = () => {
 export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
 
 export const getRefreshToken = () => localStorage.getItem('refresh_token');
+
+export const removeAccessToken = () => {
+    localStorage.removeItem('access_token');
+}
 
 if (getAccessToken()) {
     setAccessToken(getAccessToken());
