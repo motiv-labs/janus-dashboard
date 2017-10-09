@@ -1,5 +1,8 @@
 import apiResponseReducer, { initialState } from '../../../store/reducers/apiResponse.reducer';
-import { CLOSE_RESPONSE_MODAL, OPEN_RESPONSE_MODAL } from '../../../store/constants/apiResponse.constants';
+import {
+    CLOSE_RESPONSE_MODAL,
+    OPEN_RESPONSE_MODAL,
+} from '../../../store/constants/apiResponse.constants';
 
 const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
 
