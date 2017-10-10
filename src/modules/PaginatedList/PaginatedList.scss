@@ -2,23 +2,28 @@
 
 $paginator-width: 8px;
 $paginator-height: 13px;
+$paginator-border: 1px solid #e1e4e8;
+$paginator-background-color: $hf-color-white;
+$paginator-color: $hf-color-gray-medium;
+$paginator-font-size: $hf-font-size-base;
+$paginator-font-weight: $hf-font-weight-bold;
 
 .j-pagination {
     &__nav {
         padding-top: $hf-padding-main;
         padding-bottom: $hf-padding-main;
+        text-align: center;
 
         &-item {
             display: inline-block;
             vertical-align: top;
-            height: 30px;
-            line-height: 30px;
-            background-color: $hf-color-white;
-            border: $hf-border;
-            font-size: $hf-font-size-small;
+            background-color: $paginator-background-color;
+            border: $paginator-border;
+            font-size: $paginator-font-size;
+            font-weight: $paginator-weight;
             text-align: center;
-            color: $hf-color-gray-medium;
-            padding: 0 8px;
+            color: $paginator-color;
+            padding: 7px 12px;
             box-sizing: border-box;
             transition: background-color 0.05s, color 0.05s, border-color 0.05s;
             cursor: pointer;
@@ -30,7 +35,7 @@ $paginator-height: 13px;
             &--active {
                 background-color: $hellofresh-color;
                 border-color: $hellofresh-color;
-                color: $hf-color-white;
+                color: $paginator-background-color;
             }
 
             &--prev,
