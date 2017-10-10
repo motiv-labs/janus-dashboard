@@ -4,9 +4,10 @@ $paginator-width: 8px;
 $paginator-height: 13px;
 $paginator-border: 1px solid #e1e4e8;
 $paginator-background-color: $hf-color-white;
-$paginator-color: $hf-color-gray-medium;
+$paginator-color: $hellofresh-color;
 $paginator-font-size: $hf-font-size-base;
 $paginator-font-weight: $hf-font-weight-bold;
+$paginator-padding: 7px 12px;
 
 .j-pagination {
     &__nav {
@@ -19,8 +20,9 @@ $paginator-font-weight: $hf-font-weight-bold;
             vertical-align: top;
             background-color: $paginator-background-color;
             border: $paginator-border;
+            border-right: none;
             font-size: $paginator-font-size;
-            font-weight: $paginator-weight;
+            font-weight: $paginator-font-weight;
             text-align: center;
             color: $paginator-color;
             padding: 7px 12px;
@@ -30,6 +32,7 @@ $paginator-font-weight: $hf-font-weight-bold;
 
             &--disabled {
                 opacity: 0.5;
+                color: $hf-color-gray-medium;
             }
 
             &--active {
@@ -41,30 +44,31 @@ $paginator-font-weight: $hf-font-weight-bold;
             &--prev,
             &--next {
                 position: relative;
-                width: 20px;
-                height: 30px;
-                border: none;
                 background: none;
+                border: none;
+                padding: 0;
 
                 &:before {
-                    content: '';
                     display: block;
                     position: absolute;
-                    width: $paginator-width;
-                    height: $paginator-height;
-                    @include alignCenter();
+                    position: relative;
+                    padding: $paginator-padding;
+                    border: $paginator-border;
+                    background-color: $paginator-background-color;
+                    left: 0;
+                    top: 0;
                 }
             }
 
             &--prev {
                 &:before {
-                    background-image: url(../../assets/img/small-arrow.svg);
+                    content: 'Previous';
+                    border-right: none;
                 }
             }
-
             &--next {
                 &:before {
-                    background-image: url(../../assets/img/small-arrow-next.svg);
+                    content: 'Next';
                 }
             }
         }
