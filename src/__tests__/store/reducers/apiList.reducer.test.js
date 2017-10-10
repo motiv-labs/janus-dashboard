@@ -20,7 +20,7 @@ describe('search', () => {
             expect(result).toEqual(initialState);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(5);
         });
     });
@@ -32,7 +32,7 @@ describe('search', () => {
             expect(result.isFetching).toEqual(true);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
@@ -46,7 +46,7 @@ describe('search', () => {
             expect(result.isFetching).toEqual(false);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(2);
         });
     });
@@ -58,7 +58,7 @@ describe('search', () => {
             expect(result.currentPageIndex).toEqual(0);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
@@ -71,7 +71,7 @@ describe('search', () => {
             expect(result.currentPageIndex).toEqual(pageIndex);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
@@ -105,7 +105,7 @@ describe('search', () => {
             ]);
         });
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(5);
         });
     });
@@ -120,12 +120,12 @@ describe('search', () => {
             },
         );
 
-        it('should set the sorting filter', () => {
+        it('sets the sorting filter', () => {
             expect(result.sortingFilter).toEqual(payload);
         });
 
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
@@ -135,12 +135,12 @@ describe('search', () => {
         const state = { sortAscend: true };
         const result = apiList(state, { type: SET_ASCEND_FILTER });
 
-        it('should switch ascending/descending sorting', () => {
+        it('switches ascending/descending sorting', () => {
             expect(result.sortAscend).toBe(!state.sortAscend);
         });
 
 
-        it('should handle only change exact amount of reducer properties', () => {
+        it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
