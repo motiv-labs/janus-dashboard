@@ -8,7 +8,9 @@ import {
     CLOSE_TOASTER,
 } from '../constants';
 
-const confirmationModalState = {
+import setToasterMessage from '../../helpers/setToasterMessage';
+
+export const confirmationModalState = {
     apiName: null,
     message: '',
     needConfirm: false,
@@ -17,7 +19,7 @@ const confirmationModalState = {
     onConfirm: null,
 };
 
-const toasterState = {
+export const toasterState = {
     isOpen: false,
     message: '',
 };
@@ -32,8 +34,6 @@ export const initialState = {
     confirmationModal: confirmationModalState,
     toaster: toasterState,
 };
-
-const setToasterMessage = info => `"${info.apiName}" has been successfuly ${info.status}d`;
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
@@ -70,7 +70,7 @@ export default function reducer(state = initialState, action) {
                 toaster: {
                     isOpen: true,
                     message: setToasterMessage(state.confirmationModal),
-                }
+                },
             };
         }
         case CLOSE_CONFIRMATION_MODAL: {
@@ -79,7 +79,7 @@ export default function reducer(state = initialState, action) {
                 confirmationModal: {
                     ...state.confirmationModal,
                     needConfirm: false,
-                }
+                },
             };
         }
         case CLEAR_CONFIRMATION_MODAL: {
