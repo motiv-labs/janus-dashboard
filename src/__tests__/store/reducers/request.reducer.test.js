@@ -1,4 +1,4 @@
-import requestReducer, { initialState } from '../../../store/reducers/request.reducer';
+import requestReducer from '../../../store/reducers/request.reducer';
 import {
     REQUEST_START,
     REQUEST_COMPLETE,
@@ -8,6 +8,7 @@ import touchedReducerProps from '../../../helpers/touchedReducerProperties';
 
 describe('request reducer', () => {
     describe('Default', () => {
+        const initialState = { initial: 'state' };
         const result = requestReducer(initialState, {});
 
         it('returns the initial state by default', () => {
