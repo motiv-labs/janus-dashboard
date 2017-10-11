@@ -7,6 +7,10 @@ export default {
         path: '/healthcheck',
         name: 'Health Check',
     },
+    OAUTH_SERVERS: {
+        path: '/oauth-servers',
+        name: 'oAuth Servers',
+    },
     NEW: {
         path: '/new',
         name: 'New API',
@@ -23,5 +27,4 @@ export default {
         path: '/:name',
         name: '',
     },
-
 };

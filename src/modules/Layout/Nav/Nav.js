@@ -26,6 +26,14 @@ const Nav = () => (
         >
             {ROUTES.HEALTHCHECK.name}
         </NavLink>
+        <NavLink
+            exact
+            to={ROUTES.OAUTH_SERVERS.path}
+            className={nav('item')()}
+            activeClassName={nav('item', { active: true })()}
+        >
+            {ROUTES.OAUTH_SERVERS.name}
+        </NavLink>
     </div>
 );
 
