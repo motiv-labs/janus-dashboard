@@ -1,4 +1,4 @@
-import userSessionReducer, { initialState } from '../../../store/reducers/userSession.reducer';
+import userSessionReducer from '../../../store/reducers/userSession.reducer';
 import {
     CHECK_LOGGED_STATUS,
     LOGIN_START,
@@ -12,6 +12,7 @@ const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
 
 describe('user session reducer', () => {
     describe('Default', () => {
+        const initialState = { initial: 'state' };
         const result = userSessionReducer(initialState, {});
 
         it('returns the initial state by default', () => {
@@ -19,7 +20,7 @@ describe('user session reducer', () => {
         });
 
         it('has change exact amount of properties which are in initialState', () => {
-            expect(touchedReducerProps(result)).toBe(2);
+            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 
@@ -55,7 +56,7 @@ describe('user session reducer', () => {
 
     describe('LOGIN_SUCCESS', () => {
         const result = userSessionReducer(
-            initialState,
+            {},
             {
                 type: LOGIN_SUCCESS,
                 payload: true,
