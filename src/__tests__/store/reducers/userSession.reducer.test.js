@@ -1,34 +1,79 @@
 import userSessionReducer from '../../../store/reducers/userSession.reducer';
 import {
-    LOGIN_FAILURE,
+    CHECK_LOGGED_STATUS,
+    LOGIN_START,
     LOGIN_SUCCESS,
+    LOGIN_FAILURE,
+    LOGOUT,
 } from '../../../store/constants/userSession.constants';
+import touchedReducerProps from '../../../helpers/touchedReducerProperties';
 
-describe('userSessionReducer', () => {
-    it('returns the initialState by default', () => {
-        const initialState = Math.random();
+const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
 
+describe('user session reducer', () => {
+    describe('Default', () => {
+        const initialState = { initial: 'state' };
         const result = userSessionReducer(initialState, {});
 
-        expect(result).toEqual(initialState);
+        it('returns the initial state by default', () => {
+            expect(result).toEqual(initialState);
+        });
+
+        it('has change exact amount of properties which are in initialState', () => {
+            expect(touchedReducerProps(result)).toBe(1);
+        });
     });
 
-    it('sets the user info and errorMsg to null when user getes logged in', () => {
-        const initialState = { user: '', errorMsg: 'an-error' };
+    describe('CHECK_LOGGED_STATUS', () => {
+        const state = Math.random();
+        const result = userSessionReducer({}, {
+            type: CHECK_LOGGED_STATUS,
+        });
 
+        it('returns no changes to the state', () => {
+            expect(result).toEqual({});
+        });
+
+        it('has NOT change any properties of the state', () => {
+            expect(touchedReducerProps(result)).toBe(0);
+        });
+    });
+
+    describe('LOGIN_START', () => {
+        const state = Math.random();
+        const result = userSessionReducer({}, {
+            type: LOGIN_START,
+        });
+
+        it('returns no changes to the state', () => {
+            expect(result).toEqual({});
+        });
+
+        it('has NOT change any properties of the state', () => {
+            expect(touchedReducerProps(result)).toBe(0);
+        });
+    });
+
+    describe('LOGIN_SUCCESS', () => {
         const result = userSessionReducer(
-            initialState,
+            {},
             {
                 type: LOGIN_SUCCESS,
                 payload: true,
             }
         );
 
-        expect(result.user).toEqual(true);
-        expect(result.errorMsg).toEqual(null);
+        it('sets the user info and errorMsg to null when user getes logged in', () => {
+            expect(result.user).toEqual(true);
+            expect(result.errorMsg).toEqual(null);
+        });
+
+        it('has only change exact amount of reducer properties', () => {
+            expect(touchedReducerProps(result)).toBe(2);
+        });
     });
 
-    it('sets the logged state to false and the error message to the given payload when user failed to log in', () => {
+    describe('LOGIN_FAILURE', () => {
         const initialState = { user: {name: 'User'}, errorMsg: null };
         const payload = 'an-error-message';
 
@@ -40,7 +85,27 @@ describe('userSessionReducer', () => {
             }
         );
 
-        expect(result.user).toEqual('');
-        expect(result.errorMsg).toEqual(payload);
+        it('sets the logged state to false and the error message to the given payload when user failed to log in', () => {
+            expect(result.user).toEqual('');
+            expect(result.errorMsg).toEqual(payload);
+        });
+
+        it('has only change exact amount of reducer properties', () => {
+            expect(touchedReducerProps(result)).toBe(2);
+        });
+    });
+
+    describe('LOGOUT', () => {
+        const result = userSessionReducer({}, {
+            type: LOGOUT,
+        });
+
+        it('discards user info', () => {
+            expect(result.user).toBe('');
+        });
+
+        it('has only change exact amount of reducer properties', () => {
+            expect(touchedReducerProps(result)).toBe(1);
+        });
     });
 });

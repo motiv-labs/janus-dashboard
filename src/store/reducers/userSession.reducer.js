@@ -6,7 +6,7 @@ import {
     LOGOUT,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     errorMsg: null,
     user: '',
 };
