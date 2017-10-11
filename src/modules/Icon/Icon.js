@@ -5,7 +5,7 @@ import block from '../../helpers/bem-cn';
 
 import './Icon.css';
 
-const b = block('j-icon');
+export const b = block('j-icon');
 
 const propTypes = {
     ariaLabel: PropTypes.string,
