@@ -34,6 +34,7 @@
     "pre-commit": "^1.2.2",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
+    "react-test-renderer": "15",
     "redux-logger": "^3.0.6",
     "stylelint": "^8.0.0"
   },
