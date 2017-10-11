@@ -20,7 +20,7 @@ import ConfirmationModal from '../modals/ConfirmationModal/ConfirmationModal';
 
 import LoginPage from '../pages/LoginPage/LoginPage';
 import HealthCheckPage from '../pages/HealthCheckPage/HealthCheckPage';
-import OAuthServersPage from '../pages/HealthCheckPage/HealthCheckPage';
+import OAuthServersPage from '../pages/OAuthServersPage/OAuthServersPage';
 import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
