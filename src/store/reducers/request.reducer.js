@@ -3,7 +3,7 @@ import {
     REQUEST_COMPLETE,
 } from '../constants';
 
-const initialState = {
+export const initialState = {
     isFetching: false,
 };
 
