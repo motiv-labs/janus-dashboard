@@ -1,32 +1,34 @@
 import { connect } from 'react-redux';
 
-// import {
+import {
 //     deleteEndpoint,
-//     fetchEndpoints,
+    fetchOAuthServers,
 //     refreshEndpoints,
-//     setCurrentPageIndex,
-//     setSortingFilter,
-//     setAscendingFilter,
-// } from '../../../store/actions';
-// import { filteredApiList } from '../../../store/selectors';
+    setAscendingFilter,
+    setCurrentPageIndex,
+    setSortingFilter,
+} from '../../../store/actions';
+import { filteredOAuthServersList } from '../../../store/selectors';
 
-import oAuthServersList from './oAuthServersList';
+import OAuthServersList from './OAuthServersList';
 
-// const mapStateToProps = state => ({
-//     apiList: filteredApiList(state),
-//     currentPageIndex: state.apiListReducer.currentPageIndex,
-// });
+const mapStateToProps = state => ({
+    // oAuthServers: state.oAuthServersReducer.oAuthServers,
+    oAuthServers: filteredOAuthServersList(state),
+    currentPageIndex: state.oAuthServersReducer.currentPageIndex,
+});
 
 export default connect(
-    // mapStateToProps,
+    mapStateToProps,
     // {
     //     deleteEndpoint,
     //     fetchEndpoints,
     //     refreshEndpoints,
-    //     setCurrentPageIndex,
-    //     setSortingFilter,
-    //     setAscendingFilter,
     // },
-    null,
-    null,
-)(oAuthServersList);
+    {
+        fetchOAuthServers,
+        setAscendingFilter,
+        setCurrentPageIndex,
+        setSortingFilter,
+    },
+)(OAuthServersList);

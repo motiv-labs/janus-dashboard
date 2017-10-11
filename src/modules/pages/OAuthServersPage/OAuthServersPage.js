@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 import SearchingContainer from '../../SearchBar/searchContainer';
 // import oAuthServersContainer from './oAuthServersContainer';
-import oAuthServersList from './a1';
+import OAuthServersContainer from './oAuthServersContainer';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -30,6 +30,7 @@ const OAuthServersPage = () => {
                     <Title>oAuth Servers</Title>
                     <Row>
                         <SearchingContainer />
+
                         <Link to="/new">
                             <Button mod="primary" label="Create New Api">+ Create New API</Button>
                         </Link>
@@ -37,9 +38,7 @@ const OAuthServersPage = () => {
                 </Row>
             </Section>
             <Section>
-                d
-                <oAuthServersList />
-                s
+                <OAuthServersContainer />
             </Section>
         </div>
     );
