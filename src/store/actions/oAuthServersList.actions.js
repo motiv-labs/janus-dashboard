@@ -4,6 +4,8 @@ import {
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_OAUTH_SERVERS_SORTING_FILTER,
     SET_OAUTH_SERVERS_ASCEND_FILTER,
+    DISCARD_OAUTH_SERVERS_PAGINATION,
+    SET_OAUTH_SERVERS_PAGINATION_PAGE,
 } from '../constants';
 
 const getOAuthServers = () => ({
@@ -13,6 +15,15 @@ const getOAuthServers = () => ({
 const getOAuthServersSuccess = list => ({
     type: FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     payload: list,
+});
+
+export const discardOAuthServersListPagination = () => ({
+    type: DISCARD_OAUTH_SERVERS_PAGINATION,
+});
+
+export const setOAuthServersListCurrentPageIndex = index => ({
+    type: SET_OAUTH_SERVERS_PAGINATION_PAGE,
+    payload: index,
 });
 
 export const setSortingFilter = filter => ({

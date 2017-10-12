@@ -1,11 +1,9 @@
 import { connect } from 'react-redux';
 
 import {
-//     deleteEndpoint,
     fetchOAuthServers,
-//     refreshEndpoints,
     setAscendingFilter,
-    setCurrentPageIndex,
+    setOAuthServersListCurrentPageIndex,
     setSortingFilter,
 } from '../../../store/actions';
 import { filteredOAuthServersList } from '../../../store/selectors';
@@ -13,22 +11,16 @@ import { filteredOAuthServersList } from '../../../store/selectors';
 import OAuthServersList from './OAuthServersList';
 
 const mapStateToProps = state => ({
-    // oAuthServers: state.oAuthServersReducer.oAuthServers,
     oAuthServers: filteredOAuthServersList(state),
     currentPageIndex: state.oAuthServersListReducer.currentPageIndex,
 });
 
 export default connect(
     mapStateToProps,
-    // {
-    //     deleteEndpoint,
-    //     fetchEndpoints,
-    //     refreshEndpoints,
-    // },
     {
         fetchOAuthServers,
         setAscendingFilter,
-        setCurrentPageIndex,
+        setCurrentPageIndex: setOAuthServersListCurrentPageIndex,
         setSortingFilter,
     },
 )(OAuthServersList);

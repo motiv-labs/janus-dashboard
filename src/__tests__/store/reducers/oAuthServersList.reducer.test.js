@@ -4,6 +4,8 @@ import {
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_OAUTH_SERVERS_SORTING_FILTER,
     SET_OAUTH_SERVERS_ASCEND_FILTER,
+    DISCARD_OAUTH_SERVERS_PAGINATION,
+    SET_OAUTH_SERVERS_PAGINATION_PAGE,
 } from '../../../store/constants/oAuthServersList.constants';
 
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';

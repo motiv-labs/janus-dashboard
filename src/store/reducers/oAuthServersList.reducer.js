@@ -3,6 +3,8 @@ import {
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_OAUTH_SERVERS_SORTING_FILTER,
     SET_OAUTH_SERVERS_ASCEND_FILTER,
+    DISCARD_OAUTH_SERVERS_PAGINATION,
+    SET_OAUTH_SERVERS_PAGINATION_PAGE,
 } from '../constants';
 
 export const initialState = {
@@ -26,6 +28,18 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 isFetching: false,
                 oAuthServers: action.payload,
+            };
+        }
+        case DISCARD_OAUTH_SERVERS_PAGINATION: {
+            return {
+                ...state,
+                currentPageIndex: 0,
+            };
+        }
+        case SET_OAUTH_SERVERS_PAGINATION_PAGE: {
+            return {
+                ...state,
+                currentPageIndex: action.payload,
             };
         }
         case SET_OAUTH_SERVERS_SORTING_FILTER: {

@@ -100,7 +100,7 @@ class OAuthServersList extends PureComponent {
             return (
                 <PaginatedList
                     list={this.props.oAuthServers}
-                    itemsPerPage={10}
+                    itemsPerPage={1}
                     currentPageIndex={this.props.currentPageIndex}
                     changePageIndex={this.props.setCurrentPageIndex}
                     maximumVisiblePaginators={3}
