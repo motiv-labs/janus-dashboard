@@ -2,6 +2,8 @@ import client from '../api';
 import {
     FETCH_OAUTH_SERVERS_LIST_START,
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
+    SET_OAUTH_SERVERS_SORTING_FILTER,
+    SET_OAUTH_SERVERS_ASCEND_FILTER,
 } from '../constants';
 
 const getOAuthServers = () => ({
@@ -11,6 +13,15 @@ const getOAuthServers = () => ({
 const getOAuthServersSuccess = list => ({
     type: FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     payload: list,
+});
+
+export const setSortingFilter = filter => ({
+    type: SET_OAUTH_SERVERS_SORTING_FILTER,
+    payload: filter,
+});
+
+export const setAscendingFilter = () => ({
+    type: SET_OAUTH_SERVERS_ASCEND_FILTER,
 });
 
 export const fetchOAuthServers = () => async dispatch => {

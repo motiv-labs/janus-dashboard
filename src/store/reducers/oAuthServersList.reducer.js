@@ -1,8 +1,8 @@
 import {
     FETCH_OAUTH_SERVERS_LIST_START,
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
-    SET_SORTING_FILTER,
-    SET_ASCEND_FILTER,
+    SET_OAUTH_SERVERS_SORTING_FILTER,
+    SET_OAUTH_SERVERS_ASCEND_FILTER,
 } from '../constants';
 
 export const initialState = {
@@ -28,13 +28,13 @@ export default function reducer(state = initialState, action) {
                 oAuthServers: action.payload,
             };
         }
-        case SET_SORTING_FILTER: {
+        case SET_OAUTH_SERVERS_SORTING_FILTER: {
             return {
                 ...state,
                 sortingFilter: action.payload,
             };
         }
-        case SET_ASCEND_FILTER: {
+        case SET_OAUTH_SERVERS_ASCEND_FILTER: {
             return {
                 ...state,
                 sortAscend: !state.sortAscend,
