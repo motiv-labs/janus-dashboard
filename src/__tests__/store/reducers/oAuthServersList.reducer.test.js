@@ -38,7 +38,6 @@ describe('oAuthServersListReducer', () => {
         });
     });
 
-
     describe('FETCH_OAUTH_SERVERS_LIST_SUCCESS', () => {
         const randomString = getRandomString();
         const result = oAuthServersListReducer({}, {
@@ -55,10 +54,9 @@ describe('oAuthServersListReducer', () => {
             expect(touchedReducerProps(result)).toBe(2);
         });
     });
-    /*
 
-    describe('DISCARD_PAGINATION', () => {
-        const result = oAuthServersListReducer({}, { type: DISCARD_PAGINATION });
+    describe('DISCARD_OAUTH_SERVERS_PAGINATION', () => {
+        const result = oAuthServersListReducer({}, { type: DISCARD_OAUTH_SERVERS_PAGINATION });
 
         it('returns discarded pagination state', () => {
             expect(result.currentPageIndex).toEqual(0);
@@ -69,9 +67,9 @@ describe('oAuthServersListReducer', () => {
         });
     });
 
-    describe('SET_PAGINATION_PAGE', () => {
+    describe('SET_OAUTH_SERVERS_PAGINATION_PAGE', () => {
         const pageIndex = 1;
-        const result = oAuthServersListReducer({}, { type: SET_PAGINATION_PAGE, payload: pageIndex });
+        const result = oAuthServersListReducer({}, { type: SET_OAUTH_SERVERS_PAGINATION_PAGE, payload: pageIndex });
 
         it('returns set pagination state', () => {
             expect(result.currentPageIndex).toEqual(pageIndex);
@@ -81,41 +79,6 @@ describe('oAuthServersListReducer', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
-
-    // TODO: investigate for more better solution
-    describe('REFRESH_ENDPOINTS', () => {
-        const result = oAuthServersListReducer(initialState, { type: REFRESH_ENDPOINTS });
-
-        it('returns resfresh endpoints state', () => {
-            expect(result.oAuthServersListReducer).toEqual([]);
-        });
-
-        it('returns resfresh endpoints state when having already elements on oAuthServersListReducer', () => {
-            const newInitialState = { ...initialState, oAuthServersListReducer: [
-                {name: 1},
-                {name: 2},
-                {name: 3},
-            ]};
-            const payload = 3;
-            const result = oAuthServersListReducer(
-                newInitialState,
-                {
-                    type: REFRESH_ENDPOINTS,
-                    payload,
-                },
-            );
-
-            expect(result.oAuthServersListReducer).toEqual([
-                {name: 1},
-                {name: 2},
-            ]);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(5);
-        });
-    });
-    */
 
     describe('SET_OAUTH_SERVERS_SORTING_FILTER', () => {
         const randomString = getRandomString();
