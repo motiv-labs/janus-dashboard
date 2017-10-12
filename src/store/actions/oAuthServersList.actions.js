@@ -8,11 +8,11 @@ import {
     SET_OAUTH_SERVERS_PAGINATION_PAGE,
 } from '../constants';
 
-const getOAuthServers = () => ({
+export const getOAuthServers = () => ({
     type: FETCH_OAUTH_SERVERS_LIST_START,
 });
 
-const getOAuthServersSuccess = list => ({
+export const getOAuthServersSuccess = list => ({
     type: FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     payload: list,
 });
@@ -26,12 +26,12 @@ export const setOAuthServersListCurrentPageIndex = index => ({
     payload: index,
 });
 
-export const setSortingFilter = filter => ({
+export const setOAuthServersSortingFilter = filter => ({
     type: SET_OAUTH_SERVERS_SORTING_FILTER,
     payload: filter,
 });
 
-export const setAscendingFilter = () => ({
+export const setOAuthServersAscendingFilter = () => ({
     type: SET_OAUTH_SERVERS_ASCEND_FILTER,
 });
 

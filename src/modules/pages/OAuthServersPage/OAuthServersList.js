@@ -56,7 +56,7 @@ class OAuthServersList extends PureComponent {
                     <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                         <Icon type="edit" ariaLabel="Edit" />
                     </Link>
-                    <Link
+                    {/*<Link
                         to={''}
                         className={table('controls-item')}
                         onClick={() => {
@@ -64,7 +64,7 @@ class OAuthServersList extends PureComponent {
                         }}
                     >
                         <Icon type="delete" ariaLabel="Delete" />
-                    </Link>
+                    </Link>*/}
                 </div>
             </div>
         );
@@ -100,7 +100,7 @@ class OAuthServersList extends PureComponent {
             return (
                 <PaginatedList
                     list={this.props.oAuthServers}
-                    itemsPerPage={1}
+                    itemsPerPage={10}
                     currentPageIndex={this.props.currentPageIndex}
                     changePageIndex={this.props.setCurrentPageIndex}
                     maximumVisiblePaginators={3}

@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 
 import {
     fetchOAuthServers,
-    setAscendingFilter,
+    setOAuthServersAscendingFilter,
     setOAuthServersListCurrentPageIndex,
-    setSortingFilter,
+    setOAuthServersSortingFilter,
 } from '../../../store/actions';
 import { filteredOAuthServersList } from '../../../store/selectors';
 
@@ -19,8 +19,8 @@ export default connect(
     mapStateToProps,
     {
         fetchOAuthServers,
-        setAscendingFilter,
+        setAscendingFilter: setOAuthServersAscendingFilter,
         setCurrentPageIndex: setOAuthServersListCurrentPageIndex,
-        setSortingFilter,
+        setSortingFilter: setOAuthServersSortingFilter,
     },
 )(OAuthServersList);

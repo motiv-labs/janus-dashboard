@@ -15,8 +15,8 @@ class OAuthServerItem extends PureComponent {
     }
 
     render() {
-        console.error('this.props', this.props);
         if (R.isEmpty(this.props.oAuthServer)) return <Preloader />;
+
         const { name } = this.props.oAuthServer;
 
         return (
