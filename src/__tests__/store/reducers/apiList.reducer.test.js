@@ -9,8 +9,7 @@ import {
     SET_ASCEND_FILTER,
 } from '../../../store/constants/apiList.constants';
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
-
-const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
+import getRandomString from '../../../helpers/getRandomString';
 
 describe('search', () => {
     describe('Default', () => {

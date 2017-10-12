@@ -1,8 +1,7 @@
 import searchReducer, { initialState } from '../../../store/reducers/search.reducer';
 import { SEARCH_QUERY } from '../../../store/constants/search.constants';
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
-
-const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
+import getRandomString from '../../../helpers/getRandomString';
 
 describe('search reducer', () => {
     describe('Default', () => {
