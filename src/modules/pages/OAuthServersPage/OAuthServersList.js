@@ -1,4 +1,5 @@
 import React, { PureComponent } from 'react';
+import R from 'ramda';
 import PropTypes from 'prop-types';
 import {
   Link,
@@ -29,45 +30,44 @@ class OAuthServersList extends PureComponent {
         this.props.fetchOAuthServers();
     }
 
-    handleDelete = (apiName) => {
-        this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+    handleDelete = serverName => {
+        this.props.deleteEndpoint(serverName, this.props.refreshEndpoints);
     };
 
-    renderRows = list => list.map((api, index) => (
-        <div className={table('row')} key={`${index}-${api.name}`}>
-            <div className={table('td', {name: true})}>{api.name}</div>
-            <div className={table('td')}></div>
-            <div className={table('td')}></div>
-            <div className={table('td', {active: true})}>
-                {api.active ? <Icon type="checked" /> : null}
+    getTokenUrl = pathArray => target => {
+        const pathToTockenUrl = R.lensPath(pathArray);
+
+        return R.view(pathToTockenUrl, target);
+    }
+
+    renderRows = list => list.map((server, index) => {
+        const tokenUrl = this.getTokenUrl(
+            ['oauth_endpoints','token','upstream_url']
+        )(server);
+
+        return (
+            <div className={table('row')} key={`${index}-${server.name}`}>
+                <div className={table('td', {name: true})}>{server.name}</div>
+                <div className={table('td', {name: true})}>{tokenUrl}</div>
+                <div className={table('td', {name: true})}></div>
+                <div className={table('td', {name: true})}></div>
+                <div className={table('td').mix(table('controls'))}>
+                    <Link to={`/${server.name}`} className={table('controls-item')}>
+                        <Icon type="edit" ariaLabel="Edit" />
+                    </Link>
+                    <Link
+                        to={''}
+                        className={table('controls-item')}
+                        onClick={() => {
+                            this.handleDelete(server.name);
+                        }}
+                    >
+                        <Icon type="delete" ariaLabel="Delete" />
+                    </Link>
+                </div>
             </div>
-            <div className={table('td').mix(table('controls'))}>
-                <Link to={`/${api.name}`} className={table('controls-item')}>
-                    <Icon type="edit" ariaLabel="Edit" />
-                </Link>
-                <Link
-                    to={{
-                        pathname: '/new',
-                        state: {
-                            clone: api,
-                        },
-                    }}
-                    className={table('controls-item')}
-                >
-                    <Icon type="copy" ariaLabel="Copy" />
-                </Link>
-                <Link
-                    to={''}
-                    className={table('controls-item')}
-                    onClick={() => {
-                        this.handleDelete(api.name);
-                    }}
-                >
-                    <Icon type="delete" ariaLabel="Delete" />
-                </Link>
-            </div>
-        </div>
-    ))
+        );
+    })
 
     sortList = filter => {
         this.props.setSortingFilter(filter);
@@ -85,16 +85,7 @@ class OAuthServersList extends PureComponent {
                         <div>oAuth Server Name</div>
                         <div className="ascending-icon"></div>
                     </div>
-                    <div className={table('th')}>Listen Path</div>
                     <div className={table('th')}>Upstream URL</div>
-                    <div
-                        className={table('th', {active: true}).mix('ascending-container')}
-                        onClick={() => this.sortList('active')}
-                    >
-                        <div>Active</div>
-                        <div className="ascending-icon"></div>
-                    </div>
-                    <div className={table('th')} />
                 </div>
             </div>
             <div className={table('tbody')}>
