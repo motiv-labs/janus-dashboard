@@ -1,10 +1,10 @@
 import { createSelector } from 'reselect';
 import R from 'ramda';
 
-const getOAuthServers = state => state.oAuthServersReducer.oAuthServers;
+const getOAuthServers = state => state.oAuthServersListReducer.oAuthServers;
 const getSearchQuery = state => state.searchReducer.searchQuery;
-const getSortingFilter = state => state.oAuthServersReducer.sortingFilter;
-const getAscendFilter = state => state.oAuthServersReducer.sortAscend;
+const getSortingFilter = state => state.oAuthServersListReducer.sortingFilter;
+const getAscendFilter = state => state.oAuthServersListReducer.sortAscend;
 
 const sortByNameCaseInsensitive = asc => R.sort(
     asc

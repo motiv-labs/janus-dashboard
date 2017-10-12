@@ -8,8 +8,12 @@ export default {
         name: 'Health Check',
     },
     OAUTH_SERVERS: {
-        path: '/oauth-servers',
+        path: '/oauth/servers',
         name: 'oAuth Servers',
+    },
+    OAUTH_SERVER: {
+        path: '/oauth/servers/:name',
+        name: '',
     },
     NEW: {
         path: '/new',

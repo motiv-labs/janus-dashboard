@@ -1,6 +1,6 @@
 import {
-    FETCH_OAUTH_SERVERS_START,
-    FETCH_OAUTH_SERVERS_SUCCESS,
+    FETCH_OAUTH_SERVERS_LIST_START,
+    FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
@@ -15,13 +15,13 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_OAUTH_SERVERS_START: {
+        case FETCH_OAUTH_SERVERS_LIST_START: {
             return {
                 ...state,
                 isFetching: true,
             };
         }
-        case FETCH_OAUTH_SERVERS_SUCCESS: {
+        case FETCH_OAUTH_SERVERS_LIST_SUCCESS: {
             return {
                 ...state,
                 isFetching: false,

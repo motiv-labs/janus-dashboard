@@ -10,7 +10,8 @@ import apiListReducer from './apiList.reducer';
 import apiReducer from './api.reducer';
 import searchReducer from './search.reducer';
 import requestReducer from './request.reducer';
-import oAuthServersReducer from './oAuthServers.reducer';
+import oAuthServersListReducer from './oAuthServersList.reducer';
+import oAuthServerReducer from './oAuthServer.reducer';
 
 export default combineReducers({
   // here combine all reducers:
@@ -21,7 +22,8 @@ export default combineReducers({
     apiReducer,
     searchReducer,
     requestReducer,
-    oAuthServersReducer,
+    oAuthServersListReducer,
+    oAuthServerReducer,
     form: formReducer,
     routing: routerReducer,
 });

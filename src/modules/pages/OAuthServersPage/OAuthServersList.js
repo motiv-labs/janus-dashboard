@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
+import ROUTES from '../../../configurations/routes.config';
 
 import Table from '../../Layout/Table/Table';
 import PaginatedList from '../../PaginatedList/PaginatedList';
@@ -52,7 +53,7 @@ class OAuthServersList extends PureComponent {
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td').mix(table('controls'))}>
-                    <Link to={`/${server.name}`} className={table('controls-item')}>
+                    <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                         <Icon type="edit" ariaLabel="Edit" />
                     </Link>
                     <Link

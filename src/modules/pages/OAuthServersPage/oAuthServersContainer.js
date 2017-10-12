@@ -15,7 +15,7 @@ import OAuthServersList from './OAuthServersList';
 const mapStateToProps = state => ({
     // oAuthServers: state.oAuthServersReducer.oAuthServers,
     oAuthServers: filteredOAuthServersList(state),
-    currentPageIndex: state.oAuthServersReducer.currentPageIndex,
+    currentPageIndex: state.oAuthServersListReducer.currentPageIndex,
 });
 
 export default connect(

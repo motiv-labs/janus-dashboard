@@ -1,15 +1,15 @@
 import client from '../api';
 import {
-    FETCH_OAUTH_SERVERS_START,
-    FETCH_OAUTH_SERVERS_SUCCESS,
+    FETCH_OAUTH_SERVERS_LIST_START,
+    FETCH_OAUTH_SERVERS_LIST_SUCCESS,
 } from '../constants';
 
 const getOAuthServers = () => ({
-    type: FETCH_OAUTH_SERVERS_START,
+    type: FETCH_OAUTH_SERVERS_LIST_START,
 });
 
 const getOAuthServersSuccess = list => ({
-    type: FETCH_OAUTH_SERVERS_SUCCESS,
+    type: FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     payload: list,
 });
 
