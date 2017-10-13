@@ -1,8 +1,34 @@
 import { connect } from 'react-redux';
 
+import {
+    // deleteEndpoint,
+    // fetchEndpointSchema,
+    // resetEndpoint,
+    // refreshEndpoints,
+    // saveEndpoint,
+    // excludePlugin,
+    // selectPlugin,
+    // willClone,
+} from '../../../store/actions';
+
 import NewOAuthServerItem from './NewOAuthServerItem';
 
+const mapStateToProps = state => ({
+    // api: state.apiReducer.api,
+    // apiSchema: state.apiReducer.apiSchema,
+    // selectedPlugins: state.apiReducer.selectedPlugins,
+});
+
 export default connect(
-    null,
-    null,
+    mapStateToProps,
+    {
+        // deleteEndpoint,
+        // fetchEndpointSchema,
+        // resetEndpoint,
+        // saveEndpoint,
+        // excludePlugin,
+        // refreshEndpoints,
+        // selectPlugin,
+        // willClone,
+    },
 )(NewOAuthServerItem);
