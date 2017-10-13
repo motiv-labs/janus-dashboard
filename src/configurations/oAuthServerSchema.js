@@ -54,7 +54,6 @@ const oAuthServerSchema = {
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
-            enable_load_balancing: false,
             methods: ['POST'],
             hosts: null
         },
@@ -65,14 +64,10 @@ const oAuthServerSchema = {
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
-            enable_load_balancing: false,
             methods: ['DELETE'],
             hosts: null
         }
     },
-    allowed_access_types: [],
-    allowed_authorize_types: [],
-    auth_login_redirect: '',
     cors_meta: {
         domains: ['*'],
         methods: ['GET','POST','PUT','PATCH','DELETE'],
@@ -80,12 +75,13 @@ const oAuthServerSchema = {
         exposed_headers: ['X-Debug-Token','X-Debug-Token-Link'],
         enabled: true
     },
-    'rate_limit': {
+    rate_limit: {
         limit: '200-S',
         enabled: false
     },
     token_strategy: {
-        name: 'jwt',
+        name: ['jwt', 'introspection'],
+        // next when JWT is selected
         settings: [
             {
                 alg: 'HS256',
@@ -94,10 +90,15 @@ const oAuthServerSchema = {
             {
                 alg: 'RS256',
                 key: ''
-            }
-        ]
+            },
+            // for INTROSPECTION
+        ],
+        // next when INTROSPECTION is selected
+        // settings: {
+        //     use_aouth_header: boolen,
+        //     auth_header_type: string,//no validation
+        // },
     },
-    access_rules: null
 };
 
 export default oAuthServerSchema;
