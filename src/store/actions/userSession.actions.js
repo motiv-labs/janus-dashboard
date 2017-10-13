@@ -10,7 +10,7 @@ import {
     LOGOUT,
 } from '../constants';
 import { requestStart, requestComplete } from './request.actions';
-import { getRandomString } from '../../helpers/getRandomString';
+import getRandomString from '../../helpers/getRandomString';
 
 /* eslint-disable */
 const clientId = process.env.REACT_APP_CLIENT_ID || MAIN_CONFIG.gateway.client_id;

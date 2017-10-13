@@ -10,8 +10,7 @@ import {
 } from '../../../store/constants/apiResponse.constants';
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
 import setToasterMessage from '../../../helpers/setToasterMessage';
-
-const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
+import getRandomString from '../../../helpers/getRandomString';
 
 describe('apiResponseReducer', () => {
     const confirmationModalState = {

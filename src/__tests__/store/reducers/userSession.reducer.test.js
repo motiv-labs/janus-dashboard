@@ -7,8 +7,7 @@ import {
     LOGOUT,
 } from '../../../store/constants/userSession.constants';
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
-
-const getRandomString = () => Math.floor(Math.random() * 10000).toString(16);
+import getRandomString from '../../../helpers/getRandomString';
 
 describe('user session reducer', () => {
     describe('Default', () => {

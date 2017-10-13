@@ -10,3 +10,4 @@ test/unit/coverage
 src/**/*.css
 public/config.js
 .env
+.env.local
