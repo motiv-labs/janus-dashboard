@@ -22,6 +22,7 @@ import LoginPage from '../pages/LoginPage/LoginPage';
 import HealthCheckPage from '../pages/HealthCheckPage/HealthCheckPage';
 import OAuthServersPage from '../pages/OAuthServersPage/OAuthServersPage';
 import OAuthServerPage from '../pages/OAuthServerPage/OAuthServerPage';
+import NewOAuthServerPage from '../pages/NewOAuthServerPage/NewOAuthServerPage';
 import ApiListPage from '../pages/ApiListPage/ApiListPage';
 import NewApiPage from '../pages/NewApiPage/NewApiPage';
 import EditApiPage from '../pages/EditPage/EditApiPage';
@@ -44,6 +45,7 @@ class Root extends Component {
                             <Route exact path={ROUTES.MAIN.path} component={ApiListPage} />
                             <Route path={ROUTES.GITHUB_AUTH.path} component={AuthorizationCallback} />
                             <Route path={ROUTES.HEALTHCHECK.path} component={HealthCheckPage} />
+                            <Route path={ROUTES.NEW_OAUTH_SERVER.path} component={NewOAuthServerPage} />
                             <Route path={ROUTES.OAUTH_SERVER.path} component={OAuthServerPage} />
                             <Route path={ROUTES.OAUTH_SERVERS.path} component={OAuthServersPage} />
                             <Route path={ROUTES.NEW.path} component={NewApiPage} />

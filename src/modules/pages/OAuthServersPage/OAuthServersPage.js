@@ -31,8 +31,8 @@ const OAuthServersPage = () => {
                     <Row>
                         <SearchingContainer />
 
-                        <Link to="/new">
-                            <Button mod="primary" label="Create New Api">+ Create New API</Button>
+                        <Link to="/oauth/servers/new">
+                            <Button mod="primary">+ Create New oAuth Server</Button>
                         </Link>
                     </Row>
                 </Row>

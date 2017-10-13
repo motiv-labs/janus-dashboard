@@ -15,6 +15,10 @@ export default {
         path: '/oauth/servers/:name',
         name: '',
     },
+    NEW_OAUTH_SERVER: {
+        path: '/oauth/servers/new',
+        name: '',
+    },
     NEW: {
         path: '/new',
         name: 'New API',
