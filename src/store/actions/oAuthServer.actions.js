@@ -5,6 +5,8 @@ import client from '../api';
 import {
     FETCH_OAUTH_SERVER_START,
     FETCH_OAUTH_SERVER_SUCCESS,
+    FETCH_OAUTH_SERVER_SCHEMA_START,
+    FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
 } from '../constants';
 import history from '../configuration/history';
 
@@ -15,6 +17,15 @@ const getOAuthServerRequest = () => ({
 const getOAuthServerSuccess = data => ({
     type: FETCH_OAUTH_SERVER_SUCCESS,
     payload: data,
+});
+
+export const getOAuthSchemaRequest = () => ({
+    type: FETCH_OAUTH_SERVER_SCHEMA_START,
+});
+
+export const getOAuthSchemaSuccess = api => ({
+    type: FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
+    payload: api,
 });
 
 export const fetchOAuthServer = path => async dispatch => {
