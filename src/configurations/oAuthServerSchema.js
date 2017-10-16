@@ -70,13 +70,18 @@ const oAuthServerSchema = {
     },
     cors_meta: {
         domains: ['*'],
-        methods: ['GET','POST','PUT','PATCH','DELETE'],
+        methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
         request_headers: ['Origin','Authorization','Content-Type'],
         exposed_headers: ['X-Debug-Token','X-Debug-Token-Link'],
         enabled: true
     },
     rate_limit: {
-        limit: '200-S',
+        limit: {
+            value: 0,
+            unit: '',
+            units: ['S', 'M', 'H'],
+            labels: ['Seconds', 'Minutes', 'Hours'],
+        },
         enabled: false
     },
     token_strategy: {

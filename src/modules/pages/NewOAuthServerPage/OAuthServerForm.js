@@ -62,7 +62,7 @@ const OAuthServerForm = props => {
                     <div className={b('section-title')}>1. General</div>
                     <Row className={b('row')()} fullwidth>
                         <Row col>
-                            <Label>API Name</Label>
+                            <Label>oAuth Server Name</Label>
                             <Field
                                 name="name"
                                 type="text"
@@ -70,12 +70,19 @@ const OAuthServerForm = props => {
                             />
                             <Hint>Must be unique</Hint>
                         </Row>
+                    </Row>
+                </div>
+
+                <div className={b('section')}>
+                    <div className={b('section-title')}>2. Cors_meta</div>
+
+                    <Row className={b('row')()} fullwidth>
                         <Row col>
-                            <Label>Is Active?</Label>
+                            <Label>Is Enabled?</Label>
                             <Row className={b('radio-wrap')()}>
                                 <Row className={b('radio')()}>
                                     <Field
-                                        name="active"
+                                        name="cors_meta.active"
                                         component={Radio}
                                         value={'true'}
                                         type="radio"
@@ -85,7 +92,7 @@ const OAuthServerForm = props => {
                                 </Row>
                                 <Row className={b('radio')()}>
                                     <Field
-                                        name="active"
+                                        name="cors_meta.active"
                                         component={Radio}
                                         value={'false'}
                                         type="radio"
@@ -95,18 +102,54 @@ const OAuthServerForm = props => {
                                 </Row>
                             </Row>
                         </Row>
+                        {/*
+                        <Row col>
+                            <Label>Domains</Label>
+                            <Field
+                                name="cors_meta.domains"
+                                type="text"
+                                placeholder="*"
+                                component={Input}
+                            />
+                            <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                        </Row>
+                        */}
                     </Row>
-                </div>
-                {/*
-                <div className={b('section')}>
-                    <div className={b('section-title')}>2. Proxy</div>
+
+                    <Row className={b('row')()} fullwidth>
+                        <Row col>
+                            <Label>Domains</Label>
+                            <Field
+                                name="cors_meta.domains"
+                                type="text"
+                                placeholder=""
+                                component={Input}
+                            />
+                            <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Methods</Label>
+                            <Field
+                                name="cors_meta.methods"
+                                type="text"
+                                edit={true}
+                                placeholder=""
+                                value="cors_meta.methods"
+                                options={optionsTransformer(schema.cors_meta.methods)}
+                                component={MultiSelect}
+                            />
+                            <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                        </Row>
+                    </Row>
+
+                    {/*
                     <Row className={b('row')()} fullwidth>
                         <div className={col()}>
                             <div className={col('item')}>
                                 <Label>Listen Path</Label>
                             </div>
                             <Field
-                                name="proxy.listen_path"
+                                name="cors_meta.listen_path"
                                 type="text"
                                 placeholder="eg. http://gw.hellofresh.com/"
                                 component={Input}
@@ -129,6 +172,9 @@ const OAuthServerForm = props => {
                             <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
                         </div>
                     </Row>
+                    */}
+
+                    {/*
                     <Row className={b('row')()} fullwidth>
                         <Row col>
                             <Label>Methods</Label>
@@ -265,8 +311,8 @@ const OAuthServerForm = props => {
                             />
                     }
 
-                </div>
                 */}
+                </div>
             </div>
             <Row className={b('row',{ 'button-row': true })()}>
                 <Button
