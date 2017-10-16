@@ -9,8 +9,8 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['ALL'],
-            hosts: null
+            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+            hosts: null // TODO: should be array?
         },
         token: {
             preserve_host: false,
@@ -20,7 +20,7 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['GET', 'POST'],
+            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: null
         },
         introspect: {
@@ -31,7 +31,7 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['GET'],
+            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: null
         },
         revoke: {
@@ -42,7 +42,7 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['GET','POST'],
+            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: null
         }
     },

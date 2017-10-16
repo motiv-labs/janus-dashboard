@@ -111,7 +111,11 @@ class NewOAuthServerItem extends PureComponent {
     }
 
     render() {
+        console.clear();
+
         console.error('PROPS', this.props.schema);
+        console.warn('PROPS', this.props.schema.oauth_endpoints);
+        if (this.props.schema.oauth_endpoints) console.warn('PROPS', this.props.schema.oauth_endpoints['authorize']);
         if (R.isEmpty(this.props.schema)) return <Preloader />;
 
         return this.renderForm();
