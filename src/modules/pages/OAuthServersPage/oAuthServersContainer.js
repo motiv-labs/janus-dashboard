@@ -1,7 +1,9 @@
 import { connect } from 'react-redux';
 
 import {
+    deleteOAuthServer,
     fetchOAuthServers,
+    refreshOAuthServers,
     setOAuthServersAscendingFilter,
     setOAuthServersListCurrentPageIndex,
     setOAuthServersSortingFilter,
@@ -18,7 +20,9 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     {
+        deleteOAuthServer,
         fetchOAuthServers,
+        refreshOAuthServers,
         setAscendingFilter: setOAuthServersAscendingFilter,
         setCurrentPageIndex: setOAuthServersListCurrentPageIndex,
         setSortingFilter: setOAuthServersSortingFilter,

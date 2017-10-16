@@ -17,8 +17,10 @@ import '../../Layout/Table/Table.css';
 
 const propTypes = {
     currentPageIndex: PropTypes.number.isRequired,
+    deleteOAuthServer: PropTypes.func.isRequired,
     fetchOAuthServers: PropTypes.func.isRequired,
     oAuthServers: PropTypes.arrayOf(PropTypes.object).isRequired,
+    refreshOAuthServers: PropTypes.func.isRequired,
     setAscendingFilter: PropTypes.func.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
     setSortingFilter: PropTypes.func.isRequired,
@@ -32,7 +34,7 @@ class OAuthServersList extends PureComponent {
     }
 
     handleDelete = serverName => {
-        this.props.deleteEndpoint(serverName, this.props.refreshEndpoints);
+        this.props.deleteOAuthServer(serverName, this.props.refreshOAuthServers);
     };
 
     getTokenUrl = pathArray => target => {
@@ -56,15 +58,15 @@ class OAuthServersList extends PureComponent {
                     <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                         <Icon type="edit" ariaLabel="Edit" />
                     </Link>
-                    {/*<Link
-                        to={''}
+                    <Link
+                        to={'/oauth/servers'}
                         className={table('controls-item')}
                         onClick={() => {
                             this.handleDelete(server.name);
                         }}
                     >
                         <Icon type="delete" ariaLabel="Delete" />
-                    </Link>*/}
+                    </Link>
                 </div>
             </div>
         );

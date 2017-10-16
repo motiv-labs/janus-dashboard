@@ -6,6 +6,7 @@ import {
     SET_OAUTH_SERVERS_ASCEND_FILTER,
     DISCARD_OAUTH_SERVERS_PAGINATION,
     SET_OAUTH_SERVERS_PAGINATION_PAGE,
+    REFRESH_OAUTH_SERVERS,
 } from '../constants';
 
 export const getOAuthServers = () => ({
@@ -46,3 +47,8 @@ export const fetchOAuthServers = () => async dispatch => {
         console.log('ERRROR', error);
     }
 };
+
+export const refreshOAuthServers = server => ({
+    type: REFRESH_OAUTH_SERVERS,
+    payload: server,
+});

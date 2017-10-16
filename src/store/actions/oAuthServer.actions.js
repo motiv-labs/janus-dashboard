@@ -9,6 +9,8 @@ import {
     FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
     SAVE_OAUTH_SERVER_START,
     SAVE_OAUTH_SERVER_SUCCESS,
+    DELETE_OAUTH_SERVER_START,
+    DELETE_OAUTH_SERVER_SUCCESS,
 } from '../constants';
 import {
     clearConfirmationModal,
@@ -48,6 +50,14 @@ export const saveOAuthServerSuccess = () => ({
     type: SAVE_OAUTH_SERVER_SUCCESS,
 });
 
+export const deleteOAuthServerRequest = () => ({
+    type: DELETE_OAUTH_SERVER_START,
+});
+
+export const deleteOAuthServerSuccess = () => ({
+    type: DELETE_OAUTH_SERVER_SUCCESS,
+});
+
 export const fetchOAuthServer = path => async dispatch => {
     dispatch(getOAuthServerRequest());
 
@@ -70,7 +80,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     }
 };
 
-export const confirmedSaveOAuthServer = (dispatch, pathname, server) => {
+export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
     dispatch(saveOAuthServerRequest(server));
 
     // const preparedPlugins = preparePlugins(api);
@@ -78,7 +88,7 @@ export const confirmedSaveOAuthServer = (dispatch, pathname, server) => {
     // const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
     try {
-        const response = client.post('oauth/servers', server);
+        const response = await client.post('oauth/servers', server);
 
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
@@ -111,4 +121,28 @@ export const saveOAuthServer = (pathname, server) => dispatch => {
         () => confirmedSaveOAuthServer(dispatch, pathname, server),
         server.name,
     ));
+};
+
+export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
+    dispatch(deleteOAuthServerRequest());
+
+    try {
+        const response = await client.delete(`oauth/servers/${serverName}`);
+
+        dispatch(deleteOAuthServerSuccess());
+        dispatch(closeConfirmationModal());
+        dispatch(fetchOAuthServers());
+        history.push('/oauth/servers');
+        dispatch(showToaster());
+    } catch (error) {
+        dispatch(openResponseModal({
+            status: error.response.status,
+            statusText: error.response.statusText,
+            message: error.response.data.error,
+        }));
+    }
+};
+
+export const deleteOAuthServer = serverName => dispatch => {
+    dispatch(openConfirmationModal('delete', () => confirmedDeleteOAuthServer(dispatch, serverName), serverName));
 };

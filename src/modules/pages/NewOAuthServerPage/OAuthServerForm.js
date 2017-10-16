@@ -231,6 +231,8 @@ const OAuthServerForm = props => {
                         </div>
                     </div>
                 </div>
+            </div>
+            <div className={b('inner')}>
                 <div className={b('section')}>
                     <div className={b('section-title')}>4. oAuth Endpoints</div>
                     <OAuthEndpoints
