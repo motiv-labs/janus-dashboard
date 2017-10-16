@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
 import { connect } from 'react-redux';
@@ -65,6 +65,10 @@ const OAuthServerForm = props => {
             label: item[1],
             value: item[0],
         }));
+    };
+
+    const renderTabs = () => {
+        return <p>TABS</p>;
     };
 
     return (
@@ -232,6 +236,13 @@ const OAuthServerForm = props => {
                     </div>
                 </div>
             </div>
+
+            <div className={b('inner')}>
+                <div className={b('section')}>
+                    { renderTabs() }
+                </div>
+            </div>
+
             <div className={b('inner')}>
                 <div className={b('section')}>
                     <div className={b('section-title')}>4. oAuth Endpoints</div>
