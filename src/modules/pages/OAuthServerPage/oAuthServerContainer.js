@@ -8,7 +8,7 @@ import OAuthServerItem from './OAuthServerItem';
 
 const mapStateToProps = state => ({
     oAuthServer: state.oAuthServerReducer.oAuthServer,
-    // apiSchema: state.apiReducer.apiSchema,
+    // schema: state.oAuthServerReducer.oAuthServerSchema,
     // response: state.apiReducer.response,
     // selectedPlugins: state.apiReducer.selectedPlugins,
 });

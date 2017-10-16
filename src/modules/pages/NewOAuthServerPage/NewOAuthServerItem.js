@@ -6,9 +6,10 @@ import { deleteProperty } from 'picklock';
 import transformFormValues from '../../../helpers/transformFormValues';
 
 import Subtitle from '../../Layout/Title/Subtitle';
+import OAuthServerForm from './OAuthServerForm';
 // import NewApiForm from './NewApiForm';
 // import EditApiForm from '../EditPage/EditApiForm';
-// import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     // api: PropTypes.object.isRequired,
@@ -31,14 +32,16 @@ class NewOAuthServerItem extends PureComponent {
     //         this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
     //         return;
     //     }
-        // this.props.fetchOAuthServerSchema(true);
+        this.props.fetchOAuthServerSchema();
     }
 
     // handleDelete = apiName => {
     //     this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
     // };
 
-    // submit = values => {
+    submit = values => {
+        console.error('SUBMIT');
+
     //     const transformedValues = transformFormValues(values, true);
     //     const plugins = transformedValues.plugins;
     //     const selectedPlugins = this.props.selectedPlugins;
@@ -51,7 +54,7 @@ class NewOAuthServerItem extends PureComponent {
     //     };
 
     //     this.props.saveEndpoint(this.props.location.pathname, computedPlugins);
-    // }
+    }
 
     // hasToBeCloned = () => {
     //     if (this.props.location.state && !R.isEmpty(this.props.location.state.clone)) {
@@ -63,7 +66,7 @@ class NewOAuthServerItem extends PureComponent {
     //     return false;
     // }
 
-    // renderForm = () => {
+    renderForm = () => {
     //     if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
 
     //     if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
@@ -94,29 +97,24 @@ class NewOAuthServerItem extends PureComponent {
     //         );
     //     }
 
-    //     return (
-    //         <NewApiForm
-    //             onSubmit={this.submit}
+        return (
+            <OAuthServerForm
+                schema={this.props.schema}
+                onSubmit={this.submit}
     //             apiSchema={this.props.apiSchema}
     //             initialValues={transformFormValues(this.props.apiSchema)}
     //             excludePlugin={this.props.excludePlugin}
     //             selectPlugin={this.props.selectPlugin}
     //             selectedPlugins={this.props.selectedPlugins}
-    //         />
-    //     );
-    // }
+             />
+        );
+    }
 
     render() {
-        console.error('PROPS', this.props);
+        console.error('PROPS', this.props.schema);
+        if (R.isEmpty(this.props.schema)) return <Preloader />;
 
-        // const { api } = this.props;
-
-        return (
-            <div>
-                <Subtitle>{this.props.location.pathname}</Subtitle>
-                {/*{ this.renderForm() }*/}
-            </div>
-        );
+        return this.renderForm();
     }
 }
 

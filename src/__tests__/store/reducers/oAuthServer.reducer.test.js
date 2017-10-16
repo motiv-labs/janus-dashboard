@@ -7,6 +7,7 @@ import {
 } from '../../../store/constants';
 
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
+import getRandomString from '../../../helpers/getRandomString';
 
 describe('oAuthServerReducer', () => {
     describe('Default', () => {
@@ -21,7 +22,6 @@ describe('oAuthServerReducer', () => {
         });
     });
 
-
     describe('FETCH_OAUTH_SERVER_SCHEMA_START', () => {
         const result = oAuthServerReducer({}, { type: FETCH_OAUTH_SERVER_SCHEMA_START });
 
@@ -33,77 +33,18 @@ describe('oAuthServerReducer', () => {
             expect(touchedReducerProps(result)).toBe(1);
         });
     });
-/*
-    describe('FETCH_OAUTH_SERVERS_LIST_SUCCESS', () => {
-        const randomString = getRandomString();
-        const result = oAuthServerReducer({}, {
-            type: FETCH_OAUTH_SERVERS_LIST_SUCCESS,
-            payload: randomString,
-        });
 
-        it('returns fetched endpoint success state and switches `isFetching` flag', () => {
-            expect(result.oAuthServers).toEqual(randomString);
+    describe('FETCH_OAUTH_SERVER_SCHEMA_SUCCESS', () => {
+        const payload = getRandomString();
+        const result = oAuthServerReducer({}, { type: FETCH_OAUTH_SERVER_SCHEMA_SUCCESS, payload });
+
+        it('returns fetching oauth server final state with received info', () => {
             expect(result.isFetching).toEqual(false);
+            expect(result.oAuthServerSchema).toEqual(payload);
         });
 
         it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(2);
         });
     });
-
-    describe('DISCARD_OAUTH_SERVERS_PAGINATION', () => {
-        const result = oAuthServerReducer({}, { type: DISCARD_OAUTH_SERVERS_PAGINATION });
-
-        it('returns discarded pagination state', () => {
-            expect(result.currentPageIndex).toEqual(0);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('SET_OAUTH_SERVERS_PAGINATION_PAGE', () => {
-        const pageIndex = 1;
-        const result = oAuthServerReducer({}, { type: SET_OAUTH_SERVERS_PAGINATION_PAGE, payload: pageIndex });
-
-        it('returns set pagination state', () => {
-            expect(result.currentPageIndex).toEqual(pageIndex);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('SET_OAUTH_SERVERS_SORTING_FILTER', () => {
-        const randomString = getRandomString();
-        const result = oAuthServerReducer({},{
-            type: SET_OAUTH_SERVERS_SORTING_FILTER,
-            payload: randomString,
-        });
-
-        it('sets the sorting filter', () => {
-            expect(result.sortingFilter).toEqual(randomString);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('SET_OAUTH_SERVERS_ASCEND_FILTER', () => {
-        const state = { sortAscend: true };
-        const result = oAuthServerReducer(state, { type: SET_OAUTH_SERVERS_ASCEND_FILTER });
-
-        it('switches ascending/descending sorting', () => {
-            expect(result.sortAscend).toBe(!state.sortAscend);
-        });
-
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-    */
 });

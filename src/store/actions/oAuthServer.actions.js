@@ -9,6 +9,7 @@ import {
     FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
 } from '../constants';
 import history from '../configuration/history';
+import oAuthServerSchema from '../../configurations/oAuthServerSchema';
 
 const getOAuthServerRequest = () => ({
     type: FETCH_OAUTH_SERVER_START,
@@ -38,5 +39,15 @@ export const fetchOAuthServer = path => async dispatch => {
         dispatch(getOAuthServerSuccess(response.data));
     } catch (error) {
         console.log('FETCH_OAUTH_SERVER_ERROR', 'Infernal server error', error);
+    }
+};
+
+export const fetchOAuthServerSchema = () => async dispatch => {
+    dispatch(getOAuthSchemaRequest);
+
+    try {
+        dispatch(getOAuthSchemaSuccess(oAuthServerSchema));
+    } catch (error) {
+        console.log('FETCH_OAUTH_SERVER_SCHEMA_ERROR', 'Infernal server error', error);
     }
 };

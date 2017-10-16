@@ -11,7 +11,6 @@ export const initialState = {
     isFetching: false,
 };
 
-
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case FETCH_OAUTH_SERVER_START:
