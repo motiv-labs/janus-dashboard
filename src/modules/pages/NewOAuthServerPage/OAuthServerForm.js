@@ -39,236 +39,270 @@ const propTypes = {
     // initialValues: PropTypes.object,
 };
 
-const OAuthServerForm = props => {
-    const {
-        handleSubmit,
-        schema,
+const styles = {
+    tab: {
+        zIndex: 0,
+        opacity: 0,
+    },
+    visible: {
+        zIndex: 1,
+        opacity: 1,
+    }
+};
 
-        apiSchema,
-        includePlugin,
-        removePlugin,
-        initialValues,
-        plugins,
-        excludePlugin,
-        selectPlugin,
-        selectedPlugins,
-    } = props;
-    const parse = value => value && parseInt(value);
-    const optionsTransformer = config => config.map(item => ({
-        label: item,
-        value: item,
-    }));
-    const createOptions = (list1, list2) => {
-        const combinedListOfUnitsAndLabels = R.zip(list1, list2);
+class OAuthServerForm extends PureComponent {
+    state = {
+        tab: '',
+    };
 
-        return combinedListOfUnitsAndLabels.map(item => ({
-            label: item[1],
-            value: item[0],
+    handleTabSwitch = id => this.setState(prevState => ({ tab: id }));
+
+    render() {
+        const {
+            handleSubmit,
+            schema,
+            initialValues,
+        } = this.props;
+        const parse = value => value && parseInt(value);
+        const optionsTransformer = config => config.map(item => ({
+            label: item,
+            value: item,
         }));
-    };
+        const createOptions = (list1, list2) => {
+            const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
-    const renderTabs = () => {
-        return <p>TABS</p>;
-    };
+            return combinedListOfUnitsAndLabels.map(item => ({
+                label: item[1],
+                value: item[0],
+            }));
+        };
 
-    return (
-        <form className={b} onSubmit={handleSubmit}>
-            <Section>
-                <Row>
-                    <Title>Create New oAuth Server</Title>
-                </Row>
-            </Section>
-            <div className={b('inner')}>
-                <div className={b('section')}>
-                    <div className={b('section-title')}>1. General</div>
-                    <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>oAuth Server Name</Label>
-                            <Field
-                                name="name"
-                                type="text"
-                                component={Input}
+        const renderTabs = () => {
+            const first = 'oAuth Endpoints';
+            const second = 'oAuth Client Endpoints';
+
+            return (
+                <div className={b('tabs')}>
+                    <div className="j-buttons__wrapper tabs-nav">
+                        <Button
+                            mod={`${this.state.tab === first || !this.state.tab ? 'primary' : 'white'}`}
+                            onClick={() => this.handleTabSwitch(first)}
+                            type="button"
+                        >
+                            {first}
+                        </Button>
+                        <Button
+                            mod={`${this.state.tab === second ? 'primary' : 'white'}`}
+                            onClick={() => this.handleTabSwitch(second)}
+                            type="button"
+                        >
+                            {second}
+                        </Button>
+                    </div>
+
+                    <div className={b('tab', {visible: this.state.tab === first || !this.state.tab})}>
+                        <div className={b('section')}>
+                            <OAuthEndpoints
+                                endpoints={schema.oauth_endpoints}
+                                schema={schema}
                             />
-                            <Hint>Must be unique</Hint>
-                        </Row>
-                    </Row>
+                        </div>
+                    </div>
+                    <div className={b('tab', {visible: this.state.tab === second})}>
+                        <div className={b('section')}>
+                            <OAuthClientEndpoints
+                                endpoints={schema.oauth_client_endpoints}
+                                schema={schema}
+                            />
+                        </div>
+                    </div>
                 </div>
-                <div className={b('section')}>
-                    <div className={b('section-title')}>2. Cors meta</div>
-                    <Row className={b('row')()} fullwidth>
-                        <Row col>
-                            <Label>Is Enabled?</Label>
-                            <Row className={b('radio-wrap')()}>
-                                <Row className={b('radio')()}>
-                                    <Field
-                                        name="cors_meta.enabled"
-                                        component={Radio}
-                                        value={'true'}
-                                        type="radio"
-                                        id="is-active"
-                                    />
-                                    <Label htmlFor="is-active">Yes</Label>
-                                </Row>
-                                <Row className={b('radio')()}>
-                                    <Field
-                                        name="cors_meta.enabled"
-                                        component={Radio}
-                                        value={'false'}
-                                        type="radio"
-                                        id="is-not-active"
-                                    />
-                                    <Label htmlFor="is-not-active">No</Label>
+            );
+        };
+
+        return (
+            <form className={b} onSubmit={handleSubmit}>
+                <Section>
+                    <Row>
+                        <Title>Create New oAuth Server</Title>
+                    </Row>
+                </Section>
+                <div className={b('inner')}>
+                    <div className={b('section')}>
+                        <div className={b('section-title')}>1. General</div>
+                        <Row className={b('row')()} fullwidth>
+                            <Row col>
+                                <Label>oAuth Server Name</Label>
+                                <Field
+                                    name="name"
+                                    type="text"
+                                    component={Input}
+                                />
+                                <Hint>Must be unique</Hint>
+                            </Row>
+                        </Row>
+                    </div>
+                    <div className={b('section')}>
+                        <div className={b('section-title')}>2. Cors meta</div>
+                        <Row className={b('row')()} fullwidth>
+                            <Row col>
+                                <Label>Is Enabled?</Label>
+                                <Row className={b('radio-wrap')()}>
+                                    <Row className={b('radio')()}>
+                                        <Field
+                                            name="cors_meta.enabled"
+                                            component={Radio}
+                                            value={'true'}
+                                            type="radio"
+                                            id="is-active"
+                                        />
+                                        <Label htmlFor="is-active">Yes</Label>
+                                    </Row>
+                                    <Row className={b('radio')()}>
+                                        <Field
+                                            name="cors_meta.enabled"
+                                            component={Radio}
+                                            value={'false'}
+                                            type="radio"
+                                            id="is-not-active"
+                                        />
+                                        <Label htmlFor="is-not-active">No</Label>
+                                    </Row>
                                 </Row>
                             </Row>
                         </Row>
-                    </Row>
-                    <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                        <div className={row('item')}>
-                            <div className={col()}>
-                                <Label>Domains</Label>
-                                <Field
-                                    name="cors_meta.domains"
-                                    type="text"
-                                    placeholder={PLACEHOLDER.DOMAINS}
-                                    component={Input}
-                                />
-                                <Hint>A list of all domains from which the endpoint will accept requests</Hint>
-                            </div>
-                        </div>
-                        <div className={row('item')}>
-                            <div className={col()}>
-                                <Label>Methods</Label>
-                                <Field
-                                    name="cors_meta.methods"
-                                    type="text"
-                                    edit={false}
-                                    value="cors_meta.methods"
-                                    options={optionsTransformer(schema.cors_meta.methods)}
-                                    component={MultiSelect}
-                                />
-                                <Hint>HTTP methods that are supported for the endpoint.</Hint>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                        <div className={row('item')}>
-                            <div className={col()}>
-                                <Label>Request Headers</Label>
-                                <Field
-                                    name="cors_meta.request_headers"
-                                    type="text"
-                                    edit={false}
-                                    value="cors_meta.request_headers"
-                                    placeholder={PLACEHOLDER.REQUEST_HEADERS}
-                                    options={optionsTransformer(schema.cors_meta.request_headers)}
-                                    component={TagSelect}
-                                />
-                                <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
-                            </div>
-                        </div>
-                        <div className={row('item')}>
-                            <div className={col()}>
-                                <Label>Exposed Headers</Label>
-                                <Field
-                                    name="cors_meta.exposed_headers"
-                                    type="text"
-                                    edit={false}
-                                    value="cors_meta.exposed_headers"
-                                    placeholder={PLACEHOLDER.EXPOSED_HEADERS}
-                                    options={optionsTransformer(schema.cors_meta.exposed_headers)}
-                                    component={TagSelect}
-                                />
-                                <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={b('section')}>
-                    <div className={b('section-title')}>3. Rate limit</div>
-                    <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                        <div className={row('item').mix(grid('row', { 2: true }))}>
-                            <div className={col()}>
-                                <Label>Limit Value</Label>
-                                <Field
-                                    type="number"
-                                    name="rate_limit.limit.value"
-                                    placeholder=""
-                                    component={Input}
-                                />
-                            </div>
-                            <div className={col()}>
-                                <Label>Limit Unit</Label>
-                                <Field
-                                    name="rate_limit.limit.unit"
-                                    type="text"
-                                    searchable={false}
-                                    clearable={false}
-                                    options={createOptions(schema.rate_limit.limit.units, schema.rate_limit.limit.labels)}
-                                    component={SimpleSelect}
-                                />
-                            </div>
-                        </div>
-                        <div className={row('item')}>
-                            <Label>Is Enabled?</Label>
-                            <Row className={b('radio-wrap')()}>
-                                <Row className={b('radio')()}>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row('item')}>
+                                <div className={col()}>
+                                    <Label>Domains</Label>
                                     <Field
-                                        name="rate_limit.enabled"
-                                        component={Radio}
-                                        value={'true'}
-                                        type="radio"
-                                        id="is-active"
+                                        name="cors_meta.domains"
+                                        type="text"
+                                        placeholder={PLACEHOLDER.DOMAINS}
+                                        component={Input}
                                     />
-                                    <Label htmlFor="is-active">Yes</Label>
-                                </Row>
-                                <Row className={b('radio')()}>
+                                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                                </div>
+                            </div>
+                            <div className={row('item')}>
+                                <div className={col()}>
+                                    <Label>Methods</Label>
                                     <Field
-                                        name="rate_limit.enabled"
-                                        component={Radio}
-                                        value={'false'}
-                                        type="radio"
-                                        id="is-not-active"
+                                        name="cors_meta.methods"
+                                        type="text"
+                                        edit={false}
+                                        value="cors_meta.methods"
+                                        options={optionsTransformer(schema.cors_meta.methods)}
+                                        component={MultiSelect}
                                     />
-                                    <Label htmlFor="is-not-active">No</Label>
+                                    <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                                </div>
+                            </div>
+                        </div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row('item')}>
+                                <div className={col()}>
+                                    <Label>Request Headers</Label>
+                                    <Field
+                                        name="cors_meta.request_headers"
+                                        type="text"
+                                        edit={false}
+                                        value="cors_meta.request_headers"
+                                        placeholder={PLACEHOLDER.REQUEST_HEADERS}
+                                        options={optionsTransformer(schema.cors_meta.request_headers)}
+                                        component={TagSelect}
+                                    />
+                                    <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
+                                </div>
+                            </div>
+                            <div className={row('item')}>
+                                <div className={col()}>
+                                    <Label>Exposed Headers</Label>
+                                    <Field
+                                        name="cors_meta.exposed_headers"
+                                        type="text"
+                                        edit={false}
+                                        value="cors_meta.exposed_headers"
+                                        placeholder={PLACEHOLDER.EXPOSED_HEADERS}
+                                        options={optionsTransformer(schema.cors_meta.exposed_headers)}
+                                        component={TagSelect}
+                                    />
+                                    <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className={b('section')}>
+                        <div className={b('section-title')}>3. Rate limit</div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row('item').mix(grid('row', { 2: true }))}>
+                                <div className={col()}>
+                                    <Label>Limit Value</Label>
+                                    <Field
+                                        type="number"
+                                        name="rate_limit.limit.value"
+                                        placeholder=""
+                                        component={Input}
+                                    />
+                                </div>
+                                <div className={col()}>
+                                    <Label>Limit Unit</Label>
+                                    <Field
+                                        name="rate_limit.limit.unit"
+                                        type="text"
+                                        searchable={false}
+                                        clearable={false}
+                                        options={createOptions(schema.rate_limit.limit.units, schema.rate_limit.limit.labels)}
+                                        component={SimpleSelect}
+                                    />
+                                </div>
+                            </div>
+                            <div className={row('item')}>
+                                <Label>Is Enabled?</Label>
+                                <Row className={b('radio-wrap')()}>
+                                    <Row className={b('radio')()}>
+                                        <Field
+                                            name="rate_limit.enabled"
+                                            component={Radio}
+                                            value={'true'}
+                                            type="radio"
+                                            id="is-active"
+                                        />
+                                        <Label htmlFor="is-active">Yes</Label>
+                                    </Row>
+                                    <Row className={b('radio')()}>
+                                        <Field
+                                            name="rate_limit.enabled"
+                                            component={Radio}
+                                            value={'false'}
+                                            type="radio"
+                                            id="is-not-active"
+                                        />
+                                        <Label htmlFor="is-not-active">No</Label>
+                                    </Row>
                                 </Row>
-                            </Row>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className={b('inner')}>
-                <div className={b('section')}>
-                    { renderTabs() }
+                <div className={b('inner')}>
+                    <div className={b('section')}>
+                        { renderTabs() }
+                    </div>
                 </div>
-            </div>
 
-            <div className={b('inner')}>
-                <div className={b('section')}>
-                    <div className={b('section-title')}>4. oAuth Endpoints</div>
-                    <OAuthEndpoints
-                        endpoints={schema.oauth_endpoints}
-                        schema={schema}
-                    />
-                </div>
-                <div className={b('section')}>
-                    <div className={b('section-title')}>5. oAuth Client Endpoints</div>
-                    <OAuthClientEndpoints
-                        endpoints={schema.oauth_client_endpoints}
-                        schema={schema}
-                    />
-                </div>
-            </div>
-            <Row className={b('row',{ 'button-row': true })()}>
-                <Button
-                    type="submit"
-                    mod="primary"
-                >
-                    Create API
-                </Button>
-            </Row>
-        </form>
-    );
+                <Row className={b('row',{ 'button-row': true })()}>
+                    <Button
+                        type="submit"
+                        mod="primary"
+                    >
+                        Create API
+                    </Button>
+                </Row>
+            </form>
+        );
+    }
 };
 
 OAuthServerForm.propTypes = propTypes;

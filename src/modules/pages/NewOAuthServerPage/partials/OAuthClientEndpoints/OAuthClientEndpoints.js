@@ -14,7 +14,6 @@ const OAuthClientEndpoints = ({ endpoints, schema }) => {
 
     return (
         <div>
-            JOHNNY
             {
                 endpointsList.map(item => {
                     return (

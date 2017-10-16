@@ -59,4 +59,19 @@ $radio-width: 125px;
             padding-bottom: $hf-padding-big;
         }
     }
+    &__tab {
+        position: absolute;
+        opacity: 0;
+        z-index: -1;
+
+        &--visible {
+            position: relative;
+            opacity: 1;
+            z-index: 1;
+        }
+
+        &s {
+            position: relative;
+        }
+    }
 }
