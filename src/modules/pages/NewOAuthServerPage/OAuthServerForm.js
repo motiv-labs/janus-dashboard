@@ -286,7 +286,7 @@ class OAuthServerForm extends PureComponent {
                     </div>
                 </div>
 
-                <div className={b('inner')}>
+                <div className={b('inner', {overflowed: true})}>
                     <div className={b('section')}>
                         { renderTabs() }
                     </div>
