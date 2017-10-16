@@ -190,7 +190,7 @@ const OAuthClientEndpoint = ({ endpoint, name, schema }) => {
                             type="text"
                             edit={false}
                             value={`oauth_client_endpoints[${name}].hosts`}
-                            options={optionsTransformer(schema.cors_meta.methods)}
+                            options={optionsTransformer(schema.oauth_client_endpoints[name].hosts)}
                             component={TagSelect}
                         />
                         <Hint>HTTP methods that are supported for the endpoint.</Hint>

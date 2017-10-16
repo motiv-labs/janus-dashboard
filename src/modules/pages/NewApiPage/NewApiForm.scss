@@ -12,7 +12,7 @@ $radio-width: 125px;
         background-color: $hf-color-white;
 
         &--overflowed {
-            overflow: hidden;
+            // overflow: hidden;
         }
 
         & + .j-api-form__inner {
@@ -64,18 +64,15 @@ $radio-width: 125px;
         }
     }
     &__tab {
-        position: absolute;
-        opacity: 0;
-        z-index: -1;
-
-        &--visible {
-            position: relative;
-            opacity: 1;
-            z-index: 1;
-        }
-
-        &s {
-            position: relative;
+        &--hidden {
+            position: absolute;
+            margin: -.1rem;
+            padding: 0;
+            width: .1rem;
+            height: .1rem;
+            border: 0;
+            clip: rect(0 0 0 0);
+            overflow: hidden;
         }
     }
 }

@@ -52,10 +52,14 @@ const styles = {
 
 class OAuthServerForm extends PureComponent {
     state = {
-        tab: '',
+        tabs: [
+            'oAuth Endpoints',
+            'oAuth Client Endpoints',
+        ],
+        activeTab: 0,
     };
 
-    handleTabSwitch = id => this.setState(prevState => ({ tab: id }));
+    handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
 
     render() {
         const {
@@ -84,23 +88,21 @@ class OAuthServerForm extends PureComponent {
             return (
                 <div className={b('tabs')}>
                     <div className="j-buttons__wrapper tabs-nav">
-                        <Button
-                            mod={`${this.state.tab === first || !this.state.tab ? 'primary' : 'white'}`}
-                            onClick={() => this.handleTabSwitch(first)}
-                            type="button"
-                        >
-                            {first}
-                        </Button>
-                        <Button
-                            mod={`${this.state.tab === second ? 'primary' : 'white'}`}
-                            onClick={() => this.handleTabSwitch(second)}
-                            type="button"
-                        >
-                            {second}
-                        </Button>
+                        {
+                            this.state.tabs.map((item, idx) =>
+                                <Button
+                                    key={item}
+                                    mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
+                                    onClick={() => this.handleTabSwitch(idx)}
+                                    type="button"
+                                >
+                                    {item}
+                                </Button>
+                            )
+                        }
                     </div>
 
-                    <div className={b('tab', {visible: this.state.tab === first || !this.state.tab})}>
+                    <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
                         <div className={b('section')}>
                             <OAuthEndpoints
                                 endpoints={schema.oauth_endpoints}
@@ -108,7 +110,7 @@ class OAuthServerForm extends PureComponent {
                             />
                         </div>
                     </div>
-                    <div className={b('tab', {visible: this.state.tab === second})}>
+                    <div className={b('tab', {hidden: this.state.activeTab !== 1})}>
                         <div className={b('section')}>
                             <OAuthClientEndpoints
                                 endpoints={schema.oauth_client_endpoints}
