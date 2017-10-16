@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 
-import PLACEHOLDER from '../../../configurations/placeholders';
+import PLACEHOLDER from '../../../configurations/placeholders.config';
 
 import block from '../../../helpers/bem-cn';
 import transformFormValues from '../../../helpers/transformFormValues';

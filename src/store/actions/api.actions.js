@@ -2,7 +2,7 @@ import createHistory from 'history/createBrowserHistory';
 import R from 'ramda';
 
 import client from '../api';
-import endpointSchema from '../../configurations/apiSchema'; // @TODO: REMOVE
+import endpointSchema from '../../configurations/apiSchema.config'; // @TODO: REMOVE
 import {
     DELETE_ENDPOINT_START,
     DELETE_ENDPOINT_SUCCESS,

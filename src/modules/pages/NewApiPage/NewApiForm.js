@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 
-import PLACEHOLDER from '../../../configurations/placeholders';
+import PLACEHOLDER from '../../../configurations/placeholders.config';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
