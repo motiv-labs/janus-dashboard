@@ -297,7 +297,7 @@ class OAuthServerForm extends PureComponent {
                         type="submit"
                         mod="primary"
                     >
-                        Create API
+                        Create oAuth Server
                     </Button>
                 </Row>
             </form>
