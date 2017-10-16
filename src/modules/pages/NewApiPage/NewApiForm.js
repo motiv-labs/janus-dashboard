@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 
+import PLACEHOLDER from '../../../configurations/placeholders';
+
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
@@ -115,7 +117,7 @@ const ApiForm = props => {
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
-                                placeholder="/your_path"
+                                placeholder={PLACEHOLDER.LISTEN_PATH}
                                 component={Input}
                                 validate={checkOnPattern('/')}
                             />
@@ -130,7 +132,7 @@ const ApiForm = props => {
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
-                                placeholder="eg. http://gw.hellofresh.com/ or https://gw.hellofresh.com/"
+                                placeholder={PLACEHOLDER.UPSTREAM_URL}
                                 validate={checkOnPattern(['http://', 'https://'])}
                             />
                             <span className="j-input__warning">Upstream url should start as url ('http://' or 'https://')</span>
@@ -240,7 +242,7 @@ const ApiForm = props => {
                             <Field
                                 name="health_check.url"
                                 type="text"
-                                placeholder="eg. http://gw.hellofresh.com/"
+                                placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
                                 component={Input}
                             />
                             <Hint>The url that the Gateway will use to determine the health of the API. </Hint>
