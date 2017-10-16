@@ -115,7 +115,7 @@ const ApiForm = props => {
                             <Field
                                 name="proxy.listen_path"
                                 type="text"
-                                placeholder="eg. http://gw.hellofresh.com/"
+                                placeholder="/your_path"
                                 component={Input}
                                 validate={checkOnPattern('/')}
                             />
@@ -130,6 +130,7 @@ const ApiForm = props => {
                                 name="proxy.upstream_url"
                                 type="text"
                                 component={Input}
+                                placeholder="eg. http://gw.hellofresh.com/ or https://gw.hellofresh.com/"
                                 validate={checkOnPattern(['http://', 'https://'])}
                             />
                             <span className="j-input__warning">Upstream url should start as url ('http://' or 'https://')</span>
