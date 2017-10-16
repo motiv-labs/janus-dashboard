@@ -20,7 +20,8 @@ import Hint from '../../labels/Hint/Hint';
 import SimpleSelect from '../../selects/SimpleSelect/SimpleSelect';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../selects/TagSelect/TagSelect';
-import OAuthEndpoints from './partials/OAuthEndpoints';
+import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints';
+import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints';
 
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
@@ -234,6 +235,13 @@ const OAuthServerForm = props => {
                     <div className={b('section-title')}>4. oAuth Endpoints</div>
                     <OAuthEndpoints
                         endpoints={schema.oauth_endpoints}
+                        schema={schema}
+                    />
+                </div>
+                <div className={b('section')}>
+                    <div className={b('section-title')}>5. oAuth Client Endpoints</div>
+                    <OAuthClientEndpoints
+                        endpoints={schema.oauth_client_endpoints}
                         schema={schema}
                     />
                 </div>

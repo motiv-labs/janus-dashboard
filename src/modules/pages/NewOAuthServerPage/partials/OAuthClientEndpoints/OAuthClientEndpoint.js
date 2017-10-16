@@ -3,18 +3,18 @@ import PropTypes from 'prop-types';
 import R from 'ramda';
 import { Field } from 'redux-form';
 
-import PLACEHOLDER from '../../../../configurations/placeholders.config';
-import block from '../../../../helpers/bem-cn';
-import checkOnPattern from '../../../../helpers/pattern-check';
+import PLACEHOLDER from '../../../../../configurations/placeholders.config';
+import block from '../../../../../helpers/bem-cn';
+import checkOnPattern from '../../../../../helpers/pattern-check';
 
-import Row from '../../../Layout/Row/Row';
-import Label from '../../../labels/Label';
-import Radio from '../../../inputs/Radio/Radio';
-import Input from '../../../inputs/Input';
-import Hint from '../../../labels/Hint/Hint';
-import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
-import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
-import TagSelect from '../../../selects/TagSelect/TagSelect';
+import Row from '../../../../Layout/Row/Row';
+import Label from '../../../../labels/Label';
+import Radio from '../../../../inputs/Radio/Radio';
+import Input from '../../../../inputs/Input';
+import Hint from '../../../../labels/Hint/Hint';
+import SimpleSelect from '../../../../selects/SimpleSelect/SimpleSelect';
+import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
+import TagSelect from '../../../../selects/TagSelect/TagSelect';
 
 const b = block('j-api-form');
 const row = block('j-row');
@@ -26,7 +26,7 @@ const propTypes = {
     name: PropTypes.string.isRequired,
 };
 
-const OAuthEndpoint = ({ endpoint, name, schema }) => {
+const OAuthClientEndpoint = ({ endpoint, name, schema }) => {
     const createOptions = (list1, list2) => {
         const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
@@ -50,7 +50,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                             <Label>Listen Path</Label>
                         </div>
                         <Field
-                            name={`oauth_endpoints[${name}].listen_path`}
+                            name={`oauth_client_endpoints[${name}].listen_path`}
                             type="text"
                             placeholder={PLACEHOLDER.LISTEN_PATH}
                             component={Input}
@@ -66,7 +66,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                             <Label>Upstream URL</Label>
                         </div>
                         <Field
-                            name={`oauth_endpoints[${name}].upstream_url`}
+                            name={`oauth_client_endpoints[${name}].upstream_url`}
                             type="text"
                             component={Input}
                             placeholder={PLACEHOLDER.UPSTREAM_URL}
@@ -83,7 +83,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                     <Row className={b('radio-wrap')()}>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].insecure_skip_verify`}
+                                name={`oauth_client_endpoints[${name}].insecure_skip_verify`}
                                 component={Radio}
                                 value={'true'}
                                 type="radio"
@@ -93,7 +93,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                         </Row>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].insecure_skip_verify`}
+                                name={`oauth_client_endpoints[${name}].insecure_skip_verify`}
                                 component={Radio}
                                 value={'false'}
                                 type="radio"
@@ -108,7 +108,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                     <Row className={b('radio-wrap')()}>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].preserve_host`}
+                                name={`oauth_client_endpoints[${name}].preserve_host`}
                                 component={Radio}
                                 value={'true'}
                                 type="radio"
@@ -118,7 +118,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                         </Row>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].preserve_host`}
+                                name={`oauth_client_endpoints[${name}].preserve_host`}
                                 component={Radio}
                                 value={'false'}
                                 type="radio"
@@ -135,7 +135,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                     <Row className={b('radio-wrap')()}>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].append_path`}
+                                name={`oauth_client_endpoints[${name}].append_path`}
                                 component={Radio}
                                 value={'true'}
                                 type="radio"
@@ -145,7 +145,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                         </Row>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].append_path`}
+                                name={`oauth_client_endpoints[${name}].append_path`}
                                 component={Radio}
                                 value={'false'}
                                 type="radio"
@@ -160,7 +160,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                     <Row className={b('radio-wrap')()}>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].strip_path`}
+                                name={`oauth_client_endpoints[${name}].strip_path`}
                                 component={Radio}
                                 value={'true'}
                                 type="radio"
@@ -170,7 +170,7 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                         </Row>
                         <Row className={b('radio')()}>
                             <Field
-                                name={`oauth_endpoints[${name}].strip_path`}
+                                name={`oauth_client_endpoints[${name}].strip_path`}
                                 component={Radio}
                                 value={'false'}
                                 type="radio"
@@ -179,47 +179,6 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                             <Label htmlFor="is-not-active">No</Label>
                         </Row>
                     </Row>
-                </div>
-            </div>
-            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                <div className={row('item')}>
-                    <Label>Enable load balancing?</Label>
-                    <Row className={b('radio-wrap')()}>
-                        <Row className={b('radio')()}>
-                            <Field
-                                name={`oauth_endpoints[${name}].enable_load_balancing`}
-                                component={Radio}
-                                value={'true'}
-                                type="radio"
-                                id="is-active"
-                            />
-                            <Label htmlFor="is-active">Yes</Label>
-                        </Row>
-                        <Row className={b('radio')()}>
-                            <Field
-                                name={`oauth_endpoints[${name}].enable_load_balancing`}
-                                component={Radio}
-                                value={'false'}
-                                type="radio"
-                                id="is-not-active"
-                            />
-                            <Label htmlFor="is-not-active">No</Label>
-                        </Row>
-                    </Row>
-                </div>
-                <div className={row('item')}>
-                    <div className={col()}>
-                        <Label>Methods</Label>
-                        <Field
-                            name={`oauth_endpoints[${name}].methods`}
-                            type="text"
-                            edit={false}
-                            value={`oauth_endpoints[${name}].methods`}
-                            options={optionsTransformer(schema.oauth_endpoints[name].methods)}
-                            component={MultiSelect}
-                        />
-                        <Hint>HTTP methods that are supported for the endpoint.</Hint>
-                    </div>
                 </div>
             </div>
             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
@@ -227,12 +186,26 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
                     <div className={col()}>
                         <Label>Hosts</Label>
                         <Field
-                            name={`oauth_endpoints[${name}].hosts`}
+                            name={`oauth_client_endpoints[${name}].hosts`}
                             type="text"
                             edit={false}
-                            value={`oauth_endpoints[${name}].hosts`}
+                            value={`oauth_client_endpoints[${name}].hosts`}
                             options={optionsTransformer(schema.cors_meta.methods)}
                             component={TagSelect}
+                        />
+                        <Hint>HTTP methods that are supported for the endpoint.</Hint>
+                    </div>
+                </div>
+                <div className={row('item')}>
+                    <div className={col()}>
+                        <Label>Methods</Label>
+                        <Field
+                            name={`oauth_client_endpoints[${name}].methods`}
+                            type="text"
+                            edit={false}
+                            value={`oauth_client_endpoints[${name}].methods`}
+                            options={optionsTransformer(schema.oauth_client_endpoints[name].methods)}
+                            component={MultiSelect}
                         />
                         <Hint>HTTP methods that are supported for the endpoint.</Hint>
                     </div>
@@ -242,6 +215,6 @@ const OAuthEndpoint = ({ endpoint, name, schema }) => {
     );
 };
 
-OAuthEndpoint.propTypes = propTypes;
+OAuthClientEndpoint.propTypes = propTypes;
 
-export default OAuthEndpoint;
+export default OAuthClientEndpoint;

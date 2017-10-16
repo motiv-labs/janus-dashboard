@@ -2,24 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
 
-import OAuthEndpoint from './OAuthEndpoint';
+import OAuthClientEndpoint from './OAuthClientEndpoint';
 
 const propTypes = {
     endpoints: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthEndpoints = ({ endpoints, schema }) => {
-    const names = R.keys(endpoints);
+const OAuthClientEndpoints = ({ endpoints, schema }) => {
     const endpointsList = R.toPairs(endpoints);
-    console.error('>>>', endpointsList);
 
     return (
         <div>
+            JOHNNY
             {
                 endpointsList.map(item => {
                     return (
-                        <OAuthEndpoint
+                        <OAuthClientEndpoint
                             key={item[0]}
                             name={item[0]}
                             endpoint={item[1]}
@@ -32,6 +31,6 @@ const OAuthEndpoints = ({ endpoints, schema }) => {
     );
 };
 
-OAuthEndpoints.propTypes = propTypes;
+OAuthClientEndpoints.propTypes = propTypes;
 
-export default OAuthEndpoints;
+export default OAuthClientEndpoints;

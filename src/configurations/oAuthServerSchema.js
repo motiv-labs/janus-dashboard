@@ -10,7 +10,7 @@ const oAuthServerSchema = {
             append_path: false,
             enable_load_balancing: false,
             methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-            hosts: null // TODO: should be array?
+            hosts: [] // TODO: should be array?
         },
         token: {
             preserve_host: false,
@@ -21,7 +21,7 @@ const oAuthServerSchema = {
             append_path: false,
             enable_load_balancing: false,
             methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-            hosts: null
+            hosts: []
         },
         introspect: {
             preserve_host: false,
@@ -32,7 +32,7 @@ const oAuthServerSchema = {
             append_path: false,
             enable_load_balancing: false,
             methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-            hosts: null
+            hosts: []
         },
         revoke: {
             preserve_host: false,
@@ -43,7 +43,7 @@ const oAuthServerSchema = {
             append_path: false,
             enable_load_balancing: false,
             methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-            hosts: null
+            hosts: []
         }
     },
     oauth_client_endpoints: {
@@ -55,7 +55,7 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             methods: ['POST'],
-            hosts: null
+            hosts: []
         },
         remove: {
             preserve_host: false,
@@ -65,7 +65,7 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             methods: ['DELETE'],
-            hosts: null
+            hosts: []
         }
     },
     cors_meta: {
