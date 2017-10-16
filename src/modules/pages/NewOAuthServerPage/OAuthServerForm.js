@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 
+import PLACEHOLDER from '../../../configurations/placeholders.config';
+
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
@@ -15,6 +17,7 @@ import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
+import TagSelect from '../../selects/TagSelect/TagSelect';
 
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
@@ -122,7 +125,7 @@ const OAuthServerForm = props => {
                             <Field
                                 name="cors_meta.domains"
                                 type="text"
-                                placeholder=""
+                                placeholder={PLACEHOLDER.DOMAINS}
                                 component={Input}
                             />
                             <Hint>A list of all domains from which the endpoint will accept requests</Hint>
@@ -132,8 +135,7 @@ const OAuthServerForm = props => {
                             <Field
                                 name="cors_meta.methods"
                                 type="text"
-                                edit={true}
-                                placeholder=""
+                                edit={false}
                                 value="cors_meta.methods"
                                 options={optionsTransformer(schema.cors_meta.methods)}
                                 component={MultiSelect}
@@ -142,37 +144,34 @@ const OAuthServerForm = props => {
                         </Row>
                     </Row>
 
-                    {/*
                     <Row className={b('row')()} fullwidth>
-                        <div className={col()}>
-                            <div className={col('item')}>
-                                <Label>Listen Path</Label>
-                            </div>
+                        <Row col>
+                            <Label>Request Headers</Label>
                             <Field
-                                name="cors_meta.listen_path"
+                                name="cors_meta.request_headers"
                                 type="text"
-                                placeholder="eg. http://gw.hellofresh.com/"
-                                component={Input}
-                                validate={checkOnPattern('/')}
+                                edit={false}
+                                value="cors_meta.request_headers"
+                                placeholder={PLACEHOLDER.REQUEST_HEADERS}
+                                options={optionsTransformer(schema.cors_meta.request_headers)}
+                                component={TagSelect}
                             />
-                            <span className="j-input__warning">Listen path should start from '/'</span>
-                            <Hint>The public url that is exposed by the Gateway</Hint>
-                        </div>
-                        <div className={col()}>
-                            <div className={col('item')}>
-                                <Label>Upstream URL</Label>
-                            </div>
+                            <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
+                        </Row>
+                        <Row col>
+                            <Label>Exposed Headers</Label>
                             <Field
-                                name="proxy.upstream_url"
+                                name="cors_meta.exposed_headers"
                                 type="text"
-                                component={Input}
-                                validate={checkOnPattern(['http://', 'https://'])}
+                                edit={false}
+                                value="cors_meta.exposed_headers"
+                                placeholder={PLACEHOLDER.EXPOSED_HEADERS}
+                                options={optionsTransformer(schema.cors_meta.exposed_headers)}
+                                component={TagSelect}
                             />
-                            <span className="j-input__warning">Upstream url should start as url ('http://' or 'https://')</span>
-                            <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
-                        </div>
+                            <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
+                        </Row>
                     </Row>
-                    */}
 
                     {/*
                     <Row className={b('row')()} fullwidth>

@@ -1,28 +1,30 @@
 @import 'index.scss';
 
 .j-tags-select {
-    .Select-multi-value-wrapper {
-        display: flex;
-        flex-wrap: wrap;
-        margin-bottom: ceil($hf-gutter/2);
-    }
-    .Select-value {
-        background-color: $hellofresh-color;
-        border: none;
-        border-radius: $hf-border-radius;
-        margin-top: ceil($hf-gutter/2);
-        color: $hf-color-white;
-
-        &-icon {
-            float: right
+    &.Select--multi {
+        .Select-multi-value-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: ceil($hf-gutter/2);
         }
+        .Select-value {
+            background-color: $hellofresh-color;
+            border: none;
+            border-radius: $hf-border-radius;
+            margin-top: ceil($hf-gutter/2);
+            color: $hf-color-white;
 
-        &-label {
-            font-size: $hf-font-size-base;
-            line-height: $hf-line-height;
+            &-icon {
+                float: right
+            }
+
+            &-label {
+                font-size: $hf-font-size-base;
+                line-height: $hf-line-height;
+            }
         }
-    }
-    .Select-option.is-focused {
-        background-color: $hf-color-snot-green;
+        .Select-option.is-focused {
+            background-color: $hf-color-snot-green;
+        }
     }
 }
