@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import {
     fetchOAuthServerSchema,
+    saveOAuthServer,
 } from '../../../store/actions';
 
 import NewOAuthServerItem from './NewOAuthServerItem';
@@ -14,5 +15,6 @@ export default connect(
     mapStateToProps,
     {
         fetchOAuthServerSchema,
+        saveOAuthServer,
     },
 )(NewOAuthServerItem);

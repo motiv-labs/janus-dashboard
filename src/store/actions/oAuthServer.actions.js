@@ -7,7 +7,17 @@ import {
     FETCH_OAUTH_SERVER_SUCCESS,
     FETCH_OAUTH_SERVER_SCHEMA_START,
     FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
+    SAVE_OAUTH_SERVER_START,
+    SAVE_OAUTH_SERVER_SUCCESS,
 } from '../constants';
+import {
+    clearConfirmationModal,
+    closeConfirmationModal,
+    fetchOAuthServers,
+    openConfirmationModal,
+    openResponseModal,
+    showToaster,
+} from './index';
 import history from '../configuration/history';
 import oAuthServerSchema from '../../configurations/oAuthServerSchema';
 
@@ -29,12 +39,20 @@ export const getOAuthSchemaSuccess = api => ({
     payload: api,
 });
 
+export const saveOAuthServerRequest = api => ({
+    type: SAVE_OAUTH_SERVER_START,
+    payload: api,
+});
+
+export const saveOAuthServerSuccess = () => ({
+    type: SAVE_OAUTH_SERVER_SUCCESS,
+});
+
 export const fetchOAuthServer = path => async dispatch => {
     dispatch(getOAuthServerRequest());
 
     try {
         const response = await client.get(`${path}`);
-        console.error('response', response.data);
 
         dispatch(getOAuthServerSuccess(response.data));
     } catch (error) {
@@ -50,4 +68,47 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     } catch (error) {
         console.log('FETCH_OAUTH_SERVER_SCHEMA_ERROR', 'Infernal server error', error);
     }
+};
+
+export const confirmedSaveOAuthServer = (dispatch, pathname, server) => {
+    dispatch(saveOAuthServerRequest(server));
+
+    // const preparedPlugins = preparePlugins(api);
+    // substitude updated list of plugins
+    // const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+
+    try {
+        const response = client.post('oauth/servers', server);
+
+        dispatch(saveOAuthServerSuccess());
+        dispatch(closeConfirmationModal());
+        dispatch(fetchOAuthServers());
+        history.push('/oauth/servers');
+        dispatch(showToaster());
+    } catch (error) {
+        if (error.response) {
+            dispatch(openResponseModal({
+                status: error.response.status,
+                statusText: error.response.statusText,
+                message: error.response.data,
+            }));
+
+            // eslint-disable-next-line
+            console.error(error.response.data);
+        } else if (error.request) {
+            // eslint-disable-next-line
+            console.log(error.request);
+        } else {
+            // eslint-disable-next-line
+            console.log('Error', error.message);
+        }
+    }
+};
+
+export const saveOAuthServer = (pathname, server) => dispatch => {
+    dispatch(openConfirmationModal(
+        'save',
+        () => confirmedSaveOAuthServer(dispatch, pathname, server),
+        server.name,
+    ));
 };
