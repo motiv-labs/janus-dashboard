@@ -4,7 +4,7 @@ const oAuthServerSchema = {
         authorize: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/authorize',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -15,7 +15,7 @@ const oAuthServerSchema = {
         token: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/token',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -26,7 +26,7 @@ const oAuthServerSchema = {
         introspect: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/info',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -37,7 +37,7 @@ const oAuthServerSchema = {
         revoke: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/revoke',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -50,7 +50,7 @@ const oAuthServerSchema = {
         create: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/clients/create',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -60,7 +60,7 @@ const oAuthServerSchema = {
         remove: {
             preserve_host: false,
             listen_path: '',
-            upstream_url: 'http://localhost:8000/clients/remove',
+            upstream_url: '',
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
