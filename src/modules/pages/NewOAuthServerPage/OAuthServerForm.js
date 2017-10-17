@@ -146,33 +146,35 @@ class OAuthServerForm extends PureComponent {
                     </div>
                     <div className={b('section')}>
                         <div className={b('section-title')}>2. Cors meta</div>
-                        <Row className={b('row')()} fullwidth>
-                            <Row col>
-                                <Label>Is Enabled?</Label>
-                                <Row className={b('radio-wrap')()}>
-                                    <Row className={b('radio')()}>
-                                        <Field
-                                            name="cors_meta.enabled"
-                                            component={Radio}
-                                            value={'true'}
-                                            type="radio"
-                                            id="cors-meta-is-active"
-                                        />
-                                        <Label htmlFor="cors-meta-is-active">Yes</Label>
-                                    </Row>
-                                    <Row className={b('radio')()}>
-                                        <Field
-                                            name="cors_meta.enabled"
-                                            component={Radio}
-                                            value={'false'}
-                                            type="radio"
-                                            id="cors-meta-is-not-active"
-                                        />
-                                        <Label htmlFor="cors-meta-is-not-active">No</Label>
+                            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                                <div className={row('item')}>
+                                <Row col>
+                                    <Label>Is Enabled?</Label>
+                                    <Row className={b('radio-wrap')()}>
+                                        <Row className={b('radio')()}>
+                                            <Field
+                                                name="cors_meta.enabled"
+                                                component={Radio}
+                                                value={'true'}
+                                                type="radio"
+                                                id="cors-meta-is-active"
+                                            />
+                                            <Label htmlFor="cors-meta-is-active">Yes</Label>
+                                        </Row>
+                                        <Row className={b('radio')()}>
+                                            <Field
+                                                name="cors_meta.enabled"
+                                                component={Radio}
+                                                value={'false'}
+                                                type="radio"
+                                                id="cors-meta-is-not-active"
+                                            />
+                                            <Label htmlFor="cors-meta-is-not-active">No</Label>
+                                        </Row>
                                     </Row>
                                 </Row>
-                            </Row>
-                        </Row>
+                            </div>
+                        </div>
                         <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                             <div className={row('item')}>
                                 <div className={col()}>
