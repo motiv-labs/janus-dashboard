@@ -105,7 +105,7 @@ class NewOAuthServerItem extends PureComponent {
                 schema={this.props.schema}
                 onSubmit={this.submit}
     //             apiSchema={this.props.apiSchema}
-    //             initialValues={transformFormValues(this.props.apiSchema)}
+                initialValues={transformFormValues(this.props.schema)}
     //             excludePlugin={this.props.excludePlugin}
     //             selectPlugin={this.props.selectPlugin}
     //             selectedPlugins={this.props.selectedPlugins}

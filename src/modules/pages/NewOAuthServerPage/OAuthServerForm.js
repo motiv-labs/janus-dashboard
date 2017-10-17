@@ -36,7 +36,7 @@ const grid = block('j-grid');
 const propTypes = {
     schema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
-    // initialValues: PropTypes.object,
+    initialValues: PropTypes.object.isRequired,
 };
 
 const styles = {
@@ -156,9 +156,9 @@ class OAuthServerForm extends PureComponent {
                                             component={Radio}
                                             value={'true'}
                                             type="radio"
-                                            id="is-active"
+                                            id="cors-meta-is-active"
                                         />
-                                        <Label htmlFor="is-active">Yes</Label>
+                                        <Label htmlFor="cors-meta-is-active">Yes</Label>
                                     </Row>
                                     <Row className={b('radio')()}>
                                         <Field
@@ -166,9 +166,9 @@ class OAuthServerForm extends PureComponent {
                                             component={Radio}
                                             value={'false'}
                                             type="radio"
-                                            id="is-not-active"
+                                            id="cors-meta-is-not-active"
                                         />
-                                        <Label htmlFor="is-not-active">No</Label>
+                                        <Label htmlFor="cors-meta-is-not-active">No</Label>
                                     </Row>
                                 </Row>
                             </Row>
@@ -268,9 +268,9 @@ class OAuthServerForm extends PureComponent {
                                             component={Radio}
                                             value={'true'}
                                             type="radio"
-                                            id="is-active"
+                                            id="rate-limit-is-active"
                                         />
-                                        <Label htmlFor="is-active">Yes</Label>
+                                        <Label htmlFor="rate-limit-is-active">Yes</Label>
                                     </Row>
                                     <Row className={b('radio')()}>
                                         <Field
@@ -278,9 +278,9 @@ class OAuthServerForm extends PureComponent {
                                             component={Radio}
                                             value={'false'}
                                             type="radio"
-                                            id="is-not-active"
+                                            id="rate-limit-is-not-active"
                                         />
-                                        <Label htmlFor="is-not-active">No</Label>
+                                        <Label htmlFor="rate-limit-is-not-active">No</Label>
                                     </Row>
                                 </Row>
                             </div>
