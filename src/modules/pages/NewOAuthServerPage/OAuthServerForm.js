@@ -288,6 +288,21 @@ class OAuthServerForm extends PureComponent {
                             </div>
                         </div>
                     </div>
+                    <div className={b('section')}>
+                        <div className={b('section-title')}>4. Token strategy</div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row('item')}>
+                                <Field
+                                    name="token_strategy.name"
+                                    type="text"
+                                    searchable={false}
+                                    clearable={false}
+                                    options={optionsTransformer(schema.token_strategy.name)}
+                                    component={SimpleSelect}
+                                />
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div className={b('inner', {overflowed: true})}>
