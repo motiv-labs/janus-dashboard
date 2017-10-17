@@ -12,7 +12,8 @@ import OAuthServerForm from './OAuthServerForm';
 import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
-    // api: PropTypes.object.isRequired,
+    // formValues: PropTypes.object.isRequired,
+    schema: PropTypes.object.isRequired,
     // fetchEndpointSchema: PropTypes.func.isRequired,
     // resetEndpoint: PropTypes.func.isRequired,
     // saveEndpoint: PropTypes.func.isRequired,
@@ -104,11 +105,12 @@ class NewOAuthServerItem extends PureComponent {
             <OAuthServerForm
                 schema={this.props.schema}
                 onSubmit={this.submit}
-    //             apiSchema={this.props.apiSchema}
+                //apiSchema={this.props.apiSchema}
                 initialValues={transformFormValues(this.props.schema)}
-    //             excludePlugin={this.props.excludePlugin}
-    //             selectPlugin={this.props.selectPlugin}
-    //             selectedPlugins={this.props.selectedPlugins}
+                //formValues={this.props.formValues}
+                //excludePlugin={this.props.excludePlugin}
+                //selectPlugin={this.props.selectPlugin}
+                //selectedPlugins={this.props.selectedPlugins}
              />
         );
     }
@@ -116,7 +118,6 @@ class NewOAuthServerItem extends PureComponent {
     render() {
         console.clear();
         console.error('PROPS', this.props.schema);
-        console.warn('PROPS', this.props.schema.oauth_client_endpoints);
         // if (this.props.schema.oauth_client_endpoints) console.warn('PROPS', this.props.schema.oauth_client_endpoints['create']);
         if (R.isEmpty(this.props.schema)) return <Preloader />;
 

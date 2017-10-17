@@ -85,19 +85,43 @@ const oAuthServerSchema = {
         enabled: false
     },
     token_strategy: {
-        name: ['jwt', 'introspection'],
-        // next when JWT is selected
-        settings: [
+        name: '',
+        settings: null,
+        strategies: [
             {
-                alg: 'HS256',
-                key: ''
+                name: 'jwt',
+                settings: [
+                    {
+                        alg: 'HS256',
+                        key: ''
+                    },
+                    {
+                        alg: 'RS256',
+                        key: ''
+                    },
+                ]
             },
             {
-                alg: 'RS256',
-                key: ''
-            },
-            // for INTROSPECTION
+                name: 'introspection',
+                settings: {
+                    use_aouth_header: false,
+                    auth_header_type: '',
+                },
+            }
         ],
+        // names: ['jwt', 'introspection'],
+        // next when JWT is selected
+        // settings: [
+        //     {
+        //         alg: 'HS256',
+        //         key: ''
+        //     },
+        //     {
+        //         alg: 'RS256',
+        //         key: ''
+        //     },
+        //     // for INTROSPECTION
+        // ],
         // next when INTROSPECTION is selected
         // settings: {
         //     use_aouth_header: boolen,

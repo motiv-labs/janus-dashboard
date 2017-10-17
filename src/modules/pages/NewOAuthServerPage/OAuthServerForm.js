@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import R from 'ramda';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
+import Select from 'react-select';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
@@ -34,6 +35,7 @@ const col = block('j-col');
 const grid = block('j-grid');
 
 const propTypes = {
+    // formValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
@@ -57,6 +59,7 @@ class OAuthServerForm extends PureComponent {
             'oAuth Client Endpoints',
         ],
         activeTab: 0,
+        strategy: {},
     };
 
     handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
@@ -78,6 +81,16 @@ class OAuthServerForm extends PureComponent {
             return combinedListOfUnitsAndLabels.map(item => ({
                 label: item[1],
                 value: item[0],
+            }));
+        };
+        const createStrategyOptions = (list) => {
+            const names = list.map(item => item.name);
+            const combinedListOfUnitsAndLabels = R.zip(list, names);
+
+            return combinedListOfUnitsAndLabels.map(item => ({
+                label: item[1],
+                value: item[1],
+                settings: item[0],
             }));
         };
 
@@ -120,6 +133,28 @@ class OAuthServerForm extends PureComponent {
                     </div>
                 </div>
             );
+        };
+
+        const renderStrategy = (name) => {
+            switch (name) {
+                case 'jwt': {
+                    return <p>JWT</p>;
+                }
+                case 'introspection': {
+                    return <p>Introspection</p>;
+                }
+                default:
+                    return null;
+            }
+        };
+
+        const handleChangeStrategy = value => {
+            this.setState(() => ({
+                strategy: {
+                    name: value.value,
+                    settings: value.settings,
+                }
+            }));
         };
 
         return (
@@ -292,14 +327,16 @@ class OAuthServerForm extends PureComponent {
                         <div className={b('section-title')}>4. Token strategy</div>
                         <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                             <div className={row('item')}>
-                                <Field
+                                <Select
+                                    className="j-select"
                                     name="token_strategy.name"
-                                    type="text"
-                                    searchable={false}
-                                    clearable={false}
-                                    options={optionsTransformer(schema.token_strategy.name)}
-                                    component={SimpleSelect}
+                                    options={createStrategyOptions(schema.token_strategy.strategies)}
+                                    onChange={handleChangeStrategy}
+                                    value={this.state.strategy.name}
                                 />
+                            </div>
+                            <div className={row('item')}>
+                                { renderStrategy(this.state.strategy.name) }
                             </div>
                         </div>
                     </div>
