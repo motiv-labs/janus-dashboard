@@ -28,30 +28,26 @@ class RoundrobinTargets extends Component {
                     />
                 </div>
                 {
-                    fields.map((member, index) => {
-                        console.warn('mem', member);
-
-                        return (
-                            <Row key={index} col>
-                                <div className={row()}>
-                                    <div className={row('item')}>
-                                        <Field
-                                            name={`${member}.target`}
-                                            type="text"
-                                            component={Input}
-                                            placeholder="Target"
-                                        />
-                                    </div>
-                                    <div className={row('control')()}>
-                                        <Control
-                                            onClick={() => fields.remove(index)}
-                                            icon="remove"
-                                        />
-                                    </div>
+                    fields.map((member, index) => (
+                        <Row key={index} col>
+                            <div className={row()}>
+                                <div className={row('item')}>
+                                    <Field
+                                        name={`${member}.target`}
+                                        type="text"
+                                        component={Input}
+                                        placeholder="Target"
+                                    />
                                 </div>
-                            </Row>
-                        );
-                    })
+                                <div className={row('control')()}>
+                                    <Control
+                                        onClick={() => fields.remove(index)}
+                                        icon="remove"
+                                    />
+                                </div>
+                            </div>
+                        </Row>
+                    ))
                 }
             </div>
         );
