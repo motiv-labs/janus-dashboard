@@ -135,13 +135,60 @@ class OAuthServerForm extends PureComponent {
             );
         };
 
+        const renderJWTStrategy = () => <p>JWT</p>;
+
+        const renderIntrospectionStrategy = () => (
+            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                <div className={row('item')}>
+                    <Row col>
+                        <Label>Use OAuth Header?</Label>
+                        <Row className={b('radio-wrap')()}>
+                            <Row className={b('radio')()}>
+                                <Field
+                                    name="token_strategy.settings.use_aouth_header"
+                                    component={Radio}
+                                    value={'true'}
+                                    type="radio"
+                                    id="use-aouth-header-is-active"
+                                />
+                                <Label htmlFor="use-aouth-header-is-active">Yes</Label>
+                            </Row>
+                            <Row className={b('radio')()}>
+                                <Field
+                                    name="token_strategy.settings.use_aouth_header"
+                                    component={Radio}
+                                    value={'false'}
+                                    type="radio"
+                                    id="use-aouth-header-is-not-active"
+                                />
+                                <Label htmlFor="use-aouth-header-is-not-active">No</Label>
+                            </Row>
+                        </Row>
+                    </Row>
+                    <Row col>
+                        <div className={col()}>
+                            <Label>Auth Header Type</Label>
+                            <Field
+                                type="number"
+                                name="token_strategy.settings.auth_header_type"
+                                placeholder=""
+                                component={Input}
+                            />
+                        </div>
+                        <div className={col()}>
+                        </div>
+                    </Row>
+                </div>
+            </div>
+        );
+
         const renderStrategy = (name) => {
             switch (name) {
                 case 'jwt': {
-                    return <p>JWT</p>;
+                    return renderJWTStrategy();
                 }
                 case 'introspection': {
-                    return <p>Introspection</p>;
+                    return renderIntrospectionStrategy();
                 }
                 default:
                     return null;
@@ -181,8 +228,8 @@ class OAuthServerForm extends PureComponent {
                     </div>
                     <div className={b('section')}>
                         <div className={b('section-title')}>2. Cors meta</div>
-                            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                                <div className={row('item')}>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row('item')}>
                                 <Row col>
                                     <Label>Is Enabled?</Label>
                                     <Row className={b('radio-wrap')()}>
@@ -333,8 +380,12 @@ class OAuthServerForm extends PureComponent {
                                     options={createStrategyOptions(schema.token_strategy.strategies)}
                                     onChange={handleChangeStrategy}
                                     value={this.state.strategy.name}
+                                    searchable={false}
+                                    clearable={false}
                                 />
                             </div>
+                        </div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                             <div className={row('item')}>
                                 { renderStrategy(this.state.strategy.name) }
                             </div>
