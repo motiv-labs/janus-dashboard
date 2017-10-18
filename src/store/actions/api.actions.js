@@ -415,6 +415,7 @@ export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
             return;
         }
 
+        // TODO replace mock message with something real which will be received from server somewhen in future
         dispatch(openResponseModal({
             message: 'Unable to save :( Something went wrong...',
         }));
