@@ -393,15 +393,13 @@ export const deleteEndpoint = apiName => dispatch => {
     dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
 };
 
-const removeFrom = (path, obj) => R.dissocPath(path, obj);
-
 export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest(api));
 
     const preparedPlugins = preparePlugins(api);
-    const _api = removeFrom(['proxy', 'upstreams', 'options'], api);
+    const apiWithoutDefaultUpstreams = R.dissocPath(['proxy', 'upstreams', 'options'], api);
     // substitude updated list of plugins
-    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, _api);
+    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, apiWithoutDefaultUpstreams);
 
     try {
         const response = client.post('apis', preparedApi);
