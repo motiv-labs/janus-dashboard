@@ -92,9 +92,17 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
 
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-        dispatch(fetchOAuthServers());
-        history.push('/oauth/servers');
-        dispatch(showToaster());
+
+        if (response) {
+            // dispatch(fetchOAuthServers());
+            history.push('/oauth/servers');
+            dispatch(showToaster());
+        }
+
+        // TODO: need to put here real error message, once it will implemented on backend
+        dispatch(openResponseModal({
+            message: 'Unable to save :( Something went wrong...',
+        }));
     } catch (error) {
         if (error.response) {
             dispatch(openResponseModal({
