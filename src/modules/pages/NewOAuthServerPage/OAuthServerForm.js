@@ -157,7 +157,7 @@ class OAuthServerForm extends PureComponent {
                         <div className={col()}>
                             <Label>Auth Header Type</Label>
                             <Field
-                                type="number"
+                                type="text"
                                 name="token_strategy.settings.auth_header_type"
                                 placeholder=""
                                 component={Input}
