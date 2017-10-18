@@ -141,6 +141,21 @@ class OAuthServerForm extends PureComponent {
             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                 <div className={row('item')}>
                     <Row col>
+                        <div className={col()}>
+                            <Label>Auth Header Type</Label>
+                            <Field
+                                type="number"
+                                name="token_strategy.settings.auth_header_type"
+                                placeholder=""
+                                component={Input}
+                            />
+                        </div>
+                        <div className={col()}>
+                        </div>
+                    </Row>
+                </div>
+                <div className={row('item')}>
+                    <Row col>
                         <Label>Use OAuth Header?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -164,19 +179,6 @@ class OAuthServerForm extends PureComponent {
                                 <Label htmlFor="use-aouth-header-is-not-active">No</Label>
                             </Row>
                         </Row>
-                    </Row>
-                    <Row col>
-                        <div className={col()}>
-                            <Label>Auth Header Type</Label>
-                            <Field
-                                type="number"
-                                name="token_strategy.settings.auth_header_type"
-                                placeholder=""
-                                component={Input}
-                            />
-                        </div>
-                        <div className={col()}>
-                        </div>
                     </Row>
                 </div>
             </div>
@@ -385,11 +387,7 @@ class OAuthServerForm extends PureComponent {
                                 />
                             </div>
                         </div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item')}>
-                                { renderStrategy(this.state.strategy.name) }
-                            </div>
-                        </div>
+                        { renderStrategy(this.state.strategy.name) }
                     </div>
                 </div>
 
