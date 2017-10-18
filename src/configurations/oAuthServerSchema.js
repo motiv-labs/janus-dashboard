@@ -92,11 +92,7 @@ const oAuthServerSchema = {
                 name: 'jwt',
                 settings: [
                     {
-                        alg: 'HS256',
-                        key: ''
-                    },
-                    {
-                        alg: 'RS256',
+                        alg: '',
                         key: ''
                     },
                 ]

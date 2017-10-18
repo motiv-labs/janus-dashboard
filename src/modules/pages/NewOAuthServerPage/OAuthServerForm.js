@@ -23,6 +23,10 @@ import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../selects/TagSelect/TagSelect';
 import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints';
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints';
+import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions';
+
+import HeadersSection from '../../forms/plugins/RequestTransformer/HeadersSection/HeadersSection';
+import QueryStringSection from '../../forms/plugins/RequestTransformer/QueryStringSection/QueryStringSection';
 
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
@@ -135,7 +139,16 @@ class OAuthServerForm extends PureComponent {
             );
         };
 
-        const renderJWTStrategy = () => <p>JWT</p>;
+        const renderJWTStrategy = () => (
+            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                <Row className={b('row')()} fullwidth>
+                    <JWTStrategyOptions
+                        name="token_strategy.settings"
+                        title="JWT settings"
+                    />
+                </Row>
+            </div>
+        );
 
         const renderIntrospectionStrategy = () => (
             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
@@ -203,7 +216,7 @@ class OAuthServerForm extends PureComponent {
                     name: value.value,
                     settings: value.settings,
                 }
-            }));
+            }), () => this.props.change('token_strategy.name', value.value));
         };
 
         return (
