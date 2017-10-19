@@ -10,6 +10,7 @@ import PLACEHOLDER from '../../../configurations/placeholders.config';
 import block from '../../../helpers/bem-cn';
 import transformFormValues from '../../../helpers/transformFormValues';
 import checkOnPattern from '../../../helpers/pattern-check';
+import parse from '../../../helpers/parse-value';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -52,7 +53,6 @@ const ApiForm = (props) => {
         selectedPlugins,
         location,
     } = props;
-    const parse = value => value && parseInt(value);
     const includePlugin = value => {
         apiSchema.plugins
             .filter((plugin, index) => {
