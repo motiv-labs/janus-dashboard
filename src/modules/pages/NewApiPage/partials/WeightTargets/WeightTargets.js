@@ -9,6 +9,8 @@ import Label from '../../../../labels/Label';
 import Input from '../../../../inputs/Input';
 import Control from '../../../../buttons/Control/Control';
 
+import AddDoubleFields from '../../../../../components/AddDoubleFields/AddDoubleFields';
+
 const row = block('j-row');
 
 const propTypes = {
@@ -17,62 +19,28 @@ const propTypes = {
 };
 
 class WeightTargets extends PureComponent {
-    renderMembers = ({ fields, hint, title }) => {
-        const parse = value => value && parseInt(value);
-
-        return (
-            <div>
-                <div className={row()}>
-                    <Label>{ title }</Label>
-                    <Control
-                        onClick={() => fields.push({})}
-                        icon="add"
-                    />
-                </div>
-                {
-                    fields.map((member, index) => (
-                        <Row key={index} col>
-                            <div className={row()}>
-                                <div className={row('item', {pair: true})}>
-                                    <Field
-                                        name={`${member}.target`}
-                                        type="text"
-                                        component={Input}
-                                        placeholder="Target"
-                                    />
-                                </div>
-                                <div className={row('item')}>
-                                    <Field
-                                        name={`${member}.weight`}
-                                        type="number"
-                                        component={Input}
-                                        placeholder="Weight"
-                                        parse={parse}
-                                    />
-                                </div>
-                                <div className={row('control')()}>
-                                    <Control
-                                        onClick={() => fields.remove(index)}
-                                        icon="remove"
-                                    />
-                                </div>
-                            </div>
-                        </Row>
-                    ))
-                }
-            </div>
-        );
-    };
-
     render() {
         const { name, title } = this.props;
 
+        const config = [
+            {
+                type: 'text',
+                sufix: 'target',
+                placeholder: 'Target',
+            },
+            {
+                type: 'number',
+                sufix: 'weight',
+                placeholder: 'Weight',
+            },
+        ];
+
         return (
             <div className="j-col__item">
-                <FieldArray
+                <AddDoubleFields
                     name={`${name}`}
-                    component={this.renderMembers}
                     title={title}
+                    config={config}
                 />
             </div>
         );
