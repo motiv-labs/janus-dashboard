@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
+import parse from '../../helpers/parse-value';
 
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../modules/labels/Label';
@@ -19,7 +20,6 @@ const propTypes = {
 
 class WeightTargets extends PureComponent {
     renderMembers = ({ fields, config, hint, title }) => {
-        const parse = value => value && parseInt(value);
         const { sufix } = config;
 
         return (
