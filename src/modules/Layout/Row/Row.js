@@ -9,7 +9,7 @@ const row = block('j-row');
 const column = block('j-col');
 
 const propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     col: PropTypes.bool,
     className: PropTypes.string,
 };
