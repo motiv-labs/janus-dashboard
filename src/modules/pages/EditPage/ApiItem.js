@@ -81,7 +81,6 @@ class ApiItem extends Component {
                 selectedPlugins={this.props.selectedPlugins}
                 disabled={true}
                 onSubmit={this.submit}
-                location={this.props.location}
             />
         );
     }

@@ -108,11 +108,9 @@ class NewApiItem extends Component {
     }
 
     render() {
-        const { api } = this.props;
-
         return (
             <div>
-                <Subtitle>{api.name}</Subtitle>
+                <Subtitle>{this.props.api.name}</Subtitle>
                 { this.renderForm() }
             </div>
         );

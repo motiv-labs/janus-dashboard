@@ -40,7 +40,6 @@ const propTypes = {
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
-    location: PropTypes.object,
     selectPlugin: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -111,7 +110,6 @@ class ApiForm extends PureComponent {
             response,
             selectPlugin,
             selectedPlugins,
-            location,
         } = this.props;
         const includePlugin = value => {
             apiSchema.plugins
