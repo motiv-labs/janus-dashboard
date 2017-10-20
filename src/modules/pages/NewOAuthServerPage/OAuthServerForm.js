@@ -433,14 +433,6 @@ const form = reduxForm({
 })(OAuthServerForm);
 
 export default connect(
-    // state => {
-    //     const plugins = selector(state, 'plugins');
-
-    //     return {
-    //         keepDirtyOnReinitialize: false,
-    //         plugins,
-    //     };
-    // },
     null,
     null,
 )(form);
