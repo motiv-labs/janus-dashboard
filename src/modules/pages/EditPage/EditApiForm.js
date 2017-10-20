@@ -111,8 +111,6 @@ class ApiForm extends PureComponent {
             selectedPlugins,
             location,
         } = props;
-        console.error('PROPS', props);
-
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
