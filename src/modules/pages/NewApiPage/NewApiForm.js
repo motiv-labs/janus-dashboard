@@ -71,35 +71,23 @@ class ApiForm extends PureComponent {
         }), () => this.props.change('proxy.upstreams.balancing', value.value));
     };
 
-    renderRoundrobinTargets = () => (
-        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-            <Row className={b('row')()} fullwidth>
-                <RoundrobinTargets
-                    name="proxy.upstreams.targets"
-                    title="Roundrobin targets"
-                />
-            </Row>
-        </div>
-    );
-
-    renderWeightTargets = () => (
-        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-            <Row className={b('row')()} fullwidth>
-                <WeightTargets
-                    name="proxy.upstreams.targets"
-                    title="Weight targets"
-                />
-            </Row>
-        </div>
-    );
-
     renderStrategy = balancing => {
         switch (balancing) {
             case 'roundrobin': {
-                return this.renderRoundrobinTargets();
+                return (
+                    <RoundrobinTargets
+                        name="proxy.upstreams.targets"
+                        title="Roundrobin targets"
+                    />
+                );
             }
             case 'weight': {
-                return this.renderWeightTargets();
+                return (
+                    <WeightTargets
+                        name="proxy.upstreams.targets"
+                        title="Weight targets"
+                    />
+                );
             }
             default:
                 return null;
@@ -205,7 +193,11 @@ class ApiForm extends PureComponent {
                                     searchable={false}
                                     clearable={false}
                                 />
-                                { this.renderStrategy(this.state.upstreams.balancing) }
+                                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                                    <Row className={b('row')()} fullwidth>
+                                        { this.renderStrategy(this.state.upstreams.balancing) }
+                                    </Row>
+                                </div>
                             </div>
                         </Row>
                         <Row className={b('row')()} fullwidth>
