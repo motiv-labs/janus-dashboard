@@ -18,7 +18,7 @@ const propTypes = {
     config: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const WeightTargets = ({ config, name, title }) => {
+const AddDoubleFields = ({ config, name, title }) => {
     const passParse = config => config.type === 'number' ? parse : undefined;
     const renderMembers = ({ fields, config, hint, title }) => {
         return (
@@ -78,6 +78,6 @@ const WeightTargets = ({ config, name, title }) => {
     );
 };
 
-WeightTargets.propTypes = propTypes;
+AddDoubleFields.propTypes = propTypes;
 
-export default WeightTargets;
+export default AddDoubleFields;
