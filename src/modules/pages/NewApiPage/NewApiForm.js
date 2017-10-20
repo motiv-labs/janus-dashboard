@@ -114,12 +114,10 @@ class ApiForm extends PureComponent {
         } = this.props;
         const includePlugin = value => {
             apiSchema.plugins
-                .filter((plugin, index) => {
-                    return plugin.name === value.value && !selectedPlugins.includes(plugin.name);
-                })
-                .map((plugin, index) => {
-                    selectPlugin(plugin.name);
-                });
+                .filter((plugin, index) =>
+                    plugin.name === value.value && !selectedPlugins.includes(plugin.name)
+                )
+                .map((plugin, index) => selectPlugin(plugin.name));
         };
         const optionsTransformer = config => config.map(item => ({
             label: item,
