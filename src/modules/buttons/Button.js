@@ -11,6 +11,7 @@ const propTypes = {
         'danger',
         'default',
         'github',
+        'white',
     ]).isRequired,
     type: PropTypes.string,
     onClick: PropTypes.func,

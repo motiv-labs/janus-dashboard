@@ -19,6 +19,14 @@
         .j-button {
             margin-left: 10px;
         }
+
+        &.tabs-nav {
+            margin-left: 0;
+
+            .j-button {
+                margin-left: 0;
+            }
+        }
     }
 
     &--primary,
@@ -32,12 +40,24 @@
         }
     }
 
-    &--default {
+    &--default,
+    &--white {
         border-color: transparent;
+    }
+
+    &--default {
         color: $hf-color-black;
 
         a {
             color: $hf-color-black;
+        }
+    }
+
+    &--white {
+        color: $hf-color-button-primary;
+
+        a {
+            color: $hf-color-button-primary;
         }
     }
 
@@ -51,6 +71,10 @@
 
     &--github {
         background-color: $hf-color-github;
+    }
+
+    &--white {
+        background-color: transparent;
     }
 
     .j-icon {
