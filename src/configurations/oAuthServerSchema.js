@@ -10,7 +10,7 @@ const oAuthServerSchema = {
             append_path: false,
             enable_load_balancing: false,
             methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-            hosts: [] // TODO: should be array?
+            hosts: [],
         },
         token: {
             preserve_host: false,
@@ -105,24 +105,6 @@ const oAuthServerSchema = {
                 },
             }
         ],
-        // names: ['jwt', 'introspection'],
-        // next when JWT is selected
-        // settings: [
-        //     {
-        //         alg: 'HS256',
-        //         key: ''
-        //     },
-        //     {
-        //         alg: 'RS256',
-        //         key: ''
-        //     },
-        //     // for INTROSPECTION
-        // ],
-        // next when INTROSPECTION is selected
-        // settings: {
-        //     use_aouth_header: boolen,
-        //     auth_header_type: string,//no validation
-        // },
     },
 };
 
