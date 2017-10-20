@@ -97,9 +97,12 @@ class NewApiItem extends Component {
 
         return (
             <NewApiForm
+                //api
                 apiSchema={this.props.apiSchema}
-                initialValues={transformFormValues(this.props.apiSchema)}
+                //disabled
                 excludePlugin={this.props.excludePlugin}
+                //handleDelete
+                initialValues={transformFormValues(this.props.apiSchema)}
                 onSubmit={this.submit}
                 selectPlugin={this.props.selectPlugin}
                 selectedPlugins={this.props.selectedPlugins}
