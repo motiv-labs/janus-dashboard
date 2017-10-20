@@ -67,18 +67,25 @@ class NewApiItem extends Component {
     renderForm = () => {
         if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
 
-        if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
-            const api = this.props.api;
-            const apiPlugins = api.plugins;
-            const defaultPlugins = this.props.apiSchema.plugins;
-            const updatedPlugins = defaultPlugins.map(item => {
-                const res = apiPlugins.filter(pl => pl.name === item.name);
+        // const addAditionalProps = () => {};
+        const isCloning = () => this.hasToBeCloned() && !R.isEmpty(this.props.api);
 
-                return res.length > 0 ? res[0] : item;
-            });
-            const lens = R.lensPath(['plugins']);
-            // substitude the plugin.config.limit
-            const updatedApi = R.set(lens, updatedPlugins, api);
+        if (isCloning()) {
+            const getUpdatedApi = () => {
+                const api = this.props.api;
+                const apiPlugins = api.plugins;
+                const defaultPlugins = this.props.apiSchema.plugins;
+                const updatedPlugins = defaultPlugins.map(item => {
+                    const res = apiPlugins.filter(pl => pl.name === item.name);
+
+                    return res.length > 0 ? res[0] : item;
+                });
+                const lens = R.lensPath(['plugins']);
+                // substitude the plugin.config.limit
+                const updatedApi = R.set(lens, updatedPlugins, api);
+
+                return updatedApi;
+            };
 
             return (
                 <EditApiForm
@@ -87,7 +94,7 @@ class NewApiItem extends Component {
                     disabled={false}
                     excludePlugin={this.props.excludePlugin}
                     handleDelete={this.handleDelete}
-                    initialValues={transformFormValues(updatedApi)}
+                    initialValues={transformFormValues(getUpdatedApi())}
                     onSubmit={this.submit}
                     selectedPlugins={this.props.selectedPlugins}
                     selectPlugin={this.props.selectPlugin}
