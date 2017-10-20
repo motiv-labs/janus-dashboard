@@ -55,10 +55,10 @@ class OAuthServersList extends PureComponent {
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td').mix(table('controls'))}>
-                    <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
+                    {/*<Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                         <Icon type="edit" ariaLabel="Edit" />
-                    </Link>
-                    <Link
+                    </Link>*/}
+                    {/*<Link
                         to={'/oauth/servers'}
                         className={table('controls-item')}
                         onClick={() => {
@@ -66,7 +66,7 @@ class OAuthServersList extends PureComponent {
                         }}
                     >
                         <Icon type="delete" ariaLabel="Delete" />
-                    </Link>
+                    </Link>*/}
                 </div>
             </div>
         );
