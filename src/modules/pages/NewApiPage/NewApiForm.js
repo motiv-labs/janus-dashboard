@@ -121,9 +121,6 @@ class ApiForm extends PureComponent {
                     selectPlugin(plugin.name);
                 });
         };
-        const removePlugin = value => {
-            excludePlugin(value);
-        };
         const optionsTransformer = config => config.map(item => ({
             label: item,
             value: item,
@@ -341,7 +338,7 @@ class ApiForm extends PureComponent {
                                     initialValues={initialValues}
                                     selectedPlugins={selectedPlugins}
                                     handlePluginInclude={includePlugin}
-                                    handlePluginExclude={removePlugin}
+                                    handlePluginExclude={excludePlugin}
                                 />
                         }
 

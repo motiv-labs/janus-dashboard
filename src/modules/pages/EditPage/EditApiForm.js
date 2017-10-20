@@ -62,9 +62,6 @@ const ApiForm = (props) => {
                 selectPlugin(plugin.name);
             });
     };
-    const removePlugin = value => {
-        excludePlugin(value);
-    };
     const getValues = key => initialValues.proxy[key];
     const optionsTransformer = config => config.map(item => ({
         label: item,
@@ -309,7 +306,7 @@ const ApiForm = (props) => {
                                 initialValues={initialValues}
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
-                                handlePluginExclude={removePlugin}
+                                handlePluginExclude={excludePlugin}
                                 response={response}
                                 edit
                             />
