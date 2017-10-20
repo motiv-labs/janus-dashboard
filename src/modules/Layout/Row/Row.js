@@ -22,6 +22,8 @@ const wrapChild = (child, cn, className) => (
     </div>
 );
 
+const emptyRow = (className, cn) => <div className={cn('item').mix(className)} />;
+
 const wrapChildren = (children, cn) => children.map((item, index) => (
     <div
         className={cn('item')}
@@ -34,6 +36,7 @@ const wrapChildren = (children, cn) => children.map((item, index) => (
 const Row = ({ children, className, col, alignCenter, fullwidth }) => {
     const cn = col ? column : row;
 
+    if (children === null) return emptyRow(className, cn);
     if (children.length > 1) {
         return (
             <div className={alignCenter ? cn({ 'centered': true })({ fullwidth }).mix(className) : cn({ fullwidth }).mix(className)}>
@@ -41,6 +44,7 @@ const Row = ({ children, className, col, alignCenter, fullwidth }) => {
             </div>
         );
     }
+
     return wrapChild(children, cn, className);
 };
 
