@@ -29,6 +29,8 @@ import RenderPlugins from '../plugins/RenderPlugins';
 import RoundrobinTargets from '../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
 
+import './EndpointForm.css';
+
 const b = block('j-api-form');
 const col = block('j-col');
 const row = block('j-row');

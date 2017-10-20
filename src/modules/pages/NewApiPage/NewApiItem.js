@@ -9,8 +9,6 @@ import Subtitle from '../../Layout/Title/Subtitle';
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
 
-import '../NewApiPage/NewApiForm.css';
-
 const propTypes = {
     api: PropTypes.object.isRequired,
     fetchEndpointSchema: PropTypes.func.isRequired,
