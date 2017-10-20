@@ -52,11 +52,12 @@ class ApiForm extends PureComponent {
 
     createStrategyOptions = list => {
         const extractNames = list => list.map(item => item.balancing);
-        const combineListOfUnitsAndLabels = list => list.map(item => ({
+        const labelCombiner = item => ({
             label: item[1],
             value: item[1],
             options: item[0],
-        }));
+        });
+        const combineListOfUnitsAndLabels = list => list.map(labelCombiner);
 
         return R.compose(
             combineListOfUnitsAndLabels,
