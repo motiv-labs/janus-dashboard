@@ -47,7 +47,7 @@ const propTypes = {
 
 class ApiForm extends PureComponent {
     state = {
-        upstreams: this.props.initialValues.proxy.upstreams,
+        upstreams: this.props.initialValues.proxy.upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
     };
 
     createStrategyOptions = list => {
