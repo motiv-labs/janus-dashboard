@@ -8,7 +8,6 @@ import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
 import Input from '../../../../inputs/Input';
 import Control from '../../../../buttons/Control/Control';
-
 import AddDoubleFields from '../../../../../components/AddDoubleFields/AddDoubleFields';
 
 const row = block('j-row');
