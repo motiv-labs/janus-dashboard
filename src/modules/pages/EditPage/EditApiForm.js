@@ -4,6 +4,7 @@ import R from 'ramda';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
+import Select from 'react-select';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
@@ -25,8 +26,12 @@ import Icon from '../../Icon/Icon';
 
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
+import RoundrobinTargets from '../NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
+import WeightTargets from '../NewApiPage/partials/WeightTargets/WeightTargets';
+
 const b = block('j-api-form');
 const col = block('j-col');
+const row = block('j-row');
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -41,6 +46,57 @@ const propTypes = {
 };
 
 class ApiForm extends PureComponent {
+    state = {
+        upstreams: this.props.initialValues.proxy.upstreams,
+    };
+
+    createStrategyOptions = list => {
+        const extractNames = list => list.map(item => item.balancing);
+        const combineListOfUnitsAndLabels = list => list.map(item => ({
+            label: item[1],
+            value: item[1],
+            options: item[0],
+        }));
+
+        return R.compose(
+            combineListOfUnitsAndLabels,
+            R.zip(list),
+            extractNames,
+        )(list);
+    };
+
+    handleChangeStrategy = value => {
+        this.setState(() => ({
+            upstreams: {
+                balancing: value.value,
+                targets: value.options,
+            }
+        }), () => this.props.change('proxy.upstreams.balancing', value.value));
+    };
+
+    renderStrategy = balancing => {
+        switch (balancing) {
+            case 'roundrobin': {
+                return (
+                    <RoundrobinTargets
+                        name="proxy.upstreams.targets"
+                        title="Roundrobin targets"
+                    />
+                );
+            }
+            case 'weight': {
+                return (
+                    <WeightTargets
+                        name="proxy.upstreams.targets"
+                        title="Weight targets"
+                    />
+                );
+            }
+            default:
+                return null;
+        }
+    };
+
     render() {
         const props = this.props;
         const {
@@ -55,6 +111,8 @@ class ApiForm extends PureComponent {
             selectedPlugins,
             location,
         } = props;
+        console.error('PROPS', props);
+
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
@@ -164,14 +222,20 @@ class ApiForm extends PureComponent {
                                 <div className={col('item')}>
                                     <Label>Upstream URL</Label>
                                 </div>
-                                <Field
-                                    name="proxy.upstream_url"
-                                    type="text"
-                                    component={Input}
-                                    placeholder={PLACEHOLDER.UPSTREAM_URL}
-                                    validate={checkOnPattern(['http://', 'https://'])}
+                                <Select
+                                    className="j-select"
+                                    name="token_strategy.name"
+                                    options={this.createStrategyOptions(apiSchema.proxy.upstreams.options)}
+                                    onChange={this.handleChangeStrategy}
+                                    value={this.state.upstreams.balancing}
+                                    searchable={false}
+                                    clearable={false}
                                 />
-                                <Hint>The url to which the Gateway forwards requests made to the public url.</Hint>
+                                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                                    <Row className={b('row')()} fullwidth>
+                                        { this.renderStrategy(this.state.upstreams.balancing) }
+                                    </Row>
+                                </div>
                             </div>
                         </Row>
                         <Row className={b('row')()} fullwidth>
