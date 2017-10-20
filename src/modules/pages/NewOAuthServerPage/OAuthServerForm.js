@@ -432,7 +432,4 @@ const form = reduxForm({
     enableReinitialize: true, // this is needed!!
 })(OAuthServerForm);
 
-export default connect(
-    null,
-    null,
-)(form);
+export default form;
