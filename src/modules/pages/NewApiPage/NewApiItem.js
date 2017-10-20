@@ -84,23 +84,23 @@ class NewApiItem extends Component {
                 <EditApiForm
                     api={this.props.api}
                     apiSchema={this.props.apiSchema}
-                    initialValues={transformFormValues(updatedApi)}
-                    handleDelete={this.handleDelete}
-                    selectedPlugins={this.props.selectedPlugins}
-                    excludePlugin={this.props.excludePlugin}
-                    selectPlugin={this.props.selectPlugin}
                     disabled={false}
+                    excludePlugin={this.props.excludePlugin}
+                    handleDelete={this.handleDelete}
+                    initialValues={transformFormValues(updatedApi)}
                     onSubmit={this.submit}
+                    selectedPlugins={this.props.selectedPlugins}
+                    selectPlugin={this.props.selectPlugin}
                 />
             );
         }
 
         return (
             <NewApiForm
-                onSubmit={this.submit}
                 apiSchema={this.props.apiSchema}
                 initialValues={transformFormValues(this.props.apiSchema)}
                 excludePlugin={this.props.excludePlugin}
+                onSubmit={this.submit}
                 selectPlugin={this.props.selectPlugin}
                 selectedPlugins={this.props.selectedPlugins}
             />
