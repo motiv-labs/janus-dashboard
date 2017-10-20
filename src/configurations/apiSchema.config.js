@@ -5,6 +5,29 @@ const schema = {
         preserve_host: false,
         listen_path: '',
         upstream_url: '',
+        upstreams: {
+            balancing: '',
+            targets: [],
+            options: [
+                {
+                    balancing: 'roundrobin',
+                    targets: [
+                        {
+                            target: '',
+                        },
+                    ],
+                },
+                {
+                    balancing: 'weight',
+                    targets: [
+                        {
+                            target: '',
+                            weight: 0,
+                        },
+                    ],
+                }
+            ],
+        },
         strip_path: false,
         append_path: false,
         methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],

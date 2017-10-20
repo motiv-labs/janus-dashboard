@@ -55,15 +55,10 @@ const ApiForm = (props) => {
     } = props;
     const includePlugin = value => {
         apiSchema.plugins
-            .filter((plugin, index) => {
-                return plugin.name === value.value && !selectedPlugins.includes(plugin.name);
-            })
-            .map((plugin, index) => {
-                selectPlugin(plugin.name);
-            });
-    };
-    const removePlugin = value => {
-        excludePlugin(value);
+            .filter((plugin, index) =>
+                plugin.name === value.value && !selectedPlugins.includes(plugin.name)
+            )
+            .map((plugin, index) => selectPlugin(plugin.name));
     };
     const getValues = key => initialValues.proxy[key];
     const optionsTransformer = config => config.map(item => ({
@@ -309,7 +304,7 @@ const ApiForm = (props) => {
                                 initialValues={initialValues}
                                 selectedPlugins={selectedPlugins}
                                 handlePluginInclude={includePlugin}
-                                handlePluginExclude={removePlugin}
+                                handlePluginExclude={excludePlugin}
                                 response={response}
                                 edit
                             />
