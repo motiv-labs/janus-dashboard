@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 
-import EditApiForm from './EditApiForm';
+import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
@@ -71,7 +71,7 @@ class ApiItem extends Component {
         const updatedApi = R.set(lens, updatedPlugins, api);
 
         return (
-            <EditApiForm
+            <EndpointForm
                 api={this.props.api}
                 apiSchema={this.props.apiSchema}
                 disabled={true}

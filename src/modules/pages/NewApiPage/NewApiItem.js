@@ -6,7 +6,7 @@ import { deleteProperty } from 'picklock';
 import transformFormValues from '../../../helpers/transformFormValues';
 
 import Subtitle from '../../Layout/Title/Subtitle';
-import EditApiForm from '../EditPage/EditApiForm';
+import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
 
 import '../NewApiPage/NewApiForm.css';
@@ -88,7 +88,7 @@ class NewApiItem extends Component {
         const passValues = () => isCloning() ? getUpdatedApi() : this.props.apiSchema;
 
         return (
-            <EditApiForm
+            <EndpointForm
                 api={this.props.api}
                 apiSchema={this.props.apiSchema}
                 editing={isCloning()}

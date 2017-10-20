@@ -24,10 +24,10 @@ import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../buttons/Button';
 import Icon from '../../Icon/Icon';
 
-import RenderPlugins from '../../forms/plugins/RenderPlugins';
+import RenderPlugins from '../plugins/RenderPlugins';
 
-import RoundrobinTargets from '../NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
-import WeightTargets from '../NewApiPage/partials/WeightTargets/WeightTargets';
+import RoundrobinTargets from '../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
+import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
 
 const b = block('j-api-form');
 const col = block('j-col');
