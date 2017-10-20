@@ -15,6 +15,7 @@ class OAuthServerItem extends PureComponent {
     }
 
     render() {
+        // Just basic primitive logic to render page. Real logic will be implemented in further PRs
         if (R.isEmpty(this.props.oAuthServer)) return <Preloader />;
 
         const { name } = this.props.oAuthServer;

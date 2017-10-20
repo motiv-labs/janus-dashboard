@@ -11,10 +11,6 @@ $radio-width: 125px;
         border-radius: $hf-border-radius;
         background-color: $hf-color-white;
 
-        &--overflowed {
-            // overflow: hidden;
-        }
-
         & + .j-api-form__inner {
             margin-top: $hf-padding-big;
         }
