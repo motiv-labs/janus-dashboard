@@ -118,7 +118,7 @@ class ApiForm extends PureComponent {
                 )
                 .map((plugin, index) => selectPlugin(plugin.name));
         };
-        const getValues = key => initialValues.proxy[key];
+        const getValues = key => initialValues.proxy[key]; // TODO <<<<<<<<<<<<<<<<<<<<<<
         const optionsTransformer = config => config.map(item => ({
             label: item,
             value: item,
@@ -169,7 +169,7 @@ class ApiForm extends PureComponent {
                                     name="name"
                                     type="text"
                                     component={Input}
-                                    disabled={disabled}
+                                    disabled={disabled}// TODO <<<<<<<<<<<<<<<<<<
                                 />
                             </Row>
                             <Row col>
@@ -244,8 +244,8 @@ class ApiForm extends PureComponent {
                                     type="text"
                                     placeholder="Choose one or more methods"
                                     edit
-                                    value={() => getValues('methods')}
-                                    options={optionsTransformer(apiSchema.proxy.methods)}
+                                    value={() => getValues('methods')} // TODO <<<<<<<<<<<<<<<<<<<<<<
+                                    options={optionsTransformer(apiSchema.proxy.methods)} // TODO <<<<<<<<<<<<<
                                     component={MultiSelect}
                                 />
                                 <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -369,8 +369,8 @@ class ApiForm extends PureComponent {
                                     selectedPlugins={selectedPlugins}
                                     handlePluginInclude={includePlugin}
                                     handlePluginExclude={excludePlugin}
-                                    response={response}
-                                    edit
+                                    response={response} // TODO <<<<<<<<<<<<<<<<<
+                                    edit // TODO <<<<<<<<<<<<<<<<<
                                 />
                         }
                     </div>
