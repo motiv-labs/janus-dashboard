@@ -99,19 +99,20 @@ class ApiForm extends PureComponent {
     };
 
     render() {
-        const props = this.props;
         const {
             api,
             apiSchema,
+            disabled,
             excludePlugin,
             initialValues,
             handleSubmit,
+            handleDelete,
             plugins,
             response,
             selectPlugin,
             selectedPlugins,
             location,
-        } = props;
+        } = this.props;
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
@@ -151,7 +152,7 @@ class ApiForm extends PureComponent {
                                 type="button"
                                 mod="danger"
                                 onClick={() => {
-                                    props.handleDelete(props.api.name);
+                                    handleDelete(api.name);
                                 }}
                             >
                                 <Icon type="delete-white" />
@@ -170,7 +171,7 @@ class ApiForm extends PureComponent {
                                     name="name"
                                     type="text"
                                     component={Input}
-                                    disabled={props.disabled}
+                                    disabled={disabled}
                                 />
                             </Row>
                             <Row col>
