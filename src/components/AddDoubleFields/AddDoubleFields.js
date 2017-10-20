@@ -15,13 +15,12 @@ const row = block('j-row');
 const propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string,
-    config: PropTypes.object.isRequired,
+    config: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-class WeightTargets extends PureComponent {
-    renderMembers = ({ fields, config, hint, title }) => {
-        const { sufix } = config;
-
+const WeightTargets = ({ config, name, title }) => {
+    const passParse = config => config.type === 'number' ? parse : undefined;
+    const renderMembers = ({ fields, config, hint, title }) => {
         return (
             <div>
                 <div className={row()}>
@@ -41,7 +40,7 @@ class WeightTargets extends PureComponent {
                                         type={config[0].type}
                                         component={Input}
                                         placeholder={config[0].placeholder}
-                                        parse={config[0].type === 'number' && parse}
+                                        parse={passParse(config[0])}
                                     />
                                 </div>
                                 <div className={row('item')}>
@@ -50,7 +49,7 @@ class WeightTargets extends PureComponent {
                                         type={config[1].type}
                                         component={Input}
                                         placeholder={config[1].placeholder}
-                                        parse={config[1].type === 'number' && parse}
+                                        parse={passParse(config[1])}
                                     />
                                 </div>
                                 <div className={row('control')()}>
@@ -67,20 +66,16 @@ class WeightTargets extends PureComponent {
         );
     };
 
-    render() {
-        const { config, name, title } = this.props;
-
-        return (
-            <div className="j-col__item">
-                <FieldArray
-                    name={`${name}`}
-                    component={this.renderMembers}
-                    title={title}
-                    config={config}
-                />
-            </div>
-        );
-    }
+    return (
+        <div className="j-col__item">
+            <FieldArray
+                name={`${name}`}
+                component={renderMembers}
+                title={title}
+                config={config}
+            />
+        </div>
+    );
 };
 
 WeightTargets.propTypes = propTypes;
