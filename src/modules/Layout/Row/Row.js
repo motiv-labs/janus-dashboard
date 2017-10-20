@@ -9,10 +9,12 @@ const row = block('j-row');
 const column = block('j-col');
 
 const propTypes = {
-    children: PropTypes.node.isRequired,
+    children: PropTypes.node,
     col: PropTypes.bool,
     className: PropTypes.string,
 };
+
+const emptyRow = (className, cn) => <div className={cn('item').mix(className)} />;
 
 const wrapChild = (child, cn, className) => (
     <div
@@ -21,8 +23,6 @@ const wrapChild = (child, cn, className) => (
         {child}
     </div>
 );
-
-const emptyRow = (className, cn) => <div className={cn('item').mix(className)} />;
 
 const wrapChildren = (children, cn) => children.map((item, index) => (
     <div
