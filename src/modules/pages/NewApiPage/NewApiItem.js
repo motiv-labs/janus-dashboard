@@ -6,9 +6,10 @@ import { deleteProperty } from 'picklock';
 import transformFormValues from '../../../helpers/transformFormValues';
 
 import Subtitle from '../../Layout/Title/Subtitle';
-import NewApiForm from './NewApiForm';
 import EditApiForm from '../EditPage/EditApiForm';
 import Preloader from '../../Preloader/Preloader';
+
+import '../NewApiPage/NewApiForm.css';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
@@ -67,52 +68,37 @@ class NewApiItem extends Component {
     renderForm = () => {
         if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
 
-        // const addAditionalProps = () => {};
         const isCloning = () => this.hasToBeCloned() && !R.isEmpty(this.props.api);
+        const getUpdatedApi = () => {
+            const api = this.props.api;
+            const apiPlugins = api.plugins;
+            const defaultPlugins = this.props.apiSchema.plugins;
+            const updatedPlugins = defaultPlugins.map(item => {
+                const res = apiPlugins.filter(pl => pl.name === item.name);
 
-        if (isCloning()) {
-            const getUpdatedApi = () => {
-                const api = this.props.api;
-                const apiPlugins = api.plugins;
-                const defaultPlugins = this.props.apiSchema.plugins;
-                const updatedPlugins = defaultPlugins.map(item => {
-                    const res = apiPlugins.filter(pl => pl.name === item.name);
+                return res.length > 0 ? res[0] : item;
+            });
+            const lens = R.lensPath(['plugins']);
+            // substitude the plugin.config.limit
+            const updatedApi = R.set(lens, updatedPlugins, api);
 
-                    return res.length > 0 ? res[0] : item;
-                });
-                const lens = R.lensPath(['plugins']);
-                // substitude the plugin.config.limit
-                const updatedApi = R.set(lens, updatedPlugins, api);
+            return updatedApi;
+        };
 
-                return updatedApi;
-            };
-
-            return (
-                <EditApiForm
-                    api={this.props.api}
-                    apiSchema={this.props.apiSchema}
-                    disabled={false}
-                    excludePlugin={this.props.excludePlugin}
-                    handleDelete={this.handleDelete}
-                    initialValues={transformFormValues(getUpdatedApi())}
-                    onSubmit={this.submit}
-                    selectedPlugins={this.props.selectedPlugins}
-                    selectPlugin={this.props.selectPlugin}
-                />
-            );
-        }
+        const passValues = () => isCloning() ? getUpdatedApi() : this.props.apiSchema;
 
         return (
-            <NewApiForm
-                //api
+            <EditApiForm
+                api={this.props.api}
                 apiSchema={this.props.apiSchema}
-                //disabled
+                editing={isCloning()}
+                disabled={false}
                 excludePlugin={this.props.excludePlugin}
-                //handleDelete
-                initialValues={transformFormValues(this.props.apiSchema)}
+                handleDelete={this.handleDelete}
+                initialValues={transformFormValues(passValues())}
                 onSubmit={this.submit}
-                selectPlugin={this.props.selectPlugin}
                 selectedPlugins={this.props.selectedPlugins}
+                selectPlugin={this.props.selectPlugin}
             />
         );
     }

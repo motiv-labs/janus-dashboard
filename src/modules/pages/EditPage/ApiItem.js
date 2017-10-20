@@ -75,6 +75,7 @@ class ApiItem extends Component {
                 api={this.props.api}
                 apiSchema={this.props.apiSchema}
                 disabled={true}
+                editing={true}
                 excludePlugin={this.props.excludePlugin}
                 handleDelete={this.handleDelete}
                 initialValues={transformFormValues(updatedApi)}

@@ -102,6 +102,7 @@ class ApiForm extends PureComponent {
             api,
             apiSchema,
             disabled,
+            editing,
             excludePlugin,
             initialValues,
             handleSubmit,
@@ -111,6 +112,7 @@ class ApiForm extends PureComponent {
             selectPlugin,
             selectedPlugins,
         } = this.props;
+
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
@@ -118,7 +120,7 @@ class ApiForm extends PureComponent {
                 )
                 .map((plugin, index) => selectPlugin(plugin.name));
         };
-        const getValues = key => initialValues.proxy[key]; // TODO <<<<<<<<<<<<<<<<<<<<<<
+        const getValues = key => initialValues.proxy[key];
         const optionsTransformer = config => config.map(item => ({
             label: item,
             value: item,
@@ -169,7 +171,7 @@ class ApiForm extends PureComponent {
                                     name="name"
                                     type="text"
                                     component={Input}
-                                    disabled={disabled}// TODO <<<<<<<<<<<<<<<<<<
+                                    disabled={disabled}
                                 />
                             </Row>
                             <Row col>
@@ -244,8 +246,8 @@ class ApiForm extends PureComponent {
                                     type="text"
                                     placeholder="Choose one or more methods"
                                     edit
-                                    value={() => getValues('methods')} // TODO <<<<<<<<<<<<<<<<<<<<<<
-                                    options={optionsTransformer(apiSchema.proxy.methods)} // TODO <<<<<<<<<<<<<
+                                    value={editing ? () => getValues('methods') : []}
+                                    options={optionsTransformer(apiSchema.proxy.methods)}
                                     component={MultiSelect}
                                 />
                                 <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -369,8 +371,8 @@ class ApiForm extends PureComponent {
                                     selectedPlugins={selectedPlugins}
                                     handlePluginInclude={includePlugin}
                                     handlePluginExclude={excludePlugin}
-                                    response={response} // TODO <<<<<<<<<<<<<<<<<
-                                    edit // TODO <<<<<<<<<<<<<<<<<
+                                    response={response}
+                                    edit={editing}
                                 />
                         }
                     </div>
