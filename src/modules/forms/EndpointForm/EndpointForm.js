@@ -46,7 +46,7 @@ const propTypes = {
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-class ApiForm extends PureComponent {
+class EndpointForm extends PureComponent {
     state = {
         upstreams: this.props.initialValues.proxy.upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
     };
@@ -392,14 +392,14 @@ class ApiForm extends PureComponent {
     }
 };
 
-ApiForm.propTypes = propTypes;
+EndpointForm.propTypes = propTypes;
 
 const selector = formValueSelector('apiForm');
 
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
-})(ApiForm);
+})(EndpointForm);
 
 export default connect(
     state => {
