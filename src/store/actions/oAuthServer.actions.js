@@ -83,12 +83,16 @@ export const fetchOAuthServerSchema = () => async dispatch => {
 export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
     dispatch(saveOAuthServerRequest(server));
 
-    // const preparedPlugins = preparePlugins(api);
-    // substitude updated list of plugins
-    // const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+    const composeRateLimit = server => {
+        const { value, unit } = server.rate_limit.limit;
+        const concatenation = `${value}-${unit}`;
+        const lens = R.lensPath(['rate_limit', 'limit']);
+
+        return R.set(lens, concatenation, server);
+    };
 
     try {
-        const response = await client.post('oauth/servers', server);
+        const response = await client.post('oauth/servers', composeRateLimit(server));
 
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
@@ -97,6 +101,8 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
             // dispatch(fetchOAuthServers());
             history.push('/oauth/servers');
             dispatch(showToaster());
+
+            return;
         }
 
         // TODO: need to put here real error message, once it will implemented on backend

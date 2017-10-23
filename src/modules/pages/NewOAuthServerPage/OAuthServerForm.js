@@ -285,8 +285,10 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.domains"
                                         type="text"
-                                        placeholder={PLACEHOLDER.DOMAINS}
-                                        component={Input}
+                                        edit={false}
+                                        value="cors_meta.domains"
+                                        options={optionsTransformer(schema.cors_meta.domains)}
+                                        component={TagSelect}
                                     />
                                     <Hint>A list of all domains from which the endpoint will accept requests</Hint>
                                 </div>
