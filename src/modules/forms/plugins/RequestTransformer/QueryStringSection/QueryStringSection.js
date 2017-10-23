@@ -32,7 +32,7 @@ class QueryStringSection extends Component {
             {
                 fields.map((member, index) => {
                     return (
-                        <Row key={index} col>
+                        <Row className="double-fields" key={index} col>
                             <div className={row()}>
                                 <div className={row('item')}>
                                     <Field
