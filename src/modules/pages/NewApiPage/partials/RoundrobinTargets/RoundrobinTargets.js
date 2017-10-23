@@ -57,7 +57,7 @@ class RoundrobinTargets extends Component {
         const { name, title } = this.props;
 
         return (
-            <div className="j-col__item jjj">
+            <div className="j-col__item">
                 <FieldArray
                     name={`${name}`}
                     component={this.renderMembers}
