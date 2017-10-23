@@ -5,6 +5,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -16,6 +39,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -27,6 +73,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -38,6 +107,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -51,6 +143,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
@@ -61,6 +176,29 @@ const oAuthServerSchema = {
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
+            upstreams: {
+                balancing: '',
+                targets: [],
+                options: [
+                    {
+                        balancing: 'roundrobin',
+                        targets: [
+                            {
+                                target: '',
+                            },
+                        ],
+                    },
+                    {
+                        balancing: 'weight',
+                        targets: [
+                            {
+                                target: '',
+                                weight: 0,
+                            },
+                        ],
+                    }
+                ],
+            },
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
