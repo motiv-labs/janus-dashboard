@@ -5,6 +5,7 @@ import Select from 'react-select';
 import R from 'ramda';
 
 import block from '../../../../helpers/bem-cn';
+import createOptions from '../../../../helpers/createOptions';
 
 import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
@@ -35,15 +36,6 @@ const RateLimitPlugin = ({
 }) => {
     const b = block(className);
     const getLabels = plugins => plugins.filter(pl => pl.name === plugin.name)[0].config.limit.labels;
-
-    const createOptions = (list1, list2) => {
-        const combinedListOfUnitsAndLabels = R.zip(list1, list2);
-
-        return combinedListOfUnitsAndLabels.map(item => ({
-            label: item[1],
-            value: item[0],
-        }));
-    };
 
     return (
         <div className={b('section')()}>

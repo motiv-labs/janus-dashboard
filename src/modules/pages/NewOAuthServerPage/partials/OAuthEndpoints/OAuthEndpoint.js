@@ -27,14 +27,6 @@ const propTypes = {
 };
 
 const OAuthEndpoint = ({ endpoint, name, schema }) => {
-    const createOptions = (list1, list2) => {
-        const combinedListOfUnitsAndLabels = R.zip(list1, list2);
-
-        return combinedListOfUnitsAndLabels.map(item => ({
-            label: item[1],
-            value: item[0],
-        }));
-    };
     const optionsTransformer = config => config.map(item => ({
         label: item,
         value: item,

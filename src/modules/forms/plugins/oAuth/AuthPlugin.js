@@ -5,6 +5,7 @@ import R from 'ramda';
 
 import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
+import createOptions from '../../../../helpers/createOptions';
 
 import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
@@ -27,14 +28,6 @@ const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginNam
     const predicate = R.propEq('name', pluginName);
     const defaultPlugin = R.filter(predicate, defaultPlugins)[0];
     const serverNames = defaultPlugin.config.server_names;
-    const createOptions = list => list.reduce((acc, item) => {
-        acc.push({
-            label: item,
-            value: item,
-        });
-
-        return acc;
-    }, []);
 
     return (
         <div className={b('section')()}>

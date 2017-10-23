@@ -10,6 +10,7 @@ import PLACEHOLDER from '../../../configurations/placeholders.config';
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
+import createOptions from '../../../helpers/createOptions';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -79,14 +80,6 @@ class OAuthServerForm extends PureComponent {
             label: item,
             value: item,
         }));
-        const createOptions = (list1, list2) => {
-            const combinedListOfUnitsAndLabels = R.zip(list1, list2);
-
-            return combinedListOfUnitsAndLabels.map(item => ({
-                label: item[1],
-                value: item[0],
-            }));
-        };
         const createStrategyOptions = (list) => {
             const names = list.map(item => item.name);
             const combinedListOfUnitsAndLabels = R.zip(list, names);
