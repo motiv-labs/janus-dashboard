@@ -6,8 +6,7 @@ import { deleteProperty } from 'picklock';
 import transformFormValues from '../../../helpers/transformFormValues';
 
 import Subtitle from '../../Layout/Title/Subtitle';
-import NewApiForm from './NewApiForm';
-import EditApiForm from '../EditPage/EditApiForm';
+import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
@@ -67,7 +66,8 @@ class NewApiItem extends Component {
     renderForm = () => {
         if (R.isEmpty(this.props.apiSchema)) return <Preloader />;
 
-        if (this.hasToBeCloned() && !R.isEmpty(this.props.api)) {
+        const isCloning = () => this.hasToBeCloned() && !R.isEmpty(this.props.api);
+        const getUpdatedApi = () => {
             const api = this.props.api;
             const apiPlugins = api.plugins;
             const defaultPlugins = this.props.apiSchema.plugins;
@@ -80,39 +80,31 @@ class NewApiItem extends Component {
             // substitude the plugin.config.limit
             const updatedApi = R.set(lens, updatedPlugins, api);
 
-            return (
-                <EditApiForm
-                    api={this.props.api}
-                    apiSchema={this.props.apiSchema}
-                    initialValues={transformFormValues(updatedApi)}
-                    handleDelete={this.handleDelete}
-                    selectedPlugins={this.props.selectedPlugins}
-                    excludePlugin={this.props.excludePlugin}
-                    selectPlugin={this.props.selectPlugin}
-                    disabled={false}
-                    onSubmit={this.submit}
-                />
-            );
-        }
+            return updatedApi;
+        };
+
+        const passValues = () => isCloning() ? getUpdatedApi() : this.props.apiSchema;
 
         return (
-            <NewApiForm
-                onSubmit={this.submit}
+            <EndpointForm
+                api={this.props.api}
                 apiSchema={this.props.apiSchema}
-                initialValues={transformFormValues(this.props.apiSchema)}
+                editing={isCloning()}
+                disabled={false}
                 excludePlugin={this.props.excludePlugin}
-                selectPlugin={this.props.selectPlugin}
+                handleDelete={this.handleDelete}
+                initialValues={transformFormValues(passValues())}
+                onSubmit={this.submit}
                 selectedPlugins={this.props.selectedPlugins}
+                selectPlugin={this.props.selectPlugin}
             />
         );
     }
 
     render() {
-        const { api } = this.props;
-
         return (
             <div>
-                <Subtitle>{api.name}</Subtitle>
+                <Subtitle>{this.props.api.name}</Subtitle>
                 { this.renderForm() }
             </div>
         );

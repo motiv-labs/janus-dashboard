@@ -24,10 +24,12 @@ import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../buttons/Button';
 import Icon from '../../Icon/Icon';
 
-import RenderPlugins from '../../forms/plugins/RenderPlugins';
+import RenderPlugins from '../plugins/RenderPlugins';
 
-import RoundrobinTargets from '../NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
-import WeightTargets from '../NewApiPage/partials/WeightTargets/WeightTargets';
+import RoundrobinTargets from '../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
+import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
+
+import './EndpointForm.css';
 
 const b = block('j-api-form');
 const col = block('j-col');
@@ -36,16 +38,16 @@ const row = block('j-row');
 const propTypes = {
     api: PropTypes.object.isRequired,
     apiSchema: PropTypes.object.isRequired,
+    disabled: PropTypes.bool.isRequired,
     excludePlugin: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
-    location: PropTypes.object,
     selectPlugin: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
-class ApiForm extends PureComponent {
+class EndpointForm extends PureComponent {
     state = {
         upstreams: this.props.initialValues.proxy.upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
     };
@@ -99,19 +101,21 @@ class ApiForm extends PureComponent {
     };
 
     render() {
-        const props = this.props;
         const {
             api,
             apiSchema,
+            disabled,
+            editing,
             excludePlugin,
             initialValues,
             handleSubmit,
+            handleDelete,
             plugins,
             response,
             selectPlugin,
             selectedPlugins,
-            location,
-        } = props;
+        } = this.props;
+
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
@@ -151,7 +155,7 @@ class ApiForm extends PureComponent {
                                 type="button"
                                 mod="danger"
                                 onClick={() => {
-                                    props.handleDelete(props.api.name);
+                                    handleDelete(api.name);
                                 }}
                             >
                                 <Icon type="delete-white" />
@@ -170,7 +174,7 @@ class ApiForm extends PureComponent {
                                     name="name"
                                     type="text"
                                     component={Input}
-                                    disabled={props.disabled}
+                                    disabled={disabled}
                                 />
                             </Row>
                             <Row col>
@@ -245,7 +249,7 @@ class ApiForm extends PureComponent {
                                     type="text"
                                     placeholder="Choose one or more methods"
                                     edit
-                                    value={() => getValues('methods')}
+                                    value={editing ? () => getValues('methods') : []}
                                     options={optionsTransformer(apiSchema.proxy.methods)}
                                     component={MultiSelect}
                                 />
@@ -371,7 +375,7 @@ class ApiForm extends PureComponent {
                                     handlePluginInclude={includePlugin}
                                     handlePluginExclude={excludePlugin}
                                     response={response}
-                                    edit
+                                    edit={editing}
                                 />
                         }
                     </div>
@@ -389,14 +393,14 @@ class ApiForm extends PureComponent {
     }
 };
 
-ApiForm.propTypes = propTypes;
+EndpointForm.propTypes = propTypes;
 
 const selector = formValueSelector('apiForm');
 
 const form = reduxForm({
     form: 'apiForm',
     enableReinitialize: true, // this is needed!!
-})(ApiForm);
+})(EndpointForm);
 
 export default connect(
     state => {
