@@ -29,7 +29,7 @@ class RoundrobinTargets extends Component {
                 </div>
                 {
                     fields.map((member, index) => (
-                        <Row key={index} col>
+                        <Row className="double-fields" key={index} col>
                             <div className={row()}>
                                 <div className={row('item')}>
                                     <Field
@@ -57,7 +57,7 @@ class RoundrobinTargets extends Component {
         const { name, title } = this.props;
 
         return (
-            <div className="j-col__item">
+            <div className="j-col__item jjj">
                 <FieldArray
                     name={`${name}`}
                     component={this.renderMembers}

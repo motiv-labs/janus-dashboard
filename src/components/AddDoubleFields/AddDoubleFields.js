@@ -10,6 +10,8 @@ import Label from '../../modules/labels/Label';
 import Input from '../../modules/inputs/Input';
 import Control from '../../modules/buttons/Control/Control';
 
+import './AddDoubleFields.css';
+
 const row = block('j-row');
 
 const propTypes = {
@@ -32,7 +34,7 @@ const AddDoubleFields = ({ config, name, title }) => {
                 </div>
                 {
                     fields.map((member, index) => (
-                        <Row key={index} col>
+                        <Row className="double-fields" key={index} col>
                             <div className={row()}>
                                 <div className={row('item', {pair: true})}>
                                     <Field
