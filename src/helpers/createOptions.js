@@ -14,10 +14,6 @@ const createOptions = (list1, list2) => {
     if (isPresent(list2)) return R.zip(list1, list2).map(optionFromTwo);
 
     return R.map(optionFromOne, list1);
-
-    // isPresent(list2) ?
-    //     R.zip(list1, list2).map(optionFromTwo) :
-    //     R.map(optionFromOne, list1);
 };
 
 export default createOptions;
