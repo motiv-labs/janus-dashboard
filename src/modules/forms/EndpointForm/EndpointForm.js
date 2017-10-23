@@ -38,6 +38,7 @@ const row = block('j-row');
 const propTypes = {
     api: PropTypes.object.isRequired,
     apiSchema: PropTypes.object.isRequired,
+    disabled: PropTypes.bool.isRequired,
     excludePlugin: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
