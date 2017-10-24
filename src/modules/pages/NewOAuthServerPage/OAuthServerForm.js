@@ -10,6 +10,7 @@ import PLACEHOLDER from '../../../configurations/placeholders.config';
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
+import parse from '../../../helpers/parse-value';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -74,7 +75,6 @@ class OAuthServerForm extends PureComponent {
             schema,
             initialValues,
         } = this.props;
-        const parse = value => value && parseInt(value);
         const optionsTransformer = config => config.map(item => ({
             label: item,
             value: item,
