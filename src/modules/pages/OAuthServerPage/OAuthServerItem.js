@@ -7,11 +7,15 @@ import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     fetchOAuthServer: PropTypes.func.isRequired,
+    fetchOAuthServerSchema: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
+    oAuthServer: PropTypes.object.isRequired,
+    schema: PropTypes.object.isRequired,
 };
 
 class OAuthServerItem extends PureComponent {
     componentDidMount() {
+        this.props.fetchOAuthServerSchema();
         this.props.fetchOAuthServer(this.props.location.pathname);
     }
 
