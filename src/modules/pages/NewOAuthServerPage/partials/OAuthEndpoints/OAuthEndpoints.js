@@ -13,7 +13,8 @@ const propTypes = {
 };
 
 const OAuthEndpoints = ({ category, change, endpoints, initialValues, schema }) => {
-    const endpointsList = R.toPairs(endpoints);
+    const checkOnNil = item => !R.isNil(item);
+    const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
 
     return (
         <div>

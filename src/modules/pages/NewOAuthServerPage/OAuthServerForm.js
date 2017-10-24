@@ -72,6 +72,7 @@ class OAuthServerForm extends PureComponent {
 
     render() {
         const {
+            editing,
             handleSubmit,
             schema,
             initialValues,
@@ -94,6 +95,11 @@ class OAuthServerForm extends PureComponent {
                 settings: item[0],
             }));
         };
+        const ifEditing = (yes, no) => R.ifElse(
+            () => editing,
+            (yes, no) => yes,
+            (yes, no) => no,
+        );
 
         const renderTabs = () => {
             const first = 'oAuth Endpoints';
@@ -226,7 +232,11 @@ class OAuthServerForm extends PureComponent {
             <form className={b} onSubmit={handleSubmit}>
                 <Section>
                     <Row>
-                        <Title>Create New oAuth Server</Title>
+                        <Title>
+                            {
+                                ifEditing()(`Edit ${initialValues.name}`,'Create New oAuth Server')
+                            }
+                        </Title>
                     </Row>
                 </Section>
                 <div className={b('inner')}>
@@ -239,6 +249,7 @@ class OAuthServerForm extends PureComponent {
                                     name="name"
                                     type="text"
                                     component={Input}
+                                    disabled={editing}
                                 />
                                 <Hint>Must be unique</Hint>
                             </Row>

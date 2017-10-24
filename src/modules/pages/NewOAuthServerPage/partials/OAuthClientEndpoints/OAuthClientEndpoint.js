@@ -120,7 +120,7 @@ class OAuthClientEndpoint extends PureComponent {
                             <Select
                                 className="j-select"
                                 name={`${category}.${name}.upstreams.balancing`}
-                                options={this.createStrategyOptions(endpoint.upstreams.options)}
+                                options={this.createStrategyOptions(schema.oauth_client_endpoints[name].upstreams.options)}
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 searchable={false}
