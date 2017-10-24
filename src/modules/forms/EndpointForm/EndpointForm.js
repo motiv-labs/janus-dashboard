@@ -12,6 +12,7 @@ import block from '../../../helpers/bem-cn';
 import transformFormValues from '../../../helpers/transformFormValues';
 import checkOnPattern from '../../../helpers/pattern-check';
 import parse from '../../../helpers/parse-value';
+import optionsTransformer from '../../../helpers/optionsTransformer';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -124,10 +125,6 @@ class EndpointForm extends PureComponent {
                 .map((plugin, index) => selectPlugin(plugin.name));
         };
         const getValues = key => initialValues.proxy[key];
-        const optionsTransformer = config => config.map(item => ({
-            label: item,
-            value: item,
-        }));
 
         return (
             <form className={b} onSubmit={handleSubmit}>
