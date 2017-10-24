@@ -4,6 +4,7 @@ import { Field } from 'redux-form';
 
 import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
+import optionsTransformer from '../../../../helpers/optionsTransformer';
 
 import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
@@ -31,13 +32,6 @@ class CorsPlugin extends PureComponent {
     render() {
         const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
         const b = block(className);
-
-        const optionsTransformer = config => {
-            return config.map(item => ({
-                label: item,
-                value: item,
-            }));
-        };
         const getValues = key => plugin.config[key];
         const allValues = key => apiSchema.plugins[0].config[key];
 

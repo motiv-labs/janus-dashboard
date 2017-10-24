@@ -7,6 +7,7 @@ import Select from 'react-select';
 import PLACEHOLDER from '../../../../../configurations/placeholders.config';
 import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
+import optionsTransformer from '../../../../../helpers/optionsTransformer';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
@@ -90,10 +91,6 @@ class OAuthClientEndpoint extends PureComponent {
 
     render() {
         const { category, endpoint, name, schema } = this.props;
-        const optionsTransformer = config => config.map(item => ({
-            label: item,
-            value: item,
-        }));
 
         return (
             <div className={b('section')}>
