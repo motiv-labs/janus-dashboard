@@ -12,7 +12,7 @@ import Button from '../../buttons/Button';
 
 const OAuthServersPage = () => {
     return (
-        <div>
+        <Section outer>
             <Section>
                 <Row>
                     <Title>oAuth Servers</Title>
@@ -28,7 +28,7 @@ const OAuthServersPage = () => {
             <Section>
                 <OAuthServersContainer />
             </Section>
-        </div>
+        </Section>
     );
 };
 

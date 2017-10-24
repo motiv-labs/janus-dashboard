@@ -4,6 +4,13 @@
     padding-top: $hf-padding-big;
     padding-bottom: $hf-padding-big;
 
+    &--outer {
+        padding-top: 0;
+        padding-bottom: 0;
+        padding-left: $hf-padding-big;
+        padding-right: $hf-padding-big;
+    }
+
     &--small {
         padding-top: $hf-gutter;
         padding-bottom: $hf-gutter;
