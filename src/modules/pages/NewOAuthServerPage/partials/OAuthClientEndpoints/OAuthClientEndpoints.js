@@ -5,11 +5,14 @@ import R from 'ramda';
 import OAuthClientEndpoint from './OAuthClientEndpoint';
 
 const propTypes = {
+    category: PropTypes.string.isRequired,
+    change: PropTypes.func.isRequired,
     endpoints: PropTypes.object.isRequired,
+    initialValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthClientEndpoints = ({ endpoints, schema }) => {
+const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, schema }) => {
     const endpointsList = R.toPairs(endpoints);
 
     return (
@@ -22,6 +25,9 @@ const OAuthClientEndpoints = ({ endpoints, schema }) => {
                             name={item[0]}
                             endpoint={item[1]}
                             schema={schema}
+                            change={change}
+                            category={category}
+                            initialValues={initialValues}
                         />
                     );
                 })

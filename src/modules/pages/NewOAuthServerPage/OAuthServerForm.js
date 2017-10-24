@@ -122,16 +122,22 @@ class OAuthServerForm extends PureComponent {
                     <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
                         <div className={b('section')}>
                             <OAuthEndpoints
-                                endpoints={schema.oauth_endpoints}
+                                endpoints={initialValues.oauth_endpoints}
                                 schema={schema}
+                                change={this.props.change}
+                                category={'oauth_endpoints'}
+                                initialValues={initialValues}
                             />
                         </div>
                     </div>
-                    <div className={b('tab', {hidden: this.state.activeTab !== 1})}>
+                    <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
                         <div className={b('section')}>
                             <OAuthClientEndpoints
-                                endpoints={schema.oauth_client_endpoints}
+                                endpoints={initialValues.oauth_client_endpoints}
                                 schema={schema}
+                                change={this.props.change}
+                                category={'oauth_client_endpoints'}
+                                initialValues={initialValues}
                             />
                         </div>
                     </div>
@@ -279,8 +285,10 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.domains"
                                         type="text"
-                                        placeholder={PLACEHOLDER.DOMAINS}
-                                        component={Input}
+                                        edit={false}
+                                        value="cors_meta.domains"
+                                        options={optionsTransformer(schema.cors_meta.domains)}
+                                        component={TagSelect}
                                     />
                                     <Hint>A list of all domains from which the endpoint will accept requests</Hint>
                                 </div>
@@ -432,4 +440,11 @@ const form = reduxForm({
     enableReinitialize: true, // this is needed!!
 })(OAuthServerForm);
 
-export default form;
+export default connect(
+    state => {
+        return {
+            keepDirtyOnReinitialize: false,
+        };
+    },
+    null,
+)(form);
