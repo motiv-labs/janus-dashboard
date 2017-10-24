@@ -55,6 +55,7 @@ $padding: $hf-gutter;
             padding: $padding $padding*2;
             right: ceil(-$padding);
             top: 100%;
+            z-index: 2;
 
             &:before {
                 content: '';
