@@ -29,7 +29,7 @@ class RoundrobinTargets extends Component {
                 </div>
                 {
                     fields.map((member, index) => (
-                        <Row key={index} col>
+                        <Row className="double-fields" key={index} col>
                             <div className={row()}>
                                 <div className={row('item')}>
                                     <Field

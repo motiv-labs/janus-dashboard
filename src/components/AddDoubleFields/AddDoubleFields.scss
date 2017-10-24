@@ -1,0 +1,8 @@
+@import 'index.scss';
+
+$padding-size: ceil($hf-gutter / 2);
+
+.double-fields {
+    padding-top: $padding-size;
+    padding-bottom: $padding-size;
+}
