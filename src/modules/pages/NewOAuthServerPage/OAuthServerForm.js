@@ -33,15 +33,12 @@ import QueryStringSection from '../../forms/plugins/RequestTransformer/QueryStri
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
-// import './NewApiForm.css';
-
 const b = block('j-api-form');
 const row = block('j-row');
 const col = block('j-col');
 const grid = block('j-grid');
 
 const propTypes = {
-    // formValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
@@ -234,7 +231,9 @@ class OAuthServerForm extends PureComponent {
                     <Row>
                         <Title>
                             {
-                                ifEditing()(`Edit ${initialValues.name}`,'Create New oAuth Server')
+                                ifEditing()(
+                                    `Edit ${initialValues.name}`,
+                                    'Create New oAuth Server')
                             }
                         </Title>
                     </Row>
