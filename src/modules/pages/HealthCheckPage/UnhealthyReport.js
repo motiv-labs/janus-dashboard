@@ -6,6 +6,7 @@ import {
 
 import block from '../../../helpers/bem-cn';
 
+import Section from '../../Layout/Section/Section';
 import Icon from '../../Icon/Icon';
 
 const propTypes = {
@@ -32,16 +33,18 @@ class UnhealthyReport extends PureComponent {
 
         if (this.state.isOpen) {
             return (
-                <div className={b.mix('j-pane')}>
-                    {/*<Icon type="correct" className={b('icon')()} />*/}
-                    <h1 style={style}>!</h1> {/* @TODO: REMOVE after designer will provide icon */}
-                    <p className={b('text')}>
-                        Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
-                    </p>
-                    <button className={b('close')} onClick={this.handleClose}>
-                        <Icon type="close" />
-                    </button>
-                </div>
+                <Section>
+                    <div className={b.mix('j-pane')}>
+                        {/*<Icon type="correct" className={b('icon')()} />*/}
+                        <h1 style={style}>!</h1> {/* @TODO: REMOVE after designer will provide icon */}
+                        <p className={b('text')}>
+                            Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
+                        </p>
+                        <button className={b('close')} onClick={this.handleClose}>
+                            <Icon type="close" />
+                        </button>
+                    </div>
+                </Section>
             );
         }
 

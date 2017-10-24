@@ -5,6 +5,7 @@ import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 
+import Section from '../../Layout/Section/Section';
 import Subtitle from '../../Layout/Title/Subtitle';
 import OAuthServerForm from './OAuthServerForm';
 import Preloader from '../../Preloader/Preloader';
@@ -29,14 +30,18 @@ class NewOAuthServerItem extends PureComponent {
                 schema={this.props.schema}
                 onSubmit={this.submit}
                 initialValues={transformFormValues(this.props.schema)}
-             />
+            />
         );
     }
 
     render() {
         if (R.isEmpty(this.props.schema)) return <Preloader />;
 
-        return this.renderForm();
+        return (
+            <Section outer>
+                { this.renderForm() }
+            </Section>
+        );
     }
 }
 

@@ -5,6 +5,7 @@ import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 
+import Section from '../../Layout/Section/Section';
 import Subtitle from '../../Layout/Title/Subtitle';
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
@@ -105,7 +106,9 @@ class NewApiItem extends Component {
         return (
             <div>
                 <Subtitle>{this.props.api.name}</Subtitle>
-                { this.renderForm() }
+                <Section outer>
+                    { this.renderForm() }
+                </Section>
             </div>
         );
     }

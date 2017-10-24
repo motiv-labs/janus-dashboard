@@ -23,7 +23,7 @@ const ApiListPage = ({ healthcheckStatus }) => {
     };
 
     return (
-        <div>
+        <Section outer>
             <Section>
                 <Row>
                     <Title>APIs</Title>
@@ -39,7 +39,7 @@ const ApiListPage = ({ healthcheckStatus }) => {
             <Section>
                 <ApiListContainer />
             </Section>
-        </div>
+        </Section>
     );
 };
 
