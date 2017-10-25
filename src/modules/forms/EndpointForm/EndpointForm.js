@@ -13,6 +13,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 import checkOnPattern from '../../../helpers/pattern-check';
 import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
+import getValues from '../../../helpers/getValues';
 
 import Section from '../../Layout/Section/Section';
 import Title from '../../Layout/Title/Title';
@@ -124,7 +125,6 @@ class EndpointForm extends PureComponent {
                 )
                 .map((plugin, index) => selectPlugin(plugin.name));
         };
-        const getValues = key => initialValues.proxy[key];
 
         return (
             <form className={b} onSubmit={handleSubmit}>
@@ -246,7 +246,7 @@ class EndpointForm extends PureComponent {
                                     type="text"
                                     placeholder="Choose one or more methods"
                                     edit
-                                    value={editing ? () => getValues('methods') : []}
+                                    value={editing ? () => getValues(['proxy', 'methods'])(initialValues) : []}
                                     options={optionsTransformer(apiSchema.proxy.methods)}
                                     component={MultiSelect}
                                 />
