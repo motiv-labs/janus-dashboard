@@ -10,6 +10,7 @@ import PLACEHOLDER from '../../../configurations/placeholders.config';
 import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
+import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
 
 import Section from '../../Layout/Section/Section';
@@ -75,7 +76,6 @@ class OAuthServerForm extends PureComponent {
             schema,
             initialValues,
         } = this.props;
-        const parse = value => value && parseInt(value);
         const createOptions = (list1, list2) => {
             const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
