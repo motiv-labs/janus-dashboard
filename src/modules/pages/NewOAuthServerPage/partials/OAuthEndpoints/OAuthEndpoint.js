@@ -28,6 +28,7 @@ const grid = block('j-grid');
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
+    editing: PropTypes.bool.isRequired,
     endpoint: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
@@ -54,6 +55,8 @@ class OAuthEndpoint extends PureComponent {
             extractNames,
         )(list);
     };
+
+    getValues = path => target => R.path(path, target);
 
     handleChangeStrategy = value => {
         this.setState(() => ({
@@ -90,7 +93,7 @@ class OAuthEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, endpoint, name, schema } = this.props;
+        const { category, editing, endpoint, initialValues, name, schema } = this.props;
         const upstreamConfig = [
             {
                 type: 'text',
@@ -275,8 +278,8 @@ class OAuthEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.methods`}
                                 type="text"
-                                edit={false}
-                                value={`${category}.${name}.methods`}
+                                edit={editing}
+                                value={() => this.getValues([category, name, 'methods'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].methods)}
                                 component={MultiSelect}
                             />
@@ -293,6 +296,7 @@ class OAuthEndpoint extends PureComponent {
                                 type="text"
                                 edit={false}
                                 value={`${category}.${name}.hosts`}
+                                value={() => this.getValues([category, name, 'hosts'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].hosts)}
                                 component={TagSelect}
                             />

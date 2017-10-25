@@ -7,12 +7,13 @@ import OAuthEndpoint from './OAuthEndpoint';
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
+    editing: PropTypes.bool.isRequired,
     endpoints: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthEndpoints = ({ category, change, endpoints, initialValues, schema }) => {
+const OAuthEndpoints = ({ category, change, editing,endpoints, initialValues, schema }) => {
     const checkOnNil = item => !R.isNil(item);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
 
@@ -24,6 +25,7 @@ const OAuthEndpoints = ({ category, change, endpoints, initialValues, schema }) 
                         <OAuthEndpoint
                             key={item[0]}
                             name={item[0]}
+                            editing={editing}
                             endpoint={item[1]}
                             schema={schema}
                             change={change}
