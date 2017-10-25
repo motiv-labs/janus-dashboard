@@ -67,8 +67,6 @@ class OAuthServerForm extends PureComponent {
             schema,
             initialValues,
         } = this.props;
-        // console.clear();
-        console.error('Initial:: ', initialValues);
 
         const createOptions = (list1, list2) => {
             const combinedListOfUnitsAndLabels = R.zip(list1, list2);

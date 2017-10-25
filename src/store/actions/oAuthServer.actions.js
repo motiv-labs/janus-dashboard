@@ -63,8 +63,16 @@ export const fetchOAuthServer = path => async dispatch => {
 
     try {
         const response = await client.get(`${path}`);
+        const oAuthServer = response.data;
+        const rateLimit = oAuthServer.rate_limit.limit.split('-');
+        const rateLimitValues = {
+            value: rateLimit[0]*1,
+            unit: rateLimit[1],
+        };
+        const lens = R.lensPath(['rate_limit', 'limit']);
+        const updatedOAuthServer = R.set(lens, rateLimitValues, oAuthServer);
 
-        dispatch(getOAuthServerSuccess(response.data));
+        dispatch(getOAuthServerSuccess(updatedOAuthServer));
     } catch (error) {
         console.log('FETCH_OAUTH_SERVER_ERROR', 'Infernal server error', error);
     }
