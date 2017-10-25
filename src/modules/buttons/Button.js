@@ -25,8 +25,9 @@ const b = block('j-button');
 
 const addMod = mod => (mod ? { [mod]: !!mod } : {});
 
-const Button = ({ mod, type, onClick, children, className }) => (
+const Button = ({ mod, type, onClick, children, className, ...props }) => (
     <button
+        {...props}
         className={b(addMod(mod)).mix(className)}
         type={type}
         onClick={onClick}
