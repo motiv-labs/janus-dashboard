@@ -279,7 +279,7 @@ class OAuthEndpoint extends PureComponent {
                                 type="text"
                                 edit={editing}
                                 value={() => this.getValues([category, name, 'methods'])(initialValues)}
-                                options={optionsTransformer(schema.oauth_endpoints[name].methods)}
+                                options={optionsTransformer(schema.oauth_endpoints[name].all_methods)}
                                 component={MultiSelect}
                             />
                             <Hint>HTTP methods that are supported for the endpoint.</Hint>

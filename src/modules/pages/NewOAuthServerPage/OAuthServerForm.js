@@ -67,7 +67,6 @@ class OAuthServerForm extends PureComponent {
             schema,
             initialValues,
         } = this.props;
-
         const createOptions = (list1, list2) => {
             const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
@@ -304,7 +303,7 @@ class OAuthServerForm extends PureComponent {
                                         type="text"
                                         edit={editing}
                                         value={() => getValues(['cors_meta', 'methods'])(initialValues)}
-                                        options={optionsTransformer(schema.cors_meta.methods)}
+                                        options={optionsTransformer(schema.cors_meta.all_methods)}
                                         component={MultiSelect}
                                     />
                                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
