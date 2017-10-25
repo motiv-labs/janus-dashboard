@@ -44,17 +44,6 @@ const propTypes = {
     initialValues: PropTypes.object.isRequired,
 };
 
-const styles = {
-    tab: {
-        zIndex: 0,
-        opacity: 0,
-    },
-    visible: {
-        zIndex: 1,
-        opacity: 1,
-    }
-};
-
 class OAuthServerForm extends PureComponent {
     state = {
         tabs: [

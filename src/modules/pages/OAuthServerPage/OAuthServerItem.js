@@ -39,8 +39,6 @@ class OAuthServerItem extends PureComponent {
             this.props.schema,
         ])) return <Preloader />;
 
-        const { name } = this.props.oAuthServer;
-
         return (
             <Section outer>
                 { this.renderForm() }
