@@ -8,6 +8,7 @@ import PLACEHOLDER from '../../../../../configurations/placeholders.config';
 import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
+import getValues from '../../../../../helpers/getValues';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
@@ -55,8 +56,6 @@ class OAuthEndpoint extends PureComponent {
             extractNames,
         )(list);
     };
-
-    getValues = path => target => R.path(path, target);
 
     handleChangeStrategy = value => {
         this.setState(() => ({

@@ -12,6 +12,7 @@ import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
 import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
+import getValues from '../../../helpers/getValues';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -92,8 +93,6 @@ class OAuthServerForm extends PureComponent {
             (yes, no) => yes,
             (yes, no) => no,
         );
-
-        const getValues = path => target => R.path(path, target);
 
         const renderTabs = () => {
             const first = 'oAuth Endpoints';
