@@ -65,14 +65,9 @@ class OAuthServerForm extends PureComponent {
     handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
 
     handleChangeStrategy = value => {
-        console.error('Val', value);
-
         this.setState(() => ({
             strategy: value.settings,
-        }), () => {
-            console.error('state', this.state);
-            return this.props.change('token_strategy', value.settings);
-        });
+        }), () => this.props.change('token_strategy', value.settings));
     };
 
     renderTabs = () => {
@@ -183,8 +178,6 @@ class OAuthServerForm extends PureComponent {
     );
 
     renderStrategy = (name) => {
-        console.warn('Name', name, this.state);
-
         switch (name) {
             case 'jwt': {
                 return this.renderJWTStrategy();

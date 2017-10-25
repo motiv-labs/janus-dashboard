@@ -18,7 +18,6 @@ const propTypes = {
 
 class JWTStrategyOptions extends Component {
     renderMembers = ({ fields, name, title }) => {
-        console.error('FIELDS >>>>> ', name, fields);
         return (
             <div>
                 <div className={row()}>
@@ -29,11 +28,9 @@ class JWTStrategyOptions extends Component {
                     />
                 </div>
                 {
-                    fields.map((member, index) => {
-                        console.warn('mem', member);
-
-                        return (
-                            <Row key={index} col>
+                    fields.length &&
+                        fields.map((member, index) => (
+                            <Row className="double-fields" key={index} col>
                                 <div className={row()}>
                                     <div className={row('item', {pair: true})}>
                                         <Field
@@ -59,8 +56,7 @@ class JWTStrategyOptions extends Component {
                                     </div>
                                 </div>
                             </Row>
-                        );
-                    })
+                        ))
                 }
             </div>
         );
