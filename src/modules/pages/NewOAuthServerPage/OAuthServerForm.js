@@ -51,7 +51,10 @@ class OAuthServerForm extends PureComponent {
             'oAuth Client Endpoints',
         ],
         activeTab: 0,
-        strategy: {},
+        strategy: {
+            name: this.props.initialValues.token_strategy.name || '',
+            settings: [],
+        },
     };
 
     handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
