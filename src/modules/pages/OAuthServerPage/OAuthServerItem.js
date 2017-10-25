@@ -13,6 +13,7 @@ const propTypes = {
     fetchOAuthServerSchema: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
     oAuthServer: PropTypes.object.isRequired,
+    saveOAuthServer: PropTypes.func.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
@@ -20,6 +21,12 @@ class OAuthServerItem extends PureComponent {
     componentDidMount() {
         this.props.fetchOAuthServerSchema();
         this.props.fetchOAuthServer(this.props.location.pathname);
+    }
+
+    submit = values => {
+        const transformedValues = transformFormValues(values, true);
+
+        this.props.saveOAuthServer(this.props.location.pathname, transformedValues);
     }
 
     renderForm = () => {
