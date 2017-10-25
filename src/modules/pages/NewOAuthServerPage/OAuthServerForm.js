@@ -63,6 +63,9 @@ class OAuthServerForm extends PureComponent {
             schema,
             initialValues,
         } = this.props;
+        // console.clear();
+        console.error('Initial:: ', initialValues);
+
         const createOptions = (list1, list2) => {
             const combinedListOfUnitsAndLabels = R.zip(list1, list2);
 
@@ -214,6 +217,8 @@ class OAuthServerForm extends PureComponent {
             }), () => this.props.change('token_strategy.name', value.value));
         };
 
+        const getValues = key => initialValues.cors_meta[key];
+
         return (
             <form className={b} onSubmit={handleSubmit}>
                 <Section>
@@ -281,8 +286,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.domains"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.domains"
+                                        edit={editing}
+                                        value={() => getValues('domains')}
                                         options={optionsTransformer(schema.cors_meta.domains)}
                                         component={TagSelect}
                                     />
@@ -295,8 +300,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.methods"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.methods"
+                                        edit={editing}
+                                        value={() => getValues('methods')}
                                         options={optionsTransformer(schema.cors_meta.methods)}
                                         component={MultiSelect}
                                     />
@@ -311,8 +316,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.request_headers"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.request_headers"
+                                        edit={editing}
+                                        value={() => getValues('request_headers')}
                                         placeholder={PLACEHOLDER.REQUEST_HEADERS}
                                         options={optionsTransformer(schema.cors_meta.request_headers)}
                                         component={TagSelect}
@@ -326,8 +331,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.exposed_headers"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.exposed_headers"
+                                        edit={editing}
+                                        value={() => getValues('exposed_headers')}
                                         placeholder={PLACEHOLDER.EXPOSED_HEADERS}
                                         options={optionsTransformer(schema.cors_meta.exposed_headers)}
                                         component={TagSelect}
