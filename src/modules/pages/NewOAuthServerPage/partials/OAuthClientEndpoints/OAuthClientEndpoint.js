@@ -90,7 +90,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, endpoint, name, schema } = this.props;
+        const { category, editing, endpoint, name, schema } = this.props;
 
         return (
             <div className={b('section')}>
@@ -245,7 +245,7 @@ class OAuthClientEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.hosts`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.hosts`}
                                 options={optionsTransformer(schema.oauth_client_endpoints[name].hosts)}
                                 component={TagSelect}
@@ -259,7 +259,7 @@ class OAuthClientEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.methods`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.methods`}
                                 options={optionsTransformer(schema.oauth_client_endpoints[name].methods)}
                                 component={MultiSelect}

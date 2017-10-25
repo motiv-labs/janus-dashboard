@@ -293,7 +293,7 @@ class OAuthEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.hosts`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.hosts`}
                                 value={() => this.getValues([category, name, 'hosts'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].hosts)}
