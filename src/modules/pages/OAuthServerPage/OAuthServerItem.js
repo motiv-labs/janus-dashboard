@@ -26,7 +26,7 @@ class OAuthServerItem extends PureComponent {
     submit = values => {
         const transformedValues = transformFormValues(values, true);
 
-        this.props.saveOAuthServer(this.props.location.pathname, transformedValues);
+        this.props.saveOAuthServer(this.props.location.pathname, transformedValues, true);
     }
 
     renderForm = () => {

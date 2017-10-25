@@ -88,7 +88,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     }
 };
 
-export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
+export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEditing) => {
     dispatch(saveOAuthServerRequest(server));
 
     const composeRateLimit = server => {
@@ -106,8 +106,7 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
         dispatch(closeConfirmationModal());
 
         if (response) {
-            // dispatch(fetchOAuthServers());
-            history.push('/oauth/servers');
+            !isEditing && history.push('/oauth/servers');
             dispatch(showToaster());
 
             return;
@@ -137,10 +136,10 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
     }
 };
 
-export const saveOAuthServer = (pathname, server) => dispatch => {
+export const saveOAuthServer = (pathname, server, isEditing) => dispatch => {
     dispatch(openConfirmationModal(
         'save',
-        () => confirmedSaveOAuthServer(dispatch, pathname, server),
+        () => confirmedSaveOAuthServer(dispatch, pathname, server, isEditing),
         server.name,
     ));
 };
