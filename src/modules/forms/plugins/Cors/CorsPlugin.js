@@ -5,6 +5,7 @@ import { Field } from 'redux-form';
 import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
 import optionsTransformer from '../../../../helpers/optionsTransformer';
+import getValues from '../../../../helpers/getValues';
 
 import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
@@ -32,7 +33,6 @@ class CorsPlugin extends PureComponent {
     render() {
         const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
         const b = block(className);
-        const getValues = key => plugin.config[key];
         const allValues = key => apiSchema.plugins[0].config[key];
 
         return (
@@ -62,7 +62,7 @@ class CorsPlugin extends PureComponent {
                             type="text"
                             edit={edit}
                             placeholder={SETUP.placeholders.cors.methods}
-                            value={() => getValues('methods')}
+                            value={() => getValues(['config', 'methods'])(plugin)}
                             options={optionsTransformer(allValues('methods'))}
                             component={MultiSelect}
                         />
@@ -76,7 +76,7 @@ class CorsPlugin extends PureComponent {
                             name={`${name}.config.request_headers`}
                             type="text"
                             edit={edit}
-                            value={() => getValues('request_headers')}
+                            value={() => getValues(['config', 'request_headers'])(plugin)}
                             placeholder={SETUP.placeholders.cors.request_headers}
                             options={optionsTransformer(allValues('request_headers'))}
                             component={TagSelect}
@@ -89,7 +89,7 @@ class CorsPlugin extends PureComponent {
                             name={`${name}.config.exposed_headers`}
                             type="text"
                             edit={edit}
-                            value={() => getValues('exposed_headers')}
+                            value={() => getValues(['config', 'exposed_headers'])(plugin)}
                             placeholder={SETUP.placeholders.cors.request_headers}
                             options={optionsTransformer(allValues('exposed_headers'))}
                             component={TagSelect}
