@@ -46,19 +46,156 @@ const propTypes = {
 };
 
 class OAuthServerForm extends PureComponent {
-    state = {
-        tabs: [
-            'oAuth Endpoints',
-            'oAuth Client Endpoints',
-        ],
-        activeTab: 0,
-        strategy: {
-            name: this.props.initialValues.token_strategy.name || '',
-            settings: [],
-        },
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            tabs: [
+                'oAuth Endpoints',
+                'oAuth Client Endpoints',
+            ],
+            activeTab: 0,
+            strategy: {
+                name: this.props.initialValues.token_strategy.name || '',
+                settings: [],
+            },
+        };
     };
 
     handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
+
+    handleChangeStrategy = value => {
+        console.error('Val', value);
+
+        this.setState(() => ({
+            strategy: value.settings,
+        }), () => {
+            console.error('state', this.state);
+            return this.props.change('token_strategy', value.settings);
+        });
+    };
+
+    renderTabs = () => {
+        const first = 'oAuth Endpoints';
+        const second = 'oAuth Client Endpoints';
+
+        return (
+            <div className={b('tabs')}>
+                <div className="j-buttons__wrapper tabs-nav">
+                    {
+                        this.state.tabs.map((item, idx) =>
+                            <Button
+                                key={item}
+                                mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
+                                onClick={() => this.handleTabSwitch(idx)}
+                                type="button"
+                            >
+                                {item}
+                            </Button>
+                        )
+                    }
+                </div>
+
+                <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
+                    <div className={b('section')}>
+                        <OAuthEndpoints
+                            editing={this.props.editing}
+                            endpoints={this.props.initialValues.oauth_endpoints}
+                            schema={this.props.schema}
+                            change={this.props.change}
+                            category={'oauth_endpoints'}
+                            initialValues={this.props.initialValues}
+                        />
+                    </div>
+                </div>
+                <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
+                    <div className={b('section')}>
+                        <OAuthClientEndpoints
+                            editing={this.props.editing}
+                            endpoints={this.props.initialValues.oauth_client_endpoints}
+                            schema={this.props.schema}
+                            change={this.props.change}
+                            category={'oauth_client_endpoints'}
+                            initialValues={this.props.initialValues}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    renderJWTStrategy = () => (
+        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+            <Row className={b('row')()} fullwidth>
+                <JWTStrategyOptions
+                    name="token_strategy.settings"
+                    title="JWT settings"
+                />
+            </Row>
+        </div>
+    );
+
+    renderIntrospectionStrategy = () => (
+        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+            <div className={row('item')}>
+                <Row col>
+                    <div className={col()}>
+                        <Label>Auth Header Type</Label>
+                        <Field
+                            type="text"
+                            name="token_strategy.settings.auth_header_type"
+                            placeholder=""
+                            component={Input}
+                        />
+                    </div>
+                    <div className={col()}>
+                    </div>
+                </Row>
+            </div>
+            <div className={row('item')}>
+                <Row col>
+                    <Label>Use OAuth Header?</Label>
+                    <Row className={b('radio-wrap')()}>
+                        <Row className={b('radio')()}>
+                            <Field
+                                name="token_strategy.settings.use_oauth_header"
+                                component={Radio}
+                                value={'true'}
+                                type="radio"
+                                id="use-aouth-header-is-active"
+                            />
+                            <Label htmlFor="use-aouth-header-is-active">Yes</Label>
+                        </Row>
+                        <Row className={b('radio')()}>
+                            <Field
+                                name="token_strategy.settings.use_oauth_header"
+                                component={Radio}
+                                value={'false'}
+                                type="radio"
+                                id="use-aouth-header-is-not-active"
+                            />
+                            <Label htmlFor="use-aouth-header-is-not-active">No</Label>
+                        </Row>
+                    </Row>
+                </Row>
+            </div>
+        </div>
+    );
+
+    renderStrategy = (name) => {
+        console.warn('Name', name, this.state);
+
+        switch (name) {
+            case 'jwt': {
+                return this.renderJWTStrategy();
+            }
+            case 'introspection': {
+                return this.renderIntrospectionStrategy();
+            }
+            default:
+                return null;
+        }
+    };
 
     render() {
         const {
@@ -90,135 +227,6 @@ class OAuthServerForm extends PureComponent {
             (yes, no) => yes,
             (yes, no) => no,
         );
-
-        const renderTabs = () => {
-            const first = 'oAuth Endpoints';
-            const second = 'oAuth Client Endpoints';
-
-            return (
-                <div className={b('tabs')}>
-                    <div className="j-buttons__wrapper tabs-nav">
-                        {
-                            this.state.tabs.map((item, idx) =>
-                                <Button
-                                    key={item}
-                                    mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
-                                    onClick={() => this.handleTabSwitch(idx)}
-                                    type="button"
-                                >
-                                    {item}
-                                </Button>
-                            )
-                        }
-                    </div>
-
-                    <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
-                        <div className={b('section')}>
-                            <OAuthEndpoints
-                                editing={editing}
-                                endpoints={initialValues.oauth_endpoints}
-                                schema={schema}
-                                change={this.props.change}
-                                category={'oauth_endpoints'}
-                                initialValues={initialValues}
-                            />
-                        </div>
-                    </div>
-                    <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
-                        <div className={b('section')}>
-                            <OAuthClientEndpoints
-                                editing={editing}
-                                endpoints={initialValues.oauth_client_endpoints}
-                                schema={schema}
-                                change={this.props.change}
-                                category={'oauth_client_endpoints'}
-                                initialValues={initialValues}
-                            />
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const renderJWTStrategy = () => (
-            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                <Row className={b('row')()} fullwidth>
-                    <JWTStrategyOptions
-                        name="token_strategy.settings"
-                        title="JWT settings"
-                    />
-                </Row>
-            </div>
-        );
-
-        const renderIntrospectionStrategy = () => (
-            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                <div className={row('item')}>
-                    <Row col>
-                        <div className={col()}>
-                            <Label>Auth Header Type</Label>
-                            <Field
-                                type="text"
-                                name="token_strategy.settings.auth_header_type"
-                                placeholder=""
-                                component={Input}
-                            />
-                        </div>
-                        <div className={col()}>
-                        </div>
-                    </Row>
-                </div>
-                <div className={row('item')}>
-                    <Row col>
-                        <Label>Use OAuth Header?</Label>
-                        <Row className={b('radio-wrap')()}>
-                            <Row className={b('radio')()}>
-                                <Field
-                                    name="token_strategy.settings.use_oauth_header"
-                                    component={Radio}
-                                    value={'true'}
-                                    type="radio"
-                                    id="use-aouth-header-is-active"
-                                />
-                                <Label htmlFor="use-aouth-header-is-active">Yes</Label>
-                            </Row>
-                            <Row className={b('radio')()}>
-                                <Field
-                                    name="token_strategy.settings.use_oauth_header"
-                                    component={Radio}
-                                    value={'false'}
-                                    type="radio"
-                                    id="use-aouth-header-is-not-active"
-                                />
-                                <Label htmlFor="use-aouth-header-is-not-active">No</Label>
-                            </Row>
-                        </Row>
-                    </Row>
-                </div>
-            </div>
-        );
-
-        const renderStrategy = (name) => {
-            switch (name) {
-                case 'jwt': {
-                    return renderJWTStrategy();
-                }
-                case 'introspection': {
-                    return renderIntrospectionStrategy();
-                }
-                default:
-                    return null;
-            }
-        };
-
-        const handleChangeStrategy = value => {
-            this.setState(() => ({
-                strategy: {
-                    name: value.value,
-                    settings: value.settings,
-                }
-            }), () => this.props.change('token_strategy.name', value.value));
-        };
 
         return (
             <form className={b} onSubmit={handleSubmit}>
@@ -403,20 +411,20 @@ class OAuthServerForm extends PureComponent {
                                     className="j-select"
                                     name="token_strategy.name"
                                     options={createStrategyOptions(schema.token_strategy.strategies)}
-                                    onChange={handleChangeStrategy}
+                                    onChange={this.handleChangeStrategy}
                                     value={this.state.strategy.name}
                                     searchable={false}
                                     clearable={false}
                                 />
                             </div>
                         </div>
-                        { renderStrategy(this.state.strategy.name) }
+                        { this.renderStrategy(this.state.strategy.name) }
                     </div>
                 </div>
 
                 <div className={b('inner', {overflowed: true})}>
                     <div className={b('section')}>
-                        { renderTabs() }
+                        { this.renderTabs() }
                     </div>
                 </div>
 
