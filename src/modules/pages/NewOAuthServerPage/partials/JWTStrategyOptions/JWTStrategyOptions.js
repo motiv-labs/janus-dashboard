@@ -17,7 +17,7 @@ const propTypes = {
 };
 
 class JWTStrategyOptions extends Component {
-    renderMembers = ({ fields, name, title }) => {
+    renderMembers = ({ fields, title }) => {
         return (
             <div>
                 <div className={row()}>
