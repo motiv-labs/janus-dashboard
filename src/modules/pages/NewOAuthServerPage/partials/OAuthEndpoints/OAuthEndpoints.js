@@ -22,12 +22,7 @@ const OAuthEndpoints = ({
     schema,
     strategyName,
 }) => {
-    console.error('ed', endpoints);
-
     const checkOnNil = item => !R.isNil(item);
-    const t = item => console.warn('item >>> ', item);
-    const T = R.filter(t, endpoints);
-    console.log(T);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
     const excludeIrrelevant = item =>
         strategyName === 'introspection' ?

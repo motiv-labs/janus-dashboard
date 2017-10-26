@@ -221,7 +221,6 @@ class OAuthServerForm extends PureComponent {
             (yes, no) => yes,
             (yes, no) => no,
         );
-        console.error(this.state.strategy.name);
 
         return (
             <form className={b} onSubmit={handleSubmit}>
