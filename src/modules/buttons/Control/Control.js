@@ -9,10 +9,7 @@ import './Control.css';
 const b = block('j-control');
 
 const propTypes = {
-    icon: PropTypes.oneOf([
-        'add',
-        'remove',
-    ]).isRequired,
+    icon: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
 };
 
