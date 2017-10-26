@@ -85,7 +85,7 @@ class EndpointForm extends PureComponent {
                 return (
                     <RoundrobinTargets
                         name="proxy.upstreams.targets"
-                        title="Roundrobin targets"
+                        title="Targets"
                     />
                 );
             }
@@ -93,7 +93,7 @@ class EndpointForm extends PureComponent {
                 return (
                     <WeightTargets
                         name="proxy.upstreams.targets"
-                        title="Weight targets"
+                        title="Targets"
                     />
                 );
             }

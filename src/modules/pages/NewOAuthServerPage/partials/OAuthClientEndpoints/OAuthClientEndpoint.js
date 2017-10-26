@@ -72,7 +72,7 @@ class OAuthClientEndpoint extends PureComponent {
                 return (
                     <RoundrobinTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Roundrobin targets"
+                        title="Targets"
                     />
                 );
             }
@@ -80,7 +80,7 @@ class OAuthClientEndpoint extends PureComponent {
                 return (
                     <WeightTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Weight targets"
+                        title="Targets"
                     />
                 );
             }
