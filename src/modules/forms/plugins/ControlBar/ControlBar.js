@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import block from '../../../../helpers/bem-cn';
 
-import Icon from '../../../Icon/Icon';
+import Control from '../../../buttons/Control/Control';
 import Tumbler from '../../../Tumbler/Tumbler';
 
 import './ControlBar.css';
@@ -24,7 +24,7 @@ const ControlBar = ({ name, removePlugin }) => {
                         name={name}
                     />
                 </div>
-                <span onClick={removePlugin}><Icon type="delete" /></span>
+                <Control icon="delete" onClick={removePlugin} />
             </div>
         </div>
     );
