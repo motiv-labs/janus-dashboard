@@ -21,7 +21,7 @@ export const initialState = {
     sortAscend: true,
 };
 
-export const checkStatus = status => status === 'Available';
+export const checkStatus = list => !list;
 
 const convertToList = obj => {
     const convert = item => ({
@@ -47,7 +47,7 @@ export default function reducer(state = initialState, action) {
         case FETCH_HEALTHCHECK_LIST_SUCCESS: {
             return {
                 ...state,
-                status: checkStatus(action.payload.status),
+                status: checkStatus(action.payload.failures),
                 statusName: action.payload.status,
                 healthcheckList: convertToList(action.payload.failures),
                 isFetching: false,
