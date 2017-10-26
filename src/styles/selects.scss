@@ -11,7 +11,12 @@
         color: $hf-color-white;
 
         &-icon {
+            color: rgba(255, 255, 255, 0.7);
             float: right;
+
+            &:focus, &:hover {
+                color: $hf-color-white;
+            }
         }
 
         &-icon, &-label {
