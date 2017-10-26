@@ -1,0 +1,27 @@
+.Select--multi {
+    .Select-multi-value-wrapper {
+        margin-bottom: 5px;
+    }
+
+    .Select-value {
+        background-color: $hellofresh-color;
+        border: none;
+        border-radius: $hf-border-radius;
+        margin-top: ceil($hf-gutter/2);
+        color: $hf-color-white;
+
+        &-icon {
+            float: right;
+        }
+
+        &-icon, &-label {
+            font-size: $hf-font-size-base;
+            line-height: $hf-line-height;
+            padding: 2px 5px;
+        }
+    }
+
+    .Select-input {
+        height: 32px;
+    }
+}

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import { Creatable } from 'react-select';
 import R from 'ramda';
 
-import './TagSelect.css';
-
 class TagSelect extends Component {
     state = {
         multi: true,
