@@ -7,7 +7,7 @@ const Input = props => {
 
     return (
         <input
-            className={`j-input ${!disabled && meta.error && meta.touched && ' j-input--error'}`}
+            className={`j-input${(!disabled && meta.error && meta.touched) ? ' j-input--error' : ''}`}
             type={type}
             placeholder={placeholder}
             disabled={disabled}
