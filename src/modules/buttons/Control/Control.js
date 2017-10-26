@@ -9,7 +9,7 @@ import './Control.css';
 const b = block('j-control');
 
 const propTypes = {
-    icon: Icon.propTypes.type,
+    icon: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
 };
 
