@@ -26,10 +26,10 @@ const propTypes = {
     ]).isRequired,
 };
 
-const Control = ({ ariaLabel, className, type }) => (
+const Icon = ({ ariaLabel, className, type }) => (
     <span className={b({ type }).mix(className).mix(ariaLabel && 'j-tooltiped')} aria-label={ariaLabel}/>
 );
 
-Control.propTypes = propTypes;
+Icon.propTypes = propTypes;
 
-export default Control;
+export default Icon;
