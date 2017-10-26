@@ -48,7 +48,6 @@ class ApiList extends PureComponent {
         <div className={table('row')} key={`${index}-${api.name}`}>
             <div className={table('td', {name: true})}>{api.name}</div>
             <div className={table('td')}>{api.proxy.listen_path}</div>
-            <div className={table('td')}>{api.proxy.upstream_url}</div>
             <div className={table('td', {active: true})}>
                 {api.active ? <Icon type="checked" /> : null}
             </div>
@@ -97,7 +96,7 @@ class ApiList extends PureComponent {
                         <div className="ascending-icon"></div>
                     </div>
                     <div className={table('th')}>Listen Path</div>
-                    <div className={table('th')}>Upstream URL</div>
+
                     <div
                         className={table('th', {active: true}).mix('ascending-container')}
                         onClick={() => this.sortList('active')}
