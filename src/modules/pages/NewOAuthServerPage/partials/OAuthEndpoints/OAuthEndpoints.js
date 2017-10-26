@@ -7,30 +7,46 @@ import OAuthEndpoint from './OAuthEndpoint';
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
+    editing: PropTypes.bool.isRequired,
     endpoints: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthEndpoints = ({ category, change, endpoints, initialValues, schema }) => {
-    const endpointsList = R.toPairs(endpoints);
+const OAuthEndpoints = ({
+    category,
+    change,
+    editing,
+    endpoints,
+    initialValues,
+    schema,
+    strategyName,
+}) => {
+    const checkOnNil = item => !R.isNil(item);
+    const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
+    const excludeIrrelevant = item =>
+        strategyName === 'introspection' ?
+            item[0] === 'introspect' :
+            item[0] !== 'introspect';
+    const renderOAuthEndpoint = item => (
+        <OAuthEndpoint
+            key={item[0]}
+            name={item[0]}
+            editing={editing}
+            endpoint={item[1]}
+            schema={schema}
+            change={change}
+            category={category}
+            initialValues={initialValues}
+        />
+    );
 
     return (
         <div>
             {
-                endpointsList.map(item => {
-                    return (
-                        <OAuthEndpoint
-                            key={item[0]}
-                            name={item[0]}
-                            endpoint={item[1]}
-                            schema={schema}
-                            change={change}
-                            category={category}
-                            initialValues={initialValues}
-                        />
-                    );
-                })
+                endpointsList
+                    .filter(excludeIrrelevant)
+                    .map(renderOAuthEndpoint)
             }
         </div>
     );

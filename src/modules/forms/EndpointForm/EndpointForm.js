@@ -85,7 +85,7 @@ class EndpointForm extends PureComponent {
                 return (
                     <RoundrobinTargets
                         name="proxy.upstreams.targets"
-                        title="Roundrobin targets"
+                        title="Targets"
                     />
                 );
             }
@@ -93,7 +93,7 @@ class EndpointForm extends PureComponent {
                 return (
                     <WeightTargets
                         name="proxy.upstreams.targets"
-                        title="Weight targets"
+                        title="Targets"
                     />
                 );
             }
@@ -220,7 +220,7 @@ class EndpointForm extends PureComponent {
                             </div>
                             <div className={col()}>
                                 <div className={col('item')}>
-                                    <Label>Upstream URL</Label>
+                                    <Label>Load balancing alg.</Label>
                                 </div>
                                 <Select
                                     className="j-select"

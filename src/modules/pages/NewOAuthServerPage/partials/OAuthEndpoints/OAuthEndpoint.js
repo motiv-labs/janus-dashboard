@@ -8,6 +8,7 @@ import PLACEHOLDER from '../../../../../configurations/placeholders.config';
 import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
+import getValues from '../../../../../helpers/getValues';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
@@ -28,6 +29,7 @@ const grid = block('j-grid');
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
+    editing: PropTypes.bool.isRequired,
     endpoint: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
@@ -72,7 +74,7 @@ class OAuthEndpoint extends PureComponent {
                 return (
                     <RoundrobinTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Roundrobin targets"
+                        title="Targets"
                     />
                 );
             }
@@ -80,7 +82,7 @@ class OAuthEndpoint extends PureComponent {
                 return (
                     <WeightTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Weight targets"
+                        title="Targets"
                     />
                 );
             }
@@ -90,7 +92,7 @@ class OAuthEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, endpoint, name, schema } = this.props;
+        const { category, editing, endpoint, initialValues, name, schema } = this.props;
         const upstreamConfig = [
             {
                 type: 'text',
@@ -120,12 +122,12 @@ class OAuthEndpoint extends PureComponent {
                     <div className={row('item')}>
                         <div className={col()}>
                             <div className={col('item')}>
-                                <Label>Upstream URL</Label>
+                                <Label>Load balancing alg.</Label>
                             </div>
                             <Select
                                 className="j-select"
                                 name={`${category}.${name}.upstreams.balancing`}
-                                options={this.createStrategyOptions(endpoint.upstreams.options)}
+                                options={this.createStrategyOptions(schema.oauth_endpoints[name].upstreams.options)}
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 searchable={false}
@@ -275,9 +277,9 @@ class OAuthEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.methods`}
                                 type="text"
-                                edit={false}
-                                value={`${category}.${name}.methods`}
-                                options={optionsTransformer(schema.oauth_endpoints[name].methods)}
+                                edit={editing}
+                                value={() => this.getValues([category, name, 'methods'])(initialValues)}
+                                options={optionsTransformer(schema.oauth_endpoints[name].all_methods)}
                                 component={MultiSelect}
                             />
                             <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -291,8 +293,9 @@ class OAuthEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.hosts`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.hosts`}
+                                value={() => this.getValues([category, name, 'hosts'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].hosts)}
                                 component={TagSelect}
                             />

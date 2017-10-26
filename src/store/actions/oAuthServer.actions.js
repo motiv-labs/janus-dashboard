@@ -63,8 +63,16 @@ export const fetchOAuthServer = path => async dispatch => {
 
     try {
         const response = await client.get(`${path}`);
+        const oAuthServer = response.data;
+        const rateLimit = oAuthServer.rate_limit.limit.split('-');
+        const rateLimitValues = {
+            value: rateLimit[0]*1,
+            unit: rateLimit[1],
+        };
+        const lens = R.lensPath(['rate_limit', 'limit']);
+        const updatedOAuthServer = R.set(lens, rateLimitValues, oAuthServer);
 
-        dispatch(getOAuthServerSuccess(response.data));
+        dispatch(getOAuthServerSuccess(updatedOAuthServer));
     } catch (error) {
         console.log('FETCH_OAUTH_SERVER_ERROR', 'Infernal server error', error);
     }
@@ -80,7 +88,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     }
 };
 
-export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
+export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEditing) => {
     dispatch(saveOAuthServerRequest(server));
 
     const composeRateLimit = server => {
@@ -98,8 +106,7 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
         dispatch(closeConfirmationModal());
 
         if (response) {
-            // dispatch(fetchOAuthServers());
-            history.push('/oauth/servers');
+            !isEditing && history.push('/oauth/servers');
             dispatch(showToaster());
 
             return;
@@ -129,10 +136,10 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server) => {
     }
 };
 
-export const saveOAuthServer = (pathname, server) => dispatch => {
+export const saveOAuthServer = (pathname, server, isEditing) => dispatch => {
     dispatch(openConfirmationModal(
         'save',
-        () => confirmedSaveOAuthServer(dispatch, pathname, server),
+        () => confirmedSaveOAuthServer(dispatch, pathname, server, isEditing),
         server.name,
     ));
 };

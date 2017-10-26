@@ -72,7 +72,7 @@ class OAuthClientEndpoint extends PureComponent {
                 return (
                     <RoundrobinTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Roundrobin targets"
+                        title="Targets"
                     />
                 );
             }
@@ -80,7 +80,7 @@ class OAuthClientEndpoint extends PureComponent {
                 return (
                     <WeightTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
-                        title="Weight targets"
+                        title="Targets"
                     />
                 );
             }
@@ -90,7 +90,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, endpoint, name, schema } = this.props;
+        const { category, editing, endpoint, name, schema } = this.props;
 
         return (
             <div className={b('section')}>
@@ -115,12 +115,12 @@ class OAuthClientEndpoint extends PureComponent {
                     <div className={row('item')}>
                         <div className={col()}>
                             <div className={col('item')}>
-                                <Label>Upstream URL</Label>
+                                <Label>Load balancing alg.</Label>
                             </div>
                             <Select
                                 className="j-select"
                                 name={`${category}.${name}.upstreams.balancing`}
-                                options={this.createStrategyOptions(endpoint.upstreams.options)}
+                                options={this.createStrategyOptions(schema.oauth_client_endpoints[name].upstreams.options)}
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 searchable={false}
@@ -245,7 +245,7 @@ class OAuthClientEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.hosts`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.hosts`}
                                 options={optionsTransformer(schema.oauth_client_endpoints[name].hosts)}
                                 component={TagSelect}
@@ -259,7 +259,7 @@ class OAuthClientEndpoint extends PureComponent {
                             <Field
                                 name={`${category}.${name}.methods`}
                                 type="text"
-                                edit={false}
+                                edit={editing}
                                 value={`${category}.${name}.methods`}
                                 options={optionsTransformer(schema.oauth_client_endpoints[name].methods)}
                                 component={MultiSelect}

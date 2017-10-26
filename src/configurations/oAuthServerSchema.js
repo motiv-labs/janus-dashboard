@@ -32,7 +32,8 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+            methods: [],
+            all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: [],
         },
         token: {
@@ -66,7 +67,8 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+            methods: [],
+            all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: []
         },
         introspect: {
@@ -100,7 +102,8 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+            methods: [],
+            all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: []
         },
         revoke: {
@@ -134,7 +137,8 @@ const oAuthServerSchema = {
             strip_path: false,
             append_path: false,
             enable_load_balancing: false,
-            methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+            methods: [],
+            all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
             hosts: []
         }
     },
@@ -208,7 +212,8 @@ const oAuthServerSchema = {
     },
     cors_meta: {
         domains: ['*'],
-        methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+        methods: [],
+        all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
         request_headers: ['Origin','Authorization','Content-Type'],
         exposed_headers: ['X-Debug-Token','X-Debug-Token-Link'],
         enabled: true
@@ -224,7 +229,7 @@ const oAuthServerSchema = {
     },
     token_strategy: {
         name: '',
-        settings: null,
+        settings: [],
         strategies: [
             {
                 name: 'jwt',

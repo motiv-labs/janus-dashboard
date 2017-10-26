@@ -55,9 +55,9 @@ class OAuthServersList extends PureComponent {
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td').mix(table('controls'))}>
-                    {/*<Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
+                    <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                         <Icon type="edit" ariaLabel="Edit" />
-                    </Link>*/}
+                    </Link>
                     <Link
                         to={'/oauth/servers'}
                         className={table('controls-item')}
@@ -85,7 +85,7 @@ class OAuthServersList extends PureComponent {
                         className={table('th').mix('ascending-container')}
                         onClick={() => this.sortList('name')}
                     >
-                        <div>oAuth Server Name</div>
+                        <div>OAuth Server Name</div>
                         <div className="ascending-icon"></div>
                     </div>
                     <div className={table('th')}>Upstream URL</div>

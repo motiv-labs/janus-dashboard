@@ -12,6 +12,7 @@ import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
 import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
+import getValues from '../../../helpers/getValues';
 
 import Section from '../../Layout/Section/Section';
 import Row from '../../Layout/Row/Row';
@@ -33,45 +34,166 @@ import QueryStringSection from '../../forms/plugins/RequestTransformer/QueryStri
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
-// import './NewApiForm.css';
-
 const b = block('j-api-form');
 const row = block('j-row');
 const col = block('j-col');
 const grid = block('j-grid');
 
 const propTypes = {
-    // formValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
 };
 
-const styles = {
-    tab: {
-        zIndex: 0,
-        opacity: 0,
-    },
-    visible: {
-        zIndex: 1,
-        opacity: 1,
-    }
-};
-
 class OAuthServerForm extends PureComponent {
-    state = {
-        tabs: [
-            'oAuth Endpoints',
-            'oAuth Client Endpoints',
-        ],
-        activeTab: 0,
-        strategy: {},
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            tabs: [
+                'OAuth Endpoints',
+                'OAuth Client Endpoints',
+            ],
+            activeTab: 0,
+            strategy: {
+                name: this.props.initialValues.token_strategy.name || '',
+                settings: [],
+            },
+        };
     };
 
     handleTabSwitch = idx => this.setState(prevState => ({ activeTab: idx }));
 
+    handleChangeStrategy = value => {
+        this.setState(() => ({
+            strategy: value.settings,
+        }), () => this.props.change('token_strategy', value.settings));
+    };
+
+    renderTabs = () => {
+        const first = 'OAuth Endpoints';
+        const second = 'OAuth Client Endpoints';
+
+        return (
+            <div className={b('tabs')}>
+                <div className="j-buttons__wrapper tabs-nav">
+                    {
+                        this.state.tabs.map((item, idx) =>
+                            <Button
+                                key={item}
+                                mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
+                                onClick={() => this.handleTabSwitch(idx)}
+                                type="button"
+                            >
+                                {item}
+                            </Button>
+                        )
+                    }
+                </div>
+
+                <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
+                    <div className={b('section')}>
+                        <OAuthEndpoints
+                            editing={this.props.editing}
+                            endpoints={this.props.initialValues.oauth_endpoints}
+                            schema={this.props.schema}
+                            change={this.props.change}
+                            category={'oauth_endpoints'}
+                            initialValues={this.props.initialValues}
+                            strategyName={this.state.strategy.name}
+                        />
+                    </div>
+                </div>
+                <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
+                    <div className={b('section')}>
+                        <OAuthClientEndpoints
+                            editing={this.props.editing}
+                            endpoints={this.props.initialValues.oauth_client_endpoints}
+                            schema={this.props.schema}
+                            change={this.props.change}
+                            category={'oauth_client_endpoints'}
+                            initialValues={this.props.initialValues}
+                        />
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
+    renderJWTStrategy = () => (
+        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+            <Row className={b('row')()} fullwidth>
+                <JWTStrategyOptions
+                    name="token_strategy.settings"
+                    title="JWT settings"
+                />
+            </Row>
+        </div>
+    );
+
+    renderIntrospectionStrategy = () => (
+        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+            <div className={row('item')}>
+                <Row col>
+                    <div className={col()}>
+                        <Label>Auth Header Type</Label>
+                        <Field
+                            type="text"
+                            name="token_strategy.settings.auth_header_type"
+                            placeholder=""
+                            component={Input}
+                        />
+                    </div>
+                    <div className={col()}>
+                    </div>
+                </Row>
+            </div>
+            <div className={row('item')}>
+                <Row col>
+                    <Label>Use OAuth Header?</Label>
+                    <Row className={b('radio-wrap')()}>
+                        <Row className={b('radio')()}>
+                            <Field
+                                name="token_strategy.settings.use_oauth_header"
+                                component={Radio}
+                                value={'true'}
+                                type="radio"
+                                id="use-aouth-header-is-active"
+                            />
+                            <Label htmlFor="use-aouth-header-is-active">Yes</Label>
+                        </Row>
+                        <Row className={b('radio')()}>
+                            <Field
+                                name="token_strategy.settings.use_oauth_header"
+                                component={Radio}
+                                value={'false'}
+                                type="radio"
+                                id="use-aouth-header-is-not-active"
+                            />
+                            <Label htmlFor="use-aouth-header-is-not-active">No</Label>
+                        </Row>
+                    </Row>
+                </Row>
+            </div>
+        </div>
+    );
+
+    renderStrategy = (name) => {
+        switch (name) {
+            case 'jwt': {
+                return this.renderJWTStrategy();
+            }
+            case 'introspection': {
+                return this.renderIntrospectionStrategy();
+            }
+            default:
+                return null;
+        }
+    };
+
     render() {
         const {
+            editing,
             handleSubmit,
             schema,
             initialValues,
@@ -94,139 +216,23 @@ class OAuthServerForm extends PureComponent {
                 settings: item[0],
             }));
         };
-
-        const renderTabs = () => {
-            const first = 'oAuth Endpoints';
-            const second = 'oAuth Client Endpoints';
-
-            return (
-                <div className={b('tabs')}>
-                    <div className="j-buttons__wrapper tabs-nav">
-                        {
-                            this.state.tabs.map((item, idx) =>
-                                <Button
-                                    key={item}
-                                    mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
-                                    onClick={() => this.handleTabSwitch(idx)}
-                                    type="button"
-                                >
-                                    {item}
-                                </Button>
-                            )
-                        }
-                    </div>
-
-                    <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
-                        <div className={b('section')}>
-                            <OAuthEndpoints
-                                endpoints={initialValues.oauth_endpoints}
-                                schema={schema}
-                                change={this.props.change}
-                                category={'oauth_endpoints'}
-                                initialValues={initialValues}
-                            />
-                        </div>
-                    </div>
-                    <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
-                        <div className={b('section')}>
-                            <OAuthClientEndpoints
-                                endpoints={initialValues.oauth_client_endpoints}
-                                schema={schema}
-                                change={this.props.change}
-                                category={'oauth_client_endpoints'}
-                                initialValues={initialValues}
-                            />
-                        </div>
-                    </div>
-                </div>
-            );
-        };
-
-        const renderJWTStrategy = () => (
-            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                <Row className={b('row')()} fullwidth>
-                    <JWTStrategyOptions
-                        name="token_strategy.settings"
-                        title="JWT settings"
-                    />
-                </Row>
-            </div>
+        const ifEditing = (yes, no) => R.ifElse(
+            () => editing,
+            (yes, no) => yes,
+            (yes, no) => no,
         );
-
-        const renderIntrospectionStrategy = () => (
-            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                <div className={row('item')}>
-                    <Row col>
-                        <div className={col()}>
-                            <Label>Auth Header Type</Label>
-                            <Field
-                                type="text"
-                                name="token_strategy.settings.auth_header_type"
-                                placeholder=""
-                                component={Input}
-                            />
-                        </div>
-                        <div className={col()}>
-                        </div>
-                    </Row>
-                </div>
-                <div className={row('item')}>
-                    <Row col>
-                        <Label>Use OAuth Header?</Label>
-                        <Row className={b('radio-wrap')()}>
-                            <Row className={b('radio')()}>
-                                <Field
-                                    name="token_strategy.settings.use_oauth_header"
-                                    component={Radio}
-                                    value={'true'}
-                                    type="radio"
-                                    id="use-aouth-header-is-active"
-                                />
-                                <Label htmlFor="use-aouth-header-is-active">Yes</Label>
-                            </Row>
-                            <Row className={b('radio')()}>
-                                <Field
-                                    name="token_strategy.settings.use_oauth_header"
-                                    component={Radio}
-                                    value={'false'}
-                                    type="radio"
-                                    id="use-aouth-header-is-not-active"
-                                />
-                                <Label htmlFor="use-aouth-header-is-not-active">No</Label>
-                            </Row>
-                        </Row>
-                    </Row>
-                </div>
-            </div>
-        );
-
-        const renderStrategy = (name) => {
-            switch (name) {
-                case 'jwt': {
-                    return renderJWTStrategy();
-                }
-                case 'introspection': {
-                    return renderIntrospectionStrategy();
-                }
-                default:
-                    return null;
-            }
-        };
-
-        const handleChangeStrategy = value => {
-            this.setState(() => ({
-                strategy: {
-                    name: value.value,
-                    settings: value.settings,
-                }
-            }), () => this.props.change('token_strategy.name', value.value));
-        };
 
         return (
             <form className={b} onSubmit={handleSubmit}>
                 <Section>
                     <Row>
-                        <Title>Create New oAuth Server</Title>
+                        <Title>
+                            {
+                                ifEditing()(
+                                    `Edit ${initialValues.name}`,
+                                    'Create New OAuth Server')
+                            }
+                        </Title>
                     </Row>
                 </Section>
                 <div className={b('inner')}>
@@ -234,11 +240,12 @@ class OAuthServerForm extends PureComponent {
                         <div className={b('section-title')}>1. General</div>
                         <Row className={b('row')()} fullwidth>
                             <Row col>
-                                <Label>oAuth Server Name</Label>
+                                <Label>OAuth Server Name</Label>
                                 <Field
                                     name="name"
                                     type="text"
                                     component={Input}
+                                    disabled={editing}
                                 />
                                 <Hint>Must be unique</Hint>
                             </Row>
@@ -282,8 +289,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.domains"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.domains"
+                                        edit={editing}
+                                        value={() => getValues(['cors_meta', 'domains'])(initialValues)}
                                         options={optionsTransformer(schema.cors_meta.domains)}
                                         component={TagSelect}
                                     />
@@ -296,9 +303,9 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.methods"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.methods"
-                                        options={optionsTransformer(schema.cors_meta.methods)}
+                                        edit={editing}
+                                        value={() => getValues(['cors_meta', 'methods'])(initialValues)}
+                                        options={optionsTransformer(schema.cors_meta.all_methods)}
                                         component={MultiSelect}
                                     />
                                     <Hint>HTTP methods that are supported for the endpoint.</Hint>
@@ -312,8 +319,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.request_headers"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.request_headers"
+                                        edit={editing}
+                                        value={() => getValues(['cors_meta', 'request_headers'])(initialValues)}
                                         placeholder={PLACEHOLDER.REQUEST_HEADERS}
                                         options={optionsTransformer(schema.cors_meta.request_headers)}
                                         component={TagSelect}
@@ -327,8 +334,8 @@ class OAuthServerForm extends PureComponent {
                                     <Field
                                         name="cors_meta.exposed_headers"
                                         type="text"
-                                        edit={false}
-                                        value="cors_meta.exposed_headers"
+                                        edit={editing}
+                                        value={() => getValues(['cors_meta', 'exposed_headers'])(initialValues)}
                                         placeholder={PLACEHOLDER.EXPOSED_HEADERS}
                                         options={optionsTransformer(schema.cors_meta.exposed_headers)}
                                         component={TagSelect}
@@ -398,20 +405,20 @@ class OAuthServerForm extends PureComponent {
                                     className="j-select"
                                     name="token_strategy.name"
                                     options={createStrategyOptions(schema.token_strategy.strategies)}
-                                    onChange={handleChangeStrategy}
+                                    onChange={this.handleChangeStrategy}
                                     value={this.state.strategy.name}
                                     searchable={false}
                                     clearable={false}
                                 />
                             </div>
                         </div>
-                        { renderStrategy(this.state.strategy.name) }
+                        { this.renderStrategy(this.state.strategy.name) }
                     </div>
                 </div>
 
                 <div className={b('inner', {overflowed: true})}>
                     <div className={b('section')}>
-                        { renderTabs() }
+                        { this.renderTabs() }
                     </div>
                 </div>
 
@@ -420,7 +427,7 @@ class OAuthServerForm extends PureComponent {
                         type="submit"
                         mod="primary"
                     >
-                        Create oAuth Server
+                        Create OAuth Server
                     </Button>
                 </Row>
             </form>
