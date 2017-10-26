@@ -51,8 +51,8 @@ class OAuthServerForm extends PureComponent {
 
         this.state = {
             tabs: [
-                'oAuth Endpoints',
-                'oAuth Client Endpoints',
+                'OAuth Endpoints',
+                'OAuth Client Endpoints',
             ],
             activeTab: 0,
             strategy: {
@@ -71,8 +71,8 @@ class OAuthServerForm extends PureComponent {
     };
 
     renderTabs = () => {
-        const first = 'oAuth Endpoints';
-        const second = 'oAuth Client Endpoints';
+        const first = 'OAuth Endpoints';
+        const second = 'OAuth Client Endpoints';
 
         return (
             <div className={b('tabs')}>
@@ -230,7 +230,7 @@ class OAuthServerForm extends PureComponent {
                             {
                                 ifEditing()(
                                     `Edit ${initialValues.name}`,
-                                    'Create New oAuth Server')
+                                    'Create New OAuth Server')
                             }
                         </Title>
                     </Row>
@@ -240,7 +240,7 @@ class OAuthServerForm extends PureComponent {
                         <div className={b('section-title')}>1. General</div>
                         <Row className={b('row')()} fullwidth>
                             <Row col>
-                                <Label>oAuth Server Name</Label>
+                                <Label>OAuth Server Name</Label>
                                 <Field
                                     name="name"
                                     type="text"
@@ -427,7 +427,7 @@ class OAuthServerForm extends PureComponent {
                         type="submit"
                         mod="primary"
                     >
-                        Create oAuth Server
+                        Create OAuth Server
                     </Button>
                 </Row>
             </form>

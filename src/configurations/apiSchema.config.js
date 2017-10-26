@@ -77,7 +77,7 @@ const schema = {
         },
         {
             name: 'oauth2',
-            label: 'oAuth',
+            label: 'OAuth',
             enabled: false,
             config: {
                 server_name: '',

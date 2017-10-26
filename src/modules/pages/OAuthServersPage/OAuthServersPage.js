@@ -15,11 +15,11 @@ const OAuthServersPage = () => {
         <Section outer>
             <Section>
                 <Row>
-                    <Title>oAuth Servers</Title>
+                    <Title>OAuth Servers</Title>
                     <Row>
                         <SearchingContainer />
                         <Link to="/oauth/servers/new">
-                            <Button mod="primary">+ Create New oAuth Server</Button>
+                            <Button mod="primary">+ Create New OAuth Server</Button>
                         </Link>
                     </Row>
                 </Row>

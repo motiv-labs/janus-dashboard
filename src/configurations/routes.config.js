@@ -9,7 +9,7 @@ export default {
     },
     OAUTH_SERVERS: {
         path: '/oauth/servers',
-        name: 'oAuth Servers',
+        name: 'OAuth Servers',
     },
     OAUTH_SERVER: {
         path: '/oauth/servers/:name',

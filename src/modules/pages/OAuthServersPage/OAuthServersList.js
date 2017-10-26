@@ -85,7 +85,7 @@ class OAuthServersList extends PureComponent {
                         className={table('th').mix('ascending-container')}
                         onClick={() => this.sortList('name')}
                     >
-                        <div>oAuth Server Name</div>
+                        <div>OAuth Server Name</div>
                         <div className="ascending-icon"></div>
                     </div>
                     <div className={table('th')}>Upstream URL</div>
