@@ -13,27 +13,45 @@ const propTypes = {
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthEndpoints = ({ category, change, editing,endpoints, initialValues, schema }) => {
+const OAuthEndpoints = ({
+    category,
+    change,
+    editing,
+    endpoints,
+    initialValues,
+    schema,
+    strategyName,
+}) => {
+    console.error('ed', endpoints);
+
     const checkOnNil = item => !R.isNil(item);
+    const t = item => console.warn('item >>> ', item);
+    const T = R.filter(t, endpoints);
+    console.log(T);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
+    const excludeIrrelevant = item =>
+        strategyName === 'introspection' ?
+            item[0] === 'introspect' :
+            item[0] !== 'introspect';
+    const renderOAuthEndpoint = item => (
+        <OAuthEndpoint
+            key={item[0]}
+            name={item[0]}
+            editing={editing}
+            endpoint={item[1]}
+            schema={schema}
+            change={change}
+            category={category}
+            initialValues={initialValues}
+        />
+    );
 
     return (
         <div>
             {
-                endpointsList.map(item => {
-                    return (
-                        <OAuthEndpoint
-                            key={item[0]}
-                            name={item[0]}
-                            editing={editing}
-                            endpoint={item[1]}
-                            schema={schema}
-                            change={change}
-                            category={category}
-                            initialValues={initialValues}
-                        />
-                    );
-                })
+                endpointsList
+                    .filter(excludeIrrelevant)
+                    .map(renderOAuthEndpoint)
             }
         </div>
     );

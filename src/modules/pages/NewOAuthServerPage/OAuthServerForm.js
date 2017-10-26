@@ -100,6 +100,7 @@ class OAuthServerForm extends PureComponent {
                             change={this.props.change}
                             category={'oauth_endpoints'}
                             initialValues={this.props.initialValues}
+                            strategyName={this.state.strategy.name}
                         />
                     </div>
                 </div>
@@ -220,6 +221,7 @@ class OAuthServerForm extends PureComponent {
             (yes, no) => yes,
             (yes, no) => no,
         );
+        console.error(this.state.strategy.name);
 
         return (
             <form className={b} onSubmit={handleSubmit}>
