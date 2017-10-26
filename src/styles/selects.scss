@@ -1,6 +1,6 @@
 .Select--multi {
     .Select-multi-value-wrapper {
-        margin-bottom: 5px;
+        margin-bottom: ceil($hf-gutter/2);
     }
 
     .Select-value {
