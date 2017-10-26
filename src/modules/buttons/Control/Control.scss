@@ -10,6 +10,7 @@ $control-icon-size: ceil($hf-gutter*1.6);
     padding: 0;
     margin: 0;
     background: none;
+    cursor: pointer;
 
     &__icon {
         display: inline-block;
