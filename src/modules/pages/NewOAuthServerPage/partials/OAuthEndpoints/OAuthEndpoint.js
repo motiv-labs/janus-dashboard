@@ -122,7 +122,7 @@ class OAuthEndpoint extends PureComponent {
                     <div className={row('item')}>
                         <div className={col()}>
                             <div className={col('item')}>
-                                <Label>Upstream URL</Label>
+                                <Label>Load balancing alg.</Label>
                             </div>
                             <Select
                                 className="j-select"

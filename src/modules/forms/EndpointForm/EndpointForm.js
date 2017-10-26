@@ -220,7 +220,7 @@ class EndpointForm extends PureComponent {
                             </div>
                             <div className={col()}>
                                 <div className={col('item')}>
-                                    <Label>Upstream URL</Label>
+                                    <Label>Load balancing alg.</Label>
                                 </div>
                                 <Select
                                     className="j-select"
