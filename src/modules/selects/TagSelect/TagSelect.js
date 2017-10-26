@@ -39,7 +39,7 @@ class TagSelect extends Component {
 
     handleOnChange = value => {
         this.setState((prevState, props) => ({ multiValue: value }));
-        this.props.input.onChange(value.split(','));
+        this.props.input.onChange((value) ? value.split(',') : []);
     }
 
     render() {
