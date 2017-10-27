@@ -1,32 +1,49 @@
-.Select--multi {
-    .Select-multi-value-wrapper {
-        margin-bottom: ceil($hf-gutter/2);
+@import 'variables.scss';
+
+.j-select {
+    font-size: $hf-font-size-base;
+    .Select-option.is-focused {
+        background-color: $hf-color-snot-green;
     }
+    .Select-control {
+        .Select-value {
+            line-height: $hf-height-input;
+        }
+    }
+    &.Select--multi {
+        .Select-multi-value-wrapper {
+            margin-bottom: ceil($hf-gutter/2);
+        }
+        .Select-value {
+            background-color: $hellofresh-color;
+            border: none;
+            border-radius: $hf-border-radius;
+            margin-top: ceil($hf-gutter/2);
+            color: $hf-color-white;
+            line-height: $hf-line-height;
 
-    .Select-value {
-        background-color: $hellofresh-color;
-        border: none;
-        border-radius: $hf-border-radius;
-        margin-top: ceil($hf-gutter/2);
-        color: $hf-color-white;
+            &-icon {
+                float: right;
+            }
 
-        &-icon {
-            color: rgba(255, 255, 255, 0.7);
-            float: right;
-
-            &:focus, &:hover {
-                color: $hf-color-white;
+            &-icon, &-label {
+                font-size: $hf-font-size-base;
+                line-height: $hf-line-height;
+                padding: 2px 5px;
             }
         }
+        .Select-input {
+            height: 33px;
+            padding-top: 5px;
+            box-sizing: border-box;
 
-        &-icon, &-label {
-            font-size: $hf-font-size-base;
-            line-height: $hf-line-height;
-            padding: 2px 5px;
+            & > input {
+                padding: initial;
+                height: 100%;
+            }
         }
-    }
-
-    .Select-input {
-        height: 32px;
+        .Select-option.is-focused {
+            background-color: $hf-color-snot-green;
+        }
     }
 }

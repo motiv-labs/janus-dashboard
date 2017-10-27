@@ -45,7 +45,7 @@ class TagSelect extends Component {
         return (
             <Creatable
                 {...this.props}
-                className="j-tags-select"
+                className="j-select"
                 placeholder={this.props.placeholder}
                 multi={multi}
                 simpleValue
