@@ -20,6 +20,7 @@ import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../../selects/TagSelect/TagSelect';
 import RoundrobinTargets from '../../../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
 import WeightTargets from '../../../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
+import MultiRowField from '../../../../../components/MultiRowField/MultiRowField';
 
 const b = block('j-api-form');
 const row = block('j-row');
@@ -72,8 +73,9 @@ class OAuthEndpoint extends PureComponent {
         switch (balancing) {
             case 'roundrobin': {
                 return (
-                    <RoundrobinTargets
+                    <MultiRowField
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
+                        suffix="target"
                         title="Targets"
                     />
                 );

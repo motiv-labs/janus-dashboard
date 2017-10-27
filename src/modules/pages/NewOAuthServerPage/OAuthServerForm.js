@@ -28,9 +28,6 @@ import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints';
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints';
 import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions';
 
-import HeadersSection from '../../forms/plugins/RequestTransformer/HeadersSection/HeadersSection';
-import QueryStringSection from '../../forms/plugins/RequestTransformer/QueryStringSection/QueryStringSection';
-
 import Button from '../../buttons/Button';
 import RenderPlugins from '../../forms/plugins/RenderPlugins';
 

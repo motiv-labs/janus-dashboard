@@ -8,7 +8,7 @@ import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import ControlBar from '../ControlBar/ControlBar';
 import HeadersSection from './HeadersSection/HeadersSection';
-import QueryStringSection from './QueryStringSection/QueryStringSection';
+import MultiRowField from '../../../../components/MultiRowField/MultiRowField';
 
 const propTypes = {
     className: PropTypes.string,
@@ -37,7 +37,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Add Header"
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
-                <QueryStringSection
+                <MultiRowField
                     name={`${name}.config.add.querystring`}
                     config={pluginFromValues.config.add.querystring}
                     title="Add Query String"
@@ -51,7 +51,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Append Header"
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
-                <QueryStringSection
+                <MultiRowField
                     name={`${name}.config.append.querystring`}
                     config={pluginFromValues.config.append.querystring}
                     title="Append Query String"
@@ -65,7 +65,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Replace Header"
                     hint="A list of headers that the Gateway should append to the request and the value for each."
                 />
-                <QueryStringSection
+                <MultiRowField
                     name={`${name}.config.replace.querystring`}
                     config={pluginFromValues.config.replace.querystring}
                     title="Replace Query String"
@@ -79,7 +79,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     title="Remove Header"
                     hint="A list of headers that the Gateway should remove when forwarding the request to the  upstream_url."
                 />
-                <QueryStringSection
+                <MultiRowField
                     name={`${name}.config.remove.querystring`}
                     config={pluginFromValues.config.remove.querystring}
                     title="Remove Query String"
