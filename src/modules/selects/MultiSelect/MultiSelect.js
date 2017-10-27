@@ -28,7 +28,7 @@ class MultiSelect extends Component {
                 {...this.props}
                 multi
                 simpleValue
-                className="j-multiselect"
+                className="j-select"
                 value={this.state.value}
                 placeholder="Choose one or more methods"
                 options={this.props.options}
