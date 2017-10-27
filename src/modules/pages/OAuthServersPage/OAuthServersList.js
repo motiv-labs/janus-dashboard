@@ -51,7 +51,6 @@ class OAuthServersList extends PureComponent {
         return (
             <div className={table('row')} key={`${index}-${server.name}`}>
                 <div className={table('td', {name: true})}>{server.name}</div>
-                <div className={table('td', {name: true})}>{tokenUrl}</div>
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td', {name: true})}></div>
                 <div className={table('td').mix(table('controls'))}>
@@ -88,7 +87,6 @@ class OAuthServersList extends PureComponent {
                         <div>OAuth Server Name</div>
                         <div className="ascending-icon"></div>
                     </div>
-                    <div className={table('th')}>Upstream URL</div>
                 </div>
             </div>
             <div className={table('tbody')}>
