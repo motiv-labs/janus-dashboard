@@ -179,6 +179,17 @@ export const fetchEndpoint = pathname => async dispatch => {
 
     try {
         const response = await client.get(`apis${pathname}`);
+
+        if (!response) {
+            console.error('r', response);
+
+            dispatch(openResponseModal({
+                message: 'Something went wrong...',
+            }));
+
+            return;
+        }
+
         const preparedPlugins = response.data.plugins.map(plugin => {
             if (plugin.name === 'rate_limit') {
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
@@ -400,10 +411,10 @@ export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     try {
         const response = client.post('apis', preparedApi);
 
-        dispatch(saveEndpointSuccess());
         dispatch(closeConfirmationModal());
 
         if (response) {
+            dispatch(saveEndpointSuccess());
             dispatch(fetchEndpoints());
             history.push('/');
             dispatch(showToaster());
@@ -488,10 +499,10 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
     try {
         const response = await client.delete(`apis/${apiName}`);
 
-        dispatch(deleteEndpointSuccess());
         dispatch(closeConfirmationModal());
 
         if (response) {
+            dispatch(deleteEndpointSuccess());
             dispatch(fetchEndpoints());
             history.push('/');
             dispatch(showToaster());

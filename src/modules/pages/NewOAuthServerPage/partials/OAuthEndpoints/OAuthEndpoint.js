@@ -288,7 +288,6 @@ class OAuthEndpoint extends PureComponent {
                                 name={`${category}.${name}.hosts`}
                                 type="text"
                                 edit={editing}
-                                value={`${category}.${name}.hosts`}
                                 value={() => getValues([category, name, 'hosts'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].hosts)}
                                 component={TagSelect}
