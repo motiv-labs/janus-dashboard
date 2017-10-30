@@ -181,8 +181,6 @@ export const fetchEndpoint = pathname => async dispatch => {
         const response = await client.get(`apis${pathname}`);
 
         if (!response) {
-            console.error('r', response);
-
             dispatch(openResponseModal({
                 message: 'Something went wrong...',
             }));
