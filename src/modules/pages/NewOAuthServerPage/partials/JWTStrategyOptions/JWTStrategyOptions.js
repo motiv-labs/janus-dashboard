@@ -68,7 +68,7 @@ class JWTStrategyOptions extends Component {
         return (
             <div className="j-col__item">
                 <FieldArray
-                    name={`${this.props.name}`}
+                    name={`${name}`}
                     component={this.renderMembers}
                     title={title}
                 />

@@ -1,6 +1,5 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import R from 'ramda';
 import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
@@ -8,12 +7,10 @@ import block from '../../../helpers/bem-cn';
 import Correct from './Correct';
 import Icon from '../../Icon/Icon';
 import PaginatedList from '../../PaginatedList/PaginatedList';
-import HealthCheckModal from '../../modals/HealthCheckModal/HealthCheckModal';
 
 import './HealthCheckList.css';
 
 const b = block('j-healthcheck');
-const bList = block(b('list')());
 const bItem = block(b('list-item')());
 const table = block('j-table');
 

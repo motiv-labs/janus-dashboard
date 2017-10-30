@@ -8,7 +8,6 @@ import {
 import block from '../../../helpers/bem-cn';
 import ROUTES from '../../../configurations/routes.config';
 
-import Table from '../../Layout/Table/Table';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
 import Preloader from '../../Preloader/Preloader';
@@ -43,33 +42,27 @@ class OAuthServersList extends PureComponent {
         return R.view(pathToTockenUrl, target);
     }
 
-    renderRows = list => list.map((server, index) => {
-        const tokenUrl = this.getTokenUrl(
-            ['oauth_endpoints','token','upstream_url']
-        )(server);
-
-        return (
-            <div className={table('row')} key={`${index}-${server.name}`}>
-                <div className={table('td', {name: true})}>{server.name}</div>
-                <div className={table('td', {name: true})}></div>
-                <div className={table('td', {name: true})}></div>
-                <div className={table('td').mix(table('controls'))}>
-                    <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
-                        <Icon type="edit" ariaLabel="Edit" />
-                    </Link>
-                    <Link
-                        to={'/oauth/servers'}
-                        className={table('controls-item')}
-                        onClick={() => {
-                            this.handleDelete(server.name);
-                        }}
-                    >
-                        <Icon type="delete" ariaLabel="Delete" />
-                    </Link>
-                </div>
+    renderRows = list => list.map((server, index) => (
+        <div className={table('row')} key={`${index}-${server.name}`}>
+            <div className={table('td', {name: true})}>{server.name}</div>
+            <div className={table('td', {name: true})}></div>
+            <div className={table('td', {name: true})}></div>
+            <div className={table('td').mix(table('controls'))}>
+                <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
+                    <Icon type="edit" ariaLabel="Edit" />
+                </Link>
+                <Link
+                    to={'/oauth/servers'}
+                    className={table('controls-item')}
+                    onClick={() => {
+                        this.handleDelete(server.name);
+                    }}
+                >
+                    <Icon type="delete" ariaLabel="Delete" />
+                </Link>
             </div>
-        );
-    })
+        </div>
+    ))
 
     sortList = filter => {
         this.props.setSortingFilter(filter);

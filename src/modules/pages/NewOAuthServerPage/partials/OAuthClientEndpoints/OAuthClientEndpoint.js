@@ -14,21 +14,18 @@ import Label from '../../../../labels/Label';
 import Radio from '../../../../inputs/Radio/Radio';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../labels/Hint/Hint';
-import SimpleSelect from '../../../../selects/SimpleSelect/SimpleSelect';
 import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../../selects/TagSelect/TagSelect';
-import RoundrobinTargets from '../../../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
+import MultiRowField from '../../../../../components/MultiRowField/MultiRowField';
 import WeightTargets from '../../../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
 
 const b = block('j-api-form');
 const row = block('j-row');
 const col = block('j-col');
-const grid = block('j-grid');
 
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
-    endpoint: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     schema: PropTypes.object.isRequired,
@@ -70,9 +67,11 @@ class OAuthClientEndpoint extends PureComponent {
         switch (balancing) {
             case 'roundrobin': {
                 return (
-                    <RoundrobinTargets
+                    <MultiRowField
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
+                        suffix="target"
                         title="Targets"
+                        placeholder="Target"
                     />
                 );
             }
@@ -90,7 +89,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, endpoint, name, schema } = this.props;
+        const { category, editing, name, schema } = this.props;
 
         return (
             <div className={b('section')}>

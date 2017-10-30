@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
-import Select from 'react-select';
 import R from 'ramda';
 
 import block from '../../../../helpers/bem-cn';

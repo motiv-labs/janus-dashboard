@@ -1,4 +1,3 @@
-import createHistory from 'history/createBrowserHistory';
 import R from 'ramda';
 
 import client from '../api';
@@ -13,7 +12,6 @@ import {
     DELETE_OAUTH_SERVER_SUCCESS,
 } from '../constants';
 import {
-    clearConfirmationModal,
     closeConfirmationModal,
     fetchOAuthServers,
     openConfirmationModal,
@@ -152,9 +150,18 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
 
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-        dispatch(fetchOAuthServers());
-        history.push('/oauth/servers');
-        dispatch(showToaster());
+
+        if (response) {
+            dispatch(fetchOAuthServers());
+            history.push('/oauth/servers');
+            dispatch(showToaster());
+
+            return;
+        }
+
+        dispatch(openResponseModal({
+            message: 'Unable to delete :( Something went wrong...',
+        }));
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,
