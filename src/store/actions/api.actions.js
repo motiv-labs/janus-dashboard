@@ -1,4 +1,3 @@
-import createHistory from 'history/createBrowserHistory';
 import R from 'ramda';
 
 import client from '../api';
@@ -20,7 +19,6 @@ import {
     WILL_CLONE,
 } from '../constants';
 import {
-    clearConfirmationModal,
     closeConfirmationModal,
     fetchEndpoints,
     openConfirmationModal,
@@ -181,6 +179,15 @@ export const fetchEndpoint = pathname => async dispatch => {
 
     try {
         const response = await client.get(`apis${pathname}`);
+
+        if (!response) {
+            dispatch(openResponseModal({
+                message: 'Something went wrong...',
+            }));
+
+            return;
+        }
+
         const preparedPlugins = response.data.plugins.map(plugin => {
             if (plugin.name === 'rate_limit') {
                 const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
@@ -334,17 +341,15 @@ export const preparePlugins = api => api.plugins.map(plugin => {
                  */
                 const headers = item.headers;
 
-                // we will fill this arrays with keys and values respectively
-                let keys = [];
-                let values = [];
-
                 // fill key/values arrays
-                headers.map(item => {
+                const newKeyValues = headers.reduce((acc, item) => {
                     const arr = R.values(item);
 
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
+                    acc[0].push(arr[0]);
+                    acc[1].push(arr[1]);
+
+                    return acc;
+                }, [[], []]);
 
                 // and now we are creating object that should be placed instead of
                 // array of the objects from example #1
@@ -358,7 +363,7 @@ export const preparePlugins = api => api.plugins.map(plugin => {
                  *     }
                  * }
                  */
-                const transformedHeaders = R.zipObj(keys, values);
+                const transformedHeaders = R.zipObj(newKeyValues[0], newKeyValues[1]);
 
                 return transformedHeaders;
             });
@@ -404,10 +409,10 @@ export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     try {
         const response = client.post('apis', preparedApi);
 
-        dispatch(saveEndpointSuccess());
         dispatch(closeConfirmationModal());
 
         if (response) {
+            dispatch(saveEndpointSuccess());
             dispatch(fetchEndpoints());
             history.push('/');
             dispatch(showToaster());
@@ -492,11 +497,20 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
     try {
         const response = await client.delete(`apis/${apiName}`);
 
-        dispatch(deleteEndpointSuccess());
         dispatch(closeConfirmationModal());
-        dispatch(fetchEndpoints());
-        history.push('/');
-        dispatch(showToaster());
+
+        if (response) {
+            dispatch(deleteEndpointSuccess());
+            dispatch(fetchEndpoints());
+            history.push('/');
+            dispatch(showToaster());
+
+            return;
+        }
+
+        dispatch(openResponseModal({
+            message: 'Unable to delete :( Something went wrong...',
+        }));
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,

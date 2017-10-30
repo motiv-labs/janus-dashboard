@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field } from 'redux-form';
 import R from 'ramda';
 
-import SETUP from '../setup.config';
 import block from '../../../../helpers/bem-cn';
 
 import Row from '../../../Layout/Row/Row';

@@ -24,7 +24,6 @@ const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, sche
                         <OAuthClientEndpoint
                             key={item[0]}
                             name={item[0]}
-                            endpoint={item[1]}
                             schema={schema}
                             change={change}
                             category={category}

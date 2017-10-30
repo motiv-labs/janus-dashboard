@@ -47,6 +47,8 @@ export const openConfirmationModal = (action, callback, apiName) => {
                     onConfirm: callback,
                 };
             }
+            default:
+                return false;
         }
     };
 

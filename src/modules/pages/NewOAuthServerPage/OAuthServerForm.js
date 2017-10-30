@@ -2,15 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
 import { connect } from 'react-redux';
-import { Field, formValueSelector, reduxForm } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
-import transformFormValues from '../../../helpers/transformFormValues';
 import block from '../../../helpers/bem-cn';
-import checkOnPattern from '../../../helpers/pattern-check';
-import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
 import getValues from '../../../helpers/getValues';
 
@@ -29,7 +26,6 @@ import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEnd
 import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions';
 
 import Button from '../../buttons/Button';
-import RenderPlugins from '../../forms/plugins/RenderPlugins';
 
 const b = block('j-api-form');
 const row = block('j-row');
@@ -67,55 +63,50 @@ class OAuthServerForm extends PureComponent {
         }), () => this.props.change('token_strategy', value.settings));
     };
 
-    renderTabs = () => {
-        const first = 'OAuth Endpoints';
-        const second = 'OAuth Client Endpoints';
+    renderTabs = () => (
+        <div className={b('tabs')}>
+            <div className="j-buttons__wrapper tabs-nav">
+                {
+                    this.state.tabs.map((item, idx) =>
+                        <Button
+                            key={item}
+                            mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
+                            onClick={() => this.handleTabSwitch(idx)}
+                            type="button"
+                        >
+                            {item}
+                        </Button>
+                    )
+                }
+            </div>
 
-        return (
-            <div className={b('tabs')}>
-                <div className="j-buttons__wrapper tabs-nav">
-                    {
-                        this.state.tabs.map((item, idx) =>
-                            <Button
-                                key={item}
-                                mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
-                                onClick={() => this.handleTabSwitch(idx)}
-                                type="button"
-                            >
-                                {item}
-                            </Button>
-                        )
-                    }
-                </div>
-
-                <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
-                    <div className={b('section')}>
-                        <OAuthEndpoints
-                            editing={this.props.editing}
-                            endpoints={this.props.initialValues.oauth_endpoints}
-                            schema={this.props.schema}
-                            change={this.props.change}
-                            category={'oauth_endpoints'}
-                            initialValues={this.props.initialValues}
-                            strategyName={this.state.strategy.name}
-                        />
-                    </div>
-                </div>
-                <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
-                    <div className={b('section')}>
-                        <OAuthClientEndpoints
-                            editing={this.props.editing}
-                            endpoints={this.props.initialValues.oauth_client_endpoints}
-                            schema={this.props.schema}
-                            change={this.props.change}
-                            category={'oauth_client_endpoints'}
-                            initialValues={this.props.initialValues}
-                        />
-                    </div>
+            <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
+                <div className={b('section')}>
+                    <OAuthEndpoints
+                        editing={this.props.editing}
+                        endpoints={this.props.initialValues.oauth_endpoints}
+                        schema={this.props.schema}
+                        change={this.props.change}
+                        category={'oauth_endpoints'}
+                        initialValues={this.props.initialValues}
+                        strategyName={this.state.strategy.name}
+                    />
                 </div>
             </div>
-        );
-    };
+            <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
+                <div className={b('section')}>
+                    <OAuthClientEndpoints
+                        editing={this.props.editing}
+                        endpoints={this.props.initialValues.oauth_client_endpoints}
+                        schema={this.props.schema}
+                        change={this.props.change}
+                        category={'oauth_client_endpoints'}
+                        initialValues={this.props.initialValues}
+                    />
+                </div>
+            </div>
+        </div>
+    );
 
     renderJWTStrategy = () => (
         <div className={row({fullwidth: true}).mix('j-api-form__row')}>
@@ -433,8 +424,6 @@ class OAuthServerForm extends PureComponent {
 };
 
 OAuthServerForm.propTypes = propTypes;
-
-const selector = formValueSelector('oAuthServerForm');
 
 const form = reduxForm({
     form: 'oAuthServerForm',

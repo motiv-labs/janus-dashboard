@@ -2,8 +2,6 @@ import client from '../api';
 import {
     FETCH_ENDPOINTS_START,
     FETCH_ENDPOINTS_SUCCESS,
-    FETCH_HEALTHCHECK_LIST_START,
-    FETCH_HEALTHCHECK_LIST_SUCCESS,
     DISCARD_PAGINATION,
     REFRESH_ENDPOINTS,
     SET_PAGINATION_PAGE,
@@ -49,7 +47,16 @@ export const fetchEndpoints = () => async dispatch => {
     try {
         const response = await client.get('apis');
 
-        dispatch(getEndpointsSuccess(response.data));
+        if (response) {
+            dispatch(getEndpointsSuccess(response.data));
+
+            return;
+        }
+
+        dispatch(openResponseModal({
+            message: 'Something went wrong...',
+        }));
+
     } catch (error) {
         console.log('ERRROR', error);
     }

@@ -9,7 +9,6 @@ import Select from 'react-select';
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
 import block from '../../../helpers/bem-cn';
-import transformFormValues from '../../../helpers/transformFormValues';
 import checkOnPattern from '../../../helpers/pattern-check';
 import parse from '../../../helpers/parse-value';
 import optionsTransformer from '../../../helpers/optionsTransformer';
@@ -28,7 +27,7 @@ import Icon from '../../Icon/Icon';
 
 import RenderPlugins from '../plugins/RenderPlugins';
 
-import RoundrobinTargets from '../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
+import MultiRowField from '../../../components/MultiRowField/MultiRowField';
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
 
 import './EndpointForm.css';
@@ -83,9 +82,11 @@ class EndpointForm extends PureComponent {
         switch (balancing) {
             case 'roundrobin': {
                 return (
-                    <RoundrobinTargets
+                    <MultiRowField
                         name="proxy.upstreams.targets"
+                        suffix="target"
                         title="Targets"
+                        placeholder="Target"
                     />
                 );
             }

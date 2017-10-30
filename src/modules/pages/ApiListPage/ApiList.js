@@ -6,7 +6,6 @@ import {
 
 import block from '../../../helpers/bem-cn';
 
-import Table from '../../Layout/Table/Table';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
 import Preloader from '../../Preloader/Preloader';

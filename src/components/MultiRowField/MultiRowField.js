@@ -14,16 +14,17 @@ const row = block('j-row');
 
 const propTypes = {
     name: PropTypes.string.isRequired,
-    title: PropTypes.string,
     hint: PropTypes.string,
+    placeholder: PropTypes.string,
     suffix: PropTypes.string,
+    title: PropTypes.string,
 };
 
 class MultiRowField extends PureComponent {
-    renderMembers = ({ fields, hint, suffix, title }) => (
+    renderMembers = ({ fields, hint, placeholder, suffix, title }) => (
         <div>
             <div className={row()}>
-                <Label>{ title }</Label>
+                <Label>{ title } {placeholder}</Label>
                 <Control
                     onClick={() => fields.push()}
                     icon="add"
@@ -42,6 +43,7 @@ class MultiRowField extends PureComponent {
                                     name={suffix ? `${member}.${suffix}` : `${member}`}
                                     type="text"
                                     component={Input}
+                                    placeholder={placeholder ? placeholder : ''}
                                 />
                             </div>
                             <div className={row('control')()}>
@@ -58,16 +60,17 @@ class MultiRowField extends PureComponent {
     )
 
     render() {
-        const { hint, name, suffix, title } = this.props;
+        const { hint, name, placeholder, suffix, title } = this.props;
 
         return (
             <Row col>
                 <FieldArray
                     name={`${name}`}
                     component={this.renderMembers}
-                    title={title}
                     hint={hint}
+                    placeholder={placeholder}
                     suffix={suffix}
+                    title={title}
                 />
             </Row>
         );

@@ -15,23 +15,19 @@ import Label from '../../../../labels/Label';
 import Radio from '../../../../inputs/Radio/Radio';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../labels/Hint/Hint';
-import SimpleSelect from '../../../../selects/SimpleSelect/SimpleSelect';
 import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../../selects/TagSelect/TagSelect';
-import RoundrobinTargets from '../../../../pages/NewApiPage/partials/RoundrobinTargets/RoundrobinTargets';
 import WeightTargets from '../../../../pages/NewApiPage/partials/WeightTargets/WeightTargets';
 import MultiRowField from '../../../../../components/MultiRowField/MultiRowField';
 
 const b = block('j-api-form');
 const row = block('j-row');
 const col = block('j-col');
-const grid = block('j-grid');
 
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
     editing: PropTypes.bool.isRequired,
-    endpoint: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     schema: PropTypes.object.isRequired,
@@ -75,6 +71,7 @@ class OAuthEndpoint extends PureComponent {
                 return (
                     <MultiRowField
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
+                        placeholder="Target"
                         suffix="target"
                         title="Targets"
                     />
@@ -94,12 +91,7 @@ class OAuthEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, endpoint, initialValues, name, schema } = this.props;
-        const upstreamConfig = [
-            {
-                type: 'text',
-            },
-        ];
+        const { category, editing, initialValues, name, schema } = this.props;
 
         return (
             <div className={b('section')}>
@@ -280,7 +272,7 @@ class OAuthEndpoint extends PureComponent {
                                 name={`${category}.${name}.methods`}
                                 type="text"
                                 edit={editing}
-                                value={() => this.getValues([category, name, 'methods'])(initialValues)}
+                                value={() => getValues([category, name, 'methods'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].all_methods)}
                                 component={MultiSelect}
                             />
@@ -296,8 +288,7 @@ class OAuthEndpoint extends PureComponent {
                                 name={`${category}.${name}.hosts`}
                                 type="text"
                                 edit={editing}
-                                value={`${category}.${name}.hosts`}
-                                value={() => this.getValues([category, name, 'hosts'])(initialValues)}
+                                value={() => getValues([category, name, 'hosts'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_endpoints[name].hosts)}
                                 component={TagSelect}
                             />
