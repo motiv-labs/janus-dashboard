@@ -332,17 +332,15 @@ export const preparePlugins = api => api.plugins.map(plugin => {
                  */
                 const headers = item.headers;
 
-                // we will fill this arrays with keys and values respectively
-                let keys = [];
-                let values = [];
-
                 // fill key/values arrays
-                headers.map(item => {
+                const newKeyValues = headers.reduce((acc, item) => {
                     const arr = R.values(item);
 
-                    keys.push(arr[0]);
-                    values.push(arr[1]);
-                });
+                    acc[0].push(arr[0]);
+                    acc[1].push(arr[1]);
+
+                    return acc;
+                }, [[], []]);
 
                 // and now we are creating object that should be placed instead of
                 // array of the objects from example #1
@@ -356,7 +354,7 @@ export const preparePlugins = api => api.plugins.map(plugin => {
                  *     }
                  * }
                  */
-                const transformedHeaders = R.zipObj(keys, values);
+                const transformedHeaders = R.zipObj(newKeyValues[0], newKeyValues[1]);
 
                 return transformedHeaders;
             });
