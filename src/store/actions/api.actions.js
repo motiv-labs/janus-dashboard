@@ -1,4 +1,3 @@
-import createHistory from 'history/createBrowserHistory';
 import R from 'ramda';
 
 import client from '../api';
@@ -20,7 +19,6 @@ import {
     WILL_CLONE,
 } from '../constants';
 import {
-    clearConfirmationModal,
     closeConfirmationModal,
     fetchEndpoints,
     openConfirmationModal,
@@ -494,9 +492,18 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
 
         dispatch(deleteEndpointSuccess());
         dispatch(closeConfirmationModal());
-        dispatch(fetchEndpoints());
-        history.push('/');
-        dispatch(showToaster());
+
+        if (response) {
+            dispatch(fetchEndpoints());
+            history.push('/');
+            dispatch(showToaster());
+
+            return;
+        }
+
+        dispatch(openResponseModal({
+            message: 'Unable to delete :( Something went wrong...',
+        }));
     } catch (error) {
         dispatch(openResponseModal({
             status: error.response.status,
