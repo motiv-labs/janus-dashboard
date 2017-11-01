@@ -180,64 +180,66 @@ export const fetchEndpoint = pathname => async dispatch => {
     try {
         const response = await client.get(`apis${pathname}`);
         const preparedPlugins = response.data.plugins.map(plugin => {
-            if (plugin.name === 'rate_limit') {
-                const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-                const { units } = pluginFromSchema.config.limit;
-                const policyFromSchema = pluginFromSchema.config.policy;
-                const arr = plugin.config.limit.split('-');
-                const valueOfLimit = arr[0]*1;
-                const valueOfUnit = arr[1];
-                // @TODO: policy should be also an array like in schema;
+            switch (plugin.name) {
+                case 'rate_limit': {
+                    const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
+                    const { units } = pluginFromSchema.config.limit;
+                    const policyFromSchema = pluginFromSchema.config.policy;
+                    const arr = plugin.config.limit.split('-');
+                    const valueOfLimit = arr[0]*1;
+                    const valueOfUnit = arr[1];
+                    // @TODO: policy should be also an array like in schema;
 
-                const updatedLimit = {
-                    value: valueOfLimit,
-                    unit: valueOfUnit,
-                    units,
-                };
+                    const updatedLimit = {
+                        value: valueOfLimit,
+                        unit: valueOfUnit,
+                        units,
+                    };
 
-                // set the path for the lens
-                const lens = R.lensPath(['config', 'limit']);
-                const lens2 = R.lensPath(['config', 'policy']);
-                const lens3 = R.lensPath(['config', 'policy', 'selected']);
-                // substitude the plugin.config.limit
-                const updatedPlugin = R.set(lens, updatedLimit, plugin);
-                const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+                    // set the path for the lens
+                    const lens = R.lensPath(['config', 'limit']);
+                    const lens2 = R.lensPath(['config', 'policy']);
+                    const lens3 = R.lensPath(['config', 'policy', 'selected']);
+                    // substitude the plugin.config.limit
+                    const updatedPlugin = R.set(lens, updatedLimit, plugin);
+                    const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
 
-                return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+                    return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+                }
+                case 'request_transformer': {
+                    const transformHeadersToArray = obj => R.toPairs(obj)
+                        .reduce((acc, item) => {
+                            const header = {
+                                key: item[0],
+                                value: item[1],
+                            };
+
+                            acc.push(header);
+
+                            return acc;
+                        }, []);
+
+                    const configWithTransformedHeaders = R.toPairs(plugin.config)
+                        .reduce((acc, item) => {
+                            const transformedHeaders = transformHeadersToArray(item[1].headers);
+
+                            acc[item[0]] = {
+                                headers: transformedHeaders,
+                                querystring: item[1].querystring,
+                            };
+
+                            return acc;
+                        }, {});
+
+                    // set path for lens and substitude config in plugin:
+                    const lens = R.lensPath(['config']);
+                    const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
+
+                    return updatedPlugin;
+                }
+                default:
+                    return plugin;
             }
-            if (plugin.name === 'request_transformer') {
-                const transformHeadersToArray = obj => R.toPairs(obj)
-                    .reduce((acc, item) => {
-                        const header = {
-                            key: item[0],
-                            value: item[1],
-                        };
-
-                        acc.push(header);
-
-                        return acc;
-                    }, []);
-
-                const configWithTransformedHeaders = R.toPairs(plugin.config)
-                    .reduce((acc, item) => {
-                        const transformedHeaders = transformHeadersToArray(item[1].headers);
-
-                        acc[item[0]] = {
-                            headers: transformedHeaders,
-                            querystring: item[1].querystring,
-                        };
-
-                        return acc;
-                    }, {});
-
-                // set path for lens and substitude config in plugin:
-                const lens = R.lensPath(['config']);
-                const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
-
-                return updatedPlugin;
-            }
-
-            return plugin;
         });
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
@@ -402,7 +404,7 @@ export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, apiWithoutDefaultUpstreams);
 
     try {
-        const response = await client.post('apis', preparedApi);
+        await client.post('apis', preparedApi);
 
         dispatch(saveEndpointSuccess());
         dispatch(fetchEndpoints());
@@ -424,7 +426,7 @@ export const confirmedUpdateEndpoint = async (dispatch, pathname, api) => {
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
     try {
-        const response = await client.put(`apis${pathname}`, preparedApi);
+        await client.put(`apis${pathname}`, preparedApi);
 
         dispatch(saveEndpointSuccess());
         dispatch(showToaster());
@@ -440,7 +442,7 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
     dispatch(closeConfirmationModal());
 
     try {
-        const response = await client.delete(`apis/${apiName}`);
+        await client.delete(`apis/${apiName}`);
 
         dispatch(deleteEndpointSuccess());
         dispatch(fetchEndpoints());

@@ -8,6 +8,9 @@ import {
     SET_OAUTH_SERVERS_PAGINATION_PAGE,
     REFRESH_OAUTH_SERVERS,
 } from '../constants';
+import {
+    openResponseModal,
+} from './index';
 
 export const getOAuthServers = () => ({
     type: FETCH_OAUTH_SERVERS_LIST_START,
