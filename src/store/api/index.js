@@ -45,8 +45,6 @@ if (getAccessToken()) {
 
 client.interceptors.response.use(undefined, error => {
     if (error.response.status === 401) {
-        console.warn('Here');
-
         history.push('/login');
 
         return;

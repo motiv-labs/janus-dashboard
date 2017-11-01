@@ -244,7 +244,10 @@ export const fetchEndpoint = pathname => async dispatch => {
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
 
-        dispatch(getEndpointSuccess(preparedApi, response.data));
+        R.compose(
+            dispatch,
+            getEndpointSuccess,
+        )(preparedApi, response.data);
     } catch (error) {
         dispatch(openResponseModal({
             message: error.response.data.error,
@@ -411,9 +414,12 @@ export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
         history.push('/');
         dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
+        R.compose(
+            dispatch,
+            openResponseModal
+        )({
             message: error.response.data.error,
-        }));
+        });
     }
 };
 
@@ -431,9 +437,12 @@ export const confirmedUpdateEndpoint = async (dispatch, pathname, api) => {
         dispatch(saveEndpointSuccess());
         dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
+        R.compose(
+            dispatch,
+            openResponseModal
+        )({
             message: error.response.data.error,
-        }));
+        });
     }
 };
 
