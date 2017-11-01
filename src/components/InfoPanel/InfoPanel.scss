@@ -1,0 +1,19 @@
+@import 'variables.scss';
+
+$icon-size: ceil($hf-gutter*3.5);
+
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__icon {
+        width: $icon-size;
+        height: $icon-size;
+    }
+
+    &__text {
+        font-weight: $hf-font-weight;
+        line-height: 1.5;
+    }
+}

@@ -81,9 +81,7 @@ class HealthCheckList extends PureComponent {
 
         if (status) {
             return (
-                <div className={b('pane').mix('j-pane')}>
-                    <Correct className={b('correct')()} />
-                </div>
+                <Correct className={b('correct')()} />
             );
         }
 

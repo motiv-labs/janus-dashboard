@@ -9,6 +9,7 @@ import block from '../../../helpers/bem-cn';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
 import Preloader from '../../Preloader/Preloader';
+import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 
 import '../../Layout/Table/Table.css';
 
@@ -20,6 +21,7 @@ const propTypes = {
     fetchEndpoints: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
     setSortingFilter: PropTypes.func.isRequired,
+    searchQuery: PropTypes.string.isRequired,
 };
 
 const table = block('j-table');
@@ -112,6 +114,8 @@ class ApiList extends PureComponent {
         </div>
     )
 
+    isNoSearchResults = () => !!this.props.searchQuery;
+
     render() {
         if (this.props.apiList.length > 0) {
             return (
@@ -124,6 +128,10 @@ class ApiList extends PureComponent {
                     renderChildren={this.renderTable}
                 />
             );
+        }
+
+        if (this.isNoSearchResults()) {
+            return <NoSearchResults />;
         }
 
         return <Preloader />;
