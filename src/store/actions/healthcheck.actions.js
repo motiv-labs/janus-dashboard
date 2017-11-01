@@ -14,6 +14,7 @@ import {
 import {
     openResponseModal,
 } from './index';
+import errorHandler from '../../helpers/errorHandler';
 
 export const objectToArray = obj => {
     const list = R.keys(obj).reduce((acc, key) => {
@@ -79,9 +80,7 @@ export const fetchHealthCheckList = () => async (dispatch) => {
 
         dispatch(getHealthcheckListSuccess(status, failures));
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -90,39 +89,6 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
 
     try {
         const response = await client.get(`status/${name}`);
-        /**
-         * @TODO: remove when this mock won't be needed anymore
-         */
-        // const mockResponse = {
-        //     'request': {
-        //         'method': 'GET',
-        //         'urlPath': '/status-partial'
-        //     },
-        //     'response': {
-        //         'status': 400,
-        //         'headers': {
-        //             'Content-Type': 'application/json; charset=utf-8'
-        //         },
-        //         'jsonBody': {
-        //             'status': 'Partially Available',
-        //             'timestamp': '2017-07-03T14:48:14.563630521Z',
-        //             'failures': {
-        //                 'rabbitmq': 'Failed during RabbitMQ health check',
-        //                 'someAnotherService': 'Failed during someAnotherService health check',
-        //                 'yetAnotherService-1': 'Failed during yetAnotherService health check',
-        //                 'lastButNotLeastService': 'Failed during lastButNotLeastService health check'
-        //             },
-        //             'system': {
-        //                 'version': 'go1.8.3',
-        //                 'goroutines_count': 15,
-        //                 'total_alloc_bytes': 46186776,
-        //                 'heap_objects_count': 44186,
-        //                 'alloc_bytes': 5733552
-        //             }
-        //         }
-        //     }
-        // };
-        // const { response } = mockResponse;
 
         dispatch(
             getHealthcheckSuccess(
@@ -132,8 +98,6 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
             )
         );
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };

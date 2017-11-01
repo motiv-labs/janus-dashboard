@@ -1,0 +1,8 @@
+const errorHandler = dispatch => error => R.compose(
+    dispatch,
+    openResponseModal
+)({
+    message: error.response.data.error,
+});
+
+export default errorHandler;

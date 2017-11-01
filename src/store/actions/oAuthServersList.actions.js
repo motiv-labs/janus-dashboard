@@ -11,6 +11,7 @@ import {
 import {
     openResponseModal,
 } from './index';
+import errorHandler from '../../helpers/errorHandler';
 
 export const getOAuthServers = () => ({
     type: FETCH_OAUTH_SERVERS_LIST_START,
@@ -47,9 +48,7 @@ export const fetchOAuthServers = () => async dispatch => {
 
         dispatch(getOAuthServersSuccess(response.data));
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 

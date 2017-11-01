@@ -20,6 +20,7 @@ import {
 } from './index';
 import history from '../configuration/history';
 import oAuthServerSchema from '../../configurations/oAuthServerSchema';
+import errorHandler from '../../helpers/errorHandler';
 
 const getOAuthServerRequest = () => ({
     type: FETCH_OAUTH_SERVER_START,
@@ -72,9 +73,7 @@ export const fetchOAuthServer = path => async dispatch => {
 
         dispatch(getOAuthServerSuccess(updatedOAuthServer));
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -84,9 +83,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     try {
         dispatch(getOAuthSchemaSuccess(oAuthServerSchema));
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -110,9 +107,7 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEdi
         !isEditing && history.push('/oauth/servers');
         dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -136,9 +131,7 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
         history.push('/oauth/servers');
         dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 

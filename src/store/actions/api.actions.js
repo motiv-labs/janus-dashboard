@@ -27,6 +27,7 @@ import {
   // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
+import errorHandler from '../../helpers/errorHandler';
 
 export const deleteEndpointRequest = () => ({
     type: DELETE_ENDPOINT_START,
@@ -249,9 +250,7 @@ export const fetchEndpoint = pathname => async dispatch => {
             getEndpointSuccess,
         )(preparedApi, response.data);
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -297,9 +296,7 @@ export const fetchEndpointSchema = flag => async (dispatch) => {
         flag && dispatch(setInitialEndpoint(endpointSchemaWithUpdatedOAuthPlugin));
         dispatch(getEndpointSchemaSuccess(endpointSchemaWithUpdatedOAuthPlugin)); // @TODO: REMOVE when endpoint will be ready
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -414,12 +411,7 @@ export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
         history.push('/');
         dispatch(showToaster());
     } catch (error) {
-        R.compose(
-            dispatch,
-            openResponseModal
-        )({
-            message: error.response.data.error,
-        });
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -437,12 +429,7 @@ export const confirmedUpdateEndpoint = async (dispatch, pathname, api) => {
         dispatch(saveEndpointSuccess());
         dispatch(showToaster());
     } catch (error) {
-        R.compose(
-            dispatch,
-            openResponseModal
-        )({
-            message: error.response.data.error,
-        });
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -458,8 +445,6 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
         history.push('/');
         dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };

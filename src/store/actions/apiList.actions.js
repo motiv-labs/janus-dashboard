@@ -12,6 +12,7 @@ import {
     fetchHealthCheckList,
     openResponseModal,
 } from './index';
+import errorHandler from '../../helpers/errorHandler';
 
 export const getEndpointsRequest = () => ({
     type: FETCH_ENDPOINTS_START,
@@ -49,9 +50,7 @@ export const fetchEndpoints = () => async dispatch => {
 
         response && dispatch(getEndpointsSuccess(response.data));
     } catch (error) {
-        dispatch(openResponseModal({
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
