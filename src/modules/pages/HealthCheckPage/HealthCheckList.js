@@ -39,9 +39,6 @@ class HealthCheckList extends PureComponent {
             <div className={bItem('name')}>{item.name}</div>
             <div className={bItem('message')}>{item.description}</div>
             {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
-            <Link to={`/${item.name}`}>
-                <Icon type="edit" />
-            </Link>
         </div>
     ));
 
