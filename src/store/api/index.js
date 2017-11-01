@@ -46,6 +46,8 @@ if (getAccessToken()) {
 client.interceptors.response.use(undefined, (error) => {
     if (error.response.status === 401) {
         history.push('/login');
+
+        return;
     }
     // if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
     //     return login(config.gateway.username, config.gateway.password).then((response) => {
@@ -55,6 +57,7 @@ client.interceptors.response.use(undefined, (error) => {
     //         return client(error.config);
     //     });
     // }
+    throw error;
 });
 
 export default client;

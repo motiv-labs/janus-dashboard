@@ -47,18 +47,11 @@ export const fetchEndpoints = () => async dispatch => {
     try {
         const response = await client.get('apis');
 
-        if (response) {
-            dispatch(getEndpointsSuccess(response.data));
-
-            return;
-        }
-
-        dispatch(openResponseModal({
-            message: 'Something went wrong...',
-        }));
-
+        dispatch(getEndpointsSuccess(response.data));
     } catch (error) {
-        console.log('ERRROR', error);
+        dispatch(openResponseModal({
+            message: error.response.data.error,
+        }));
     }
 };
 

@@ -44,7 +44,9 @@ export const fetchOAuthServers = () => async dispatch => {
 
         dispatch(getOAuthServersSuccess(response.data));
     } catch (error) {
-        console.log('ERRROR', error);
+        dispatch(openResponseModal({
+            message: error.response.data.error,
+        }));
     }
 };
 

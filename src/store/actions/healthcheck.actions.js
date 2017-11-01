@@ -80,8 +80,6 @@ export const fetchHealthCheckList = () => async (dispatch) => {
         dispatch(getHealthcheckListSuccess(status, failures));
     } catch (error) {
         dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
             message: error.response.data.error,
         }));
     }
@@ -135,8 +133,6 @@ export const fetchHealthCheckItem = name => async (dispatch) => {
         );
     } catch (error) {
         dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
             message: error.response.data.error,
         }));
     }
