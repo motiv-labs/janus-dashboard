@@ -1,0 +1,12 @@
+@import 'variables.scss';
+
+.info-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__text {
+        font-weight: $hf-font-weight;
+        line-height: 1.5;
+    }
+}

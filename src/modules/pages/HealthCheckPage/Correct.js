@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
 
+import InfoPanel from '../../../components/InfoPanel/InfoPanel';
+
 import Icon from '../../Icon/Icon';
 
 const propTypes = {
@@ -13,10 +15,15 @@ const Correct = ({ className }) => {
     const b = block(className);
 
     return (
-        <div className={b()}>
-            <Icon type="correct" className={b('icon')()} />
-            <p className={b('text')}>All services are currently available.</p>
-        </div>
+        <InfoPanel
+            icon={
+                <Icon
+                    type="correct"
+                    className={b('icon')()}
+                />
+            }
+            text="All services are currently available."
+        />
     );
 };
 
