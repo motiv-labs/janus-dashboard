@@ -10,7 +10,6 @@ import {
 } from '../constants';
 import {
     fetchHealthCheckList,
-    openResponseModal,
 } from './index';
 import errorHandler from '../../helpers/errorHandler';
 

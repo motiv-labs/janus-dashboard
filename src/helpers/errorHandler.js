@@ -1,6 +1,9 @@
+import R from 'ramda';
+import { openResponseModal } from '../store/actions';
+
 const errorHandler = dispatch => error => R.compose(
     dispatch,
-    openResponseModal
+    openResponseModal,
 )({
     message: error.response.data.error,
 });

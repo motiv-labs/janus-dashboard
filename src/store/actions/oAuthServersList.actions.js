@@ -8,9 +8,6 @@ import {
     SET_OAUTH_SERVERS_PAGINATION_PAGE,
     REFRESH_OAUTH_SERVERS,
 } from '../constants';
-import {
-    openResponseModal,
-} from './index';
 import errorHandler from '../../helpers/errorHandler';
 
 export const getOAuthServers = () => ({

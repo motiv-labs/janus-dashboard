@@ -11,9 +11,6 @@ import {
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
-import {
-    openResponseModal,
-} from './index';
 import errorHandler from '../../helpers/errorHandler';
 
 export const objectToArray = obj => {

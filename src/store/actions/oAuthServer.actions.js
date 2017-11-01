@@ -15,7 +15,6 @@ import {
     closeConfirmationModal,
     fetchOAuthServers,
     openConfirmationModal,
-    openResponseModal,
     showToaster,
 } from './index';
 import history from '../configuration/history';

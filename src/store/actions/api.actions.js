@@ -22,9 +22,7 @@ import {
     closeConfirmationModal,
     fetchEndpoints,
     openConfirmationModal,
-    openResponseModal,
     showToaster,
-  // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
 import errorHandler from '../../helpers/errorHandler';
