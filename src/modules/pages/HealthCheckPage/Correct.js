@@ -16,7 +16,12 @@ const Correct = ({ className }) => {
 
     return (
         <InfoPanel
-            icon={<Icon type="correct" className={b('icon')()} />}
+            icon={
+                <Icon
+                    type="correct"
+                    className={b('icon')()}
+                />
+            }
             text="All services are currently available."
         />
     );
