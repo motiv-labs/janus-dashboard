@@ -1,13 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import Modaliz from 'react-modaliz';
 
-import block from '../../../helpers/bem-cn';
-
+import Modal from '../../../components/Modal/Modal';
 import Button from '../../buttons/Button';
-
-import './ConfirmationModal.css';
 
 import {
     clearConfirmationModal,
@@ -15,6 +11,7 @@ import {
 
 const propTypes = {
     closeModal: PropTypes.func.isRequired,
+    onConfirm: PropTypes.func.isRequired,
     needConfirm: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -23,8 +20,6 @@ const propTypes = {
 const defaultProps = {
     message: '',
 };
-
-const b = block('j-confirmation');
 
 const ConfirmationModal = ({
     closeModal,
@@ -38,28 +33,16 @@ const ConfirmationModal = ({
     };
 
     return (
-        <Modaliz
-            className={b()}
+        <Modal
             show={needConfirm}
-            speed={500}
-            onClose={handleClose}
-            discardDefaults
-        >
-            <div className={b('inner')}>
-                <div className={b('title')}>
-                    {title}
-                </div>
-                <div className={b('body')}>
-                    <div className={b('text')}>
-                        {message}
-                    </div>
-                </div>
-            </div>
-            <div className={b('buttons-group').mix('j-buttons__wrapper')}>
-                <Button mod="default" onClick={handleClose}>Cancel</Button>
-                <Button mod="primary" onClick={onConfirm}>OK</Button>
-            </div>
-        </Modaliz>
+            closeModal={handleClose}
+            message={message}
+            title={title}
+            buttons={[
+                <Button mod="default" onClick={handleClose}>Cancel</Button>,
+                <Button mod="primary" onClick={onConfirm}>OK</Button>,
+            ]}
+        />
     );
 };
 

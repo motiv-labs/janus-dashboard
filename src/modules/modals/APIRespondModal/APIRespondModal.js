@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Modaliz from 'react-modaliz';
+
+import Modal from '../../../components/Modal/Modal';
+import Button from '../../buttons/Button';
 
 const propTypes = {
-    className: PropTypes.string,
     closeModal: PropTypes.func.isRequired,
     isOpen: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     redirectOnClose: PropTypes.func,
-    statusText: PropTypes.string.isRequired,
 };
 
 const defaultProps = {
@@ -17,12 +17,10 @@ const defaultProps = {
 };
 
 const APIRespondModal = ({
-    className,
     closeModal,
     isOpen,
     message,
     redirectOnClose,
-    statusText,
 }) => {
     const handleClose = () => {
         closeModal();
@@ -33,14 +31,14 @@ const APIRespondModal = ({
     };
 
     return (
-        <Modaliz
-            className={className}
+        <Modal
+            closeModal={handleClose}
+            message={message}
             show={isOpen}
-            simple
-            speed={500}
-            text={message}
-            title={statusText}
-            onClose={handleClose}
+            title="Ooops!"
+            buttons={[
+                <Button mod="primary" onClick={handleClose}>OK</Button>,
+            ]}
         />
     );
 };

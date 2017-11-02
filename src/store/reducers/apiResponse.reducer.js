@@ -16,7 +16,7 @@ export const confirmationModalState = {
     needConfirm: false,
     status: null,
     title: '',
-    onConfirm: null,
+    onConfirm: () => {},
 };
 
 export const toasterState = {
