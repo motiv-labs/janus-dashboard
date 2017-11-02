@@ -131,35 +131,40 @@ class EndpointForm extends PureComponent {
             <form className={b} onSubmit={handleSubmit}>
                 <Section>
                     <Row>
-                        <Title>Edit API</Title>
-                        <div className="j-buttons__wrapper">
-                            <Link
-                                to={{
-                                    pathname: '/new',
-                                    state: {
-                                        clone: api,
-                                    },
-                                }}
-                            >
-                                <Button
-                                    type="button"
-                                    mod="primary"
-                                >
-                                    <Icon type="copy-white" />
-                                    Copy
-                                </Button>
-                            </Link>
-                            <Button
-                                type="button"
-                                mod="danger"
-                                onClick={() => {
-                                    handleDelete(api.name);
-                                }}
-                            >
-                                <Icon type="delete-white" />
-                                Delete
-                            </Button>
-                        </div>
+                        <Title>
+                            { editing ? 'Edit API' : 'Create New API' }
+                        </Title>
+                        {
+                            editing && api.name &&
+                                <div className="j-buttons__wrapper">
+                                    <Link
+                                        to={{
+                                            pathname: '/new',
+                                            state: {
+                                                clone: api,
+                                            },
+                                        }}
+                                    >
+                                        <Button
+                                            type="button"
+                                            mod="primary"
+                                        >
+                                            <Icon type="copy-white" />
+                                            Copy
+                                        </Button>
+                                    </Link>
+                                    <Button
+                                        type="button"
+                                        mod="danger"
+                                        onClick={() => {
+                                            handleDelete(api.name);
+                                        }}
+                                    >
+                                        <Icon type="delete-white" />
+                                        Delete
+                                    </Button>
+                                </div>
+                        }
                     </Row>
                 </Section>
                 <div className={b('inner')}>
