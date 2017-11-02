@@ -43,18 +43,14 @@ if (getAccessToken()) {
     setAccessToken(getAccessToken());
 }
 
-client.interceptors.response.use(undefined, (error) => {
+client.interceptors.response.use(undefined, error => {
     if (error.response.status === 401) {
         history.push('/login');
+
+        return;
     }
-    // if (error.response.status === 401 && error.config && !error.config.isRetryRequest) {
-    //     return login(config.gateway.username, config.gateway.password).then((response) => {
-    //         error.config.isRetryRequest = true;
-    //         error.config.headers.Authorization = `Bearer ${response.data.token}`;
-    //         setAccessToken(response.data.token);
-    //         return client(error.config);
-    //     });
-    // }
+
+    throw error;
 });
 
 export default client;

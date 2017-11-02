@@ -10,8 +10,8 @@ import {
 } from '../constants';
 import {
     fetchHealthCheckList,
-    openResponseModal,
 } from './index';
+import errorHandler from '../../helpers/errorHandler';
 
 export const getEndpointsRequest = () => ({
     type: FETCH_ENDPOINTS_START,
@@ -47,18 +47,9 @@ export const fetchEndpoints = () => async dispatch => {
     try {
         const response = await client.get('apis');
 
-        if (response) {
-            dispatch(getEndpointsSuccess(response.data));
-
-            return;
-        }
-
-        dispatch(openResponseModal({
-            message: 'Something went wrong...',
-        }));
-
+        response && dispatch(getEndpointsSuccess(response.data));
     } catch (error) {
-        console.log('ERRROR', error);
+        errorHandler(dispatch)(error);
     }
 };
 

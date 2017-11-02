@@ -22,11 +22,10 @@ import {
     closeConfirmationModal,
     fetchEndpoints,
     openConfirmationModal,
-    openResponseModal,
     showToaster,
-  // closeResponseModal, // @TODO: will need thi a bit later
 } from './index';
 import history from '../configuration/history';
+import errorHandler from '../../helpers/errorHandler';
 
 export const deleteEndpointRequest = () => ({
     type: DELETE_ENDPOINT_START,
@@ -179,82 +178,77 @@ export const fetchEndpoint = pathname => async dispatch => {
 
     try {
         const response = await client.get(`apis${pathname}`);
-
-        if (!response) {
-            dispatch(openResponseModal({
-                message: 'Something went wrong...',
-            }));
-
-            return;
-        }
-
         const preparedPlugins = response.data.plugins.map(plugin => {
-            if (plugin.name === 'rate_limit') {
-                const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-                const { units } = pluginFromSchema.config.limit;
-                const policyFromSchema = pluginFromSchema.config.policy;
-                const arr = plugin.config.limit.split('-');
-                const valueOfLimit = arr[0]*1;
-                const valueOfUnit = arr[1];
-                // @TODO: policy should be also an array like in schema;
+            switch (plugin.name) {
+                case 'rate_limit': {
+                    const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
+                    const { units } = pluginFromSchema.config.limit;
+                    const policyFromSchema = pluginFromSchema.config.policy;
+                    const arr = plugin.config.limit.split('-');
+                    const valueOfLimit = arr[0]*1;
+                    const valueOfUnit = arr[1];
+                    // @TODO: policy should be also an array like in schema;
 
-                const updatedLimit = {
-                    value: valueOfLimit,
-                    unit: valueOfUnit,
-                    units,
-                };
+                    const updatedLimit = {
+                        value: valueOfLimit,
+                        unit: valueOfUnit,
+                        units,
+                    };
 
-                // set the path for the lens
-                const lens = R.lensPath(['config', 'limit']);
-                const lens2 = R.lensPath(['config', 'policy']);
-                const lens3 = R.lensPath(['config', 'policy', 'selected']);
-                // substitude the plugin.config.limit
-                const updatedPlugin = R.set(lens, updatedLimit, plugin);
-                const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+                    // set the path for the lens
+                    const lens = R.lensPath(['config', 'limit']);
+                    const lens2 = R.lensPath(['config', 'policy']);
+                    const lens3 = R.lensPath(['config', 'policy', 'selected']);
+                    // substitude the plugin.config.limit
+                    const updatedPlugin = R.set(lens, updatedLimit, plugin);
+                    const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
 
-                return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+                    return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
+                }
+                case 'request_transformer': {
+                    const transformHeadersToArray = obj => R.toPairs(obj)
+                        .reduce((acc, item) => {
+                            const header = {
+                                key: item[0],
+                                value: item[1],
+                            };
+
+                            acc.push(header);
+
+                            return acc;
+                        }, []);
+
+                    const configWithTransformedHeaders = R.toPairs(plugin.config)
+                        .reduce((acc, item) => {
+                            const transformedHeaders = transformHeadersToArray(item[1].headers);
+
+                            acc[item[0]] = {
+                                headers: transformedHeaders,
+                                querystring: item[1].querystring,
+                            };
+
+                            return acc;
+                        }, {});
+
+                    // set path for lens and substitude config in plugin:
+                    const lens = R.lensPath(['config']);
+                    const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
+
+                    return updatedPlugin;
+                }
+                default:
+                    return plugin;
             }
-            if (plugin.name === 'request_transformer') {
-                const transformHeadersToArray = obj => R.toPairs(obj)
-                    .reduce((acc, item) => {
-                        const header = {
-                            key: item[0],
-                            value: item[1],
-                        };
-
-                        acc.push(header);
-
-                        return acc;
-                    }, []);
-
-                const configWithTransformedHeaders = R.toPairs(plugin.config)
-                    .reduce((acc, item) => {
-                        const transformedHeaders = transformHeadersToArray(item[1].headers);
-
-                        acc[item[0]] = {
-                            headers: transformedHeaders,
-                            querystring: item[1].querystring,
-                        };
-
-                        return acc;
-                    }, {});
-
-                // set path for lens and substitude config in plugin:
-                const lens = R.lensPath(['config']);
-                const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
-
-                return updatedPlugin;
-            }
-
-            return plugin;
         });
-
         const lens = R.lensPath(['plugins']);
         const preparedApi = R.set(lens, preparedPlugins, response.data);
 
-        dispatch(getEndpointSuccess(preparedApi, response.data));
+        R.compose(
+            dispatch,
+            getEndpointSuccess,
+        )(preparedApi, response.data);
     } catch (error) {
-        console.log('FETCH_ENDPOINT_ERROR', 'Infernal server error', error);
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -300,7 +294,7 @@ export const fetchEndpointSchema = flag => async (dispatch) => {
         flag && dispatch(setInitialEndpoint(endpointSchemaWithUpdatedOAuthPlugin));
         dispatch(getEndpointSchemaSuccess(endpointSchemaWithUpdatedOAuthPlugin)); // @TODO: REMOVE when endpoint will be ready
     } catch (error) {
-        console.log('FETCH_SERVER_NAMES_ERROR', error);
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -398,8 +392,9 @@ export const deleteEndpoint = apiName => dispatch => {
     dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
 };
 
-export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
+export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest(api));
+    dispatch(closeConfirmationModal());
 
     const preparedPlugins = preparePlugins(api);
     const apiWithoutDefaultUpstreams = R.dissocPath(['proxy', 'upstreams', 'options'], api);
@@ -407,115 +402,47 @@ export const confirmedSaveEndpoint = (dispatch, pathname, api) => {
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, apiWithoutDefaultUpstreams);
 
     try {
-        const response = client.post('apis', preparedApi);
+        await client.post('apis', preparedApi);
 
-        dispatch(closeConfirmationModal());
-
-        if (response) {
-            dispatch(saveEndpointSuccess());
-            dispatch(fetchEndpoints());
-            history.push('/');
-            dispatch(showToaster());
-
-            return;
-        }
-
-        // TODO replace mock message with something real which will be received from server somewhen in future
-        dispatch(openResponseModal({
-            message: 'Unable to save :( Something went wrong...',
-        }));
+        dispatch(saveEndpointSuccess());
+        dispatch(fetchEndpoints());
+        history.push('/');
+        dispatch(showToaster());
     } catch (error) {
-        if (error.response) {
-            dispatch(openResponseModal({
-                status: error.response.status,
-                statusText: error.response.statusText,
-                message: error.response.data,
-            }));
-
-        // The request was made and the server responded with a status code
-        // that falls out of the range of 2xx
-        // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-            // eslint-disable-next-line
-            console.error(error.response.data);
-        } else if (error.request) {
-        // The request was made but no response was received
-        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-        // http.ClientRequest in node.js
-            // eslint-disable-next-line
-            console.log(error.request);
-        } else {
-        // Something happened in setting up the request that triggered an Error
-            // eslint-disable-next-line
-            console.log('Error', error.message);
-        }
+        errorHandler(dispatch)(error);
     }
 };
 
-export const confirmedUpdateEndpoint = (dispatch, pathname, api) => {
+export const confirmedUpdateEndpoint = async (dispatch, pathname, api) => {
     dispatch(saveEndpointRequest());
+    dispatch(closeConfirmationModal());
 
     const preparedPlugins = preparePlugins(api);
     // substitude updated list of plugins
     const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
 
-    return client.put(`apis${pathname}`, preparedApi)
-        .then((response) => {
-            dispatch(saveEndpointSuccess());
-            dispatch(closeConfirmationModal());
-            dispatch(showToaster());
-        })
-        .catch((error) => {
-            if (error.response) {
-                dispatch(openResponseModal({
-                    status: error.response.status,
-                    statusText: error.response.statusText,
-                    message: error.response.data,
-                }));
+    try {
+        await client.put(`apis${pathname}`, preparedApi);
 
-            // The request was made and the server responded with a status code
-            // that falls out of the range of 2xx
-            // More info about error handling in Axios: https://github.com/mzabriskie/axios#handling-errors
-                // eslint-disable-next-line
-                console.error(error.response.data);
-            } else if (error.request) {
-            // The request was made but no response was received
-            // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
-            // http.ClientRequest in node.js
-                // eslint-disable-next-line
-                console.log(error.request);
-            } else {
-            // Something happened in setting up the request that triggered an Error
-                // eslint-disable-next-line
-                console.log('Error', error.message);
-            }
-        });
+        dispatch(saveEndpointSuccess());
+        dispatch(showToaster());
+    } catch (error) {
+        errorHandler(dispatch)(error);
+    }
 };
 
 export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
     dispatch(deleteEndpointRequest());
+    dispatch(closeConfirmationModal());
 
     try {
-        const response = await client.delete(`apis/${apiName}`);
+        await client.delete(`apis/${apiName}`);
 
-        dispatch(closeConfirmationModal());
-
-        if (response) {
-            dispatch(deleteEndpointSuccess());
-            dispatch(fetchEndpoints());
-            history.push('/');
-            dispatch(showToaster());
-
-            return;
-        }
-
-        dispatch(openResponseModal({
-            message: 'Unable to delete :( Something went wrong...',
-        }));
+        dispatch(deleteEndpointSuccess());
+        dispatch(fetchEndpoints());
+        history.push('/');
+        dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };

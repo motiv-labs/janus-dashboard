@@ -15,11 +15,11 @@ import {
     closeConfirmationModal,
     fetchOAuthServers,
     openConfirmationModal,
-    openResponseModal,
     showToaster,
 } from './index';
 import history from '../configuration/history';
 import oAuthServerSchema from '../../configurations/oAuthServerSchema';
+import errorHandler from '../../helpers/errorHandler';
 
 const getOAuthServerRequest = () => ({
     type: FETCH_OAUTH_SERVER_START,
@@ -72,7 +72,7 @@ export const fetchOAuthServer = path => async dispatch => {
 
         dispatch(getOAuthServerSuccess(updatedOAuthServer));
     } catch (error) {
-        console.log('FETCH_OAUTH_SERVER_ERROR', 'Infernal server error', error);
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -82,7 +82,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     try {
         dispatch(getOAuthSchemaSuccess(oAuthServerSchema));
     } catch (error) {
-        console.log('FETCH_OAUTH_SERVER_SCHEMA_ERROR', 'Infernal server error', error);
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -103,34 +103,10 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEdi
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
 
-        if (response) {
-            !isEditing && history.push('/oauth/servers');
-            dispatch(showToaster());
-
-            return;
-        }
-
-        // TODO: need to put here real error message, once it will implemented on backend
-        dispatch(openResponseModal({
-            message: 'Unable to save :( Something went wrong...',
-        }));
+        !isEditing && history.push('/oauth/servers');
+        dispatch(showToaster());
     } catch (error) {
-        if (error.response) {
-            dispatch(openResponseModal({
-                status: error.response.status,
-                statusText: error.response.statusText,
-                message: error.response.data,
-            }));
-
-            // eslint-disable-next-line
-            console.error(error.response.data);
-        } else if (error.request) {
-            // eslint-disable-next-line
-            console.log(error.request);
-        } else {
-            // eslint-disable-next-line
-            console.log('Error', error.message);
-        }
+        errorHandler(dispatch)(error);
     }
 };
 
@@ -150,24 +126,11 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
 
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-
-        if (response) {
-            dispatch(fetchOAuthServers());
-            history.push('/oauth/servers');
-            dispatch(showToaster());
-
-            return;
-        }
-
-        dispatch(openResponseModal({
-            message: 'Unable to delete :( Something went wrong...',
-        }));
+        dispatch(fetchOAuthServers());
+        history.push('/oauth/servers');
+        dispatch(showToaster());
     } catch (error) {
-        dispatch(openResponseModal({
-            status: error.response.status,
-            statusText: error.response.statusText,
-            message: error.response.data.error,
-        }));
+        errorHandler(dispatch)(error);
     }
 };
 
