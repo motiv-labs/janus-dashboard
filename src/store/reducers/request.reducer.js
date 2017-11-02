@@ -1,6 +1,7 @@
 import {
     REQUEST_START,
     REQUEST_COMPLETE,
+    REQUEST_FAILURE,
 } from '../constants';
 
 export const initialState = {
@@ -16,7 +17,8 @@ export default function reducer(state = initialState, action) {
             };
         }
 
-        case REQUEST_COMPLETE: {
+        case REQUEST_COMPLETE:
+        case REQUEST_FAILURE: {
             return {
                 ...state,
                 isFetching: false,

@@ -9,7 +9,8 @@ import {
     LOGIN_FAILURE,
     LOGOUT,
 } from '../constants';
-import { requestStart, requestComplete } from './request.actions';
+import { requestStart, requestComplete, requestFailure } from './request.actions';
+import { openResponseModal } from './apiResponse.actions';
 import getRandomString from '../../helpers/getRandomString';
 
 /* eslint-disable */
@@ -70,6 +71,10 @@ export const getJWTtoken = (hash) => async dispatch => {
         dispatch(requestComplete());
     } catch (error) {
         console.log(error);
+        dispatch(requestFailure());
+        dispatch(openResponseModal({
+            message: error.message,
+        }));
     }
 };
 
