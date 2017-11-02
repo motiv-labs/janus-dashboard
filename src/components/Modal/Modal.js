@@ -1,54 +1,49 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import Modaliz from 'react-modaliz';
 
-import block from '../../../helpers/bem-cn';
+import block from '../../helpers/bem-cn';
 
-import Button from '../../buttons/Button';
+import './Modal.css';
 
 const propTypes = {
-    className: PropTypes.string,
     closeModal: PropTypes.func.isRequired,
-    isOpen: PropTypes.bool.isRequired,
+    needConfirm: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
-    redirectOnClose: PropTypes.func,
-    statusText: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    // buttons: PropTypes.arrayOf(),
 };
 
 const defaultProps = {
     message: '',
-    statusText: '',
 };
 
 const b = block('j-confirmation');
 
-const APIRespondModal = ({
-    className,
+const ConfirmationModal = ({
     closeModal,
-    isOpen,
     message,
-    redirectOnClose,
-    statusText,
+    needConfirm,
+    onConfirm,
+    title,
+    buttons,
 }) => {
     const handleClose = () => {
         closeModal();
-
-        if (redirectOnClose) {
-            redirectOnClose();
-        }
     };
 
     return (
         <Modaliz
             className={b()}
-            show={isOpen}
+            show={needConfirm}
             speed={500}
             onClose={handleClose}
             discardDefaults
         >
             <div className={b('inner')}>
                 <div className={b('title')}>
-                    Ooops
+                    {title}
                 </div>
                 <div className={b('body')}>
                     <div className={b('text')}>
@@ -57,13 +52,36 @@ const APIRespondModal = ({
                 </div>
             </div>
             <div className={b('buttons-group').mix('j-buttons__wrapper')}>
-                <Button mod="default" onClick={handleClose}>Close</Button>
+                { buttons }
             </div>
         </Modaliz>
     );
 };
 
-APIRespondModal.propTypes = propTypes;
-APIRespondModal.defaultProps = defaultProps;
+Modal.propTypes = propTypes;
+Modal.defaultProps = defaultProps;
 
-export default APIRespondModal;
+export default Modal;
+
+// const mapStateToProps = (state) => {
+//     const {
+//         message,
+//         needConfirm,
+//         onConfirm,
+//         title,
+//     } = state.apiResponseModalReducer.confirmationModal;
+
+//     return {
+//         message,
+//         needConfirm,
+//         onConfirm,
+//         title,
+//     };
+// };
+
+// export default connect(
+//     mapStateToProps,
+//     {
+//         closeModal: clearConfirmationModal,
+//     },
+// )(ConfirmationModal);
