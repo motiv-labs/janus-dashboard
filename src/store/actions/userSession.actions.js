@@ -9,7 +9,8 @@ import {
     LOGIN_FAILURE,
     LOGOUT,
 } from '../constants';
-import { requestStart, requestComplete } from './request.actions';
+import { requestStart, requestComplete, requestFailure } from './request.actions';
+import { openResponseModal } from './apiResponse.actions';
 import getRandomString from '../../helpers/getRandomString';
 
 /* eslint-disable */
@@ -68,8 +69,14 @@ export const getJWTtoken = (hash) => async dispatch => {
         history.push('/');
         dispatch(getUserStatus());
         dispatch(requestComplete());
+        console.error('here (1)');
+
     } catch (error) {
         console.log(error);
+        dispatch(requestFailure());
+        dispatch(openResponseModal({
+            message: error.message,
+        }));
     }
 };
 
@@ -108,9 +115,22 @@ export const getUserStatus = () => dispatch => {
     dispatch(checkLoggedStatus());
     const JWTtoken = getAccessToken();
 
+    // try {
+    //     console.warn('SUCCESS');
+    //     JWTtoken && dispatch(loginSuccess(jwt.decode(JWTtoken).sub));
+    // } catch (error) {
+    //     console.error('FAILURE', error);
+
+    //     history.push('/login');
+    // }
+
     if (JWTtoken) {
+        console.warn('SUCCESS');
+
         dispatch(loginSuccess(jwt.decode(JWTtoken).sub));
     } else {
+        console.error('FAILURE');
+
         history.push('/login');
     }
 };
