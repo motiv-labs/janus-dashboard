@@ -1,7 +1,7 @@
+import { LOCATION_CHANGE } from 'react-router-redux';
+
 import {
     SEARCH_QUERY,
-    FETCH_ENDPOINTS_START,
-    FETCH_OAUTH_SERVERS_LIST_START,
 } from '../constants';
 
 export const initialState = {
@@ -10,8 +10,7 @@ export const initialState = {
 
 export default function reducer(state = initialState, action) {
     switch (action.type) {
-        case FETCH_ENDPOINTS_START:
-        case FETCH_OAUTH_SERVERS_LIST_START:
+        case LOCATION_CHANGE:
             return {
                 ...state,
                 searchQuery: initialState.searchQuery
