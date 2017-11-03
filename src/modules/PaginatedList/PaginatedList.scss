@@ -20,7 +20,6 @@ $paginator-padding: 7px 12px;
             vertical-align: top;
             background-color: $paginator-background-color;
             border: $paginator-border;
-            border-right: none;
             font-size: $paginator-font-size;
             font-weight: $paginator-font-weight;
             text-align: center;
@@ -29,6 +28,10 @@ $paginator-padding: 7px 12px;
             box-sizing: border-box;
             transition: background-color 0.05s, color 0.05s, border-color 0.05s;
             cursor: pointer;
+
+            &:not(:last-child) {
+                border-right: none;
+            }
 
             &--disabled {
                 opacity: 0.5;
@@ -39,6 +42,10 @@ $paginator-padding: 7px 12px;
                 background-color: $hellofresh-color;
                 border-color: $hellofresh-color;
                 color: $paginator-background-color;
+
+                + .j-pagination__nav-item {
+                    border-left-color: $hellofresh-color;
+                }
             }
 
             &--prev,
