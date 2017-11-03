@@ -69,7 +69,7 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.replace.querystring`}
                     config={pluginFromValues.config.replace.querystring}
                     title="Replace Query String"
-                    hint="A list of new values for existing querystrings that the Gateway should update when forwarding  the request to the upstream_url."
+                    hint="A list of new values for existing querystrings that the Gateway should update when forwarding the request to the upstream_url."
                 />
             </Row>
             <Row className={b('row')()} fullwidth>
@@ -77,13 +77,13 @@ const RequestTransformerPlugin = ({ className, name, handlePluginExclude, plugin
                     name={`${name}.config.remove.headers`}
                     config={pluginFromValues.config.remove.headers}
                     title="Remove Header"
-                    hint="A list of headers that the Gateway should remove when forwarding the request to the  upstream_url."
+                    hint="A list of headers that the Gateway should remove when forwarding the request to the upstream_url."
                 />
                 <MultiRowField
                     name={`${name}.config.remove.querystring`}
                     config={pluginFromValues.config.remove.querystring}
                     title="Remove Query String"
-                    hint="A list of querystrings that the Gateway should remove when forwarding the request to the  upstream_url."
+                    hint="A list of querystrings that the Gateway should remove when forwarding the request to the upstream_url."
                 />
             </Row>
         </div>
