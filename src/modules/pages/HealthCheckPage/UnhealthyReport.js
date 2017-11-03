@@ -7,7 +7,7 @@ import {
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
-import Icon from '../../Icon/Icon';
+import Control from '../../buttons/Control/Control';
 
 const propTypes = {
     className: PropTypes.string,
@@ -40,9 +40,7 @@ class UnhealthyReport extends PureComponent {
                         <p className={b('text')}>
                             Some services are unvailable. Check it on Health Check list <Link to="/healthcheck">here</Link>.
                         </p>
-                        <button className={b('close')} onClick={this.handleClose}>
-                            <Icon type="close" />
-                        </button>
+                        <Control className={b('close')()} onClick={this.handleClose} icon='close' />
                     </div>
                 </Section>
             );

@@ -11,10 +11,11 @@ const b = block('j-control');
 const propTypes = {
     icon: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
+    className: PropTypes.string,
 };
 
 const Control = ({ className, icon, onClick }) => (
-    <button className={b()} type="button" onClick={onClick}>
+    <button className={b.mix(className)} type="button" onClick={onClick}>
         <Icon className={b('icon')()} type={icon} />
     </button>
 );
