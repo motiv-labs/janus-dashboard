@@ -53,7 +53,7 @@ class CorsPlugin extends PureComponent {
                             placeholder={SETUP.placeholders.cors.domains}
                             component={Input}
                         />
-                        <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                        <Hint>A list of all domains from which the endpoint will accept requests.</Hint>
                     </Row>
                     <Row col>
                         <Label>Methods</Label>

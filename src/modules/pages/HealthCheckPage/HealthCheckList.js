@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
 
 import Correct from './Correct';
-import Icon from '../../Icon/Icon';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 
 import './HealthCheckList.css';

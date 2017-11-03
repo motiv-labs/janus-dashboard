@@ -25,7 +25,7 @@ const URL_GITHUB_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL || MAIN_
 export const getJWTtoken = (hash) => async dispatch => {
     const getParameterByName = (name, url) => {
         if (!url) url = window.location.href;
-        name = name.replace(/[\[\]]/g, '\\$&');
+        name = name.replace(/[[\]]/g, '\\$&');
         const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
         const results = regex.exec(url);
 
@@ -37,7 +37,7 @@ export const getJWTtoken = (hash) => async dispatch => {
 
     const extractToken = (string) => {
         const param = 'access_token';
-        const name = param.replace(/[\[\]]/g, '\\$&');
+        const name = param.replace(/[[\]]/g, '\\$&');
         const regex = new RegExp(name + '(=([^&#]*)|&|#|$)');
         const results = regex.exec(string);
 

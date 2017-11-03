@@ -110,7 +110,7 @@ class OAuthEndpoint extends PureComponent {
                                 validate={checkOnPattern('/')}
                             />
                             <span className="j-input__warning">Listen path should start from '/'</span>
-                            <Hint>The public url that is exposed by the Gateway</Hint>
+                            <Hint>The public url that is exposed by the Gateway.</Hint>
                         </div>
                     </div>
                     <div className={row('item')}>
