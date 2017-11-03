@@ -11,6 +11,7 @@ import ROUTES from '../../../configurations/routes.config';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
 import Preloader from '../../Preloader/Preloader';
+import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 
 import '../../Layout/Table/Table.css';
 
@@ -88,6 +89,8 @@ class OAuthServersList extends PureComponent {
         </div>
     )
 
+    isNoSearchResults = () => !!this.props.searchQuery;
+
     render() {
         if (this.props.oAuthServers.length > 0) {
             return (
@@ -100,6 +103,10 @@ class OAuthServersList extends PureComponent {
                     renderChildren={this.renderTable}
                 />
             );
+        }
+
+        if (this.isNoSearchResults()) {
+            return <NoSearchResults />;
         }
 
         return <Preloader />;
