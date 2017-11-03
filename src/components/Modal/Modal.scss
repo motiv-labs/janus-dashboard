@@ -58,6 +58,7 @@
         line-height: $hf-line-height-title;
         text-align: left;
         color: $hf-color-black;
+        overflow-wrap: break-word;
     }
     &__body {
         padding-top: $hf-padding-big;
