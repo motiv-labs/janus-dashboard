@@ -98,7 +98,7 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEdi
     };
 
     try {
-        client.post('oauth/servers', composeRateLimit(server));
+        await client.post('oauth/servers', composeRateLimit(server));
 
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
@@ -122,7 +122,7 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
     dispatch(deleteOAuthServerRequest());
 
     try {
-        client.delete(`oauth/servers/${serverName}`);
+        await client.delete(`oauth/servers/${serverName}`);
 
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
