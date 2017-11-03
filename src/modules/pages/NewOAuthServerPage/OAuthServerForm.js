@@ -235,7 +235,7 @@ class OAuthServerForm extends PureComponent {
                                     component={Input}
                                     disabled={editing}
                                 />
-                                <Hint>Must be unique</Hint>
+                                <Hint>Must be unique.</Hint>
                             </Row>
                         </Row>
                     </div>
@@ -282,7 +282,7 @@ class OAuthServerForm extends PureComponent {
                                         options={optionsTransformer(schema.cors_meta.domains)}
                                         component={TagSelect}
                                     />
-                                    <Hint>A list of all domains from which the endpoint will accept requests</Hint>
+                                    <Hint>A list of all domains from which the endpoint will accept requests.</Hint>
                                 </div>
                             </div>
                             <div className={row('item')}>

@@ -222,7 +222,7 @@ class EndpointForm extends PureComponent {
                                     validate={checkOnPattern('/')}
                                 />
                                 <span className="j-input__warning">Listen path should start from '/'</span>
-                                <Hint>The public url that is exposed by the Gateway</Hint>
+                                <Hint>The public url that is exposed by the Gateway.</Hint>
                             </div>
                             <div className={col()}>
                                 <div className={col('item')}>
@@ -351,7 +351,7 @@ class EndpointForm extends PureComponent {
                                     placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
                                     component={Input}
                                 />
-                                <Hint>The url that the Gateway will use to determine the health of the API. </Hint>
+                                <Hint>The url that the Gateway will use to determine the health of the API .</Hint>
                             </Row>
                             <Row col>
                                 <Label>Timeout (optional)</Label>
