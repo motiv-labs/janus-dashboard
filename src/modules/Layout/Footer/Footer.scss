@@ -6,6 +6,7 @@
     justify-content: center;
     height: $hf-height-footer;
     border-top: $hf-border;
+    box-sizing: border-box;
 
     &__inner {
         line-height: $hf-line-height;
