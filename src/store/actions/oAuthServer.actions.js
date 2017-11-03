@@ -98,8 +98,7 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEdi
     };
 
     try {
-        // eslint-disable-next-line no-unused-vars
-        const response = await client.post('oauth/servers', composeRateLimit(server));
+        client.post('oauth/servers', composeRateLimit(server));
 
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
@@ -123,8 +122,7 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
     dispatch(deleteOAuthServerRequest());
 
     try {
-        // eslint-disable-next-line no-unused-vars
-        const response = await client.delete(`oauth/servers/${serverName}`);
+        client.delete(`oauth/servers/${serverName}`);
 
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
