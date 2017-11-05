@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import R from 'ramda';
 import PropTypes from 'prop-types';
 
 import transformFormValues from '../../../helpers/transformFormValues';
+import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
 
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../Preloader/Preloader';
@@ -21,7 +22,7 @@ const propTypes = {
     location: PropTypes.object.isRequired,
 };
 
-class ApiItem extends Component {
+class ApiItem extends PureComponent {
     componentDidMount() {
         this.props.resetEndpoint();
         this.props.fetchEndpointSchema();
@@ -35,20 +36,12 @@ class ApiItem extends Component {
     }
 
     submit = values => {
-        const transformedValues = transformFormValues(values, true);
-        const plugins = transformedValues.plugins;
-        const selectedPlugins = this.props.selectedPlugins;
+        const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
 
-        const addedPlugins = plugins.filter((plugin) => {
-            return selectedPlugins.indexOf(plugin.name) !== -1;
-        });
-
-        const computedPlugins = {
-            ...transformedValues,
-            plugins: addedPlugins,
-        };
-
-        this.props.updateEndpoint(this.props.location.pathname, computedPlugins);
+        this.props.updateEndpoint(
+            this.props.location.pathname,
+            updatedEndpoint,
+        );
     }
 
     handleDelete = (apiName) => {
@@ -57,6 +50,7 @@ class ApiItem extends Component {
 
     render() {
         if (R.isEmpty(this.props.api)) return <Preloader />;
+
 
         const api = this.props.api;
         const apiPlugins = api.plugins;

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
 import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
+import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
 
 import Section from '../../Layout/Section/Section';
 import Subtitle from '../../Layout/Title/Subtitle';
@@ -22,7 +23,7 @@ const propTypes = {
     willClone: PropTypes.func.isRequired,
 };
 
-class NewApiItem extends Component {
+class NewApiItem extends PureComponent {
     componentDidMount() {
         this.props.resetEndpoint();
 
@@ -40,18 +41,12 @@ class NewApiItem extends Component {
     };
 
     submit = values => {
-        const transformedValues = transformFormValues(values, true);
-        const plugins = transformedValues.plugins;
-        const selectedPlugins = this.props.selectedPlugins;
-        const addedPlugins = plugins.filter((plugin) => {
-            return selectedPlugins.indexOf(plugin.name) !== -1;
-        });
-        const computedPlugins = {
-            ...transformedValues,
-            plugins: addedPlugins,
-        };
+        const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
 
-        this.props.saveEndpoint(this.props.location.pathname, computedPlugins);
+        this.props.saveEndpoint(
+            this.props.location.pathname,
+            updatedEndpoint,
+        );
     }
 
     hasToBeCloned = () => {
