@@ -124,12 +124,7 @@ export const willClone = data => {
         if (plugin.name === 'request_transformer') {
             const transformHeadersToArray = obj => R.toPairs(obj)
                 .reduce((acc, item) => {
-                    const header = {
-                        key: item[0],
-                        value: item[1],
-                    };
-
-                    acc.push(header);
+                    acc.push(item[1]);
 
                     return acc;
                 }, []);
