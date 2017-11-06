@@ -11,12 +11,12 @@ import {
 import setToasterMessage from '../../helpers/setToasterMessage';
 
 export const confirmationModalState = {
+    api: {},
     apiName: null,
     message: '',
     needConfirm: false,
     status: null,
     title: '',
-    onConfirm: () => {},
 };
 
 export const toasterState = {
@@ -50,7 +50,7 @@ export default function reducer(state = initialState, action) {
             };
         }
         case OPEN_CONFIRMATION_MODAL: {
-            const { api, apiName, message, status, title, onConfirm } = action.payload;
+            const { api, apiName, message, status, title } = action.payload;
 
             return {
                 ...state,
