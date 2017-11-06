@@ -111,7 +111,7 @@ export const willClone = data => {
             const lens3 = R.lensPath(['config', 'policy', 'selected']);
             // substitude the plugin.config.limit
             const updatedPlugin = R.set(lens, getUpdatedLimit(plugin.config.limit), plugin);
-            const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+            const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema, updatedPlugin);
             const getSelectedPolicy = policy => {
                 if (R.type(policy) === 'Object') {
                     return policy.selected;
@@ -196,7 +196,7 @@ export const fetchEndpoint = pathname => async dispatch => {
                     const lens3 = R.lensPath(['config', 'policy', 'selected']);
                     // substitude the plugin.config.limit
                     const updatedPlugin = R.set(lens, updatedLimit, plugin);
-                    const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
+                    const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema, updatedPlugin);
 
                     return R.set(lens3, plugin.config.policy, pluginWithPolicyFromSchema);
                 }
