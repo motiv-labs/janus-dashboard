@@ -165,9 +165,10 @@ export const fetchEndpoint = (endpointName, flag) => async dispatch => {
 
             return makeDecision(!!flag);
         };
+        const substitudePlugins = arr => R.set(lens, arr, response.data);
         const preparedEndpoint = R.compose(
             adjustIfCloning,
-            R.set(lens, R.__, response.data),
+            substitudePlugins,
         )(preparedPlugins);
 
         R.compose(
