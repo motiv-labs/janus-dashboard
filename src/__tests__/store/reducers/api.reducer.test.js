@@ -12,7 +12,6 @@ import {
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
-    WILL_CLONE,
 } from '../../../store/constants/api.constants';
 
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
@@ -204,35 +203,6 @@ describe('apiReducer', () => {
 
         it('should handle only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(4);
-        });
-    });
-
-    describe('WILL_CLONE', () => {
-        const api = {
-            plugins: [
-                { name: 'name-1' },
-                { name: 'name-2' },
-                { name: 'name-3' },
-            ],
-        };
-        const response = 'response-value';
-        const payload = {
-            api,
-            response,
-        };
-        const result = apiReducer({}, { type: WILL_CLONE, payload });
-
-        it('sets the api, response and selectedPligins satet when WILL_CLONE was triggered', () => {
-            expect(result.api).toEqual(api);
-            expect(result.response).toEqual(response);
-            expect(result.selectedPlugins.length).toEqual(3);
-            expect(result.selectedPlugins[0]).toEqual('name-1');
-            expect(result.selectedPlugins[1]).toEqual('name-2');
-            expect(result.selectedPlugins[2]).toEqual('name-3');
-        });
-
-        it('should handle only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(3);
         });
     });
 

@@ -16,7 +16,6 @@ import {
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
-    WILL_CLONE,
 } from '../constants';
 import {
     closeConfirmationModal,
