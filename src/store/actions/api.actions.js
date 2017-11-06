@@ -377,11 +377,7 @@ export const preparePlugins = api => api.plugins.map(plugin => {
 });
 
 export const saveEndpoint = api => dispatch => {
-    dispatch(openConfirmationModal(
-        'save',
-        api,
-        api.name,
-    ));
+    dispatch(openConfirmationModal('save', api, api.name));
 };
 
 export const updateEndpoint = api => dispatch => {
@@ -389,22 +385,23 @@ export const updateEndpoint = api => dispatch => {
 };
 
 export const deleteEndpoint = apiName => dispatch => {
-    dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
+    dispatch(openConfirmationModal('delete', {}, apiName));
 };
 
 export const confirmedSaveEndpoint = async (dispatch, api) => {
-    console.warn('API', api);
-
     dispatch(saveEndpointRequest(api));
     dispatch(closeConfirmationModal());
 
-    const preparedPlugins = preparePlugins(api);
-    const apiWithoutDefaultUpstreams = R.dissocPath(['proxy', 'upstreams', 'options'], api);
-    // substitude updated list of plugins
-    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, apiWithoutDefaultUpstreams);
+    const preparedPlugins/*: Array<Object> */ = preparePlugins(api);
+    const apiWithoutDefaultUpstreams/*: Object */ = R.dissocPath(['proxy', 'upstreams', 'options'], R.__);
+    const setUpdatedPlugins/*: Object*/ = R.set(R.lensPath(['plugins']), preparedPlugins, R.__);
+    const preparedEndpoint/*: Object*/ = R.compose(
+        setUpdatedPlugins,
+        apiWithoutDefaultUpstreams,
+    )(api);
 
     try {
-        await client.post('apis', preparedApi);
+        await client.post('apis', preparedEndpoint);
 
         dispatch(saveEndpointSuccess());
         dispatch(fetchEndpoints());
@@ -420,7 +417,7 @@ export const confirmedUpdateEndpoint = async (dispatch, api) => {
     dispatch(closeConfirmationModal());
 
     // substitude updated list of plugins
-    const prepareApi = arr => R.set(R.lensPath(['plugins']), arr, api);
+    const prepareApi = R.set(R.lensPath(['plugins']), R.__, api);
     const updatedEndpoint = R.compose(
         prepareApi,
         preparePlugins,

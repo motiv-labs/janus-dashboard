@@ -24,6 +24,7 @@ const defaultProps = {
 
 const ConfirmationModal = ({
     api,
+    apiName,
     closeModal,
     message,
     needConfirm,
@@ -34,9 +35,8 @@ const ConfirmationModal = ({
     const handleClose = () => {
         closeModal();
     };
-    console.error('STATUS & Api', status, api);
     const handleSubmitConfirmation = () => {
-        afterCloseConfirmationModal(status, api);
+        afterCloseConfirmationModal(status, api, apiName);
     };
 
 
@@ -60,6 +60,7 @@ ConfirmationModal.defaultProps = defaultProps;
 const mapStateToProps = (state) => {
     const {
         api,
+        apiName,
         message,
         needConfirm,
         status,
@@ -68,6 +69,7 @@ const mapStateToProps = (state) => {
 
     return {
         api,
+        apiName,
         message,
         needConfirm,
         status,

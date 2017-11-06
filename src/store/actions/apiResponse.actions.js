@@ -11,6 +11,7 @@ import {
 import {
     confirmedSaveEndpoint,
     confirmedUpdateEndpoint,
+    confirmedDeleteEndpoint,
 } from './api.actions';
 
 export const openResponseModal = data => ({
@@ -48,7 +49,7 @@ export const openConfirmationModal = (action, api, apiName) => {
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
-                    apiName: apiName,
+                    apiName,
                 };
             }
             default:
@@ -78,13 +79,16 @@ export const closeToaster = () => ({
     type: CLOSE_TOASTER,
 });
 
-export const afterCloseConfirmationModal = (status, api) => (dispatch, getState) => {
+export const afterCloseConfirmationModal = (status, api, apiName) => (dispatch, getState) => {
     switch (status) {
         case 'save': {
             return confirmedSaveEndpoint(dispatch, api);
         }
         case 'update': {
             return confirmedUpdateEndpoint(dispatch, api);
+        }
+        case 'delete': {
+            return confirmedDeleteEndpoint(dispatch, apiName);
         }
         default:
             return false;
