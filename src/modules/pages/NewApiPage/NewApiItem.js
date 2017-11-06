@@ -44,7 +44,6 @@ class NewApiItem extends PureComponent {
         const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
 
         this.props.saveEndpoint(
-            this.props.location.pathname,
             updatedEndpoint,
         );
     }

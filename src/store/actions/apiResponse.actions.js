@@ -8,6 +8,11 @@ import {
     CLOSE_TOASTER,
 } from '../constants';
 
+import {
+    confirmedSaveEndpoint,
+    confirmedUpdateEndpoint,
+} from './api.actions';
+
 export const openResponseModal = data => ({
     type: OPEN_RESPONSE_MODAL,
     payload: data,
@@ -17,25 +22,25 @@ export const closeResponseModal = () => ({
     type: CLOSE_RESPONSE_MODAL,
 });
 
-export const openConfirmationModal = (action, callback, apiName) => {
+export const openConfirmationModal = (action, api, apiName) => {
     const createConfirmationContent = action => {
         switch (action) {
             case 'save': {
                 return {
+                    api,
                     apiName,
                     message: 'Are you sure you want to save?',
                     status: 'save',
                     title: 'Save',
-                    onConfirm: callback,
                 };
             }
             case 'update': {
                 return {
+                    api,
                     apiName,
                     message: 'Are you sure you want to update?',
                     status: 'update',
                     title: 'Update',
-                    onConfirm: callback,
                 };
             }
             case 'delete': {
@@ -44,7 +49,6 @@ export const openConfirmationModal = (action, callback, apiName) => {
                     status: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
                     apiName: apiName,
-                    onConfirm: callback,
                 };
             }
             default:
@@ -73,3 +77,16 @@ export const showToaster = () => ({
 export const closeToaster = () => ({
     type: CLOSE_TOASTER,
 });
+
+export const afterCloseConfirmationModal = (status, api) => (dispatch, getState) => {
+    switch (status) {
+        case 'save': {
+            return confirmedSaveEndpoint(dispatch, api);
+        }
+        case 'update': {
+            return confirmedUpdateEndpoint(dispatch, api);
+        }
+        default:
+            return false;
+    }
+};

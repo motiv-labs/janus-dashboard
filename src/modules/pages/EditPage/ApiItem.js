@@ -38,10 +38,7 @@ class ApiItem extends PureComponent {
     submit = values => {
         const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
 
-        this.props.updateEndpoint(
-            this.props.location.pathname,
-            updatedEndpoint,
-        );
+        this.props.updateEndpoint(updatedEndpoint);
     }
 
     handleDelete = (apiName) => {
@@ -50,7 +47,6 @@ class ApiItem extends PureComponent {
 
     render() {
         if (R.isEmpty(this.props.api)) return <Preloader />;
-
 
         const api = this.props.api;
         const apiPlugins = api.plugins;

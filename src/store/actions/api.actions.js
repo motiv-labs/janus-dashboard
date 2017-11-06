@@ -376,23 +376,25 @@ export const preparePlugins = api => api.plugins.map(plugin => {
     }
 });
 
-export const saveEndpoint = (pathname, api) => dispatch => {
+export const saveEndpoint = api => dispatch => {
     dispatch(openConfirmationModal(
         'save',
-        () => confirmedSaveEndpoint(dispatch, pathname, api),
+        api,
         api.name,
     ));
 };
 
-export const updateEndpoint = (pathname, api) => dispatch => {
-    dispatch(openConfirmationModal('update', () => confirmedUpdateEndpoint(dispatch, pathname, api), api.name));
+export const updateEndpoint = api => dispatch => {
+    dispatch(openConfirmationModal('update', api, api.name));
 };
 
 export const deleteEndpoint = apiName => dispatch => {
     dispatch(openConfirmationModal('delete', () => confirmedDeleteEndpoint(dispatch, apiName), apiName));
 };
 
-export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
+export const confirmedSaveEndpoint = async (dispatch, api) => {
+    console.warn('API', api);
+
     dispatch(saveEndpointRequest(api));
     dispatch(closeConfirmationModal());
 
@@ -413,16 +415,19 @@ export const confirmedSaveEndpoint = async (dispatch, pathname, api) => {
     }
 };
 
-export const confirmedUpdateEndpoint = async (dispatch, pathname, api) => {
+export const confirmedUpdateEndpoint = async (dispatch, api) => {
     dispatch(saveEndpointRequest());
     dispatch(closeConfirmationModal());
 
-    const preparedPlugins = preparePlugins(api);
     // substitude updated list of plugins
-    const preparedApi = R.set(R.lensPath(['plugins']), preparedPlugins, api);
+    const prepareApi = arr => R.set(R.lensPath(['plugins']), arr, api);
+    const updatedEndpoint = R.compose(
+        prepareApi,
+        preparePlugins,
+    )(api);
 
     try {
-        await client.put(`apis${pathname}`, preparedApi);
+        await client.put(`apis/${api.name}`, updatedEndpoint);
 
         dispatch(saveEndpointSuccess());
         dispatch(showToaster());
@@ -446,3 +451,6 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
         errorHandler(dispatch)(error);
     }
 };
+
+
+// export const closeConfirmationModal
