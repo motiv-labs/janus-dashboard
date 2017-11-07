@@ -448,6 +448,3 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
         errorHandler(dispatch)(error);
     }
 };
-
-
-// export const closeConfirmationModal

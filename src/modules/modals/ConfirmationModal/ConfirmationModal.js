@@ -32,22 +32,17 @@ const ConfirmationModal = ({
     title,
     afterCloseConfirmationModal,
 }) => {
-    const handleClose = () => {
-        closeModal();
-    };
-    const handleSubmitConfirmation = () => {
+    const handleSubmitConfirmation = () =>
         afterCloseConfirmationModal(status, api, apiName);
-    };
-
 
     return (
         <Modal
             show={needConfirm}
-            closeModal={handleClose}
+            closeModal={closeModal}
             message={message}
             title={title}
             buttons={[
-                <Button mod="default" onClick={handleClose}>Cancel</Button>,
+                <Button mod="default" onClick={closeModal}>Cancel</Button>,
                 <Button mod="primary" onClick={handleSubmitConfirmation}>OK</Button>,
             ]}
         />
