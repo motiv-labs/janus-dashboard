@@ -234,6 +234,7 @@ class OAuthServerForm extends PureComponent {
                                     type="text"
                                     component={Input}
                                     disabled={editing}
+                                    required
                                 />
                                 <Hint>Must be unique.</Hint>
                             </Row>

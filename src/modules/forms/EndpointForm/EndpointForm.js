@@ -178,7 +178,9 @@ class EndpointForm extends PureComponent {
                                     type="text"
                                     component={Input}
                                     disabled={disabled}
+                                    required
                                 />
+                                <Hint>Must be unique.</Hint>
                             </Row>
                             <Row col>
                                 <Label>Is Active?</Label>
@@ -220,6 +222,7 @@ class EndpointForm extends PureComponent {
                                     placeholder={PLACEHOLDER.LISTEN_PATH}
                                     component={Input}
                                     validate={checkOnPattern('/')}
+                                    required
                                 />
                                 <span className="j-input__warning">Listen path should start from '/'</span>
                                 <Hint>The public url that is exposed by the Gateway.</Hint>
