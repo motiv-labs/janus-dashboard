@@ -70,8 +70,6 @@ class HealthCheckList extends PureComponent {
     );
 
     render() {
-        console.error('PROPS >>> ', this.props);
-
         const {
             currentPageIndex,
             healthcheckList,
@@ -79,11 +77,16 @@ class HealthCheckList extends PureComponent {
             status,
         } = this.props;
 
-        if (healthcheckList.length === 0) return <Preloader />;
-
-        if (status) {
+        if (healthcheckList.length > 0) {
             return (
-                <Correct className={b('correct')()} />
+                <PaginatedList
+                    list={healthcheckList}
+                    itemsPerPage={10}
+                    currentPageIndex={currentPageIndex}
+                    changePageIndex={setCurrentPageIndex}
+                    maximumVisiblePaginators={3}
+                    renderChildren={this.renderTable}
+                />
             );
         }
 
@@ -91,16 +94,7 @@ class HealthCheckList extends PureComponent {
             return <NoSearchResults />;
         }
 
-        return (
-            <PaginatedList
-                list={healthcheckList}
-                itemsPerPage={10}
-                currentPageIndex={currentPageIndex}
-                changePageIndex={setCurrentPageIndex}
-                maximumVisiblePaginators={3}
-                renderChildren={this.renderTable}
-            />
-        );
+        return <Preloader />;
     }
 };
 
