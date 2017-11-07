@@ -156,14 +156,10 @@ export const fetchEndpoint = (endpointName, flag) => async dispatch => {
         const lens = R.lensPath(['plugins']);
         const cloning = obj => flag => R.dissoc('name', obj);
         const notCloning = obj => flag => flag === false && obj;
-        const adjustIfCloning = obj => {
-            const makeDecision = R.either(
-                notCloning(obj),
-                cloning(obj),
-            );
-
-            return makeDecision(!!flag);
-        };
+        const adjustIfCloning = obj => R.either(
+            notCloning(obj),
+            cloning(obj),
+        )(!!flag);
         const substitudePlugins = arr => R.set(lens, arr, response.data);
         const preparedEndpoint = R.compose(
             adjustIfCloning,
@@ -179,9 +175,8 @@ export const fetchEndpoint = (endpointName, flag) => async dispatch => {
     }
 };
 
-export const willClone = name => dispatch => {
+export const willClone = name => dispatch =>
     dispatch(fetchEndpoint(name, true));
-};
 
 export const fillSelected = selectedPlugins => ({
     type: FILL_SELECTED_PLUGINS,
