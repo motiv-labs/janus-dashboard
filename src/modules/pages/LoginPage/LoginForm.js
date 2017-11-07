@@ -8,7 +8,7 @@ import Row from '../../Layout/Row/Row';
 import Button from '../../buttons/Button';
 import Logo from '../../Logo/Logo';
 import Icon from '../../Icon/Icon';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 
 import './LoginForm.css';
 

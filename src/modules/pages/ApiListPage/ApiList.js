@@ -9,7 +9,7 @@ import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 
 import '../../Layout/Table/Table.css';

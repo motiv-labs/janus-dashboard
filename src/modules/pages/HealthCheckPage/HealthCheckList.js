@@ -6,7 +6,7 @@ import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 import './HealthCheckList.css';
 

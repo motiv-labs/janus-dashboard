@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import isAnyEmpty from '../../../helpers/isAnyEmpty';
 import transformFormValues from '../../../helpers/transformFormValues';
 
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 import Section from '../../Layout/Section/Section';
 import OAuthServerForm from '../NewOAuthServerPage/OAuthServerForm';
 
