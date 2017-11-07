@@ -7,11 +7,12 @@ import Button from '../../buttons/Button';
 
 import {
     clearConfirmationModal,
+    afterCloseConfirmationModal,
 } from '../../../store/actions';
 
 const propTypes = {
     closeModal: PropTypes.func.isRequired,
-    onConfirm: PropTypes.func.isRequired,
+    afterCloseConfirmationModal: PropTypes.func.isRequired,
     needConfirm: PropTypes.bool.isRequired,
     message: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
@@ -22,25 +23,27 @@ const defaultProps = {
 };
 
 const ConfirmationModal = ({
+    api,
+    apiName,
     closeModal,
     message,
     needConfirm,
-    onConfirm,
+    status,
     title,
+    afterCloseConfirmationModal,
 }) => {
-    const handleClose = () => {
-        closeModal();
-    };
+    const handleSubmitConfirmation = () =>
+        afterCloseConfirmationModal(status, api, apiName);
 
     return (
         <Modal
             show={needConfirm}
-            closeModal={handleClose}
+            closeModal={closeModal}
             message={message}
             title={title}
             buttons={[
-                <Button mod="default" onClick={handleClose}>Cancel</Button>,
-                <Button mod="primary" onClick={onConfirm}>OK</Button>,
+                <Button mod="default" onClick={closeModal}>Cancel</Button>,
+                <Button mod="primary" onClick={handleSubmitConfirmation}>OK</Button>,
             ]}
         />
     );
@@ -51,16 +54,20 @@ ConfirmationModal.defaultProps = defaultProps;
 
 const mapStateToProps = (state) => {
     const {
+        api,
+        apiName,
         message,
         needConfirm,
-        onConfirm,
+        status,
         title,
     } = state.apiResponseModalReducer.confirmationModal;
 
     return {
+        api,
+        apiName,
         message,
         needConfirm,
-        onConfirm,
+        status,
         title,
     };
 };
@@ -69,5 +76,6 @@ export default connect(
     mapStateToProps,
     {
         closeModal: clearConfirmationModal,
+        afterCloseConfirmationModal,
     },
 )(ConfirmationModal);

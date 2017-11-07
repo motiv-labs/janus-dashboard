@@ -8,6 +8,12 @@ import {
     CLOSE_TOASTER,
 } from '../constants';
 
+import {
+    confirmedSaveEndpoint,
+    confirmedUpdateEndpoint,
+    confirmedDeleteEndpoint,
+} from './api.actions';
+
 export const openResponseModal = data => ({
     type: OPEN_RESPONSE_MODAL,
     payload: data,
@@ -17,25 +23,25 @@ export const closeResponseModal = () => ({
     type: CLOSE_RESPONSE_MODAL,
 });
 
-export const openConfirmationModal = (action, callback, apiName) => {
+export const openConfirmationModal = (action, api, apiName) => {
     const createConfirmationContent = action => {
         switch (action) {
             case 'save': {
                 return {
+                    api,
                     apiName,
                     message: 'Are you sure you want to save?',
                     status: 'save',
                     title: 'Save',
-                    onConfirm: callback,
                 };
             }
             case 'update': {
                 return {
+                    api,
                     apiName,
                     message: 'Are you sure you want to update?',
                     status: 'update',
                     title: 'Update',
-                    onConfirm: callback,
                 };
             }
             case 'delete': {
@@ -43,8 +49,7 @@ export const openConfirmationModal = (action, callback, apiName) => {
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
-                    apiName: apiName,
-                    onConfirm: callback,
+                    apiName,
                 };
             }
             default:
@@ -73,3 +78,19 @@ export const showToaster = () => ({
 export const closeToaster = () => ({
     type: CLOSE_TOASTER,
 });
+
+export const afterCloseConfirmationModal = (status, api, apiName) => (dispatch, getState) => {
+    switch (status) {
+        case 'save': {
+            return confirmedSaveEndpoint(dispatch, api);
+        }
+        case 'update': {
+            return confirmedUpdateEndpoint(dispatch, api);
+        }
+        case 'delete': {
+            return confirmedDeleteEndpoint(dispatch, apiName);
+        }
+        default:
+            return false;
+    }
+};

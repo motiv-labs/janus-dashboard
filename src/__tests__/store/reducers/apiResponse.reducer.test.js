@@ -14,12 +14,12 @@ import getRandomString from '../../../helpers/getRandomString';
 
 describe('apiResponseReducer', () => {
     const confirmationModalState = {
+        api: {},
         apiName: null,
         message: '',
         needConfirm: false,
         status: null,
         title: '',
-        onConfirm: null,
     };
 
     describe('Default', () => {
@@ -70,15 +70,16 @@ describe('apiResponseReducer', () => {
     });
 
     describe('Confirmation Modal manipulations', () => {
+        const api = getRandomString();
         const apiName = getRandomString();
         const message = getRandomString();
         const onConfirm = getRandomString();
         const status = getRandomString();
         const title = getRandomString();
         const payload = {
+            api,
             apiName,
             message,
-            onConfirm,
             status,
             title,
         };
@@ -93,9 +94,9 @@ describe('apiResponseReducer', () => {
             });
 
             it('returns an open modal with necesserity of confirmation deleting/saving of endpoint', () => {
+                expect(result.confirmationModal.api).toEqual(api);
                 expect(result.confirmationModal.apiName).toEqual(apiName);
                 expect(result.confirmationModal.message).toEqual(message);
-                expect(result.confirmationModal.onConfirm).toEqual(onConfirm);
                 expect(result.confirmationModal.status).toEqual(status);
                 expect(result.confirmationModal.title).toEqual(title);
                 expect(result.confirmationModal.needConfirm).toEqual(true);
