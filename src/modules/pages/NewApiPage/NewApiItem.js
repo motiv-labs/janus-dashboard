@@ -40,13 +40,10 @@ class NewApiItem extends PureComponent {
         this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
     };
 
-    submit = values => {
-        const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
-
-        this.props.saveEndpoint(
-            updatedEndpoint,
-        );
-    }
+    submit = values => R.compose(
+        this.props.saveEndpoint,
+        getUpdatedEndpoint(values),
+    )(this.props.selectedPlugins);
 
     hasToBeCloned = () => {
         if (this.props.location.state && !R.isEmpty(this.props.location.state.clone)) {

@@ -35,11 +35,10 @@ class ApiItem extends PureComponent {
         this.props.fillSelected(selectedPlugins);
     }
 
-    submit = values => {
-        const updatedEndpoint = getUpdatedEndpoint(values)(this.props.selectedPlugins);
-
-        this.props.updateEndpoint(updatedEndpoint);
-    }
+    submit = values => R.compose(
+        this.props.updateEndpoint,
+        getUpdatedEndpoint(values),
+    )(this.props.selectedPlugins);
 
     handleDelete = (apiName) => {
         this.props.deleteEndpoint(apiName);
