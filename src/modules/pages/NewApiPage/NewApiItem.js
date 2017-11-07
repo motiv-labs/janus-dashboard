@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
