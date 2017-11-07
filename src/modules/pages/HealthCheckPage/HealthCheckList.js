@@ -5,7 +5,8 @@ import block from '../../../helpers/bem-cn';
 
 import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
-
+import Preloader from '../../Preloader/Preloader';
+import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 import './HealthCheckList.css';
 
 const b = block('j-healthcheck');
@@ -45,6 +46,8 @@ class HealthCheckList extends PureComponent {
         this.props.setAscendingFilter();
     }
 
+    isNoSearchResults = () => !!this.props.searchQuery;
+
     renderTable = list => (
         <div className={table()}>
             <div className={table('head')}>
@@ -67,6 +70,8 @@ class HealthCheckList extends PureComponent {
     );
 
     render() {
+        console.error('PROPS >>> ', this.props);
+
         const {
             currentPageIndex,
             healthcheckList,
@@ -74,10 +79,16 @@ class HealthCheckList extends PureComponent {
             status,
         } = this.props;
 
+        if (healthcheckList.length === 0) return <Preloader />;
+
         if (status) {
             return (
                 <Correct className={b('correct')()} />
             );
+        }
+
+        if (this.isNoSearchResults()) {
+            return <NoSearchResults />;
         }
 
         return (
