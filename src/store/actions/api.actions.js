@@ -376,17 +376,14 @@ export const preparePlugins = api => api.plugins.map(plugin => {
     }
 });
 
-export const saveEndpoint = api => dispatch => {
+export const saveEndpoint = api => dispatch =>
     dispatch(openConfirmationModal('save', api, api.name));
-};
 
-export const updateEndpoint = api => dispatch => {
+export const updateEndpoint = api => dispatch =>
     dispatch(openConfirmationModal('update', api, api.name));
-};
 
-export const deleteEndpoint = apiName => dispatch => {
+export const deleteEndpoint = apiName => dispatch =>
     dispatch(openConfirmationModal('delete', {}, apiName));
-};
 
 export const confirmedSaveEndpoint = async (dispatch, api) => {
     dispatch(saveEndpointRequest(api));
