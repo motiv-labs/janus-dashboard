@@ -77,6 +77,10 @@ class HealthCheckList extends PureComponent {
             status,
         } = this.props;
 
+        if (status) {
+            return <Correct className={b('correct')()} />;
+        }
+
         if (healthcheckList.length > 0) {
             return (
                 <PaginatedList
