@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
+import isNoSearchResults from '../../../helpers/isNoSearchResults';
 import ROUTES from '../../../configurations/routes.config';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
@@ -89,8 +90,6 @@ class OAuthServersList extends PureComponent {
         </div>
     )
 
-    isNoSearchResults = () => !!this.props.searchQuery;
-
     render() {
         if (this.props.oAuthServers.length > 0) {
             return (
@@ -105,7 +104,7 @@ class OAuthServersList extends PureComponent {
             );
         }
 
-        if (this.isNoSearchResults()) {
+        if (isNoSearchResults(this.props.searchQuery)) {
             return <NoSearchResults />;
         }
 

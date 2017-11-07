@@ -5,6 +5,7 @@ import {
 } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
+import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../Icon/Icon';
@@ -114,8 +115,6 @@ class ApiList extends PureComponent {
         </div>
     )
 
-    isNoSearchResults = () => !!this.props.searchQuery;
-
     render() {
         if (this.props.apiList.length > 0) {
             return (
@@ -130,7 +129,7 @@ class ApiList extends PureComponent {
             );
         }
 
-        if (this.isNoSearchResults()) {
+        if (isNoSearchResults(this.props.searchQuery)) {
             return <NoSearchResults />;
         }
 

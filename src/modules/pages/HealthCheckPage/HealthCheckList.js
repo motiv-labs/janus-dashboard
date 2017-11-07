@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
+import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
@@ -46,8 +47,6 @@ class HealthCheckList extends PureComponent {
         this.props.setAscendingFilter();
     }
 
-    isNoSearchResults = () => !!this.props.searchQuery;
-
     renderTable = list => (
         <div className={table()}>
             <div className={table('head')}>
@@ -73,6 +72,7 @@ class HealthCheckList extends PureComponent {
         const {
             currentPageIndex,
             healthcheckList,
+            searchQuery,
             setCurrentPageIndex,
             status,
         } = this.props;
@@ -90,7 +90,7 @@ class HealthCheckList extends PureComponent {
             );
         }
 
-        if (this.isNoSearchResults()) {
+        if (isNoSearchResults(searchQuery)) {
             return <NoSearchResults />;
         }
 
