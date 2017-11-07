@@ -2,6 +2,7 @@ import { connect } from 'react-redux';
 
 import {
     deleteEndpoint,
+    fetchEndpoint,
     fetchEndpointSchema,
     resetEndpoint,
     refreshEndpoints,
@@ -23,6 +24,7 @@ export default connect(
     mapStateToProps,
     {
         deleteEndpoint,
+        fetchEndpoint,
         fetchEndpointSchema,
         resetEndpoint,
         saveEndpoint,

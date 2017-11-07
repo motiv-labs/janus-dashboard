@@ -13,6 +13,7 @@ import Preloader from '../../Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,
+    fetchEndpoint: PropTypes.func.isRequired,
     fetchEndpointSchema: PropTypes.func.isRequired,
     resetEndpoint: PropTypes.func.isRequired,
     saveEndpoint: PropTypes.func.isRequired,
@@ -29,7 +30,8 @@ class NewApiItem extends PureComponent {
 
         if (this.hasToBeCloned()) {
             this.props.fetchEndpointSchema();
-            this.props.willClone(deleteProperty(this.props.location.state.clone, 'name'));
+            this.props.willClone(this.props.location.state.clone.name);
+
             return;
         }
 

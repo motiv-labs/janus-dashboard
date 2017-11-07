@@ -16,7 +16,6 @@ import {
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
-    WILL_CLONE,
 } from '../constants';
 import {
     closeConfirmationModal,
@@ -79,105 +78,18 @@ export const resetEndpoint = () => ({
     type: RESET_ENDPOINT,
 });
 
-export const willClone = data => {
-    const preparedPlugins = data.plugins.map(plugin => {
-        if (plugin.name === 'rate_limit') {
-            const pluginFromSchema = endpointSchema.plugins.filter(item => item.name === plugin.name)[0];
-            const { units } = pluginFromSchema.config.limit;
-            const policyFromSchema = pluginFromSchema.config.policy;
-            const getUpdatedLimit = limit => {
-                if (R.type(limit) === 'Object') {
-                    return {
-                        value: limit.value,
-                        unit: limit.unit,
-                        units,
-                    };
-                }
-
-                const arr = limit.split('-');
-                const valueOfLimit = arr[0]*1;
-                const valueOfUnit = arr[1];
-
-                return {
-                    value: valueOfLimit,
-                    unit: valueOfUnit,
-                    units,
-                };
-            };
-
-            // set the path for the lens
-            const lens = R.lensPath(['config', 'limit']);
-            const lens2 = R.lensPath(['config', 'policy']);
-            const lens3 = R.lensPath(['config', 'policy', 'selected']);
-            // substitude the plugin.config.limit
-            const updatedPlugin = R.set(lens, getUpdatedLimit(plugin.config.limit), plugin);
-            const pluginWithPolicyFromSchema = R.set(lens2, policyFromSchema , updatedPlugin);
-            const getSelectedPolicy = policy => {
-                if (R.type(policy) === 'Object') {
-                    return policy.selected;
-                }
-                return policy;
-            };
-
-            return R.set(lens3, getSelectedPolicy(plugin.config.policy), pluginWithPolicyFromSchema);
-        }
-        if (plugin.name === 'request_transformer') {
-            const transformHeadersToArray = obj => R.toPairs(obj)
-                .reduce((acc, item) => {
-                    const header = {
-                        key: item[0],
-                        value: item[1],
-                    };
-
-                    acc.push(header);
-
-                    return acc;
-                }, []);
-
-            const configWithTransformedHeaders = R.toPairs(plugin.config)
-                .reduce((acc, item) => {
-                    const transformedHeaders = transformHeadersToArray(item[1].headers);
-
-                    acc[item[0]] = {
-                        headers: transformedHeaders,
-                        querystring: item[1].querystring,
-                    };
-
-                    return acc;
-                }, {});
-
-            // set path for lens and substitude config in plugin:
-            const lens = R.lensPath(['config']);
-            const updatedPlugin = R.set(lens, configWithTransformedHeaders, plugin);
-
-            return updatedPlugin;
-        }
-
-        return plugin;
-    });
-
-    const lens = R.lensPath(['plugins']);
-    const preparedApi = R.set(lens, preparedPlugins, data);
-
-    return {
-        type: WILL_CLONE,
-        payload: {
-            api: preparedApi,
-            response: data,
-        },
-    };
-};
-
-export const fillSelected = selectedPlugins => ({
-    type: FILL_SELECTED_PLUGINS,
-    payload: selectedPlugins,
-});
-
-export const fetchEndpoint = pathname => async dispatch => {
+/**
+ * @name fetchEndpoint
+ * @param {String} endpointName - name of target endpoint.
+ * @param {Boolean} flag - determines whether the endpoint name should be deleted
+ *                          after fetching is finished.
+ * @return {Object} :-)
+ */
+export const fetchEndpoint = (endpointName, flag) => async dispatch => {
     dispatch(getEndpointRequest());
 
     try {
-        const response = await client.get(`apis${pathname}`);
+        const response = await client.get(`apis/${endpointName}`);
         const preparedPlugins = response.data.plugins.map(plugin => {
             switch (plugin.name) {
                 case 'rate_limit': {
@@ -240,17 +152,36 @@ export const fetchEndpoint = pathname => async dispatch => {
                     return plugin;
             }
         });
+
         const lens = R.lensPath(['plugins']);
-        const preparedApi = R.set(lens, preparedPlugins, response.data);
+        const cloning = obj => flag => R.dissoc('name', obj);
+        const notCloning = obj => flag => flag === false && obj;
+        const adjustIfCloning = obj => R.either(
+            notCloning(obj),
+            cloning(obj),
+        )(!!flag);
+        const substitudePlugins = arr => R.set(lens, arr, response.data);
+        const preparedEndpoint = R.compose(
+            adjustIfCloning,
+            substitudePlugins,
+        )(preparedPlugins);
 
         R.compose(
             dispatch,
             getEndpointSuccess,
-        )(preparedApi, response.data);
+        )(preparedEndpoint, response.data);
     } catch (error) {
         errorHandler(dispatch)(error);
     }
 };
+
+export const willClone = name => dispatch =>
+    dispatch(fetchEndpoint(name, true));
+
+export const fillSelected = selectedPlugins => ({
+    type: FILL_SELECTED_PLUGINS,
+    payload: selectedPlugins,
+});
 
 export const setInitialEndpoint = endpointSchema => ({
     type: SET_DEFAULT_ENDPOINT,

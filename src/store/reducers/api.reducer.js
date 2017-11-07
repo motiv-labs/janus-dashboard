@@ -14,7 +14,6 @@ import {
     EXCLUDE_PLUGIN,
     SELECT_PLUGIN,
     RESET_ENDPOINT,
-    WILL_CLONE,
 } from '../constants';
 
 export const initialState = {
@@ -77,14 +76,6 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 selectedPlugins: state.selectedPlugins.concat(action.payload),
-            };
-        }
-        case WILL_CLONE: {
-            return {
-                ...state,
-                api: action.payload.api,
-                response: action.payload.response,
-                selectedPlugins: fillSelectedPlugins(action.payload.api),
             };
         }
         case RESET_ENDPOINT: {

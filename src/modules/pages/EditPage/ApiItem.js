@@ -26,7 +26,7 @@ class ApiItem extends PureComponent {
     componentDidMount() {
         this.props.resetEndpoint();
         this.props.fetchEndpointSchema();
-        this.props.fetchEndpoint(this.props.location.pathname);
+        this.props.fetchEndpoint(this.props.location.pathname.substr(1));
     }
 
     fillSelected = (arr) => {
