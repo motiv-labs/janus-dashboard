@@ -6,7 +6,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 
 import Section from '../../Layout/Section/Section';
 import OAuthServerForm from './OAuthServerForm';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 
 const propTypes = {
     schema: PropTypes.object.isRequired,

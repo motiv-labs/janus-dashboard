@@ -6,7 +6,7 @@ import transformFormValues from '../../../helpers/transformFormValues';
 import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
 
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,

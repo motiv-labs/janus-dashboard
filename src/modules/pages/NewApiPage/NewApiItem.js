@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import R from 'ramda';
-import { deleteProperty } from 'picklock';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
@@ -9,7 +8,7 @@ import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
 import Section from '../../Layout/Section/Section';
 import Subtitle from '../../Layout/Title/Subtitle';
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
-import Preloader from '../../Preloader/Preloader';
+import Preloader from '../../../components/Preloader/Preloader';
 
 const propTypes = {
     api: PropTypes.object.isRequired,

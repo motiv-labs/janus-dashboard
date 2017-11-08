@@ -2,10 +2,12 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 
 import block from '../../../helpers/bem-cn';
+import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
-
+import Preloader from '../../../components/Preloader/Preloader';
+import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 import './HealthCheckList.css';
 
 const b = block('j-healthcheck');
@@ -70,26 +72,33 @@ class HealthCheckList extends PureComponent {
         const {
             currentPageIndex,
             healthcheckList,
+            searchQuery,
             setCurrentPageIndex,
             status,
         } = this.props;
 
         if (status) {
+            return <Correct className={b('correct')()} />;
+        }
+
+        if (healthcheckList.length > 0) {
             return (
-                <Correct className={b('correct')()} />
+                <PaginatedList
+                    list={healthcheckList}
+                    itemsPerPage={10}
+                    currentPageIndex={currentPageIndex}
+                    changePageIndex={setCurrentPageIndex}
+                    maximumVisiblePaginators={3}
+                    renderChildren={this.renderTable}
+                />
             );
         }
 
-        return (
-            <PaginatedList
-                list={healthcheckList}
-                itemsPerPage={10}
-                currentPageIndex={currentPageIndex}
-                changePageIndex={setCurrentPageIndex}
-                maximumVisiblePaginators={3}
-                renderChildren={this.renderTable}
-            />
-        );
+        if (isNoSearchResults(searchQuery)) {
+            return <NoSearchResults />;
+        }
+
+        return <Preloader />;
     }
 };
 

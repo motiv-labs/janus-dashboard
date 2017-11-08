@@ -18,6 +18,7 @@ const mapStateToProps = state => ({
     statusName: state.healthcheckReducer.statusName,
     // problemToDisplay: state.healthcheckReducer.problemEndpoint,
     currentPageIndex: state.healthcheckReducer.currentPageIndex,
+    searchQuery: state.searchReducer.searchQuery,
 });
 
 export default connect(
