@@ -10,7 +10,7 @@ class TagSelect extends Component {
     }
 
     componentWillReceiveProps = nextProps => {
-        if (nextProps.edit) {
+        if (nextProps.edit && nextProps.input.value) {
             // because it could be user custom tag, we need to put in
             // into list of options:
             const computedOptions = (values, options) => {
