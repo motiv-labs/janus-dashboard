@@ -13,6 +13,10 @@ import {
     confirmedUpdateEndpoint,
     confirmedDeleteEndpoint,
 } from './api.actions';
+import {
+    confirmedSaveOAuthServer,
+    confirmedDeleteOAuthServer,
+} from './oAuthServer.actions';
 
 export const openResponseModal = data => ({
     type: OPEN_RESPONSE_MODAL,
@@ -26,12 +30,13 @@ export const closeResponseModal = () => ({
 export const openConfirmationModal = (action, api, apiName) => {
     const createConfirmationContent = action => {
         switch (action) {
-            case 'save': {
+            case 'save':
+            case 'saveOAuthServer': {
                 return {
                     api,
                     apiName,
                     message: 'Are you sure you want to save?',
-                    status: 'save',
+                    status: action,
                     title: 'Save',
                 };
             }
@@ -40,14 +45,15 @@ export const openConfirmationModal = (action, api, apiName) => {
                     api,
                     apiName,
                     message: 'Are you sure you want to update?',
-                    status: 'update',
+                    status: action,
                     title: 'Update',
                 };
             }
-            case 'delete': {
+            case 'delete':
+            case 'deleteOAuthServer': {
                 return {
                     message: 'Are you sure you want to delete? This can\'t be undone',
-                    status: 'delete',
+                    status: action,
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
                     apiName,
                 };
@@ -80,15 +86,22 @@ export const closeToaster = () => ({
 });
 
 export const afterCloseConfirmationModal = (status, api, apiName) => (dispatch, getState) => {
+    console.error('STATUS', status);
     switch (status) {
         case 'save': {
             return confirmedSaveEndpoint(dispatch, api);
+        }
+        case 'saveOAuthServer': {
+            return confirmedSaveOAuthServer(dispatch, api);
         }
         case 'update': {
             return confirmedUpdateEndpoint(dispatch, api);
         }
         case 'delete': {
             return confirmedDeleteEndpoint(dispatch, apiName);
+        }
+        case 'deleteOAuthServer': {
+            return confirmedDeleteOAuthServer(dispatch, apiName);
         }
         default:
             return false;

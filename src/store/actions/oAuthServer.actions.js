@@ -86,7 +86,7 @@ export const fetchOAuthServerSchema = () => async dispatch => {
     }
 };
 
-export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEditing) => {
+export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
     dispatch(saveOAuthServerRequest(server));
 
     const composeRateLimit = server => {
@@ -110,13 +110,12 @@ export const confirmedSaveOAuthServer = async (dispatch, pathname, server, isEdi
     }
 };
 
-export const saveOAuthServer = (pathname, server, isEditing) => dispatch => {
+export const saveOAuthServer = (pathname, server, isEditing) => dispatch =>
     dispatch(openConfirmationModal(
-        'save',
-        () => confirmedSaveOAuthServer(dispatch, pathname, server, isEditing),
+        'saveOAuthServer',
+        server,
         server.name,
     ));
-};
 
 export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
     dispatch(deleteOAuthServerRequest());
@@ -134,6 +133,9 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName) => {
     }
 };
 
-export const deleteOAuthServer = serverName => dispatch => {
-    dispatch(openConfirmationModal('delete', () => confirmedDeleteOAuthServer(dispatch, serverName), serverName));
-};
+export const deleteOAuthServer = serverName => dispatch =>
+    dispatch(openConfirmationModal(
+        'deleteOAuthServer',
+        {},
+        serverName,
+    ));
