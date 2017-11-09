@@ -1,5 +1,6 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
 import isNoSearchResults from '../../../helpers/isNoSearchResults';
@@ -8,6 +9,8 @@ import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
+import Control from '../../buttons/Control/Control';
+
 import './HealthCheckList.css';
 
 const b = block('j-healthcheck');
@@ -39,6 +42,9 @@ class HealthCheckList extends PureComponent {
             <div className={bItem('name')}>{item.name}</div>
             <div className={bItem('message')}>{item.description}</div>
             {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
+            <Link to={`/${item.name}`}>
+                <Control icon="edit" />
+            </Link>
         </div>
     ));
 
