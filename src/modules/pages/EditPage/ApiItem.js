@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import transformFormValues from '../../../helpers/transformFormValues';
 import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint';
+import isAnyEmpty from '../../../helpers/isAnyEmpty';
 
 import EndpointForm from '../../forms/EndpointForm/EndpointForm';
 import Preloader from '../../../components/Preloader/Preloader';
@@ -45,7 +46,10 @@ class ApiItem extends PureComponent {
     };
 
     render() {
-        if (R.isEmpty(this.props.api)) return <Preloader />;
+        if (isAnyEmpty([
+            this.props.api,
+            this.props.apiSchema,
+        ])) return <Preloader />;
 
         const api = this.props.api;
         const apiPlugins = api.plugins;
