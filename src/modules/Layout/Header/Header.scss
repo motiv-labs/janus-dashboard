@@ -1,9 +1,10 @@
 @import 'index.scss';
 
 $padding: $hf-gutter;
+$logo-part-width: 100px + $hf-padding-big;
 
 .j-header {
-    grid-template-columns: 100px 1fr 100px;
+    grid-template-columns: $logo-part-width 1fr 100px;
     display: grid;
     padding: 0 $hf-padding-main;
     background-color: $hellofresh-color;
