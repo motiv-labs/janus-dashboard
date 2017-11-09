@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchBar component handles onChange triggers discarding pagination 1`] = `
+<div
+  className={[Function]}
+>
+  <span
+    className={[Function]}
+  />
+  <input
+    className={[Function]}
+    onChange={[Function]}
+    placeholder="Search..."
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`SearchBar component handles onChange triggers setting new search query 1`] = `
+<div
+  className={[Function]}
+>
+  <span
+    className={[Function]}
+  />
+  <input
+    className={[Function]}
+    onChange={[Function]}
+    placeholder="Search..."
+    type="text"
+    value=""
+  />
+</div>
+`;
+
+exports[`SearchBar component renders correctly 1`] = `
+<div
+  className={[Function]}
+>
+  <span
+    className={[Function]}
+  />
+  <input
+    className={[Function]}
+    onChange={[Function]}
+    placeholder="Search..."
+    type="text"
+    value=""
+  />
+</div>
+`;
