@@ -20,7 +20,7 @@ import { openResponseModal } from '../store/actions';
  * dasherize('The world is a vampire');
  * // after split [ 'The', 'world', 'is', 'a', 'vampire' ]
  */
-const trace = R.curry(function(tag, x) {
+const trace = R.curry((tag, x) => {
     console.error('trace -> ', tag, x);
     return x;
 });
