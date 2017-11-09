@@ -1,7 +1,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import SearchBar from '../../../modules/SearchBar/SearchBar';
+import SearchBar from '../../../components/SearchBar/SearchBar';
 
 describe('SearchBar component', () => {
     const passedProps = {

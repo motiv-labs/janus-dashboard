@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import SearchingContainer from '../../SearchBar/searchContainer';
+import SearchingContainer from '../../../components/SearchBar/searchContainer';
 import ApiListContainer from './apiListContainer';
 
 import Section from '../../Layout/Section/Section';

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-import SearchingContainer from '../../SearchBar/searchContainer';
+import SearchingContainer from '../../../components/SearchBar/searchContainer';
 import HealthCheckContainer from './healthCheckContainer';
 
 import Section from '../../Layout/Section/Section';
