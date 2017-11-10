@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import SearchingContainer from '../../SearchBar/searchContainer';
+import SearchingContainer from '../../../components/SearchBar/searchContainer';
 import OAuthServersContainer from './oAuthServersContainer';
 
 import Section from '../../Layout/Section/Section';
