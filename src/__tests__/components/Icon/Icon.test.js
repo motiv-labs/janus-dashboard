@@ -1,65 +1,67 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import renderer from 'react-test-renderer';
 
 import Icon, { b } from '../../../components/Icon/Icon';
 
-configure({ adapter: new Adapter() });
-
-const toFindByClassNames = classNames => tag => `${tag}.${classNames.split(' ').join('.')}`;
-
 describe('Icon component', () => {
-    const required = {
+    const render = props => renderer.create(<Icon {...props} />).toJSON();
+    const requiredProps = {
         type: 'add',
     };
 
-    it('renders with className depends on `type` prop', () => {
-        const props = required;
-        const wrapper = mount(<Icon {...props} />);
+    it('renders correctly', () => {
+        const props = requiredProps;
+        const tree = render(props);
+        const className = tree.props.className;
 
-        expect(wrapper.find(
-            toFindByClassNames(b({ type: props.type })())('span')
-        ).length).toEqual(1);
+        expect(className).toContain('j-icon');
+        expect(className).toContain('j-icon--type-add');
+        expect(tree).toMatchSnapshot();
     });
 
     it('renders with an additional className if passed', () => {
         const props = {
-            ...required,
+            ...requiredProps,
             className: 'mock-class',
         };
-        const wrapper = mount(<Icon {...props} />);
+        const tree = render(props);
+        const className = tree.props.className;
 
-        expect(wrapper.find(
-            toFindByClassNames(b({ type: props.type }).mix(props.className))('span')
-        ).length).toEqual(1);
+        expect(className).toContain('j-icon');
+        expect(className).toContain('j-icon--type-add');
+        expect(className).toContain('mock-class');
+        expect(tree).toMatchSnapshot();
     });
 
-    it('renders with an extra additional className if aria-label is passed', () => {
+
+    it('renders with an additional ariaLabel if passed', () => {
         const props = {
-            ...required,
+            ...requiredProps,
+            ariaLabel: 'mock-label',
+        };
+        const tree = render(props);
+        const className = tree.props.className;
+
+        expect(className).toContain('j-icon');
+        expect(className).toContain('j-icon--type-add');
+        expect(tree.props['aria-label']).toContain(props.ariaLabel);
+        expect(tree).toMatchSnapshot();
+    });
+
+    it('renders with an additional className and ariaLabel if passed', () => {
+        const props = {
+            ...requiredProps,
             className: 'mock-class',
-            ariaLabel: 'aria-label',
+            ariaLabel: 'mock-label',
         };
-        const wrapper = mount(<Icon {...props} />);
+        const tree = render(props);
+        const className = tree.props.className;
 
-        expect(wrapper.find(
-            toFindByClassNames(
-                b({ type: props.type })
-                    .mix(props.className)
-                    .mix(props.ariaLabel && 'j-tooltiped')
-                )('span')
-        ).length).toEqual(1);
+        expect(className).toContain('j-icon');
+        expect(className).toContain('j-icon--type-add');
+        expect(className).toContain('mock-class');
+        expect(tree.props['aria-label']).toContain(props.ariaLabel);
+        expect(tree).toMatchSnapshot();
     });
 
-    it('renders with aria-label if passed', () => {
-        const props = {
-            ...required,
-            ariaLabel: 'aria-label',
-        };
-        const wrapper = mount(<Icon {...props} />);
-
-        expect(wrapper.find(
-            `span[aria-label="${props.ariaLabel}"]`
-        ).length).toEqual(1);
-    });
 });
