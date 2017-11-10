@@ -9,6 +9,7 @@ import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Icon from '../../../components/Icon/Icon';
+import Control from '../../../components/Control/Control';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 
@@ -68,15 +69,13 @@ class ApiList extends PureComponent {
                 >
                     <Icon type="copy" ariaLabel="Copy" />
                 </Link>
-                <Link
-                    to={''}
-                    className={table('controls-item')}
+                <Control
+                    className={table('controls-item')()}
+                    icon="delete"
                     onClick={() => {
                         this.handleDelete(api.name);
                     }}
-                >
-                    <Icon type="delete" ariaLabel="Delete" />
-                </Link>
+                />
             </div>
         </div>
     ))
