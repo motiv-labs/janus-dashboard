@@ -23,7 +23,7 @@ import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../buttons/Button';
-import Icon from '../../Icon/Icon';
+import Icon from '../../../components/Icon/Icon';
 
 import RenderPlugins from '../plugins/RenderPlugins';
 

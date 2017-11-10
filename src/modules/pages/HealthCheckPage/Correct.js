@@ -4,8 +4,7 @@ import PropTypes from 'prop-types';
 import block from '../../../helpers/bem-cn';
 
 import InfoPanel from '../../../components/InfoPanel/InfoPanel';
-
-import Icon from '../../Icon/Icon';
+import Icon from '../../../components/Icon/Icon';
 
 const propTypes = {
     className: PropTypes.string,
