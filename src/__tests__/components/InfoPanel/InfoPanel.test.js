@@ -5,7 +5,7 @@ import InfoPanel from '../../../components/InfoPanel/InfoPanel';
 
 describe('InfoPanel component', () => {
     const requiredProps = {
-        tesxt: 'mock-text',
+        text: 'mock-text',
     };
 
     it('renders correctly', () => {

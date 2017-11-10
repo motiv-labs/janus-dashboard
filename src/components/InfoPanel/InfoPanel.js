@@ -18,7 +18,7 @@ const InfoPanel = ({ icon, text }) => {
             {
                 icon && icon
             }
-            <p className={b('text')}>{ text }</p>
+            <p className={b('text')()}>{ text }</p>
         </div>
     );
 };

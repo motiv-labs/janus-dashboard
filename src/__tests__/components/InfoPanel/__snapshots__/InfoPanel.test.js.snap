@@ -5,8 +5,10 @@ exports[`InfoPanel component renders correctly 1`] = `
   className="info-panel j-pane"
 >
   <p
-    className={[Function]}
-  />
+    className="info-panel__text"
+  >
+    mock-text
+  </p>
 </div>
 `;
 
@@ -16,7 +18,9 @@ exports[`InfoPanel component renders icon if passed 1`] = `
 >
   mock-node
   <p
-    className={[Function]}
-  />
+    className="info-panel__text"
+  >
+    mock-text
+  </p>
 </div>
 `;
