@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoPanel component renders correctly 1`] = `
+<div
+  className="info-panel j-pane"
+>
+  <p
+    className={[Function]}
+  />
+</div>
+`;

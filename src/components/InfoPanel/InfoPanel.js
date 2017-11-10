@@ -14,7 +14,7 @@ const b = block('info-panel');
 
 const InfoPanel = ({ icon, text }) => {
     return (
-        <div className={b.mix('j-pane')}>
+        <div className={b.mix('j-pane')()}>
             {
                 icon && icon
             }
