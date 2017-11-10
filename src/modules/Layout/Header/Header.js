@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
 import Nav from '../Nav/Nav';
@@ -18,7 +19,9 @@ const Header = ({ logout, user }) => {
         return (
             <header className={b}>
                 <div className={b('col', { left: true })}>
-                    <span className={b('logo')} />
+                    <Link to='/'>
+                        <span className={b('logo')} />
+                    </Link>
                 </div>
                 <div className={b('col', { middle: true })}>
                     <Nav />
