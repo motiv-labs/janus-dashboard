@@ -10,7 +10,7 @@ import isNoSearchResults from '../../../helpers/isNoSearchResults';
 import ROUTES from '../../../configurations/routes.config';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
-import Icon from '../../Icon/Icon';
+import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 

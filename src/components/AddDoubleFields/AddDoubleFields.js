@@ -8,7 +8,7 @@ import parse from '../../helpers/parse-value';
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../modules/labels/Label';
 import Input from '../../modules/inputs/Input';
-import Control from '../../modules/buttons/Control/Control';
+import Control from '../../components/Control/Control';
 
 import './AddDoubleFields.css';
 

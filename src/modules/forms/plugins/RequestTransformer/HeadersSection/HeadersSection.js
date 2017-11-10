@@ -8,7 +8,7 @@ import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../labels/Hint/Hint';
-import Control from '../../../../buttons/Control/Control';
+import Control from '../../../../../components/Control/Control';
 
 const row = block('j-row');
 

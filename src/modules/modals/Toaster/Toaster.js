@@ -9,7 +9,7 @@ import {
     closeToaster,
 } from '../../../store/actions';
 
-import Icon from '../../Icon/Icon';
+import Icon from '../../../components/Icon/Icon';
 
 import './Toaster.css';
 

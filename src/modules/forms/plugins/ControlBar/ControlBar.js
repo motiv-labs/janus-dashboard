@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import block from '../../../../helpers/bem-cn';
 
-import Control from '../../../buttons/Control/Control';
+import Control from '../../../../components/Control/Control';
 import Tumbler from '../../../Tumbler/Tumbler';
 
 import './ControlBar.css';

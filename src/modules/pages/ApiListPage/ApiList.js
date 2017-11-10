@@ -8,7 +8,7 @@ import block from '../../../helpers/bem-cn';
 import isNoSearchResults from '../../../helpers/isNoSearchResults';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
-import Icon from '../../Icon/Icon';
+import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
 

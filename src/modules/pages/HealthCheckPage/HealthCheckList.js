@@ -9,7 +9,7 @@ import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
-import Control from '../../buttons/Control/Control';
+import Control from '../../../components/Control/Control';
 
 import './HealthCheckList.css';
 

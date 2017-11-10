@@ -2,7 +2,7 @@ import React from 'react';
 import { configure, mount } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-15';
 
-import Icon, { b } from '../../../modules/Icon/Icon';
+import Icon, { b } from '../../../components/Icon/Icon';
 
 configure({ adapter: new Adapter() });
 

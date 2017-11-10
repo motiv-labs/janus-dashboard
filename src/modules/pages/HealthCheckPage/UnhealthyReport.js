@@ -7,7 +7,7 @@ import {
 import block from '../../../helpers/bem-cn';
 
 import Section from '../../Layout/Section/Section';
-import Control from '../../buttons/Control/Control';
+import Control from '../../../components/Control/Control';
 
 const propTypes = {
     className: PropTypes.string,
