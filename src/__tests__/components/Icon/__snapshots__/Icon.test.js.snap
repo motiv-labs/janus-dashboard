@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Icon component renders correctly 1`] = `
+<span
+  aria-label={undefined}
+  className="j-icon j-icon--type-add"
+/>
+`;
+
+exports[`Icon component renders with an additional ariaLabel if passed 1`] = `
+<span
+  aria-label="mock-label"
+  className="j-icon j-icon--type-add j-tooltiped"
+/>
+`;
+
+exports[`Icon component renders with an additional className and ariaLabel if passed 1`] = `
+<span
+  aria-label="mock-label"
+  className="j-icon j-icon--type-add mock-class j-tooltiped"
+/>
+`;
+
+exports[`Icon component renders with an additional className if passed 1`] = `
+<span
+  aria-label={undefined}
+  className="j-icon j-icon--type-add mock-class"
+/>
+`;

@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Control component renders correctly 1`] = `
+<button
+  className="j-control"
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    aria-label={undefined}
+    className="j-icon j-icon--type-add j-control__icon"
+  />
+</button>
+`;
+
+exports[`Control component renders with an additional ariaLabel if passed 1`] = `
+<button
+  className="j-control"
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    aria-label="mock-label"
+    className="j-icon j-icon--type-add j-control__icon j-tooltiped"
+  />
+</button>
+`;
+
+exports[`Control component renders with an additional className and ariaLabel if passed 1`] = `
+<button
+  className="j-control mock-class"
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    aria-label="mock-label"
+    className="j-icon j-icon--type-add j-control__icon j-tooltiped"
+  />
+</button>
+`;
+
+exports[`Control component renders with an additional className if passed 1`] = `
+<button
+  className="j-control mock-class"
+  onClick={[Function]}
+  type="button"
+>
+  <span
+    aria-label={undefined}
+    className="j-icon j-icon--type-add j-control__icon"
+  />
+</button>
+`;

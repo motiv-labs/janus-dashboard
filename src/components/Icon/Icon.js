@@ -27,7 +27,10 @@ const propTypes = {
 };
 
 const Icon = ({ ariaLabel, className, type }) => (
-    <span className={b({ type }).mix(className).mix(ariaLabel && 'j-tooltiped')} aria-label={ariaLabel}/>
+    <span
+        aria-label={ariaLabel}
+        className={b({ type }).mix(className).mix(ariaLabel && 'j-tooltiped')()}
+    />
 );
 
 Icon.propTypes = propTypes;
