@@ -12,11 +12,12 @@ const propTypes = {
     icon: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired,
     className: PropTypes.string,
+    ariaLabel: PropTypes.string,
 };
 
-const Control = ({ className, icon, onClick }) => (
-    <button className={b.mix(className)} type="button" onClick={onClick}>
-        <Icon className={b('icon')()} type={icon} />
+const Control = ({ className, icon, onClick, ariaLabel }) => (
+    <button className={b.mix(className)()} type="button" onClick={onClick}>
+        <Icon className={b('icon')()} type={icon} ariaLabel={ariaLabel} />
     </button>
 );
 
