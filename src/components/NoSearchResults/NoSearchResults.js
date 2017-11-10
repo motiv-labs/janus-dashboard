@@ -9,13 +9,9 @@ const style = {
 
 const SadFace = () => <p style={style}>&#9785;</p>;
 
-const NoSearchResults = () => {
-    return (
-        <InfoPanel
-            icon={SadFace()}
-            text="Nothing found"
-        />
-    );
-};
+const NoSearchResults = () => <InfoPanel
+    icon={SadFace()}
+    text="Nothing found"
+/>;
 
 export default NoSearchResults;
