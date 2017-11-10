@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 import block from '../../../helpers/bem-cn';
-import ROUTES from '../../../configurations/routes.config';
 import Nav from '../Nav/Nav';
 
 import './Header.css';
@@ -20,7 +19,7 @@ const Header = ({ logout, user }) => {
         return (
             <header className={b}>
                 <div className={b('col', { left: true })}>
-                    <Link to={ROUTES.MAIN.path}>
+                    <Link to='/'>
                         <span className={b('logo')} />
                     </Link>
                 </div>
