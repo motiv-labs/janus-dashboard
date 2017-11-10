@@ -19,4 +19,20 @@ describe('InfoPanel component', () => {
 
         expect(tree).toMatchSnapshot();
     });
+
+    it('renders icon if passed', () => {
+        const passedProps = {
+            icon: 'mock-node',
+        };
+        const tree = renderer
+            .create(
+                <InfoPanel
+                    {...requiredProps}
+                    {...passedProps}
+                />
+            )
+            .toJSON();
+
+        expect(tree).toMatchSnapshot();
+    });
 });

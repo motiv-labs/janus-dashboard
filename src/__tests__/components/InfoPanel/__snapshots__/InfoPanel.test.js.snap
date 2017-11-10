@@ -9,3 +9,14 @@ exports[`InfoPanel component renders correctly 1`] = `
   />
 </div>
 `;
+
+exports[`InfoPanel component renders icon if passed 1`] = `
+<div
+  className="info-panel j-pane"
+>
+  mock-node
+  <p
+    className={[Function]}
+  />
+</div>
+`;
