@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 import Control, { b } from '../../../components/Control/Control';
 
-describe('Icon component', () => {
+describe('Control component', () => {
     const render = props => renderer.create(<Control {...props} />).toJSON();
     const mockFunction = jest.fn();
     const requiredProps = {
