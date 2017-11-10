@@ -70,7 +70,7 @@ class ApiList extends PureComponent {
                     <Icon type="copy" ariaLabel="Copy" />
                 </Link>
                 <Control
-                    className={table('controls-item')}
+                    className={table('controls-item')()}
                     icon="delete"
                     onClick={() => {
                         this.handleDelete(api.name);
