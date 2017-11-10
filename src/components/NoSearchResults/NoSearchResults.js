@@ -9,7 +9,7 @@ const style = {
 
 const SadFace = () => <p style={style}>&#9785;</p>;
 
-const NoSearchResults = ({ className }) => {
+const NoSearchResults = () => {
     return (
         <InfoPanel
             icon={SadFace()}
