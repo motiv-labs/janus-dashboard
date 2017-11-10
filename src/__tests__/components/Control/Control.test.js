@@ -11,6 +11,15 @@ describe('Control component', () => {
         icon: 'add',
         onClick: mockFunction,
     };
+    const runCommonTest = tree => {
+        const icon = tree.children[0];
+        expect(tree.props.className).toContain('j-control');
+        expect(icon.props.className).toContain('j-icon');
+        expect(icon.props.className).toContain('j-icon--type-add');
+        tree.props.onClick();
+        expect(mockFunction).toHaveBeenCalled();
+        expect(tree).toMatchSnapshot();
+    };
 
     beforeEach(() => {
         mockFunction.mockReset();
@@ -19,15 +28,8 @@ describe('Control component', () => {
     it('renders correctly', () => {
         const props = requiredProps;
         const tree = render(props);
-        const icon = tree.children[0];
 
-        expect(tree.props.className).toContain('j-control');
-        expect(icon.props.className).toContain('j-icon');
-        expect(icon.props.className).toContain('j-icon--type-add');
-        tree.props.onClick();
-        expect(mockFunction).toHaveBeenCalled();
-
-        expect(tree).toMatchSnapshot();
+        runCommonTest(tree);
     });
 
     it('renders with an additional className if passed', () => {
@@ -36,17 +38,9 @@ describe('Control component', () => {
             className: 'mock-class',
         };
         const tree = render(props);
-        const icon = tree.children[0];
 
-        expect(tree.props.className).toContain('j-control');
-        expect(icon.props.className).toContain('j-icon');
-        expect(icon.props.className).toContain('j-icon--type-add');
-        tree.props.onClick();
-        expect(mockFunction).toHaveBeenCalled();
-
+        runCommonTest(tree);
         expect(tree.props.className).toContain('mock-class');
-
-        expect(tree).toMatchSnapshot();
     });
 
     it('renders with an additional ariaLabel if passed', () => {
@@ -57,15 +51,8 @@ describe('Control component', () => {
         const tree = render(props);
         const icon = tree.children[0];
 
-        expect(tree.props.className).toContain('j-control');
-        expect(icon.props.className).toContain('j-icon');
-        expect(icon.props.className).toContain('j-icon--type-add');
-        tree.props.onClick();
-        expect(mockFunction).toHaveBeenCalled();
-
+        runCommonTest(tree);
         expect(icon.props['aria-label']).toContain(props.ariaLabel);
-
-        expect(tree).toMatchSnapshot();
     });
 
     it('renders with an additional className and ariaLabel if passed', () => {
@@ -77,16 +64,9 @@ describe('Control component', () => {
         const tree = render(props);
         const icon = tree.children[0];
 
-        expect(tree.props.className).toContain('j-control');
-        expect(icon.props.className).toContain('j-icon');
-        expect(icon.props.className).toContain('j-icon--type-add');
-        tree.props.onClick();
-        expect(mockFunction).toHaveBeenCalled();
-
+        runCommonTest(tree);
         expect(tree.props.className).toContain('mock-class');
         expect(icon.props['aria-label']).toContain(props.ariaLabel);
-
-        expect(tree).toMatchSnapshot();
     });
 
 });
