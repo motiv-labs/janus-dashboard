@@ -14,6 +14,7 @@ import getRandomString from '../../../helpers/getRandomString';
 
 describe('apiResponseReducer', () => {
     const confirmationModalState = {
+        actionType: '',
         api: {},
         apiName: null,
         message: '',

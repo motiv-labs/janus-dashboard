@@ -37,6 +37,7 @@ export const openConfirmationModal = (action, api, apiName) => {
                     apiName,
                     message: 'Are you sure you want to save?',
                     status: action,
+                    actionType: 'save',
                     title: 'Save',
                 };
             }
@@ -46,6 +47,7 @@ export const openConfirmationModal = (action, api, apiName) => {
                     apiName,
                     message: 'Are you sure you want to update?',
                     status: action,
+                    actionType: 'update',
                     title: 'Update',
                 };
             }
@@ -54,6 +56,7 @@ export const openConfirmationModal = (action, api, apiName) => {
                 return {
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: action,
+                    actionType: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
                     apiName,
                 };
