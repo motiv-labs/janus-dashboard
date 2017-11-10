@@ -86,7 +86,6 @@ export const closeToaster = () => ({
 });
 
 export const afterCloseConfirmationModal = (status, api, apiName) => (dispatch, getState) => {
-    console.error('STATUS', status);
     switch (status) {
         case 'save': {
             return confirmedSaveEndpoint(dispatch, api);
@@ -98,10 +97,10 @@ export const afterCloseConfirmationModal = (status, api, apiName) => (dispatch, 
             return confirmedUpdateEndpoint(dispatch, api);
         }
         case 'delete': {
-            return confirmedDeleteEndpoint(dispatch, apiName);
+            return confirmedDeleteEndpoint(dispatch, apiName, !!api);
         }
         case 'deleteOAuthServer': {
-            return confirmedDeleteOAuthServer(dispatch, apiName);
+            return confirmedDeleteOAuthServer(dispatch, apiName, !!api);
         }
         default:
             return false;

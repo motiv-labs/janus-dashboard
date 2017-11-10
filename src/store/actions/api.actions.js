@@ -361,7 +361,7 @@ export const confirmedUpdateEndpoint = async (dispatch, api) => {
     }
 };
 
-export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
+export const confirmedDeleteEndpoint = async (dispatch, apiName, shouldRedirect) => {
     dispatch(deleteEndpointRequest());
     dispatch(closeConfirmationModal());
 
@@ -370,7 +370,7 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName) => {
 
         dispatch(deleteEndpointSuccess());
         dispatch(fetchEndpoints());
-        history.push('/');
+        shouldRedirect && history.push('/');
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
