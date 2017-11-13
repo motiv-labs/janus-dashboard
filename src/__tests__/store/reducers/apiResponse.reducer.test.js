@@ -19,6 +19,7 @@ describe('apiResponseReducer', () => {
         apiName: null,
         message: '',
         needConfirm: false,
+        shouldRedirect: null,
         status: null,
         title: '',
     };
@@ -75,12 +76,14 @@ describe('apiResponseReducer', () => {
         const apiName = getRandomString();
         const message = getRandomString();
         const onConfirm = getRandomString();
+        const shouldRedirect = getRandomString();
         const status = getRandomString();
         const title = getRandomString();
         const payload = {
             api,
             apiName,
             message,
+            shouldRedirect,
             status,
             title,
         };
@@ -98,6 +101,7 @@ describe('apiResponseReducer', () => {
                 expect(result.confirmationModal.api).toEqual(api);
                 expect(result.confirmationModal.apiName).toEqual(apiName);
                 expect(result.confirmationModal.message).toEqual(message);
+                expect(result.confirmationModal.shouldRedirect).toEqual(shouldRedirect);
                 expect(result.confirmationModal.status).toEqual(status);
                 expect(result.confirmationModal.title).toEqual(title);
                 expect(result.confirmationModal.needConfirm).toEqual(true);

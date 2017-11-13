@@ -10,6 +10,7 @@ import isNoSearchResults from '../../../helpers/isNoSearchResults';
 import ROUTES from '../../../configurations/routes.config';
 
 import PaginatedList from '../../PaginatedList/PaginatedList';
+import Control from '../../../components/Control/Control';
 import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
@@ -52,15 +53,13 @@ class OAuthServersList extends PureComponent {
                 <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                     <Icon type="edit" ariaLabel="Edit" />
                 </Link>
-                <Link
-                    to={'/oauth/servers'}
-                    className={table('controls-item')}
+                <Control
+                    className={table('controls-item')()}
+                    icon="delete"
                     onClick={() => {
                         this.handleDelete(server);
                     }}
-                >
-                    <Icon type="delete" ariaLabel="Delete" />
-                </Link>
+                />
             </div>
         </div>
     ))

@@ -16,6 +16,7 @@ export const confirmationModalState = {
     apiName: null,
     message: '',
     needConfirm: false,
+    shouldRedirect: null,
     status: null,
     title: '',
 };
@@ -29,7 +30,6 @@ export const initialState = {
     isOpen: false,
     needConfirm: false,
     status: null,
-    shouldRedirect: null,
     statusText: '',
     title: '',
     message: '',
