@@ -156,9 +156,7 @@ class EndpointForm extends PureComponent {
                                     <Button
                                         type="button"
                                         mod="danger"
-                                        onClick={() => {
-                                            handleDelete(api.name);
-                                        }}
+                                        onClick={handleDelete}
                                     >
                                         <Icon type="delete-white" />
                                         Delete

@@ -43,8 +43,10 @@ class ApiList extends PureComponent {
         return !!oauth && !!oauth.enabled;
     }
 
-    handleDelete = (apiName) => {
-        this.props.deleteEndpoint(apiName, this.props.refreshEndpoints);
+    handleDelete = (api) => {
+        const needRedirect = false;
+
+        this.props.deleteEndpoint(api, needRedirect);
     };
 
     renderRows = list => list.map((api, index) => (
@@ -73,7 +75,7 @@ class ApiList extends PureComponent {
                     className={table('controls-item')()}
                     icon="delete"
                     onClick={() => {
-                        this.handleDelete(api.name);
+                        this.handleDelete(api);
                     }}
                 />
             </div>

@@ -313,8 +313,9 @@ export const saveEndpoint = api => dispatch =>
 export const updateEndpoint = api => dispatch =>
     dispatch(openConfirmationModal('update', api, api.name));
 
-export const deleteEndpoint = apiName => dispatch =>
-    dispatch(openConfirmationModal('delete', {}, apiName));
+export const deleteEndpoint = (api, shouldRedirect) => dispatch => {
+    return dispatch(openConfirmationModal('delete', {}, api.name, shouldRedirect));
+};
 
 export const confirmedSaveEndpoint = async (dispatch, api) => {
     dispatch(saveEndpointRequest(api));

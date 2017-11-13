@@ -29,6 +29,7 @@ export const initialState = {
     isOpen: false,
     needConfirm: false,
     status: null,
+    shouldRedirect: null,
     statusText: '',
     title: '',
     message: '',
@@ -51,7 +52,7 @@ export default function reducer(state = initialState, action) {
             };
         }
         case OPEN_CONFIRMATION_MODAL: {
-            const { actionType, api, apiName, message, status, title } = action.payload;
+            const { actionType, api, apiName, message, shouldRedirect, status, title } = action.payload;
 
             return {
                 ...state,
@@ -60,6 +61,7 @@ export default function reducer(state = initialState, action) {
                     api,
                     apiName,
                     message,
+                    shouldRedirect,
                     status,
                     title,
                     needConfirm: true,

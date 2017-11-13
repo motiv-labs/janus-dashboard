@@ -27,7 +27,7 @@ export const closeResponseModal = () => ({
     type: CLOSE_RESPONSE_MODAL,
 });
 
-export const openConfirmationModal = (action, api, apiName) => {
+export const openConfirmationModal = (action, api, apiName, shouldRedirect) => {
     const createConfirmationContent = action => {
         switch (action) {
             case 'save':
@@ -54,12 +54,13 @@ export const openConfirmationModal = (action, api, apiName) => {
             case 'delete':
             case 'deleteOAuthServer': {
                 return {
-                    api,
+                    //api,
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: action,
                     actionType: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
                     apiName,
+                    shouldRedirect,
                 };
             }
             default:
@@ -89,7 +90,7 @@ export const closeToaster = () => ({
     type: CLOSE_TOASTER,
 });
 
-export const afterCloseConfirmationModal = (actionType, item, itemName) => (dispatch, getState) => {
+export const afterCloseConfirmationModal = (actionType, item, itemName, shouldRedirect) => (dispatch, getState) => {
     switch (actionType) {
         case 'save': {
             return confirmedSaveEndpoint(dispatch, item);
@@ -101,10 +102,10 @@ export const afterCloseConfirmationModal = (actionType, item, itemName) => (disp
             return confirmedUpdateEndpoint(dispatch, item);
         }
         case 'delete': {
-            return confirmedDeleteEndpoint(dispatch, itemName, !!item);
+            return confirmedDeleteEndpoint(dispatch, itemName, shouldRedirect);
         }
         case 'deleteOAuthServer': {
-            return confirmedDeleteOAuthServer(dispatch, itemName, !!item);
+            return confirmedDeleteOAuthServer(dispatch, itemName, shouldRedirect);
         }
         default:
             return false;
