@@ -11,6 +11,7 @@ import {
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
 import setToasterMessage from '../../../helpers/setToasterMessage';
 import getRandomString from '../../../helpers/getRandomString';
+import getRandomBoolean from '../../../helpers/getRandomBoolean';
 
 describe('apiResponseReducer', () => {
     const confirmationModalState = {
@@ -76,7 +77,7 @@ describe('apiResponseReducer', () => {
         const apiName = getRandomString();
         const message = getRandomString();
         const onConfirm = getRandomString();
-        const shouldRedirect = getRandomString();
+        const shouldRedirect = getRandomBoolean();
         const status = getRandomString();
         const title = getRandomString();
         const payload = {
