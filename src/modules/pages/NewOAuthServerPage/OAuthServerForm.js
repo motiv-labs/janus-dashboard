@@ -8,6 +8,7 @@ import Select from 'react-select';
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
 import block from '../../../helpers/bem-cn';
+import checkOnPattern from '../../../helpers/pattern-check';
 import optionsTransformer from '../../../helpers/optionsTransformer';
 import getValues from '../../../helpers/getValues';
 
@@ -227,17 +228,21 @@ class OAuthServerForm extends PureComponent {
                     <div className={b('section')}>
                         <div className={b('section-title')}>1. General</div>
                         <Row className={b('row')()} fullwidth>
-                            <Row col>
-                                <Label>OAuth Server Name</Label>
+                            <div className={col()}>
+                                <div className={col('item')}>
+                                    <Label>OAuth Server Name</Label>
+                                </div>
                                 <Field
                                     name="name"
                                     type="text"
                                     component={Input}
                                     disabled={editing}
+                                    validate={checkOnPattern('name')}
                                     required
                                 />
+                                <span className="j-input__warning">The name should contain only letters, '-' and/or '_'.</span>
                                 <Hint>Must be unique.</Hint>
-                            </Row>
+                            </div>
                         </Row>
                     </div>
                     <div className={b('section')}>

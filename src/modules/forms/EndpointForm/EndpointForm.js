@@ -171,17 +171,21 @@ class EndpointForm extends PureComponent {
                     <div className={b('section')}>
                         <div className={b('section-title')}>1. General</div>
                         <Row className={b('row')()} fullwidth>
-                            <Row col>
-                                <Label>API Name</Label>
+                            <div className={col()}>
+                                <div className={col('item')}>
+                                    <Label>API Name</Label>
+                                </div>
                                 <Field
                                     name="name"
                                     type="text"
                                     component={Input}
                                     disabled={disabled}
+                                    validate={checkOnPattern('name')}
                                     required
                                 />
+                                <span className="j-input__warning">The name should contain only letters, '-' and/or '_'.</span>
                                 <Hint>Must be unique.</Hint>
-                            </Row>
+                            </div>
                             <Row col>
                                 <Label>Is Active?</Label>
                                 <Row className={b('radio-wrap')()}>

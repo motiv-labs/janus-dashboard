@@ -12,9 +12,18 @@ import R from 'ramda';
  */
 
 const validation = pattern => value => {
-    const fn = p => new RegExp(`^${p}`).test(value);
+    switch (pattern) {
+        case 'name': {
+            const nameRegex = /^[a-z_-]{1,100}$/;
 
-    return R.any(fn)(pattern);
+            return nameRegex.test(value);
+        }
+        default: {
+            const fn = p => new RegExp(`^${pattern}`).test(value);
+
+            return R.any(fn)(pattern);
+        }
+    }
 };
 
 export default validation;
