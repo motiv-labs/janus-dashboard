@@ -43,7 +43,7 @@ class ApiList extends PureComponent {
         return !!oauth && !!oauth.enabled;
     }
 
-    handleDelete = (api) => {
+    handleDelete = api => {
         this.props.deleteEndpoint(api);
     };
 
