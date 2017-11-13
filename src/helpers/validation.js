@@ -18,6 +18,11 @@ const validation = pattern => value => {
 
             return nameRegex.test(value);
         }
+        case 'url': {
+            const urlRegex = /^https?:\/\/[a-z_-]+\.[a-z]{2,100}/m;
+
+            return urlRegex.test(value);
+        }
         default: {
             const fn = p => new RegExp(`^${pattern}`).test(value);
 

@@ -357,6 +357,7 @@ class EndpointForm extends PureComponent {
                                     type="text"
                                     placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
                                     component={Input}
+                                    validate={checkOnPattern('url')}
                                 />
                                 <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
                             </Row>
