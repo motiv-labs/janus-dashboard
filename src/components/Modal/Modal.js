@@ -34,17 +34,17 @@ const Modal = ({
         onClose={closeModal}
         discardDefaults
     >
-        <div className={b('inner')}>
-            <div className={b('title')}>
+        <div className={b('inner')()}>
+            <div className={b('title')()}>
                 {title}
             </div>
-            <div className={b('body')}>
-                <div className={b('text')}>
+            <div className={b('body')()}>
+                <div className={b('text')()}>
                     {message}
                 </div>
             </div>
         </div>
-        <div className={b('buttons-group').mix('j-buttons__wrapper')}>
+        <div className={b('buttons-group').mix('j-buttons__wrapper')()}>
             { buttons }
         </div>
     </Modaliz>

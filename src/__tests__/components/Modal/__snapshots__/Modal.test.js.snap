@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Modal component renders correctly 1`] = `
+<Modal
+  closeModal={[Function]}
+  message="Modal test message"
+  show={true}
+>
+  <Modaliz
+    className="j-confirmation"
+    conditionalRender={false}
+    discardDefaults={true}
+    onClose={[Function]}
+    show={true}
+    simple={false}
+    speed={500}
+    text=""
+    title=""
+  >
+    <div
+      className="modaliz-wrapper j-confirmation-wrapper"
+      style={Object {}}
+    >
+      <div
+        className="modaliz-container j-confirmation-container"
+      >
+        <div
+          className="modaliz-close j-confirmation-close"
+          onClick={[Function]}
+        >
+          ×
+        </div>
+        <div
+          className="j-confirmation__inner"
+        >
+          <div
+            className="j-confirmation__title"
+          />
+          <div
+            className="j-confirmation__body"
+          >
+            <div
+              className="j-confirmation__text"
+            >
+              Modal test message
+            </div>
+          </div>
+        </div>
+        <div
+          className="j-confirmation__buttons-group j-buttons__wrapper"
+        />
+      </div>
+      <div
+        className="modaliz-overlay j-confirmation-overlay"
+        onClick={[Function]}
+      />
+    </div>
+  </Modaliz>
+</Modal>
+`;
+
+exports[`Modal component renders correctly with buttons if an additional prop \`buttons\` is passed 1`] = `
+<Modal
+  buttons={
+    Array [
+      <button>
+        Cancel
+    </button>,
+      <button>
+        Confirm
+    </button>,
+    ]
+  }
+  closeModal={[Function]}
+  message="Modal test message"
+  show={true}
+>
+  <Modaliz
+    className="j-confirmation"
+    conditionalRender={false}
+    discardDefaults={true}
+    onClose={[Function]}
+    show={true}
+    simple={false}
+    speed={500}
+    text=""
+    title=""
+  >
+    <div
+      className="modaliz-wrapper j-confirmation-wrapper"
+      style={Object {}}
+    >
+      <div
+        className="modaliz-container j-confirmation-container"
+      >
+        <div
+          className="modaliz-close j-confirmation-close"
+          onClick={[Function]}
+        >
+          ×
+        </div>
+        <div
+          className="j-confirmation__inner"
+        >
+          <div
+            className="j-confirmation__title"
+          />
+          <div
+            className="j-confirmation__body"
+          >
+            <div
+              className="j-confirmation__text"
+            >
+              Modal test message
+            </div>
+          </div>
+        </div>
+        <div
+          className="j-confirmation__buttons-group j-buttons__wrapper"
+        >
+          <button
+            key="1"
+          >
+            Cancel
+          </button>
+          <button
+            key="2"
+          >
+            Confirm
+          </button>
+        </div>
+      </div>
+      <div
+        className="modaliz-overlay j-confirmation-overlay"
+        onClick={[Function]}
+      />
+    </div>
+  </Modaliz>
+</Modal>
+`;
+
+exports[`Modal component renders correctly with title if an additional prop \`title\` is passed 1`] = `
+<Modal
+  closeModal={[Function]}
+  message="Modal test message"
+  show={true}
+  title="Modal test title"
+>
+  <Modaliz
+    className="j-confirmation"
+    conditionalRender={false}
+    discardDefaults={true}
+    onClose={[Function]}
+    show={true}
+    simple={false}
+    speed={500}
+    text=""
+    title=""
+  >
+    <div
+      className="modaliz-wrapper j-confirmation-wrapper"
+      style={Object {}}
+    >
+      <div
+        className="modaliz-container j-confirmation-container"
+      >
+        <div
+          className="modaliz-close j-confirmation-close"
+          onClick={[Function]}
+        >
+          ×
+        </div>
+        <div
+          className="j-confirmation__inner"
+        >
+          <div
+            className="j-confirmation__title"
+          >
+            Modal test title
+          </div>
+          <div
+            className="j-confirmation__body"
+          >
+            <div
+              className="j-confirmation__text"
+            >
+              Modal test message
+            </div>
+          </div>
+        </div>
+        <div
+          className="j-confirmation__buttons-group j-buttons__wrapper"
+        />
+      </div>
+      <div
+        className="modaliz-overlay j-confirmation-overlay"
+        onClick={[Function]}
+      />
+    </div>
+  </Modaliz>
+</Modal>
+`;
