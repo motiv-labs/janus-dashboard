@@ -21,7 +21,6 @@ const propTypes = {
     deleteOAuthServer: PropTypes.func.isRequired,
     fetchOAuthServers: PropTypes.func.isRequired,
     oAuthServers: PropTypes.arrayOf(PropTypes.object).isRequired,
-    refreshOAuthServers: PropTypes.func.isRequired,
     setAscendingFilter: PropTypes.func.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
     setSortingFilter: PropTypes.func.isRequired,
