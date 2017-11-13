@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Preloader component renders correctly 1`] = `
+<div
+  className="bubble-loader j-preloader"
+>
+  <div
+    className="bubble1"
+    style={
+      Object {
+        "animation": "bouncedelay 2s ease-in-out infinite both",
+        "animationDelay": "-0.32s",
+        "backgroundColor": "#90c200",
+        "borderRadius": "50%",
+        "display": "inline-block",
+        "height": "2rem",
+        "width": "2rem",
+      }
+    }
+  />
+  <div
+    className="bubble2"
+    style={
+      Object {
+        "animation": "bouncedelay 2s ease-in-out infinite both",
+        "animationDelay": "-0.16s",
+        "backgroundColor": "#bde841",
+        "borderRadius": "50%",
+        "display": "inline-block",
+        "height": "2rem",
+        "width": "2rem",
+      }
+    }
+  />
+  <div
+    className="bubble3"
+    style={
+      Object {
+        "animation": "bouncedelay 2s ease-in-out infinite both",
+        "backgroundColor": "#cee48f",
+        "borderRadius": "50%",
+        "display": "inline-block",
+        "height": "2rem",
+        "width": "2rem",
+      }
+    }
+  />
+</div>
+`;
