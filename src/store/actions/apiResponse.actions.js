@@ -54,6 +54,7 @@ export const openConfirmationModal = (action, api, apiName) => {
             case 'delete':
             case 'deleteOAuthServer': {
                 return {
+                    api,
                     message: 'Are you sure you want to delete? This can\'t be undone',
                     status: action,
                     actionType: 'delete',
