@@ -76,7 +76,6 @@ describe('apiResponseReducer', () => {
         const api = getRandomString();
         const apiName = getRandomString();
         const message = getRandomString();
-        const onConfirm = getRandomString();
         const shouldRedirect = getRandomBoolean();
         const status = getRandomString();
         const title = getRandomString();
@@ -121,7 +120,6 @@ describe('apiResponseReducer', () => {
             it('returns the whole state of confirmation modal and changes only `needConfirm` flag', () => {
                 expect(result.confirmationModal.apiName).toEqual(modalState.confirmationModal.apiName);
                 expect(result.confirmationModal.message).toEqual(modalState.confirmationModal.message);
-                expect(result.confirmationModal.onConfirm).toEqual(modalState.confirmationModal.onConfirm);
                 expect(result.confirmationModal.status).toEqual(modalState.confirmationModal.status);
                 expect(result.confirmationModal.title).toEqual(modalState.confirmationModal.title);
                 expect(result.confirmationModal.needConfirm).toEqual(confirmationModalState.needConfirm);
