@@ -350,8 +350,10 @@ class EndpointForm extends PureComponent {
                     <div className={b('section')}>
                         <div className={b('section-title')}>3. Health check</div>
                         <Row className={b('row')()} fullwidth>
-                            <Row col>
-                                <Label>Health URL (optional)</Label>
+                            <div className={col()}>
+                                <div className={col('item')}>
+                                    <Label>Health URL (optional)</Label>
+                                </div>
                                 <Field
                                     name="health_check.url"
                                     type="text"
@@ -359,8 +361,9 @@ class EndpointForm extends PureComponent {
                                     component={Input}
                                     validate={checkOnPattern('url')}
                                 />
+                                <span className="j-input__warning">Should be a valid url format('http://...' or 'https://...).</span>
                                 <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
-                            </Row>
+                            </div>
                             <Row col>
                                 <Label>Timeout (optional)</Label>
                                 <Field
