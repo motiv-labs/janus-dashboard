@@ -9,12 +9,11 @@ import Correct from './Correct';
 import PaginatedList from '../../PaginatedList/PaginatedList';
 import Preloader from '../../../components/Preloader/Preloader';
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults';
-import Control from '../../../components/Control/Control';
+import Icon from '../../../components/Icon/Icon';
 
 import './HealthCheckList.css';
 
 const b = block('j-healthcheck');
-const bItem = block(b('list-item')());
 const table = block('j-table');
 
 const propTypes = {
@@ -38,13 +37,15 @@ class HealthCheckList extends PureComponent {
     }
 
     renderRows = list => list.map(item => (
-        <div className={bItem()} key={item.name}>
-            <div className={bItem('name')}>{item.name}</div>
-            <div className={bItem('message')}>{item.description}</div>
-            {/*<div className={bItem('details')} onClick={() => this.handleShowDetails(item.name)}>Show Details</div>*/}
-            <Link to={`/${item.name}`}>
-                <Control icon="edit" />
-            </Link>
+        <div className={table('row')} key={item.name}>
+            <div className={table('td', { name: true })}>{item.name}</div>
+            <div className={table('td')}>{item.description}</div>
+            <div className={table('td')}></div>
+            <div className={table('td').mix(table('controls'))}>
+                <Link to={`/${item.name}`}>
+                    <Icon type="edit" />
+                </Link>
+            </div>
         </div>
     ));
 
@@ -65,7 +66,6 @@ class HealthCheckList extends PureComponent {
                         <div className="ascending-icon"></div>
                     </div>
                     <div className={table('th')}>Description</div>
-                    <div className={table('th')} />
                 </div>
             </div>
             <div className={table('tbody')}>
