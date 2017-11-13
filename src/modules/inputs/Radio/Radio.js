@@ -7,7 +7,11 @@ import './Radio.css';
 const radio = block('j-radio');
 
 const Radio = props => {
-    const { input, id, name, type } = props;
+    const { id, name, type, checked } = props;
+    let { input } = props;
+
+    if (checked)
+        input = {...input, checked};
 
     return (
         <div className={radio('wrap')}>

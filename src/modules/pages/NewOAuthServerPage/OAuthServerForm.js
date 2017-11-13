@@ -144,9 +144,10 @@ class OAuthServerForm extends PureComponent {
                             <Field
                                 name="token_strategy.settings.use_oauth_header"
                                 component={Radio}
-                                value={'true'}
+                                value="true"
                                 type="radio"
                                 id="use-aouth-header-is-active"
+                                checked={!!this.state.strategy.settings.use_oauth_header}
                             />
                             <Label htmlFor="use-aouth-header-is-active">Yes</Label>
                         </Row>
@@ -154,9 +155,10 @@ class OAuthServerForm extends PureComponent {
                             <Field
                                 name="token_strategy.settings.use_oauth_header"
                                 component={Radio}
-                                value={'false'}
+                                value="false"
                                 type="radio"
                                 id="use-aouth-header-is-not-active"
+                                checked={!this.state.strategy.settings.use_oauth_header}
                             />
                             <Label htmlFor="use-aouth-header-is-not-active">No</Label>
                         </Row>
