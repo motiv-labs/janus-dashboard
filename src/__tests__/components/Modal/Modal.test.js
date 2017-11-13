@@ -1,11 +1,8 @@
 import React from 'react';
-import { configure, mount } from 'enzyme';
+import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
-import Adapter from 'enzyme-adapter-react-15';
 
 import Modal from '../../../components/Modal/Modal';
-
-configure({ adapter: new Adapter() });
 
 describe('Modal component', () => {
     const render = props => mount(<Modal {...props} />);
