@@ -2,7 +2,7 @@
 
 exports[`NoSearchResults component renders correctly 1`] = `
 <div
-  className={[Function]}
+  className="info-panel j-pane"
 >
   <p
     style={
@@ -15,7 +15,7 @@ exports[`NoSearchResults component renders correctly 1`] = `
     ☹
   </p>
   <p
-    className={[Function]}
+    className="info-panel__text"
   >
     Nothing found
   </p>
