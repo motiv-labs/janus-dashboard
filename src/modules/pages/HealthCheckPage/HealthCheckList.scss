@@ -5,50 +5,6 @@ $status-font-size: ceil($hf-font-size-base*0.71); // 10px;
 $status-size: $hf-gutter*2;
 
 .j-healthcheck {
-    &__list {
-        background-color: $hf-color-white;
-        border: $hf-border;
-        border-radius: $hf-border-radius;
-        padding-left: $hf-padding-big;
-        padding-right: $hf-padding-big;
-
-        &-item {
-            display: flex;
-            justify-content: space-between;
-            align-content: center;
-            padding-top: $hf-padding-main;
-            padding-bottom: $hf-padding-main;
-            border-bottom: $hf-border;
-
-            &:last-child {
-                border-bottom: none;
-            }
-
-            &__name {
-                line-height: $hf-line-height-title;
-                flex: 1;
-            }
-
-            &__message {
-                flex: 2;
-            }
-
-            &__details {
-                margin-right: $hf-gutter*5;
-                font-size: $status-font-size;
-                font-weight: $hf-font-weight-bold;
-                text-transform: uppercase;
-                height: $status-size;
-                line-height: $status-size;
-                color: $hf-color-white;
-                background-color: $hf-color-orange;
-                border-radius: $hf-border-radius-small;
-                padding-left: $hf-gutter;
-                padding-right: $hf-gutter;
-                cursor: pointer;
-            }
-        }
-    }
     &__incorrect {
         display: flex;
         flex-direction: column;
