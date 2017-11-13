@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
     deleteOAuthServer,
     fetchOAuthServers,
-    refreshOAuthServers,
     setOAuthServersAscendingFilter,
     setOAuthServersListCurrentPageIndex,
     setOAuthServersSortingFilter,
@@ -23,7 +22,6 @@ export default connect(
     {
         deleteOAuthServer,
         fetchOAuthServers,
-        refreshOAuthServers,
         setAscendingFilter: setOAuthServersAscendingFilter,
         setCurrentPageIndex: setOAuthServersListCurrentPageIndex,
         setSortingFilter: setOAuthServersSortingFilter,

@@ -11,6 +11,7 @@ import {
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
 import setToasterMessage from '../../../helpers/setToasterMessage';
 import getRandomString from '../../../helpers/getRandomString';
+import getRandomBoolean from '../../../helpers/getRandomBoolean';
 
 describe('apiResponseReducer', () => {
     const confirmationModalState = {
@@ -19,6 +20,7 @@ describe('apiResponseReducer', () => {
         apiName: null,
         message: '',
         needConfirm: false,
+        isRedirect: null,
         status: null,
         title: '',
     };
@@ -74,13 +76,14 @@ describe('apiResponseReducer', () => {
         const api = getRandomString();
         const apiName = getRandomString();
         const message = getRandomString();
-        const onConfirm = getRandomString();
+        const isRedirect = getRandomBoolean();
         const status = getRandomString();
         const title = getRandomString();
         const payload = {
             api,
             apiName,
             message,
+            isRedirect,
             status,
             title,
         };
@@ -96,11 +99,12 @@ describe('apiResponseReducer', () => {
 
             it('returns an open modal with necesserity of confirmation deleting/saving of endpoint', () => {
                 expect(result.confirmationModal.api).toEqual(api);
-                expect(result.confirmationModal.apiName).toEqual(apiName);
-                expect(result.confirmationModal.message).toEqual(message);
-                expect(result.confirmationModal.status).toEqual(status);
-                expect(result.confirmationModal.title).toEqual(title);
-                expect(result.confirmationModal.needConfirm).toEqual(true);
+                expect(result.confirmationModal.apiName).toBe(apiName);
+                expect(result.confirmationModal.message).toBe(message);
+                expect(result.confirmationModal.isRedirect).toBe(isRedirect);
+                expect(result.confirmationModal.status).toBe(status);
+                expect(result.confirmationModal.title).toBe(title);
+                expect(result.confirmationModal.needConfirm).toBe(true);
             });
 
             it('should handle only change exact amount of reducer properties', () => {
@@ -114,12 +118,11 @@ describe('apiResponseReducer', () => {
             });
 
             it('returns the whole state of confirmation modal and changes only `needConfirm` flag', () => {
-                expect(result.confirmationModal.apiName).toEqual(modalState.confirmationModal.apiName);
-                expect(result.confirmationModal.message).toEqual(modalState.confirmationModal.message);
-                expect(result.confirmationModal.onConfirm).toEqual(modalState.confirmationModal.onConfirm);
-                expect(result.confirmationModal.status).toEqual(modalState.confirmationModal.status);
-                expect(result.confirmationModal.title).toEqual(modalState.confirmationModal.title);
-                expect(result.confirmationModal.needConfirm).toEqual(confirmationModalState.needConfirm);
+                expect(result.confirmationModal.apiName).toBe(modalState.confirmationModal.apiName);
+                expect(result.confirmationModal.message).toBe(modalState.confirmationModal.message);
+                expect(result.confirmationModal.status).toBe(modalState.confirmationModal.status);
+                expect(result.confirmationModal.title).toBe(modalState.confirmationModal.title);
+                expect(result.confirmationModal.needConfirm).toBe(confirmationModalState.needConfirm);
             });
 
             it('should handle only change exact amount of reducer properties', () => {
