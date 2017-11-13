@@ -10,6 +10,7 @@ import {
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
+import { LOCATION_CHANGE } from 'react-router-redux';
 
 export const initialState = {
     status: null,
@@ -65,6 +66,7 @@ export default function reducer(state = initialState, action) {
                 problemEndpoint: {},
             };
         }
+        case LOCATION_CHANGE:
         case DISCARD_PAGINATION: {
             return {
                 ...state,
