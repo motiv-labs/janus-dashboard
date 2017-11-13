@@ -31,10 +31,10 @@ const ConfirmationModal = ({
     status,
     title,
     afterCloseConfirmationModal,
-    shouldRedirect,
+    isRedirect,
 }) => {
     const handleSubmitConfirmation = () =>
-        afterCloseConfirmationModal(status, api, apiName, shouldRedirect);
+        afterCloseConfirmationModal(status, api, apiName, isRedirect);
 
     return (
         <Modal
@@ -59,7 +59,7 @@ const mapStateToProps = (state) => {
         apiName,
         message,
         needConfirm,
-        shouldRedirect,
+        isRedirect,
         status,
         title,
     } = state.apiResponseModalReducer.confirmationModal;
@@ -69,7 +69,7 @@ const mapStateToProps = (state) => {
         apiName,
         message,
         needConfirm,
-        shouldRedirect,
+        isRedirect,
         status,
         title,
     };

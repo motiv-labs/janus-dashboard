@@ -27,7 +27,7 @@ export const closeResponseModal = () => ({
     type: CLOSE_RESPONSE_MODAL,
 });
 
-export const openConfirmationModal = (action, api, apiName, shouldRedirect) => {
+export const openConfirmationModal = (action, api, apiName, isRedirect) => {
     const createConfirmationContent = action => {
         switch (action) {
             case 'save':
@@ -59,7 +59,7 @@ export const openConfirmationModal = (action, api, apiName, shouldRedirect) => {
                     actionType: 'delete',
                     title: `Delete ${apiName ? apiName + '?' : ''}`,
                     apiName,
-                    shouldRedirect,
+                    isRedirect,
                 };
             }
             default:
@@ -89,7 +89,7 @@ export const closeToaster = () => ({
     type: CLOSE_TOASTER,
 });
 
-export const afterCloseConfirmationModal = (actionType, item, itemName, shouldRedirect) => (dispatch, getState) => {
+export const afterCloseConfirmationModal = (actionType, item, itemName, isRedirect) => (dispatch, getState) => {
     switch (actionType) {
         case 'save': {
             return confirmedSaveEndpoint(dispatch, item);
@@ -101,10 +101,10 @@ export const afterCloseConfirmationModal = (actionType, item, itemName, shouldRe
             return confirmedUpdateEndpoint(dispatch, item);
         }
         case 'delete': {
-            return confirmedDeleteEndpoint(dispatch, itemName, shouldRedirect);
+            return confirmedDeleteEndpoint(dispatch, itemName, isRedirect);
         }
         case 'deleteOAuthServer': {
-            return confirmedDeleteOAuthServer(dispatch, itemName, shouldRedirect);
+            return confirmedDeleteOAuthServer(dispatch, itemName, isRedirect);
         }
         default:
             return false;

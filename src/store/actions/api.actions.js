@@ -313,8 +313,8 @@ export const saveEndpoint = api => dispatch =>
 export const updateEndpoint = api => dispatch =>
     dispatch(openConfirmationModal('update', api, api.name));
 
-export const deleteEndpoint = (api, shouldRedirect/*: Boolean*/) => dispatch =>
-    dispatch(openConfirmationModal('delete', {}, api.name, shouldRedirect));
+export const deleteEndpoint = (api, isRedirect/*: Boolean*/) => dispatch =>
+    dispatch(openConfirmationModal('delete', {}, api.name, isRedirect));
 
 export const confirmedSaveEndpoint = async (dispatch, api) => {
     dispatch(saveEndpointRequest(api));
@@ -361,7 +361,7 @@ export const confirmedUpdateEndpoint = async (dispatch, api) => {
     }
 };
 
-export const confirmedDeleteEndpoint = async (dispatch, apiName, shouldRedirect) => {
+export const confirmedDeleteEndpoint = async (dispatch, apiName, isRedirect) => {
     dispatch(deleteEndpointRequest());
     dispatch(closeConfirmationModal());
 
@@ -370,7 +370,7 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName, shouldRedirect)
 
         dispatch(deleteEndpointSuccess());
         dispatch(fetchEndpoints());
-        shouldRedirect && history.push('/');
+        isRedirect && history.push('/');
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
