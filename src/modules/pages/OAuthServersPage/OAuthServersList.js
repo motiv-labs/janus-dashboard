@@ -35,7 +35,7 @@ class OAuthServersList extends PureComponent {
     }
 
     handleDelete = serverName => {
-        this.props.deleteOAuthServer(serverName, this.props.refreshOAuthServers);
+        this.props.deleteOAuthServer(serverName);
     };
 
     getTokenUrl = pathArray => target => {
@@ -57,7 +57,7 @@ class OAuthServersList extends PureComponent {
                     to={'/oauth/servers'}
                     className={table('controls-item')}
                     onClick={() => {
-                        this.handleDelete(server.name);
+                        this.handleDelete(server);
                     }}
                 >
                     <Icon type="delete" ariaLabel="Delete" />

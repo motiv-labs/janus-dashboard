@@ -44,9 +44,7 @@ class ApiList extends PureComponent {
     }
 
     handleDelete = (api) => {
-        const needRedirect = false;
-
-        this.props.deleteEndpoint(api, needRedirect);
+        this.props.deleteEndpoint(api);
     };
 
     renderRows = list => list.map((api, index) => (

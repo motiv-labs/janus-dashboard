@@ -133,9 +133,10 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName, shouldRed
     }
 };
 
-export const deleteOAuthServer = serverName => dispatch =>
+export const deleteOAuthServer = (server, shouldRedirect/*: Boolean*/) => dispatch =>
     dispatch(openConfirmationModal(
         'deleteOAuthServer',
         {},
-        serverName,
+        server.name,
+        shouldRedirect
     ));

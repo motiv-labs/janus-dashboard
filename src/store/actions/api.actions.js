@@ -313,7 +313,7 @@ export const saveEndpoint = api => dispatch =>
 export const updateEndpoint = api => dispatch =>
     dispatch(openConfirmationModal('update', api, api.name));
 
-export const deleteEndpoint = (api, shouldRedirect) => dispatch => {
+export const deleteEndpoint = (api, shouldRedirect/*: Boolean*/) => dispatch => {
     return dispatch(openConfirmationModal('delete', {}, api.name, shouldRedirect));
 };
 
