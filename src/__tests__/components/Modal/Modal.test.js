@@ -12,9 +12,10 @@ describe('Modal component', () => {
         show: true,
         message: 'Modal test message',
     };
+
     const runCommonTest = (wrapper, props) => {
         const tree = toJSON(wrapper);
-        const modaliz = tree.children[0];
+        const [modaliz] = tree.children;
 
         expect(tree.props.show).toEqual(props.show);
         expect(
@@ -33,6 +34,7 @@ describe('Modal component', () => {
     it('renders correctly', () => {
         const props = requiredProps;
         const wrapper = render(props);
+
         runCommonTest(wrapper, props);
     });
 
