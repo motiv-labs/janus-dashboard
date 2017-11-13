@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfoPanel component renders correctly 1`] = `
+<div
+  className="info-panel j-pane"
+>
+  <p
+    className="info-panel__text"
+  >
+    mock-text
+  </p>
+</div>
+`;
+
+exports[`InfoPanel component renders icon if passed 1`] = `
+<div
+  className="info-panel j-pane"
+>
+  mock-node
+  <p
+    className="info-panel__text"
+  >
+    mock-text
+  </p>
+</div>
+`;
