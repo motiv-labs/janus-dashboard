@@ -3,6 +3,8 @@ import renderer from 'react-test-renderer';
 import { Field, FieldArray, reduxForm } from 'redux-form';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
+import { mount } from 'enzyme';
+import toJSON from 'enzyme-to-json';
 
 import MultiRowField from '../../../components/MultiRowField/MultiRowField';
 
@@ -13,7 +15,7 @@ const initialValues = {
         },
         {
             name: 'you',
-        }
+        },
     ]
 };
 
@@ -39,6 +41,13 @@ const _Form = connect(
     })(Form)
 );
 
+const renderFakeForm = el => <Provider store={store}>
+    <_Form
+    >
+        {el}
+    </_Form>
+</Provider>;
+
 describe('MultiRowField component', () => {
     const requiredProps = {
         name: 'mock-name',
@@ -46,12 +55,7 @@ describe('MultiRowField component', () => {
 
     const wrap = el => renderer
         .create(
-            <Provider store={store}>
-                <_Form
-                >
-                    {el}
-                </_Form>
-            </Provider>
+            renderFakeForm(el)
         );
 
     it('renders correctly', () => {
@@ -81,7 +85,7 @@ describe('MultiRowField component', () => {
         expect(tree).toMatchSnapshot();
     });
 
-    it('calls push method when Control `Add` was clicked', () => {
+    it('calls `push` method when Control `Add` was clicked', () => {
         const tree = wrap(
             <MultiRowField
                 {...requiredProps}
@@ -89,5 +93,19 @@ describe('MultiRowField component', () => {
         ).toJSON();
 
         expect(tree.children[0].children[0].children[1].props.onClick().type).toBe('@@redux-form/ARRAY_PUSH');
+    });
+
+    it('calls `remove` method when Control `Remove` was clicked', () => {
+        const wrapper = mount(
+            renderFakeForm(
+                <MultiRowField
+                    {...requiredProps}
+                />
+            )
+        );
+        const controls = [...wrapper.find('.j-control')];
+
+        // first Control for adding, all others for removing
+        expect(controls[1].props.onClick().type).toBe('@@redux-form/ARRAY_REMOVE');
     });
 });
