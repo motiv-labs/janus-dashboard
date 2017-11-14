@@ -6,6 +6,7 @@ import { connect, Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
+import createTestForm from '../../../utils/createTestForm';
 import MultiRowField from '../../../components/MultiRowField/MultiRowField';
 
 const initialValues = {
@@ -27,23 +28,11 @@ const store = createStore(() => ({
     }
 }));
 
-const Form = ({ children, initialValues }) => children;
-
-const ConnectedForm = connect(
-    () => ({
-        initialValues
-    }),
-    null,
-)(
-    reduxForm({
-        form: 'mockForm',
-    })(Form)
-);
+const ConnectedForm = createTestForm(initialValues);
 
 const renderFakeForm = store => el =>
     <Provider store={store}>
-        <ConnectedForm
-        >
+        <ConnectedForm>
             {el}
         </ConnectedForm>
     </Provider>;
