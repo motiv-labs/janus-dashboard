@@ -1,6 +1,6 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import { Field, FieldArray, reduxForm } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { createStore } from 'redux';
 import { connect, Provider } from 'react-redux';
 import { mount } from 'enzyme';
@@ -19,7 +19,6 @@ const initialValues = {
     ]
 };
 
-// const spy = jest.fn();
 const store = createStore(() => ({
     form: {
         mockForm: {
@@ -28,9 +27,9 @@ const store = createStore(() => ({
     }
 }));
 
-let Form = ({ children, initialValues }) => children;
+const Form = ({ children, initialValues }) => children;
 
-const _Form = connect(
+const ConnectedForm = connect(
     () => ({
         initialValues
     }),
@@ -41,22 +40,23 @@ const _Form = connect(
     })(Form)
 );
 
-const renderFakeForm = el => <Provider store={store}>
-    <_Form
-    >
-        {el}
-    </_Form>
-</Provider>;
+const renderFakeForm = el =>
+    <Provider store={store}>
+        <ConnectedForm
+        >
+            {el}
+        </ConnectedForm>
+    </Provider>;
+
+const wrap = el => renderer
+    .create(
+        renderFakeForm(el)
+    );
 
 describe('MultiRowField component', () => {
     const requiredProps = {
         name: 'mock-name',
     };
-
-    const wrap = el => renderer
-        .create(
-            renderFakeForm(el)
-        );
 
     it('renders correctly', () => {
         const tree = wrap(
