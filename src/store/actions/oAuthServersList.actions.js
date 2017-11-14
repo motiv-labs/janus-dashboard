@@ -37,8 +37,3 @@ export const fetchOAuthServers = () => async dispatch => {
         errorHandler(dispatch)(error);
     }
 };
-
-export const refreshOAuthServers = server => ({
-    type: REFRESH_OAUTH_SERVERS,
-    payload: server,
-});

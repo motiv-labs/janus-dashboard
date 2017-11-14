@@ -117,7 +117,7 @@ export const saveOAuthServer = (pathname, server, isEditing) => dispatch =>
         server.name,
     ));
 
-export const confirmedDeleteOAuthServer = async (dispatch, serverName, shouldRedirect) => {
+export const confirmedDeleteOAuthServer = async (dispatch, serverName, isRedirect) => {
     dispatch(deleteOAuthServerRequest());
 
     try {
@@ -126,16 +126,17 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName, shouldRed
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
         dispatch(fetchOAuthServers());
-        shouldRedirect && history.push('/oauth/servers');
+        isRedirect && history.push('/oauth/servers');
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
     }
 };
 
-export const deleteOAuthServer = serverName => dispatch =>
+export const deleteOAuthServer = (server, isRedirect/*: Boolean*/) => dispatch =>
     dispatch(openConfirmationModal(
         'deleteOAuthServer',
         {},
-        serverName,
+        server.name,
+        isRedirect
     ));

@@ -41,8 +41,10 @@ class ApiItem extends PureComponent {
         getUpdatedEndpoint(values),
     )(this.props.selectedPlugins);
 
-    handleDelete = (apiName) => {
-        this.props.deleteEndpoint(apiName);
+    handleDelete = () => {
+        const needRedirect = true;
+
+        this.props.deleteEndpoint(this.props.api, needRedirect);
     };
 
     render() {
