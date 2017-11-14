@@ -27,4 +27,3 @@ describe('MultiRowField component', () => {
         expect(tree).toMatchSnapshot();
     });
 });
-
