@@ -1,5 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`MultiRowField component renders all what was passed as a props 1`] = `
+<div
+  className="j-col__item"
+>
+  <div>
+    <div
+      className="j-row"
+    >
+      <label
+        className="j-label"
+        htmlFor={undefined}
+      >
+        mock-title
+         
+        mock-placeholder
+      </label>
+      <button
+        className="j-control"
+        onClick={[Function]}
+        type="button"
+      >
+        <span
+          aria-label={undefined}
+          className="j-icon j-icon--type-add j-control__icon"
+        />
+      </button>
+    </div>
+    <div
+      className="j-hint j-hint--title"
+    >
+      mock-hint
+    </div>
+  </div>
+</div>
+`;
+
 exports[`MultiRowField component renders correctly 1`] = `
 <div
   className="j-col__item"

@@ -13,12 +13,36 @@ const store = createStore(() => ({}));
 const Decorated = reduxForm({ form: 'testForm' })(MultiRowField);
 
 describe('MultiRowField component', () => {
+    const requiredProps = {
+        name: 'mock-name',
+    };
+
     it('renders correctly', () => {
         const tree = renderer
             .create(
                 <Provider store={store}>
                     <Decorated
-                        name="mock-name"
+                        {...requiredProps}
+                    />
+                </Provider>
+            )
+            .toJSON();
+
+        expect(tree).toMatchSnapshot();
+    });
+
+    it('renders all what was passed as a props', () => {
+        const notRequiredProps = {
+            hint: 'mock-hint',
+            title: 'mock-title',
+            placeholder: 'mock-placeholder',
+        };
+        const tree = renderer
+            .create(
+                <Provider store={store}>
+                    <Decorated
+                        {...requiredProps}
+                        {...notRequiredProps}
                     />
                 </Provider>
             )

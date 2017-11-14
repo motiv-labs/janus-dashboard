@@ -23,7 +23,7 @@ class MultiRowField extends PureComponent {
     renderMembers = ({ fields, hint, placeholder, suffix, title }) => (
         <div>
             <div className={row()}>
-                <Label>{ title } {placeholder}</Label>
+                <Label>{ title } { placeholder }</Label>
                 <Control
                     onClick={() => fields.push()}
                     icon="add"
