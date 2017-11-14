@@ -14,7 +14,7 @@ import ApiList from './ApiList';
 
 const mapStateToProps = state => ({
     apiList: filteredApiList(state),
-    currentPageIndex: state.apiListReducer.currentPageIndex,
+    currentPageIndex: state.paginationReducer.currentPageIndex,
     searchQuery: state.searchReducer.searchQuery,
 });
 

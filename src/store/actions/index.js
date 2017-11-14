@@ -7,3 +7,4 @@ export * from './search.actions';
 export * from './request.actions';
 export * from './oAuthServersList.actions';
 export * from './oAuthServer.actions';
+export * from './pagination.actions';

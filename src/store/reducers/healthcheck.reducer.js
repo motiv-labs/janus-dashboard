@@ -5,8 +5,6 @@ import {
     FETCH_HEALTHCHECK_LIST_SUCCESS,
     FETCH_HEALTHCHECK_START,
     FETCH_HEALTHCHECK_SUCCESS,
-    DISCARD_PAGINATION,
-    SET_PAGINATION_PAGE,
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
@@ -14,7 +12,6 @@ import {
 export const initialState = {
     status: null,
     healthcheckList: [],
-    currentPageIndex: 0,
     isFetching: false,
     problemEndpoint: {},
     sortingFilter: '',
@@ -63,18 +60,6 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 problemEndpoint: {},
-            };
-        }
-        case DISCARD_PAGINATION: {
-            return {
-                ...state,
-                currentPageIndex: 0,
-            };
-        }
-        case SET_PAGINATION_PAGE: {
-            return {
-                ...state,
-                currentPageIndex: action.payload,
             };
         }
         case SET_SORTING_FILTER: {

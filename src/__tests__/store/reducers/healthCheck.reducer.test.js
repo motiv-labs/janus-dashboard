@@ -5,8 +5,6 @@ import {
     FETCH_HEALTHCHECK_LIST_SUCCESS,
     FETCH_HEALTHCHECK_START,
     FETCH_HEALTHCHECK_SUCCESS,
-    DISCARD_PAGINATION,
-    SET_PAGINATION_PAGE,
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../../../store/constants';
@@ -97,34 +95,6 @@ describe('healthCheckRducer', () => {
 
         it('returns the cleared health check item info', () => {
             expect(result.problemEndpoint).toEqual({});
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('DISCARD_PAGINATION', () => {
-        const result = healthCheckRducer({}, { type: DISCARD_PAGINATION });
-
-        it('returns the discarding pagination', () => {
-            expect(result.currentPageIndex).toEqual(0);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('SET_PAGINATION_PAGE', () => {
-        const currentPageIndex = Math.random();
-        const result = healthCheckRducer({}, {
-            type: SET_PAGINATION_PAGE,
-            payload: currentPageIndex,
-        });
-
-        it('returns the new page to the pagination', () => {
-            expect(result.currentPageIndex).toEqual(currentPageIndex);
         });
 
         it('has only change exact amount of reducer properties', () => {
