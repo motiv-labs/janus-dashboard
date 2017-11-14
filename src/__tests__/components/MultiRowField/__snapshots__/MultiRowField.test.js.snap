@@ -39,7 +39,7 @@ exports[`MultiRowField component renders all what was passed as a props 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"
@@ -83,7 +83,7 @@ exports[`MultiRowField component renders all what was passed as a props 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"
@@ -156,7 +156,7 @@ exports[`MultiRowField component renders correctly 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"
@@ -200,7 +200,7 @@ exports[`MultiRowField component renders correctly 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"

@@ -37,7 +37,7 @@ class MultiRowField extends PureComponent {
                 fields.map((member, index) =>
                     <Row className="double-fields" key={index} col>
                         <div className={row()}>
-                            <div className={row('item')}>
+                            <div className={row('item')()}>
                                 <Field
                                     name={suffix ? `${member}.${suffix}` : `${member}`}
                                     type="text"
