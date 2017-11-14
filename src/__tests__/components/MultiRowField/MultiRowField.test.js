@@ -40,7 +40,7 @@ const ConnectedForm = connect(
     })(Form)
 );
 
-const renderFakeForm = el =>
+const renderFakeForm = store => el =>
     <Provider store={store}>
         <ConnectedForm
         >
@@ -48,9 +48,9 @@ const renderFakeForm = el =>
         </ConnectedForm>
     </Provider>;
 
-const wrap = el => renderer
+const wrap = store => el => renderer
     .create(
-        renderFakeForm(el)
+        renderFakeForm(store)(el)
     );
 
 describe('MultiRowField component', () => {
@@ -59,7 +59,7 @@ describe('MultiRowField component', () => {
     };
 
     it('renders correctly', () => {
-        const tree = wrap(
+        const tree = wrap(store)(
             <MultiRowField
                 {...requiredProps}
             />
@@ -75,7 +75,7 @@ describe('MultiRowField component', () => {
             placeholder: 'mock-placeholder',
         };
 
-        const tree = wrap(
+        const tree = wrap(store)(
             <MultiRowField
                 {...requiredProps}
                 {...notRequiredProps}
@@ -86,7 +86,7 @@ describe('MultiRowField component', () => {
     });
 
     it('calls `push` method when Control `Add` was clicked', () => {
-        const tree = wrap(
+        const tree = wrap(store)(
             <MultiRowField
                 {...requiredProps}
             />
@@ -97,7 +97,7 @@ describe('MultiRowField component', () => {
 
     it('calls `remove` method when Control `Remove` was clicked', () => {
         const wrapper = mount(
-            renderFakeForm(
+            renderFakeForm(store)(
                 <MultiRowField
                     {...requiredProps}
                 />
