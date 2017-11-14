@@ -1,3 +1,4 @@
+import { LOCATION_CHANGE } from 'react-router-redux';
 import {
     FETCH_OAUTH_SERVERS_LIST_START,
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
@@ -30,6 +31,7 @@ export default function reducer(state = initialState, action) {
                 oAuthServers: action.payload,
             };
         }
+        case LOCATION_CHANGE:
         case DISCARD_OAUTH_SERVERS_PAGINATION: {
             return {
                 ...state,

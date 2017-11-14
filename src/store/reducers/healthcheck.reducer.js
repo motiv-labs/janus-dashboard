@@ -1,4 +1,5 @@
 import R from 'ramda';
+import { LOCATION_CHANGE } from 'react-router-redux';
 import {
     CLEAR_HEALTHCHECK_DETAILS,
     FETCH_HEALTHCHECK_LIST_START,
@@ -10,7 +11,6 @@ import {
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
-import { LOCATION_CHANGE } from 'react-router-redux';
 
 export const initialState = {
     status: null,
