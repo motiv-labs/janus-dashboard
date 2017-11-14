@@ -103,9 +103,11 @@ describe('MultiRowField component', () => {
                 />
             )
         );
-        const controls = [...wrapper.find('.j-control')];
+        const [firstControl, ...removeControls] = wrapper.find('.j-control');
 
         // first Control for adding, all others for removing
-        expect(controls[1].props.onClick().type).toBe('@@redux-form/ARRAY_REMOVE');
+        removeControls.forEach(el =>
+            expect(el.props.onClick().type).toBe('@@redux-form/ARRAY_REMOVE')
+        );
     });
 });
