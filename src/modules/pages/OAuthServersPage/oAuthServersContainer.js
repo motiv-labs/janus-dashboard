@@ -5,7 +5,7 @@ import {
     fetchOAuthServers,
     refreshOAuthServers,
     setOAuthServersAscendingFilter,
-    setOAuthServersListCurrentPageIndex,
+    setCurrentPageIndex,
     setOAuthServersSortingFilter,
 } from '../../../store/actions';
 import { filteredOAuthServersList } from '../../../store/selectors';
@@ -14,7 +14,7 @@ import OAuthServersList from './OAuthServersList';
 
 const mapStateToProps = state => ({
     oAuthServers: filteredOAuthServersList(state),
-    currentPageIndex: state.oAuthServersListReducer.currentPageIndex,
+    currentPageIndex: state.paginationReducer.currentPageIndex,
     searchQuery: state.searchReducer.searchQuery,
 });
 
@@ -25,7 +25,7 @@ export default connect(
         fetchOAuthServers,
         refreshOAuthServers,
         setAscendingFilter: setOAuthServersAscendingFilter,
-        setCurrentPageIndex: setOAuthServersListCurrentPageIndex,
+        setCurrentPageIndex,
         setSortingFilter: setOAuthServersSortingFilter,
     },
 )(OAuthServersList);

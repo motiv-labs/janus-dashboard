@@ -4,8 +4,6 @@ import {
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_OAUTH_SERVERS_SORTING_FILTER,
     SET_OAUTH_SERVERS_ASCEND_FILTER,
-    DISCARD_OAUTH_SERVERS_PAGINATION,
-    SET_OAUTH_SERVERS_PAGINATION_PAGE,
 } from '../../../store/constants/oAuthServersList.constants';
 
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
@@ -21,7 +19,7 @@ describe('oAuthServersListReducer', () => {
         });
 
         it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(5);
+            expect(touchedReducerProps(result)).toBe(4);
         });
     });
 
@@ -52,31 +50,6 @@ describe('oAuthServersListReducer', () => {
 
         it('has only change exact amount of reducer properties', () => {
             expect(touchedReducerProps(result)).toBe(2);
-        });
-    });
-
-    describe('DISCARD_OAUTH_SERVERS_PAGINATION', () => {
-        const result = oAuthServersListReducer({}, { type: DISCARD_OAUTH_SERVERS_PAGINATION });
-
-        it('returns discarded pagination state', () => {
-            expect(result.currentPageIndex).toEqual(0);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
-        });
-    });
-
-    describe('SET_OAUTH_SERVERS_PAGINATION_PAGE', () => {
-        const pageIndex = 1;
-        const result = oAuthServersListReducer({}, { type: SET_OAUTH_SERVERS_PAGINATION_PAGE, payload: pageIndex });
-
-        it('returns set pagination state', () => {
-            expect(result.currentPageIndex).toEqual(pageIndex);
-        });
-
-        it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
         });
     });
 

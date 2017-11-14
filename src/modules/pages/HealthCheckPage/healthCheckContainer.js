@@ -16,8 +16,7 @@ const mapStateToProps = state => ({
     healthcheckList: filteredHealthcheckList(state),
     status: state.healthcheckReducer.status,
     statusName: state.healthcheckReducer.statusName,
-    // problemToDisplay: state.healthcheckReducer.problemEndpoint,
-    currentPageIndex: state.healthcheckReducer.currentPageIndex,
+    currentPageIndex: state.paginationReducer.currentPageIndex,
     searchQuery: state.searchReducer.searchQuery,
 });
 

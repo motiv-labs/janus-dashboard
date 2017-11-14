@@ -1,17 +1,13 @@
-import { LOCATION_CHANGE } from 'react-router-redux';
 import {
     FETCH_ENDPOINTS_START,
     FETCH_ENDPOINTS_SUCCESS,
     REFRESH_ENDPOINTS,
-    DISCARD_PAGINATION,
-    SET_PAGINATION_PAGE,
     SET_SORTING_FILTER,
     SET_ASCEND_FILTER,
 } from '../constants';
 
 export const initialState = {
     apiList: [],
-    currentPageIndex: 0,
     isFetching: false,
     sortingFilter: '',
     sortAscend: true,
@@ -30,19 +26,6 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 apiList: action.payload,
                 isFetching: false,
-            };
-        }
-        case LOCATION_CHANGE:
-        case DISCARD_PAGINATION: {
-            return {
-                ...state,
-                currentPageIndex: 0,
-            };
-        }
-        case SET_PAGINATION_PAGE: {
-            return {
-                ...state,
-                currentPageIndex: action.payload,
             };
         }
         case SET_SORTING_FILTER: {

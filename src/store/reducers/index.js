@@ -12,6 +12,7 @@ import searchReducer from './search.reducer';
 import requestReducer from './request.reducer';
 import oAuthServersListReducer from './oAuthServersList.reducer';
 import oAuthServerReducer from './oAuthServer.reducer';
+import paginationReducer from './pagination.reducer';
 
 export default combineReducers({
   // here combine all reducers:
@@ -20,6 +21,7 @@ export default combineReducers({
     apiResponseModalReducer,
     apiListReducer,
     apiReducer,
+    paginationReducer,
     searchReducer,
     requestReducer,
     oAuthServersListReducer,
