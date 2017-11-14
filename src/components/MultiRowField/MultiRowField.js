@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
-
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../modules/labels/Label';
 import Input from '../../modules/inputs/Input';
