@@ -80,4 +80,14 @@ describe('MultiRowField component', () => {
 
         expect(tree).toMatchSnapshot();
     });
+
+    it('calls push method when Control `Add` was clicked', () => {
+        const tree = wrap(
+            <MultiRowField
+                {...requiredProps}
+            />
+        ).toJSON();
+
+        expect(tree.children[0].children[0].children[1].props.onClick().type).toBe('@@redux-form/ARRAY_PUSH');
+    });
 });
