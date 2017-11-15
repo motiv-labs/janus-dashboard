@@ -6,7 +6,7 @@ import R from 'ramda';
 import block from '../../../../helpers/bem-cn';
 
 import Row from '../../../Layout/Row/Row';
-import Label from '../../../labels/Label';
+import Label from '../../../../components/Label/Label';
 import Input from '../../../inputs/Input';
 import Hint from '../../../../components/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';

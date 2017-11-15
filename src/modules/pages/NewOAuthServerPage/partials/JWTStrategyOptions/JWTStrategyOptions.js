@@ -5,7 +5,7 @@ import { Field, FieldArray } from 'redux-form';
 import block from '../../../../../helpers/bem-cn';
 
 import Row from '../../../../Layout/Row/Row';
-import Label from '../../../../labels/Label';
+import Label from '../../../../../components/Label/Label';
 import Input from '../../../../inputs/Input';
 import Control from '../../../../../components/Control/Control';
 

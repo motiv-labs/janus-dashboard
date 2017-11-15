@@ -10,7 +10,7 @@ import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
 
 import Row from '../../../../Layout/Row/Row';
-import Label from '../../../../labels/Label';
+import Label from '../../../../../components/Label/Label';
 import Radio from '../../../../inputs/Radio/Radio';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../../components/Hint/Hint';
