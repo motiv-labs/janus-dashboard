@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tumbler component renders correctly 1`] = `
+<div
+  className="j-tumbler"
+>
+  <input
+    checked={false}
+    className="j-tumbler__checkbox"
+    name="mock-name"
+    onBlur={[Function]}
+    onChange={[Function]}
+    onDragStart={[Function]}
+    onDrop={[Function]}
+    onFocus={[Function]}
+    type="checkbox"
+    value=""
+  />
+  <div
+    className="j-tumbler__icon"
+  />
+</div>
+`;

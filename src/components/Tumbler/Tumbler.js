@@ -18,12 +18,12 @@ const Tumbler = ({ name }) => {
         <div className={b()}>
             <Field
                 name={name}
-                className={b('checkbox')}
+                className={b('checkbox')()}
                 component="input"
                 type="checkbox"
                 normalize={v => !!v}
             />
-            <div className={b('icon')}></div>
+            <div className={b('icon')()}></div>
         </div>
     );
 };
