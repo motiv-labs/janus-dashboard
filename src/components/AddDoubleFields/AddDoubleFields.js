@@ -36,7 +36,7 @@ const AddDoubleFields = ({ config, name, title }) => {
                     fields.map((member, index) => (
                         <Row className="double-fields" key={index} col>
                             <div className={row()}>
-                                <div className={row('item', {pair: true})}>
+                                <div className={row('item', {pair: true})()}>
                                     <Field
                                         name={`${member}.${config[0].sufix}`}
                                         type={config[0].type}
@@ -45,7 +45,7 @@ const AddDoubleFields = ({ config, name, title }) => {
                                         parse={passParse(config[0])}
                                     />
                                 </div>
-                                <div className={row('item')}>
+                                <div className={row('item')()}>
                                     <Field
                                         name={`${member}.${config[1].sufix}`}
                                         type={config[1].type}

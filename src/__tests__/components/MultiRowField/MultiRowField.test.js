@@ -1,12 +1,9 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { reduxForm } from 'redux-form';
 import { createStore } from 'redux';
-import { connect, Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
-import createTestForm from '../../../utils/createTestForm';
+import { renderFakeForm, wrap } from '../../../utils/createTestForm';
 import MultiRowField from '../../../components/MultiRowField/MultiRowField';
 
 const initialValues = {
@@ -28,27 +25,13 @@ const store = createStore(() => ({
     }
 }));
 
-const ConnectedForm = createTestForm(initialValues);
-
-const renderFakeForm = store => el =>
-    <Provider store={store}>
-        <ConnectedForm>
-            {el}
-        </ConnectedForm>
-    </Provider>;
-
-const wrap = store => el => renderer
-    .create(
-        renderFakeForm(store)(el)
-    );
-
 describe('MultiRowField component', () => {
     const requiredProps = {
         name: 'mock-name',
     };
 
     it('renders correctly', () => {
-        const tree = wrap(store)(
+        const tree = wrap(store)(initialValues)(
             <MultiRowField
                 {...requiredProps}
             />
@@ -64,7 +47,7 @@ describe('MultiRowField component', () => {
             placeholder: 'mock-placeholder',
         };
 
-        const tree = wrap(store)(
+        const tree = wrap(store)(initialValues)(
             <MultiRowField
                 {...requiredProps}
                 {...notRequiredProps}
@@ -75,7 +58,7 @@ describe('MultiRowField component', () => {
     });
 
     it('calls `push` method when Control `Add` was clicked', () => {
-        const tree = wrap(store)(
+        const tree = wrap(store)(initialValues)(
             <MultiRowField
                 {...requiredProps}
             />
@@ -86,7 +69,7 @@ describe('MultiRowField component', () => {
 
     it('calls `remove` method when Control `Remove` was clicked', () => {
         const wrapper = mount(
-            renderFakeForm(store)(
+            renderFakeForm(store)(initialValues)(
                 <MultiRowField
                     {...requiredProps}
                 />
