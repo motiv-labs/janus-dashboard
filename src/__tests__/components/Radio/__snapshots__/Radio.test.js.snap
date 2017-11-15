@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Radio component renders correctly 1`] = `
+<div
+  className="j-radio__wrap"
+>
+  <input
+    className="j-radio__input"
+    id={undefined}
+    name="mock-name"
+    type={undefined}
+  />
+  <div
+    className="j-radio__d1"
+  >
+    <div
+      className="j-radio__d2"
+    >
+      <div>
+        <svg
+          className="j-radio__svg j-radio__svg--1"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className={[Function]}
+            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+          />
+        </svg>
+        <svg
+          className="j-radio__svg j-radio__svg--2"
+          viewBox="0 0 24 24"
+        >
+          <path
+            className={[Function]}
+            d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
+          />
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+`;
