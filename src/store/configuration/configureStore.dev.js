@@ -1,4 +1,4 @@
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 import reduxThunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { routerMiddleware } from 'react-router-redux';
@@ -19,14 +19,14 @@ const vanillaPromise = store => next => (action) => {
 
     return Promise.resolve(action).then(store.dispatch);
 };
-
-const createStoreWithMiddleware = applyMiddleware(
-    vanillaPromise,
-    reduxThunk,
-    routingMiddleware,
-    logger,
-)(createStore);
-
-const configureStore = initialState => createStoreWithMiddleware(rootReducer, initialState);
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const configureStore = initialState => createStore(rootReducer, initialState, composeEnhancers(
+    applyMiddleware(
+        vanillaPromise,
+        reduxThunk,
+        routingMiddleware,
+        logger,
+    )
+));
 
 export default configureStore;
