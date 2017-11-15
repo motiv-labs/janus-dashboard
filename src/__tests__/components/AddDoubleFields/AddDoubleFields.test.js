@@ -7,6 +7,7 @@ import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
 import createTestForm from '../../../utils/createTestForm';
+import { wrap } from '../../../utils/createTestForm';
 import AddDoubleFields from '../../../components/AddDoubleFields/AddDoubleFields';
 
 const initialValues = {
@@ -28,20 +29,6 @@ const store = createStore(() => ({
     }
 }));
 
-const ConnectedForm = createTestForm(initialValues);
-
-const renderFakeForm = store => el =>
-    <Provider store={store}>
-        <ConnectedForm>
-            {el}
-        </ConnectedForm>
-    </Provider>;
-
-const wrap = store => el => renderer
-    .create(
-        renderFakeForm(store)(el)
-    );
-
 describe('AddDoubleFields component', () => {
     const requiredProps = {
         name: 'mock-name',
@@ -57,7 +44,7 @@ describe('AddDoubleFields component', () => {
     };
 
     it('renders correctly', () => {
-        const tree = wrap(store)(
+        const tree = wrap(store)(initialValues)(
             <AddDoubleFields
                 {...requiredProps}
             />
