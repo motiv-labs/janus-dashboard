@@ -1,9 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
-import { mount } from 'enzyme';
-import toJSON from 'enzyme-to-json';
 
-import { renderFakeForm, wrap } from '../../../utils/createTestForm';
+import { wrap } from '../../../utils/createTestForm';
 import Tumbler from '../../../components/Tumbler/Tumbler';
 
 const initialValues = {
