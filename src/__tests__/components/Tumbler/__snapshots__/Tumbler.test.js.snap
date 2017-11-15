@@ -6,7 +6,7 @@ exports[`Tumbler component renders correctly 1`] = `
 >
   <input
     checked={false}
-    className={[Function]}
+    className="j-tumbler__checkbox"
     name="mock-name"
     onBlur={[Function]}
     onChange={[Function]}
@@ -17,7 +17,7 @@ exports[`Tumbler component renders correctly 1`] = `
     value=""
   />
   <div
-    className={[Function]}
+    className="j-tumbler__icon"
   />
 </div>
 `;
