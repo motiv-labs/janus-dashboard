@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label component renders correctly 1`] = `
+<label
+  className="j-label"
+  htmlFor="mock-target"
+>
+  mock-text
+</label>
+`;
+
+exports[`Label component renders with all children,  if \`children\` is not a String 1`] = `
+<label
+  className="j-label"
+  htmlFor={undefined}
+>
+  <p>
+    mock-child-1
+  </p>
+  <p>
+    mock-child-2
+  </p>
+  <p>
+    mock-child-3
+  </p>
+</label>
+`;
+
+exports[`Label component renders with single child, if \`children\` is not a String 1`] = `
+<label
+  className="j-label"
+  htmlFor={undefined}
+>
+  <p>
+    mock-child
+  </p>
+</label>
+`;
