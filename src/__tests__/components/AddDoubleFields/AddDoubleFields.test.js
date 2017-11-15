@@ -1,8 +1,5 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { reduxForm } from 'redux-form';
 import { createStore } from 'redux';
-import { connect, Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 

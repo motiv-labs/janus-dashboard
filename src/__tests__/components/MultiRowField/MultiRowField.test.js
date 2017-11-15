@@ -1,14 +1,10 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
-import { reduxForm } from 'redux-form';
 import { createStore } from 'redux';
-import { connect, Provider } from 'react-redux';
 import { mount } from 'enzyme';
 import toJSON from 'enzyme-to-json';
 
 import { renderFakeForm, wrap } from '../../../utils/createTestForm';
 import MultiRowField from '../../../components/MultiRowField/MultiRowField';
-import { initialize } from 'redux-form/lib/actions';
 
 const initialValues = {
     'mock-name': [
