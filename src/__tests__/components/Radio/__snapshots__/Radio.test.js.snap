@@ -8,7 +8,7 @@ exports[`Radio component renders correctly 1`] = `
     className="j-radio__input"
     id={undefined}
     name="mock-name"
-    type={undefined}
+    type="radio"
   />
   <div
     className="j-radio__d1"
