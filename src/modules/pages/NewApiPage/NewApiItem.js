@@ -82,7 +82,7 @@ class NewApiItem extends PureComponent {
             <EndpointForm
                 api={this.props.api}
                 apiSchema={this.props.apiSchema}
-                editing={isCloning()}
+                editing={false}
                 disabled={false}
                 excludePlugin={this.props.excludePlugin}
                 handleDelete={this.handleDelete}
