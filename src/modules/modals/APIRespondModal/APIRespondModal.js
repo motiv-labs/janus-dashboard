@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import Modal from '../../../components/Modal/Modal';
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 
 const propTypes = {
     closeModal: PropTypes.func.isRequired,

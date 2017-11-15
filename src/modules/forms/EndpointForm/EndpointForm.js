@@ -22,7 +22,7 @@ import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
 import Hint from '../../labels/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 import Icon from '../../../components/Icon/Icon';
 
 import RenderPlugins from '../plugins/RenderPlugins';
