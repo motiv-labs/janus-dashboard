@@ -13,4 +13,17 @@ describe('Logo component', () => {
 
         expect(tree).toMatchSnapshot();
     });
+
+    it('renders with additional className if passed', () => {
+        const props = {
+            className: 'mock-class',
+        };
+        const tree = renderer
+            .create(
+                <Logo {...props} />
+            )
+            .toJSON();
+
+        expect(tree).toMatchSnapshot();
+    });
 });
