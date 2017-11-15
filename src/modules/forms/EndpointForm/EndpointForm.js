@@ -20,7 +20,7 @@ import Row from '../../Layout/Row/Row';
 import Input from '../../inputs/Input';
 import Radio from '../../inputs/Radio/Radio';
 import Label from '../../labels/Label';
-import Hint from '../../labels/Hint/Hint';
+import Hint from '../../../components/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../../components/Button/Button';
 import Icon from '../../../components/Icon/Icon';

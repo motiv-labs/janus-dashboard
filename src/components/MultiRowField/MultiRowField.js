@@ -6,7 +6,7 @@ import block from '../../helpers/bem-cn';
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../modules/labels/Label';
 import Input from '../../modules/inputs/Input';
-import Hint from '../../modules/labels/Hint/Hint';
+import Hint from '../../components/Hint/Hint';
 import Control from '../../components/Control/Control';
 
 const row = block('j-row');
