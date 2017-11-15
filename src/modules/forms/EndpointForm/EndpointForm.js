@@ -40,6 +40,7 @@ const propTypes = {
     api: PropTypes.object.isRequired,
     apiSchema: PropTypes.object.isRequired,
     disabled: PropTypes.bool.isRequired,
+    editing: PropTypes.bool,
     excludePlugin: PropTypes.func.isRequired,
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
@@ -51,6 +52,12 @@ const propTypes = {
 class EndpointForm extends PureComponent {
     state = {
         upstreams: this.props.initialValues.proxy.upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
+        editing: this.props.editing,
+    };
+
+    componentWillReceiveProps(nextProps) {
+        this.props.editing !== nextProps.editing &&
+            this.setState({ editing: !nextProps.editing });
     };
 
     createStrategyOptions = list => {
@@ -118,7 +125,6 @@ class EndpointForm extends PureComponent {
             selectPlugin,
             selectedPlugins,
         } = this.props;
-
         const includePlugin = value => {
             apiSchema.plugins
                 .filter((plugin, index) =>
@@ -132,7 +138,7 @@ class EndpointForm extends PureComponent {
                 <Section>
                     <Row>
                         <Title>
-                            { editing ? 'Edit API' : 'Create New API' }
+                            { this.state.editing ? 'Edit API' : 'Create New API' }
                         </Title>
                         {
                             editing && api.name &&
