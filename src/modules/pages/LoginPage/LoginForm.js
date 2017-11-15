@@ -6,7 +6,7 @@ import block from '../../../helpers/bem-cn';
 
 import Row from '../../Layout/Row/Row';
 import Button from '../../../components/Button/Button';
-import Logo from '../../Logo/Logo';
+import Logo from '../../../components/Logo/Logo';
 import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
 
