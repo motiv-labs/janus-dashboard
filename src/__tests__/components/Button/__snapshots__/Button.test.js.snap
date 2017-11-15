@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component renders correctly with all possible \`mod\`s 1`] = `
+<button
+  className="j-button j-button--primary"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
+exports[`Button component renders correctly with all possible \`mod\`s 2`] = `
+<button
+  className="j-button j-button--danger"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
+exports[`Button component renders correctly with all possible \`mod\`s 3`] = `
+<button
+  className="j-button j-button--default"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
+exports[`Button component renders correctly with all possible \`mod\`s 4`] = `
+<button
+  className="j-button j-button--github"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
+exports[`Button component renders correctly with all possible \`mod\`s 5`] = `
+<button
+  className="j-button j-button--white"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
+exports[`Button component renders with all children 1`] = `
+<button
+  className="j-button j-button--primary"
+  onClick={undefined}
+  type={undefined}
+>
+  <p>
+    mock-child-1
+  </p>
+  <p>
+    mock-child-2
+  </p>
+  <p>
+    mock-child-3
+  </p>
+</button>
+`;
+
+exports[`Button component renders with single child 1`] = `
+<button
+  className="j-button j-button--primary"
+  onClick={undefined}
+  type={undefined}
+>
+  <p>
+    mock-child
+  </p>
+</button>
+`;
