@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
-
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../modules/labels/Label';
 import Input from '../../modules/inputs/Input';
@@ -24,7 +23,7 @@ class MultiRowField extends PureComponent {
     renderMembers = ({ fields, hint, placeholder, suffix, title }) => (
         <div>
             <div className={row()}>
-                <Label>{ title } {placeholder}</Label>
+                <Label>{ title } { placeholder }</Label>
                 <Control
                     onClick={() => fields.push()}
                     icon="add"
@@ -38,7 +37,7 @@ class MultiRowField extends PureComponent {
                 fields.map((member, index) =>
                     <Row className="double-fields" key={index} col>
                         <div className={row()}>
-                            <div className={row('item')}>
+                            <div className={row('item')()}>
                                 <Field
                                     name={suffix ? `${member}.${suffix}` : `${member}`}
                                     type="text"

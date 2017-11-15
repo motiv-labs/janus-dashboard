@@ -13,7 +13,7 @@ const propTypes = {
 };
 
 const Hint = ({ children, title }) => (
-    <div className={b({ title })}>{ children }</div>
+    <div className={b({ title })()}>{ children }</div>
 );
 
 Hint.propTypes = propTypes;
