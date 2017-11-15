@@ -26,7 +26,7 @@ const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
     }
 
     return (
-        <form className={b({error: !!errorMsg})} onSubmit={authorizeThroughGithub}>
+        <form className={b({error: !!errorMsg})()} onSubmit={authorizeThroughGithub}>
             <Logo className={b('logo')()} />
             <Row className={b('button-section')()} alignCenter>
                 <Button className={b('button')()} mod="primary" type="button" onClick={authorizeThroughGithub}>

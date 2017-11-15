@@ -11,7 +11,7 @@ const propTypes = {
 };
 
 const Logo = ({ className }) => (
-    <span className={b.mix(className)}></span>
+    <span className={b.mix(className)()}></span>
 );
 
 Logo.propTypes = propTypes;
