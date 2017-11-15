@@ -1,21 +1,35 @@
 import React from 'react';
-import renderer from 'react-test-renderer';
+import { createStore } from 'redux';
+import { mount } from 'enzyme';
+import toJSON from 'enzyme-to-json';
 
+import { renderFakeForm, wrap } from '../../../utils/createTestForm';
 import Tumbler from '../../../components/Tumbler/Tumbler';
+
+const initialValues = {
+    'mock-name': '',
+};
+
+const store = createStore(() => ({
+    form: {
+        mockForm: {
+            values: initialValues,
+        }
+    }
+}));
 
 describe('Tumbler component', () => {
     const requiredProps = {
-        text: 'mock-text',
+        name: 'mock-name',
     };
 
     it('renders correctly', () => {
-        // const tree = renderer
-        //     .create(
-        //         <Tumbler />
-        //     )
-        //     .toJSON();
+        const tree = wrap(store)(initialValues)(
+            <Tumbler
+                {...requiredProps}
+            />
+        ).toJSON();
 
-        // expect(tree).toMatchSnapshot();
-        expect(true).toBe(true);
+        expect(tree).toMatchSnapshot();
     });
 });
