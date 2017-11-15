@@ -8,6 +8,12 @@ describe('Button component', () => {
     const requiredProps = {
         mod: 'primary',
     };
+    const renderWithRequiredProps = props => renderer.create(
+        <Button
+            {...requiredProps}
+            {...props}
+        />
+    ).toJSON();
 
     it('renders correctly with all possible `mod`s', () => {
         const mod = [
@@ -35,15 +41,7 @@ describe('Button component', () => {
         const passedProps = {
             children: <p>mock-child</p>,
         };
-
-        const tree = renderer
-            .create(
-                <Button
-                    {...requiredProps}
-                    {...passedProps}
-                />
-            )
-            .toJSON();
+        const tree = renderWithRequiredProps(passedProps);
 
         expect(tree).toMatchSnapshot();
     });
@@ -56,16 +54,21 @@ describe('Button component', () => {
                 <p key="3">mock-child-3</p>
             ],
         };
+        const tree = renderWithRequiredProps(passedProps);
 
-        const tree = renderer
-            .create(
-                <Button
-                    {...requiredProps}
-                    {...passedProps}
-                />
-            )
-            .toJSON();
+        expect(tree).toMatchSnapshot();
+    });
 
+    it('renders with an additional className if passed', () => {
+        const passedProps = {
+            className: 'mock-class',
+        };
+        const tree = renderWithRequiredProps(passedProps);
+        const className = tree.props.className;
+
+        expect(className).toContain('j-button');
+        expect(className).toContain(`j-button--${requiredProps.mod}`);
+        expect(className).toContain('mock-class');
         expect(tree).toMatchSnapshot();
     });
 });

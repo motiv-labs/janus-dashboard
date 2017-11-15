@@ -58,6 +58,14 @@ exports[`Button component renders with all children 1`] = `
 </button>
 `;
 
+exports[`Button component renders with an additional className if passed 1`] = `
+<button
+  className="j-button j-button--primary mock-class"
+  onClick={undefined}
+  type={undefined}
+/>
+`;
+
 exports[`Button component renders with single child 1`] = `
 <button
   className="j-button j-button--primary"
