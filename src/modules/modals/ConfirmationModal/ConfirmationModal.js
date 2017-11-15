@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import Modal from '../../../components/Modal/Modal';
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 
 import {
     clearConfirmationModal,

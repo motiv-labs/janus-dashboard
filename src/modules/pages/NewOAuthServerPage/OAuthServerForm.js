@@ -26,7 +26,7 @@ import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints';
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints';
 import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions';
 
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 
 const b = block('j-api-form');
 const row = block('j-row');

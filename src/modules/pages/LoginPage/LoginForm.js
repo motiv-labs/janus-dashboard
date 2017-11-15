@@ -5,7 +5,7 @@ import { reduxForm } from 'redux-form';
 import block from '../../../helpers/bem-cn';
 
 import Row from '../../Layout/Row/Row';
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 import Logo from '../../Logo/Logo';
 import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';

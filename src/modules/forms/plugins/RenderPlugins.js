@@ -5,7 +5,7 @@ import block from '../../../helpers/bem-cn';
 
 import SelectPlugin from '../../selects/SelectPlugin/SelectPlugin';
 import Row from '../../Layout/Row/Row';
-import Button from '../../buttons/Button';
+import Button from '../../../components/Button/Button';
 
 import CorsPlugin from './Cors/CorsPlugin';
 import RateLimitPlugin from './RateLimit/RateLimitPlugin';
