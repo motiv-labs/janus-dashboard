@@ -5,8 +5,9 @@ exports[`Radio component renders correctly 1`] = `
   className="j-radio__wrap"
 >
   <input
+    checked={true}
     className="j-radio__input"
-    id={undefined}
+    id="mock-id"
     name="mock-name"
     type="radio"
   />

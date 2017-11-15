@@ -21,6 +21,10 @@ const store = createStore(() => ({
 describe('Radio component', () => {
     const requiredProps = {
         name: 'mock-name',
+        id: 'mock-id',
+        input: {
+            checked: true,
+        }
     };
 
     it('renders correctly', () => {
