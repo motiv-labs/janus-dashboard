@@ -4,7 +4,6 @@ import {
     FETCH_OAUTH_SERVERS_LIST_SUCCESS,
     SET_OAUTH_SERVERS_SORTING_FILTER,
     SET_OAUTH_SERVERS_ASCEND_FILTER,
-    REFRESH_OAUTH_SERVERS,
 } from '../constants';
 import errorHandler from '../../helpers/errorHandler';
 
