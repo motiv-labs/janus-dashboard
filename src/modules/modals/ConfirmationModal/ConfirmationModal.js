@@ -43,8 +43,8 @@ const ConfirmationModal = ({
             message={message}
             title={title}
             buttons={[
-                <Button mod="default" onClick={closeModal}>Cancel</Button>,
-                <Button mod="primary" onClick={handleSubmitConfirmation}>OK</Button>,
+                <Button key="cancel" mod="default" onClick={closeModal}>Cancel</Button>,
+                <Button key="ok" mod="primary" onClick={handleSubmitConfirmation}>OK</Button>,
             ]}
         />
     );

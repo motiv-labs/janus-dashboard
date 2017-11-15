@@ -37,7 +37,7 @@ const APIRespondModal = ({
             show={isOpen}
             title="Ooops!"
             buttons={[
-                <Button mod="primary" onClick={handleClose}>OK</Button>,
+                <Button key="ok" mod="primary" onClick={handleClose}>OK</Button>,
             ]}
         />
     );
