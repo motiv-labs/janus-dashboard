@@ -32,7 +32,7 @@ exports[`AddDoubleFields component renders correctly 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item j-row__item--pair"
         >
           <input
             className="j-input"
@@ -50,7 +50,7 @@ exports[`AddDoubleFields component renders correctly 1`] = `
           />
         </div>
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"
@@ -90,7 +90,7 @@ exports[`AddDoubleFields component renders correctly 1`] = `
         className="j-row"
       >
         <div
-          className={[Function]}
+          className="j-row__item j-row__item--pair"
         >
           <input
             className="j-input"
@@ -108,7 +108,7 @@ exports[`AddDoubleFields component renders correctly 1`] = `
           />
         </div>
         <div
-          className={[Function]}
+          className="j-row__item"
         >
           <input
             className="j-input"
