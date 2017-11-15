@@ -9,7 +9,7 @@ import Row from '../../../Layout/Row/Row';
 import Label from '../../../labels/Label';
 import Input from '../../../inputs/Input';
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect';
-import Hint from '../../../labels/Hint/Hint';
+import Hint from '../../../../components/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 
 const propTypes = {

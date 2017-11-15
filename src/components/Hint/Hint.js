@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import block from '../../../helpers/bem-cn';
+import block from '../../helpers/bem-cn';
 
 import './Hint.css';
 

@@ -13,7 +13,7 @@ import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../labels/Label';
 import Radio from '../../../../inputs/Radio/Radio';
 import Input from '../../../../inputs/Input';
-import Hint from '../../../../labels/Hint/Hint';
+import Hint from '../../../../../components/Hint/Hint';
 import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../../selects/TagSelect/TagSelect';
 import MultiRowField from '../../../../../components/MultiRowField/MultiRowField';
