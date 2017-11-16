@@ -38,7 +38,11 @@ class HealthCheckList extends PureComponent {
 
     renderRows = list => list.map(item => (
         <div className={table('row')} key={item.name}>
-            <div className={table('td', { name: true })}>{item.name}</div>
+            <div className={table('td', { name: true })}>
+                <Link to={`/${item.name}`}>
+                    {item.name}
+                </Link>
+            </div>
             <div className={table('td')}>{item.description}</div>
             <div className={table('td')}></div>
             <div className={table('td').mix(table('controls'))}>
