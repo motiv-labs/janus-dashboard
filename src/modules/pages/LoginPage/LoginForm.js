@@ -6,7 +6,7 @@ import block from '../../../helpers/bem-cn';
 
 import Row from '../../Layout/Row/Row';
 import Button from '../../../components/Button/Button';
-import Logo from '../../Logo/Logo';
+import Logo from '../../../components/Logo/Logo';
 import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
 
@@ -26,7 +26,7 @@ const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
     }
 
     return (
-        <form className={b({error: !!errorMsg})} onSubmit={authorizeThroughGithub}>
+        <form className={b({error: !!errorMsg})()} onSubmit={authorizeThroughGithub}>
             <Logo className={b('logo')()} />
             <Row className={b('button-section')()} alignCenter>
                 <Button className={b('button')()} mod="primary" type="button" onClick={authorizeThroughGithub}>
