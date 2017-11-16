@@ -27,7 +27,7 @@ const col = block('j-col');
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
-    editing: PropTypes.bool.isRequired,
+    editing: PropTypes.bool,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     schema: PropTypes.object.isRequired,
