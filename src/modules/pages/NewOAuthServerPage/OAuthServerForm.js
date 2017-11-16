@@ -4,6 +4,7 @@ import R from 'ramda';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
+import Sticky from 'react-sticky-el';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
@@ -214,15 +215,17 @@ class OAuthServerForm extends PureComponent {
         return (
             <form className={b} onSubmit={handleSubmit}>
                 <Section>
-                    <Row>
-                        <Title>
-                            {
-                                ifEditing()(
-                                    `Edit ${initialValues.name}`,
-                                    'Create New OAuth Server')
-                            }
-                        </Title>
-                    </Row>
+                    <Sticky stickyClassName={b('sticky')()}>
+                        <Row>
+                            <Title>
+                                {
+                                    ifEditing()(
+                                        `Edit ${initialValues.name}`,
+                                        'Create New OAuth Server')
+                                }
+                            </Title>
+                        </Row>
+                    </Sticky>
                 </Section>
                 <div className={b('inner')}>
                     <div className={b('section')}>

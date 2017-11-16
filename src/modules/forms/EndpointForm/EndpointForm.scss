@@ -72,4 +72,14 @@ $radio-width: 125px;
             overflow: hidden;
         }
     }
+
+    &__sticky {
+        background-color: $hf-color-white;
+        box-shadow: $hf-box-shadow-header;
+        border-left: $hf-border;
+        border-right: $hf-border;
+        padding: $hf-gutter;
+        box-sizing: border-box;
+        z-index: 1;
+    }
 }
