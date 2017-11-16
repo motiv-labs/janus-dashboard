@@ -31,7 +31,7 @@ const schema = {
         strip_path: false,
         append_path: false,
         methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
-        hosts: ['hellofresh.*'],
+        hosts: [],
     },
     health_check: {
         url: '',
