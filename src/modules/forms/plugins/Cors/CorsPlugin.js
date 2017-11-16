@@ -50,8 +50,11 @@ class CorsPlugin extends PureComponent {
                         <Field
                             name={`${name}.config.domains`}
                             type="text"
+                            edit={edit}
                             placeholder={SETUP.placeholders.cors.domains}
-                            component={Input}
+                            value={() => getValues(['config', 'domains'])(plugin)}
+                            options={optionsTransformer(allValues('domains'))}
+                            component={TagSelect}
                         />
                         <Hint>A list of all domains from which the endpoint will accept requests.</Hint>
                     </Row>
