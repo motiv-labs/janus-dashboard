@@ -19,7 +19,7 @@ import Title from '../../Layout/Title/Title';
 import Row from '../../Layout/Row/Row';
 import Input from '../../inputs/Input';
 import Radio from '../../../components/Radio/Radio';
-import Label from '../../labels/Label';
+import Label from '../../../components/Label/Label';
 import Hint from '../../../components/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
 import Button from '../../../components/Button/Button';

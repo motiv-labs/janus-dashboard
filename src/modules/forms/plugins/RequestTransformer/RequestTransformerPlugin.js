@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import block from '../../../../helpers/bem-cn';
 
 import Row from '../../../Layout/Row/Row';
-import Label from '../../../labels/Label';
+import Label from '../../../../components/Label/Label';
 import Input from '../../../inputs/Input';
 import ControlBar from '../ControlBar/ControlBar';
 import HeadersSection from './HeadersSection/HeadersSection';

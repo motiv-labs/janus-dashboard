@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo component renders correctly 1`] = `
+<span
+  className="j-logo"
+/>
+`;
+
+exports[`Logo component renders with additional className if passed 1`] = `
+<span
+  className="j-logo mock-class"
+/>
+`;

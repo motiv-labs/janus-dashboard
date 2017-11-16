@@ -17,7 +17,7 @@ import Row from '../../Layout/Row/Row';
 import Title from '../../Layout/Title/Title';
 import Input from '../../inputs/Input';
 import Radio from '../../../components/Radio/Radio';
-import Label from '../../labels/Label';
+import Label from '../../../components/Label/Label';
 import Hint from '../../../components/Hint/Hint';
 import SimpleSelect from '../../selects/SimpleSelect/SimpleSelect';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';

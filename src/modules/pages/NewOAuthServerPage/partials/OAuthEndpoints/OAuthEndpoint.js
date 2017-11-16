@@ -11,7 +11,7 @@ import optionsTransformer from '../../../../../helpers/optionsTransformer';
 import getValues from '../../../../../helpers/getValues';
 
 import Row from '../../../../Layout/Row/Row';
-import Label from '../../../../labels/Label';
+import Label from '../../../../../components/Label/Label';
 import Radio from '../../../../../components/Radio/Radio';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../../components/Hint/Hint';

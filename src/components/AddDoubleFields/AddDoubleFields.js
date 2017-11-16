@@ -6,7 +6,7 @@ import block from '../../helpers/bem-cn';
 import parse from '../../helpers/parse-value';
 
 import Row from '../../modules/Layout/Row/Row';
-import Label from '../../modules/labels/Label';
+import Label from '../../components/Label/Label';
 import Input from '../../modules/inputs/Input';
 import Control from '../../components/Control/Control';
 
