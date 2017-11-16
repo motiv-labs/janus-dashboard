@@ -4,7 +4,7 @@ import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
 import Row from '../../modules/Layout/Row/Row';
-import Label from '../../modules/labels/Label';
+import Label from '../../components/Label/Label';
 import Input from '../../modules/inputs/Input';
 import Hint from '../../components/Hint/Hint';
 import Control from '../../components/Control/Control';
