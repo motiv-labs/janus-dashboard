@@ -332,7 +332,6 @@ export const confirmedSaveEndpoint = async (dispatch, api) => {
         await client.post('apis', preparedEndpoint);
 
         dispatch(saveEndpointSuccess());
-        dispatch(fetchEndpoints());
         history.push('/');
         dispatch(showToaster());
     } catch (error) {
@@ -355,6 +354,7 @@ export const confirmedUpdateEndpoint = async (dispatch, api) => {
         await client.put(`apis/${api.name}`, updatedEndpoint);
 
         dispatch(saveEndpointSuccess());
+        history.push('/');
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
