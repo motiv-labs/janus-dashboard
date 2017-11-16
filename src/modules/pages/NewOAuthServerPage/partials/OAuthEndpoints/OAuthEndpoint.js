@@ -12,7 +12,7 @@ import getValues from '../../../../../helpers/getValues';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../../components/Label/Label';
-import Radio from '../../../../inputs/Radio/Radio';
+import Radio from '../../../../../components/Radio/Radio';
 import Input from '../../../../inputs/Input';
 import Hint from '../../../../../components/Hint/Hint';
 import MultiSelect from '../../../../selects/MultiSelect/MultiSelect';
@@ -27,7 +27,7 @@ const col = block('j-col');
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
-    editing: PropTypes.bool.isRequired,
+    editing: PropTypes.bool,
     initialValues: PropTypes.object.isRequired,
     name: PropTypes.string.isRequired,
     schema: PropTypes.object.isRequired,
