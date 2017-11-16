@@ -22,6 +22,7 @@ import Radio from '../../inputs/Radio/Radio';
 import Label from '../../../components/Label/Label';
 import Hint from '../../../components/Hint/Hint';
 import MultiSelect from '../../selects/MultiSelect/MultiSelect';
+import TagSelect from '../../selects/TagSelect/TagSelect';
 import Button from '../../../components/Button/Button';
 import Icon from '../../../components/Icon/Icon';
 
@@ -265,6 +266,19 @@ class EndpointForm extends PureComponent {
                                 <Hint>HTTP methods that are supported for the endpoint.</Hint>
                             </Row>
                             <Row col>
+                                <Label>Hosts</Label>
+                                <Field
+                                    name="proxy.hosts"
+                                    type="text"
+                                    edit
+                                    value={editing ? () => getValues(['proxy', 'hosts'])(initialValues) : []}
+                                    options={optionsTransformer(apiSchema.proxy.hosts)}
+                                    component={TagSelect}
+                                />
+                            </Row>
+                        </Row>
+                        <Row className={b('row')()} fullwidth>
+                            <Row col>
                                 <Label>Preserve Host?</Label>
                                 <Row className={b('radio-wrap')()}>
                                     <Row className={b('radio')()}>
@@ -290,8 +304,6 @@ class EndpointForm extends PureComponent {
                                 </Row>
                                 <Hint>Preserve the host header the client used for the incoming request.</Hint>
                             </Row>
-                        </Row>
-                        <Row className={b('row')()} fullwidth>
                             <Row col>
                                 <Label>Append Path?</Label>
                                 <Row className={b('radio-wrap')()}>
@@ -318,6 +330,8 @@ class EndpointForm extends PureComponent {
                                 </Row>
                                 <Hint>Appends the path from the listen_path when forwarding the request to the upstream_url.</Hint>
                             </Row>
+                        </Row>
+                        <Row className={b('row')()} fullwidth>
                             <Row col>
                                 <Label>Strips Path?</Label>
                                 <Row className={b('radio-wrap')()}>
@@ -344,6 +358,7 @@ class EndpointForm extends PureComponent {
                                 </Row>
                                 <Hint> Strip the path out of the listen_path when forwarding the request to the upstream_url.</Hint>
                             </Row>
+                            <div></div>
                         </Row>
                     </div>
                     <div className={b('section')}>
