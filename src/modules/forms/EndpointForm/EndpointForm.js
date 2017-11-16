@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Field, formValueSelector, reduxForm } from 'redux-form';
 import Select from 'react-select';
+import { StickyContainer, Sticky } from 'react-sticky';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
 
@@ -131,41 +132,54 @@ class EndpointForm extends PureComponent {
 
         return (
             <form className={b} onSubmit={handleSubmit}>
+            <StickyContainer>
                 <Section>
-                    <Row>
-                        <Title>
-                            { editing ? 'Edit API' : 'Create New API' }
-                        </Title>
-                        {
-                            editing && api.name &&
-                                <div className="j-buttons__wrapper">
-                                    <Link
-                                        to={{
-                                            pathname: '/new',
-                                            state: {
-                                                clone: api,
-                                            },
-                                        }}
-                                    >
-                                        <Button
-                                            type="button"
-                                            mod="primary"
-                                        >
-                                            <Icon type="copy-white" />
-                                            Copy
-                                        </Button>
-                                    </Link>
-                                    <Button
-                                        type="button"
-                                        mod="danger"
-                                        onClick={handleDelete}
-                                    >
-                                        <Icon type="delete-white" />
-                                        Delete
-                                    </Button>
-                                </div>
-                        }
-                    </Row>
+
+                    <Sticky relative>
+                        { ({ isSticky }) => {
+                            console.warn('here');
+
+                            console.warn(isSticky);
+
+                            return (
+                                <Row>
+                                    <Title>
+                                        { editing ? 'Edit API' : 'Create New API' }
+                                    </Title>
+                                    {
+                                        editing && api.name &&
+                                            <div className="j-buttons__wrapper">
+                                                <Link
+                                                    to={{
+                                                        pathname: '/new',
+                                                        state: {
+                                                            clone: api,
+                                                        },
+                                                    }}
+                                                >
+                                                    <Button
+                                                        type="button"
+                                                        mod="primary"
+                                                    >
+                                                        <Icon type="copy-white" />
+                                                        Copy
+                                                    </Button>
+                                                </Link>
+                                                <Button
+                                                    type="button"
+                                                    mod="danger"
+                                                    onClick={handleDelete}
+                                                >
+                                                    <Icon type="delete-white" />
+                                                    Delete
+                                                </Button>
+                                            </div>
+                                    }
+                                </Row>
+                            );
+                        }}
+                    </Sticky>
+
                 </Section>
                 <div className={b('inner')}>
                     <div className={b('section')}>
@@ -416,6 +430,7 @@ class EndpointForm extends PureComponent {
                         Save
                     </Button>
                 </Row>
+            </StickyContainer>
             </form>
         );
     }
