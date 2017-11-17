@@ -53,7 +53,7 @@ describe('EndpointForm component', () => {
         expect(wrapper).toMatchSnapshot();
     });
 
-    describe('renders correctly if property `editing` is passed', () => {
+    it('renders correctly if property `editing` is passed', () => {
         const passedProps = {
             api,
             editing: true,
@@ -70,12 +70,6 @@ describe('EndpointForm component', () => {
             )
         );
 
-        it('renders proper title', () => {
-            expect(wrapper.find('.j-title').text()).toBe('Edit API');
-        });
-
-        it('renders top sticky <Edit>/<Delete> buttons', () => {
-            expect(wrapper.find('.j-buttons__wrapper')).toMatchSnapshot();
-        });
+        expect(wrapper.find('.j-buttons__wrapper')).toMatchSnapshot();
     });
 });
