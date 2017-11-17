@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import {
     fetchOAuthServer,
     fetchOAuthServerSchema,
-    saveOAuthServer,
     updateOAuthServer,
 } from '../../../store/actions';
 
@@ -19,7 +18,6 @@ export default connect(
     {
         fetchOAuthServer,
         fetchOAuthServerSchema,
-        saveOAuthServer,
         updateOAuthServer,
     },
 )(OAuthServerItem);
