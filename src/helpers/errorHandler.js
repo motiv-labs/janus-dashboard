@@ -5,7 +5,7 @@ const errorHandler = dispatch => error => R.compose(
     dispatch,
     openResponseModal,
 )({
-    message: error.response ? error.response.data.error : `${error}`,
+    message: `${error}: ${error.response.data}`
 });
 
 export default errorHandler;
