@@ -5,7 +5,10 @@ const errorHandler = dispatch => error => R.compose(
     dispatch,
     openResponseModal,
 )({
-    message: `${error}: ${error.response.data}`
+    // Show error message from server if there is one
+    message: error.response.data.error ?
+             error.response.data.error :
+             `${error}: ${error.response.data}`,
 });
 
 export default errorHandler;
