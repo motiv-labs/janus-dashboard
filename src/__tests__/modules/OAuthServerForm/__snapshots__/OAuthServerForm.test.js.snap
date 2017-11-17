@@ -2033,7 +2033,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       valid={true}
                     >
                       <form
-                        className={[Function]}
+                        className="j-api-form"
                         onSubmit={[Function]}
                       >
                         <Section>
@@ -2099,13 +2099,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                           </div>
                         </Section>
                         <div
-                          className={[Function]}
+                          className="j-api-form__inner"
                         >
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               1. General
                             </div>
@@ -2120,7 +2120,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                   className="j-col"
                                 >
                                   <div
-                                    className={[Function]}
+                                    className="j-col__item"
                                   >
                                     <Label>
                                       <label
@@ -3085,18 +3085,18 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </Row>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               2. Cors meta
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Row
                                   col={true}
@@ -5132,10 +5132,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                               </div>
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -6353,7 +6353,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -7671,10 +7671,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                               </div>
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -8945,7 +8945,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -10194,18 +10194,18 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               3. Rate limit
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item j-grid__row j-grid__row--2"
                               >
                                 <div
                                   className="j-col"
@@ -12263,7 +12263,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Label>
                                   <label
@@ -14282,18 +14282,18 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </div>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               4. Token strategy
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Select
                                   addLabelText="Add \\"{label}\\"?"
@@ -14426,10 +14426,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                           </div>
                         </div>
                         <div
-                          className={[Function]}
+                          className="j-api-form__inner j-api-form__inner--overflowed"
                         >
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
                               className={[Function]}
@@ -17238,7 +17238,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                       valid={true}
                     >
                       <form
-                        className={[Function]}
+                        className="j-api-form"
                         onSubmit={[Function]}
                       >
                         <Section>
@@ -17304,13 +17304,13 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                           </div>
                         </Section>
                         <div
-                          className={[Function]}
+                          className="j-api-form__inner"
                         >
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               1. General
                             </div>
@@ -17325,7 +17325,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                   className="j-col"
                                 >
                                   <div
-                                    className={[Function]}
+                                    className="j-col__item"
                                   >
                                     <Label>
                                       <label
@@ -18290,18 +18290,18 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             </Row>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               2. Cors meta
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Row
                                   col={true}
@@ -20337,10 +20337,10 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                               </div>
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -21558,7 +21558,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -22876,10 +22876,10 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                               </div>
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -24150,7 +24150,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <div
                                   className="j-col"
@@ -25399,18 +25399,18 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             </div>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               3. Rate limit
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item j-grid__row j-grid__row--2"
                               >
                                 <div
                                   className="j-col"
@@ -27468,7 +27468,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Label>
                                   <label
@@ -29487,18 +29487,18 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             </div>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               4. Token strategy
                             </div>
                             <div
-                              className={[Function]}
+                              className="j-row j-row--fullwidth j-api-form__row"
                             >
                               <div
-                                className={[Function]}
+                                className="j-row__item"
                               >
                                 <Select
                                   addLabelText="Add \\"{label}\\"?"
@@ -29631,10 +29631,10 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                           </div>
                         </div>
                         <div
-                          className={[Function]}
+                          className="j-api-form__inner j-api-form__inner--overflowed"
                         >
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
                               className={[Function]}

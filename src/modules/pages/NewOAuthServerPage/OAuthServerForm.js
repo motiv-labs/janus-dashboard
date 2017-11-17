@@ -213,7 +213,7 @@ class OAuthServerForm extends PureComponent {
         );
 
         return (
-            <form className={b} onSubmit={handleSubmit}>
+            <form className={b()} onSubmit={handleSubmit}>
                 <Section>
                     <Sticky stickyClassName={b('sticky')()}>
                         <Row>
@@ -227,12 +227,12 @@ class OAuthServerForm extends PureComponent {
                         </Row>
                     </Sticky>
                 </Section>
-                <div className={b('inner')}>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>1. General</div>
+                <div className={b('inner')()}>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>1. General</div>
                         <Row className={b('row')()} fullwidth>
                             <div className={col()}>
-                                <div className={col('item')}>
+                                <div className={col('item')()}>
                                     <Label>OAuth Server Name</Label>
                                 </div>
                                 <Field
@@ -248,10 +248,10 @@ class OAuthServerForm extends PureComponent {
                             </div>
                         </Row>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>2. Cors meta</div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item')}>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>2. Cors meta</div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                            <div className={row('item')()}>
                                 <Row col>
                                     <Label>Is Enabled?</Label>
                                     <Row className={b('radio-wrap')()}>
@@ -279,8 +279,8 @@ class OAuthServerForm extends PureComponent {
                                 </Row>
                             </div>
                         </div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item')}>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                            <div className={row('item')()}>
                                 <div className={col()}>
                                     <Label>Domains</Label>
                                     <Field
@@ -294,7 +294,7 @@ class OAuthServerForm extends PureComponent {
                                     <Hint>A list of all domains from which the endpoint will accept requests.</Hint>
                                 </div>
                             </div>
-                            <div className={row('item')}>
+                            <div className={row('item')()}>
                                 <div className={col()}>
                                     <Label>Methods</Label>
                                     <Field
@@ -309,8 +309,8 @@ class OAuthServerForm extends PureComponent {
                                 </div>
                             </div>
                         </div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item')}>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                            <div className={row('item')()}>
                                 <div className={col()}>
                                     <Label>Request Headers</Label>
                                     <Field
@@ -325,7 +325,7 @@ class OAuthServerForm extends PureComponent {
                                     <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
                                 </div>
                             </div>
-                            <div className={row('item')}>
+                            <div className={row('item')()}>
                                 <div className={col()}>
                                     <Label>Exposed Headers</Label>
                                     <Field
@@ -342,10 +342,10 @@ class OAuthServerForm extends PureComponent {
                             </div>
                         </div>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>3. Rate limit</div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item').mix(grid('row', { 2: true }))}>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>3. Rate limit</div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                            <div className={row('item').mix(grid('row', { 2: true }))()}>
                                 <div className={col()}>
                                     <Label>Limit Value</Label>
                                     <Field
@@ -367,7 +367,7 @@ class OAuthServerForm extends PureComponent {
                                     />
                                 </div>
                             </div>
-                            <div className={row('item')}>
+                            <div className={row('item')()}>
                                 <Label>Is Enabled?</Label>
                                 <Row className={b('radio-wrap')()}>
                                     <Row className={b('radio')()}>
@@ -394,10 +394,10 @@ class OAuthServerForm extends PureComponent {
                             </div>
                         </div>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>4. Token strategy</div>
-                        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                            <div className={row('item')}>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>4. Token strategy</div>
+                        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                            <div className={row('item')()}>
                                 <Select
                                     className="j-select"
                                     name="token_strategy.name"
@@ -413,8 +413,8 @@ class OAuthServerForm extends PureComponent {
                     </div>
                 </div>
 
-                <div className={b('inner', {overflowed: true})}>
-                    <div className={b('section')}>
+                <div className={b('inner', {overflowed: true})()}>
+                    <div className={b('section')()}>
                         { this.renderTabs() }
                     </div>
                 </div>
