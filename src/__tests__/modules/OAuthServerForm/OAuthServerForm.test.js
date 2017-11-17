@@ -37,11 +37,26 @@ describe('EndpointForm component', () => {
         initialValues,
     };
 
-    const passedProps = {
-        editing: false,
-    };
-
     it('renders correctly', () => {
+        const passedProps = {
+            editing: false,
+        };
+        const wrapper = mount(
+            renderFakeForm(store)(initialValues)(
+                <OAuthServerForm
+                    {...requiredProps}
+                    {...passedProps}
+                />
+            )
+        );
+
+        expect(wrapper).toMatchSnapshot();
+    });
+
+    it('renders correctly if property `editing` is passed', () => {
+        const passedProps = {
+            editing: true,
+        };
         const wrapper = mount(
             renderFakeForm(store)(initialValues)(
                 <OAuthServerForm
