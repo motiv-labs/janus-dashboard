@@ -9,6 +9,7 @@ import Button from '../../../components/Button/Button';
 import Logo from '../../../components/Logo/Logo';
 import Icon from '../../../components/Icon/Icon';
 import Preloader from '../../../components/Preloader/Preloader';
+import history from '../../../store/configuration/history';
 
 import './LoginForm.css';
 
@@ -20,7 +21,12 @@ const propTypes = {
     isFetching: PropTypes.bool.isRequired,
 };
 
-const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching }) => {
+const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching, user }) => {
+    if (!!user) {
+        history.push('/');
+        return;
+    }
+
     if (isFetching) {
         return <Preloader />;
     }
