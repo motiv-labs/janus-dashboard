@@ -75,7 +75,7 @@ describe('EndpointForm component', () => {
         });
 
         it('renders top sticky <Edit>/<Delete> buttons', () => {
-            expect(wrapper.find('.j-buttons__wrapper').find('.j-button').length).toBe(2);
+            expect(wrapper.find('.j-buttons__wrapper')).toMatchSnapshot();
         });
     });
 });

@@ -11464,3 +11464,67 @@ exports[`EndpointForm component renders correctly 1`] = `
   </Connect(ReduxForm)>
 </Provider>
 `;
+
+exports[`EndpointForm component renders correctly if property \`editing\` is passed renders top sticky <Edit>/<Delete> buttons 1`] = `
+<div
+  className="j-buttons__wrapper"
+>
+  <Link
+    replace={false}
+    to={
+      Object {
+        "pathname": "/new",
+        "state": Object {
+          "clone": Object {
+            "name": "mock-api",
+          },
+        },
+      }
+    }
+  >
+    <a
+      href="/new"
+      onClick={[Function]}
+    >
+      <Button
+        mod="primary"
+        type="button"
+      >
+        <button
+          className="j-button j-button--primary"
+          type="button"
+        >
+          <Icon
+            type="copy-white"
+          >
+            <span
+              className="j-icon j-icon--type-copy-white"
+            />
+          </Icon>
+          Copy
+        </button>
+      </Button>
+    </a>
+  </Link>
+  <Button
+    mod="danger"
+    onClick={[Function]}
+    type="button"
+  >
+    <button
+      className="j-button j-button--danger"
+      onClick={[Function]}
+      type="button"
+    >
+      <Icon
+        type="delete-white"
+      >
+        <span
+          className="j-icon j-icon--type-delete-white"
+        />
+      </Icon>
+      Delete
+    </button>
+  </Button>
+</div>
+`;
