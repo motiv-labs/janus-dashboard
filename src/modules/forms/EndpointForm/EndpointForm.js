@@ -170,12 +170,12 @@ class EndpointForm extends PureComponent {
                         </Row>
                     </Sticky>
                 </Section>
-                <div className={b('inner')}>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>1. General</div>
+                <div className={b('inner')()}>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>1. General</div>
                         <Row className={b('row')()} fullwidth>
                             <div className={col()}>
-                                <div className={col('item')}>
+                                <div className={col('item')()}>
                                     <Label>API Name</Label>
                                 </div>
                                 <Field
@@ -216,11 +216,11 @@ class EndpointForm extends PureComponent {
                             </Row>
                         </Row>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>2. Proxy</div>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>2. Proxy</div>
                         <Row className={b('row')()} fullwidth>
                             <div className={col()}>
-                                <div className={col('item')}>
+                                <div className={col('item')()}>
                                     <Label>Listen Path</Label>
                                 </div>
                                 <Field
@@ -235,7 +235,7 @@ class EndpointForm extends PureComponent {
                                 <Hint>The public url that is exposed by the Gateway.</Hint>
                             </div>
                             <div className={col()}>
-                                <div className={col('item')}>
+                                <div className={col('item')()}>
                                     <Label>Load balancing alg.</Label>
                                 </div>
                                 <Select
@@ -247,7 +247,7 @@ class EndpointForm extends PureComponent {
                                     searchable={false}
                                     clearable={false}
                                 />
-                                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
                                     <Row className={b('row')()} fullwidth>
                                         { this.renderStrategy(this.state.upstreams.balancing) }
                                     </Row>
@@ -364,11 +364,11 @@ class EndpointForm extends PureComponent {
                             <div></div>
                         </Row>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>3. Health check</div>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>3. Health check</div>
                         <Row className={b('row')()} fullwidth>
                             <div className={col()}>
-                                <div className={col('item')}>
+                                <div className={col('item')()}>
                                     <Label>Health URL (optional)</Label>
                                 </div>
                                 <Field
@@ -393,8 +393,8 @@ class EndpointForm extends PureComponent {
                             </Row>
                         </Row>
                     </div>
-                    <div className={b('section')}>
-                        <div className={b('section-title')}>4. Plugins</div>
+                    <div className={b('section')()}>
+                        <div className={b('section-title')()}>4. Plugins</div>
                         {
                             !!plugins &&
                                 <RenderPlugins

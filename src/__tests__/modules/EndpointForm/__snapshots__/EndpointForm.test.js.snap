@@ -1275,13 +1275,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                           </div>
                         </Section>
                         <div
-                          className={[Function]}
+                          className="j-api-form__inner"
                         >
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               1. General
                             </div>
@@ -1300,7 +1300,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     className="j-col"
                                   >
                                     <div
-                                      className={[Function]}
+                                      className="j-col__item"
                                     >
                                       <Label>
                                         <label
@@ -3299,10 +3299,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </Row>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               2. Proxy
                             </div>
@@ -3321,7 +3321,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     className="j-col"
                                   >
                                     <div
-                                      className={[Function]}
+                                      className="j-col__item"
                                     >
                                       <Label>
                                         <label
@@ -3956,7 +3956,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     className="j-col"
                                   >
                                     <div
-                                      className={[Function]}
+                                      className="j-col__item"
                                     >
                                       <Label>
                                         <label
@@ -4093,7 +4093,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       </div>
                                     </Select>
                                     <div
-                                      className={[Function]}
+                                      className="j-row j-row--fullwidth j-api-form__row"
                                     >
                                       <Row
                                         className="j-api-form__row"
@@ -10140,10 +10140,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </Row>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               3. Health check
                             </div>
@@ -10162,7 +10162,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     className="j-col"
                                   >
                                     <div
-                                      className={[Function]}
+                                      className="j-col__item"
                                     >
                                       <Label>
                                         <label
@@ -11423,10 +11423,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                             </Row>
                           </div>
                           <div
-                            className={[Function]}
+                            className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__section-title"
                             >
                               4. Plugins
                             </div>
