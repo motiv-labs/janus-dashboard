@@ -8,6 +8,8 @@ import {
     FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
     SAVE_OAUTH_SERVER_START,
     SAVE_OAUTH_SERVER_SUCCESS,
+    UPDATE_OAUTH_SERVER_START,
+    UPDATE_OAUTH_SERVER_SUCCESS,
     DELETE_OAUTH_SERVER_START,
     DELETE_OAUTH_SERVER_SUCCESS,
 } from '../constants';
@@ -46,6 +48,15 @@ export const saveOAuthServerRequest = api => ({
 
 export const saveOAuthServerSuccess = () => ({
     type: SAVE_OAUTH_SERVER_SUCCESS,
+});
+
+export const updateOAuthServerRequest = api => ({
+    type: UPDATE_OAUTH_SERVER_START,
+    payload: api,
+});
+
+export const updateOAuthServerSuccess = () => ({
+    type: UPDATE_OAUTH_SERVER_SUCCESS,
 });
 
 export const deleteOAuthServerRequest = () => ({
@@ -114,6 +125,37 @@ export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
 export const saveOAuthServer = (pathname, server, isEditing) => dispatch =>
     dispatch(openConfirmationModal(
         'saveOAuthServer',
+        server,
+        server.name,
+    ));
+
+export const confirmedUpdateOAuthServer = async (dispatch, server) => {
+    dispatch(updateOAuthServerRequest(server));
+
+    const composeRateLimit = server => {
+        const { value, unit } = server.rate_limit.limit;
+        const concatenation = `${value}-${unit}`;
+        const lens = R.lensPath(['rate_limit', 'limit']);
+
+        return R.set(lens, concatenation, server);
+    };
+
+    try {
+        await client.put(`oauth/servers/${server.name}`, composeRateLimit(server));
+
+        dispatch(updateOAuthServerSuccess());
+        dispatch(closeConfirmationModal());
+
+        dispatch(showToaster());
+    } catch (error) {
+        dispatch(closeConfirmationModal());
+        errorHandler(dispatch)(error);
+    }
+};
+
+export const updateOAuthServer = (pathname, server) => dispatch =>
+    dispatch(openConfirmationModal(
+        'updateOAuthServer',
         server,
         server.name,
     ));

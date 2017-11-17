@@ -4,6 +4,7 @@ import {
     fetchOAuthServer,
     fetchOAuthServerSchema,
     saveOAuthServer,
+    updateOAuthServer,
 } from '../../../store/actions';
 
 import OAuthServerItem from './OAuthServerItem';
@@ -19,5 +20,6 @@ export default connect(
         fetchOAuthServer,
         fetchOAuthServerSchema,
         saveOAuthServer,
+        updateOAuthServer,
     },
 )(OAuthServerItem);
