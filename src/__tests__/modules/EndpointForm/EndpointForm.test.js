@@ -8,7 +8,7 @@ import apiSchema from '../../../configurations/apiSchema.config';
 import { renderFakeForm, wrap } from '../../../utils/createTestForm';
 
 import EndpointForm from '../../../modules/forms/EndpointForm/EndpointForm';
-const util = require('util');
+
 const initialValues = {
     proxy: {
         upstreams: 'sdeded'
