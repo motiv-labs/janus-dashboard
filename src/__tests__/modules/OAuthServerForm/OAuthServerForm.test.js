@@ -26,10 +26,6 @@ const store = createStore(() => ({
     }
 }));
 
-const api = {
-    name: 'mock-api'
-};
-
 describe('EndpointForm component', () => {
     const requiredProps = {
         schema,
