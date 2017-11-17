@@ -14432,7 +14432,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                             className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__tabs"
                             >
                               <div
                                 className="j-buttons__wrapper tabs-nav"
@@ -14467,10 +14467,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 </Button>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-api-form__tab"
                               >
                                 <div
-                                  className={[Function]}
+                                  className="j-api-form__section"
                                 >
                                   <OAuthEndpoints
                                     category="oauth_endpoints"
@@ -14819,10 +14819,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-api-form__tab j-api-form__tab--hidden"
                               >
                                 <div
-                                  className={[Function]}
+                                  className="j-api-form__section"
                                 >
                                   <OAuthClientEndpoints
                                     category="oauth_client_endpoints"
@@ -29637,7 +29637,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             className="j-api-form__section"
                           >
                             <div
-                              className={[Function]}
+                              className="j-api-form__tabs"
                             >
                               <div
                                 className="j-buttons__wrapper tabs-nav"
@@ -29672,10 +29672,10 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 </Button>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-api-form__tab"
                               >
                                 <div
-                                  className={[Function]}
+                                  className="j-api-form__section"
                                 >
                                   <OAuthEndpoints
                                     category="oauth_endpoints"
@@ -30024,10 +30024,10 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 </div>
                               </div>
                               <div
-                                className={[Function]}
+                                className="j-api-form__tab j-api-form__tab--hidden"
                               >
                                 <div
-                                  className={[Function]}
+                                  className="j-api-form__section"
                                 >
                                   <OAuthClientEndpoints
                                     category="oauth_client_endpoints"

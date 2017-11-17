@@ -66,7 +66,7 @@ class OAuthServerForm extends PureComponent {
     };
 
     renderTabs = () => (
-        <div className={b('tabs')}>
+        <div className={b('tabs')()}>
             <div className="j-buttons__wrapper tabs-nav">
                 {
                     this.state.tabs.map((item, idx) =>
@@ -82,8 +82,8 @@ class OAuthServerForm extends PureComponent {
                 }
             </div>
 
-            <div className={b('tab', { hidden: this.state.activeTab !== 0 })}>
-                <div className={b('section')}>
+            <div className={b('tab', { hidden: this.state.activeTab !== 0 })()}>
+                <div className={b('section')()}>
                     <OAuthEndpoints
                         editing={this.props.editing}
                         endpoints={this.props.initialValues.oauth_endpoints}
@@ -95,8 +95,8 @@ class OAuthServerForm extends PureComponent {
                     />
                 </div>
             </div>
-            <div className={b('tab', { hidden: this.state.activeTab !== 1 })}>
-                <div className={b('section')}>
+            <div className={b('tab', { hidden: this.state.activeTab !== 1 })()}>
+                <div className={b('section')()}>
                     <OAuthClientEndpoints
                         editing={this.props.editing}
                         endpoints={this.props.initialValues.oauth_client_endpoints}
@@ -111,7 +111,7 @@ class OAuthServerForm extends PureComponent {
     );
 
     renderJWTStrategy = () => (
-        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
             <Row className={b('row')()} fullwidth>
                 <JWTStrategyOptions
                     name="token_strategy.settings"
@@ -122,8 +122,8 @@ class OAuthServerForm extends PureComponent {
     );
 
     renderIntrospectionStrategy = () => (
-        <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-            <div className={row('item')}>
+        <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+            <div className={row('item')()}>
                 <Row col>
                     <div className={col()}>
                         <Label>Auth Header Type</Label>
@@ -138,7 +138,7 @@ class OAuthServerForm extends PureComponent {
                     </div>
                 </Row>
             </div>
-            <div className={row('item')}>
+            <div className={row('item')()}>
                 <Row col>
                     <Label>Use OAuth Header?</Label>
                     <Row className={b('radio-wrap')()}>
