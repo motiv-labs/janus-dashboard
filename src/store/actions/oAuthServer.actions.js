@@ -106,6 +106,7 @@ export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
         !isEditing && history.push('/oauth/servers');
         dispatch(showToaster());
     } catch (error) {
+        dispatch(closeConfirmationModal());
         errorHandler(dispatch)(error);
     }
 };
