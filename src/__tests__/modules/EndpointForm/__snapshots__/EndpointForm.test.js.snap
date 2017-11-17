@@ -4054,7 +4054,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         >
                                           <span
                                             className="Select-multi-value-wrapper"
-                                            id="react-select-2--value"
+                                            id="react-select-5--value"
                                           >
                                             <div
                                               className="Select-placeholder"
@@ -4062,7 +4062,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               Select...
                                             </div>
                                             <div
-                                              aria-activedescendant="react-select-2--value"
+                                              aria-activedescendant="react-select-5--value"
                                               aria-expanded={false}
                                               aria-owns=""
                                               aria-readonly="false"
@@ -5020,7 +5020,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                     >
                                                       <span
                                                         className="Select-multi-value-wrapper"
-                                                        id="react-select-3--value"
+                                                        id="react-select-6--value"
                                                       >
                                                         <div
                                                           className="Select-placeholder"
@@ -5028,7 +5028,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           Choose one or more methods
                                                         </div>
                                                         <AutosizeInput
-                                                          aria-activedescendant="react-select-3--value"
+                                                          aria-activedescendant="react-select-6--value"
                                                           aria-expanded="false"
                                                           aria-haspopup="false"
                                                           aria-owns=""
@@ -5057,7 +5057,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               }
                                                             />
                                                             <input
-                                                              aria-activedescendant="react-select-3--value"
+                                                              aria-activedescendant="react-select-6--value"
                                                               aria-expanded="false"
                                                               aria-haspopup="false"
                                                               aria-owns=""
@@ -5881,7 +5881,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       >
                                                         <span
                                                           className="Select-multi-value-wrapper"
-                                                          id="react-select-4--value"
+                                                          id="react-select-7--value"
                                                         >
                                                           <div
                                                             className="Select-placeholder"
@@ -5889,7 +5889,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             Select...
                                                           </div>
                                                           <AutosizeInput
-                                                            aria-activedescendant="react-select-4--value"
+                                                            aria-activedescendant="react-select-7--value"
                                                             aria-expanded="false"
                                                             aria-haspopup="false"
                                                             aria-owns=""
@@ -5918,7 +5918,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                 }
                                                               />
                                                               <input
-                                                                aria-activedescendant="react-select-4--value"
+                                                                aria-activedescendant="react-select-7--value"
                                                                 aria-expanded="false"
                                                                 aria-haspopup="false"
                                                                 aria-owns=""
