@@ -17,6 +17,7 @@ exports[`EndpointForm component renders correctly 1`] = `
       dispatch={[Function]}
       initialValues={
         Object {
+          "name": "mock-name",
           "oauth_client_endpoints": Object {},
           "oauth_endpoints": Object {},
           "token_strategy": Object {
@@ -34,6 +35,7 @@ exports[`EndpointForm component renders correctly 1`] = `
         getFormState={[Function]}
         initialValues={
           Object {
+            "name": "mock-name",
             "oauth_client_endpoints": Object {},
             "oauth_endpoints": Object {},
             "token_strategy": Object {
@@ -93,6 +95,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           getFormState={[Function]}
           initialValues={
             Object {
+              "name": "mock-name",
               "oauth_client_endpoints": Object {},
               "oauth_endpoints": Object {},
               "token_strategy": Object {
@@ -134,6 +137,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           validExceptSubmit={true}
           values={
             Object {
+              "name": "mock-name",
               "oauth_client_endpoints": Object {},
               "oauth_endpoints": Object {},
               "token_strategy": Object {
@@ -173,6 +177,7 @@ exports[`EndpointForm component renders correctly 1`] = `
             handleSubmit={[Function]}
             initialValues={
               Object {
+                "name": "mock-name",
                 "oauth_client_endpoints": Object {},
                 "oauth_endpoints": Object {},
                 "token_strategy": Object {
@@ -199,6 +204,7 @@ exports[`EndpointForm component renders correctly 1`] = `
               handleSubmit={[Function]}
               initialValues={
                 Object {
+                  "name": "mock-name",
                   "oauth_client_endpoints": Object {},
                   "oauth_endpoints": Object {},
                   "token_strategy": Object {
@@ -538,6 +544,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                 handleSubmit={[Function]}
                 initialValues={
                   Object {
+                    "name": "mock-name",
                     "oauth_client_endpoints": Object {},
                     "oauth_endpoints": Object {},
                     "token_strategy": Object {
@@ -883,6 +890,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                   handleSubmit={[Function]}
                   initialValues={
                     Object {
+                      "name": "mock-name",
                       "oauth_client_endpoints": Object {},
                       "oauth_endpoints": Object {},
                       "token_strategy": Object {
@@ -1269,6 +1277,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     handleSubmit={[Function]}
                     initialValues={
                       Object {
+                        "name": "mock-name",
                         "oauth_client_endpoints": Object {},
                         "oauth_endpoints": Object {},
                         "token_strategy": Object {
@@ -1635,6 +1644,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     validExceptSubmit={true}
                     values={
                       Object {
+                        "name": "mock-name",
                         "oauth_client_endpoints": Object {},
                         "oauth_endpoints": Object {},
                         "token_strategy": Object {
@@ -1675,6 +1685,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       handleSubmit={[Function]}
                       initialValues={
                         Object {
+                          "name": "mock-name",
                           "oauth_client_endpoints": Object {},
                           "oauth_endpoints": Object {},
                           "token_strategy": Object {
@@ -2176,6 +2187,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -2544,6 +2556,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -2610,6 +2623,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -2978,6 +2992,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -2989,12 +3004,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         }
                                         asyncValidating={false}
                                         component={[Function]}
-                                        dirty={false}
+                                        dirty={true}
                                         disabled={false}
                                         dispatch={[Function]}
+                                        initial="mock-name"
                                         name="name"
                                         normalize={[Function]}
-                                        pristine={true}
+                                        pristine={false}
                                         required={true}
                                         type="text"
                                         validate={[Function]}
@@ -3017,13 +3033,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "active": false,
                                               "asyncValidating": false,
                                               "autofilled": false,
-                                              "dirty": false,
+                                              "dirty": true,
                                               "dispatch": [Function],
                                               "error": undefined,
                                               "form": "oAuthServerForm",
-                                              "initial": undefined,
+                                              "initial": "mock-name",
                                               "invalid": false,
-                                              "pristine": true,
+                                              "pristine": false,
                                               "submitFailed": false,
                                               "submitting": false,
                                               "touched": false,
@@ -3180,6 +3196,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           "getValues": [Function],
                                                           "handleSubmit": [Function],
                                                           "initialValues": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -3548,6 +3565,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           "valid": true,
                                                           "validExceptSubmit": true,
                                                           "values": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -3613,6 +3631,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "getValues": [Function],
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -3981,6 +4000,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "valid": true,
                                                             "validExceptSubmit": true,
                                                             "values": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -4175,6 +4195,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           "getValues": [Function],
                                                           "handleSubmit": [Function],
                                                           "initialValues": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -4543,6 +4564,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           "valid": true,
                                                           "validExceptSubmit": true,
                                                           "values": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -4608,6 +4630,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "getValues": [Function],
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -4976,6 +4999,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "valid": true,
                                                             "validExceptSubmit": true,
                                                             "values": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -5187,6 +5211,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -5555,6 +5580,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -5628,6 +5654,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -5996,6 +6023,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -6433,6 +6461,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -6801,6 +6830,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -6906,6 +6936,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -7274,6 +7305,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -7727,6 +7759,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -8095,6 +8128,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -8177,6 +8211,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -8545,6 +8580,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -8990,6 +9026,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -9358,6 +9395,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -9436,6 +9474,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -9804,6 +9843,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -10232,6 +10272,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -10600,6 +10641,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -10664,6 +10706,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -11032,6 +11075,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -11185,6 +11229,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -11553,6 +11598,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -11634,6 +11680,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -12002,6 +12049,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -12300,6 +12348,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                     "getValues": [Function],
                                                     "handleSubmit": [Function],
                                                     "initialValues": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -12668,6 +12717,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                     "valid": true,
                                                     "validExceptSubmit": true,
                                                     "values": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -12733,6 +12783,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "getValues": [Function],
                                                       "handleSubmit": [Function],
                                                       "initialValues": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -13101,6 +13152,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "valid": true,
                                                       "validExceptSubmit": true,
                                                       "values": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -13295,6 +13347,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                     "getValues": [Function],
                                                     "handleSubmit": [Function],
                                                     "initialValues": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -13663,6 +13716,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                     "valid": true,
                                                     "validExceptSubmit": true,
                                                     "values": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -13728,6 +13782,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "getValues": [Function],
                                                       "handleSubmit": [Function],
                                                       "initialValues": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -14096,6 +14151,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "valid": true,
                                                       "validExceptSubmit": true,
                                                       "values": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -14423,6 +14479,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     endpoints={Object {}}
                                     initialValues={
                                       Object {
+                                        "name": "mock-name",
                                         "oauth_client_endpoints": Object {},
                                         "oauth_endpoints": Object {},
                                         "token_strategy": Object {
@@ -14774,6 +14831,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     endpoints={Object {}}
                                     initialValues={
                                       Object {
+                                        "name": "mock-name",
                                         "oauth_client_endpoints": Object {},
                                         "oauth_endpoints": Object {},
                                         "token_strategy": Object {
@@ -15164,6 +15222,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
       dispatch={[Function]}
       initialValues={
         Object {
+          "name": "mock-name",
           "oauth_client_endpoints": Object {},
           "oauth_endpoints": Object {},
           "token_strategy": Object {
@@ -15181,6 +15240,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
         getFormState={[Function]}
         initialValues={
           Object {
+            "name": "mock-name",
             "oauth_client_endpoints": Object {},
             "oauth_endpoints": Object {},
             "token_strategy": Object {
@@ -15240,6 +15300,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
           getFormState={[Function]}
           initialValues={
             Object {
+              "name": "mock-name",
               "oauth_client_endpoints": Object {},
               "oauth_endpoints": Object {},
               "token_strategy": Object {
@@ -15281,6 +15342,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
           validExceptSubmit={true}
           values={
             Object {
+              "name": "mock-name",
               "oauth_client_endpoints": Object {},
               "oauth_endpoints": Object {},
               "token_strategy": Object {
@@ -15320,6 +15382,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
             handleSubmit={[Function]}
             initialValues={
               Object {
+                "name": "mock-name",
                 "oauth_client_endpoints": Object {},
                 "oauth_endpoints": Object {},
                 "token_strategy": Object {
@@ -15346,6 +15409,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
               handleSubmit={[Function]}
               initialValues={
                 Object {
+                  "name": "mock-name",
                   "oauth_client_endpoints": Object {},
                   "oauth_endpoints": Object {},
                   "token_strategy": Object {
@@ -15685,6 +15749,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                 handleSubmit={[Function]}
                 initialValues={
                   Object {
+                    "name": "mock-name",
                     "oauth_client_endpoints": Object {},
                     "oauth_endpoints": Object {},
                     "token_strategy": Object {
@@ -16030,6 +16095,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                   handleSubmit={[Function]}
                   initialValues={
                     Object {
+                      "name": "mock-name",
                       "oauth_client_endpoints": Object {},
                       "oauth_endpoints": Object {},
                       "token_strategy": Object {
@@ -16416,6 +16482,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                     handleSubmit={[Function]}
                     initialValues={
                       Object {
+                        "name": "mock-name",
                         "oauth_client_endpoints": Object {},
                         "oauth_endpoints": Object {},
                         "token_strategy": Object {
@@ -16782,6 +16849,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                     validExceptSubmit={true}
                     values={
                       Object {
+                        "name": "mock-name",
                         "oauth_client_endpoints": Object {},
                         "oauth_endpoints": Object {},
                         "token_strategy": Object {
@@ -16822,6 +16890,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                       handleSubmit={[Function]}
                       initialValues={
                         Object {
+                          "name": "mock-name",
                           "oauth_client_endpoints": Object {},
                           "oauth_endpoints": Object {},
                           "token_strategy": Object {
@@ -17224,7 +17293,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                         <h1
                                           className="j-title"
                                         >
-                                          Edit undefined
+                                          Edit mock-name
                                         </h1>
                                       </Title>
                                     </div>
@@ -17323,6 +17392,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -17691,6 +17761,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -17757,6 +17828,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -18125,6 +18197,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -18136,12 +18209,13 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                         }
                                         asyncValidating={false}
                                         component={[Function]}
-                                        dirty={false}
+                                        dirty={true}
                                         disabled={true}
                                         dispatch={[Function]}
+                                        initial="mock-name"
                                         name="name"
                                         normalize={[Function]}
-                                        pristine={true}
+                                        pristine={false}
                                         required={true}
                                         type="text"
                                         validate={[Function]}
@@ -18164,13 +18238,13 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "active": false,
                                               "asyncValidating": false,
                                               "autofilled": false,
-                                              "dirty": false,
+                                              "dirty": true,
                                               "dispatch": [Function],
                                               "error": undefined,
                                               "form": "oAuthServerForm",
-                                              "initial": undefined,
+                                              "initial": "mock-name",
                                               "invalid": false,
-                                              "pristine": true,
+                                              "pristine": false,
                                               "submitFailed": false,
                                               "submitting": false,
                                               "touched": false,
@@ -18327,6 +18401,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           "getValues": [Function],
                                                           "handleSubmit": [Function],
                                                           "initialValues": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -18695,6 +18770,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           "valid": true,
                                                           "validExceptSubmit": true,
                                                           "values": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -18760,6 +18836,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "getValues": [Function],
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -19128,6 +19205,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "valid": true,
                                                             "validExceptSubmit": true,
                                                             "values": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -19322,6 +19400,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           "getValues": [Function],
                                                           "handleSubmit": [Function],
                                                           "initialValues": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -19690,6 +19769,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           "valid": true,
                                                           "validExceptSubmit": true,
                                                           "values": Object {
+                                                            "name": "mock-name",
                                                             "oauth_client_endpoints": Object {},
                                                             "oauth_endpoints": Object {},
                                                             "token_strategy": Object {
@@ -19755,6 +19835,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "getValues": [Function],
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -20123,6 +20204,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "valid": true,
                                                             "validExceptSubmit": true,
                                                             "values": Object {
+                                                              "name": "mock-name",
                                                               "oauth_client_endpoints": Object {},
                                                               "oauth_endpoints": Object {},
                                                               "token_strategy": Object {
@@ -20334,6 +20416,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -20702,6 +20785,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -20775,6 +20859,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -21143,6 +21228,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -21580,6 +21666,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -21948,6 +22035,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -22053,6 +22141,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -22421,6 +22510,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -22874,6 +22964,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -23242,6 +23333,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -23324,6 +23416,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -23692,6 +23785,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -24137,6 +24231,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -24505,6 +24600,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -24583,6 +24679,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -24951,6 +25048,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -25379,6 +25477,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -25747,6 +25846,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -25811,6 +25911,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -26179,6 +26280,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -26332,6 +26434,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "getValues": [Function],
                                           "handleSubmit": [Function],
                                           "initialValues": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -26700,6 +26803,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                           "valid": true,
                                           "validExceptSubmit": true,
                                           "values": Object {
+                                            "name": "mock-name",
                                             "oauth_client_endpoints": Object {},
                                             "oauth_endpoints": Object {},
                                             "token_strategy": Object {
@@ -26781,6 +26885,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "getValues": [Function],
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -27149,6 +27254,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "valid": true,
                                             "validExceptSubmit": true,
                                             "values": Object {
+                                              "name": "mock-name",
                                               "oauth_client_endpoints": Object {},
                                               "oauth_endpoints": Object {},
                                               "token_strategy": Object {
@@ -27447,6 +27553,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                     "getValues": [Function],
                                                     "handleSubmit": [Function],
                                                     "initialValues": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -27815,6 +27922,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                     "valid": true,
                                                     "validExceptSubmit": true,
                                                     "values": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -27880,6 +27988,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "getValues": [Function],
                                                       "handleSubmit": [Function],
                                                       "initialValues": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -28248,6 +28357,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "valid": true,
                                                       "validExceptSubmit": true,
                                                       "values": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -28442,6 +28552,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                     "getValues": [Function],
                                                     "handleSubmit": [Function],
                                                     "initialValues": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -28810,6 +28921,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                     "valid": true,
                                                     "validExceptSubmit": true,
                                                     "values": Object {
+                                                      "name": "mock-name",
                                                       "oauth_client_endpoints": Object {},
                                                       "oauth_endpoints": Object {},
                                                       "token_strategy": Object {
@@ -28875,6 +28987,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "getValues": [Function],
                                                       "handleSubmit": [Function],
                                                       "initialValues": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -29243,6 +29356,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "valid": true,
                                                       "validExceptSubmit": true,
                                                       "values": Object {
+                                                        "name": "mock-name",
                                                         "oauth_client_endpoints": Object {},
                                                         "oauth_endpoints": Object {},
                                                         "token_strategy": Object {
@@ -29570,6 +29684,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                     endpoints={Object {}}
                                     initialValues={
                                       Object {
+                                        "name": "mock-name",
                                         "oauth_client_endpoints": Object {},
                                         "oauth_endpoints": Object {},
                                         "token_strategy": Object {
@@ -29921,6 +30036,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                     endpoints={Object {}}
                                     initialValues={
                                       Object {
+                                        "name": "mock-name",
                                         "oauth_client_endpoints": Object {},
                                         "oauth_endpoints": Object {},
                                         "token_strategy": Object {

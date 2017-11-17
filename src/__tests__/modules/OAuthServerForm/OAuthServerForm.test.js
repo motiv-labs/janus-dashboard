@@ -11,6 +11,7 @@ import { renderFakeForm, wrap } from '../../../utils/createTestForm';
 import OAuthServerForm from '../../../modules/pages/NewOAuthServerPage/OAuthServerForm';
 
 const initialValues = {
+    name: 'mock-name',
     token_strategy: {
         name: 'mock-name',
     },
