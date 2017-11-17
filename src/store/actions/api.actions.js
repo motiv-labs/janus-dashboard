@@ -335,6 +335,7 @@ export const confirmedSaveEndpoint = async (dispatch, api) => {
         history.push('/');
         dispatch(showToaster());
     } catch (error) {
+        dispatch(closeConfirmationModal());
         errorHandler(dispatch)(error);
     }
 };
