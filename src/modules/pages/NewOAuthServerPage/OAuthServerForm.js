@@ -38,6 +38,7 @@ const propTypes = {
     schema: PropTypes.object.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
+    editing: PropTypes.bool,
 };
 
 class OAuthServerForm extends PureComponent {
