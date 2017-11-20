@@ -3,7 +3,6 @@
 .j-search-bar {
     position: relative;
     width: 360px;
-    margin-right: $hf-padding-middle;
     background-color: $hf-color-white;
 
     &__input {
@@ -23,4 +22,8 @@
         transform: translateY(-50%);
         background-image: url(../../assets/img/grey.svg);
     }
+}
+
+.j-row__item:not(:last-child) > .j-search-bar {
+    margin-right: $hf-padding-middle;
 }

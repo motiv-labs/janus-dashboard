@@ -20,9 +20,7 @@ const HealthCheckPage = ({ location, status }) => {
             return (
                 <Row>
                     <Title>Health Check Problems</Title>
-                    <Row>
-                        <SearchingContainer />
-                    </Row>
+                    <SearchingContainer />
                 </Row>
             );
         }
