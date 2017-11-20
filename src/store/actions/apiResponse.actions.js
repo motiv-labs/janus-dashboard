@@ -15,6 +15,7 @@ import {
 } from './api.actions';
 import {
     confirmedSaveOAuthServer,
+    confirmedUpdateOAuthServer,
     confirmedDeleteOAuthServer,
 } from './oAuthServer.actions';
 
@@ -41,7 +42,8 @@ export const openConfirmationModal = (action, api, apiName, isRedirect) => {
                     title: 'Save',
                 };
             }
-            case 'update': {
+            case 'update':
+            case 'updateOAuthServer': {
                 return {
                     api,
                     apiName,
@@ -99,6 +101,9 @@ export const afterCloseConfirmationModal = (actionType, item, itemName, isRedire
         }
         case 'update': {
             return confirmedUpdateEndpoint(dispatch, item);
+        }
+        case 'updateOAuthServer': {
+            return confirmedUpdateOAuthServer(dispatch, item);
         }
         case 'delete': {
             return confirmedDeleteEndpoint(dispatch, itemName, isRedirect);
