@@ -124,8 +124,8 @@ class OAuthEndpoint extends PureComponent {
                                 options={this.createStrategyOptions(schema.oauth_endpoints[name].upstreams.options)}
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
-                                searchable={false}
                                 clearable={false}
+                                required
                             />
                             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                                 <Row className={b('row')()} fullwidth>
