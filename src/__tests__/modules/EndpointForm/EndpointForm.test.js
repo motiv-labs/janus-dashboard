@@ -11,7 +11,7 @@ import EndpointForm from '../../../modules/forms/EndpointForm/EndpointForm';
 
 const initialValues = {
     proxy: {
-        upstreams: 'sdeded'
+        upstreams: 'mock-upstreams'
     },
 };
 

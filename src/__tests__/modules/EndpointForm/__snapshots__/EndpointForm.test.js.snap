@@ -18,7 +18,7 @@ exports[`EndpointForm component renders correctly 1`] = `
       initialValues={
         Object {
           "proxy": Object {
-            "upstreams": "sdeded",
+            "upstreams": "mock-upstreams",
           },
         }
       }
@@ -33,7 +33,7 @@ exports[`EndpointForm component renders correctly 1`] = `
         initialValues={
           Object {
             "proxy": Object {
-              "upstreams": "sdeded",
+              "upstreams": "mock-upstreams",
             },
           }
         }
@@ -90,7 +90,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           initialValues={
             Object {
               "proxy": Object {
-                "upstreams": "sdeded",
+                "upstreams": "mock-upstreams",
               },
             }
           }
@@ -129,7 +129,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           values={
             Object {
               "proxy": Object {
-                "upstreams": "sdeded",
+                "upstreams": "mock-upstreams",
               },
             }
           }
@@ -166,7 +166,7 @@ exports[`EndpointForm component renders correctly 1`] = `
             initialValues={
               Object {
                 "proxy": Object {
-                  "upstreams": "sdeded",
+                  "upstreams": "mock-upstreams",
                 },
               }
             }
@@ -347,7 +347,7 @@ exports[`EndpointForm component renders correctly 1`] = `
               initialValues={
                 Object {
                   "proxy": Object {
-                    "upstreams": "sdeded",
+                    "upstreams": "mock-upstreams",
                   },
                 }
               }
@@ -524,7 +524,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                 initialValues={
                   Object {
                     "proxy": Object {
-                      "upstreams": "sdeded",
+                      "upstreams": "mock-upstreams",
                     },
                   }
                 }
@@ -707,7 +707,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                   initialValues={
                     Object {
                       "proxy": Object {
-                        "upstreams": "sdeded",
+                        "upstreams": "mock-upstreams",
                       },
                     }
                   }
@@ -931,7 +931,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     initialValues={
                       Object {
                         "proxy": Object {
-                          "upstreams": "sdeded",
+                          "upstreams": "mock-upstreams",
                         },
                       }
                     }
@@ -978,7 +978,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     values={
                       Object {
                         "proxy": Object {
-                          "upstreams": "sdeded",
+                          "upstreams": "mock-upstreams",
                         },
                       }
                     }
@@ -1173,7 +1173,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       initialValues={
                         Object {
                           "proxy": Object {
-                            "upstreams": "sdeded",
+                            "upstreams": "mock-upstreams",
                           },
                         }
                       }
@@ -1523,7 +1523,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "initialize": [Function],
@@ -1573,7 +1573,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "validExceptSubmit": true,
                                             "values": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "warning": undefined,
@@ -1792,7 +1792,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "handleSubmit": [Function],
                                               "initialValues": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "initialize": [Function],
@@ -1842,7 +1842,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "validExceptSubmit": true,
                                               "values": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "warning": undefined,
@@ -2185,7 +2185,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -2235,7 +2235,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -2453,7 +2453,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -2503,7 +2503,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -2850,7 +2850,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -2900,7 +2900,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -3118,7 +3118,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -3168,7 +3168,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -3544,7 +3544,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "initialize": [Function],
@@ -3594,7 +3594,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "validExceptSubmit": true,
                                             "values": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "warning": undefined,
@@ -3813,7 +3813,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "handleSubmit": [Function],
                                               "initialValues": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "initialize": [Function],
@@ -3863,7 +3863,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "validExceptSubmit": true,
                                               "values": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "warning": undefined,
@@ -4394,7 +4394,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "handleSubmit": [Function],
                                                 "initialValues": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "initialize": [Function],
@@ -4444,7 +4444,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "validExceptSubmit": true,
                                                 "values": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "warning": undefined,
@@ -4703,7 +4703,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "handleSubmit": [Function],
                                                   "initialValues": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "initialize": [Function],
@@ -4753,7 +4753,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "validExceptSubmit": true,
                                                   "values": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "warning": undefined,
@@ -5361,7 +5361,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "handleSubmit": [Function],
                                                 "initialValues": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "initialize": [Function],
@@ -5411,7 +5411,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "validExceptSubmit": true,
                                                 "values": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "warning": undefined,
@@ -5630,7 +5630,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "handleSubmit": [Function],
                                                   "initialValues": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "initialize": [Function],
@@ -5680,7 +5680,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "validExceptSubmit": true,
                                                   "values": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "warning": undefined,
@@ -6239,7 +6239,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -6289,7 +6289,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -6507,7 +6507,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -6557,7 +6557,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -6904,7 +6904,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -6954,7 +6954,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -7172,7 +7172,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -7222,7 +7222,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -7619,7 +7619,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -7669,7 +7669,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -7887,7 +7887,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -7937,7 +7937,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -8284,7 +8284,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -8334,7 +8334,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -8552,7 +8552,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -8602,7 +8602,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -9008,7 +9008,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -9058,7 +9058,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -9276,7 +9276,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -9326,7 +9326,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -9673,7 +9673,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "handleSubmit": [Function],
                                                             "initialValues": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "initialize": [Function],
@@ -9723,7 +9723,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "validExceptSubmit": true,
                                                             "values": Object {
                                                               "proxy": Object {
-                                                                "upstreams": "sdeded",
+                                                                "upstreams": "mock-upstreams",
                                                               },
                                                             },
                                                             "warning": undefined,
@@ -9941,7 +9941,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "handleSubmit": [Function],
                                                               "initialValues": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "initialize": [Function],
@@ -9991,7 +9991,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "validExceptSubmit": true,
                                                               "values": Object {
                                                                 "proxy": Object {
-                                                                  "upstreams": "sdeded",
+                                                                  "upstreams": "mock-upstreams",
                                                                 },
                                                               },
                                                               "warning": undefined,
@@ -10384,7 +10384,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "handleSubmit": [Function],
                                             "initialValues": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "initialize": [Function],
@@ -10434,7 +10434,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "validExceptSubmit": true,
                                             "values": Object {
                                               "proxy": Object {
-                                                "upstreams": "sdeded",
+                                                "upstreams": "mock-upstreams",
                                               },
                                             },
                                             "warning": undefined,
@@ -10652,7 +10652,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "handleSubmit": [Function],
                                               "initialValues": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "initialize": [Function],
@@ -10702,7 +10702,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "validExceptSubmit": true,
                                               "values": Object {
                                                 "proxy": Object {
-                                                  "upstreams": "sdeded",
+                                                  "upstreams": "mock-upstreams",
                                                 },
                                               },
                                               "warning": undefined,
@@ -11021,7 +11021,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "handleSubmit": [Function],
                                                 "initialValues": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "initialize": [Function],
@@ -11071,7 +11071,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 "validExceptSubmit": true,
                                                 "values": Object {
                                                   "proxy": Object {
-                                                    "upstreams": "sdeded",
+                                                    "upstreams": "mock-upstreams",
                                                   },
                                                 },
                                                 "warning": undefined,
@@ -11288,7 +11288,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "handleSubmit": [Function],
                                                   "initialValues": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "initialize": [Function],
@@ -11338,7 +11338,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "validExceptSubmit": true,
                                                   "values": Object {
                                                     "proxy": Object {
-                                                      "upstreams": "sdeded",
+                                                      "upstreams": "mock-upstreams",
                                                     },
                                                   },
                                                   "warning": undefined,
