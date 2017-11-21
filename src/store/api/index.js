@@ -43,14 +43,23 @@ if (getAccessToken()) {
     setAccessToken(getAccessToken());
 }
 
-client.interceptors.response.use(undefined, error => {
-    if (error.response.status === 401) {
+client.interceptors.response.use(
+    response => response,
+    error => {
+        if (error.response.status !== 401) {
+            return Promise.reject(error);
+        }
+
         history.push('/login');
 
-        return;
+        return Promise.reject({
+            response: {
+                data: {
+                    error: 'You should be logged in.',
+                }
+            }
+        });
     }
-
-    throw error;
-});
+);
 
 export default client;

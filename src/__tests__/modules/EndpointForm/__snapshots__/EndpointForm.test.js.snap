@@ -4033,16 +4033,16 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       }
                                       pageSize={5}
                                       placeholder="Select..."
-                                      required={false}
+                                      required={true}
                                       scrollMenuIntoView={true}
-                                      searchable={false}
+                                      searchable={true}
                                       simpleValue={false}
                                       tabSelectsValue={true}
                                       valueComponent={[Function]}
                                       valueKey="value"
                                     >
                                       <div
-                                        className="Select j-select Select--single"
+                                        className="Select j-select Select--single is-searchable"
                                       >
                                         <div
                                           className="Select-control"
@@ -4061,24 +4061,68 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             >
                                               Select...
                                             </div>
-                                            <div
+                                            <AutosizeInput
                                               aria-activedescendant="react-select-2--value"
-                                              aria-expanded={false}
+                                              aria-expanded="false"
+                                              aria-haspopup="false"
                                               aria-owns=""
-                                              aria-readonly="false"
                                               className="Select-input"
+                                              minWidth="5"
                                               onBlur={[Function]}
+                                              onChange={[Function]}
                                               onFocus={[Function]}
+                                              required={true}
                                               role="combobox"
-                                              style={
-                                                Object {
-                                                  "border": 0,
-                                                  "display": "inline-block",
-                                                  "width": 1,
+                                              value=""
+                                            >
+                                              <div
+                                                className="Select-input"
+                                                style={
+                                                  Object {
+                                                    "display": "inline-block",
+                                                  }
                                                 }
-                                              }
-                                              tabIndex={0}
-                                            />
+                                              >
+                                                <style
+                                                  dangerouslySetInnerHTML={
+                                                    Object {
+                                                      "__html": "input#undefined::-ms-clear {display: none;}",
+                                                    }
+                                                  }
+                                                />
+                                                <input
+                                                  aria-activedescendant="react-select-2--value"
+                                                  aria-expanded="false"
+                                                  aria-haspopup="false"
+                                                  aria-owns=""
+                                                  onBlur={[Function]}
+                                                  onChange={[Function]}
+                                                  onFocus={[Function]}
+                                                  required={true}
+                                                  role="combobox"
+                                                  style={
+                                                    Object {
+                                                      "boxSizing": "content-box",
+                                                      "width": "5px",
+                                                    }
+                                                  }
+                                                  value=""
+                                                />
+                                                <div
+                                                  style={
+                                                    Object {
+                                                      "height": 0,
+                                                      "left": 0,
+                                                      "overflow": "scroll",
+                                                      "position": "absolute",
+                                                      "top": 0,
+                                                      "visibility": "hidden",
+                                                      "whiteSpace": "pre",
+                                                    }
+                                                  }
+                                                />
+                                              </div>
+                                            </AutosizeInput>
                                           </span>
                                           <span
                                             className="Select-arrow-zone"
