@@ -91,6 +91,7 @@ class EndpointForm extends PureComponent {
                         title="Targets"
                         placeholder="Target"
                         isValidate="url"
+                        warningMessage="Should be a valid url format('http://...' or 'https://...)."
                     />
                 );
             }
@@ -100,6 +101,7 @@ class EndpointForm extends PureComponent {
                         name="proxy.upstreams.targets"
                         title="Targets"
                         isValidate="url"
+                        warningMessage="Should be a valid url format('http://...' or 'https://...)."
                     />
                 );
             }

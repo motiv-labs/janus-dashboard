@@ -20,6 +20,7 @@ const propTypes = {
     name: PropTypes.string.isRequired,
     title: PropTypes.string,
     config: PropTypes.arrayOf(PropTypes.object).isRequired,
+    warningMessage: PropTypes.string,
 };
 
 const defaultProps = {
@@ -29,7 +30,7 @@ const defaultProps = {
 class AddDoubleFields extends PureComponent {
     passParse = config => config.type === 'number' ? parse : undefined;
 
-    renderMembers = ({ fields, isValidate, config, title }) => {
+    renderMembers = ({ fields, isValidate, config, title, warningMessage }) => {
         return (
             <div>
                 <div className={row()}>
@@ -52,6 +53,10 @@ class AddDoubleFields extends PureComponent {
                                         parse={this.passParse(config[0])}
                                         validate={isValidate && checkOnPattern(isValidate)}
                                     />
+                                    {
+                                        warningMessage &&
+                                            <span className="j-input__warning">{warningMessage}</span>
+                                    }
                                 </div>
                                 <div className={row('item')()}>
                                     <Field
@@ -62,6 +67,10 @@ class AddDoubleFields extends PureComponent {
                                         parse={this.passParse(config[1])}
                                         validate={isValidate && checkOnPattern(isValidate)}
                                     />
+                                    {
+                                        warningMessage &&
+                                            <span className="j-input__warning">{warningMessage}</span>
+                                    }
                                 </div>
                                 <div className={row('control')()}>
                                     <Control
@@ -78,7 +87,7 @@ class AddDoubleFields extends PureComponent {
     };
 
     render () {
-        const { config, isValidate, name, title } = this.props;
+        const { config, isValidate, name, title, warningMessage } = this.props;
 
         return (
             <div className="j-col__item">
@@ -88,6 +97,7 @@ class AddDoubleFields extends PureComponent {
                     title={title}
                     config={config}
                     isValidate={isValidate}
+                    warningMessage={warningMessage}
                 />
             </div>
         );

@@ -27,7 +27,7 @@ const defaultProps = {
 };
 
 class MultiRowField extends PureComponent {
-    renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title }) => (
+    renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title, warningMessage }) => (
         <div>
             <div className={row()}>
                 <Label>{ title } { placeholder }</Label>
@@ -52,6 +52,10 @@ class MultiRowField extends PureComponent {
                                     placeholder={placeholder ? placeholder : ''}
                                     validate={isValidate && checkOnPattern(isValidate)}
                                 />
+                                {
+                                    warningMessage &&
+                                        <span className="j-input__warning">{warningMessage}</span>
+                                }
                             </div>
                             <div className={row('control')()}>
                                 <Control
@@ -67,7 +71,7 @@ class MultiRowField extends PureComponent {
     )
 
     render() {
-        const { hint, isValidate, name, placeholder, suffix, title } = this.props;
+        const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props;
 
         return (
             <Row col>
@@ -79,6 +83,7 @@ class MultiRowField extends PureComponent {
                     suffix={suffix}
                     title={title}
                     isValidate={isValidate}
+                    warningMessage={warningMessage}
                 />
             </Row>
         );
