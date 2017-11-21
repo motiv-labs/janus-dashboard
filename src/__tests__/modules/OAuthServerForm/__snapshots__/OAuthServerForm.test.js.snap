@@ -3071,7 +3071,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                   <span
                                     className="j-input__warning"
                                   >
-                                    The name should contain only letters, '-' and/or '_'.
+                                    The name should contain only letters, "-" and/or "_".
                                   </span>
                                   <Hint>
                                     <div
@@ -18276,7 +18276,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                   <span
                                     className="j-input__warning"
                                   >
-                                    The name should contain only letters, '-' and/or '_'.
+                                    The name should contain only letters, "-" and/or "_".
                                   </span>
                                   <Hint>
                                     <div

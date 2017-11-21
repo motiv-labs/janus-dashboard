@@ -5,6 +5,7 @@ import { Field } from 'redux-form';
 import Select from 'react-select';
 
 import PLACEHOLDER from '../../../../../configurations/placeholders.config';
+import WARNINGS from '../../../../../configurations/warning-messages.config';
 import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
@@ -109,7 +110,7 @@ class OAuthEndpoint extends PureComponent {
                                 component={Input}
                                 validate={checkOnPattern('/')}
                             />
-                            <span className="j-input__warning">Listen path should start from '/'</span>
+                            <span className="j-input__warning">{WARNINGS.LISTEN_PATH}</span>
                             <Hint>The public url that is exposed by the Gateway.</Hint>
                         </div>
                     </div>

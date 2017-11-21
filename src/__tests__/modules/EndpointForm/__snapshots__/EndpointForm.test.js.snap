@@ -1916,7 +1916,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     <span
                                       className="j-input__warning"
                                     >
-                                      The name should contain only letters, '-' and/or '_'.
+                                      The name should contain only letters, "-" and/or "_".
                                     </span>
                                     <Hint>
                                       <div
@@ -3937,7 +3937,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     <span
                                       className="j-input__warning"
                                     >
-                                      Listen path should start from '/'
+                                      Listen path should start from "/".
                                     </span>
                                     <Hint>
                                       <div
@@ -10817,7 +10817,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                     <span
                                       className="j-input__warning"
                                     >
-                                      Should be a valid url format('http://...' or 'https://...).
+                                      Should be a valid url format("http://..." or "https://...").
                                     </span>
                                     <Hint>
                                       <div
