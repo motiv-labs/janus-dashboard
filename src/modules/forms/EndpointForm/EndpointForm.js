@@ -90,6 +90,7 @@ class EndpointForm extends PureComponent {
                         suffix="target"
                         title="Targets"
                         placeholder="Target"
+                        isValidate="url"
                     />
                 );
             }
@@ -98,6 +99,7 @@ class EndpointForm extends PureComponent {
                     <WeightTargets
                         name="proxy.upstreams.targets"
                         title="Targets"
+                        isValidate="url"
                     />
                 );
             }

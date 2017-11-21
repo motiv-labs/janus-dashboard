@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
 import parse from '../../helpers/parse-value';
+import checkOnPattern from '../../helpers/pattern-check';
 
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../components/Label/Label';
@@ -15,14 +16,16 @@ import './AddDoubleFields.css';
 const row = block('j-row');
 
 const propTypes = {
+    isValidate: PropTypes.string,
     name: PropTypes.string.isRequired,
     title: PropTypes.string,
     config: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-const AddDoubleFields = ({ config, name, title }) => {
-    const passParse = config => config.type === 'number' ? parse : undefined;
-    const renderMembers = ({ fields, config, hint, title }) => {
+class AddDoubleFields extends PureComponent {
+    passParse = config => config.type === 'number' ? parse : undefined;
+
+    renderMembers = ({ fields, isValidate, config, title }) => {
         return (
             <div>
                 <div className={row()}>
@@ -42,7 +45,8 @@ const AddDoubleFields = ({ config, name, title }) => {
                                         type={config[0].type}
                                         component={Input}
                                         placeholder={config[0].placeholder}
-                                        parse={passParse(config[0])}
+                                        parse={this.passParse(config[0])}
+                                        validate={isValidate ? checkOnPattern(isValidate) : null}
                                     />
                                 </div>
                                 <div className={row('item')()}>
@@ -51,7 +55,8 @@ const AddDoubleFields = ({ config, name, title }) => {
                                         type={config[1].type}
                                         component={Input}
                                         placeholder={config[1].placeholder}
-                                        parse={passParse(config[1])}
+                                        parse={this.passParse(config[1])}
+                                        validate={isValidate ? checkOnPattern(isValidate) : null}
                                     />
                                 </div>
                                 <div className={row('control')()}>
@@ -68,16 +73,21 @@ const AddDoubleFields = ({ config, name, title }) => {
         );
     };
 
-    return (
-        <div className="j-col__item">
-            <FieldArray
-                name={`${name}`}
-                component={renderMembers}
-                title={title}
-                config={config}
-            />
-        </div>
-    );
+    render () {
+        const { config, isValidate, name, title } = this.props;
+
+        return (
+            <div className="j-col__item">
+                <FieldArray
+                    name={`${name}`}
+                    component={this.renderMembers}
+                    title={title}
+                    config={config}
+                    isValidate={isValidate}
+                />
+            </div>
+        );
+    }
 };
 
 AddDoubleFields.propTypes = propTypes;

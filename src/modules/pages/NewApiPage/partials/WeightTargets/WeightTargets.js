@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 import AddDoubleFields from '../../../../../components/AddDoubleFields/AddDoubleFields';
 
 const propTypes = {
+    isValidate: PropTypes.string,
     name: PropTypes.string.isRequired,
     title: PropTypes.string,
 };
 
-const WeightTargets = ({ name, title }) => {
+const WeightTargets = ({ isValidate, name, title }) => {
     const config = [
         {
             type: 'text',
@@ -27,6 +28,7 @@ const WeightTargets = ({ name, title }) => {
             name={`${name}`}
             title={title}
             config={config}
+            isValidate={isValidate}
         />
     );
 };
