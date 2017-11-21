@@ -1,11 +1,10 @@
 import React from 'react';
 import { createStore } from 'redux';
 import { mount } from 'enzyme';
-import toJSON from 'enzyme-to-json';
-import { Route, Link, MemoryRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 
 import apiSchema from '../../../configurations/apiSchema.config';
-import { renderFakeForm, wrap } from '../../../utils/createTestForm';
+import { renderFakeForm } from '../../../utils/createTestForm';
 
 import EndpointForm from '../../../modules/forms/EndpointForm/EndpointForm';
 
