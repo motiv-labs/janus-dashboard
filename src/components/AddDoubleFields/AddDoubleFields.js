@@ -22,6 +22,10 @@ const propTypes = {
     config: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
+const defaultProps = {
+    isValidate: null,
+};
+
 class AddDoubleFields extends PureComponent {
     passParse = config => config.type === 'number' ? parse : undefined;
 
@@ -46,7 +50,7 @@ class AddDoubleFields extends PureComponent {
                                         component={Input}
                                         placeholder={config[0].placeholder}
                                         parse={this.passParse(config[0])}
-                                        validate={isValidate ? checkOnPattern(isValidate) : null}
+                                        validate={isValidate && checkOnPattern(isValidate)}
                                     />
                                 </div>
                                 <div className={row('item')()}>
@@ -56,7 +60,7 @@ class AddDoubleFields extends PureComponent {
                                         component={Input}
                                         placeholder={config[1].placeholder}
                                         parse={this.passParse(config[1])}
-                                        validate={isValidate ? checkOnPattern(isValidate) : null}
+                                        validate={isValidate && checkOnPattern(isValidate)}
                                     />
                                 </div>
                                 <div className={row('control')()}>
@@ -90,6 +94,7 @@ class AddDoubleFields extends PureComponent {
     }
 };
 
+AddDoubleFields.defaultProps = defaultProps;
 AddDoubleFields.propTypes = propTypes;
 
 export default AddDoubleFields;

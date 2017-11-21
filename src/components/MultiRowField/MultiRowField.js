@@ -22,6 +22,10 @@ const propTypes = {
     title: PropTypes.string,
 };
 
+const defaultProps = {
+    isValidate: null,
+};
+
 class MultiRowField extends PureComponent {
     renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title }) => (
         <div>
@@ -46,7 +50,7 @@ class MultiRowField extends PureComponent {
                                     type="text"
                                     component={Input}
                                     placeholder={placeholder ? placeholder : ''}
-                                    validate={isValidate ? checkOnPattern(isValidate) : null}
+                                    validate={isValidate && checkOnPattern(isValidate)}
                                 />
                             </div>
                             <div className={row('control')()}>
@@ -81,6 +85,7 @@ class MultiRowField extends PureComponent {
     }
 };
 
+MultiRowField.defaultProps = defaultProps;
 MultiRowField.propTypes = propTypes;
 
 export default MultiRowField;
