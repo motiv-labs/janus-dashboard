@@ -7,6 +7,7 @@ import Select from 'react-select';
 import Sticky from 'react-sticky-el';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
+import WARNINGS from '../../../configurations/warning-messages.config';
 
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
@@ -244,7 +245,7 @@ class OAuthServerForm extends PureComponent {
                                     validate={checkOnPattern('name')}
                                     required
                                 />
-                                <span className="j-input__warning">The name should contain only letters, '-' and/or '_'.</span>
+                                <span className="j-input__warning">{WARNINGS.NAMES}</span>
                                 <Hint>Must be unique.</Hint>
                             </div>
                         </Row>

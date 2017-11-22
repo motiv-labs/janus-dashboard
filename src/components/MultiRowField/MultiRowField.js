@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { Field, FieldArray } from 'redux-form';
 
 import block from '../../helpers/bem-cn';
+import checkOnPattern from '../../helpers/pattern-check';
+
 import Row from '../../modules/Layout/Row/Row';
 import Label from '../../components/Label/Label';
 import Input from '../../modules/inputs/Input';
@@ -14,13 +16,18 @@ const row = block('j-row');
 const propTypes = {
     name: PropTypes.string.isRequired,
     hint: PropTypes.string,
+    isValidate: PropTypes.string,
     placeholder: PropTypes.string,
     suffix: PropTypes.string,
     title: PropTypes.string,
 };
 
+const defaultProps = {
+    isValidate: null,
+};
+
 class MultiRowField extends PureComponent {
-    renderMembers = ({ fields, hint, placeholder, suffix, title }) => (
+    renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title, warningMessage }) => (
         <div>
             <div className={row()}>
                 <Label>{ title } { placeholder }</Label>
@@ -43,7 +50,12 @@ class MultiRowField extends PureComponent {
                                     type="text"
                                     component={Input}
                                     placeholder={placeholder ? placeholder : ''}
+                                    validate={isValidate && checkOnPattern(isValidate)}
                                 />
+                                {
+                                    warningMessage &&
+                                        <span className="j-input__warning">{warningMessage}</span>
+                                }
                             </div>
                             <div className={row('control')()}>
                                 <Control
@@ -59,7 +71,7 @@ class MultiRowField extends PureComponent {
     )
 
     render() {
-        const { hint, name, placeholder, suffix, title } = this.props;
+        const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props;
 
         return (
             <Row col>
@@ -70,12 +82,15 @@ class MultiRowField extends PureComponent {
                     placeholder={placeholder}
                     suffix={suffix}
                     title={title}
+                    isValidate={isValidate}
+                    warningMessage={warningMessage}
                 />
             </Row>
         );
     }
 };
 
+MultiRowField.defaultProps = defaultProps;
 MultiRowField.propTypes = propTypes;
 
 export default MultiRowField;

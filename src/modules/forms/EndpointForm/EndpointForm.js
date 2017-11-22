@@ -8,6 +8,7 @@ import Select from 'react-select';
 import Sticky from 'react-sticky-el';
 
 import PLACEHOLDER from '../../../configurations/placeholders.config';
+import WARNINGS from '../../../configurations/warning-messages.config';
 
 import block from '../../../helpers/bem-cn';
 import checkOnPattern from '../../../helpers/pattern-check';
@@ -90,6 +91,8 @@ class EndpointForm extends PureComponent {
                         suffix="target"
                         title="Targets"
                         placeholder="Target"
+                        isValidate="url"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
@@ -98,6 +101,8 @@ class EndpointForm extends PureComponent {
                     <WeightTargets
                         name="proxy.upstreams.targets"
                         title="Targets"
+                        isValidate="url"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
@@ -186,7 +191,7 @@ class EndpointForm extends PureComponent {
                                     validate={checkOnPattern('name')}
                                     required
                                 />
-                                <span className="j-input__warning">The name should contain only letters, '-' and/or '_'.</span>
+                                <span className="j-input__warning">{WARNINGS.NAMES}</span>
                                 <Hint>Must be unique.</Hint>
                             </div>
                             <Row col>
@@ -231,7 +236,7 @@ class EndpointForm extends PureComponent {
                                     validate={checkOnPattern('/')}
                                     required
                                 />
-                                <span className="j-input__warning">Listen path should start from '/'</span>
+                                <span className="j-input__warning">{WARNINGS.LISTEN_PATH}</span>
                                 <Hint>The public url that is exposed by the Gateway.</Hint>
                             </div>
                             <div className={col()}>
@@ -378,7 +383,7 @@ class EndpointForm extends PureComponent {
                                     component={Input}
                                     validate={checkOnPattern('url')}
                                 />
-                                <span className="j-input__warning">Should be a valid url format('http://...' or 'https://...).</span>
+                                <span className="j-input__warning">{WARNINGS.URL}</span>
                                 <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
                             </div>
                             <Row col>
