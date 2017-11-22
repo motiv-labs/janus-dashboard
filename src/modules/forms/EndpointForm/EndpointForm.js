@@ -57,6 +57,14 @@ class EndpointForm extends PureComponent {
         upstreams: this.props.initialValues.proxy.upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
     };
 
+    componentWillReceiveProps(nextProps) {
+        if (this.props.initialValues.proxy.upstreams !== nextProps.initialValues.proxy.upstreams) {
+            this.setState({
+                upstreams: nextProps.initialValues.proxy.upstreams,
+            });
+        }
+    }
+
     createStrategyOptions = list => {
         const extractNames = list => list.map(item => item.balancing);
         const labelCombiner = item => ({
