@@ -26,6 +26,7 @@ const row = block('j-row');
 const col = block('j-col');
 
 const propTypes = {
+    activeTab: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
     editing: PropTypes.bool,
@@ -73,8 +74,10 @@ class OAuthEndpoint extends PureComponent {
                     <MultiRowField
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
                         placeholder="Target"
+                        isValidate="url"
                         suffix="target"
                         title="Targets"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
@@ -83,6 +86,8 @@ class OAuthEndpoint extends PureComponent {
                     <WeightTargets
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
                         title="Targets"
+                        isValidate="url"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
@@ -92,7 +97,7 @@ class OAuthEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, initialValues, name, schema } = this.props;
+        const { category, editing, initialValues, name, schema, activeTab } = this.props;
 
         return (
             <div className={b('section')}>
@@ -126,7 +131,7 @@ class OAuthEndpoint extends PureComponent {
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 clearable={false}
-                                required
+                                required={activeTab}
                             />
                             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                                 <Row className={b('row')()} fullwidth>

@@ -65,12 +65,7 @@ class AddDoubleFields extends PureComponent {
                                         component={Input}
                                         placeholder={config[1].placeholder}
                                         parse={this.passParse(config[1])}
-                                        validate={isValidate && checkOnPattern(isValidate)}
                                     />
-                                    {
-                                        warningMessage &&
-                                            <span className="j-input__warning">{warningMessage}</span>
-                                    }
                                 </div>
                                 <div className={row('control')()}>
                                     <Control

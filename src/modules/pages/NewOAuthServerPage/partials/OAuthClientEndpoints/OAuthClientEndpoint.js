@@ -25,6 +25,7 @@ const row = block('j-row');
 const col = block('j-col');
 
 const propTypes = {
+    activeTab: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
@@ -69,18 +70,22 @@ class OAuthClientEndpoint extends PureComponent {
             case 'roundrobin': {
                 return (
                     <MultiRowField
+                        isValidate="url"
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
                         suffix="target"
                         title="Targets"
                         placeholder="Target"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
             case 'weight': {
                 return (
                     <WeightTargets
+                        isValidate="url"
                         name={`${this.props.category}.${this.props.name}.upstreams.targets`}
                         title="Targets"
+                        warningMessage={WARNINGS.URL}
                     />
                 );
             }
@@ -90,7 +95,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, name, schema } = this.props;
+        const { category, editing, name, schema, activeTab } = this.props;
 
         return (
             <div className={b('section')}>
@@ -124,7 +129,7 @@ class OAuthClientEndpoint extends PureComponent {
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 clearable={false}
-                                required
+                                required={activeTab}
                             />
                             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                                 <Row className={b('row')()} fullwidth>
