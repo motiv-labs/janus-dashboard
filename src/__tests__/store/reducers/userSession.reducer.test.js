@@ -67,6 +67,7 @@ describe('user session reducer', () => {
 
         it('sets correct user info and admin status, and discard errorMsg to null when user getes logged in', () => {
             expect(result.user).toEqual('mock-name');
+            expect(result.isAdmin).toEqual(false);
             expect(result.errorMsg).toEqual(null);
         });
 
@@ -93,7 +94,7 @@ describe('user session reducer', () => {
 
         it('discards user info and status, and sets the error message to the given payload when user failed to log in', () => {
             expect(result.user).toEqual('');
-            expect(result.isAdmin).toEqual(null);
+            expect(result.isAdmin).toEqual(false);
             expect(result.errorMsg).toEqual(payload);
         });
 
@@ -112,7 +113,7 @@ describe('user session reducer', () => {
         });
 
         it('discards admin status', () => {
-            expect(result.isAdmin).toBe(null);
+            expect(result.isAdmin).toBe(false);
         });
 
         it('has only change exact amount of reducer properties', () => {

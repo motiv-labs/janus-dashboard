@@ -18,6 +18,7 @@ import '../../Layout/Table/Table.css';
 const propTypes = {
     apiList: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
     currentPageIndex: PropTypes.number.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
     deleteEndpoint: PropTypes.func.isRequired,
     fetchEndpoints: PropTypes.func.isRequired,
@@ -69,13 +70,16 @@ class ApiList extends PureComponent {
                 >
                     <Icon type="copy" ariaLabel="Copy" />
                 </Link>
-                <Control
-                    className={table('controls-item')()}
-                    icon="delete"
-                    onClick={() => {
-                        this.handleDelete(api);
-                    }}
-                />
+                {
+                    this.props.isAdmin &&
+                    <Control
+                        className={table('controls-item')()}
+                        icon="delete"
+                        onClick={() => {
+                            this.handleDelete(api);
+                        }}
+                    />
+                }
             </div>
         </div>
     ))

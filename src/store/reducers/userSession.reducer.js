@@ -8,7 +8,7 @@ import {
 
 export const initialState = {
     errorMsg: null,
-    isAdmin: null,
+    isAdmin: false,
     user: '',
 };
 
@@ -35,7 +35,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 errorMsg: action.payload,
                 user: '',
-                isAdmin: null,
+                isAdmin: false,
             };
         }
 
@@ -43,7 +43,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 user: '',
-                isAdmin: null,
+                isAdmin: false,
             };
         }
 
