@@ -244,13 +244,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                   "name": "",
                   "oauth_client_endpoints": Object {
                     "create": Object {
+                      "all_methods": Array [
+                        "POST",
+                      ],
                       "append_path": false,
                       "hosts": Array [],
                       "insecure_skip_verify": false,
                       "listen_path": "",
-                      "methods": Array [
-                        "POST",
-                      ],
+                      "methods": Array [],
                       "preserve_host": false,
                       "strip_path": false,
                       "upstream_url": "",
@@ -279,13 +280,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                       },
                     },
                     "remove": Object {
+                      "all_mothods": Array [
+                        "DELETE",
+                      ],
                       "append_path": false,
                       "hosts": Array [],
                       "insecure_skip_verify": false,
                       "listen_path": "",
-                      "methods": Array [
-                        "DELETE",
-                      ],
+                      "methods": Array [],
                       "preserve_host": false,
                       "strip_path": false,
                       "upstream_url": "",
@@ -585,13 +587,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                     "name": "",
                     "oauth_client_endpoints": Object {
                       "create": Object {
+                        "all_methods": Array [
+                          "POST",
+                        ],
                         "append_path": false,
                         "hosts": Array [],
                         "insecure_skip_verify": false,
                         "listen_path": "",
-                        "methods": Array [
-                          "POST",
-                        ],
+                        "methods": Array [],
                         "preserve_host": false,
                         "strip_path": false,
                         "upstream_url": "",
@@ -620,13 +623,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                         },
                       },
                       "remove": Object {
+                        "all_mothods": Array [
+                          "DELETE",
+                        ],
                         "append_path": false,
                         "hosts": Array [],
                         "insecure_skip_verify": false,
                         "listen_path": "",
-                        "methods": Array [
-                          "DELETE",
-                        ],
+                        "methods": Array [],
                         "preserve_host": false,
                         "strip_path": false,
                         "upstream_url": "",
@@ -933,13 +937,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                       "name": "",
                       "oauth_client_endpoints": Object {
                         "create": Object {
+                          "all_methods": Array [
+                            "POST",
+                          ],
                           "append_path": false,
                           "hosts": Array [],
                           "insecure_skip_verify": false,
                           "listen_path": "",
-                          "methods": Array [
-                            "POST",
-                          ],
+                          "methods": Array [],
                           "preserve_host": false,
                           "strip_path": false,
                           "upstream_url": "",
@@ -968,13 +973,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                           },
                         },
                         "remove": Object {
+                          "all_mothods": Array [
+                            "DELETE",
+                          ],
                           "append_path": false,
                           "hosts": Array [],
                           "insecure_skip_verify": false,
                           "listen_path": "",
-                          "methods": Array [
-                            "DELETE",
-                          ],
+                          "methods": Array [],
                           "preserve_host": false,
                           "strip_path": false,
                           "upstream_url": "",
@@ -1326,13 +1332,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                         "name": "",
                         "oauth_client_endpoints": Object {
                           "create": Object {
+                            "all_methods": Array [
+                              "POST",
+                            ],
                             "append_path": false,
                             "hosts": Array [],
                             "insecure_skip_verify": false,
                             "listen_path": "",
-                            "methods": Array [
-                              "POST",
-                            ],
+                            "methods": Array [],
                             "preserve_host": false,
                             "strip_path": false,
                             "upstream_url": "",
@@ -1361,13 +1368,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                             },
                           },
                           "remove": Object {
+                            "all_mothods": Array [
+                              "DELETE",
+                            ],
                             "append_path": false,
                             "hosts": Array [],
                             "insecure_skip_verify": false,
                             "listen_path": "",
-                            "methods": Array [
-                              "DELETE",
-                            ],
+                            "methods": Array [],
                             "preserve_host": false,
                             "strip_path": false,
                             "upstream_url": "",
@@ -1731,13 +1739,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                           "name": "",
                           "oauth_client_endpoints": Object {
                             "create": Object {
+                              "all_methods": Array [
+                                "POST",
+                              ],
                               "append_path": false,
                               "hosts": Array [],
                               "insecure_skip_verify": false,
                               "listen_path": "",
-                              "methods": Array [
-                                "POST",
-                              ],
+                              "methods": Array [],
                               "preserve_host": false,
                               "strip_path": false,
                               "upstream_url": "",
@@ -1766,13 +1775,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                               },
                             },
                             "remove": Object {
+                              "all_mothods": Array [
+                                "DELETE",
+                              ],
                               "append_path": false,
                               "hosts": Array [],
                               "insecure_skip_verify": false,
                               "listen_path": "",
-                              "methods": Array [
-                                "DELETE",
-                              ],
+                              "methods": Array [],
                               "preserve_host": false,
                               "strip_path": false,
                               "upstream_url": "",
@@ -2258,13 +2268,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -2293,13 +2304,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -2694,13 +2706,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -2729,13 +2742,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -3267,13 +3281,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "name": "",
                                                             "oauth_client_endpoints": Object {
                                                               "create": Object {
+                                                                "all_methods": Array [
+                                                                  "POST",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "POST",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -3302,13 +3317,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                 },
                                                               },
                                                               "remove": Object {
+                                                                "all_mothods": Array [
+                                                                  "DELETE",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "DELETE",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -3702,13 +3718,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "name": "",
                                                               "oauth_client_endpoints": Object {
                                                                 "create": Object {
+                                                                  "all_methods": Array [
+                                                                    "POST",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "POST",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -3737,13 +3754,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                   },
                                                                 },
                                                                 "remove": Object {
+                                                                  "all_mothods": Array [
+                                                                    "DELETE",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "DELETE",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -4266,13 +4284,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             "name": "",
                                                             "oauth_client_endpoints": Object {
                                                               "create": Object {
+                                                                "all_methods": Array [
+                                                                  "POST",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "POST",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -4301,13 +4320,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                 },
                                                               },
                                                               "remove": Object {
+                                                                "all_mothods": Array [
+                                                                  "DELETE",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "DELETE",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -4701,13 +4721,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               "name": "",
                                                               "oauth_client_endpoints": Object {
                                                                 "create": Object {
+                                                                  "all_methods": Array [
+                                                                    "POST",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "POST",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -4736,13 +4757,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                   },
                                                                 },
                                                                 "remove": Object {
+                                                                  "all_mothods": Array [
+                                                                    "DELETE",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "DELETE",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -5282,13 +5304,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -5317,13 +5340,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -5725,13 +5749,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -5760,13 +5785,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -6532,13 +6558,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -6567,13 +6594,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -7007,13 +7035,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -7042,13 +7071,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -7830,13 +7860,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -7865,13 +7896,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -8282,13 +8314,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -8317,13 +8350,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -9097,13 +9131,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -9132,13 +9167,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -9545,13 +9581,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -9580,13 +9617,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -10343,13 +10381,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -10378,13 +10417,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -10777,13 +10817,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -10812,13 +10853,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -11300,13 +11342,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -11335,13 +11378,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -11751,13 +11795,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -11786,13 +11831,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -12419,13 +12465,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "name": "",
                                                       "oauth_client_endpoints": Object {
                                                         "create": Object {
+                                                          "all_methods": Array [
+                                                            "POST",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "POST",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -12454,13 +12501,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           },
                                                         },
                                                         "remove": Object {
+                                                          "all_mothods": Array [
+                                                            "DELETE",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "DELETE",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -12854,13 +12902,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                         "name": "",
                                                         "oauth_client_endpoints": Object {
                                                           "create": Object {
+                                                            "all_methods": Array [
+                                                              "POST",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "POST",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -12889,13 +12938,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             },
                                                           },
                                                           "remove": Object {
+                                                            "all_mothods": Array [
+                                                              "DELETE",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "DELETE",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -13418,13 +13468,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "name": "",
                                                       "oauth_client_endpoints": Object {
                                                         "create": Object {
+                                                          "all_methods": Array [
+                                                            "POST",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "POST",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -13453,13 +13504,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           },
                                                         },
                                                         "remove": Object {
+                                                          "all_mothods": Array [
+                                                            "DELETE",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "DELETE",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -13853,13 +13905,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                         "name": "",
                                                         "oauth_client_endpoints": Object {
                                                           "create": Object {
+                                                            "all_methods": Array [
+                                                              "POST",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "POST",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -13888,13 +13941,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             },
                                                           },
                                                           "remove": Object {
+                                                            "all_mothods": Array [
+                                                              "DELETE",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "DELETE",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -14541,13 +14595,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         "name": "",
                                         "oauth_client_endpoints": Object {
                                           "create": Object {
+                                            "all_methods": Array [
+                                              "POST",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "POST",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -14576,13 +14631,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             },
                                           },
                                           "remove": Object {
+                                            "all_mothods": Array [
+                                              "DELETE",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "DELETE",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -14894,13 +14950,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         "name": "",
                                         "oauth_client_endpoints": Object {
                                           "create": Object {
+                                            "all_methods": Array [
+                                              "POST",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "POST",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -14929,13 +14986,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             },
                                           },
                                           "remove": Object {
+                                            "all_mothods": Array [
+                                              "DELETE",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "DELETE",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -15472,13 +15530,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                   "name": "",
                   "oauth_client_endpoints": Object {
                     "create": Object {
+                      "all_methods": Array [
+                        "POST",
+                      ],
                       "append_path": false,
                       "hosts": Array [],
                       "insecure_skip_verify": false,
                       "listen_path": "",
-                      "methods": Array [
-                        "POST",
-                      ],
+                      "methods": Array [],
                       "preserve_host": false,
                       "strip_path": false,
                       "upstream_url": "",
@@ -15507,13 +15566,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                       },
                     },
                     "remove": Object {
+                      "all_mothods": Array [
+                        "DELETE",
+                      ],
                       "append_path": false,
                       "hosts": Array [],
                       "insecure_skip_verify": false,
                       "listen_path": "",
-                      "methods": Array [
-                        "DELETE",
-                      ],
+                      "methods": Array [],
                       "preserve_host": false,
                       "strip_path": false,
                       "upstream_url": "",
@@ -15813,13 +15873,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                     "name": "",
                     "oauth_client_endpoints": Object {
                       "create": Object {
+                        "all_methods": Array [
+                          "POST",
+                        ],
                         "append_path": false,
                         "hosts": Array [],
                         "insecure_skip_verify": false,
                         "listen_path": "",
-                        "methods": Array [
-                          "POST",
-                        ],
+                        "methods": Array [],
                         "preserve_host": false,
                         "strip_path": false,
                         "upstream_url": "",
@@ -15848,13 +15909,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                         },
                       },
                       "remove": Object {
+                        "all_mothods": Array [
+                          "DELETE",
+                        ],
                         "append_path": false,
                         "hosts": Array [],
                         "insecure_skip_verify": false,
                         "listen_path": "",
-                        "methods": Array [
-                          "DELETE",
-                        ],
+                        "methods": Array [],
                         "preserve_host": false,
                         "strip_path": false,
                         "upstream_url": "",
@@ -16161,13 +16223,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                       "name": "",
                       "oauth_client_endpoints": Object {
                         "create": Object {
+                          "all_methods": Array [
+                            "POST",
+                          ],
                           "append_path": false,
                           "hosts": Array [],
                           "insecure_skip_verify": false,
                           "listen_path": "",
-                          "methods": Array [
-                            "POST",
-                          ],
+                          "methods": Array [],
                           "preserve_host": false,
                           "strip_path": false,
                           "upstream_url": "",
@@ -16196,13 +16259,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                           },
                         },
                         "remove": Object {
+                          "all_mothods": Array [
+                            "DELETE",
+                          ],
                           "append_path": false,
                           "hosts": Array [],
                           "insecure_skip_verify": false,
                           "listen_path": "",
-                          "methods": Array [
-                            "DELETE",
-                          ],
+                          "methods": Array [],
                           "preserve_host": false,
                           "strip_path": false,
                           "upstream_url": "",
@@ -16554,13 +16618,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                         "name": "",
                         "oauth_client_endpoints": Object {
                           "create": Object {
+                            "all_methods": Array [
+                              "POST",
+                            ],
                             "append_path": false,
                             "hosts": Array [],
                             "insecure_skip_verify": false,
                             "listen_path": "",
-                            "methods": Array [
-                              "POST",
-                            ],
+                            "methods": Array [],
                             "preserve_host": false,
                             "strip_path": false,
                             "upstream_url": "",
@@ -16589,13 +16654,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             },
                           },
                           "remove": Object {
+                            "all_mothods": Array [
+                              "DELETE",
+                            ],
                             "append_path": false,
                             "hosts": Array [],
                             "insecure_skip_verify": false,
                             "listen_path": "",
-                            "methods": Array [
-                              "DELETE",
-                            ],
+                            "methods": Array [],
                             "preserve_host": false,
                             "strip_path": false,
                             "upstream_url": "",
@@ -16959,13 +17025,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                           "name": "",
                           "oauth_client_endpoints": Object {
                             "create": Object {
+                              "all_methods": Array [
+                                "POST",
+                              ],
                               "append_path": false,
                               "hosts": Array [],
                               "insecure_skip_verify": false,
                               "listen_path": "",
-                              "methods": Array [
-                                "POST",
-                              ],
+                              "methods": Array [],
                               "preserve_host": false,
                               "strip_path": false,
                               "upstream_url": "",
@@ -16994,13 +17061,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                               },
                             },
                             "remove": Object {
+                              "all_mothods": Array [
+                                "DELETE",
+                              ],
                               "append_path": false,
                               "hosts": Array [],
                               "insecure_skip_verify": false,
                               "listen_path": "",
-                              "methods": Array [
-                                "DELETE",
-                              ],
+                              "methods": Array [],
                               "preserve_host": false,
                               "strip_path": false,
                               "upstream_url": "",
@@ -17486,13 +17554,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -17521,13 +17590,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -17922,13 +17992,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -17957,13 +18028,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -18495,13 +18567,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "name": "",
                                                             "oauth_client_endpoints": Object {
                                                               "create": Object {
+                                                                "all_methods": Array [
+                                                                  "POST",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "POST",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -18530,13 +18603,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                 },
                                                               },
                                                               "remove": Object {
+                                                                "all_mothods": Array [
+                                                                  "DELETE",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "DELETE",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -18930,13 +19004,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                               "name": "",
                                                               "oauth_client_endpoints": Object {
                                                                 "create": Object {
+                                                                  "all_methods": Array [
+                                                                    "POST",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "POST",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -18965,13 +19040,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                   },
                                                                 },
                                                                 "remove": Object {
+                                                                  "all_mothods": Array [
+                                                                    "DELETE",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "DELETE",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -19494,13 +19570,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             "name": "",
                                                             "oauth_client_endpoints": Object {
                                                               "create": Object {
+                                                                "all_methods": Array [
+                                                                  "POST",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "POST",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -19529,13 +19606,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                 },
                                                               },
                                                               "remove": Object {
+                                                                "all_mothods": Array [
+                                                                  "DELETE",
+                                                                ],
                                                                 "append_path": false,
                                                                 "hosts": Array [],
                                                                 "insecure_skip_verify": false,
                                                                 "listen_path": "",
-                                                                "methods": Array [
-                                                                  "DELETE",
-                                                                ],
+                                                                "methods": Array [],
                                                                 "preserve_host": false,
                                                                 "strip_path": false,
                                                                 "upstream_url": "",
@@ -19929,13 +20007,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                               "name": "",
                                                               "oauth_client_endpoints": Object {
                                                                 "create": Object {
+                                                                  "all_methods": Array [
+                                                                    "POST",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "POST",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -19964,13 +20043,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                   },
                                                                 },
                                                                 "remove": Object {
+                                                                  "all_mothods": Array [
+                                                                    "DELETE",
+                                                                  ],
                                                                   "append_path": false,
                                                                   "hosts": Array [],
                                                                   "insecure_skip_verify": false,
                                                                   "listen_path": "",
-                                                                  "methods": Array [
-                                                                    "DELETE",
-                                                                  ],
+                                                                  "methods": Array [],
                                                                   "preserve_host": false,
                                                                   "strip_path": false,
                                                                   "upstream_url": "",
@@ -20510,13 +20590,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -20545,13 +20626,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -20953,13 +21035,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -20988,13 +21071,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -21760,13 +21844,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -21795,13 +21880,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -22235,13 +22321,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -22270,13 +22357,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -23058,13 +23146,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -23093,13 +23182,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -23510,13 +23600,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -23545,13 +23636,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -24325,13 +24417,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -24360,13 +24453,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -24773,13 +24867,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -24808,13 +24903,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -25571,13 +25667,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -25606,13 +25703,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -26005,13 +26103,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -26040,13 +26139,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -26528,13 +26628,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             "name": "",
                                             "oauth_client_endpoints": Object {
                                               "create": Object {
+                                                "all_methods": Array [
+                                                  "POST",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "POST",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -26563,13 +26664,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
+                                                "all_mothods": Array [
+                                                  "DELETE",
+                                                ],
                                                 "append_path": false,
                                                 "hosts": Array [],
                                                 "insecure_skip_verify": false,
                                                 "listen_path": "",
-                                                "methods": Array [
-                                                  "DELETE",
-                                                ],
+                                                "methods": Array [],
                                                 "preserve_host": false,
                                                 "strip_path": false,
                                                 "upstream_url": "",
@@ -26979,13 +27081,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                               "name": "",
                                               "oauth_client_endpoints": Object {
                                                 "create": Object {
+                                                  "all_methods": Array [
+                                                    "POST",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "POST",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -27014,13 +27117,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
+                                                  "all_mothods": Array [
+                                                    "DELETE",
+                                                  ],
                                                   "append_path": false,
                                                   "hosts": Array [],
                                                   "insecure_skip_verify": false,
                                                   "listen_path": "",
-                                                  "methods": Array [
-                                                    "DELETE",
-                                                  ],
+                                                  "methods": Array [],
                                                   "preserve_host": false,
                                                   "strip_path": false,
                                                   "upstream_url": "",
@@ -27647,13 +27751,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "name": "",
                                                       "oauth_client_endpoints": Object {
                                                         "create": Object {
+                                                          "all_methods": Array [
+                                                            "POST",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "POST",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -27682,13 +27787,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           },
                                                         },
                                                         "remove": Object {
+                                                          "all_mothods": Array [
+                                                            "DELETE",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "DELETE",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -28082,13 +28188,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                         "name": "",
                                                         "oauth_client_endpoints": Object {
                                                           "create": Object {
+                                                            "all_methods": Array [
+                                                              "POST",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "POST",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -28117,13 +28224,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             },
                                                           },
                                                           "remove": Object {
+                                                            "all_mothods": Array [
+                                                              "DELETE",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "DELETE",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -28646,13 +28754,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                       "name": "",
                                                       "oauth_client_endpoints": Object {
                                                         "create": Object {
+                                                          "all_methods": Array [
+                                                            "POST",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "POST",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -28681,13 +28790,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           },
                                                         },
                                                         "remove": Object {
+                                                          "all_mothods": Array [
+                                                            "DELETE",
+                                                          ],
                                                           "append_path": false,
                                                           "hosts": Array [],
                                                           "insecure_skip_verify": false,
                                                           "listen_path": "",
-                                                          "methods": Array [
-                                                            "DELETE",
-                                                          ],
+                                                          "methods": Array [],
                                                           "preserve_host": false,
                                                           "strip_path": false,
                                                           "upstream_url": "",
@@ -29081,13 +29191,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                         "name": "",
                                                         "oauth_client_endpoints": Object {
                                                           "create": Object {
+                                                            "all_methods": Array [
+                                                              "POST",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "POST",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -29116,13 +29227,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             },
                                                           },
                                                           "remove": Object {
+                                                            "all_mothods": Array [
+                                                              "DELETE",
+                                                            ],
                                                             "append_path": false,
                                                             "hosts": Array [],
                                                             "insecure_skip_verify": false,
                                                             "listen_path": "",
-                                                            "methods": Array [
-                                                              "DELETE",
-                                                            ],
+                                                            "methods": Array [],
                                                             "preserve_host": false,
                                                             "strip_path": false,
                                                             "upstream_url": "",
@@ -29769,13 +29881,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                         "name": "",
                                         "oauth_client_endpoints": Object {
                                           "create": Object {
+                                            "all_methods": Array [
+                                              "POST",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "POST",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -29804,13 +29917,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             },
                                           },
                                           "remove": Object {
+                                            "all_mothods": Array [
+                                              "DELETE",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "DELETE",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -30122,13 +30236,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                         "name": "",
                                         "oauth_client_endpoints": Object {
                                           "create": Object {
+                                            "all_methods": Array [
+                                              "POST",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "POST",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",
@@ -30157,13 +30272,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             },
                                           },
                                           "remove": Object {
+                                            "all_mothods": Array [
+                                              "DELETE",
+                                            ],
                                             "append_path": false,
                                             "hosts": Array [],
                                             "insecure_skip_verify": false,
                                             "listen_path": "",
-                                            "methods": Array [
-                                              "DELETE",
-                                            ],
+                                            "methods": Array [],
                                             "preserve_host": false,
                                             "strip_path": false,
                                             "upstream_url": "",

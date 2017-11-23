@@ -20,7 +20,7 @@ import {
     showToaster,
 } from './index';
 import history from '../configuration/history';
-import oAuthServerSchema from '../../configurations/oAuthServerSchema';
+import oAuthServerSchema from '../../configurations/oAuthServerSchema.config';
 import errorHandler from '../../helpers/errorHandler';
 
 const getOAuthServerRequest = () => ({
