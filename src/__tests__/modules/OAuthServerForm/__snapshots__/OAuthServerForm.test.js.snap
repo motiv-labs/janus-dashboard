@@ -14473,6 +14473,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                   className="j-api-form__section"
                                 >
                                   <OAuthEndpoints
+                                    activeTab={true}
                                     category="oauth_endpoints"
                                     change={[Function]}
                                     editing={false}
@@ -14825,6 +14826,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                   className="j-api-form__section"
                                 >
                                   <OAuthClientEndpoints
+                                    activeTab={false}
                                     category="oauth_client_endpoints"
                                     change={[Function]}
                                     editing={false}
@@ -29678,6 +29680,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                   className="j-api-form__section"
                                 >
                                   <OAuthEndpoints
+                                    activeTab={true}
                                     category="oauth_endpoints"
                                     change={[Function]}
                                     editing={true}
@@ -30030,6 +30033,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                   className="j-api-form__section"
                                 >
                                   <OAuthClientEndpoints
+                                    activeTab={false}
                                     category="oauth_client_endpoints"
                                     change={[Function]}
                                     editing={true}

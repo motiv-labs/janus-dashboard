@@ -5,9 +5,10 @@ import R from 'ramda';
 import OAuthEndpoint from './OAuthEndpoint';
 
 const propTypes = {
+    activeTab: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
-    editing: PropTypes.bool.isRequired,
+    editing: PropTypes.bool,
     endpoints: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
@@ -21,6 +22,7 @@ const OAuthEndpoints = ({
     initialValues,
     schema,
     strategyName,
+    activeTab,
 }) => {
     const checkOnNil = item => !R.isNil(item);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
@@ -38,6 +40,7 @@ const OAuthEndpoints = ({
             change={change}
             category={category}
             initialValues={initialValues}
+            activeTab={activeTab}
         />
     );
 

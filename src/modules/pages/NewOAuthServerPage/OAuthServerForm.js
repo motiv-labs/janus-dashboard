@@ -67,6 +67,8 @@ class OAuthServerForm extends PureComponent {
         }), () => this.props.change('token_strategy', value.settings));
     };
 
+    isActiveTab = tabIndex => this.state.activeTab === tabIndex;
+
     renderTabs = () => (
         <div className={b('tabs')()}>
             <div className="j-buttons__wrapper tabs-nav">
@@ -74,7 +76,7 @@ class OAuthServerForm extends PureComponent {
                     this.state.tabs.map((item, idx) =>
                         <Button
                             key={item}
-                            mod={`${this.state.activeTab === idx ? 'primary' : 'white'}`}
+                            mod={`${this.isActiveTab(idx) ? 'primary' : 'white'}`}
                             onClick={() => this.handleTabSwitch(idx)}
                             type="button"
                         >
@@ -84,7 +86,7 @@ class OAuthServerForm extends PureComponent {
                 }
             </div>
 
-            <div className={b('tab', { hidden: this.state.activeTab !== 0 })()}>
+            <div className={b('tab', { hidden: !this.isActiveTab(0) })()}>
                 <div className={b('section')()}>
                     <OAuthEndpoints
                         editing={this.props.editing}
@@ -94,10 +96,11 @@ class OAuthServerForm extends PureComponent {
                         category={'oauth_endpoints'}
                         initialValues={this.props.initialValues}
                         strategyName={this.state.strategy.name}
+                        activeTab={this.isActiveTab(0)}
                     />
                 </div>
             </div>
-            <div className={b('tab', { hidden: this.state.activeTab !== 1 })()}>
+            <div className={b('tab', { hidden: !this.isActiveTab(1) })()}>
                 <div className={b('section')()}>
                     <OAuthClientEndpoints
                         editing={this.props.editing}
@@ -106,6 +109,7 @@ class OAuthServerForm extends PureComponent {
                         change={this.props.change}
                         category={'oauth_client_endpoints'}
                         initialValues={this.props.initialValues}
+                        activeTab={this.isActiveTab(1)}
                     />
                 </div>
             </div>

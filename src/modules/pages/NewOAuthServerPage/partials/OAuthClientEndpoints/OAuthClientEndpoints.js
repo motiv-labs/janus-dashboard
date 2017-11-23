@@ -12,7 +12,7 @@ const propTypes = {
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, schema }) => {
+const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, schema, activeTab }) => {
     const checkOnNil = item => !R.isNil(item);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
 
@@ -28,6 +28,7 @@ const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, sche
                             change={change}
                             category={category}
                             initialValues={initialValues}
+                            activeTab={activeTab}
                         />
                     );
                 })
