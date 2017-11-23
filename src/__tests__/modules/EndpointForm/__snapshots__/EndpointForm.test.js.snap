@@ -1266,10 +1266,6 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       <div
                                         className="j-row__item"
                                         key="1"
-                                      />
-                                      <div
-                                        className="j-row__item"
-                                        key="2"
                                       >
                                         <Button
                                           mod="primary"
