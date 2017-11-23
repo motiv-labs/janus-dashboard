@@ -145,7 +145,7 @@ export const confirmedUpdateOAuthServer = async (dispatch, server) => {
 
         dispatch(updateOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-
+        history.push('/oauth/servers');
         dispatch(showToaster());
     } catch (error) {
         dispatch(closeConfirmationModal());
