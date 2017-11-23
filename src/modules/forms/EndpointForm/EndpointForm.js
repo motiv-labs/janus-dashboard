@@ -90,6 +90,13 @@ class EndpointForm extends PureComponent {
         }), () => this.props.change('proxy.upstreams.balancing', value.value));
     };
 
+    renderSaveButton = () => <Button
+        type="submit"
+        mod="primary"
+    >
+        Save
+    </Button>
+
     renderStrategy = balancing => {
         switch (balancing) {
             case 'roundrobin': {
@@ -118,6 +125,42 @@ class EndpointForm extends PureComponent {
                 return null;
         }
     };
+
+    renderStickyButtons = () => {
+        if (this.props.editing && this.props.api.name) {
+            return (
+                <div className="j-buttons__wrapper">
+                    { this.renderSaveButton() }
+                    <Link
+                        to={{
+                            pathname: '/new',
+                            state: {
+                                clone: this.props.api,
+                            },
+                        }}
+                    >
+                        <Button
+                            type="button"
+                            mod="primary"
+                        >
+                            <Icon type="copy-white" />
+                            Copy
+                        </Button>
+                    </Link>
+                    <Button
+                        type="button"
+                        mod="danger"
+                        onClick={this.props.handleDelete}
+                    >
+                        <Icon type="delete-white" />
+                        Delete
+                    </Button>
+                </div>
+            );
+        }
+
+        return this.renderSaveButton();
+    }
 
     render() {
         const {
@@ -151,35 +194,7 @@ class EndpointForm extends PureComponent {
                             <Title>
                                 { editing ? 'Edit API' : 'Create New API' }
                             </Title>
-                            {
-                                editing && api.name &&
-                                    <div className="j-buttons__wrapper">
-                                        <Link
-                                            to={{
-                                                pathname: '/new',
-                                                state: {
-                                                    clone: api,
-                                                },
-                                            }}
-                                        >
-                                            <Button
-                                                type="button"
-                                                mod="primary"
-                                            >
-                                                <Icon type="copy-white" />
-                                                Copy
-                                            </Button>
-                                        </Link>
-                                        <Button
-                                            type="button"
-                                            mod="danger"
-                                            onClick={handleDelete}
-                                        >
-                                            <Icon type="delete-white" />
-                                            Delete
-                                        </Button>
-                                    </div>
-                            }
+                            { this.renderStickyButtons() }
                         </Row>
                     </Sticky>
                 </Section>
@@ -425,12 +440,7 @@ class EndpointForm extends PureComponent {
                     </div>
                 </div>
                 <Row className={b('row',{ 'button-row': true })()}>
-                    <Button
-                        type="submit"
-                        mod="primary"
-                    >
-                        Save
-                    </Button>
+                    { this.renderSaveButton() }
                 </Row>
             </form>
         );

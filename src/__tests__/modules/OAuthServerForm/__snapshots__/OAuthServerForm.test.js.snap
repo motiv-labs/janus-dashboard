@@ -2082,15 +2082,36 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 >
                                   <Row>
                                     <div
-                                      className="j-row__item"
+                                      className="j-row"
                                     >
-                                      <Title>
-                                        <h1
-                                          className="j-title"
+                                      <div
+                                        className="j-row__item"
+                                        key="0"
+                                      >
+                                        <Title>
+                                          <h1
+                                            className="j-title"
+                                          >
+                                            Create New OAuth Server
+                                          </h1>
+                                        </Title>
+                                      </div>
+                                      <div
+                                        className="j-row__item"
+                                        key="1"
+                                      >
+                                        <Button
+                                          mod="primary"
+                                          type="submit"
                                         >
-                                          Create New OAuth Server
-                                        </h1>
-                                      </Title>
+                                          <button
+                                            className="j-button j-button--primary"
+                                            type="submit"
+                                          >
+                                            Create OAuth Server
+                                          </button>
+                                        </Button>
+                                      </div>
                                     </div>
                                   </Row>
                                 </div>
@@ -17289,15 +17310,36 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                 >
                                   <Row>
                                     <div
-                                      className="j-row__item"
+                                      className="j-row"
                                     >
-                                      <Title>
-                                        <h1
-                                          className="j-title"
+                                      <div
+                                        className="j-row__item"
+                                        key="0"
+                                      >
+                                        <Title>
+                                          <h1
+                                            className="j-title"
+                                          >
+                                            Edit mock-name
+                                          </h1>
+                                        </Title>
+                                      </div>
+                                      <div
+                                        className="j-row__item"
+                                        key="1"
+                                      >
+                                        <Button
+                                          mod="primary"
+                                          type="submit"
                                         >
-                                          Edit mock-name
-                                        </h1>
-                                      </Title>
+                                          <button
+                                            className="j-button j-button--primary"
+                                            type="submit"
+                                          >
+                                            Save
+                                          </button>
+                                        </Button>
+                                      </div>
                                     </div>
                                   </Row>
                                 </div>
