@@ -154,6 +154,12 @@ class EndpointForm extends PureComponent {
                             {
                                 editing && api.name &&
                                     <div className="j-buttons__wrapper">
+                                        <Button
+                                            type="submit"
+                                            mod="primary"
+                                        >
+                                            Save
+                                        </Button>
                                         <Link
                                             to={{
                                                 pathname: '/new',
@@ -179,6 +185,15 @@ class EndpointForm extends PureComponent {
                                             Delete
                                         </Button>
                                     </div>
+                            }
+                            {
+                                !editing &&
+                                    <Button
+                                        type="submit"
+                                        mod="primary"
+                                    >
+                                        Save
+                                    </Button>
                             }
                         </Row>
                     </Sticky>

@@ -1267,6 +1267,22 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         className="j-row__item"
                                         key="1"
                                       />
+                                      <div
+                                        className="j-row__item"
+                                        key="2"
+                                      >
+                                        <Button
+                                          mod="primary"
+                                          type="submit"
+                                        >
+                                          <button
+                                            className="j-button j-button--primary"
+                                            type="submit"
+                                          >
+                                            Save
+                                          </button>
+                                        </Button>
+                                      </div>
                                     </div>
                                   </Row>
                                 </div>
@@ -11513,6 +11529,17 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
 <div
   className="j-buttons__wrapper"
 >
+  <Button
+    mod="primary"
+    type="submit"
+  >
+    <button
+      className="j-button j-button--primary"
+      type="submit"
+    >
+      Save
+    </button>
+  </Button>
   <Link
     replace={false}
     to={
