@@ -7,12 +7,13 @@ import OAuthClientEndpoint from './OAuthClientEndpoint';
 const propTypes = {
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
+    editing: PropTypes.bool,
     endpoints: PropTypes.object.isRequired,
     initialValues: PropTypes.object.isRequired,
     schema: PropTypes.object.isRequired,
 };
 
-const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, schema, activeTab }) => {
+const OAuthClientEndpoints = ({ category, change, editing, endpoints, initialValues, schema, activeTab }) => {
     const checkOnNil = item => !R.isNil(item);
     const endpointsList = R.toPairs(R.filter(checkOnNil, endpoints));
 
@@ -27,6 +28,7 @@ const OAuthClientEndpoints = ({ category, change, endpoints, initialValues, sche
                             schema={schema}
                             change={change}
                             category={category}
+                            editing={editing}
                             initialValues={initialValues}
                             activeTab={activeTab}
                         />

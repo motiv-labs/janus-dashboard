@@ -178,7 +178,7 @@ const oAuthServerSchema = {
             hosts: []
         },
         remove: {
-            all_mothods: ['DELETE'],
+            all_methods: ['DELETE'],
             preserve_host: false,
             listen_path: '',
             upstream_url: '',

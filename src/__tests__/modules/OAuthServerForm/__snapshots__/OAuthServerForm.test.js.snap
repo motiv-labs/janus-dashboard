@@ -280,7 +280,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       },
                     },
                     "remove": Object {
-                      "all_mothods": Array [
+                      "all_methods": Array [
                         "DELETE",
                       ],
                       "append_path": false,
@@ -623,7 +623,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                         },
                       },
                       "remove": Object {
-                        "all_mothods": Array [
+                        "all_methods": Array [
                           "DELETE",
                         ],
                         "append_path": false,
@@ -973,7 +973,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                           },
                         },
                         "remove": Object {
-                          "all_mothods": Array [
+                          "all_methods": Array [
                             "DELETE",
                           ],
                           "append_path": false,
@@ -1368,7 +1368,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                             },
                           },
                           "remove": Object {
-                            "all_mothods": Array [
+                            "all_methods": Array [
                               "DELETE",
                             ],
                             "append_path": false,
@@ -1775,7 +1775,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                               },
                             },
                             "remove": Object {
-                              "all_mothods": Array [
+                              "all_methods": Array [
                                 "DELETE",
                               ],
                               "append_path": false,
@@ -2304,7 +2304,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -2742,7 +2742,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -3317,7 +3317,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                 },
                                                               },
                                                               "remove": Object {
-                                                                "all_mothods": Array [
+                                                                "all_methods": Array [
                                                                   "DELETE",
                                                                 ],
                                                                 "append_path": false,
@@ -3754,7 +3754,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                   },
                                                                 },
                                                                 "remove": Object {
-                                                                  "all_mothods": Array [
+                                                                  "all_methods": Array [
                                                                     "DELETE",
                                                                   ],
                                                                   "append_path": false,
@@ -4320,7 +4320,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                 },
                                                               },
                                                               "remove": Object {
-                                                                "all_mothods": Array [
+                                                                "all_methods": Array [
                                                                   "DELETE",
                                                                 ],
                                                                 "append_path": false,
@@ -4757,7 +4757,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                   },
                                                                 },
                                                                 "remove": Object {
-                                                                  "all_mothods": Array [
+                                                                  "all_methods": Array [
                                                                     "DELETE",
                                                                   ],
                                                                   "append_path": false,
@@ -5340,7 +5340,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -5785,7 +5785,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -6594,7 +6594,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -7071,7 +7071,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -7896,7 +7896,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -8350,7 +8350,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -9167,7 +9167,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -9617,7 +9617,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -10417,7 +10417,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -10853,7 +10853,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -11378,7 +11378,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -11831,7 +11831,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -12501,7 +12501,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           },
                                                         },
                                                         "remove": Object {
-                                                          "all_mothods": Array [
+                                                          "all_methods": Array [
                                                             "DELETE",
                                                           ],
                                                           "append_path": false,
@@ -12938,7 +12938,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             },
                                                           },
                                                           "remove": Object {
-                                                            "all_mothods": Array [
+                                                            "all_methods": Array [
                                                               "DELETE",
                                                             ],
                                                             "append_path": false,
@@ -13504,7 +13504,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           },
                                                         },
                                                         "remove": Object {
-                                                          "all_mothods": Array [
+                                                          "all_methods": Array [
                                                             "DELETE",
                                                           ],
                                                           "append_path": false,
@@ -13941,7 +13941,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             },
                                                           },
                                                           "remove": Object {
-                                                            "all_mothods": Array [
+                                                            "all_methods": Array [
                                                               "DELETE",
                                                             ],
                                                             "append_path": false,
@@ -14631,7 +14631,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             },
                                           },
                                           "remove": Object {
-                                            "all_mothods": Array [
+                                            "all_methods": Array [
                                               "DELETE",
                                             ],
                                             "append_path": false,
@@ -14986,7 +14986,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             },
                                           },
                                           "remove": Object {
-                                            "all_mothods": Array [
+                                            "all_methods": Array [
                                               "DELETE",
                                             ],
                                             "append_path": false,
@@ -15566,7 +15566,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                       },
                     },
                     "remove": Object {
-                      "all_mothods": Array [
+                      "all_methods": Array [
                         "DELETE",
                       ],
                       "append_path": false,
@@ -15909,7 +15909,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                         },
                       },
                       "remove": Object {
-                        "all_mothods": Array [
+                        "all_methods": Array [
                           "DELETE",
                         ],
                         "append_path": false,
@@ -16259,7 +16259,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                           },
                         },
                         "remove": Object {
-                          "all_mothods": Array [
+                          "all_methods": Array [
                             "DELETE",
                           ],
                           "append_path": false,
@@ -16654,7 +16654,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                             },
                           },
                           "remove": Object {
-                            "all_mothods": Array [
+                            "all_methods": Array [
                               "DELETE",
                             ],
                             "append_path": false,
@@ -17061,7 +17061,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                               },
                             },
                             "remove": Object {
-                              "all_mothods": Array [
+                              "all_methods": Array [
                                 "DELETE",
                               ],
                               "append_path": false,
@@ -17590,7 +17590,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -18028,7 +18028,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -18603,7 +18603,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                 },
                                                               },
                                                               "remove": Object {
-                                                                "all_mothods": Array [
+                                                                "all_methods": Array [
                                                                   "DELETE",
                                                                 ],
                                                                 "append_path": false,
@@ -19040,7 +19040,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                   },
                                                                 },
                                                                 "remove": Object {
-                                                                  "all_mothods": Array [
+                                                                  "all_methods": Array [
                                                                     "DELETE",
                                                                   ],
                                                                   "append_path": false,
@@ -19606,7 +19606,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                 },
                                                               },
                                                               "remove": Object {
-                                                                "all_mothods": Array [
+                                                                "all_methods": Array [
                                                                   "DELETE",
                                                                 ],
                                                                 "append_path": false,
@@ -20043,7 +20043,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                                   },
                                                                 },
                                                                 "remove": Object {
-                                                                  "all_mothods": Array [
+                                                                  "all_methods": Array [
                                                                     "DELETE",
                                                                   ],
                                                                   "append_path": false,
@@ -20626,7 +20626,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -21071,7 +21071,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -21880,7 +21880,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -22357,7 +22357,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -23182,7 +23182,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -23636,7 +23636,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -24453,7 +24453,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -24903,7 +24903,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -25703,7 +25703,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -26139,7 +26139,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -26664,7 +26664,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                 },
                                               },
                                               "remove": Object {
-                                                "all_mothods": Array [
+                                                "all_methods": Array [
                                                   "DELETE",
                                                 ],
                                                 "append_path": false,
@@ -27117,7 +27117,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                   },
                                                 },
                                                 "remove": Object {
-                                                  "all_mothods": Array [
+                                                  "all_methods": Array [
                                                     "DELETE",
                                                   ],
                                                   "append_path": false,
@@ -27787,7 +27787,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           },
                                                         },
                                                         "remove": Object {
-                                                          "all_mothods": Array [
+                                                          "all_methods": Array [
                                                             "DELETE",
                                                           ],
                                                           "append_path": false,
@@ -28224,7 +28224,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             },
                                                           },
                                                           "remove": Object {
-                                                            "all_mothods": Array [
+                                                            "all_methods": Array [
                                                               "DELETE",
                                                             ],
                                                             "append_path": false,
@@ -28790,7 +28790,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                           },
                                                         },
                                                         "remove": Object {
-                                                          "all_mothods": Array [
+                                                          "all_methods": Array [
                                                             "DELETE",
                                                           ],
                                                           "append_path": false,
@@ -29227,7 +29227,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                                             },
                                                           },
                                                           "remove": Object {
-                                                            "all_mothods": Array [
+                                                            "all_methods": Array [
                                                               "DELETE",
                                                             ],
                                                             "append_path": false,
@@ -29917,7 +29917,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             },
                                           },
                                           "remove": Object {
-                                            "all_mothods": Array [
+                                            "all_methods": Array [
                                               "DELETE",
                                             ],
                                             "append_path": false,
@@ -30272,7 +30272,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
                                             },
                                           },
                                           "remove": Object {
-                                            "all_mothods": Array [
+                                            "all_methods": Array [
                                               "DELETE",
                                             ],
                                             "append_path": false,
