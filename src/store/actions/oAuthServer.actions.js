@@ -67,6 +67,8 @@ export const deleteOAuthServerSuccess = () => ({
     type: DELETE_OAUTH_SERVER_SUCCESS,
 });
 
+export const redirectToServersLits = () => history.push('/oauth/servers');
+
 export const fetchOAuthServer = path => async dispatch => {
     dispatch(getOAuthServerRequest());
 
@@ -114,7 +116,7 @@ export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
 
-        !isEditing && history.push('/oauth/servers');
+        !isEditing && redirectToServersLits();
         dispatch(showToaster());
     } catch (error) {
         dispatch(closeConfirmationModal());
@@ -145,7 +147,7 @@ export const confirmedUpdateOAuthServer = async (dispatch, server) => {
 
         dispatch(updateOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-        history.push('/oauth/servers');
+        redirectToServersLits();
         dispatch(showToaster());
     } catch (error) {
         dispatch(closeConfirmationModal());
@@ -169,7 +171,7 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName, isRedirec
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
         dispatch(fetchOAuthServers());
-        isRedirect && history.push('/oauth/servers');
+        isRedirect && redirectToServersLits();
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
