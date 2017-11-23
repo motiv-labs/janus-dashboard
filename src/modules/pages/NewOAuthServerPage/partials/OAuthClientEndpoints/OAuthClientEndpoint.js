@@ -129,7 +129,6 @@ class OAuthClientEndpoint extends PureComponent {
                                 onChange={this.handleChangeStrategy}
                                 value={this.state.upstreams.balancing}
                                 clearable={false}
-                                required={activeTab}
                             />
                             <div className={row({fullwidth: true}).mix('j-api-form__row')}>
                                 <Row className={b('row')()} fullwidth>
