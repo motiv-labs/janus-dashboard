@@ -58,22 +58,29 @@ describe('user session reducer', () => {
             {},
             {
                 type: LOGIN_SUCCESS,
-                payload: true,
+                payload: {
+                    userName: 'mock-name',
+                    isAdmin: false,
+                },
             }
         );
 
-        it('sets the user info and errorMsg to null when user getes logged in', () => {
-            expect(result.user).toEqual(true);
+        it('sets correct user info and admin status, and discard errorMsg to null when user getes logged in', () => {
+            expect(result.user).toEqual('mock-name');
             expect(result.errorMsg).toEqual(null);
         });
 
         it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(2);
+            expect(touchedReducerProps(result)).toBe(3);
         });
     });
 
     describe('LOGIN_FAILURE', () => {
-        const initialState = { user: {name: 'User'}, errorMsg: null };
+        const initialState = {
+            user: 'mock-name',
+            isAdmin: false,
+            errorMsg: null,
+        };
         const payload = 'an-error-message';
 
         const result = userSessionReducer(
@@ -84,13 +91,14 @@ describe('user session reducer', () => {
             }
         );
 
-        it('sets the logged state to false and the error message to the given payload when user failed to log in', () => {
+        it('discards user info and status, and sets the error message to the given payload when user failed to log in', () => {
             expect(result.user).toEqual('');
+            expect(result.isAdmin).toEqual(null);
             expect(result.errorMsg).toEqual(payload);
         });
 
         it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(2);
+            expect(touchedReducerProps(result)).toBe(3);
         });
     });
 
@@ -103,8 +111,12 @@ describe('user session reducer', () => {
             expect(result.user).toBe('');
         });
 
+        it('discards admin status', () => {
+            expect(result.isAdmin).toBe(null);
+        });
+
         it('has only change exact amount of reducer properties', () => {
-            expect(touchedReducerProps(result)).toBe(1);
+            expect(touchedReducerProps(result)).toBe(2);
         });
     });
 });

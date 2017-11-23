@@ -86,9 +86,12 @@ export const loginRequest = () => ({
     type: LOGIN_START,
 });
 
-export const loginSuccess = userName => ({
+export const loginSuccess = (userName, isAdmin) => ({
     type: LOGIN_SUCCESS,
-    payload: userName,
+    payload: {
+        userName,
+        isAdmin,
+    },
 });
 
 export const loginFailure = () => ({
@@ -114,8 +117,18 @@ export const getUserStatus = () => dispatch => {
     const JWTtoken = getAccessToken();
 
     if (JWTtoken) {
-        dispatch(loginSuccess(jwt.decode(JWTtoken).sub));
+        dispatch(loginSuccess(
+            getUserName(JWTtoken),
+            getUserAdminRole(JWTtoken),
+        ));
     } else {
         history.push('/login');
     }
 };
+
+function getUserName(JWTtoken) {
+    return jwt.decode(JWTtoken).sub;
+}
+function getUserAdminRole(JWTtoken) {
+    return jwt.decode(JWTtoken).is_admin;
+}

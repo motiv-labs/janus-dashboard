@@ -8,6 +8,7 @@ import {
 
 export const initialState = {
     errorMsg: null,
+    isAdmin: null,
     user: '',
 };
 
@@ -24,7 +25,8 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 errorMsg: null,
-                user: action.payload,
+                user: action.payload.userName,
+                isAdmin: action.payload.isAdmin,
             };
         }
 
@@ -33,6 +35,7 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 errorMsg: action.payload,
                 user: '',
+                isAdmin: null,
             };
         }
 
@@ -40,6 +43,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state,
                 user: '',
+                isAdmin: null,
             };
         }
 
