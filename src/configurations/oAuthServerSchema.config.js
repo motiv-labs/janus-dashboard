@@ -144,6 +144,7 @@ const oAuthServerSchema = {
     },
     oauth_client_endpoints: {
         create: {
+            all_methods: ['POST'],
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
@@ -173,10 +174,11 @@ const oAuthServerSchema = {
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
-            methods: ['POST'],
+            methods: [],
             hosts: []
         },
         remove: {
+            all_methods: ['DELETE'],
             preserve_host: false,
             listen_path: '',
             upstream_url: '',
@@ -206,7 +208,7 @@ const oAuthServerSchema = {
             insecure_skip_verify: false,
             strip_path: false,
             append_path: false,
-            methods: ['DELETE'],
+            methods: [],
             hosts: []
         }
     },

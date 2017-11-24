@@ -9,6 +9,7 @@ import WARNINGS from '../../../../../configurations/warning-messages.config';
 import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
+import getValues from '../../../../../helpers/getValues';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../../components/Label/Label';
@@ -95,7 +96,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, name, schema, activeTab } = this.props;
+        const { category, editing, initialValues, name, schema, activeTab } = this.props;
 
         return (
             <div className={b('section')}>
@@ -264,8 +265,8 @@ class OAuthClientEndpoint extends PureComponent {
                                 name={`${category}.${name}.methods`}
                                 type="text"
                                 edit={editing}
-                                value={`${category}.${name}.methods`}
-                                options={optionsTransformer(schema.oauth_client_endpoints[name].methods)}
+                                value={() => getValues([category, name, 'methods'])(this.props.initialValues)}
+                                options={optionsTransformer(schema.oauth_client_endpoints[name].all_methods)}
                                 component={MultiSelect}
                             />
                             <Hint>HTTP methods that are supported for the endpoint.</Hint>
