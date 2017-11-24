@@ -116,6 +116,13 @@ class OAuthServerForm extends PureComponent {
         </div>
     );
 
+    renderSaveButton = () => <Button
+        type="submit"
+        mod="primary"
+    >
+        Save
+    </Button>
+
     renderJWTStrategy = () => (
         <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
             <Row className={b('row')()} fullwidth>
@@ -230,12 +237,7 @@ class OAuthServerForm extends PureComponent {
                                         'Create New OAuth Server')
                                 }
                             </Title>
-                            <Button
-                                type="submit"
-                                mod="primary"
-                            >
-                                { editing ? 'Save' : 'Create OAuth Server' }
-                            </Button>
+                            { this.renderSaveButton() }
                         </Row>
                     </Sticky>
                 </Section>
@@ -432,12 +434,7 @@ class OAuthServerForm extends PureComponent {
                 </div>
 
                 <Row className={b('row',{ 'button-row': true })()}>
-                    <Button
-                        type="submit"
-                        mod="primary"
-                    >
-                        { editing ? 'Save' : 'Create OAuth Server' }
-                    </Button>
+                    { this.renderSaveButton() }
                 </Row>
             </form>
         );
