@@ -37,7 +37,11 @@ const propTypes = {
 
 class OAuthEndpoint extends PureComponent {
     state = {
-        upstreams: this.props.initialValues[this.props.category][this.props.name].upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
+        upstreams: this.props.initialValues[this.props.category][this.props.name]
+            ? this.props.initialValues[this.props.category][this.props.name].upstreams
+                ? this.props.initialValues[this.props.category][this.props.name].upstreams
+                : {}
+            : {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
     };
 
     createStrategyOptions = list => {
