@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 
 import {
+    clearOAuthServer,
     fetchOAuthServer,
     fetchOAuthServerSchema,
     updateOAuthServer,
@@ -16,6 +17,7 @@ const mapStateToProps = state => ({
 export default connect(
     mapStateToProps,
     {
+        clearOAuthServer,
         fetchOAuthServer,
         fetchOAuthServerSchema,
         updateOAuthServer,

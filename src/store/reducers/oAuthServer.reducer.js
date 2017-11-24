@@ -9,6 +9,7 @@ import {
     UPDATE_OAUTH_SERVER_SUCCESS,
     DELETE_OAUTH_SERVER_START,
     DELETE_OAUTH_SERVER_SUCCESS,
+    CLEAR_OAUTH_SERVER,
 } from '../constants';
 
 export const initialState = {
@@ -49,6 +50,12 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 oAuthServerSchema: action.payload,
                 isFetching: false,
+            };
+        }
+        case CLEAR_OAUTH_SERVER: {
+            return {
+                ...state,
+                oAuthServer: {},
             };
         }
         default:

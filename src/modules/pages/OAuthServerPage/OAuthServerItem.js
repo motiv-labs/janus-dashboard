@@ -9,6 +9,7 @@ import Section from '../../Layout/Section/Section';
 import OAuthServerForm from '../NewOAuthServerPage/OAuthServerForm';
 
 const propTypes = {
+    clearOAuthServer: PropTypes.func.isRequired,
     fetchOAuthServer: PropTypes.func.isRequired,
     fetchOAuthServerSchema: PropTypes.func.isRequired,
     location: PropTypes.object.isRequired,
@@ -21,6 +22,10 @@ class OAuthServerItem extends PureComponent {
     componentDidMount() {
         this.props.fetchOAuthServerSchema();
         this.props.fetchOAuthServer(this.props.location.pathname);
+    }
+
+    componentWillUnmount() {
+        this.props.clearOAuthServer();
     }
 
     submit = values => {
