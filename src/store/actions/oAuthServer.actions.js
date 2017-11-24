@@ -12,6 +12,7 @@ import {
     UPDATE_OAUTH_SERVER_SUCCESS,
     DELETE_OAUTH_SERVER_START,
     DELETE_OAUTH_SERVER_SUCCESS,
+    CLEAR_OAUTH_SERVER,
 } from '../constants';
 import {
     closeConfirmationModal,
@@ -185,3 +186,7 @@ export const deleteOAuthServer = (server, isRedirect/*: Boolean*/) => dispatch =
         server.name,
         isRedirect
     ));
+
+export const clearOAuthServer = () => ({
+    type: CLEAR_OAUTH_SERVER,
+});
