@@ -20,6 +20,7 @@ const mapStateToProps = state => ({
     apiSchema: state.apiReducer.apiSchema,
     response: state.apiReducer.response,
     selectedPlugins: state.apiReducer.selectedPlugins,
+    isAdmin: state.userSessionReducer.isAdmin,
 });
 
 export default connect(

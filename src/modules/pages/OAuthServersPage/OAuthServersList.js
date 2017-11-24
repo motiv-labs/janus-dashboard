@@ -21,6 +21,7 @@ const propTypes = {
     currentPageIndex: PropTypes.number.isRequired,
     deleteOAuthServer: PropTypes.func.isRequired,
     fetchOAuthServers: PropTypes.func.isRequired,
+    isAdmin: PropTypes.bool.isRequired,
     oAuthServers: PropTypes.arrayOf(PropTypes.object).isRequired,
     setAscendingFilter: PropTypes.func.isRequired,
     setCurrentPageIndex: PropTypes.func.isRequired,
@@ -53,13 +54,16 @@ class OAuthServersList extends PureComponent {
                 <Link to={`${ROUTES.OAUTH_SERVERS.path}/${server.name}`} className={table('controls-item')}>
                     <Icon type="edit" ariaLabel="Edit" />
                 </Link>
-                <Control
-                    className={table('controls-item')()}
-                    icon="delete"
-                    onClick={() => {
-                        this.handleDelete(server);
-                    }}
-                />
+                {
+                    this.props.isAdmin &&
+                        <Control
+                            className={table('controls-item')()}
+                            icon="delete"
+                            onClick={() => {
+                                this.handleDelete(server);
+                            }}
+                        />
+                }
             </div>
         </div>
     ))

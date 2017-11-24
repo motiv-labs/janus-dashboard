@@ -16,6 +16,7 @@ const mapStateToProps = state => ({
     apiList: filteredApiList(state),
     currentPageIndex: state.paginationReducer.currentPageIndex,
     searchQuery: state.searchReducer.searchQuery,
+    isAdmin: state.userSessionReducer.isAdmin,
 });
 
 export default connect(

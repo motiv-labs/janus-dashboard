@@ -48,6 +48,7 @@ const propTypes = {
     handleDelete: PropTypes.func.isRequired,
     handleSubmit: PropTypes.func.isRequired,
     initialValues: PropTypes.object,
+    isAdmin: PropTypes.bool.isRequired,
     selectPlugin: PropTypes.func.isRequired,
     selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
@@ -147,14 +148,17 @@ class EndpointForm extends PureComponent {
                             Copy
                         </Button>
                     </Link>
-                    <Button
-                        type="button"
-                        mod="danger"
-                        onClick={this.props.handleDelete}
-                    >
-                        <Icon type="delete-white" />
-                        Delete
-                    </Button>
+                    {
+                        this.props.isAdmin &&
+                            <Button
+                                type="button"
+                                mod="danger"
+                                onClick={this.props.handleDelete}
+                            >
+                                <Icon type="delete-white" />
+                                Delete
+                            </Button>
+                    }
                 </div>
             );
         }

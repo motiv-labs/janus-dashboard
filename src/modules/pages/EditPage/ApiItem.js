@@ -15,6 +15,7 @@ const propTypes = {
     excludePlugin: PropTypes.func.isRequired,
     fetchEndpointSchema: PropTypes.func.isRequired,
     fillSelected: PropTypes.func.isRequired,
+    isAdmin: PropTypes.bool,
     selectPlugin: PropTypes.func.isRequired,
     fetchEndpoint: PropTypes.func.isRequired,
     refreshEndpoints: PropTypes.func.isRequired,
@@ -74,6 +75,7 @@ class ApiItem extends PureComponent {
                 excludePlugin={this.props.excludePlugin}
                 handleDelete={this.handleDelete}
                 initialValues={transformFormValues(updatedApi)}
+                isAdmin={this.props.isAdmin}
                 onSubmit={this.submit}
                 selectPlugin={this.props.selectPlugin}
                 selectedPlugins={this.props.selectedPlugins}

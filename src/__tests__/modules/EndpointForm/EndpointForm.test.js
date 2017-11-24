@@ -36,6 +36,7 @@ describe('EndpointForm component', () => {
         handleDelete: jest.fn(),
         handleSubmit: jest.fn(),
         initialValues,
+        isAdmin: false,
         selectPlugin: jest.fn(),
         selectedPlugins: ['a', 'b'],
     };
@@ -56,6 +57,27 @@ describe('EndpointForm component', () => {
         const passedProps = {
             api,
             editing: true,
+        };
+
+        const wrapper = mount(
+            renderFakeForm(store)(initialValues)(
+                <MemoryRouter>
+                    <EndpointForm
+                        {...requiredProps}
+                        {...passedProps}
+                    />
+                </MemoryRouter>
+            )
+        );
+
+        expect(wrapper.find('.j-buttons__wrapper')).toMatchSnapshot();
+    });
+
+    it('renders correctly if property logged user has admin role', () => {
+        const passedProps = {
+            api,
+            editing: true,
+            isAdmin: true,
         };
 
         const wrapper = mount(
