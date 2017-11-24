@@ -10,6 +10,7 @@ import {
     UPDATE_OAUTH_SERVER_SUCCESS,
     DELETE_OAUTH_SERVER_START,
     DELETE_OAUTH_SERVER_SUCCESS,
+    CLEAR_OAUTH_SERVER,
 } from '../../../store/constants';
 
 import touchedReducerProps from '../../../helpers/touchedReducerProperties';
@@ -132,4 +133,15 @@ describe('oAuthServerReducer', () => {
         });
     });
 
+    describe('CLEAR_OAUTH_SERVER', () => {
+        const result = oAuthServerReducer({}, { type: CLEAR_OAUTH_SERVER });
+
+        it('clear the OAuthServer object', () => {
+            expect(result.oAuthServer).toEqual({});
+        });
+
+        it('changes only the required reducer properties', () => {
+            expect(touchedReducerProps(result)).toBe(1);
+        });
+    });
 });

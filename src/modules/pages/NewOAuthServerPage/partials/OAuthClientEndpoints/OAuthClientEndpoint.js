@@ -10,6 +10,7 @@ import block from '../../../../../helpers/bem-cn';
 import checkOnPattern from '../../../../../helpers/pattern-check';
 import optionsTransformer from '../../../../../helpers/optionsTransformer';
 import getValues from '../../../../../helpers/getValues';
+import setUpstreams from '../../../../../helpers/setUpstreams';
 
 import Row from '../../../../Layout/Row/Row';
 import Label from '../../../../../components/Label/Label';
@@ -36,7 +37,7 @@ const propTypes = {
 
 class OAuthClientEndpoint extends PureComponent {
     state = {
-        upstreams: this.props.initialValues[this.props.category][this.props.name].upstreams || {}, // fallback for old endpoints (they have `upstreams: null`), probably temporary
+        upstreams: setUpstreams(this.props.initialValues[this.props.category][this.props.name]),
     };
 
     createStrategyOptions = list => {

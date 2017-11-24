@@ -12,6 +12,7 @@ import {
     UPDATE_OAUTH_SERVER_SUCCESS,
     DELETE_OAUTH_SERVER_START,
     DELETE_OAUTH_SERVER_SUCCESS,
+    CLEAR_OAUTH_SERVER,
 } from '../constants';
 import {
     closeConfirmationModal,
@@ -67,7 +68,7 @@ export const deleteOAuthServerSuccess = () => ({
     type: DELETE_OAUTH_SERVER_SUCCESS,
 });
 
-export const redirectToServersLits = () => history.push('/oauth/servers');
+export const redirectToServersList = () => history.push('/oauth/servers');
 
 export const fetchOAuthServer = path => async dispatch => {
     dispatch(getOAuthServerRequest());
@@ -116,7 +117,7 @@ export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
         dispatch(saveOAuthServerSuccess());
         dispatch(closeConfirmationModal());
 
-        !isEditing && redirectToServersLits();
+        !isEditing && redirectToServersList();
         dispatch(showToaster());
     } catch (error) {
         dispatch(closeConfirmationModal());
@@ -147,7 +148,7 @@ export const confirmedUpdateOAuthServer = async (dispatch, server) => {
 
         dispatch(updateOAuthServerSuccess());
         dispatch(closeConfirmationModal());
-        redirectToServersLits();
+        redirectToServersList();
         dispatch(showToaster());
     } catch (error) {
         dispatch(closeConfirmationModal());
@@ -171,7 +172,7 @@ export const confirmedDeleteOAuthServer = async (dispatch, serverName, isRedirec
         dispatch(deleteOAuthServerSuccess());
         dispatch(closeConfirmationModal());
         dispatch(fetchOAuthServers());
-        isRedirect && redirectToServersLits();
+        isRedirect && redirectToServersList();
         dispatch(showToaster());
     } catch (error) {
         errorHandler(dispatch)(error);
@@ -185,3 +186,7 @@ export const deleteOAuthServer = (server, isRedirect/*: Boolean*/) => dispatch =
         server.name,
         isRedirect
     ));
+
+export const clearOAuthServer = () => ({
+    type: CLEAR_OAUTH_SERVER,
+});

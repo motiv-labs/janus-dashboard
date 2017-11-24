@@ -1,8 +1,7 @@
 import React from 'react';
 import { createStore } from 'redux';
-import { mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import { MemoryRouter } from 'react-router-dom';
-
 import schema from '../../../configurations/oAuthServerSchema.config';
 import { renderFakeForm } from '../../../utils/createTestForm';
 
@@ -36,7 +35,7 @@ describe('EndpointForm component', () => {
         const passedProps = {
             editing: false,
         };
-        const wrapper = mount(
+        const wrapper = shallow(
             renderFakeForm(store)(initialValues)(
                 <OAuthServerForm
                     {...requiredProps}
@@ -52,7 +51,7 @@ describe('EndpointForm component', () => {
         const passedProps = {
             editing: true,
         };
-        const wrapper = mount(
+        const wrapper = shallow(
             renderFakeForm(store)(initialValues)(
                 <OAuthServerForm
                     {...requiredProps}

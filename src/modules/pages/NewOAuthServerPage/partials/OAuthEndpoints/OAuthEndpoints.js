@@ -43,13 +43,14 @@ const OAuthEndpoints = ({
             activeTab={activeTab}
         />
     );
+    const renderEndpoints = endpointsList
+        .filter(excludeIrrelevant)
+        .map(renderOAuthEndpoint);
 
     return (
         <div>
             {
-                endpointsList
-                    .filter(excludeIrrelevant)
-                    .map(renderOAuthEndpoint)
+                renderEndpoints
             }
         </div>
     );
