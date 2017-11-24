@@ -2118,7 +2118,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             className="j-button j-button--primary"
                                             type="submit"
                                           >
-                                            Create OAuth Server
+                                            Save
                                           </button>
                                         </Button>
                                       </div>
@@ -15267,7 +15267,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                 className="j-button j-button--primary"
                                 type="submit"
                               >
-                                Create OAuth Server
+                                Save
                               </button>
                             </Button>
                           </div>
