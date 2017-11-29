@@ -100,12 +100,12 @@ class OAuthEndpoint extends PureComponent {
         const { category, editing, initialValues, name, schema } = this.props;
 
         return (
-            <div className={b('section')}>
-                <div className={b('section-title')}>{name}</div>
-                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                    <div className={row('item')}>
+            <div className={b('section')()}>
+                <div className={b('section-title')()}>{name}</div>
+                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                    <div className={row('item')()}>
                         <div className={col()}>
-                            <div className={col('item')}>
+                            <div className={col('item')()}>
                                 <Label>Listen Path</Label>
                             </div>
                             <Field
@@ -119,9 +119,9 @@ class OAuthEndpoint extends PureComponent {
                             <Hint>The public url that is exposed by the Gateway.</Hint>
                         </div>
                     </div>
-                    <div className={row('item')}>
+                    <div className={row('item')()}>
                         <div className={col()}>
-                            <div className={col('item')}>
+                            <div className={col('item')()}>
                                 <Label>Load balancing alg.</Label>
                             </div>
                             <Select
@@ -132,7 +132,7 @@ class OAuthEndpoint extends PureComponent {
                                 value={this.state.upstreams.balancing}
                                 clearable={false}
                             />
-                            <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+                            <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
                                 <Row className={b('row')()} fullwidth>
                                     { this.renderStrategy(this.state.upstreams.balancing) }
                                 </Row>
@@ -140,8 +140,8 @@ class OAuthEndpoint extends PureComponent {
                         </div>
                     </div>
                 </div>
-                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                    <div className={row('item')}>
+                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                    <div className={row('item')()}>
                         <Label>Insecure skip verify?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -166,7 +166,7 @@ class OAuthEndpoint extends PureComponent {
                             </Row>
                         </Row>
                     </div>
-                    <div className={row('item')}>
+                    <div className={row('item')()}>
                         <Label>Preserve host?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -192,8 +192,8 @@ class OAuthEndpoint extends PureComponent {
                         </Row>
                     </div>
                 </div>
-                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                    <div className={row('item')}>
+                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                    <div className={row('item')()}>
                         <Label>Append path?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -218,7 +218,7 @@ class OAuthEndpoint extends PureComponent {
                             </Row>
                         </Row>
                     </div>
-                    <div className={row('item')}>
+                    <div className={row('item')()}>
                         <Label>Strip path?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -244,8 +244,8 @@ class OAuthEndpoint extends PureComponent {
                         </Row>
                     </div>
                 </div>
-                <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                    <div className={row('item')}>
+                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                    <div className={row('item')()}>
                         <Label>Enable load balancing?</Label>
                         <Row className={b('radio-wrap')()}>
                             <Row className={b('radio')()}>
@@ -270,7 +270,7 @@ class OAuthEndpoint extends PureComponent {
                             </Row>
                         </Row>
                     </div>
-                    <div className={row('item')}>
+                    <div className={row('item')()}>
                         <div className={col()}>
                             <Label>Methods</Label>
                             <Field
@@ -286,7 +286,7 @@ class OAuthEndpoint extends PureComponent {
                     </div>
                 </div>
                 <div className={row({fullwidth: true}).mix('j-api-form__row')}>
-                    <div className={row('item')}>
+                    <div className={row('item')()}>
                         <div className={col()}>
                             <Label>Hosts</Label>
                             <Field
