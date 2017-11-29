@@ -49,14 +49,14 @@ class ApiList extends PureComponent {
     };
 
     renderRows = list => list.map((api, index) => (
-        <div className={table('row')} key={`${index}-${api.name}`}>
-            <div className={table('td', {name: true})}>{api.name}</div>
-            <div className={table('td')}>{api.proxy.listen_path}</div>
-            <div className={table('td', {active: true})}>
+        <div className={table('row')()} key={`${index}-${api.name}`}>
+            <div className={table('td', {name: true})()}>{api.name}</div>
+            <div className={table('td')()}>{api.proxy.listen_path}</div>
+            <div className={table('td', {active: true})()}>
                 {api.active ? <Icon type="checked" /> : null}
             </div>
-            <div className={table('td').mix(table('controls'))}>
-                <Link to={`/${api.name}`} className={table('controls-item')}>
+            <div className={table('td').mix(table('controls'))()}>
+                <Link to={`/${api.name}`} className={table('controls-item')()}>
                     <Icon type="edit" ariaLabel="Edit" />
                 </Link>
                 <Link
@@ -66,7 +66,7 @@ class ApiList extends PureComponent {
                             clone: api,
                         },
                     }}
-                    className={table('controls-item')}
+                    className={table('controls-item')()}
                 >
                     <Icon type="copy" ariaLabel="Copy" />
                 </Link>
@@ -91,28 +91,28 @@ class ApiList extends PureComponent {
 
     renderTable = list => (
         <div className={table()}>
-            <div className={table('head')}>
-                <div className={table('row')}>
+            <div className={table('head')()}>
+                <div className={table('row')()}>
                     <div
-                        className={table('th').mix('ascending-container')}
+                        className={table('th').mix('ascending-container')()}
                         onClick={() => this.sortList('name')}
                     >
                         <div>Api Name</div>
                         <div className="ascending-icon"></div>
                     </div>
-                    <div className={table('th')}>Listen Path</div>
+                    <div className={table('th')()}>Listen Path</div>
 
                     <div
-                        className={table('th', {active: true}).mix('ascending-container')}
+                        className={table('th', {active: true}).mix('ascending-container')()}
                         onClick={() => this.sortList('active')}
                     >
                         <div>Active</div>
                         <div className="ascending-icon"></div>
                     </div>
-                    <div className={table('th')} />
+                    <div className={table('th')()} />
                 </div>
             </div>
-            <div className={table('tbody')}>
+            <div className={table('tbody')()}>
                 { this.renderRows(list) }
             </div>
         </div>

@@ -47,8 +47,8 @@ const HealthCheckModal = ({
             onClose={handleClose}
         >
             <div className={b('head')()}>
-                <h1 className={b('title').mix(m('title'))}>{statusText}</h1>
-                <h2 className={b('subtitle')}>{message}</h2>
+                <h1 className={b('title').mix(m('title'))()}>{statusText}</h1>
+                <h2 className={b('subtitle')()}>{message}</h2>
             </div>
             <table className={b('list')()}>
                 <thead>
@@ -64,10 +64,10 @@ const HealthCheckModal = ({
                                 className={b('list', 'item')()}
                                 key={item.name}
                             >
-                                <td className={b('list', 'item', 'name')}>
+                                <td className={b('list', 'item', 'name')()}>
                                     {item.name}
                                 </td>
-                                <td className={b('list', 'item', 'details')}>
+                                <td className={b('list', 'item', 'details')()}>
                                     {item.message}
                                 </td>
                             </tr>
