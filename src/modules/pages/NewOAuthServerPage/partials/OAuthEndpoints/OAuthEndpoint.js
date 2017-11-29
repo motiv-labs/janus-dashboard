@@ -27,7 +27,6 @@ const row = block('j-row');
 const col = block('j-col');
 
 const propTypes = {
-    activeTab: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
     editing: PropTypes.bool,
@@ -98,7 +97,7 @@ class OAuthEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, initialValues, name, schema, activeTab } = this.props;
+        const { category, editing, initialValues, name, schema } = this.props;
 
         return (
             <div className={b('section')}>
