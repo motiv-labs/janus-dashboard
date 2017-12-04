@@ -96,7 +96,6 @@ class OAuthServerForm extends PureComponent {
                         category={'oauth_endpoints'}
                         initialValues={this.props.initialValues}
                         strategyName={this.state.strategy.name}
-                        activeTab={this.isActiveTab(0)}
                     />
                 </div>
             </div>
@@ -109,7 +108,6 @@ class OAuthServerForm extends PureComponent {
                         change={this.props.change}
                         category={'oauth_client_endpoints'}
                         initialValues={this.props.initialValues}
-                        activeTab={this.isActiveTab(1)}
                     />
                 </div>
             </div>

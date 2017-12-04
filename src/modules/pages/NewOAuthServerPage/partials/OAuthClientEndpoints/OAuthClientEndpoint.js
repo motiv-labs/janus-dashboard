@@ -27,7 +27,6 @@ const row = block('j-row');
 const col = block('j-col');
 
 const propTypes = {
-    activeTab: PropTypes.bool.isRequired,
     category: PropTypes.string.isRequired,
     change: PropTypes.func.isRequired,
     initialValues: PropTypes.object.isRequired,
@@ -97,7 +96,7 @@ class OAuthClientEndpoint extends PureComponent {
     };
 
     render() {
-        const { category, editing, initialValues, name, schema, activeTab } = this.props;
+        const { category, editing, initialValues, name, schema } = this.props;
 
         return (
             <div className={b('section')}>
@@ -266,7 +265,7 @@ class OAuthClientEndpoint extends PureComponent {
                                 name={`${category}.${name}.methods`}
                                 type="text"
                                 edit={editing}
-                                value={() => getValues([category, name, 'methods'])(this.props.initialValues)}
+                                value={() => getValues([category, name, 'methods'])(initialValues)}
                                 options={optionsTransformer(schema.oauth_client_endpoints[name].all_methods)}
                                 component={MultiSelect}
                             />

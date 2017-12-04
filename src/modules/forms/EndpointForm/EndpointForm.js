@@ -168,14 +168,12 @@ class EndpointForm extends PureComponent {
 
     render() {
         const {
-            api,
             apiSchema,
             disabled,
             editing,
             excludePlugin,
             initialValues,
             handleSubmit,
-            handleDelete,
             plugins,
             response,
             selectPlugin,
