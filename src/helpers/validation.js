@@ -14,12 +14,12 @@ import R from 'ramda';
 const validation = pattern => value => {
     switch (pattern) {
         case 'name': {
-            const nameRegex = /^[a-z_-]{1,100}$/;
+            const nameRegex = /^[a-z_-\s]{1,100}$/;
 
             return nameRegex.test(value);
         }
         case 'url': {
-            const urlRegex = /^https?:\/\/[a-z0-9_\-\/\:\.]+$/m;
+            const urlRegex = /^https?:\/\/[a-z0-9_\-/:.]+$/m;
 
             return urlRegex.test(value);
         }
