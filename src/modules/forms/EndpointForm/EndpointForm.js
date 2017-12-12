@@ -213,7 +213,7 @@ class EndpointForm extends PureComponent {
                                     type="text"
                                     component={Input}
                                     disabled={disabled}
-                                    validate={checkOnPattern('name')}
+                                    validate={!editing && checkOnPattern('name')}
                                     required
                                 />
                                 <span className="j-input__warning">{WARNINGS.NAMES}</span>
