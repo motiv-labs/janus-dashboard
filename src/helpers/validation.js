@@ -14,7 +14,7 @@ import R from 'ramda';
 const validation = pattern => value => {
     switch (pattern) {
         case 'name': {
-            const nameRegex = /^[a-z_-\s]{1,100}$/;
+            const nameRegex = /^[a-z_-]{1,100}$/;
 
             return nameRegex.test(value);
         }
