@@ -32,28 +32,21 @@ class CorsPlugin extends PureComponent {
         this.setState({});
     }
 
-    getReuqestHeaders = () => {
-        // const range = document.createRange();
-        const getJOHNNY = () => getValues(['config', 'request_headers'])(this.props.pluginFromValues);
-
+    copyToClipboard = () => {
         const fakeInput = document.createElement('textarea');
+
         fakeInput.setAttribute('id', 'fakeInput');
-        fakeInput.value = getJOHNNY();
+        fakeInput.value = getValues(['config', 'request_headers'])(this.props.pluginFromValues);
         document.body.appendChild(fakeInput);
         fakeInput.select();
         document.execCommand('copy');
         document.body.removeChild(fakeInput);
-
     }
 
     render() {
         const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
         const b = block(className);
         const allValues = key => apiSchema.plugins[0].config[key];
-        console.error('>', getValues(['config', 'request_headers'])(plugin));
-        // const getReuqestHeaders = () => {
-        //     alert(getValues(['config', 'request_headers'])(plugin));
-        // }
 
         return (
             <div className={b('section')()}>
@@ -97,11 +90,8 @@ class CorsPlugin extends PureComponent {
                         <Label>Request Headers</Label>
                         <Control
                             icon="copy"
-                            onClick={() => {
-                                this.getReuqestHeaders();
-                            }}
+                            onClick={this.copyToClipboard}
                         />
-                        Copy to clipboard
                         <Field
                             name={`${name}.config.request_headers`}
                             type="text"
