@@ -14,6 +14,7 @@ import Hint from '../../../../components/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../selects/TagSelect/TagSelect';
+import CopyToClipboard from '../../../../components/CopyToClipboard/CopyToClipboard';
 
 const propTypes = {
     apiSchema: PropTypes.object.isRequired,
@@ -21,6 +22,7 @@ const propTypes = {
     edit: PropTypes.bool,
     name: PropTypes.string.isRequired,
     plugin: PropTypes.object.isRequired,
+    pluginFromValues: PropTypes.object.isRequired,
     pluginName: PropTypes.string.isRequired,
     handlePluginExclude: PropTypes.func.isRequired,
 };
@@ -31,7 +33,7 @@ class CorsPlugin extends PureComponent {
     }
 
     render() {
-        const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
+        const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginFromValues, pluginName } = this.props;
         const b = block(className);
         const allValues = key => apiSchema.plugins[0].config[key];
 
@@ -75,15 +77,19 @@ class CorsPlugin extends PureComponent {
                 <Row className={b('row')()} fullwidth>
                     <Row col>
                         <Label>Request Headers</Label>
-                        <Field
-                            name={`${name}.config.request_headers`}
-                            type="text"
-                            edit={edit}
-                            value={() => getValues(['config', 'request_headers'])(plugin)}
-                            placeholder={SETUP.placeholders.cors.request_headers}
-                            options={optionsTransformer(allValues('request_headers'))}
-                            component={TagSelect}
-                        />
+                        <CopyToClipboard
+                            value={getValues(['config', 'request_headers'])(pluginFromValues)}
+                        >
+                            <Field
+                                name={`${name}.config.request_headers`}
+                                type="text"
+                                edit={edit}
+                                value={() => getValues(['config', 'request_headers'])(plugin)}
+                                placeholder={SETUP.placeholders.cors.request_headers}
+                                options={optionsTransformer(allValues('request_headers'))}
+                                component={TagSelect}
+                            />
+                        </CopyToClipboard>
                         <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
                     </Row>
                     <Row col>
