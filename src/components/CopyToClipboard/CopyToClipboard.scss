@@ -1,0 +1,26 @@
+@import 'variables.scss';
+$padding: 2px;
+
+.copy-to-clipboard {
+    position: relative;
+
+    &__control {
+        position: absolute;
+        font-size: $hf-font-size-small;
+        color: $hellofresh-color;
+        padding: $padding;
+        background: $hf-color-white;
+        top: 0;
+        right: 0;
+        cursor: pointer;
+        opacity: 0;
+        z-index: 1;
+        transition: opacity $hf-time;
+    }
+
+    &:hover {
+        .copy-to-clipboard__control {
+            opacity: 1;
+        }
+    }
+}
