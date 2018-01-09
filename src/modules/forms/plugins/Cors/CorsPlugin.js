@@ -22,6 +22,7 @@ const propTypes = {
     edit: PropTypes.bool,
     name: PropTypes.string.isRequired,
     plugin: PropTypes.object.isRequired,
+    pluginFromValues: PropTypes.object.isRequired,
     pluginName: PropTypes.string.isRequired,
     handlePluginExclude: PropTypes.func.isRequired,
 };
@@ -32,7 +33,17 @@ class CorsPlugin extends PureComponent {
     }
 
     getReuqestHeaders = () => {
-        alert(getValues(['config', 'request_headers'])(this.props.plugin));
+        // const range = document.createRange();
+        const getJOHNNY = () => getValues(['config', 'request_headers'])(this.props.pluginFromValues);
+
+        const fakeInput = document.createElement('textarea');
+        fakeInput.setAttribute('id', 'fakeInput');
+        fakeInput.value = getJOHNNY();
+        document.body.appendChild(fakeInput);
+        fakeInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(fakeInput);
+
     }
 
     render() {
@@ -90,6 +101,7 @@ class CorsPlugin extends PureComponent {
                                 this.getReuqestHeaders();
                             }}
                         />
+                        Copy to clipboard
                         <Field
                             name={`${name}.config.request_headers`}
                             type="text"
