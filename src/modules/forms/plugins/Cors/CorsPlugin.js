@@ -14,6 +14,7 @@ import Hint from '../../../../components/Hint/Hint';
 import ControlBar from '../ControlBar/ControlBar';
 import MultiSelect from '../../../selects/MultiSelect/MultiSelect';
 import TagSelect from '../../../selects/TagSelect/TagSelect';
+import Control from '../../../../components/Control/Control';
 
 const propTypes = {
     apiSchema: PropTypes.object.isRequired,
@@ -30,10 +31,18 @@ class CorsPlugin extends PureComponent {
         this.setState({});
     }
 
+    getReuqestHeaders = () => {
+        alert(getValues(['config', 'request_headers'])(this.props.plugin));
+    }
+
     render() {
         const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginName } = this.props;
         const b = block(className);
         const allValues = key => apiSchema.plugins[0].config[key];
+        console.error('>', getValues(['config', 'request_headers'])(plugin));
+        // const getReuqestHeaders = () => {
+        //     alert(getValues(['config', 'request_headers'])(plugin));
+        // }
 
         return (
             <div className={b('section')()}>
@@ -75,6 +84,12 @@ class CorsPlugin extends PureComponent {
                 <Row className={b('row')()} fullwidth>
                     <Row col>
                         <Label>Request Headers</Label>
+                        <Control
+                            icon="copy"
+                            onClick={() => {
+                                this.getReuqestHeaders();
+                            }}
+                        />
                         <Field
                             name={`${name}.config.request_headers`}
                             type="text"
