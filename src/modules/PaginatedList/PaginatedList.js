@@ -18,7 +18,7 @@ const PaginatedList = ({
     currentPageIndex,
     changePageIndex,
     itemsPerPage,
-    maximumVisiblePaginators,
+    maximumVisiblePaginators = 3,
     renderChildren,
 }) => (
     <Pagimagic
@@ -27,11 +27,7 @@ const PaginatedList = ({
         currentPageIndex={currentPageIndex}
         changePageIndex={changePageIndex}
         className="j-pagination"
-        maximumVisiblePaginators={
-            maximumVisiblePaginators ?
-                maximumVisiblePaginators :
-                5
-        }
+        maximumVisiblePaginators={maximumVisiblePaginators}
         renderChildren={renderChildren}
         arrow
     />
