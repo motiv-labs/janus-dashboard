@@ -8,24 +8,33 @@ $paginator-color: $hellofresh-color;
 $paginator-font-size: $hf-font-size-base;
 $paginator-font-weight: $hf-font-weight-bold;
 $paginator-padding: 7px 12px;
-$break-grey: $hellofresh-muted-color;
+$break-grey: $hf-color-muted;
 
 .j-pagination {
+    &__break,
+    &__nav-item {
+        display: inline-block;
+        padding: $paginator-padding;
+        font-size: $paginator-font-size;
+    }
+
+    &__break {
+        border-left: $paginator-border;
+        color: $break-grey;
+    }
+
     &__nav {
         padding-top: $hf-padding-main;
         padding-bottom: $hf-padding-main;
         text-align: center;
 
         &-item {
-            display: inline-block;
             vertical-align: top;
             background-color: $paginator-background-color;
             border: $paginator-border;
-            font-size: $paginator-font-size;
             font-weight: $paginator-font-weight;
             text-align: center;
             color: $paginator-color;
-            padding: $paginator-padding;
             box-sizing: border-box;
             transition: background-color 0.05s, color 0.05s, border-color 0.05s;
             cursor: pointer;
@@ -80,12 +89,5 @@ $break-grey: $hellofresh-muted-color;
                 }
             }
         }
-    }
-
-    &__break {
-        display: inline-block;
-        padding: $paginator-padding;
-        color: $break-grey;
-        border-left: $paginator-border;
     }
 }
