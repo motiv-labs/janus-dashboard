@@ -1,7 +1,6 @@
 /* Colors */
 $hellofresh-color: #90c200;
-$hellofresh-muted-color: #d8d8d8;
-$hellofresh-highlight: rgba(254, 254, 254, 0.15);
+$hf-color-muted: #d8d8d8;
 $hf-color-bg: rgba(250, 250, 250, 1);
 $hf-color-white: #fff;
 $hf-color-black: #000;
@@ -44,7 +43,7 @@ $hf-height-input: 40px;
 
 $hf-border-radius: 4px;
 $hf-border-radius-small: $hf-border-radius/2;
-$hf-border: solid 1px $hellofresh-muted-color;
+$hf-border: solid 1px $hf-color-muted;
 
 $hf-padding-input: $hf-padding-small $hf-gutter;
 $hf-padding-button: $hf-padding-small $hf-padding-middle;
@@ -63,7 +62,7 @@ $hf-time: 0.15s;
 
 /* Extends */
 .hf-border-fat {
-    border: solid 2px $hellofresh-muted-color;
+    border: solid 2px $hf-color-muted;
 }
 
 .hf-input-border {

@@ -2174,6 +2174,12 @@ enzyme-to-json@^3.0.0:
   dependencies:
     lodash "^4.17.4"
 
+enzyme-to-json@^3.2.2:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/enzyme-to-json/-/enzyme-to-json-3.3.0.tgz#553e23a09ffb4b0cf09287e2edf9c6539fddaa84"
+  dependencies:
+    lodash "^4.17.4"
+
 enzyme@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/enzyme/-/enzyme-3.1.0.tgz#d8ca84085790fbcec6ed40badd14478faee4c25a"
@@ -5113,10 +5119,6 @@ performance-now@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-2.1.0.tgz#6309f4e0e5fa913ec1c69307ae364b4b377c9e7b"
 
-picklock@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/picklock/-/picklock-0.5.1.tgz#a427c0b937ef6524513fe7fffad3ef477980959d"
-
 pify@^2.0.0, pify@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -5544,7 +5546,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.5.9:
+prop-types@>=15.5.10, prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.5.9:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -5747,11 +5749,9 @@ react-modaliz@^0.1.2:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/react-modaliz/-/react-modaliz-0.1.2.tgz#ebd3a53f31def71c83a8fb92946c83d5cffe5db5"
 
-react-pagimagic@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/react-pagimagic/-/react-pagimagic-1.0.1.tgz#88940e62b69a65f47a725c6caf902e8aaf66fae3"
-  dependencies:
-    picklock "^0.5.1"
+react-pagimagic@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/react-pagimagic/-/react-pagimagic-1.4.0.tgz#80b7bcd1269a45df1aa05f990d5be074de05cb44"
 
 react-redux@^5.0.5:
   version "5.0.6"
@@ -5845,6 +5845,12 @@ react-select@^1.0.0-rc.5:
     classnames "^2.2.4"
     prop-types "^15.5.8"
     react-input-autosize "^2.0.1"
+
+react-sticky-el@^1.0.13:
+  version "1.0.16"
+  resolved "https://registry.yarnpkg.com/react-sticky-el/-/react-sticky-el-1.0.16.tgz#21eb464bbaaeb2b05e7d27d0184a9213c49240dd"
+  dependencies:
+    prop-types ">=15.5.10"
 
 react-test-renderer@15:
   version "15.6.2"

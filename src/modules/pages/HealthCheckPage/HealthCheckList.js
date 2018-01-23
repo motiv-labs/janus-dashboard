@@ -95,10 +95,8 @@ class HealthCheckList extends PureComponent {
             return (
                 <PaginatedList
                     list={healthcheckList}
-                    itemsPerPage={10}
                     currentPageIndex={currentPageIndex}
                     changePageIndex={setCurrentPageIndex}
-                    maximumVisiblePaginators={3}
                     renderChildren={this.renderTable}
                 />
             );

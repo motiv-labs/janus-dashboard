@@ -71,6 +71,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           arraySplice={[Function]}
           arraySwap={[Function]}
           arrayUnshift={[Function]}
+          asyncErrors={undefined}
           asyncValidating={false}
           autofill={[Function]}
           blur={[Function]}
@@ -83,6 +84,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           dirty={false}
           dispatch={[Function]}
           enableReinitialize={false}
+          error={undefined}
           focus={[Function]}
           forceUnregisterOnUnmount={false}
           form="mockForm"
@@ -102,6 +104,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           pristine={true}
           pure={true}
           registerField={[Function]}
+          registeredFields={undefined}
           reset={[Function]}
           setSubmitFailed={[Function]}
           setSubmitSucceeded={[Function]}
@@ -120,6 +123,7 @@ exports[`EndpointForm component renders correctly 1`] = `
           touch={[Function]}
           touchOnBlur={true}
           touchOnChange={false}
+          triggerSubmit={undefined}
           unregisterField={[Function]}
           untouch={[Function]}
           updateSyncErrors={[Function]}
@@ -133,6 +137,7 @@ exports[`EndpointForm component renders correctly 1`] = `
               },
             }
           }
+          warning={undefined}
         >
           <Form
             anyTouched={false}
@@ -161,6 +166,7 @@ exports[`EndpointForm component renders correctly 1`] = `
             destroy={[Function]}
             dirty={false}
             dispatch={[Function]}
+            error={undefined}
             form="mockForm"
             handleSubmit={[Function]}
             initialValues={
@@ -181,8 +187,10 @@ exports[`EndpointForm component renders correctly 1`] = `
             submitSucceeded={false}
             submitting={false}
             touch={[Function]}
+            triggerSubmit={undefined}
             untouch={[Function]}
             valid={true}
+            warning={undefined}
           >
             <Connect(ReduxForm)
               api={Object {}}
@@ -532,6 +540,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                 isAdmin={false}
                 keepDirtyOnReinitialize={false}
                 name="mock-name"
+                plugins={undefined}
                 selectPlugin={[Function]}
                 selectedPlugins={
                   Array [
@@ -717,6 +726,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                   keepDirtyOnReinitialize={false}
                   name="mock-name"
                   persistentSubmitErrors={false}
+                  plugins={undefined}
                   pure={true}
                   selectPlugin={[Function]}
                   selectedPlugins={
@@ -911,6 +921,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     arraySplice={[Function]}
                     arraySwap={[Function]}
                     arrayUnshift={[Function]}
+                    asyncErrors={undefined}
                     asyncValidating={false}
                     autofill={[Function]}
                     blur={[Function]}
@@ -924,6 +935,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     disabled={true}
                     dispatch={[Function]}
                     enableReinitialize={true}
+                    error={undefined}
                     excludePlugin={[Function]}
                     focus={[Function]}
                     forceUnregisterOnUnmount={false}
@@ -945,9 +957,11 @@ exports[`EndpointForm component renders correctly 1`] = `
                     keepDirtyOnReinitialize={false}
                     name="mock-name"
                     persistentSubmitErrors={false}
+                    plugins={undefined}
                     pristine={true}
                     pure={true}
                     registerField={[Function]}
+                    registeredFields={undefined}
                     reset={[Function]}
                     selectPlugin={[Function]}
                     selectedPlugins={
@@ -973,6 +987,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                     touch={[Function]}
                     touchOnBlur={true}
                     touchOnChange={false}
+                    triggerSubmit={undefined}
                     unregisterField={[Function]}
                     untouch={[Function]}
                     updateSyncErrors={[Function]}
@@ -986,6 +1001,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                         },
                       }
                     }
+                    warning={undefined}
                   >
                     <EndpointForm
                       anyTouched={false}
@@ -1170,6 +1186,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       dirty={false}
                       disabled={true}
                       dispatch={[Function]}
+                      error={undefined}
                       excludePlugin={[Function]}
                       form="apiForm"
                       handleDelete={[Function]}
@@ -1186,6 +1203,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                       invalid={false}
                       isAdmin={false}
                       name="mock-name"
+                      plugins={undefined}
                       pristine={true}
                       pure={true}
                       reset={[Function]}
@@ -1201,8 +1219,10 @@ exports[`EndpointForm component renders correctly 1`] = `
                       submitSucceeded={false}
                       submitting={false}
                       touch={[Function]}
+                      triggerSubmit={undefined}
                       untouch={[Function]}
                       valid={true}
+                      warning={undefined}
                     >
                       <form
                         className={[Function]}
@@ -1278,6 +1298,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         >
                                           <button
                                             className="j-button j-button--primary"
+                                            onClick={undefined}
                                             type="submit"
                                           >
                                             Save
@@ -1322,6 +1343,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       <Label>
                                         <label
                                           className="j-label"
+                                          htmlFor={undefined}
                                         >
                                           API Name
                                         </label>
@@ -1867,17 +1889,27 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "warning": undefined,
                                             }
                                           }
+                                          _value={undefined}
+                                          asyncError={undefined}
                                           asyncValidating={false}
                                           component={[Function]}
                                           dirty={false}
                                           disabled={true}
                                           dispatch={[Function]}
+                                          initial={undefined}
                                           name="name"
                                           normalize={[Function]}
                                           pristine={true}
                                           required={true}
+                                          state={undefined}
+                                          submitError={undefined}
+                                          submitFailed={undefined}
+                                          submitting={undefined}
+                                          syncError={undefined}
+                                          syncWarning={undefined}
                                           type="text"
                                           validate={[Function]}
+                                          value={undefined}
                                         >
                                           <Input
                                             disabled={true}
@@ -1924,6 +1956,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               onDragStart={[Function]}
                                               onDrop={[Function]}
                                               onFocus={[Function]}
+                                              placeholder={undefined}
                                               required={true}
                                               type="text"
                                               value=""
@@ -1963,6 +1996,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Is Active?
                                           </label>
@@ -2531,15 +2565,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="true"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="is-active"
+                                                          initial={undefined}
                                                           name="active"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="is-active"
@@ -3198,15 +3241,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="false"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="is-not-active"
+                                                          initial={undefined}
                                                           name="active"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="is-not-active"
@@ -3349,6 +3401,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       <Label>
                                         <label
                                           className="j-label"
+                                          htmlFor={undefined}
                                         >
                                           Listen Path
                                         </label>
@@ -3894,17 +3947,27 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "warning": undefined,
                                             }
                                           }
+                                          _value={undefined}
+                                          asyncError={undefined}
                                           asyncValidating={false}
                                           component={[Function]}
                                           dirty={false}
                                           dispatch={[Function]}
+                                          initial={undefined}
                                           name="proxy.listen_path"
                                           normalize={[Function]}
                                           placeholder="/your_path"
                                           pristine={true}
                                           required={true}
+                                          state={undefined}
+                                          submitError={undefined}
+                                          submitFailed={undefined}
+                                          submitting={undefined}
+                                          syncError={undefined}
+                                          syncWarning={undefined}
                                           type="text"
                                           validate={[Function]}
+                                          value={undefined}
                                         >
                                           <Input
                                             input={
@@ -3944,6 +4007,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           >
                                             <input
                                               className="j-input"
+                                              disabled={undefined}
                                               name="proxy.listen_path"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -3986,6 +4050,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       <Label>
                                         <label
                                           className="j-label"
+                                          htmlFor={undefined}
                                         >
                                           Load balancing alg.
                                         </label>
@@ -4063,11 +4128,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       searchable={true}
                                       simpleValue={false}
                                       tabSelectsValue={true}
+                                      value={undefined}
                                       valueComponent={[Function]}
                                       valueKey="value"
                                     >
                                       <div
                                         className="Select j-select Select--single is-searchable"
+                                        style={undefined}
                                       >
                                         <div
                                           className="Select-control"
@@ -4076,6 +4143,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           onTouchEnd={[Function]}
                                           onTouchMove={[Function]}
                                           onTouchStart={[Function]}
+                                          style={undefined}
                                         >
                                           <span
                                             className="Select-multi-value-wrapper"
@@ -4088,8 +4156,11 @@ exports[`EndpointForm component renders correctly 1`] = `
                                             </div>
                                             <AutosizeInput
                                               aria-activedescendant="react-select-2--value"
+                                              aria-describedby={undefined}
                                               aria-expanded="false"
                                               aria-haspopup="false"
+                                              aria-label={undefined}
+                                              aria-labelledby={undefined}
                                               aria-owns=""
                                               className="Select-input"
                                               minWidth="5"
@@ -4098,6 +4169,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               onFocus={[Function]}
                                               required={true}
                                               role="combobox"
+                                              tabIndex={undefined}
                                               value=""
                                             >
                                               <div
@@ -4117,9 +4189,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 />
                                                 <input
                                                   aria-activedescendant="react-select-2--value"
+                                                  aria-describedby={undefined}
                                                   aria-expanded="false"
                                                   aria-haspopup="false"
+                                                  aria-label={undefined}
+                                                  aria-labelledby={undefined}
                                                   aria-owns=""
+                                                  className={undefined}
+                                                  id={undefined}
                                                   onBlur={[Function]}
                                                   onChange={[Function]}
                                                   onFocus={[Function]}
@@ -4131,6 +4208,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       "width": "5px",
                                                     }
                                                   }
+                                                  tabIndex={undefined}
                                                   value=""
                                                 />
                                                 <div
@@ -4201,6 +4279,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Methods
                                           </label>
@@ -4831,11 +4910,13 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 }
                                               }
                                               _value={Array []}
+                                              asyncError={undefined}
                                               asyncValidating={false}
                                               component={[Function]}
                                               dirty={false}
                                               dispatch={[Function]}
                                               edit={true}
+                                              initial={undefined}
                                               name="proxy.methods"
                                               normalize={[Function]}
                                               options={
@@ -4880,7 +4961,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               }
                                               placeholder="Choose one or more methods"
                                               pristine={true}
+                                              state={undefined}
+                                              submitError={undefined}
+                                              submitFailed={undefined}
+                                              submitting={undefined}
+                                              syncError={undefined}
+                                              syncWarning={undefined}
                                               type="text"
+                                              value={undefined}
                                             >
                                               <MultiSelect
                                                 edit={true}
@@ -5080,6 +5168,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 >
                                                   <div
                                                     className="Select j-select Select--multi is-clearable is-searchable"
+                                                    style={undefined}
                                                   >
                                                     <div
                                                       className="Select-control"
@@ -5088,6 +5177,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                       onTouchEnd={[Function]}
                                                       onTouchMove={[Function]}
                                                       onTouchStart={[Function]}
+                                                      style={undefined}
                                                     >
                                                       <span
                                                         className="Select-multi-value-wrapper"
@@ -5100,8 +5190,11 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                         </div>
                                                         <AutosizeInput
                                                           aria-activedescendant="react-select-3--value"
+                                                          aria-describedby={undefined}
                                                           aria-expanded="false"
                                                           aria-haspopup="false"
+                                                          aria-label={undefined}
+                                                          aria-labelledby={undefined}
                                                           aria-owns=""
                                                           className="Select-input"
                                                           minWidth="5"
@@ -5110,6 +5203,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           onFocus={[Function]}
                                                           required={false}
                                                           role="combobox"
+                                                          tabIndex={undefined}
                                                           value=""
                                                         >
                                                           <div
@@ -5129,9 +5223,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             />
                                                             <input
                                                               aria-activedescendant="react-select-3--value"
+                                                              aria-describedby={undefined}
                                                               aria-expanded="false"
                                                               aria-haspopup="false"
+                                                              aria-label={undefined}
+                                                              aria-labelledby={undefined}
                                                               aria-owns=""
+                                                              className={undefined}
+                                                              id={undefined}
                                                               onBlur={[Function]}
                                                               onChange={[Function]}
                                                               onFocus={[Function]}
@@ -5143,6 +5242,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                   "width": "5px",
                                                                 }
                                                               }
+                                                              tabIndex={undefined}
                                                               value=""
                                                             />
                                                             <div
@@ -5210,6 +5310,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Hosts
                                           </label>
@@ -5760,16 +5861,25 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                 }
                                               }
                                               _value={Array []}
+                                              asyncError={undefined}
                                               asyncValidating={false}
                                               component={[Function]}
                                               dirty={false}
                                               dispatch={[Function]}
                                               edit={true}
+                                              initial={undefined}
                                               name="proxy.hosts"
                                               normalize={[Function]}
                                               options={Array []}
                                               pristine={true}
+                                              state={undefined}
+                                              submitError={undefined}
+                                              submitFailed={undefined}
+                                              submitting={undefined}
+                                              syncError={undefined}
+                                              syncWarning={undefined}
                                               type="text"
+                                              value={undefined}
                                             >
                                               <TagSelect
                                                 edit={true}
@@ -5849,6 +5959,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   newOptionCreator={[Function]}
                                                   onChange={[Function]}
                                                   options={Array []}
+                                                  placeholder={undefined}
                                                   promptTextCreator={[Function]}
                                                   shouldKeyDownEventCreateNewOption={[Function]}
                                                   simpleValue={true}
@@ -5943,6 +6054,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   >
                                                     <div
                                                       className="Select j-select Select--multi is-clearable is-searchable"
+                                                      style={undefined}
                                                     >
                                                       <div
                                                         className="Select-control"
@@ -5951,6 +6063,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                         onTouchEnd={[Function]}
                                                         onTouchMove={[Function]}
                                                         onTouchStart={[Function]}
+                                                        style={undefined}
                                                       >
                                                         <span
                                                           className="Select-multi-value-wrapper"
@@ -5963,8 +6076,11 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                           </div>
                                                           <AutosizeInput
                                                             aria-activedescendant="react-select-4--value"
+                                                            aria-describedby={undefined}
                                                             aria-expanded="false"
                                                             aria-haspopup="false"
+                                                            aria-label={undefined}
+                                                            aria-labelledby={undefined}
                                                             aria-owns=""
                                                             className="Select-input"
                                                             minWidth="5"
@@ -5973,6 +6089,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             onFocus={[Function]}
                                                             required={false}
                                                             role="combobox"
+                                                            tabIndex={undefined}
                                                             value=""
                                                           >
                                                             <div
@@ -5992,9 +6109,14 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                               />
                                                               <input
                                                                 aria-activedescendant="react-select-4--value"
+                                                                aria-describedby={undefined}
                                                                 aria-expanded="false"
                                                                 aria-haspopup="false"
+                                                                aria-label={undefined}
+                                                                aria-labelledby={undefined}
                                                                 aria-owns=""
+                                                                className={undefined}
+                                                                id={undefined}
                                                                 onBlur={[Function]}
                                                                 onChange={[Function]}
                                                                 onFocus={[Function]}
@@ -6006,6 +6128,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                                     "width": "5px",
                                                                   }
                                                                 }
+                                                                tabIndex={undefined}
                                                                 value=""
                                                               />
                                                               <div
@@ -6071,6 +6194,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Preserve Host?
                                           </label>
@@ -6639,15 +6763,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="true"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="preserve-host-true"
+                                                          initial={undefined}
                                                           name="proxy.preserve_host"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="preserve-host-true"
@@ -7306,15 +7439,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="false"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="preserve-host-false"
+                                                          initial={undefined}
                                                           name="proxy.preserve_host"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="preserve-host-false"
@@ -7455,6 +7597,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Append Path?
                                           </label>
@@ -8023,15 +8166,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="true"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="append-path-true"
+                                                          initial={undefined}
                                                           name="proxy.append_path"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="append-path-true"
@@ -8690,15 +8842,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="false"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="append-path-false"
+                                                          initial={undefined}
                                                           name="proxy.append_path"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="append-path-false"
@@ -8848,6 +9009,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Strips Path?
                                           </label>
@@ -9416,15 +9578,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="true"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="strip-path-true"
+                                                          initial={undefined}
                                                           name="proxy.strip_path"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="strip-path-true"
@@ -10083,15 +10254,24 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                             }
                                                           }
                                                           _value="false"
+                                                          asyncError={undefined}
                                                           asyncValidating={false}
                                                           component={[Function]}
                                                           dirty={false}
                                                           dispatch={[Function]}
                                                           id="strip-path-false"
+                                                          initial={undefined}
                                                           name="proxy.strip_path"
                                                           normalize={[Function]}
                                                           pristine={true}
+                                                          state={undefined}
+                                                          submitError={undefined}
+                                                          submitFailed={undefined}
+                                                          submitting={undefined}
+                                                          syncError={undefined}
+                                                          syncWarning={undefined}
                                                           type="radio"
+                                                          value={undefined}
                                                         >
                                                           <Radio
                                                             id="strip-path-false"
@@ -10252,6 +10432,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                       <Label>
                                         <label
                                           className="j-label"
+                                          htmlFor={undefined}
                                         >
                                           Health URL (optional)
                                         </label>
@@ -10795,16 +10976,26 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               "warning": undefined,
                                             }
                                           }
+                                          _value={undefined}
+                                          asyncError={undefined}
                                           asyncValidating={false}
                                           component={[Function]}
                                           dirty={false}
                                           dispatch={[Function]}
+                                          initial={undefined}
                                           name="health_check.url"
                                           normalize={[Function]}
                                           placeholder="eg. http://gw.hellofresh.com/"
                                           pristine={true}
+                                          state={undefined}
+                                          submitError={undefined}
+                                          submitFailed={undefined}
+                                          submitting={undefined}
+                                          syncError={undefined}
+                                          syncWarning={undefined}
                                           type="text"
                                           validate={[Function]}
+                                          value={undefined}
                                         >
                                           <Input
                                             input={
@@ -10843,6 +11034,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                           >
                                             <input
                                               className="j-input"
+                                              disabled={undefined}
                                               name="health_check.url"
                                               onBlur={[Function]}
                                               onChange={[Function]}
@@ -10850,6 +11042,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               onDrop={[Function]}
                                               onFocus={[Function]}
                                               placeholder="eg. http://gw.hellofresh.com/"
+                                              required={undefined}
                                               type="text"
                                               value=""
                                             />
@@ -10888,6 +11081,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                                         <Label>
                                           <label
                                             className="j-label"
+                                            htmlFor={undefined}
                                           >
                                             Timeout (optional)
                                           </label>
@@ -11433,15 +11627,25 @@ exports[`EndpointForm component renders correctly 1`] = `
                                                   "warning": undefined,
                                                 }
                                               }
+                                              _value={undefined}
+                                              asyncError={undefined}
                                               asyncValidating={false}
                                               component={[Function]}
                                               dirty={false}
                                               dispatch={[Function]}
+                                              initial={undefined}
                                               name="health_check.timeout"
                                               normalize={[Function]}
                                               parse={[Function]}
                                               pristine={true}
+                                              state={undefined}
+                                              submitError={undefined}
+                                              submitFailed={undefined}
+                                              submitting={undefined}
+                                              syncError={undefined}
+                                              syncWarning={undefined}
                                               type="number"
+                                              value={undefined}
                                             >
                                               <Input
                                                 input={
@@ -11479,12 +11683,15 @@ exports[`EndpointForm component renders correctly 1`] = `
                                               >
                                                 <input
                                                   className="j-input"
+                                                  disabled={undefined}
                                                   name="health_check.timeout"
                                                   onBlur={[Function]}
                                                   onChange={[Function]}
                                                   onDragStart={[Function]}
                                                   onDrop={[Function]}
                                                   onFocus={[Function]}
+                                                  placeholder={undefined}
+                                                  required={undefined}
                                                   type="number"
                                                   value=""
                                                 />
@@ -11533,6 +11740,7 @@ exports[`EndpointForm component renders correctly 1`] = `
                             >
                               <button
                                 className="j-button j-button--primary"
+                                onClick={undefined}
                                 type="submit"
                               >
                                 Save
@@ -11564,6 +11772,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
   >
     <button
       className="j-button j-button--primary"
+      onClick={undefined}
       type="submit"
     >
       Save
@@ -11592,12 +11801,14 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
       >
         <button
           className="j-button j-button--primary"
+          onClick={undefined}
           type="button"
         >
           <Icon
             type="copy-white"
           >
             <span
+              aria-label={undefined}
               className="j-icon j-icon--type-copy-white"
             />
           </Icon>
@@ -11619,6 +11830,7 @@ exports[`EndpointForm component renders correctly if property logged user has ad
   >
     <button
       className="j-button j-button--primary"
+      onClick={undefined}
       type="submit"
     >
       Save
@@ -11647,12 +11859,14 @@ exports[`EndpointForm component renders correctly if property logged user has ad
       >
         <button
           className="j-button j-button--primary"
+          onClick={undefined}
           type="button"
         >
           <Icon
             type="copy-white"
           >
             <span
+              aria-label={undefined}
               className="j-icon j-icon--type-copy-white"
             />
           </Icon>
@@ -11675,6 +11889,7 @@ exports[`EndpointForm component renders correctly if property logged user has ad
         type="delete-white"
       >
         <span
+          aria-label={undefined}
           className="j-icon j-icon--type-delete-white"
         />
       </Icon>
