@@ -17,8 +17,8 @@ const PaginatedList = ({
     list,
     currentPageIndex,
     changePageIndex,
-    itemsPerPage,
-    maximumVisiblePaginators = 3,
+    itemsPerPage = 10,
+    maximumVisiblePaginators = 5,
     renderChildren,
 }) => (
     <Pagimagic
