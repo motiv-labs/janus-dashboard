@@ -98,7 +98,6 @@ class HealthCheckList extends PureComponent {
                     itemsPerPage={10}
                     currentPageIndex={currentPageIndex}
                     changePageIndex={setCurrentPageIndex}
-                    maximumVisiblePaginators={3}
                     renderChildren={this.renderTable}
                 />
             );

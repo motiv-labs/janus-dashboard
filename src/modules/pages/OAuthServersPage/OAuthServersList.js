@@ -100,7 +100,6 @@ class OAuthServersList extends PureComponent {
                     itemsPerPage={10}
                     currentPageIndex={this.props.currentPageIndex}
                     changePageIndex={this.props.setCurrentPageIndex}
-                    maximumVisiblePaginators={3}
                     renderChildren={this.renderTable}
                 />
             );

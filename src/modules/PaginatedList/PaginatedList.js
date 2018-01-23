@@ -27,7 +27,11 @@ const PaginatedList = ({
         currentPageIndex={currentPageIndex}
         changePageIndex={changePageIndex}
         className="j-pagination"
-        maximumVisiblePaginators={maximumVisiblePaginators}
+        maximumVisiblePaginators={
+            maximumVisiblePaginators ?
+                maximumVisiblePaginators :
+                5
+        }
         renderChildren={renderChildren}
         arrow
     />

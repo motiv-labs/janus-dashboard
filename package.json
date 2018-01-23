@@ -14,7 +14,7 @@
     "react-dom": "^15.6.0",
     "react-history": "^0.18.2",
     "react-modaliz": "^0.1.2",
-    "react-pagimagic": "^1.0.1",
+    "react-pagimagic": "^1.4.0",
     "react-redux": "^5.0.5",
     "react-router-dom": "^4.1.1",
     "react-router-redux": "next",
