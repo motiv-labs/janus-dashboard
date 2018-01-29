@@ -33,6 +33,7 @@
     "jest-enzyme": "^4.0.1",
     "npm-run-all": "^4.0.2",
     "pre-commit": "^1.2.2",
+    "pre-push": "^0.1.1",
     "prop-types": "^15.5.10",
     "react-scripts": "1.0.7",
     "react-test-renderer": "15",
@@ -52,6 +53,9 @@
     "eject": "react-scripts eject"
   },
   "pre-commit": [
+      "fix"
+  ],
+  "pre-push": [
     "lint",
     "test:once"
   ]
