@@ -12,3 +12,4 @@ src/**/*.css
 public/config.js
 .env
 .env.local
+tests/output/*
