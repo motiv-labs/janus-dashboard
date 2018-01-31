@@ -38,6 +38,7 @@
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1",
     "prop-types": "^15.5.10",
+    "puppeteer": "^1.0.0",
     "react-scripts": "1.0.7",
     "react-test-renderer": "15",
     "redux-logger": "^3.0.6",

@@ -13,6 +13,9 @@
         "require": "./tests/helper.js"
       }
     },
+    "include": {
+        "I": "./tests/steps.js"
+    },
     "mocha": {},
     "bootstrap": false,
     "teardown": null,
