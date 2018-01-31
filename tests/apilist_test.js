@@ -1,6 +1,6 @@
 const assert = require('assert');
 
-const ACCESS_TOKEN = '';
+const ACCESS_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1MTczOTQ2MDAsImlhdCI6MTUxNzM5MTAwMCwiaXNfYWRtaW4iOmZhbHNlLCJzdWIiOiJpdmFuenVza28ifQ.DIi6uUInlKgKyKJZ06PG5y-AwXLt45cL-tRdsnoXk4I';
 
 Feature('Api List Page');
 
@@ -57,5 +57,14 @@ Scenario('Pagination', I => {
 Scenario('Preloader', I => {
     within('.j-pages > .j-section.j-section--outer', () => {
         I.dontSee('.bubble-loader.j-preloader');
+    });
+});
+
+Scenario('Redirection to Create New Api Page', I => {
+    I.click('.j-button--primary');
+    I.waitForElement('.j-api-form');
+
+    within('.j-title', () => {
+        I.see('Create New API');
     });
 });
