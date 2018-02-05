@@ -54,9 +54,7 @@ client.interceptors.response.use(
 
         return Promise.reject({
             response: {
-                data: {
-                    error: 'You should be logged in.',
-                }
+                data: {},
             }
         });
     }

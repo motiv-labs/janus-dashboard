@@ -30,6 +30,8 @@ const APIRespondModal = ({
         }
     };
 
+    if (!message) return null;
+
     return (
         <Modal
             closeModal={handleClose}
