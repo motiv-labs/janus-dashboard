@@ -2,7 +2,7 @@ const assert = require('assert');
 
 const ACCESS_TOKEN = '';
 
-Feature('Api List Page');
+Feature('OAuth Servers List Page');
 
 Before(I => {
     // Replace with actual github login flow once it's available
@@ -10,15 +10,14 @@ Before(I => {
     I.executeScript(token => {
         window.localStorage.access_token = token;
     }, ACCESS_TOKEN);
-    I.amOnPage('/');
+    I.amOnPage('/oauth/servers');
     I.seeElement('.j-preloader');
     I.waitForElement('.j-table');
-    I.waitForElement('.j-healthcheck__incorrect.j-pane');
 });
 
 Scenario('Page title', I => {
     within('.j-title', () => {
-        I.see('APIs');
+        I.see('OAuth Servers');
     });
 });
 
@@ -30,21 +29,13 @@ Scenario('Search field', I => {
 
 Scenario('Create New Api button', I => {
     within('button.j-button.j-button--primary', () => {
-        I.see('+ Create New API');
-    });
-});
-
-Scenario('Healthcheck info block', I => {
-    within('.j-healthcheck__incorrect.j-pane', () => {
-        I.see('Some services are unvailable. Check it on Health Check list here.')
+        I.see('+ Create New OAuth Server');
     });
 });
 
 Scenario('Contains all information', I => {
     within('.j-table__head', () => {
-        I.see('Api Name');
-        I.see('Listen Path');
-        I.see('Active');
+        I.see('OAuth Server Name');
     });
 });
 
@@ -61,9 +52,9 @@ Scenario('Preloader', I => {
 });
 
 Scenario('Redirection to Create New Api Page', I => {
-    I.click('+ Create New API');
+    I.click('+ Create New OAuth Server');
     I.redirectToPage(
         '.j-api-form',
-        'Create New API',
+        'Create New OAuth Server',
     );
 });
