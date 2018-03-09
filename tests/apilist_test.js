@@ -1,4 +1,4 @@
-const ACCESS_TOKEN = '';
+const ACCESS_TOKEN = ''
 
 Feature('Api List Page');
 
