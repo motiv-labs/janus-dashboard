@@ -15,7 +15,7 @@ Before(I => {
 
 Scenario('All elements are present', I => {
     within('.j-title', () => {
-        I.see('Health Check Problems');
+        I.see('Health Check Probledms');
     });
     within('input.j-search-bar__input', () => {
         I.see('');
