@@ -1,5 +1,3 @@
-const assert = require('assert');
-
 const ACCESS_TOKEN = '';
 
 Feature('Health Check Problems Page');
