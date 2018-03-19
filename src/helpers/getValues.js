@@ -1,5 +1,5 @@
-import R from 'ramda';
+import R from 'ramda'
 
-const getValues = path => target => R.path(path, target);
+const getValues = path => target => R.path(path, target)
 
-export default getValues;
+export default getValues

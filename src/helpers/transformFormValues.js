@@ -1,4 +1,4 @@
-import R from 'ramda';
+import R from 'ramda'
 
 /**
  * @name transformFormValues
@@ -12,21 +12,21 @@ import R from 'ramda';
  */
 
 const transformFormValues = (values, toBoolean) => {
-    const convertToBooleans = (val, key, obj) => {
-        if (toBoolean) {
-            if (val === 'true') return true;
-            if (val === 'false') return false;
-            if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val);
-        } else {
-            if (val === true) return 'true';
-            if (val === false) return 'false';
-            if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val);
-        }
+  const convertToBooleans = (val, key, obj) => {
+    if (toBoolean) {
+      if (val === 'true') return true
+      if (val === 'false') return false
+      if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val)
+    } else {
+      if (val === true) return 'true'
+      if (val === false) return 'false'
+      if (R.type(val) === 'Object') return R.mapObjIndexed(convertToBooleans, val)
+    }
 
-        return val;
-    };
+    return val
+  }
 
-    return R.mapObjIndexed(convertToBooleans, values);
-};
+  return R.mapObjIndexed(convertToBooleans, values)
+}
 
-export default transformFormValues;
+export default transformFormValues

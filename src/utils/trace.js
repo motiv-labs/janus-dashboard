@@ -1,5 +1,4 @@
-import R from 'ramda';
-import { openResponseModal } from '../store/actions';
+import R from 'ramda'
 
 /**
  * @name trace
@@ -21,8 +20,8 @@ import { openResponseModal } from '../store/actions';
  * // after split [ 'The', 'world', 'is', 'a', 'vampire' ]
  */
 const trace = R.curry((tag, x) => {
-    console.error('trace -> ', tag, x);
-    return x;
-});
+  console.error('trace -> ', tag, x)
+  return x
+})
 
-export default trace;
+export default trace

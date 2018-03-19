@@ -1,82 +1,81 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React from 'react'
+import PropTypes from 'prop-types'
+import { connect } from 'react-redux'
 
-import block from '../../../helpers/bem-cn';
+import block from '../../../helpers/bem-cn'
 
 import {
-    clearConfirmationModal,
-    closeToaster,
-} from '../../../store/actions';
+  clearConfirmationModal,
+  closeToaster
+} from '../../../store/actions'
 
-import Icon from '../../../components/Icon/Icon';
+import Icon from '../../../components/Icon/Icon'
 
-import './Toaster.css';
+import './Toaster.css'
 
-const b = block('j-toaster');
+const b = block('j-toaster')
 
 const propTypes = {
-    timeout: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number,
-    ]),
-};
+  timeout: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ])
+}
 
 const Toaster = props => {
+  const handleCloseToaster = () => {
+    props.closeToaster()
+    props.clearConfirmationModal()
+  }
 
-    const handleCloseToaster = () => {
-        props.closeToaster();
-        props.clearConfirmationModal();
-    };
+  const closeLater = () => {
+    setTimeout(() => {
+      handleCloseToaster()
+    }, props.timeout || 2000)
+  }
 
-    const closeLater = () => {
-        setTimeout(() => {
-            handleCloseToaster();
-        }, props.timeout || 2000);
-    };
+  if (!props.isOpen) return null
 
-    if (!props.isOpen) return null;
+  closeLater()
 
-    closeLater();
-
-    return (
-        <div className={b()}>
-            <div className={b('left-part')}>
-                <Icon
-                    className={b('icon')()}
-                    type="successful-white"
-                />
-            </div>
-            <div className={b('right-part')}>
-                {props.message}
-            </div>
-            <div
-                className={b('close')}
-                onClick={handleCloseToaster}
-            >
-                <Icon
-                    type="close"
-                />
-            </div>
-        </div>
-    );
-};
+  return (
+    <div className={b()}>
+      <div className={b('left-part')}>
+        <Icon
+          className={b('icon')()}
+          type='successful-white'
+        />
+      </div>
+      <div className={b('right-part')}>
+        {props.message}
+      </div>
+      <div
+        className={b('close')}
+        onClick={handleCloseToaster}
+      >
+        <Icon
+          type='close'
+        />
+      </div>
+    </div>
+  )
+}
 
 const mapStateToProps = state => {
-    const {
-        isOpen,
-        message,
-    } = state.apiResponseModalReducer.toaster;
+  const {
+    isOpen,
+    message
+  } = state.apiResponseModalReducer.toaster
 
-    return {
-        isOpen,
-        message,
-    };
-};
+  return {
+    isOpen,
+    message
+  }
+}
 
-Toaster.propTypes = propTypes;
+Toaster.propTypes = propTypes
 
 export default connect(
-    mapStateToProps,
-    { clearConfirmationModal, closeToaster },
-)(Toaster);
+  mapStateToProps,
+  { clearConfirmationModal, closeToaster }
+)(Toaster)

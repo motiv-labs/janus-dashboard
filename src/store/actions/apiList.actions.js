@@ -1,48 +1,50 @@
-import client from '../api';
+import client from '../api'
 import {
-    FETCH_ENDPOINTS_START,
-    FETCH_ENDPOINTS_SUCCESS,
-    REFRESH_ENDPOINTS,
-    SET_SORTING_FILTER,
-    SET_ASCEND_FILTER,
-} from '../constants';
+  FETCH_ENDPOINTS_START,
+  FETCH_ENDPOINTS_SUCCESS,
+  REFRESH_ENDPOINTS,
+  SET_SORTING_FILTER,
+  SET_ASCEND_FILTER
+} from '../constants'
 import {
-    fetchHealthCheckList,
-} from './index';
-import errorHandler from '../../helpers/errorHandler';
+  fetchHealthCheckList
+} from './index'
+import errorHandler from '../../helpers/errorHandler'
 
 export const getEndpointsRequest = () => ({
-    type: FETCH_ENDPOINTS_START,
-});
+  type: FETCH_ENDPOINTS_START
+})
 
 export const getEndpointsSuccess = apiList => ({
-    type: FETCH_ENDPOINTS_SUCCESS,
-    payload: apiList,
-});
+  type: FETCH_ENDPOINTS_SUCCESS,
+  payload: apiList
+})
 
+// TODO: move to separate actions, cause duplicates with 'healthcheck.actions'
 export const setSortingFilter = filter => ({
-    type: SET_SORTING_FILTER,
-    payload: filter,
-});
+  type: SET_SORTING_FILTER,
+  payload: filter
+})
 
+// TODO: move to separate actions, cause duplicates with 'healthcheck.actions'
 export const setAscendingFilter = () => ({
-    type: SET_ASCEND_FILTER,
-});
+  type: SET_ASCEND_FILTER
+})
 
 export const fetchEndpoints = () => async dispatch => {
-    dispatch(getEndpointsRequest());
-    dispatch(fetchHealthCheckList());
+  dispatch(getEndpointsRequest())
+  dispatch(fetchHealthCheckList())
 
-    try {
-        const response = await client.get('apis');
+  try {
+    const response = await client.get('apis')
 
-        response && dispatch(getEndpointsSuccess(response.data));
-    } catch (error) {
-        errorHandler(dispatch)(error);
-    }
-};
+    response && dispatch(getEndpointsSuccess(response.data))
+  } catch (error) {
+    errorHandler(dispatch)(error)
+  }
+}
 
 export const refreshEndpoints = api => ({
-    type: REFRESH_ENDPOINTS,
-    payload: api,
-});
+  type: REFRESH_ENDPOINTS,
+  payload: api
+})

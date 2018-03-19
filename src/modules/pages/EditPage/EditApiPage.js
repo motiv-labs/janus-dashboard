@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import EditApiContainer from './editApiContainer';
+import EditApiContainer from './editApiContainer'
 
 const propTypes = {
-    location: PropTypes.object.isRequired,
-};
+  location: PropTypes.object.isRequired
+}
 
 const EditPage = ({ location }) => (
-    <EditApiContainer location={location} />
-);
+  <EditApiContainer location={location} />
+)
 
-EditPage.propTypes = propTypes;
+EditPage.propTypes = propTypes
 
-export default EditPage;
+export default EditPage

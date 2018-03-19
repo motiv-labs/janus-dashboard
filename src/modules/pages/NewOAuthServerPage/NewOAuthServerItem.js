@@ -1,50 +1,50 @@
-import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import R from 'ramda';
+import React, { PureComponent } from 'react'
+import PropTypes from 'prop-types'
+import R from 'ramda'
 
-import transformFormValues from '../../../helpers/transformFormValues';
+import transformFormValues from '../../../helpers/transformFormValues'
 
-import Section from '../../Layout/Section/Section';
-import OAuthServerForm from './OAuthServerForm';
-import Preloader from '../../../components/Preloader/Preloader';
+import Section from '../../Layout/Section/Section'
+import OAuthServerForm from './OAuthServerForm'
+import Preloader from '../../../components/Preloader/Preloader'
 
 const propTypes = {
-    schema: PropTypes.object.isRequired,
-    location: PropTypes.object.isRequired,
-};
+  schema: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
+}
 
 class NewOAuthServerItem extends PureComponent {
-    componentDidMount() {
-        this.props.fetchOAuthServerSchema();
-    }
+  componentDidMount () {
+    this.props.fetchOAuthServerSchema()
+  }
 
     submit = values => {
-        const transformedValues = transformFormValues(values, true);
+      const transformedValues = transformFormValues(values, true)
 
-        this.props.saveOAuthServer(this.props.location.pathname, transformedValues);
+      this.props.saveOAuthServer(this.props.location.pathname, transformedValues)
     }
 
     renderForm = () => {
-        return (
-            <OAuthServerForm
-                schema={this.props.schema}
-                onSubmit={this.submit}
-                initialValues={transformFormValues(this.props.schema)}
-            />
-        );
+      return (
+        <OAuthServerForm
+          schema={this.props.schema}
+          onSubmit={this.submit}
+          initialValues={transformFormValues(this.props.schema)}
+        />
+      )
     }
 
-    render() {
-        if (R.isEmpty(this.props.schema)) return <Preloader />;
+    render () {
+      if (R.isEmpty(this.props.schema)) return <Preloader />
 
-        return (
-            <Section outer>
-                { this.renderForm() }
-            </Section>
-        );
+      return (
+        <Section outer>
+          { this.renderForm() }
+        </Section>
+      )
     }
 }
 
-NewOAuthServerItem.propTypes = propTypes;
+NewOAuthServerItem.propTypes = propTypes
 
-export default NewOAuthServerItem;
+export default NewOAuthServerItem

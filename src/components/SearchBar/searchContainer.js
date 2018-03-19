@@ -1,17 +1,17 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
 import {
-    setSearchQuery,
-    discardPagination,
-} from '../../store/actions';
+  setSearchQuery,
+  discardPagination
+} from '../../store/actions'
 
-import SearchBar from './SearchBar';
+import SearchBar from './SearchBar'
 
 const mapStateToProps = state => ({
-    searchQuery: state.searchReducer.searchQuery,
-});
+  searchQuery: state.searchReducer.searchQuery
+})
 
 export default connect(
-    mapStateToProps,
-    { setSearchQuery, discardPagination },
-)(SearchBar);
+  mapStateToProps,
+  { setSearchQuery, discardPagination }
+)(SearchBar)

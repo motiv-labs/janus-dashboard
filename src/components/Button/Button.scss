@@ -1,13 +1,17 @@
 @import 'index.scss';
 
+$button-height: $hf-height-input;
+$button-line-height: 1.5;
+$button-font-size: $hf-font-size-base;
+
 .j-button {
     display: flex;
     align-items: center;
     border-radius: $hf-border-radius-button;
     white-space: nowrap;
-    line-height: 1.5;
-    height: $hf-height-input;
-    font-size: $hf-font-size-base;
+    line-height: $button-line-height;
+    height: $button-height;
+    font-size: $button-font-size;
     padding: $hf-padding-button;
     user-select: none;
     cursor: pointer;
@@ -75,6 +79,12 @@
 
     &--white {
         background-color: transparent;
+    }
+
+    &--small {
+        height: ceil($button-height/2);
+        line-height: ceil($button-line-height/2);
+        font-size: ceil($button-font-size/2);
     }
 
     .j-icon {

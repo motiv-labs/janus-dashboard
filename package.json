@@ -1,17 +1,17 @@
 {
   "name": "janus-dashboard",
-  "version": "0.0.1",
-  "license": "MIT",
-  "author": "",
+  "version": "0.1.0",
+  "private": true,
   "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.1",
     "axios": "^0.16.2",
     "history": "^4.6.3",
     "jsonwebtoken": "^8.0.1",
     "node-sass-chokidar": "^0.0.3",
     "ramda": "^0.24.1",
-    "react": "^15.6.0",
     "react-bubble-preloader": "^1.3.2",
-    "react-dom": "^15.6.0",
     "react-history": "^0.18.2",
     "react-modaliz": "^0.1.2",
     "react-pagimagic": "^1.4.0",
@@ -27,41 +27,52 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
+    "babel-eslint": "^8.2.2",
     "bem-cn": "^2.1.3",
     "codeceptjs": "1.1.1",
-    "enzyme": "^3.1.0",
-    "enzyme-adapter-react-15": "^1.0.1",
-    "enzyme-to-json": "^3.2.2",
-    "jest-enzyme": "^4.0.1",
+    "enzyme": "^3.3.0",
+    "enzyme-adapter-react-16": "^1.1.1",
+    "jest-enzyme": "^6.0.0",
     "npm-run-all": "^4.0.2",
     "pre-commit": "^1.2.2",
     "pre-push": "^0.1.1",
     "prop-types": "^15.5.10",
     "puppeteer": "0.13.0",
-    "react-scripts": "1.0.7",
-    "react-test-renderer": "15",
     "redux-logger": "^3.0.6",
+    "standard": "^11.0.0",
     "stylelint": "^8.0.0"
   },
   "scripts": {
+    "start": "PORT=8082 npm-run-all -p watch-css start-js",
     "build-css": "node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/",
     "watch-css": "npm run build-css && node-sass-chokidar --include-path ./src --include-path ./node_modules src/ -o src/ --watch --recursive",
+    "lint": "./node_modules/.bin/standard && stylelint '**/*.scss'",
+    "lint-fix": "./node_modules/.bin/standard --fix && stylelint '**/*.scss' --fix",
     "start-js": "react-scripts start",
-    "start": "PORT=8082 npm-run-all -p watch-css start-js",
-    "build": "npm run build-css && npm run fix &&react-scripts build",
-    "lint": "eslint --ext .jsx,.js ./src && stylelint '**/*.scss'",
-    "fix": "eslint --ext .jsx,.js ./src --fix && stylelint '**/*.scss' --fix",
+    "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:once": "CI=true react-scripts test --env=jsdom",
     "test:acceptance": "codeceptjs run",
     "test:acceptance-dev": "codeceptjs run --steps",
     "eject": "react-scripts eject"
   },
+  "standard": {
+    "globals": [
+      "actor",
+      "Before",
+      "Feature",
+      "Helper",
+      "Scenario",
+      "within"
+    ],
+    "ignore": [
+      "public"
+    ],
+    "parser": "babel-eslint"
+  },
   "pre-commit": [
-    "fix"
+    "lint-fix"
   ],
   "pre-push": [
-    "lint",
-    "test:once"
+    "lint"
   ]
 }

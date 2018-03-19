@@ -1,28 +1,28 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import block from '../../helpers/bem-cn';
+import block from '../../helpers/bem-cn'
 
-import './InfoPanel.css';
+import './InfoPanel.css'
 
 const propTypes = {
-    icon: PropTypes.node,
-    text: PropTypes.string.isRequired,
-};
+  icon: PropTypes.node,
+  text: PropTypes.string.isRequired
+}
 
-const b = block('info-panel');
+const b = block('info-panel')
 
 const InfoPanel = ({ icon, text }) => {
-    return (
-        <div className={b.mix('j-pane')()}>
-            {
-                icon && icon
-            }
-            <p className={b('text')()}>{ text }</p>
-        </div>
-    );
-};
+  return (
+    <div className={b.mix('j-pane')()}>
+      {
+        icon && icon
+      }
+      <p className={b('text')()}>{ text }</p>
+    </div>
+  )
+}
 
-InfoPanel.propTypes = propTypes;
+InfoPanel.propTypes = propTypes
 
-export default InfoPanel;
+export default InfoPanel

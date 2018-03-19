@@ -20,7 +20,7 @@ $icon-height: 14px;
     &__row {
         border-bottom: $hf-border;
         display: grid;
-        grid-template-columns: 39% 41% 10% 10%;
+        grid-template-columns: 30% 40% 10% 20%;
 
         &:last-child {
             border-bottom: none;
@@ -55,12 +55,14 @@ $icon-height: 14px;
 
     &__controls {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         grid-gap: $hf-gutter;
         overflow: initial;
 
         &-item {
-            justify-self: center;
+            display: flex;
+            align-items: center;
+            height: auto;
         }
     }
 }

@@ -1,34 +1,34 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
-import { connect, Provider } from 'react-redux';
-import { reduxForm } from 'redux-form';
+import React from 'react'
+import renderer from 'react-test-renderer'
+import { connect, Provider } from 'react-redux'
+import { reduxForm } from 'redux-form'
 
-const Form = ({ children, initialValues }) => children;
+const Form = ({ children, initialValues }) => children
 
 const createTestForm = initialValues => connect(
-    () => ({
-        initialValues
-    }),
-    null,
+  () => ({
+    initialValues
+  }),
+  null
 )(
-    reduxForm({
-        form: 'mockForm',
-    })(Form)
-);
+  reduxForm({
+    form: 'mockForm'
+  })(Form)
+)
 
 export const renderFakeForm = store => initialValues => el => {
-    const ConnectedForm = createTestForm(initialValues);
+  const ConnectedForm = createTestForm(initialValues)
 
-    return (
-        <Provider store={store}>
-            <ConnectedForm>
-                {el}
-            </ConnectedForm>
-        </Provider>
-    );
-};
+  return (
+    <Provider store={store}>
+      <ConnectedForm>
+        {el}
+      </ConnectedForm>
+    </Provider>
+  )
+}
 
 export const wrap = store => initialValues => el => renderer
-    .create(
-        renderFakeForm(store)(initialValues)(el)
-    );
+  .create(
+    renderFakeForm(store)(initialValues)(el)
+  )
