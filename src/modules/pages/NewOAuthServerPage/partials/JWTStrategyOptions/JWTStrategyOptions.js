@@ -1,82 +1,82 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { Field, FieldArray } from 'redux-form';
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import { Field, FieldArray } from 'redux-form'
 
-import block from '../../../../../helpers/bem-cn';
+import block from '../../../../../helpers/bem-cn'
 
-import Row from '../../../../Layout/Row/Row';
-import Label from '../../../../../components/Label/Label';
-import Input from '../../../../inputs/Input';
-import Control from '../../../../../components/Control/Control';
+import Row from '../../../../Layout/Row/Row'
+import Label from '../../../../../components/Label/Label'
+import Input from '../../../../inputs/Input'
+import Control from '../../../../../components/Control/Control'
 
-const row = block('j-row');
+const row = block('j-row')
 
 const propTypes = {
-    name: PropTypes.string.isRequired,
-    title: PropTypes.string,
-};
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string
+}
 
 class JWTStrategyOptions extends Component {
     renderMembers = ({ fields, title }) => {
-        return (
-            <div>
-                <div className={row()}>
-                    <Label>{ title }</Label>
-                    <Control
-                        onClick={() => fields.push({})}
-                        icon="add"
-                    />
-                </div>
-                {
-                    fields.length &&
+      return (
+        <div>
+          <div className={row()}>
+            <Label>{ title }</Label>
+            <Control
+              onClick={() => fields.push({})}
+              icon='add'
+            />
+          </div>
+          {
+            fields.length &&
                         fields.map((member, index) => (
-                            <Row className="double-fields" key={index} col>
-                                <div className={row()}>
-                                    <div className={row('item', {pair: true})}>
-                                        <Field
-                                            name={`${member}.alg`}
-                                            type="text"
-                                            component={Input}
-                                            placeholder="Alg"
-                                        />
-                                    </div>
-                                    <div className={row('item', {pair: true})}>
-                                        <Field
-                                            name={`${member}.key`}
-                                            type="text"
-                                            component={Input}
-                                            placeholder="Key"
-                                        />
-                                    </div>
-                                    <div className={row('control')()}>
-                                        <Control
-                                            onClick={() => fields.remove(index)}
-                                            icon="remove"
-                                        />
-                                    </div>
-                                </div>
-                            </Row>
+                          <Row className='double-fields' key={index} col>
+                            <div className={row()}>
+                              <div className={row('item', {pair: true})}>
+                                <Field
+                                  name={`${member}.alg`}
+                                  type='text'
+                                  component={Input}
+                                  placeholder='Alg'
+                                />
+                              </div>
+                              <div className={row('item', {pair: true})}>
+                                <Field
+                                  name={`${member}.key`}
+                                  type='text'
+                                  component={Input}
+                                  placeholder='Key'
+                                />
+                              </div>
+                              <div className={row('control')()}>
+                                <Control
+                                  onClick={() => fields.remove(index)}
+                                  icon='remove'
+                                />
+                              </div>
+                            </div>
+                          </Row>
                         ))
-                }
-            </div>
-        );
+          }
+        </div>
+      )
     };
 
-    render() {
-        const { name, title } = this.props;
+    render () {
+      const { name, title } = this.props
 
-        return (
-            <div className="j-col__item">
-                <FieldArray
-                    name={`${name}`}
-                    component={this.renderMembers}
-                    title={title}
-                />
-            </div>
-        );
+      return (
+        <div className='j-col__item'>
+          <FieldArray
+            name={`${name}`}
+            component={this.renderMembers}
+            title={title}
+          />
+        </div>
+      )
     }
 };
 
-JWTStrategyOptions.propTypes = propTypes;
+JWTStrategyOptions.propTypes = propTypes
 
-export default JWTStrategyOptions;
+export default JWTStrategyOptions

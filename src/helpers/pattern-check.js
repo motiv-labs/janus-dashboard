@@ -1,5 +1,5 @@
-import validation from './validation';
+import validation from './validation'
 
-const checkOnPattern = pattern => value => value && !validation(pattern)(value) ? true : undefined;
+const checkOnPattern = pattern => value => value && !validation(pattern)(value) ? true : undefined
 
-export default checkOnPattern;
+export default checkOnPattern

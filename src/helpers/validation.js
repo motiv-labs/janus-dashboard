@@ -1,4 +1,4 @@
-import R from 'ramda';
+import R from 'ramda'
 /**
  * @name validation
  * We need this in order to handle radio buttons,
@@ -12,23 +12,23 @@ import R from 'ramda';
  */
 
 const validation = pattern => value => {
-    switch (pattern) {
-        case 'name': {
-            const nameRegex = /^[a-z_-]{1,100}$/;
+  switch (pattern) {
+    case 'name': {
+      const nameRegex = /^[a-z_-]{1,100}$/
 
-            return nameRegex.test(value);
-        }
-        case 'url': {
-            const urlRegex = /^https?:\/\/[a-z0-9_\-/:.]+$/m;
-
-            return urlRegex.test(value);
-        }
-        default: {
-            const fn = p => new RegExp(`^${pattern}`).test(value);
-
-            return R.any(fn)(pattern);
-        }
+      return nameRegex.test(value)
     }
-};
+    case 'url': {
+      const urlRegex = /^https?:\/\/[a-z0-9_\-/:.]+$/m
 
-export default validation;
+      return urlRegex.test(value)
+    }
+    default: {
+      const fn = p => new RegExp(`^${pattern}`).test(value)
+
+      return R.any(fn)(pattern)
+    }
+  }
+}
+
+export default validation

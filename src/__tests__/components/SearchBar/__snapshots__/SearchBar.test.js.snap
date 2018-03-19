@@ -2,13 +2,13 @@
 
 exports[`SearchBar component handles onChange triggers discarding pagination 1`] = `
 <div
-  className={[Function]}
+  className="j-search-bar"
 >
   <span
-    className={[Function]}
+    className="j-search-bar__icon"
   />
   <input
-    className={[Function]}
+    className="j-search-bar__input j-input"
     onChange={[Function]}
     placeholder="Search..."
     type="text"
@@ -19,13 +19,13 @@ exports[`SearchBar component handles onChange triggers discarding pagination 1`]
 
 exports[`SearchBar component handles onChange triggers setting new search query 1`] = `
 <div
-  className={[Function]}
+  className="j-search-bar"
 >
   <span
-    className={[Function]}
+    className="j-search-bar__icon"
   />
   <input
-    className={[Function]}
+    className="j-search-bar__input j-input"
     onChange={[Function]}
     placeholder="Search..."
     type="text"
@@ -36,13 +36,13 @@ exports[`SearchBar component handles onChange triggers setting new search query 
 
 exports[`SearchBar component renders correctly 1`] = `
 <div
-  className={[Function]}
+  className="j-search-bar"
 >
   <span
-    className={[Function]}
+    className="j-search-bar__icon"
   />
   <input
-    className={[Function]}
+    className="j-search-bar__input j-input"
     onChange={[Function]}
     placeholder="Search..."
     type="text"

@@ -1,5 +1,5 @@
-import configureStore from './configureStore';
+import configureStore from './configureStore'
 
-const initialState = window.globalState || {};
+const initialState = window.globalState || {}
 
-export const store = configureStore(initialState);
+export const store = configureStore(initialState)

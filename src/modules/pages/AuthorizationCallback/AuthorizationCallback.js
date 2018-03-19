@@ -1,14 +1,14 @@
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
 
-import { getJWTtoken } from '../../../store/actions';
+import { getJWTtoken } from '../../../store/actions'
 
 const AuthorizationCallback = props => {
-    props.getJWTtoken(document.location.hash);
+  props.getJWTtoken(document.location.hash)
 
-    return null;
-};
+  return null
+}
 
 export default connect(
-    null, // mapStateToProps
-    { getJWTtoken },
-)(AuthorizationCallback);
+  null, // mapStateToProps
+  { getJWTtoken }
+)(AuthorizationCallback)

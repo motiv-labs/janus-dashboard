@@ -1,3 +1,3 @@
-const setToasterMessage = info => `"${info.apiName}" has been successfully ${info.actionType}d`;
+const setToasterMessage = info => `"${info.apiName}" has been successfully ${info.actionType}d`
 
-export default setToasterMessage;
+export default setToasterMessage

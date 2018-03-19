@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import './Input.css';
+import './Input.css'
 
 const Input = props => {
-    const { type, input, placeholder, disabled, required, meta } = props;
+  const { type, input, placeholder, disabled, required, meta } = props
 
-    return (
-        <input
-            className={`j-input${(!disabled && meta.error && meta.touched) ? ' j-input--error' : ''}`}
-            type={type}
-            placeholder={placeholder}
-            disabled={disabled}
-            required={required}
-            {...input}
-        />
-    );
-};
+  return (
+    <input
+      className={`j-input${(!disabled && meta.error && meta.touched) ? ' j-input--error' : ''}`}
+      type={type}
+      placeholder={placeholder}
+      disabled={disabled}
+      required={required}
+      {...input}
+    />
+  )
+}
 
-export default Input;
+export default Input

@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-import './Title.css';
+import './Title.css'
 
 const propTypes = {
-    children: PropTypes.node.isRequired,
-};
+  children: PropTypes.node.isRequired
+}
 
 const Title = ({ children }) => (
-    <h1 className="j-title">{ children }</h1>
-);
+  <h1 className='j-title'>{ children }</h1>
+)
 
-Title.propTypes = propTypes;
+Title.propTypes = propTypes
 
-export default Title;
+export default Title

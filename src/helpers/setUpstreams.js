@@ -7,10 +7,10 @@
  *
  * @return {Object} real upstream Object with 'balancing' & 'targets' or empty Object as a fallback.
  */
-export default function setUpstreams(el) {
-    return !!el ? getUpstreams(el) : {};
+export default function setUpstreams (el) {
+  return el ? getUpstreams(el) : {}
 };
 
-function getUpstreams(el) {
-    return !!el.upstreams ? el.upstreams : {};
+function getUpstreams (el) {
+  return el.upstreams ? el.upstreams : {}
 };

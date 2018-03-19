@@ -1,70 +1,72 @@
-import React from 'react';
-import renderer from 'react-test-renderer';
+/* eslint-env jest */
+import React from 'react'
+import renderer from 'react-test-renderer'
 
-import SearchBar from '../../../components/SearchBar/SearchBar';
+import SearchBar from '../../../components/SearchBar/SearchBar'
 
 describe('SearchBar component', () => {
-    const passedProps = {
-        discardPagination: jest.fn(),
-        placeholder: 'Search...',
-        searchQuery: '',
-        setSearchQuery: jest.fn(),
-    };
+  const passedProps = {
+    discardPagination: jest.fn(),
+    placeholder: 'Search...',
+    searchQuery: '',
+    setSearchQuery: jest.fn()
+  }
 
-    it('renders correctly', () => {
-        const tree = renderer
-            .create(
-                <SearchBar
-                    {...passedProps}
-                />
-            )
-            .toJSON();
-        expect(tree).toMatchSnapshot();
-    });
+  it('renders correctly', () => {
+    const tree = renderer.create(
+      <SearchBar
+        {...passedProps}
+      />
+    ).toJSON()
 
-    describe('handles onChange', () => {
-        const otherProps = {
-            placeholder: 'Search...',
-            searchQuery: '',
-        };
+    expect(tree).toMatchSnapshot()
+  })
 
-        it('triggers discarding pagination', () => {
-            const discardPagination = jest.fn();
-            const component = renderer.create(
-                <SearchBar
-                    discardPagination={discardPagination}
-                    setSearchQuery={passedProps.setSearchQuery}
-                    {...otherProps}
-                />
-            );
+  describe('handles onChange', () => {
+    const otherProps = {
+      placeholder: 'Search...',
+      searchQuery: ''
+    }
 
-            let tree = component.toJSON();
-            tree.children[1].props.onChange({ target: { value: 'some'}});
+    it('triggers discarding pagination', () => {
+      const discardPagination = jest.fn()
+      const component = renderer.create(
+        <SearchBar
+          discardPagination={discardPagination}
+          setSearchQuery={passedProps.setSearchQuery}
+          {...otherProps}
+        />
+      )
+      let tree = component.toJSON()
 
-            expect(discardPagination).toBeCalled();
+      tree.children[1].props.onChange({
+        target: {value: 'some'}
+      })
 
-            tree = component.toJSON();
-            expect(tree).toMatchSnapshot();
-        });
+      expect(discardPagination).toBeCalled()
 
-        it('triggers setting new search query', () => {
-            const setSearchQuery = jest.fn()
-                .mockReturnValue('default');
-            const component = renderer.create(
-                <SearchBar
-                    discardPagination={passedProps.discardPagination}
-                    setSearchQuery={setSearchQuery}
-                    {...otherProps}
-                />
-            );
+      tree = component.toJSON()
+      expect(tree).toMatchSnapshot()
+    })
 
-            let tree = component.toJSON();
-            tree.children[1].props.onChange({ target: { value: 'some'}});
+    it('triggers setting new search query', () => {
+      const setSearchQuery = jest.fn()
+        .mockReturnValue('default')
+      const component = renderer.create(
+        <SearchBar
+          discardPagination={passedProps.discardPagination}
+          setSearchQuery={setSearchQuery}
+          {...otherProps}
+        />
+      )
+      let tree = component.toJSON()
 
-            expect(setSearchQuery).toBeCalled();
+      tree.children[1].props.onChange({ target: {value: 'some'} })
 
-            tree = component.toJSON();
-            expect(tree).toMatchSnapshot();
-        });
-    });
-});
+      expect(setSearchQuery).toBeCalled()
+
+      tree = component.toJSON()
+      expect(tree).toMatchSnapshot()
+    })
+  })
+})

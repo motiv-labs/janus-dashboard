@@ -1,3 +1,3 @@
-const isNoSearchResults = query => !!query;
+const isNoSearchResults = query => !!query
 
-export default isNoSearchResults;
+export default isNoSearchResults

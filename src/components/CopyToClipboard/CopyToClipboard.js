@@ -1,31 +1,31 @@
-import React from 'react';
+import React from 'react'
 
-import block from '../../helpers/bem-cn';
+import block from '../../helpers/bem-cn'
 
-import './CopyToClipboard.css';
+import './CopyToClipboard.css'
 
-const cn = block('copy-to-clipboard');
+const cn = block('copy-to-clipboard')
 
 const copyToClipboard = value => {
-    const fakeInput = document.createElement('textarea');
+  const fakeInput = document.createElement('textarea')
 
-    fakeInput.value = value;
-    document.body.appendChild(fakeInput);
-    fakeInput.select();
-    document.execCommand('copy');
-    document.body.removeChild(fakeInput);
-};
+  fakeInput.value = value
+  document.body.appendChild(fakeInput)
+  fakeInput.select()
+  document.execCommand('copy')
+  document.body.removeChild(fakeInput)
+}
 
 const CopyToClipboard = ({ children, value }) => (
-    <div className={cn()}>
-        <span
-            className={cn('control')}
-            onClick={() => copyToClipboard(value)}
-        >
+  <div className={cn()}>
+    <span
+      className={cn('control')}
+      onClick={() => copyToClipboard(value)}
+    >
             Copy to clipboard
-        </span>
-        { children }
-    </div>
-);
+    </span>
+    { children }
+  </div>
+)
 
-export default CopyToClipboard;
+export default CopyToClipboard
