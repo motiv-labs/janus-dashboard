@@ -1,8 +1,8 @@
-import block from 'bem-cn';
+import block from 'bem-cn'
 
 block.setup({
-    mod: '--',
-    modValue: '-',
-});
+  mod: '--',
+  modValue: '-'
+})
 
-export default block;
+export default block

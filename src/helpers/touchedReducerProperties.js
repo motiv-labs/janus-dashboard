@@ -1,3 +1,3 @@
-const touchedReducerProps = reducer => Object.keys(reducer).length;
+const touchedReducerProps = reducer => Object.keys(reducer).length
 
-export default touchedReducerProps;
+export default touchedReducerProps

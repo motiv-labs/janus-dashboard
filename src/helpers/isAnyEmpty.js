@@ -1,5 +1,5 @@
-import R from 'ramda';
+import R from 'ramda'
 
-const isAnyEmpty = iterables => R.any(R.isEmpty)(iterables);
+const isAnyEmpty = iterables => R.any(R.isEmpty)(iterables)
 
-export default isAnyEmpty;
+export default isAnyEmpty

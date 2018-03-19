@@ -1,8 +1,8 @@
 const toValueAndLabel = item => ({
-    label: item,
-    value: item,
-});
+  label: item,
+  value: item
+})
 
-const optionsTransformer = config => config.map(toValueAndLabel);
+const optionsTransformer = config => config.map(toValueAndLabel)
 
-export default optionsTransformer;
+export default optionsTransformer
