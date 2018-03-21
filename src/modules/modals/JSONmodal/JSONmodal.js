@@ -72,7 +72,7 @@ class JSONmodal extends PureComponent {
             Close
           </Button>,
           <Button
-            key='ok'
+            key='copy'
             mod='primary'
             onClick={() => {
               this.handleCopyToClipBoard()
@@ -82,7 +82,7 @@ class JSONmodal extends PureComponent {
             Copy to clipboard
           </Button>,
           <Button
-            key='ok'
+            key='download'
             mod='github'
             onClick={this.handleClose}
           >
