@@ -49,6 +49,10 @@ class ApiList extends PureComponent {
       this.props.deleteEndpoint(api)
     };
 
+    handleCopyAsJSON = api => {
+      console.log('Copy as JSON: ', api)
+    }
+
     renderRows = list => list.map((api, index) => (
       <div className={table('row')()} key={`${index}-${api.name}`}>
         <div className={table('td', {name: true})()}>{api.name}</div>
@@ -75,6 +79,9 @@ class ApiList extends PureComponent {
             mod='primary'
             type='button'
             size='small'
+            onClick={() => {
+              this.handleCopyAsJSON(api)
+            }}
           >
             Copy as JSON
           </Button>
