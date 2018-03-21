@@ -1,0 +1,13 @@
+@import 'variables.scss';
+
+.json-editor {
+    border: $hf-border;
+    border-radius: $hf-border-radius;
+    box-sizing: border-box;
+    width: 100% !important;
+    padding: $hf-gutter;
+
+    .CodeMirror {
+        border-radius: $hf-border-radius;
+    }
+}

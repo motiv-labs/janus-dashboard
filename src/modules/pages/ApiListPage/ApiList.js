@@ -14,6 +14,8 @@ import Control from '../../../components/Control/Control'
 import Preloader from '../../../components/Preloader/Preloader'
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults'
 
+import JSONmodal from '../../modals/JSONmodal/JSONmodal'
+
 import '../../Layout/Table/Table.css'
 
 const propTypes = {
@@ -31,6 +33,11 @@ const propTypes = {
 const table = block('j-table')
 
 class ApiList extends PureComponent {
+  state = {
+    showJSONmodal: false,
+    JSONmodalContent: {}
+  }
+
   componentDidMount () {
     this.props.fetchEndpoints()
   }
@@ -50,6 +57,10 @@ class ApiList extends PureComponent {
     };
 
     handleCopyAsJSON = api => {
+      this.setState({
+        showJSONmodal: true,
+        JSONmodalContent: api
+      })
       console.log('Copy as JSON: ', api)
     }
 
@@ -130,6 +141,10 @@ class ApiList extends PureComponent {
         <div className={table('tbody')()}>
           { this.renderRows(list) }
         </div>
+        <JSONmodal
+          show={this.state.showJSONmodal}
+          message={this.state.JSONmodalContent}
+        />
       </div>
     )
 
