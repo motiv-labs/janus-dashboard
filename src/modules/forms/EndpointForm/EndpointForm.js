@@ -15,6 +15,8 @@ import checkOnPattern from '../../../helpers/pattern-check'
 import parse from '../../../helpers/parse-value'
 import optionsTransformer from '../../../helpers/optionsTransformer'
 import getValues from '../../../helpers/getValues'
+import copyToClipboard from '../../../helpers/copyToClipboard'
+import downloadObjectAsJson from '../../../helpers/downloadObjectAsJson'
 
 import Section from '../../Layout/Section/Section'
 import Title from '../../Layout/Title/Title'
@@ -145,9 +147,25 @@ class EndpointForm extends PureComponent {
                 mod='primary'
               >
                 <Icon type='copy-white' />
-                            Copy
+                Copy
               </Button>
             </Link>
+            <Button
+              key='copy'
+              mod='primary'
+              type='button'
+              onClick={() => copyToClipboard(this.props.api)}
+            >
+              Copy to clipboard
+            </Button>
+            <Button
+              key='download'
+              mod='github'
+              type='button'
+              onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
+            >
+              Download
+            </Button>
             {
               this.props.isAdmin &&
               <Button

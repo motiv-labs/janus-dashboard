@@ -17,9 +17,9 @@ const propTypes = {
 
 const ControlBar = ({ name, removePlugin }) => {
   return (
-    <div className={b('wrapper')}>
+    <div className={b('wrapper')()}>
       <div className={b()}>
-        <div className={b('item')}>
+        <div className={b('item')()}>
           <Tumbler
             name={name}
           />
