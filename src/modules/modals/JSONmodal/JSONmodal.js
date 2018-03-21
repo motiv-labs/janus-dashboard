@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react'
 import { bool, object } from 'prop-types'
-import R from 'ramda';
+import R from 'ramda'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
@@ -96,10 +96,10 @@ JSONmodal.defaultProps = defaultProps
 
 export default JSONmodal
 
-function executeCopy(textarea) {
+function executeCopy (textarea) {
   document.body.appendChild(textarea)
   textarea.select()
-  document.execCommand("Copy");
+  document.execCommand('Copy')
   document.body.removeChild(textarea)
 }
 
