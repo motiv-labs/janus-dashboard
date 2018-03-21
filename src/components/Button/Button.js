@@ -28,7 +28,7 @@ const propTypes = {
 const addMod = mod => (mod ? { [mod]: !!mod } : {})
 
 const Button = ({ mod, type, onClick, children, className, size, ...props }) => {
-  const b = !!size ? block('j-button')({ [size]: true }) : block('j-button')
+  const b = size ? block('j-button')({ [size]: true }) : block('j-button')
 
   return (
     <button

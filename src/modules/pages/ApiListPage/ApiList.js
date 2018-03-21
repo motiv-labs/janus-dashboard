@@ -72,9 +72,9 @@ class ApiList extends PureComponent {
             <Icon type='copy' ariaLabel='Copy' />
           </Link>
           <Button
-            mod="primary"
-            type="button"
-            size="small"
+            mod='primary'
+            type='button'
+            size='small'
           >
             Copy as JSON
           </Button>
