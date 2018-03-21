@@ -28,14 +28,9 @@ class JSONmodal extends PureComponent {
   }
 
   componentWillReceiveProps (nextProps) {
-    console.warn('compoennt did mount', nextProps)
     this.setState({
       show: nextProps.show
     })
-  }
-
-  componentWillUnmount () {
-    console.error('componentWillUnmount()')
   }
 
   handleClose = () => this.setState({
@@ -50,6 +45,8 @@ class JSONmodal extends PureComponent {
 
     executeCopy(textarea)
   }
+
+  handleDownloadJSONfile = () => downloadObjectAsJson(this.props.message, this.props.message.name)
 
   render () {
     return (
@@ -84,7 +81,10 @@ class JSONmodal extends PureComponent {
           <Button
             key='download'
             mod='github'
-            onClick={this.handleClose}
+            onClick={() => {
+              this.handleDownloadJSONfile()
+              this.handleClose()
+            }}
           >
             Download
           </Button>
@@ -116,4 +116,14 @@ function setValue (value) {
 
 function createElement (name) {
   return document.createElement(name)
+}
+
+function downloadObjectAsJson (exportObj, exportName) {
+  const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(exportObj))
+  let downloadAnchorNode = document.createElement('a')
+
+  downloadAnchorNode.setAttribute('href', dataStr)
+  downloadAnchorNode.setAttribute('download', exportName + '.json')
+  downloadAnchorNode.click()
+  downloadAnchorNode.remove()
 }
