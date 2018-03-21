@@ -56,6 +56,11 @@ class ApiList extends PureComponent {
       this.props.deleteEndpoint(api)
     };
 
+    handleCloseModal = () => this.setState({
+      showJSONmodal: false,
+      JSONmodalContent: {}
+    })
+
     handleCopyAsJSON = api => {
       this.setState({
         showJSONmodal: true,
@@ -144,6 +149,7 @@ class ApiList extends PureComponent {
         <JSONmodal
           show={this.state.showJSONmodal}
           message={this.state.JSONmodalContent}
+          closeModal={this.handleCloseModal}
         />
       </div>
     )

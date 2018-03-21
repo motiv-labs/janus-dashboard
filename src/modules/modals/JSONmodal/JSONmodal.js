@@ -33,9 +33,9 @@ class JSONmodal extends PureComponent {
     })
   }
 
-  handleClose = () => this.setState({
-    show: false
-  })
+  handleClose = () => {
+    this.props.closeModal()
+  }
 
   handleCopyToClipBoard = () => {
     const textarea = R.compose(
