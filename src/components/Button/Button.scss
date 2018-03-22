@@ -3,6 +3,7 @@
 $button-height: $hf-height-input;
 $button-line-height: 1.5;
 $button-font-size: $hf-font-size-base;
+$buttons-gutter: $hf-gutter;
 
 .j-button {
     display: flex;
@@ -18,10 +19,13 @@ $button-font-size: $hf-font-size-base;
 
     &s__wrapper {
         display: flex;
-        margin-left: 10px;
 
         .j-button {
-            margin-left: 10px;
+            margin-left: $buttons-gutter;
+        }
+
+        &:first-child {
+            margin-left: -$buttons-gutter;
         }
 
         &.tabs-nav {

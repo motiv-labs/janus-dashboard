@@ -8,6 +8,7 @@ import ApiListContainer from './apiListContainer'
 import Section from '../../Layout/Section/Section'
 import Row from '../../Layout/Row/Row'
 import Title from '../../Layout/Title/Title'
+import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
 import UnhealthyReport from '../HealthCheckPage/UnhealthyReport'
 
@@ -29,9 +30,12 @@ const ApiListPage = ({ healthcheckStatus }) => {
           <Title>APIs</Title>
           <Row>
             <SearchingContainer />
-            <Link to='/new'>
-              <Button mod='primary' label='Create New Api'>+ Create New API</Button>
-            </Link>
+            <ButtonsGroup>
+              <Link to='/new'>
+                <Button mod='primary' label='Create New Api'>+ Create New API</Button>
+              </Link>
+              <Button mod='primary'>Import from JSON</Button>
+            </ButtonsGroup>
           </Row>
         </Row>
       </Section>
