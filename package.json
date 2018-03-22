@@ -64,7 +64,8 @@
       "Feature",
       "Helper",
       "Scenario",
-      "within"
+      "within",
+      "FileReader"
     ],
     "ignore": [
       "public"

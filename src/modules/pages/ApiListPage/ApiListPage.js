@@ -11,6 +11,7 @@ import Title from '../../Layout/Title/Title'
 import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
 import UnhealthyReport from '../HealthCheckPage/UnhealthyReport'
+import UploadingModal from '../../modals/UploadingModal/UploadingModal'
 
 const ApiListPage = ({ healthcheckStatus }) => {
   const renderHealthcheckInfo = () => {
@@ -34,7 +35,7 @@ const ApiListPage = ({ healthcheckStatus }) => {
               <Link to='/new'>
                 <Button mod='primary' label='Create New Api'>+ Create New API</Button>
               </Link>
-              <Button mod='primary'>Import from JSON</Button>
+              <UploadingModal />
             </ButtonsGroup>
           </Row>
         </Row>

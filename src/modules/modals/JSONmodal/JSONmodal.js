@@ -50,6 +50,7 @@ class JSONmodal extends PureComponent {
         show={this.state.show}
         message={
           <JSONeditor
+            isShown
             value={adjustToJSONeditor(this.props.message)}
             readOnly
           />
