@@ -160,7 +160,7 @@ class EndpointForm extends PureComponent {
             </Button>
             <Button
               key='download'
-              mod='github'
+              mod='primary'
               type='button'
               onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
             >
