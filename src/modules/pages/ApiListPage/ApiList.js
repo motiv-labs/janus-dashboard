@@ -61,13 +61,10 @@ class ApiList extends PureComponent {
       JSONmodalContent: {}
     })
 
-    handleCopyAsJSON = api => {
-      this.setState({
-        showJSONmodal: true,
-        JSONmodalContent: api
-      })
-      console.log('Copy as JSON: ', api)
-    }
+    handleCopyAsJSON = api => this.setState({
+      showJSONmodal: true,
+      JSONmodalContent: api
+    })
 
     renderRows = list => list.map((api, index) => (
       <div className={table('row')()} key={`${index}-${api.name}`}>
