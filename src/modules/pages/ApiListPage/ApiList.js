@@ -8,10 +8,13 @@ import block from '../../../helpers/bem-cn'
 import isNoSearchResults from '../../../helpers/isNoSearchResults'
 
 import PaginatedList from '../../PaginatedList/PaginatedList'
+import Button from '../../../components/Button/Button'
 import Icon from '../../../components/Icon/Icon'
 import Control from '../../../components/Control/Control'
 import Preloader from '../../../components/Preloader/Preloader'
 import NoSearchResults from '../../../components/NoSearchResults/NoSearchResults'
+
+import JSONmodal from '../../modals/JSONmodal/JSONmodal'
 
 import '../../Layout/Table/Table.css'
 
@@ -30,6 +33,11 @@ const propTypes = {
 const table = block('j-table')
 
 class ApiList extends PureComponent {
+  state = {
+    showJSONmodal: false,
+    JSONmodalContent: {}
+  }
+
   componentDidMount () {
     this.props.fetchEndpoints()
   }
@@ -47,6 +55,16 @@ class ApiList extends PureComponent {
     handleDelete = api => {
       this.props.deleteEndpoint(api)
     };
+
+    handleCloseModal = () => this.setState({
+      showJSONmodal: false,
+      JSONmodalContent: {}
+    })
+
+    handleCopyAsJSON = api => this.setState({
+      showJSONmodal: true,
+      JSONmodalContent: api
+    })
 
     renderRows = list => list.map((api, index) => (
       <div className={table('row')()} key={`${index}-${api.name}`}>
@@ -70,6 +88,16 @@ class ApiList extends PureComponent {
           >
             <Icon type='copy' ariaLabel='Copy' />
           </Link>
+          <Button
+            mod='primary'
+            type='button'
+            size='small'
+            onClick={() => {
+              this.handleCopyAsJSON(api)
+            }}
+          >
+            Copy as JSON
+          </Button>
           {
             this.props.isAdmin &&
             <Control
@@ -115,6 +143,11 @@ class ApiList extends PureComponent {
         <div className={table('tbody')()}>
           { this.renderRows(list) }
         </div>
+        <JSONmodal
+          show={this.state.showJSONmodal}
+          message={this.state.JSONmodalContent}
+          closeModal={this.handleCloseModal}
+        />
       </div>
     )
 

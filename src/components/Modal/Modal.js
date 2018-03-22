@@ -8,7 +8,7 @@ import './Modal.css'
 
 const propTypes = {
   closeModal: PropTypes.func.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.node.isRequired,
   buttons: PropTypes.arrayOf(PropTypes.node),
   show: PropTypes.bool.isRequired,
   title: PropTypes.string
