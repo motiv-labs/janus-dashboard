@@ -28,7 +28,6 @@ import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints'
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints'
 import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions'
 
-
 import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
 
