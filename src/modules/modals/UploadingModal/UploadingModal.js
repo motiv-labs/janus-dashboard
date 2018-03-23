@@ -3,9 +3,7 @@ import { bool, object } from 'prop-types'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
-import JSONeditor from '../../../components/JSONeditor/JSONeditor'
-
-import adjustToJSONeditor from '../../../helpers/adjustToJSONeditor'
+import Uploader from './Uploader'
 
 const propTypes = {
   json: object.isRequired,
@@ -27,9 +25,11 @@ class UploadingModal extends PureComponent {
     }
   }
 
+  handleDragAndDrop = () => {}
+
   handleOpen = () => this.setState({ show: true })
 
-  handleClose = () => this.setState({ show: false })
+  handleClose = () => this.setState({ show: false, json: null })
 
   setJSON = json => this.setState({ json: JSON.parse(json) })
 
@@ -40,7 +40,6 @@ class UploadingModal extends PureComponent {
     let reader = new FileReader()
 
     reader.onload = this.getContent(file)
-
     reader.readAsText(file)
   }
 
@@ -62,17 +61,18 @@ class UploadingModal extends PureComponent {
           mod='primary'
           onClick={this.handleOpen}
         >
-          Import from JSON
+          Import JSON
         </Button>
         <Modal
           show={this.state.show}
           closeModal={this.handleClose}
           title={'Import from JSON'}
           message={
-            <JSONeditor
-              isShown={!!this.state.json}
-              value={adjustToJSONeditor(this.state.json)}
-              readOnly
+            <Uploader
+              showTooltip={this.state.json}
+              getContent={this.getContent}
+              uploadFile={this.handleUploadFile}
+              json={this.state.json}
             />
           }
           buttons={[
@@ -84,13 +84,11 @@ class UploadingModal extends PureComponent {
               Close
             </Button>,
             <Button
-              key='copy'
+              key='upload'
               mod='primary'
-              onClick={() => {
-                this.handleUploadFile()
-              }}
+              onClick={this.handleClose}
             >
-              Choose file
+              Upload
             </Button>
           ]}
         />

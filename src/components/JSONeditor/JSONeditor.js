@@ -20,7 +20,6 @@ const propTypes = {
 }
 
 const JSONeditor = props => {
-  console.warn('JSON is shown:', props.isShown)
   if (!props.isShown) return null
 
   return (
