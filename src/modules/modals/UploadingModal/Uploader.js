@@ -54,6 +54,7 @@ class Uploader extends PureComponent {
         <JSONeditor
           isShown={!!this.props.json}
           value={adjustToJSONeditor(this.props.json)}
+          onChange={this.props.handleJSONonChange}
         />
         {
           !this.props.showTooltip &&

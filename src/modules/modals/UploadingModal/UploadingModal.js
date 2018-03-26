@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react'
 import { bool, object } from 'prop-types'
+import { connect } from 'react-redux'
+
+import { saveEndpoint } from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
@@ -21,6 +24,7 @@ class UploadingModal extends PureComponent {
 
     this.state = {
       show: false,
+      updatedJSON: null,
       json: null
     }
   }
@@ -31,7 +35,10 @@ class UploadingModal extends PureComponent {
 
   handleClose = () => this.setState({ show: false, json: null })
 
-  setJSON = json => this.setState({ json: JSON.parse(json) })
+  setJSON = json => this.setState({ 
+    updatedJSON: JSON.parse(json),
+    json: JSON.parse(json),
+  })
 
   getContent = file => e => this.setJSON(e.target.result)
 
@@ -54,6 +61,8 @@ class UploadingModal extends PureComponent {
     document.body.removeChild(input)
   }
 
+  handleUpdateJson = updatedJSON => this.setState({ updatedJSON })
+
   render () {
     return (
       <div>
@@ -73,6 +82,7 @@ class UploadingModal extends PureComponent {
               getContent={this.getContent}
               uploadFile={this.handleUploadFile}
               json={this.state.json}
+              handleJSONonChange={this.handleUpdateJson}
             />
           }
           buttons={[
@@ -86,7 +96,7 @@ class UploadingModal extends PureComponent {
             <Button
               key='upload'
               mod='primary'
-              onClick={this.handleClose}
+              onClick={() => this.props.saveEndpoint(JSON.parse(this.state.updatedJSON))}
             >
               Upload
             </Button>
@@ -100,4 +110,9 @@ class UploadingModal extends PureComponent {
 UploadingModal.propTypes = propTypes
 UploadingModal.defaultProps = defaultProps
 
-export default UploadingModal
+export default connect(
+  null,
+  {
+    saveEndpoint
+  }
+)(UploadingModal)
