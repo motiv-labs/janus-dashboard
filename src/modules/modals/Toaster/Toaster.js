@@ -40,17 +40,17 @@ const Toaster = props => {
 
   return (
     <div className={b()}>
-      <div className={b('left-part')}>
+      <div className={b('left-part')()}>
         <Icon
           className={b('icon')()}
           type='successful-white'
         />
       </div>
-      <div className={b('right-part')}>
+      <div className={b('right-part')()}>
         {props.message}
       </div>
       <div
-        className={b('close')}
+        className={b('close')()}
         onClick={handleCloseToaster}
       >
         <Icon
