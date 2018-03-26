@@ -36,11 +36,11 @@ class UploadingModal extends PureComponent {
   handleClose = () => this.setState({ show: false, json: null })
 
   setJSON = json => this.setState({
-    updatedJSON: JSON.parse(json),
-    json: JSON.parse(json)
+    updatedJSON: json,
+    json
   })
 
-  getContent = file => e => this.setJSON(e.target.result)
+  getContent = file => e => this.setJSON(JSON.parse(e.target.result))
 
   uploadFile = event => {
     const file = event.target.files[0]
@@ -78,7 +78,6 @@ class UploadingModal extends PureComponent {
           title={'Import from JSON'}
           message={
             <Uploader
-              showTooltip={this.state.json}
               getContent={this.getContent}
               uploadFile={this.handleUploadFile}
               json={this.state.json}

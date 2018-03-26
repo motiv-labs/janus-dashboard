@@ -57,7 +57,7 @@ class Uploader extends PureComponent {
           onChange={this.props.handleJSONonChange}
         />
         {
-          !this.props.showTooltip &&
+          !this.props.json &&
             <div className={cn('drag-n-drop')()}>
               <input
                 className={cn('input')()}
@@ -76,7 +76,7 @@ class Uploader extends PureComponent {
             }}
           >
             {
-              this.props.showTooltip ? 'Choose another file' : 'Choose file'
+              this.props.json ? 'Choose another file' : 'Choose file'
             }
           </Button>
         </div>
