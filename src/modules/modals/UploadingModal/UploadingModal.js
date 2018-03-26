@@ -35,9 +35,9 @@ class UploadingModal extends PureComponent {
 
   handleClose = () => this.setState({ show: false, json: null })
 
-  setJSON = json => this.setState({ 
+  setJSON = json => this.setState({
     updatedJSON: JSON.parse(json),
-    json: JSON.parse(json),
+    json: JSON.parse(json)
   })
 
   getContent = file => e => this.setJSON(e.target.result)
