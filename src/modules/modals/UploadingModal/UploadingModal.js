@@ -98,6 +98,7 @@ class UploadingModal extends PureComponent {
               mod='primary'
               onClick={() => {
                 this.props.saveEndpoint(JSON.parse(this.state.updatedJSON))
+                this.handleClose()
               }}
             >
               Upload
