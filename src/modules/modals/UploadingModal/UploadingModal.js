@@ -1,5 +1,8 @@
 import React, { PureComponent } from 'react'
 import { bool, object } from 'prop-types'
+import { connect } from 'react-redux'
+
+import { saveEndpoint } from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
@@ -86,7 +89,7 @@ class UploadingModal extends PureComponent {
             <Button
               key='upload'
               mod='primary'
-              onClick={this.handleClose}
+              onClick={() => this.props.saveEndpoint(this.state.json)}
             >
               Upload
             </Button>
@@ -100,4 +103,9 @@ class UploadingModal extends PureComponent {
 UploadingModal.propTypes = propTypes
 UploadingModal.defaultProps = defaultProps
 
-export default UploadingModal
+export default connect(
+  null,
+  {
+    saveEndpoint
+  }
+)(UploadingModal)
