@@ -51,7 +51,7 @@
     "lint": "./node_modules/.bin/standard && stylelint '**/*.scss'",
     "lint-fix": "./node_modules/.bin/standard --fix && stylelint '**/*.scss' --fix",
     "start-js": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "npm run build-css && npm run lint-fix && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:acceptance": "codeceptjs run",
     "test:acceptance-dev": "codeceptjs run --steps",
