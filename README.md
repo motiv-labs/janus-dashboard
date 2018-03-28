@@ -22,7 +22,7 @@ make
 npm install && npm run build
 
 # serve built project on port 5000
-yarn global add serve && serve -s build
+npm install -g serve && serve -s build
 
 # serve with hot reload on port 8082
 npm run start
