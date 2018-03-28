@@ -27,6 +27,7 @@ import Label from '../../../components/Label/Label'
 import Hint from '../../../components/Hint/Hint'
 import MultiSelect from '../../selects/MultiSelect/MultiSelect'
 import TagSelect from '../../selects/TagSelect/TagSelect'
+import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
 import Icon from '../../../components/Icon/Icon'
 
@@ -132,7 +133,7 @@ class EndpointForm extends PureComponent {
     renderStickyButtons = () => {
       if (this.props.editing && this.props.api.name) {
         return (
-          <div className='j-buttons__wrapper'>
+          <ButtonsGroup>
             { this.renderSaveButton() }
             <Link
               to={{
@@ -177,7 +178,7 @@ class EndpointForm extends PureComponent {
                                 Delete
               </Button>
             }
-          </div>
+          </ButtonsGroup>
         )
       }
 

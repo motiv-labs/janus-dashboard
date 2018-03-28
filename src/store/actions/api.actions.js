@@ -333,6 +333,7 @@ export const confirmedSaveEndpoint = async (dispatch, api) => {
 
     dispatch(saveEndpointSuccess())
     history.push('/')
+    dispatch(fetchEndpoints())
     dispatch(showToaster())
   } catch (error) {
     dispatch(closeConfirmationModal())

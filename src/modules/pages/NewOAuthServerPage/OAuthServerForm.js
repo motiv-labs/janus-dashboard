@@ -28,6 +28,7 @@ import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints'
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints'
 import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions'
 
+import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
 
 const b = block('j-api-form')
@@ -71,7 +72,7 @@ class OAuthServerForm extends PureComponent {
 
     renderTabs = () => (
       <div className={b('tabs')()}>
-        <div className='j-buttons__wrapper tabs-nav'>
+        <ButtonsGroup className='tabs-nav'>
           {
             this.state.tabs.map((item, idx) =>
               <Button
@@ -84,7 +85,7 @@ class OAuthServerForm extends PureComponent {
               </Button>
             )
           }
-        </div>
+        </ButtonsGroup>
 
         <div className={b('tab', { hidden: !this.isActiveTab(0) })()}>
           <div className={b('section')()}>

@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Modaliz from 'react-modaliz'
 
+import ButtonsGroup from '../ButtonsGroup/ButtonsGroup'
+
 import block from '../../helpers/bem-cn'
 
 import './Modal.css'
@@ -44,9 +46,9 @@ const Modal = ({
         </div>
       </div>
     </div>
-    <div className={b('buttons-group').mix('j-buttons__wrapper')()}>
+    <ButtonsGroup className={b('buttons-group')()}>
       { buttons }
-    </div>
+    </ButtonsGroup>
   </Modaliz>
 )
 

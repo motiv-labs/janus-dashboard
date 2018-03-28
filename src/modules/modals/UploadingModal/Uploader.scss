@@ -1,0 +1,26 @@
+@import 'variables.scss';
+
+.uploader {
+    &__drag-n-drop {
+        border: 2px dashed $hellofresh-color;
+        border-radius: 20px;
+        width: 480px;
+        font-family: sans-serif;
+        margin: $hf-padding-big auto 0;
+        padding: $hf-padding-big;
+    }
+
+    &__input {
+        display: none;
+    }
+
+    &__tooltip {
+        text-align: center;
+    }
+
+    &__choose-button {
+        display: flex;
+        margin-top: $hf-padding-big;
+        justify-content: center;
+    }
+}
