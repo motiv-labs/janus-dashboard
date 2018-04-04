@@ -3,9 +3,9 @@
 > Dashbord for [Janus](https://github.com/hellofresh/janus) project
 
 ## Table of contents
-1. [About Project](#About-Project)
-1. [Build Setup](#Build-Setup)
-1. [Configuration](#Configuration)
+1. [About Project](#about-project)
+1. [Build Setup](#build-setup)
+1. [Configuration](#configuration)
 
 ## About Project
 **Janus-dashboard** is more user friendly way to work with [Janus](https://github.com/hellofresh/janus) API Gateway. It gives possibility to work with user interface instead of making calls with *Postman* or `curl`.
