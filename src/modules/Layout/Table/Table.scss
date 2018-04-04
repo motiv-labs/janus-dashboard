@@ -2,6 +2,7 @@
 
 $icon-width: 8px;
 $icon-height: 14px;
+$control-width: 20px;
 
 .j-table {
     width: 100%;
@@ -55,14 +56,17 @@ $icon-height: 14px;
 
     &__controls {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
         grid-gap: $hf-gutter;
         overflow: initial;
+        justify-content: end;
+        grid-template-columns: repeat(4, auto);
 
         &-item {
             display: flex;
             align-items: center;
             height: auto;
+            width: $control-width;
+            justify-self: end;
         }
     }
 }
