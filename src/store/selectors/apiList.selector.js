@@ -32,8 +32,7 @@ const getFilteredApiList = (apiList, searchQuery, sortingFilter, sortAscend) => 
   }
   const listFilteredAccordingToSearchQuery = list => list.filter(el => {
     const searchIsActive = el.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            el.proxy.upstream_url.toLowerCase().includes(searchQuery.toLowerCase())
+            el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase())
 
     return (searchIsActive) ? el : false
   })
