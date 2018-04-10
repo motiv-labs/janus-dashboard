@@ -2,7 +2,6 @@ import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 import R from 'ramda'
-import Select from 'react-select'
 
 import block from '../../../../helpers/bem-cn'
 
@@ -12,8 +11,6 @@ import Input from '../../../inputs/Input'
 import Hint from '../../../../components/Hint/Hint'
 import ControlBar from '../ControlBar/ControlBar'
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect'
-
-const grid = block('j-grid')
 
 const propTypes = {
   className: PropTypes.string,
@@ -28,22 +25,18 @@ class RateLimitPlugin extends PureComponent {
     super(props)
 
     this.state = {
-      selectedPolicy: {
-        name: this.props.pluginFromValues.config.policy.selected || ''
-      }
+      selectedPolicy: {}
     }
   }
 
   handleChangeSelectedPolicy = value => {
     this.setState(() => ({
-      selectedPolicy: {
-        name: value.value
-      }
+      selectedPolicy: value
     }))
   }
 
   renderRedisOptions = value => {
-    if (value.name === 'redis') {
+    if (value === 'redis') {
       return <div>
         <Row col>
           <Label>DSN</Label>
@@ -102,7 +95,7 @@ class RateLimitPlugin extends PureComponent {
         </Row>
         <Row className={b('row')()} fullwidth>
           <Row col>
-            <div className={grid('row', { 2: true })}>
+            
               <Row col>
                 <Label>Limit Value</Label>
                 <Field
@@ -123,12 +116,11 @@ class RateLimitPlugin extends PureComponent {
                   component={SimpleSelect}
                 />
               </Row>
-            </div>
             <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
           </Row>
           <Row col>
             <Label>Policy</Label>
-            <Select
+            <Field
               className='j-select'
               name={`${name}.config.policy.selected`}
               type='text'
@@ -136,11 +128,12 @@ class RateLimitPlugin extends PureComponent {
               clearable={false}
               options={plugin.config.policy.options}
               onChange={this.handleChangeSelectedPolicy}
-              value={this.state.selectedPolicy.name}
+              value={this.state.selectedPolicy}
+              component={SimpleSelect}
             />
             <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
             <Hint>The rate-limiting policies to use for retrieving and incrementing the limits. Available values are local (counters will be stored locally in-memory on the node) and redis (counters are stored on a Redis server and will be shared across the nodes).</Hint>
-            { this.renderRedisOptions(this.state.selectedPolicy) }
+            { this.renderRedisOptions(this.props.pluginFromValues.config.policy.selected) }
           </Row>
         </Row>
       </div>

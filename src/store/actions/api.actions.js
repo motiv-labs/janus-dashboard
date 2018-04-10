@@ -240,8 +240,11 @@ export const preparePlugins = api => api.plugins.map(plugin => {
       const lens2 = R.lensPath(['config', 'policy'])
       // substitude the plugin.config.limit
       const updatedPlugin = R.set(lens, concatenation, plugin)
+      const omitRedisIfNeccessary = plugin => (plugin.config.policy.selected !== 'redis')
+        ? R.dissocPath(['config', 'redis'], plugin)
+        : plugin
 
-      return R.set(lens2, policy.selected, updatedPlugin)
+      return R.set(lens2, policy.selected, omitRedisIfNeccessary(updatedPlugin))
     }
     case 'oauth2': {
       return R.dissocPath(['config', 'server_names'], plugin)
