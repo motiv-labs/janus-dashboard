@@ -95,27 +95,27 @@ class RateLimitPlugin extends PureComponent {
         </Row>
         <Row className={b('row')()} fullwidth>
           <Row col>
-            
-              <Row col>
-                <Label>Limit Value</Label>
-                <Field
-                  type='number'
-                  name={`${name}.config.limit.value`}
-                  placeholder=''
-                  component={Input}
-                />
-              </Row>
-              <Row col>
-                <Label>Limit Unit</Label>
-                <Field
-                  name={`${name}.config.limit.unit`}
-                  type='text'
-                  searchable={false}
-                  clearable={false}
-                  options={createOptions(plugin.config.limit.units, getLabels(apiSchema.plugins))}
-                  component={SimpleSelect}
-                />
-              </Row>
+
+            <Row col>
+              <Label>Limit Value</Label>
+              <Field
+                type='number'
+                name={`${name}.config.limit.value`}
+                placeholder=''
+                component={Input}
+              />
+            </Row>
+            <Row col>
+              <Label>Limit Unit</Label>
+              <Field
+                name={`${name}.config.limit.unit`}
+                type='text'
+                searchable={false}
+                clearable={false}
+                options={createOptions(plugin.config.limit.units, getLabels(apiSchema.plugins))}
+                component={SimpleSelect}
+              />
+            </Row>
             <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
           </Row>
           <Row col>
