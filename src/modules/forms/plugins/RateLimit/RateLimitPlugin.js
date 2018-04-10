@@ -39,7 +39,7 @@ class RateLimitPlugin extends PureComponent {
     if (value === 'redis') {
       return <div>
         <Row col>
-          <Label>DSN</Label>
+          <Label>Redis DSN</Label>
           <Field
             type='text'
             name={`${this.props.name}.config.redis.dsn`}
@@ -48,7 +48,7 @@ class RateLimitPlugin extends PureComponent {
           />
         </Row>
         <Row col>
-          <Label>Prefix</Label>
+          <Label>Redis prefix</Label>
           <Field
             type='text'
             name={`${this.props.name}.config.redis.prefix`}
