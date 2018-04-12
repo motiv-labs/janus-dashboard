@@ -57,432 +57,432 @@ const propTypes = {
 }
 
 class EndpointForm extends PureComponent {
-    state = {
-      showJSONmodal: false,
-      JSONmodalContent: {},
-      upstreams: this.props.initialValues.proxy.upstreams || {} // fallback for old endpoints (they have `upstreams: null`), probably temporary
-    }
+  state = {
+    showJSONmodal: false,
+    JSONmodalContent: {},
+    upstreams: this.props.initialValues.proxy.upstreams || {} // fallback for old endpoints (they have `upstreams: null`), probably temporary
+  }
 
-    componentWillReceiveProps (nextProps) {
-      if (this.props.initialValues.proxy.upstreams !== nextProps.initialValues.proxy.upstreams) {
-        this.setState({
-          upstreams: nextProps.initialValues.proxy.upstreams
-        })
-      }
-    }
-
-    createStrategyOptions = list => {
-      const extractNames = list => list.map(item => item.balancing)
-      const labelCombiner = item => ({
-        label: item[1],
-        value: item[1],
-        options: item[0]
+  componentWillReceiveProps (nextProps) {
+    if (this.props.initialValues.proxy.upstreams !== nextProps.initialValues.proxy.upstreams) {
+      this.setState({
+        upstreams: nextProps.initialValues.proxy.upstreams
       })
-      const combineListOfUnitsAndLabels = list => list.map(labelCombiner)
+    }
+  }
 
-      return R.compose(
-        combineListOfUnitsAndLabels,
-        R.zip(list),
-        extractNames
-      )(list)
-    };
-
-    handleChangeStrategy = value => {
-      this.setState(() => ({
-        upstreams: {
-          balancing: value.value,
-          targets: value.options
-        }
-      }), () => this.props.change('proxy.upstreams.balancing', value.value))
-    };
-
-    handleCloseModal = () => this.setState({
-      showJSONmodal: false,
-      JSONmodalContent: {}
+  createStrategyOptions = list => {
+    const extractNames = list => list.map(item => item.balancing)
+    const labelCombiner = item => ({
+      label: item[1],
+      value: item[1],
+      options: item[0]
     })
+    const combineListOfUnitsAndLabels = list => list.map(labelCombiner)
 
-    renderSaveButton = () => <Button
-      type='submit'
-      mod='primary'
-    >
-        Save
-    </Button>
+    return R.compose(
+      combineListOfUnitsAndLabels,
+      R.zip(list),
+      extractNames
+    )(list)
+  };
 
-    renderStrategy = balancing => {
-      switch (balancing) {
-        case 'roundrobin': {
-          return (
-            <MultiRowField
-              name='proxy.upstreams.targets'
-              suffix='target'
-              title='Targets'
-              placeholder='Target'
-              isValidate='url'
-              warningMessage={WARNINGS.URL}
-            />
-          )
-        }
-        case 'weight': {
-          return (
-            <WeightTargets
-              name='proxy.upstreams.targets'
-              title='Targets'
-              isValidate='url'
-              warningMessage={WARNINGS.URL}
-            />
-          )
-        }
-        default:
-          return null
+  handleChangeStrategy = value => {
+    this.setState(() => ({
+      upstreams: {
+        balancing: value.value,
+        targets: value.options
       }
-    };
+    }), () => this.props.change('proxy.upstreams.balancing', value.value))
+  };
 
-    renderStickyButtons = () => {
-      if (this.props.editing && this.props.api.name) {
+  handleCloseModal = () => this.setState({
+    showJSONmodal: false,
+    JSONmodalContent: {}
+  })
+
+  renderSaveButton = () => <Button
+    type='submit'
+    mod='primary'
+  >
+      Save
+  </Button>
+
+  renderStrategy = balancing => {
+    switch (balancing) {
+      case 'roundrobin': {
         return (
-          <ButtonsGroup>
-            { this.renderSaveButton() }
-            <Link
-              to={{
-                pathname: '/new',
-                state: {
-                  clone: this.props.api
-                }
-              }}
-            >
-              <Button
-                type='button'
-                mod='primary'
-              >
-                <Icon type='copy-white' />
-                Copy
-              </Button>
-            </Link>
-            <Button
-              key='copy'
-              mod='primary'
-              type='button'
-              onClick={() => {
-                this.setState({
-                  showJSONmodal: true,
-                  JSONmodalContent: this.props.api
-                })
-              }}
-            >
-              Copy as JSON
-            </Button>
-            <Button
-              key='download'
-              mod='primary'
-              type='button'
-              onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
-            >
-              Download
-            </Button>
-            {
-              this.props.isAdmin &&
-              <Button
-                type='button'
-                mod='danger'
-                onClick={this.props.handleDelete}
-              >
-                <Icon type='delete-white' />
-                                Delete
-              </Button>
-            }
-          </ButtonsGroup>
+          <MultiRowField
+            name='proxy.upstreams.targets'
+            suffix='target'
+            title='Targets'
+            placeholder='Target'
+            isValidate='url'
+            warningMessage={WARNINGS.URL}
+          />
         )
       }
-
-      return this.renderSaveButton()
-    }
-
-    render () {
-      const {
-        apiSchema,
-        disabled,
-        editing,
-        excludePlugin,
-        initialValues,
-        handleSubmit,
-        plugins,
-        response,
-        selectPlugin,
-        selectedPlugins
-      } = this.props
-
-      const includePlugin = value => {
-        apiSchema.plugins
-          .filter((plugin, index) =>
-            plugin.name === value.value && !selectedPlugins.includes(plugin.name)
-          )
-          .map((plugin, index) => selectPlugin(plugin.name))
-      }
-
-      return (
-        <form className={b()} onSubmit={handleSubmit}>
-          <Section>
-            <Sticky stickyClassName={b('sticky')()}>
-              <Row>
-                <Title>
-                  { editing ? 'Edit API' : 'Create New API' }
-                </Title>
-                { this.renderStickyButtons() }
-              </Row>
-            </Sticky>
-          </Section>
-          <div className={b('inner')()}>
-            <div className={b('section')()}>
-              <div className={b('section-title')()}>1. General</div>
-              <Row className={b('row')()} fullwidth>
-                <div className={col()}>
-                  <div className={col('item')()}>
-                    <Label>API Name</Label>
-                  </div>
-                  <Field
-                    name='name'
-                    type='text'
-                    component={Input}
-                    disabled={disabled}
-                    validate={!editing && checkOnPattern('name')}
-                    required
-                  />
-                  <span className='j-input__warning'>{WARNINGS.NAMES}</span>
-                  <Hint>Must be unique.</Hint>
-                </div>
-                <Row col>
-                  <Label>Is Active?</Label>
-                  <Row className={b('radio-wrap')()}>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='active'
-                        component={Radio}
-                        value={'true'}
-                        type='radio'
-                        id='is-active'
-                      />
-                      <Label htmlFor='is-active'>Yes</Label>
-                    </Row>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='active'
-                        component={Radio}
-                        value={'false'}
-                        type='radio'
-                        id='is-not-active'
-                      />
-                      <Label htmlFor='is-not-active'>No</Label>
-                    </Row>
-                  </Row>
-                </Row>
-              </Row>
-            </div>
-            <div className={b('section')()}>
-              <div className={b('section-title')()}>2. Proxy</div>
-              <Row className={b('row')()} fullwidth>
-                <div className={col()}>
-                  <div className={col('item')()}>
-                    <Label>Listen Path</Label>
-                  </div>
-                  <Field
-                    name='proxy.listen_path'
-                    type='text'
-                    placeholder={PLACEHOLDER.LISTEN_PATH}
-                    component={Input}
-                    validate={checkOnPattern('/')}
-                    required
-                  />
-                  <span className='j-input__warning'>{WARNINGS.LISTEN_PATH}</span>
-                  <Hint>The public url that is exposed by the Gateway.</Hint>
-                </div>
-                <div className={col()}>
-                  <div className={col('item')()}>
-                    <Label>Load balancing alg.</Label>
-                  </div>
-                  <Select
-                    className='j-select'
-                    name='token_strategy.name'
-                    options={this.createStrategyOptions(apiSchema.proxy.upstreams.options)}
-                    onChange={this.handleChangeStrategy}
-                    value={this.state.upstreams.balancing}
-                    clearable={false}
-                    required
-                  />
-                  <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
-                    <Row className={b('row')()} fullwidth>
-                      { this.renderStrategy(this.state.upstreams.balancing) }
-                    </Row>
-                  </div>
-                </div>
-              </Row>
-              <Row className={b('row')()} fullwidth>
-                <Row col>
-                  <Label>Methods</Label>
-                  <Field
-                    name='proxy.methods'
-                    type='text'
-                    placeholder='Choose one or more methods'
-                    edit
-                    value={editing ? () => getValues(['proxy', 'methods'])(initialValues) : []}
-                    options={optionsTransformer(apiSchema.proxy.methods)}
-                    component={MultiSelect}
-                  />
-                  <Hint>HTTP methods that are supported for the endpoint.</Hint>
-                </Row>
-                <Row col>
-                  <Label>Hosts</Label>
-                  <Field
-                    name='proxy.hosts'
-                    type='text'
-                    edit
-                    value={editing ? () => getValues(['proxy', 'hosts'])(initialValues) : []}
-                    options={optionsTransformer(apiSchema.proxy.hosts)}
-                    component={TagSelect}
-                  />
-                </Row>
-              </Row>
-              <Row className={b('row')()} fullwidth>
-                <Row col>
-                  <Label>Preserve Host?</Label>
-                  <Row className={b('radio-wrap')()}>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.preserve_host'
-                        component={Radio}
-                        value={'true'}
-                        type='radio'
-                        id='preserve-host-true'
-                      />
-                      <Label htmlFor='preserve-host-true'>Yes</Label>
-                    </Row>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.preserve_host'
-                        component={Radio}
-                        value={'false'}
-                        type='radio'
-                        id='preserve-host-false'
-                      />
-                      <Label htmlFor='preserve-host-false'>No</Label>
-                    </Row>
-                  </Row>
-                  <Hint>Preserve the host header the client used for the incoming request.</Hint>
-                </Row>
-                <Row col>
-                  <Label>Append Path?</Label>
-                  <Row className={b('radio-wrap')()}>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.append_path'
-                        component={Radio}
-                        value={'true'}
-                        type='radio'
-                        id='append-path-true'
-                      />
-                      <Label htmlFor='append-path-true'>Yes</Label>
-                    </Row>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.append_path'
-                        component={Radio}
-                        value={'false'}
-                        type='radio'
-                        id='append-path-false'
-                      />
-                      <Label htmlFor='append-path-false'>No</Label>
-                    </Row>
-                  </Row>
-                  <Hint>Appends the path from the listen_path when forwarding the request to the upstream_url.</Hint>
-                </Row>
-              </Row>
-              <Row className={b('row')()} fullwidth>
-                <Row col>
-                  <Label>Strips Path?</Label>
-                  <Row className={b('radio-wrap')()}>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.strip_path'
-                        component={Radio}
-                        value={'true'}
-                        type='radio'
-                        id='strip-path-true'
-                      />
-                      <Label htmlFor='strip-path-true'>Yes</Label>
-                    </Row>
-                    <Row className={b('radio')()}>
-                      <Field
-                        name='proxy.strip_path'
-                        component={Radio}
-                        value={'false'}
-                        type='radio'
-                        id='strip-path-false'
-                      />
-                      <Label htmlFor='strip-path-false'>No</Label>
-                    </Row>
-                  </Row>
-                  <Hint> Strip the path out of the listen_path when forwarding the request to the upstream_url.</Hint>
-                </Row>
-                <div />
-              </Row>
-            </div>
-            <div className={b('section')()}>
-              <div className={b('section-title')()}>3. Health check</div>
-              <Row className={b('row')()} fullwidth>
-                <div className={col()}>
-                  <div className={col('item')()}>
-                    <Label>Health URL (optional)</Label>
-                  </div>
-                  <Field
-                    name='health_check.url'
-                    type='text'
-                    placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
-                    component={Input}
-                    validate={checkOnPattern('url')}
-                  />
-                  <span className='j-input__warning'>{WARNINGS.URL}</span>
-                  <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
-                </div>
-                <Row col>
-                  <Label>Timeout (optional)</Label>
-                  <Field
-                    name='health_check.timeout'
-                    type='number'
-                    parse={parse}
-                    component={Input}
-                  />
-                  <Hint>The length of time that the Gateway should wait before displaying an error.</Hint>
-                </Row>
-              </Row>
-            </div>
-            <div className={b('section')()}>
-              <div className={b('section-title')()}>4. Plugins</div>
-              {
-                !!plugins &&
-                <RenderPlugins
-                  className={b()}
-                  apiSchema={apiSchema}
-                  plugins={plugins}
-                  initialValues={initialValues}
-                  selectedPlugins={selectedPlugins}
-                  handlePluginInclude={includePlugin}
-                  handlePluginExclude={excludePlugin}
-                  response={response}
-                  edit={editing}
-                />
-              }
-            </div>
-          </div>
-          <Row className={b('row', { 'button-row': true })()}>
-            { this.renderSaveButton() }
-          </Row>
-          <JSONmodal
-            show={this.state.showJSONmodal}
-            message={this.state.JSONmodalContent}
-            closeModal={this.handleCloseModal}
+      case 'weight': {
+        return (
+          <WeightTargets
+            name='proxy.upstreams.targets'
+            title='Targets'
+            isValidate='url'
+            warningMessage={WARNINGS.URL}
           />
-        </form>
+        )
+      }
+      default:
+        return null
+    }
+  };
+
+  renderStickyButtons = () => {
+    if (this.props.editing && this.props.api.name) {
+      return (
+        <ButtonsGroup>
+          { this.renderSaveButton() }
+          <Link
+            to={{
+              pathname: '/new',
+              state: {
+                clone: this.props.api
+              }
+            }}
+          >
+            <Button
+              type='button'
+              mod='primary'
+            >
+              <Icon type='copy-white' />
+              Copy
+            </Button>
+          </Link>
+          <Button
+            key='copy'
+            mod='primary'
+            type='button'
+            onClick={() => {
+              this.setState({
+                showJSONmodal: true,
+                JSONmodalContent: this.props.api
+              })
+            }}
+          >
+            Copy as JSON
+          </Button>
+          <Button
+            key='download'
+            mod='primary'
+            type='button'
+            onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
+          >
+            Download
+          </Button>
+          {
+            this.props.isAdmin &&
+            <Button
+              type='button'
+              mod='danger'
+              onClick={this.props.handleDelete}
+            >
+              <Icon type='delete-white' />
+                              Delete
+            </Button>
+          }
+        </ButtonsGroup>
       )
     }
+
+    return this.renderSaveButton()
+  }
+
+  render () {
+    const {
+      apiSchema,
+      disabled,
+      editing,
+      excludePlugin,
+      initialValues,
+      handleSubmit,
+      plugins,
+      response,
+      selectPlugin,
+      selectedPlugins
+    } = this.props
+
+    const includePlugin = value => {
+      apiSchema.plugins
+        .filter((plugin, index) =>
+          plugin.name === value.value && !selectedPlugins.includes(plugin.name)
+        )
+        .map((plugin, index) => selectPlugin(plugin.name))
+    }
+
+    return (
+      <form className={b()} onSubmit={handleSubmit}>
+        <Section>
+          <Sticky stickyClassName={b('sticky')()}>
+            <Row>
+              <Title>
+                { editing ? 'Edit API' : 'Create New API' }
+              </Title>
+              { this.renderStickyButtons() }
+            </Row>
+          </Sticky>
+        </Section>
+        <div className={b('inner')()}>
+          <div className={b('section')()}>
+            <div className={b('section-title')()}>1. General</div>
+            <Row className={b('row')()} fullwidth>
+              <div className={col()}>
+                <div className={col('item')()}>
+                  <Label>API Name</Label>
+                </div>
+                <Field
+                  name='name'
+                  type='text'
+                  component={Input}
+                  disabled={disabled}
+                  validate={!editing && checkOnPattern('name')}
+                  required
+                />
+                <span className='j-input__warning'>{WARNINGS.NAMES}</span>
+                <Hint>Must be unique.</Hint>
+              </div>
+              <Row col>
+                <Label>Is Active?</Label>
+                <Row className={b('radio-wrap')()}>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='active'
+                      component={Radio}
+                      value={'true'}
+                      type='radio'
+                      id='is-active'
+                    />
+                    <Label htmlFor='is-active'>Yes</Label>
+                  </Row>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='active'
+                      component={Radio}
+                      value={'false'}
+                      type='radio'
+                      id='is-not-active'
+                    />
+                    <Label htmlFor='is-not-active'>No</Label>
+                  </Row>
+                </Row>
+              </Row>
+            </Row>
+          </div>
+          <div className={b('section')()}>
+            <div className={b('section-title')()}>2. Proxy</div>
+            <Row className={b('row')()} fullwidth>
+              <div className={col()}>
+                <div className={col('item')()}>
+                  <Label>Listen Path</Label>
+                </div>
+                <Field
+                  name='proxy.listen_path'
+                  type='text'
+                  placeholder={PLACEHOLDER.LISTEN_PATH}
+                  component={Input}
+                  validate={checkOnPattern('/')}
+                  required
+                />
+                <span className='j-input__warning'>{WARNINGS.LISTEN_PATH}</span>
+                <Hint>The public url that is exposed by the Gateway.</Hint>
+              </div>
+              <div className={col()}>
+                <div className={col('item')()}>
+                  <Label>Load balancing alg.</Label>
+                </div>
+                <Select
+                  className='j-select'
+                  name='token_strategy.name'
+                  options={this.createStrategyOptions(apiSchema.proxy.upstreams.options)}
+                  onChange={this.handleChangeStrategy}
+                  value={this.state.upstreams.balancing}
+                  clearable={false}
+                  required
+                />
+                <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+                  <Row className={b('row')()} fullwidth>
+                    { this.renderStrategy(this.state.upstreams.balancing) }
+                  </Row>
+                </div>
+              </div>
+            </Row>
+            <Row className={b('row')()} fullwidth>
+              <Row col>
+                <Label>Methods</Label>
+                <Field
+                  name='proxy.methods'
+                  type='text'
+                  placeholder='Choose one or more methods'
+                  edit
+                  value={editing ? () => getValues(['proxy', 'methods'])(initialValues) : []}
+                  options={optionsTransformer(apiSchema.proxy.methods)}
+                  component={MultiSelect}
+                />
+                <Hint>HTTP methods that are supported for the endpoint.</Hint>
+              </Row>
+              <Row col>
+                <Label>Hosts</Label>
+                <Field
+                  name='proxy.hosts'
+                  type='text'
+                  edit
+                  value={editing ? () => getValues(['proxy', 'hosts'])(initialValues) : []}
+                  options={optionsTransformer(apiSchema.proxy.hosts)}
+                  component={TagSelect}
+                />
+              </Row>
+            </Row>
+            <Row className={b('row')()} fullwidth>
+              <Row col>
+                <Label>Preserve Host?</Label>
+                <Row className={b('radio-wrap')()}>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.preserve_host'
+                      component={Radio}
+                      value={'true'}
+                      type='radio'
+                      id='preserve-host-true'
+                    />
+                    <Label htmlFor='preserve-host-true'>Yes</Label>
+                  </Row>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.preserve_host'
+                      component={Radio}
+                      value={'false'}
+                      type='radio'
+                      id='preserve-host-false'
+                    />
+                    <Label htmlFor='preserve-host-false'>No</Label>
+                  </Row>
+                </Row>
+                <Hint>Preserve the host header the client used for the incoming request.</Hint>
+              </Row>
+              <Row col>
+                <Label>Append Path?</Label>
+                <Row className={b('radio-wrap')()}>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.append_path'
+                      component={Radio}
+                      value={'true'}
+                      type='radio'
+                      id='append-path-true'
+                    />
+                    <Label htmlFor='append-path-true'>Yes</Label>
+                  </Row>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.append_path'
+                      component={Radio}
+                      value={'false'}
+                      type='radio'
+                      id='append-path-false'
+                    />
+                    <Label htmlFor='append-path-false'>No</Label>
+                  </Row>
+                </Row>
+                <Hint>Appends the path from the listen_path when forwarding the request to the upstream_url.</Hint>
+              </Row>
+            </Row>
+            <Row className={b('row')()} fullwidth>
+              <Row col>
+                <Label>Strips Path?</Label>
+                <Row className={b('radio-wrap')()}>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.strip_path'
+                      component={Radio}
+                      value={'true'}
+                      type='radio'
+                      id='strip-path-true'
+                    />
+                    <Label htmlFor='strip-path-true'>Yes</Label>
+                  </Row>
+                  <Row className={b('radio')()}>
+                    <Field
+                      name='proxy.strip_path'
+                      component={Radio}
+                      value={'false'}
+                      type='radio'
+                      id='strip-path-false'
+                    />
+                    <Label htmlFor='strip-path-false'>No</Label>
+                  </Row>
+                </Row>
+                <Hint> Strip the path out of the listen_path when forwarding the request to the upstream_url.</Hint>
+              </Row>
+              <div />
+            </Row>
+          </div>
+          <div className={b('section')()}>
+            <div className={b('section-title')()}>3. Health check</div>
+            <Row className={b('row')()} fullwidth>
+              <div className={col()}>
+                <div className={col('item')()}>
+                  <Label>Health URL (optional)</Label>
+                </div>
+                <Field
+                  name='health_check.url'
+                  type='text'
+                  placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
+                  component={Input}
+                  validate={checkOnPattern('url')}
+                />
+                <span className='j-input__warning'>{WARNINGS.URL}</span>
+                <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
+              </div>
+              <Row col>
+                <Label>Timeout (optional)</Label>
+                <Field
+                  name='health_check.timeout'
+                  type='number'
+                  parse={parse}
+                  component={Input}
+                />
+                <Hint>The length of time that the Gateway should wait before displaying an error.</Hint>
+              </Row>
+            </Row>
+          </div>
+          <div className={b('section')()}>
+            <div className={b('section-title')()}>4. Plugins</div>
+            {
+              !!plugins &&
+              <RenderPlugins
+                className={b()}
+                apiSchema={apiSchema}
+                plugins={plugins}
+                initialValues={initialValues}
+                selectedPlugins={selectedPlugins}
+                handlePluginInclude={includePlugin}
+                handlePluginExclude={excludePlugin}
+                response={response}
+                edit={editing}
+              />
+            }
+          </div>
+        </div>
+        <Row className={b('row', { 'button-row': true })()}>
+          { this.renderSaveButton() }
+        </Row>
+        <JSONmodal
+          show={this.state.showJSONmodal}
+          message={this.state.JSONmodalContent}
+          closeModal={this.handleCloseModal}
+        />
+      </form>
+    )
+  }
 };
 
 EndpointForm.propTypes = propTypes
