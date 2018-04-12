@@ -15,7 +15,6 @@ import checkOnPattern from '../../../helpers/pattern-check'
 import parse from '../../../helpers/parse-value'
 import optionsTransformer from '../../../helpers/optionsTransformer'
 import getValues from '../../../helpers/getValues'
-import copyToClipboard from '../../../helpers/copyToClipboard'
 import downloadObjectAsJson from '../../../helpers/downloadObjectAsJson'
 
 import Section from '../../Layout/Section/Section'
@@ -35,6 +34,7 @@ import RenderPlugins from '../plugins/RenderPlugins'
 
 import MultiRowField from '../../../components/MultiRowField/MultiRowField'
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets'
+import JSONmodal from '../../modals/JSONmodal/JSONmodal'
 
 import './EndpointForm.css'
 
@@ -58,8 +58,10 @@ const propTypes = {
 
 class EndpointForm extends PureComponent {
     state = {
+      showJSONmodal: false,
+      JSONmodalContent: {},
       upstreams: this.props.initialValues.proxy.upstreams || {} // fallback for old endpoints (they have `upstreams: null`), probably temporary
-    };
+    }
 
     componentWillReceiveProps (nextProps) {
       if (this.props.initialValues.proxy.upstreams !== nextProps.initialValues.proxy.upstreams) {
@@ -93,6 +95,11 @@ class EndpointForm extends PureComponent {
         }
       }), () => this.props.change('proxy.upstreams.balancing', value.value))
     };
+
+    handleCloseModal = () => this.setState({
+      showJSONmodal: false,
+      JSONmodalContent: {}
+    })
 
     renderSaveButton = () => <Button
       type='submit'
@@ -155,9 +162,14 @@ class EndpointForm extends PureComponent {
               key='copy'
               mod='primary'
               type='button'
-              onClick={() => copyToClipboard(this.props.api)}
+              onClick={() => {
+                this.setState({
+                  showJSONmodal: true,
+                  JSONmodalContent: this.props.api
+                })
+              }}
             >
-              Copy to clipboard
+              Copy as JSON
             </Button>
             <Button
               key='download'
@@ -463,6 +475,11 @@ class EndpointForm extends PureComponent {
           <Row className={b('row', { 'button-row': true })()}>
             { this.renderSaveButton() }
           </Row>
+          <JSONmodal
+            show={this.state.showJSONmodal}
+            message={this.state.JSONmodalContent}
+            closeModal={this.handleCloseModal}
+          />
         </form>
       )
     }
