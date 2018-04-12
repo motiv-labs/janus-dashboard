@@ -1,6 +1,7 @@
 import React, { PureComponent } from 'react'
 import { bool, object } from 'prop-types'
 import { connect } from 'react-redux'
+import R from 'ramda'
 
 import { saveEndpoint } from '../../../store/actions'
 
@@ -96,7 +97,7 @@ class UploadingModal extends PureComponent {
               key='upload'
               mod='primary'
               onClick={() => {
-                this.props.saveEndpoint(JSON.parse(this.state.updatedJSON))
+                this.props.saveEndpoint(uploaderMediator(this.state.updatedJSON))
                 this.handleClose()
               }}
             >
@@ -118,3 +119,7 @@ export default connect(
     saveEndpoint
   }
 )(UploadingModal)
+
+function uploaderMediator (obj) {
+  return R.type(obj) === 'Object' ? obj : JSON.parse(obj)
+}
