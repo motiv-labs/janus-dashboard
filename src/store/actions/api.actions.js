@@ -344,7 +344,7 @@ export const confirmedSaveEndpoint = async (dispatch, api) => {
   }
 }
 
-export const getUpdatedEndpoint = api => {
+export const createUpdatedEndpoint = api => {
   const prepareApi = R.set(R.lensPath(['plugins']), R.__, api)
   const updatedEndpoint = R.compose(
     prepareApi,
@@ -359,7 +359,7 @@ export const confirmedUpdateEndpoint = async (dispatch, api) => {
   dispatch(closeConfirmationModal())
 
   // substitude updated list of plugins
-  const updatedEndpoint = getUpdatedEndpoint(api)
+  const updatedEndpoint = createUpdatedEndpoint(api)
 
   try {
     await client.put(`apis/${api.name}`, updatedEndpoint)

@@ -16,6 +16,7 @@ import parse from '../../../helpers/parse-value'
 import optionsTransformer from '../../../helpers/optionsTransformer'
 import getValues from '../../../helpers/getValues'
 import downloadObjectAsJson from '../../../helpers/downloadObjectAsJson'
+import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint'
 
 import Section from '../../Layout/Section/Section'
 import Title from '../../Layout/Title/Title'
@@ -36,7 +37,7 @@ import MultiRowField from '../../../components/MultiRowField/MultiRowField'
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets'
 import JSONmodal from '../../modals/JSONmodal/JSONmodal'
 
-import { getUpdatedEndpoint } from '../../../store/actions'
+import { createUpdatedEndpoint } from '../../../store/actions'
 
 import './EndpointForm.css'
 
@@ -103,6 +104,8 @@ class EndpointForm extends PureComponent {
     JSONmodalContent: {}
   })
 
+  handleGetUpdatedConfiguration = () => getUpdatedEndpoint(createUpdatedEndpoint(this.props.allFormValues))(this.props.selectedPlugins)
+
   renderSaveButton = () => <Button
     type='submit'
     mod='primary'
@@ -137,9 +140,7 @@ class EndpointForm extends PureComponent {
       default:
         return null
     }
-  };
-
-  getEndpoint = () => getUpdatedEndpoint(this.props.api)
+  }
 
   renderStickyButtons = () => {
     if (this.props.editing && this.props.api.name) {
@@ -169,7 +170,7 @@ class EndpointForm extends PureComponent {
             onClick={() => {
               this.setState({
                 showJSONmodal: true,
-                JSONmodalContent: this.getEndpoint()
+                JSONmodalContent: this.handleGetUpdatedConfiguration()
               })
             }}
           >
@@ -179,7 +180,7 @@ class EndpointForm extends PureComponent {
             key='download'
             mod='primary'
             type='button'
-            onClick={() => downloadObjectAsJson(this.getEndpoint(), this.props.api.name)}
+            onClick={() => downloadObjectAsJson(this.handleGetUpdatedConfiguration(), this.props.api.name)}
           >
             Download
           </Button>
@@ -501,10 +502,12 @@ const form = reduxForm({
 export default connect(
   state => {
     const plugins = selector(state, 'plugins')
+    const allFormValues = selector(state, 'name', 'active', 'health_check', 'proxy', 'plugins')
 
     return {
       keepDirtyOnReinitialize: false,
-      plugins
+      plugins,
+      allFormValues
     }
   },
   null
