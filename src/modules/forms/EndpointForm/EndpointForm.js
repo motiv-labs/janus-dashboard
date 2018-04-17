@@ -139,6 +139,8 @@ class EndpointForm extends PureComponent {
     }
   };
 
+  getEndpoint = () => getUpdatedEndpoint(this.props.api)
+
   renderStickyButtons = () => {
     if (this.props.editing && this.props.api.name) {
       return (
@@ -167,7 +169,7 @@ class EndpointForm extends PureComponent {
             onClick={() => {
               this.setState({
                 showJSONmodal: true,
-                JSONmodalContent: getUpdatedEndpoint(this.props.api)
+                JSONmodalContent: this.getEndpoint()
               })
             }}
           >
@@ -177,7 +179,7 @@ class EndpointForm extends PureComponent {
             key='download'
             mod='primary'
             type='button'
-            onClick={() => downloadObjectAsJson(getUpdatedEndpoint(this.props.api), this.props.api.name)}
+            onClick={() => downloadObjectAsJson(this.getEndpoint(), this.props.api.name)}
           >
             Download
           </Button>
