@@ -36,6 +36,8 @@ import MultiRowField from '../../../components/MultiRowField/MultiRowField'
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets'
 import JSONmodal from '../../modals/JSONmodal/JSONmodal'
 
+import { getUpdatedEndpoint } from '../../../store/actions'
+
 import './EndpointForm.css'
 
 const b = block('j-api-form')
@@ -165,7 +167,7 @@ class EndpointForm extends PureComponent {
             onClick={() => {
               this.setState({
                 showJSONmodal: true,
-                JSONmodalContent: this.props.api
+                JSONmodalContent: getUpdatedEndpoint(this.props.api)
               })
             }}
           >
@@ -175,7 +177,7 @@ class EndpointForm extends PureComponent {
             key='download'
             mod='primary'
             type='button'
-            onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
+            onClick={() => downloadObjectAsJson(getUpdatedEndpoint(this.props.api), this.props.api.name)}
           >
             Download
           </Button>
