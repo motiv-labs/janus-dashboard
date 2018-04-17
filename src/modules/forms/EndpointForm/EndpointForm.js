@@ -36,6 +36,8 @@ import MultiRowField from '../../../components/MultiRowField/MultiRowField'
 import WeightTargets from '../../pages/NewApiPage/partials/WeightTargets/WeightTargets'
 import JSONmodal from '../../modals/JSONmodal/JSONmodal'
 
+import { getUpdatedEndpoint } from '../../../store/actions'
+
 import './EndpointForm.css'
 
 const b = block('j-api-form')
@@ -137,6 +139,8 @@ class EndpointForm extends PureComponent {
     }
   };
 
+  getEndpoint = () => getUpdatedEndpoint(this.props.api)
+
   renderStickyButtons = () => {
     if (this.props.editing && this.props.api.name) {
       return (
@@ -165,7 +169,7 @@ class EndpointForm extends PureComponent {
             onClick={() => {
               this.setState({
                 showJSONmodal: true,
-                JSONmodalContent: this.props.api
+                JSONmodalContent: this.getEndpoint()
               })
             }}
           >
@@ -175,7 +179,7 @@ class EndpointForm extends PureComponent {
             key='download'
             mod='primary'
             type='button'
-            onClick={() => downloadObjectAsJson(this.props.api, this.props.api.name)}
+            onClick={() => downloadObjectAsJson(this.getEndpoint(), this.props.api.name)}
           >
             Download
           </Button>
