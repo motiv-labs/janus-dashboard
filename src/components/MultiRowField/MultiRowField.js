@@ -19,7 +19,8 @@ const propTypes = {
   isValidate: PropTypes.string,
   placeholder: PropTypes.string,
   suffix: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.string,
+  disabled: PropTypes.bool
 }
 
 const defaultProps = {
@@ -31,10 +32,13 @@ class MultiRowField extends PureComponent {
       <div>
         <div className={row()}>
           <Label>{ title } { placeholder }</Label>
-          <Control
-            onClick={() => fields.push()}
-            icon='add'
-          />
+          {
+            !this.props.disabled &&
+            <Control
+              onClick={() => fields.push()}
+              icon='add'
+            />
+          }
         </div>
         {
           hint &&
@@ -51,18 +55,22 @@ class MultiRowField extends PureComponent {
                     component={Input}
                     placeholder={placeholder || ''}
                     validate={isValidate && checkOnPattern(isValidate)}
+                    disabled={this.props.disabled}
                   />
                   {
                     warningMessage &&
                     <span className='j-input__warning'>{warningMessage}</span>
                   }
                 </div>
-                <div className={row('control')()}>
-                  <Control
-                    onClick={() => fields.remove(index)}
-                    icon='remove'
-                  />
-                </div>
+                {
+                  !this.props.disabled &&
+                  <div className={row('control')()}>
+                    <Control
+                      onClick={() => fields.remove(index)}
+                      icon='remove'
+                    />
+                  </div>
+                }
               </div>
             </Row>
           )

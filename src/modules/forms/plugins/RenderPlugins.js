@@ -21,7 +21,8 @@ const propTypes = {
   plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
   handlePluginExclude: PropTypes.func.isRequired,
   handlePluginInclude: PropTypes.func.isRequired,
-  selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired
+  selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
+  disabled: PropTypes.bool
 }
 
 class RenderPlugin extends Component {
@@ -55,7 +56,8 @@ class RenderPlugin extends Component {
         selectedPlugins,
         handlePluginExclude,
         handlePluginInclude,
-        initialValues
+        initialValues,
+        disabled
       } = this.props
       const b = block(className)
       const names = apiSchema.plugins.map(plugin => ({
@@ -77,7 +79,8 @@ class RenderPlugin extends Component {
                 pluginName,
                 apiSchema,
                 edit,
-                response
+                response,
+                disabled
               }
 
               switch (pluginName) {
@@ -128,15 +131,18 @@ class RenderPlugin extends Component {
             </Row>
           }
 
-          <Row className={b('row')()}>
-            <Button
-              type='button'
-              mod='primary'
-              onClick={this.showPlugins}
-            >
-                        + Add Plugin
-            </Button>
-          </Row>
+          {
+            !disabled &&
+            <Row className={b('row')()}>
+              <Button
+                type='button'
+                mod='primary'
+                onClick={this.showPlugins}
+              >
+                + Add Plugin
+              </Button>
+            </Row>
+          }
         </div>
       )
     };

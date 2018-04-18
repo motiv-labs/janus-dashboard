@@ -125,6 +125,7 @@ class EndpointForm extends PureComponent {
             placeholder='Target'
             isValidate='url'
             warningMessage={WARNINGS.URL}
+            disabled={this.props.previewPage}
           />
         )
       }
@@ -135,6 +136,7 @@ class EndpointForm extends PureComponent {
             title='Targets'
             isValidate='url'
             warningMessage={WARNINGS.URL}
+            disabled={this.props.previewPage}
           />
         )
       }
@@ -282,6 +284,7 @@ class EndpointForm extends PureComponent {
                       value={'true'}
                       type='radio'
                       id='is-active'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='is-active'>Yes</Label>
                   </Row>
@@ -292,6 +295,7 @@ class EndpointForm extends PureComponent {
                       value={'false'}
                       type='radio'
                       id='is-not-active'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='is-not-active'>No</Label>
                   </Row>
@@ -312,6 +316,7 @@ class EndpointForm extends PureComponent {
                   placeholder={PLACEHOLDER.LISTEN_PATH}
                   component={Input}
                   validate={checkOnPattern('/')}
+                  disabled={previewPage}
                   required
                 />
                 <span className='j-input__warning'>{WARNINGS.LISTEN_PATH}</span>
@@ -328,6 +333,7 @@ class EndpointForm extends PureComponent {
                   onChange={this.handleChangeStrategy}
                   value={this.state.upstreams.balancing}
                   clearable={false}
+                  disabled={previewPage}
                   required
                 />
                 <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
@@ -348,6 +354,7 @@ class EndpointForm extends PureComponent {
                   value={editing ? () => getValues(['proxy', 'methods'])(initialValues) : []}
                   options={optionsTransformer(apiSchema.proxy.methods)}
                   component={MultiSelect}
+                  disabled={previewPage}
                 />
                 <Hint>HTTP methods that are supported for the endpoint.</Hint>
               </Row>
@@ -360,6 +367,7 @@ class EndpointForm extends PureComponent {
                   value={editing ? () => getValues(['proxy', 'hosts'])(initialValues) : []}
                   options={optionsTransformer(apiSchema.proxy.hosts)}
                   component={TagSelect}
+                  disabled={previewPage}
                 />
               </Row>
             </Row>
@@ -374,6 +382,7 @@ class EndpointForm extends PureComponent {
                       value={'true'}
                       type='radio'
                       id='preserve-host-true'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='preserve-host-true'>Yes</Label>
                   </Row>
@@ -384,6 +393,7 @@ class EndpointForm extends PureComponent {
                       value={'false'}
                       type='radio'
                       id='preserve-host-false'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='preserve-host-false'>No</Label>
                   </Row>
@@ -400,6 +410,7 @@ class EndpointForm extends PureComponent {
                       value={'true'}
                       type='radio'
                       id='append-path-true'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='append-path-true'>Yes</Label>
                   </Row>
@@ -410,6 +421,7 @@ class EndpointForm extends PureComponent {
                       value={'false'}
                       type='radio'
                       id='append-path-false'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='append-path-false'>No</Label>
                   </Row>
@@ -428,6 +440,7 @@ class EndpointForm extends PureComponent {
                       value={'true'}
                       type='radio'
                       id='strip-path-true'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='strip-path-true'>Yes</Label>
                   </Row>
@@ -438,6 +451,7 @@ class EndpointForm extends PureComponent {
                       value={'false'}
                       type='radio'
                       id='strip-path-false'
+                      disabled={previewPage}
                     />
                     <Label htmlFor='strip-path-false'>No</Label>
                   </Row>
@@ -460,6 +474,7 @@ class EndpointForm extends PureComponent {
                   placeholder={PLACEHOLDER.HEALTH_CHECK_URL}
                   component={Input}
                   validate={checkOnPattern('url')}
+                  disabled={previewPage}
                 />
                 <span className='j-input__warning'>{WARNINGS.URL}</span>
                 <Hint>The url that the Gateway will use to determine the health of the API.</Hint>
@@ -471,6 +486,7 @@ class EndpointForm extends PureComponent {
                   type='number'
                   parse={parse}
                   component={Input}
+                  disabled={previewPage}
                 />
                 <Hint>The length of time that the Gateway should wait before displaying an error.</Hint>
               </Row>
@@ -490,13 +506,17 @@ class EndpointForm extends PureComponent {
                 handlePluginExclude={excludePlugin}
                 response={response}
                 edit={editing}
+                disabled={previewPage}
               />
             }
           </div>
         </div>
-        <Row className={b('row', { 'button-row': true })()}>
-          { this.renderSaveButton() }
-        </Row>
+        {
+          !previewPage &&
+          <Row className={b('row', { 'button-row': true })()}>
+            { this.renderSaveButton() }
+          </Row>
+        }
         <JSONmodal
           show={this.state.showJSONmodal}
           message={this.state.JSONmodalContent}
