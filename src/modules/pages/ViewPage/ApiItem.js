@@ -26,9 +26,11 @@ const propTypes = {
 
 class ApiItem extends PureComponent {
   componentDidMount () {
+    const endpointName = this.props.location.pathname.split('/preview/')[1]
+
     this.props.resetEndpoint()
     this.props.fetchEndpointSchema()
-    this.props.fetchEndpoint(this.props.location.pathname.substr(1))
+    this.props.fetchEndpoint(endpointName)
   }
 
     fillSelected = (arr) => {
@@ -79,6 +81,7 @@ class ApiItem extends PureComponent {
           onSubmit={this.submit}
           selectPlugin={this.props.selectPlugin}
           selectedPlugins={this.props.selectedPlugins}
+          previewPage
         />
       )
     }

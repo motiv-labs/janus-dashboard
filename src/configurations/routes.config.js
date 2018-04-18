@@ -33,6 +33,10 @@ export default {
   },
   EDIT: {
     path: '/:name',
+    name: 'Edit API'
+  },
+  VIEW: {
+    path: '/preview/:name',
     name: ''
   }
 }

@@ -9,6 +9,7 @@ import Sticky from 'react-sticky-el'
 
 import PLACEHOLDER from '../../../configurations/placeholders.config'
 import WARNINGS from '../../../configurations/warning-messages.config'
+import ROUTES from '../../../configurations/routes.config'
 
 import block from '../../../helpers/bem-cn'
 import checkOnPattern from '../../../helpers/pattern-check'
@@ -143,7 +144,22 @@ class EndpointForm extends PureComponent {
   }
 
   renderStickyButtons = () => {
-    if (this.props.editing && this.props.api.name) {
+    if (this.props.editing && this.props.previewPage) {
+      return (
+        <Link
+          to={{
+            pathname: `/${this.props.api.name}`
+          }}
+        >
+          <Button
+            type='button'
+            mod='primary'
+          >
+            Edit
+          </Button>
+        </Link>
+      )
+    } else if (this.props.editing && this.props.api.name) {
       return (
         <ButtonsGroup>
           { this.renderSaveButton() }
@@ -213,7 +229,8 @@ class EndpointForm extends PureComponent {
       plugins,
       response,
       selectPlugin,
-      selectedPlugins
+      selectedPlugins,
+      previewPage
     } = this.props
 
     const includePlugin = value => {
@@ -230,7 +247,7 @@ class EndpointForm extends PureComponent {
           <Sticky stickyClassName={b('sticky')()}>
             <Row>
               <Title>
-                { editing ? 'Edit API' : 'Create New API' }
+                { editing ? (previewPage ? ROUTES.VIEW.name : ROUTES.EDIT.name) : 'Create New API' }
               </Title>
               { this.renderStickyButtons() }
             </Row>
