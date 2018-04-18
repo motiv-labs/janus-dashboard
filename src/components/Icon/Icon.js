@@ -20,6 +20,7 @@ const propTypes = {
     'delete', // red bucket
     'delete-white', // white bucket
     'edit', // green pencil
+    'view', // green eye
     'github',
     'remove', // red minus
     'successful-white' // white success symbol
