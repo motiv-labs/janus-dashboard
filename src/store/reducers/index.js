@@ -13,6 +13,7 @@ import requestReducer from './request.reducer'
 import oAuthServersListReducer from './oAuthServersList.reducer'
 import oAuthServerReducer from './oAuthServer.reducer'
 import paginationReducer from './pagination.reducer'
+import confirmationReducer from './confirmation.reducer'
 
 export default combineReducers({
   // here combine all reducers:
@@ -26,6 +27,7 @@ export default combineReducers({
   requestReducer,
   oAuthServersListReducer,
   oAuthServerReducer,
+  confirmationReducer,
   form: formReducer,
   routing: routerReducer
 })
