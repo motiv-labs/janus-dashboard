@@ -1,14 +1,11 @@
 import R from 'ramda'
 
 import {
-  DELETE_ENDPOINT_START,
-  DELETE_ENDPOINT_SUCCESS,
   //   DELETE_ENDPOINT_FAILURE, // @TODO: implement
   FETCH_ENDPOINT_START,
   FETCH_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_SCHEMA_START,
   FETCH_ENDPOINT_SCHEMA_SUCCESS,
-  SAVE_ENDPOINT_SUCCESS,
   SET_DEFAULT_ENDPOINT,
   EXCLUDE_PLUGIN,
   SELECT_PLUGIN,
@@ -36,7 +33,6 @@ export default function reducer (state = initialState, action) {
   switch (action.type) {
     case ___SAVE_ENDPOINT_START:
     case ___DELETE_ENDPOINT_START:
-    case DELETE_ENDPOINT_START:
     case FETCH_ENDPOINT_START:
     case FETCH_ENDPOINT_SCHEMA_START: {
       return {
@@ -47,9 +43,7 @@ export default function reducer (state = initialState, action) {
     case ___SAVE_ENDPOINT_SUCCESS:
     case ___SAVE_ENDPOINT_FAILURE:
     case ___DELETE_ENDPOINT_SUCCESS:
-    case ___DELETE_ENDPOINT_FAILURE:
-    case DELETE_ENDPOINT_SUCCESS:
-    case SAVE_ENDPOINT_SUCCESS: {
+    case ___DELETE_ENDPOINT_FAILURE: {
       return {
         ...state,
         isFetching: false

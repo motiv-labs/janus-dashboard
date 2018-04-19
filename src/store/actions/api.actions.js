@@ -3,8 +3,6 @@ import R from 'ramda'
 import client from '../api'
 import endpointSchema from '../../configurations/apiSchema.config' // @TODO: REMOVE
 import {
-  DELETE_ENDPOINT_START,
-  DELETE_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_START,
   FETCH_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_SCHEMA_START,
@@ -30,14 +28,6 @@ import {
 } from './index'
 import history from '../configuration/history'
 import errorHandler from '../../helpers/errorHandler'
-
-export const deleteEndpointRequest = () => ({
-  type: DELETE_ENDPOINT_START
-})
-
-export const deleteEndpointSuccess = () => ({
-  type: DELETE_ENDPOINT_SUCCESS
-})
 
 export const getEndpointRequest = () => ({
   type: FETCH_ENDPOINT_START
