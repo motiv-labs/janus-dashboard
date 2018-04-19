@@ -1,7 +1,7 @@
 import { connect } from 'react-redux'
 
 import {
-    closeToaster
+  closeToaster
 } from '../../store/actions'
 
 import Toaster from '../../components/Toaster/Toaster'

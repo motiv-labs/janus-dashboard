@@ -353,11 +353,11 @@ export const ___deleteEndpointRequest = () => ({
   type: ___DELETE_ENDPOINT_START
 })
 
-export const ___deleteEndpointSuccess = endpointName =>console.error('endpointName', endpointName) ||
+export const ___deleteEndpointSuccess = endpointName => console.error('endpointName', endpointName) ||
  ({
-  type: ___DELETE_ENDPOINT_SUCCESS,
-  payload: endpointName
-})
+   type: ___DELETE_ENDPOINT_SUCCESS,
+   payload: endpointName
+ })
 
 export const ___deleteEndpointFailure = () => ({
   type: ___DELETE_ENDPOINT_FAILURE

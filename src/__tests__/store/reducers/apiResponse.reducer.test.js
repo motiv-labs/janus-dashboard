@@ -10,7 +10,7 @@ import {
 import touchedReducerProps from '../../../helpers/touchedReducerProperties'
 // import setToasterMessage from '../../../helpers/setToasterMessage'
 import getRandomString from '../../../helpers/getRandomString'
-import getRandomBoolean from '../../../helpers/getRandomBoolean'
+// import getRandomBoolean from '../../../helpers/getRandomBoolean'
 
 describe('apiResponseReducer', () => {
   const confirmationModalState = {
@@ -72,23 +72,23 @@ describe('apiResponseReducer', () => {
   })
 
   describe('Confirmation Modal manipulations', () => {
-    const api = getRandomString()
-    const apiName = getRandomString()
-    const message = getRandomString()
-    const isRedirect = getRandomBoolean()
-    const status = getRandomString()
-    const title = getRandomString()
-    const payload = {
-      api,
-      apiName,
-      message,
-      isRedirect,
-      status,
-      title
-    }
-    const modalState = {
-      confirmationModal: payload
-    }
+    // const api = getRandomString()
+    // const apiName = getRandomString()
+    // const message = getRandomString()
+    // const isRedirect = getRandomBoolean()
+    // const status = getRandomString()
+    // const title = getRandomString()
+    // const payload = {
+    //   api,
+    //   apiName,
+    //   message,
+    //   isRedirect,
+    //   status,
+    //   title
+    // }
+    // const modalState = {
+    //   confirmationModal: payload
+    // }
 
     // describe('OPEN_CONFIRMATION_MODAL', () => {
     //   const result = apiResponseReducer({}, {
@@ -154,9 +154,9 @@ describe('apiResponseReducer', () => {
       isOpen: false,
       message: ''
     }
-    const modalState = {
-      confirmationModal: confirmationModalState
-    }
+    // const modalState = {
+    //   confirmationModal: confirmationModalState
+    // }
 
     // describe('OPEN_TOASTER', () => {
     //   const result = apiResponseReducer(modalState, {
