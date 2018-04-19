@@ -46,9 +46,13 @@ exports[`Modal component renders correctly 1`] = `
             </div>
           </div>
         </div>
-        <div
-          className="j-confirmation__buttons-group j-buttons__wrapper"
-        />
+        <ButtonsGroup
+          className="j-confirmation__buttons-group"
+        >
+          <div
+            className="j-buttons__wrapper j-confirmation__buttons-group"
+          />
+        </ButtonsGroup>
       </div>
       <div
         className="modaliz-overlay j-confirmation-overlay"
@@ -115,20 +119,24 @@ exports[`Modal component renders correctly with buttons if an additional prop \`
             </div>
           </div>
         </div>
-        <div
-          className="j-confirmation__buttons-group j-buttons__wrapper"
+        <ButtonsGroup
+          className="j-confirmation__buttons-group"
         >
-          <button
-            key="1"
+          <div
+            className="j-buttons__wrapper j-confirmation__buttons-group"
           >
-            Cancel
-          </button>
-          <button
-            key="2"
-          >
-            Confirm
-          </button>
-        </div>
+            <button
+              key="1"
+            >
+              Cancel
+            </button>
+            <button
+              key="2"
+            >
+              Confirm
+            </button>
+          </div>
+        </ButtonsGroup>
       </div>
       <div
         className="modaliz-overlay j-confirmation-overlay"
@@ -188,9 +196,13 @@ exports[`Modal component renders correctly with title if an additional prop \`ti
             </div>
           </div>
         </div>
-        <div
-          className="j-confirmation__buttons-group j-buttons__wrapper"
-        />
+        <ButtonsGroup
+          className="j-confirmation__buttons-group"
+        >
+          <div
+            className="j-buttons__wrapper j-confirmation__buttons-group"
+          />
+        </ButtonsGroup>
       </div>
       <div
         className="modaliz-overlay j-confirmation-overlay"
