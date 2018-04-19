@@ -1,5 +1,9 @@
 import {
   ___CONFIRMATION,
+  ___SAVE_ENDPOINT_SUCCESS,
+  ___SAVE_OAUTH_SERVER_SUCCESS,
+  ___DELETE_ENDPOINT_SUCCESS,
+  ___DELETE_OAUTH_SERVER_SUCCESS,
   ___CLOSE_CONFIRMATION,
   ___CLOSE_TOASTER,
   ___SHOW_ERROR
@@ -36,6 +40,42 @@ export default function reducer (state = initialState, action) {
       return {
         ...state,
         toaster: toasterInitialState
+      }
+    }
+    case ___SAVE_ENDPOINT_SUCCESS: {
+      return {
+        toaster: {
+          actionType: 'save',
+          name: `Endpoint "${action.payload.name}"`,
+          isOpen: true
+        }
+      }
+    }
+    case ___DELETE_ENDPOINT_SUCCESS: {
+      return {
+        toaster: {
+          actionType: 'delete',
+          name: `Endpoint "${action.payload}"`,
+          isOpen: true
+        }
+      }
+    }
+    case ___SAVE_OAUTH_SERVER_SUCCESS: {
+      return {
+        toaster: {
+          actionType: 'save',
+          name: `OAuth server "${action.payload.name}"`,
+          isOpen: true
+        }
+      }
+    }
+    case ___DELETE_OAUTH_SERVER_SUCCESS: {
+      return {
+        toaster: {
+          actionType: 'delete',
+          name: `OAuth server "${action.payload}"`,
+          isOpen: true
+        }
       }
     }
     case ___SHOW_ERROR: {

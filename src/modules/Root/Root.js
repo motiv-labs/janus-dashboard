@@ -15,9 +15,8 @@ import history from '../../store/configuration/history'
 import Header from '../Layout/Header/Header'
 import Footer from '../Layout/Footer/Footer'
 import APIRespondModalContainer from '../modals/APIRespondModal/apiRespondModalContainer'
-import Toaster from '../modals/Toaster/Toaster'
+import ToasterContainer from '../Toaster/ToasterContainer'
 import ConfirmationModal from '../modals/ConfirmationModal/ConfirmationModal'
-import ___ConfirmationModal from '../modals/ConfirmationModal/___ConfirmationModal'
 
 import LoginPage from '../pages/LoginPage/LoginPage'
 import HealthCheckPage from '../pages/HealthCheckPage/HealthCheckPage'
@@ -58,9 +57,8 @@ class Root extends Component {
           </div>
           <Footer />
           <APIRespondModalContainer />
-          <Toaster timeout='2000' />
+          <ToasterContainer />
           <ConfirmationModal />
-          <___ConfirmationModal />
         </div>
       </ConnectedRouter>
     )

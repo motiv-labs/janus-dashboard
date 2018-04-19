@@ -22,7 +22,7 @@ export const ___closeConfirmation = () => ({
   type: ___CLOSE_CONFIRMATION
 })
 
-export const ___closeToaster = () => ({
+export const closeToaster = () => ({
   type: ___CLOSE_TOASTER
 })
 

@@ -22,10 +22,7 @@ import {
   ___DELETE_OAUTH_SERVER_FAILURE
 } from '../constants'
 import {
-  closeConfirmationModal,
   fetchOAuthServers,
-  openConfirmationModal,
-  showToaster,
   ___closeConfirmation
 } from './index'
 import history from '../configuration/history'
@@ -113,8 +110,8 @@ export const ___saveOAuthServerRequest = () => ({
 })
 
 export const ___saveOAuthServerSuccess = data => ({
-  type: ___SAVE_OAUTH_SERVER_SUCCESS
-  // payload: data
+  type: ___SAVE_OAUTH_SERVER_SUCCESS,
+  payload: data
 })
 
 export const ___saveOAuthServerFailure = () => ({
@@ -136,11 +133,10 @@ export const ___saveOAuthServer = ({ isEditing }) => server => async (dispatch, 
   try {
     await saveEntity(isEditing)
 
-    dispatch(___saveOAuthServerSuccess())
+    dispatch(___saveOAuthServerSuccess(server))
     redirectToServersList()
-    dispatch(showToaster())
   } catch (error) {
-    dispatch(closeConfirmationModal())
+    dispatch(___closeConfirmation())
     errorHandler(dispatch)(error)
   }
 
@@ -155,8 +151,9 @@ export const ___deleteOAuthServerRequest = () => ({
   type: ___DELETE_OAUTH_SERVER_START
 })
 
-export const ___deleteOAuthServerSuccess = () => ({
-  type: ___DELETE_OAUTH_SERVER_SUCCESS
+export const ___deleteOAuthServerSuccess = serverName => ({
+  type: ___DELETE_OAUTH_SERVER_SUCCESS,
+  payload: serverName
 })
 
 export const ___deleteOAuthServerFailure = () => ({
@@ -165,44 +162,19 @@ export const ___deleteOAuthServerFailure = () => ({
 
 export const ___deleteOAuthServer = serverName => async dispatch => {
   dispatch(___deleteOAuthServerRequest())
+  dispatch(___closeConfirmation())
 
   try {
     await client.delete(`oauth/servers/${serverName}`)
 
-    dispatch(___deleteOAuthServerSuccess())
-    dispatch(___closeConfirmation())
+    dispatch(___deleteOAuthServerSuccess(serverName))
     dispatch(fetchOAuthServers())
     redirectToServersList()
-    dispatch(showToaster())
   } catch (error) {
     dispatch(___deleteOAuthServerFailure())
     errorHandler(dispatch)(error)
   }
 }
-
-export const confirmedDeleteOAuthServer = async (dispatch, serverName, isRedirect) => {
-  dispatch(deleteOAuthServerRequest())
-
-  try {
-    await client.delete(`oauth/servers/${serverName}`)
-
-    dispatch(deleteOAuthServerSuccess())
-    dispatch(closeConfirmationModal())
-    dispatch(fetchOAuthServers())
-    isRedirect && redirectToServersList()
-    dispatch(showToaster())
-  } catch (error) {
-    errorHandler(dispatch)(error)
-  }
-}
-
-export const deleteOAuthServer = (server, isRedirect/*: Boolean */) => dispatch =>
-  dispatch(openConfirmationModal(
-    'deleteOAuthServer',
-    {},
-    server.name,
-    isRedirect
-  ))
 
 export const clearOAuthServer = () => ({
   type: CLEAR_OAUTH_SERVER

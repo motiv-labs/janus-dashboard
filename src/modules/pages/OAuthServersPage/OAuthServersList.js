@@ -19,7 +19,6 @@ import '../../Layout/Table/Table.css'
 
 const propTypes = {
   currentPageIndex: PropTypes.number.isRequired,
-  deleteOAuthServer: PropTypes.func.isRequired,
   fetchOAuthServers: PropTypes.func.isRequired,
   isAdmin: PropTypes.bool.isRequired,
   oAuthServers: PropTypes.arrayOf(PropTypes.object).isRequired,

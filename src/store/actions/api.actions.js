@@ -22,7 +22,7 @@ import {
 } from '../constants'
 import {
   fetchEndpoints,
-  showToaster,
+  // showToaster,
 
   ___closeConfirmation
 } from './index'
@@ -334,10 +334,9 @@ export const ___saveEndpoint = ({ isEditing }) => api => async (dispatch, getSta
   try {
     await saveEntity(isEditing)
 
-    dispatch(___saveEndpointSuccess())
+    dispatch(___saveEndpointSuccess(api))
     history.push('/')
     dispatch(fetchEndpoints())
-    dispatch(showToaster())
   } catch (error) {
     dispatch(___closeConfirmation())
     errorHandler(dispatch)(error)
@@ -354,8 +353,10 @@ export const ___deleteEndpointRequest = () => ({
   type: ___DELETE_ENDPOINT_START
 })
 
-export const ___deleteEndpointSuccess = () => ({
-  type: ___DELETE_ENDPOINT_SUCCESS
+export const ___deleteEndpointSuccess = endpointName =>console.error('endpointName', endpointName) ||
+ ({
+  type: ___DELETE_ENDPOINT_SUCCESS,
+  payload: endpointName
 })
 
 export const ___deleteEndpointFailure = () => ({
@@ -369,10 +370,9 @@ export const ___deleteEndpoint = apiName => async dispatch => {
   try {
     await client.delete(`apis/${apiName}`)
 
-    dispatch(___deleteEndpointSuccess())
+    dispatch(___deleteEndpointSuccess(apiName))
     history.push('/')
     dispatch(fetchEndpoints())
-    dispatch(showToaster())
   } catch (error) {
     dispatch(___deleteEndpointFailure())
     errorHandler(dispatch)(error)
