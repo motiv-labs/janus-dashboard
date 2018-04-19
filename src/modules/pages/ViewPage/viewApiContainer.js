@@ -1,16 +1,12 @@
 import { connect } from 'react-redux'
 
 import {
-  deleteEndpoint,
   excludePlugin,
-  fillSelected,
   selectPlugin,
   fetchEndpointSchema,
   fetchEndpoint,
   refreshEndpoints,
-  resetEndpoint,
-  saveEndpoint,
-  updateEndpoint
+  resetEndpoint
 } from '../../../store/actions'
 
 import ApiItem from './ApiItem'
@@ -26,15 +22,11 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    deleteEndpoint,
     excludePlugin,
     fetchEndpointSchema,
-    fillSelected,
     selectPlugin,
-    saveEndpoint,
     fetchEndpoint,
     refreshEndpoints,
-    resetEndpoint,
-    updateEndpoint
+    resetEndpoint
   }
 )(ApiItem)

@@ -19,7 +19,7 @@ const propTypes = {
   edit: PropTypes.bool,
   initialValues: PropTypes.object,
   plugins: PropTypes.arrayOf(PropTypes.object.isRequired),
-  handlePluginExclude: PropTypes.func.isRequired,
+  handlePluginExclude: PropTypes.func,
   handlePluginInclude: PropTypes.func.isRequired,
   selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
   previewPage: PropTypes.bool
