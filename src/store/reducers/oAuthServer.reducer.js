@@ -9,7 +9,14 @@ import {
   UPDATE_OAUTH_SERVER_SUCCESS,
   DELETE_OAUTH_SERVER_START,
   DELETE_OAUTH_SERVER_SUCCESS,
-  CLEAR_OAUTH_SERVER
+  CLEAR_OAUTH_SERVER,
+
+  ___SAVE_OAUTH_SERVER_START,
+  ___SAVE_OAUTH_SERVER_SUCCESS,
+  ___SAVE_OAUTH_SERVER_FAILURE,
+  ___DELETE_OAUTH_SERVER_START,
+  ___DELETE_OAUTH_SERVER_SUCCESS,
+  ___DELETE_OAUTH_SERVER_FAILURE
 } from '../constants'
 
 export const initialState = {
@@ -20,6 +27,8 @@ export const initialState = {
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
+    case ___SAVE_OAUTH_SERVER_START:
+    case ___DELETE_OAUTH_SERVER_START:
     case SAVE_OAUTH_SERVER_START:
     case UPDATE_OAUTH_SERVER_START:
     case DELETE_OAUTH_SERVER_START:
@@ -30,6 +39,10 @@ export default function reducer (state = initialState, action) {
         isFetching: true
       }
     }
+    case ___SAVE_OAUTH_SERVER_SUCCESS:
+    case ___SAVE_OAUTH_SERVER_FAILURE:
+    case ___DELETE_OAUTH_SERVER_SUCCESS:
+    case ___DELETE_OAUTH_SERVER_FAILURE:
     case SAVE_OAUTH_SERVER_SUCCESS:
     case UPDATE_OAUTH_SERVER_SUCCESS:
     case DELETE_OAUTH_SERVER_SUCCESS: {

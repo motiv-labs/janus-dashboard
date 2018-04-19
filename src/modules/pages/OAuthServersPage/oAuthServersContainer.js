@@ -5,7 +5,8 @@ import {
   fetchOAuthServers,
   setOAuthServersAscendingFilter,
   setCurrentPageIndex,
-  setOAuthServersSortingFilter
+  setOAuthServersSortingFilter,
+  confirmAction
 } from '../../../store/actions'
 import { filteredOAuthServersList } from '../../../store/selectors'
 
@@ -25,6 +26,7 @@ export default connect(
     fetchOAuthServers,
     setAscendingFilter: setOAuthServersAscendingFilter,
     setCurrentPageIndex,
-    setSortingFilter: setOAuthServersSortingFilter
+    setSortingFilter: setOAuthServersSortingFilter,
+    confirmAction
   }
 )(OAuthServersList)

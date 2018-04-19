@@ -9,8 +9,6 @@ import {
 } from '../constants'
 
 import {
-  confirmedSaveOAuthServer,
-  confirmedUpdateOAuthServer,
   confirmedDeleteOAuthServer
 } from './oAuthServer.actions'
 
@@ -26,8 +24,7 @@ export const closeResponseModal = () => ({
 export const openConfirmationModal = (action, api, apiName, isRedirect) => {
   const createConfirmationContent = action => {
     switch (action) {
-      case 'save':
-      case 'saveOAuthServer': {
+      case 'save': {
         return {
           api,
           apiName,
@@ -37,8 +34,7 @@ export const openConfirmationModal = (action, api, apiName, isRedirect) => {
           title: 'Save'
         }
       }
-      case 'update':
-      case 'updateOAuthServer': {
+      case 'update': {
         return {
           api,
           apiName,
@@ -86,14 +82,9 @@ export const closeToaster = () => ({
   type: CLOSE_TOASTER
 })
 
+// @HERE
 export const afterCloseConfirmationModal = (actionType, item, itemName, isRedirect) => (dispatch, getState) => {
   switch (actionType) {
-    case 'saveOAuthServer': {
-      return confirmedSaveOAuthServer(dispatch, item)
-    }
-    case 'updateOAuthServer': {
-      return confirmedUpdateOAuthServer(dispatch, item)
-    }
     case 'deleteOAuthServer': {
       return confirmedDeleteOAuthServer(dispatch, itemName, isRedirect)
     }

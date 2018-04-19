@@ -12,13 +12,21 @@ import {
   UPDATE_OAUTH_SERVER_SUCCESS,
   DELETE_OAUTH_SERVER_START,
   DELETE_OAUTH_SERVER_SUCCESS,
-  CLEAR_OAUTH_SERVER
+  CLEAR_OAUTH_SERVER,
+
+  ___SAVE_OAUTH_SERVER_START,
+  ___SAVE_OAUTH_SERVER_SUCCESS,
+  ___SAVE_OAUTH_SERVER_FAILURE,
+  ___DELETE_OAUTH_SERVER_START,
+  ___DELETE_OAUTH_SERVER_SUCCESS,
+  ___DELETE_OAUTH_SERVER_FAILURE
 } from '../constants'
 import {
   closeConfirmationModal,
   fetchOAuthServers,
   openConfirmationModal,
-  showToaster
+  showToaster,
+  ___closeConfirmation
 } from './index'
 import history from '../configuration/history'
 import oAuthServerSchema from '../../configurations/oAuthServerSchema.config'
@@ -100,8 +108,22 @@ export const fetchOAuthServerSchema = () => async dispatch => {
   }
 }
 
-export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
-  dispatch(saveOAuthServerRequest(server))
+export const ___saveOAuthServerRequest = () => ({
+  type: ___SAVE_OAUTH_SERVER_START
+})
+
+export const ___saveOAuthServerSuccess = data => ({
+  type: ___SAVE_OAUTH_SERVER_SUCCESS
+  // payload: data
+})
+
+export const ___saveOAuthServerFailure = () => ({
+  type: ___SAVE_OAUTH_SERVER_FAILURE
+})
+
+export const ___saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf) => {
+  dispatch(___saveOAuthServerRequest())
+  dispatch(___closeConfirmation())
 
   const composeRateLimit = server => {
     const { value, unit } = server.rate_limit.limit
@@ -112,56 +134,51 @@ export const confirmedSaveOAuthServer = async (dispatch, server, isEditing) => {
   }
 
   try {
-    await client.post('oauth/servers', composeRateLimit(server))
+    await saveEntity(isEditing)
 
-    dispatch(saveOAuthServerSuccess())
-    dispatch(closeConfirmationModal())
-
-    !isEditing && redirectToServersList()
-    dispatch(showToaster())
-  } catch (error) {
-    dispatch(closeConfirmationModal())
-    errorHandler(dispatch)(error)
-  }
-}
-
-export const saveOAuthServer = (pathname, server, isEditing) => dispatch =>
-  dispatch(openConfirmationModal(
-    'saveOAuthServer',
-    server,
-    server.name
-  ))
-
-export const confirmedUpdateOAuthServer = async (dispatch, server) => {
-  dispatch(updateOAuthServerRequest(server))
-
-  const composeRateLimit = server => {
-    const { value, unit } = server.rate_limit.limit
-    const concatenation = `${value}-${unit}`
-    const lens = R.lensPath(['rate_limit', 'limit'])
-
-    return R.set(lens, concatenation, server)
-  }
-
-  try {
-    await client.put(`oauth/servers/${server.name}`, composeRateLimit(server))
-
-    dispatch(updateOAuthServerSuccess())
-    dispatch(closeConfirmationModal())
+    dispatch(___saveOAuthServerSuccess())
     redirectToServersList()
     dispatch(showToaster())
   } catch (error) {
     dispatch(closeConfirmationModal())
     errorHandler(dispatch)(error)
   }
+
+  async function saveEntity (isEditing) {
+    isEditing
+      ? await client.put(`oauth/servers/${server.name}`, composeRateLimit(server))
+      : await client.post('oauth/servers', composeRateLimit(server))
+  }
 }
 
-export const updateOAuthServer = (pathname, server) => dispatch =>
-  dispatch(openConfirmationModal(
-    'updateOAuthServer',
-    server,
-    server.name
-  ))
+export const ___deleteOAuthServerRequest = () => ({
+  type: ___DELETE_OAUTH_SERVER_START
+})
+
+export const ___deleteOAuthServerSuccess = () => ({
+  type: ___DELETE_OAUTH_SERVER_SUCCESS
+})
+
+export const ___deleteOAuthServerFailure = () => ({
+  type: ___DELETE_OAUTH_SERVER_FAILURE
+})
+
+export const ___deleteOAuthServer = serverName => async dispatch => {
+  dispatch(___deleteOAuthServerRequest())
+
+  try {
+    await client.delete(`oauth/servers/${serverName}`)
+
+    dispatch(___deleteOAuthServerSuccess())
+    dispatch(___closeConfirmation())
+    dispatch(fetchOAuthServers())
+    redirectToServersList()
+    dispatch(showToaster())
+  } catch (error) {
+    dispatch(___deleteOAuthServerFailure())
+    errorHandler(dispatch)(error)
+  }
+}
 
 export const confirmedDeleteOAuthServer = async (dispatch, serverName, isRedirect) => {
   dispatch(deleteOAuthServerRequest())

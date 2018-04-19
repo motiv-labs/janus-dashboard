@@ -10,26 +10,13 @@ import { connect } from 'react-redux'
 import {
   ___saveEndpoint,
   ___deleteEndpoint,
-  //   saveConfiguration,
-  //   deleteConfiguration,
-  //   saveProject,
-  //   deleteProject,
-  //   saveLocale,
-  //   deleteLocale,
-  //   rollbackAuditLog,
+  ___saveOAuthServer,
+  ___deleteOAuthServer,
   ___closeConfirmation
-//   discardConfigurationToExactState
 } from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
-// import PreviewModalContent from '../../../modules/pages/AuditLogsPage/modals/PreviewModalContentContainer'
-// import DeleteConfigurationModalContent from './partials/DeleteConfigurationModalContent'
-// import DeleteProjectModalContent from './partials/DeleteProjectModalContent'
-// import DeleteLocaleModalContent from './partials/DeleteLocaleModalContent'
-// import RollbackModalContent from './partials/RollbackModalContent/RollbackModalContentContainer'
-// import ErrorContent from './partials/ErrorContent/ErrorContentContainer'
-// import ConflictsPreviewContainer from './partials/ConflictsPreview/ConflictsPreviewContainer'
 
 const propTypes = {
   closeModal: func.isRequired,
@@ -50,6 +37,13 @@ const ActionsMap = {
       onConfirm: ___saveEndpoint({
         isEditing: false
       })
+    },
+    'OAuthServer': {
+      title: 'Save OAuthServer title',
+      message: 'Habra-habra',
+      onConfirm: ___saveOAuthServer({
+        isEditing: false
+      })
     }
   },
   update: {
@@ -59,6 +53,13 @@ const ActionsMap = {
       onConfirm: ___saveEndpoint({
         isEditing: true
       })
+    },
+    'OAuthServer': {
+      title: 'Update OAuthServer title',
+      message: 'Habra-habra',
+      onConfirm: ___saveOAuthServer({
+        isEditing: true
+      })
     }
   },
   delete: {
@@ -66,6 +67,11 @@ const ActionsMap = {
       title: 'Delete endpoint title',
       message: 'Habra-habra',
       onConfirm: ___deleteEndpoint
+    },
+    'OAuthServer': {
+      title: 'Delete endpoint title',
+      message: 'Habra-habra',
+      onConfirm: ___deleteOAuthServer
     }
   }
 }

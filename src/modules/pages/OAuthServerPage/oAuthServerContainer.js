@@ -4,7 +4,7 @@ import {
   clearOAuthServer,
   fetchOAuthServer,
   fetchOAuthServerSchema,
-  updateOAuthServer
+  confirmAction
 } from '../../../store/actions'
 
 import OAuthServerItem from './OAuthServerItem'
@@ -20,6 +20,6 @@ export default connect(
     clearOAuthServer,
     fetchOAuthServer,
     fetchOAuthServerSchema,
-    updateOAuthServer
+    confirmAction
   }
 )(OAuthServerItem)
