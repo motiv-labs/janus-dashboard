@@ -7,10 +7,11 @@ const propTypes = {
   isValidate: PropTypes.string,
   name: PropTypes.string.isRequired,
   title: PropTypes.string,
-  warningMessage: PropTypes.string
+  warningMessage: PropTypes.string,
+  disabled: PropTypes.bool
 }
 
-const WeightTargets = ({ isValidate, name, title, warningMessage }) => {
+const WeightTargets = ({ isValidate, name, title, warningMessage, disabled }) => {
   const config = [
     {
       type: 'text',
@@ -31,6 +32,7 @@ const WeightTargets = ({ isValidate, name, title, warningMessage }) => {
       config={config}
       isValidate={isValidate}
       warningMessage={warningMessage}
+      disabled={disabled}
     />
   )
 }

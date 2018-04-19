@@ -17,10 +17,11 @@ const propTypes = {
   className: PropTypes.string,
   name: PropTypes.string.isRequired,
   pluginName: PropTypes.string.isRequired,
-  handlePluginExclude: PropTypes.func.isRequired
+  handlePluginExclude: PropTypes.func.isRequired,
+  previewPage: PropTypes.bool
 }
 
-const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginName }) => {
+const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginName, previewPage }) => {
   const b = block(className)
   const defaultPlugins = apiSchema.plugins
   const predicate = R.propEq('name', pluginName)
@@ -42,7 +43,10 @@ const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginNam
           <Label>Plugin Name</Label>
           <Input input={{value: 'OAuth'}} disabled />
         </Row>
-        <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
+        {
+          !previewPage &&
+          <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
+        }
       </Row>
       <Row className={b('row')()} fullwidth>
         <Row col>
@@ -54,6 +58,7 @@ const AuthPlugin = ({ apiSchema, className, name, handlePluginExclude, pluginNam
             clearable={false}
             options={createOptions(serverNames)}
             component={SimpleSelect}
+            disabled={previewPage}
           />
           <Hint>The server that the Gateway will use as the oauth provider for requests to the listen_path.</Hint>
         </Row>

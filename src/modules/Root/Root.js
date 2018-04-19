@@ -26,6 +26,7 @@ import NewOAuthServerPage from '../pages/NewOAuthServerPage/NewOAuthServerPage'
 import ApiListPage from '../pages/ApiListPage/ApiListPage'
 import NewApiPage from '../pages/NewApiPage/NewApiPage'
 import EditApiPage from '../pages/EditPage/EditApiPage'
+import ViewApiPage from '../pages/ViewPage/ViewApiPage'
 import AuthorizationCallback from '../pages/AuthorizationCallback/AuthorizationCallback'
 
 import './Root.css'
@@ -50,6 +51,7 @@ class Root extends Component {
               <Route path={ROUTES.OAUTH_SERVERS.path} component={OAuthServersPage} />
               <Route path={ROUTES.NEW.path} component={NewApiPage} />
               <Route path={ROUTES.LOGIN.path} component={LoginPage} />
+              <Route path={ROUTES.VIEW.path} render={props => <ViewApiPage {...props} />} />
               <Route path={ROUTES.EDIT.path} render={props => <EditApiPage {...props} />} />
             </Switch>
           </div>

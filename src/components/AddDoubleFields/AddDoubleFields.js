@@ -35,10 +35,13 @@ class AddDoubleFields extends PureComponent {
         <div>
           <div className={row()}>
             <Label>{ title }</Label>
-            <Control
-              onClick={() => fields.push({})}
-              icon='add'
-            />
+            {
+              !this.props.disabled &&
+              <Control
+                onClick={() => fields.push({})}
+                icon='add'
+              />
+            }
           </div>
           {
             fields.map((member, index) => (
@@ -52,6 +55,7 @@ class AddDoubleFields extends PureComponent {
                       placeholder={config[0].placeholder}
                       parse={this.passParse(config[0])}
                       validate={isValidate && checkOnPattern(isValidate)}
+                      disabled={this.props.disabled}
                     />
                     {
                       warningMessage &&
@@ -65,14 +69,18 @@ class AddDoubleFields extends PureComponent {
                       component={Input}
                       placeholder={config[1].placeholder}
                       parse={this.passParse(config[1])}
+                      disabled={this.props.disabled}
                     />
                   </div>
-                  <div className={row('control')()}>
-                    <Control
-                      onClick={() => fields.remove(index)}
-                      icon='remove'
-                    />
-                  </div>
+                  {
+                    !this.props.disabled &&
+                    <div className={row('control')()}>
+                      <Control
+                        onClick={() => fields.remove(index)}
+                        icon='remove'
+                      />
+                    </div>
+                  }
                 </div>
               </Row>
             ))

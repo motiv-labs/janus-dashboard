@@ -74,6 +74,9 @@ class ApiList extends PureComponent {
           {api.active ? <Icon type='checked' /> : null}
         </div>
         <div className={table('td').mix(table('controls'))()}>
+          <Link to={`/preview/${api.name}`} className={table('controls-item')()}>
+            <Icon type='view' ariaLabel='View' />
+          </Link>
           <Link to={`/${api.name}`} className={table('controls-item')()}>
             <Icon type='edit' ariaLabel='Edit' />
           </Link>

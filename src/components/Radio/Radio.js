@@ -8,7 +8,7 @@ import './Radio.css'
 const radio = block('j-radio')
 
 const Radio = props => {
-  const { input, id, name } = props
+  const { input, id, name, disabled } = props
 
   return (
     <div className={radio('wrap')()}>
@@ -17,6 +17,7 @@ const Radio = props => {
         type='radio'
         name={name}
         id={id}
+        disabled={disabled}
         {...input}
       />
       <div className={radio('d1')()}>

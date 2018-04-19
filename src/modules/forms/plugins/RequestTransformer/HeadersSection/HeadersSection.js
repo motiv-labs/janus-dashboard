@@ -15,19 +15,23 @@ const row = block('j-row')
 const propTypes = {
   name: PropTypes.string.isRequired,
   title: PropTypes.string,
-  hint: PropTypes.string
+  hint: PropTypes.string,
+  disabled: PropTypes.bool
 }
 
 class HeadersSection extends Component {
-    renderMembers = ({ fields, hint, title }) => {
+    renderMembers = ({ fields, hint, title, disabled }) => {
       return (
         <div>
           <div className={row()}>
             <Label>{ title }</Label>
-            <Control
-              onClick={() => fields.push({})}
-              icon='add'
-            />
+            {
+              !disabled &&
+              <Control
+                onClick={() => fields.push({})}
+                icon='add'
+              />
+            }
           </div>
           <Hint title>{ hint }</Hint>
           {
@@ -41,6 +45,7 @@ class HeadersSection extends Component {
                         type='text'
                         component={Input}
                         placeholder='Key'
+                        disabled={disabled}
                       />
                     </div>
                     <div className={row('item', {pair: true})}>
@@ -49,13 +54,17 @@ class HeadersSection extends Component {
                         type='text'
                         component={Input}
                         placeholder='Value'
+                        disabled={disabled}
                       />
                     </div>
                     <div className={row('control')()}>
-                      <Control
-                        onClick={() => fields.remove(index)}
-                        icon='remove'
-                      />
+                      {
+                        !disabled &&
+                        <Control
+                          onClick={() => fields.remove(index)}
+                          icon='remove'
+                        />
+                      }
                     </div>
                   </div>
                 </Row>
@@ -67,7 +76,7 @@ class HeadersSection extends Component {
     };
 
     render () {
-      const { title, hint } = this.props
+      const { title, hint, disabled } = this.props
 
       return (
         <div className='j-col__item'>
@@ -76,6 +85,7 @@ class HeadersSection extends Component {
             component={this.renderMembers}
             title={title}
             hint={hint}
+            disabled={disabled}
           />
         </div>
       )

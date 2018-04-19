@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import Select from 'react-select'
 
 const propTypes = {
-  options: PropTypes.arrayOf(PropTypes.object).isRequired
+  options: PropTypes.arrayOf(PropTypes.object).isRequired,
+  disabled: PropTypes.bool
 }
 
 class SimpleSelect extends Component {
@@ -31,6 +32,7 @@ class SimpleSelect extends Component {
           onBlur={() => {
             this.props.input.onBlur(this.state.selectValue)
           }}
+          disabled={this.props.disabled}
         />
       )
     }

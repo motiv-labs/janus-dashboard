@@ -59,7 +59,7 @@ $control-width: 20px;
         grid-gap: $hf-gutter;
         overflow: initial;
         justify-content: end;
-        grid-template-columns: repeat(4, auto);
+        grid-template-columns: repeat(5, auto);
 
         &-item {
             display: flex;
