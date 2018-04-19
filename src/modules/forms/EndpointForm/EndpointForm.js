@@ -52,7 +52,7 @@ const propTypes = {
   disabled: PropTypes.bool.isRequired,
   editing: PropTypes.bool,
   excludePlugin: PropTypes.func.isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func,
   handleSubmit: PropTypes.func.isRequired,
   initialValues: PropTypes.object,
   isAdmin: PropTypes.bool,

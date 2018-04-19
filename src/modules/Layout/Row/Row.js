@@ -14,7 +14,7 @@ const propTypes = {
   className: PropTypes.string
 }
 
-const emptyRow = (className, cn) => <div className={cn('item').mix(className)} />
+const emptyRow = (className, cn) => <div className={cn('item').mix(className)()} />
 
 const wrapChild = (child, cn, className) => (
   <div

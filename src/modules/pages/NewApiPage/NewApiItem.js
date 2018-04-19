@@ -15,7 +15,6 @@ const propTypes = {
   fetchEndpoint: PropTypes.func.isRequired,
   fetchEndpointSchema: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
-  saveEndpoint: PropTypes.func.isRequired,
   excludePlugin: PropTypes.func.isRequired,
   selectPlugin: PropTypes.func.isRequired,
   selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -37,73 +36,75 @@ class NewApiItem extends PureComponent {
     this.props.fetchEndpointSchema(true)
   }
 
-    handleDelete = apiName => {
-      this.props.deleteEndpoint(apiName, this.props.refreshEndpoints)
-    };
+  handleDelete = apiName => {
+    // this.props.deleteEndpoint(apiName, this.props.refreshEndpoints)
+  }
 
-    submit = values => R.compose(
-      this.props.saveEndpoint,
+  submit = values => {
+    const updatedValues = R.compose(
       getUpdatedEndpoint(values)
-    )(this.props.selectedPlugins);
+    )(this.props.selectedPlugins)
 
-    hasToBeCloned = () => {
-      if (this.props.location.state && !R.isEmpty(this.props.location.state.clone)) {
-        return {
-          clone: this.props.location.state.clone
-        }
+    this.props.confirmAction('save', 'endpoint', updatedValues)
+  }
+
+  hasToBeCloned = () => {
+    if (this.props.location.state && !R.isEmpty(this.props.location.state.clone)) {
+      return {
+        clone: this.props.location.state.clone
       }
-
-      return false
     }
 
-    renderForm = () => {
-      if (R.isEmpty(this.props.apiSchema)) return <Preloader />
+    return false
+  }
 
-      const isCloning = () => this.hasToBeCloned() && !R.isEmpty(this.props.api)
-      const getUpdatedApi = () => {
-        const api = this.props.api
-        const apiPlugins = api.plugins
-        const defaultPlugins = this.props.apiSchema.plugins
-        const updatedPlugins = defaultPlugins.map(item => {
-          const res = apiPlugins.filter(pl => pl.name === item.name)
+  renderForm = () => {
+    if (R.isEmpty(this.props.apiSchema)) return <Preloader />
 
-          return res.length > 0 ? res[0] : item
-        })
-        const lens = R.lensPath(['plugins'])
-        // substitude the plugin.config.limit
-        const updatedApi = R.set(lens, updatedPlugins, api)
+    const isCloning = () => this.hasToBeCloned() && !R.isEmpty(this.props.api)
+    const getUpdatedApi = () => {
+      const api = this.props.api
+      const apiPlugins = api.plugins
+      const defaultPlugins = this.props.apiSchema.plugins
+      const updatedPlugins = defaultPlugins.map(item => {
+        const res = apiPlugins.filter(pl => pl.name === item.name)
 
-        return updatedApi
-      }
+        return res.length > 0 ? res[0] : item
+      })
+      const lens = R.lensPath(['plugins'])
+      // substitude the plugin.config.limit
+      const updatedApi = R.set(lens, updatedPlugins, api)
 
-      const passValues = () => isCloning() ? getUpdatedApi() : this.props.apiSchema
-
-      return (
-        <EndpointForm
-          api={this.props.api}
-          apiSchema={this.props.apiSchema}
-          editing={false}
-          disabled={false}
-          excludePlugin={this.props.excludePlugin}
-          handleDelete={this.handleDelete}
-          initialValues={transformFormValues(passValues())}
-          onSubmit={this.submit}
-          selectedPlugins={this.props.selectedPlugins}
-          selectPlugin={this.props.selectPlugin}
-        />
-      )
+      return updatedApi
     }
 
-    render () {
-      return (
-        <div>
-          <Subtitle>{this.props.api.name}</Subtitle>
-          <Section outer>
-            { this.renderForm() }
-          </Section>
-        </div>
-      )
-    }
+    const passValues = () => isCloning() ? getUpdatedApi() : this.props.apiSchema
+
+    return (
+      <EndpointForm
+        api={this.props.api}
+        apiSchema={this.props.apiSchema}
+        editing={false}
+        disabled={false}
+        excludePlugin={this.props.excludePlugin}
+        initialValues={transformFormValues(passValues())}
+        onSubmit={this.submit}
+        selectedPlugins={this.props.selectedPlugins}
+        selectPlugin={this.props.selectPlugin}
+      />
+    )
+  }
+
+  render () {
+    return (
+      <div>
+        <Subtitle>{this.props.api.name}</Subtitle>
+        <Section outer>
+          { this.renderForm() }
+        </Section>
+      </div>
+    )
+  }
 }
 
 NewApiItem.propTypes = propTypes
