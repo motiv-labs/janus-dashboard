@@ -8,7 +8,6 @@ import {
   FETCH_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_SCHEMA_START,
   FETCH_ENDPOINT_SCHEMA_SUCCESS,
-  SAVE_ENDPOINT_START,
   SAVE_ENDPOINT_SUCCESS,
   SET_DEFAULT_ENDPOINT,
   EXCLUDE_PLUGIN,
@@ -39,8 +38,7 @@ export default function reducer (state = initialState, action) {
     case ___DELETE_ENDPOINT_START:
     case DELETE_ENDPOINT_START:
     case FETCH_ENDPOINT_START:
-    case FETCH_ENDPOINT_SCHEMA_START:
-    case SAVE_ENDPOINT_START: {
+    case FETCH_ENDPOINT_SCHEMA_START: {
       return {
         ...state,
         isFetching: true

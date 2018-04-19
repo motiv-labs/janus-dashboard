@@ -11,7 +11,6 @@ import Preloader from '../../../components/Preloader/Preloader'
 
 const propTypes = {
   api: PropTypes.object.isRequired,
-  deleteEndpoint: PropTypes.func.isRequired,
   excludePlugin: PropTypes.func.isRequired,
   fetchEndpointSchema: PropTypes.func.isRequired,
   fillSelected: PropTypes.func.isRequired,
@@ -20,7 +19,6 @@ const propTypes = {
   fetchEndpoint: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
-  updateEndpoint: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
 
   confirmAction: PropTypes.func.isRequired

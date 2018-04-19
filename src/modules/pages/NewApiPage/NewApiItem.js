@@ -15,7 +15,6 @@ const propTypes = {
   fetchEndpoint: PropTypes.func.isRequired,
   fetchEndpointSchema: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
-  saveEndpoint: PropTypes.func.isRequired,
   excludePlugin: PropTypes.func.isRequired,
   selectPlugin: PropTypes.func.isRequired,
   selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
@@ -38,7 +37,7 @@ class NewApiItem extends PureComponent {
   }
 
   handleDelete = apiName => {
-    this.props.deleteEndpoint(apiName, this.props.refreshEndpoints)
+    // this.props.deleteEndpoint(apiName, this.props.refreshEndpoints)
   }
 
   submit = values => {
@@ -88,7 +87,6 @@ class NewApiItem extends PureComponent {
         editing={false}
         disabled={false}
         excludePlugin={this.props.excludePlugin}
-        handleDelete={this.handleDelete}
         initialValues={transformFormValues(passValues())}
         onSubmit={this.submit}
         selectedPlugins={this.props.selectedPlugins}

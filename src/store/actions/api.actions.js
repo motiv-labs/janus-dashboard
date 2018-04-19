@@ -10,8 +10,6 @@ import {
   FETCH_ENDPOINT_SCHEMA_START,
   FETCH_ENDPOINT_SCHEMA_SUCCESS,
   FILL_SELECTED_PLUGINS,
-  SAVE_ENDPOINT_START,
-  SAVE_ENDPOINT_SUCCESS,
   SET_DEFAULT_ENDPOINT,
   EXCLUDE_PLUGIN,
   SELECT_PLUGIN,
@@ -25,9 +23,7 @@ import {
   ___DELETE_ENDPOINT_FAILURE
 } from '../constants'
 import {
-  closeConfirmationModal,
   fetchEndpoints,
-  openConfirmationModal,
   showToaster,
 
   ___closeConfirmation
@@ -62,15 +58,6 @@ export const getEndpointSchemaRequest = () => ({
 export const getEndpointSchemaSuccess = api => ({
   type: FETCH_ENDPOINT_SCHEMA_SUCCESS,
   payload: api
-})
-
-export const saveEndpointRequest = api => ({
-  type: SAVE_ENDPOINT_START,
-  payload: api
-})
-
-export const saveEndpointSuccess = () => ({
-  type: SAVE_ENDPOINT_SUCCESS
 })
 
 export const selectPlugin = pluginName/*: string */ => ({
@@ -319,41 +306,6 @@ export const preparePlugins = api => api.plugins.map(plugin => {
   }
 })
 
-export const saveEndpoint = api => dispatch =>
-  dispatch(openConfirmationModal('save', api, api.name))
-
-export const updateEndpoint = api => dispatch =>
-  dispatch(openConfirmationModal('update', api, api.name))
-
-export const deleteEndpoint = (api, isRedirect/*: Boolean */) => dispatch =>
-  dispatch(openConfirmationModal('delete', {}, api.name, isRedirect))
-
-  // @TODO: DELETE
-export const confirmedSaveEndpoint = async (dispatch, api) => {
-  dispatch(saveEndpointRequest(api))
-  dispatch(closeConfirmationModal())
-
-  const preparedPlugins/*: Array<Object> */ = preparePlugins(api)
-  const apiWithoutDefaultUpstreams/*: Object */ = R.dissocPath(['proxy', 'upstreams', 'options'], R.__)
-  const setUpdatedPlugins/*: Object */ = R.set(R.lensPath(['plugins']), preparedPlugins, R.__)
-  const preparedEndpoint/*: Object */ = R.compose(
-    setUpdatedPlugins,
-    apiWithoutDefaultUpstreams
-  )(api)
-
-  try {
-    await client.post('apis', preparedEndpoint)
-
-    dispatch(saveEndpointSuccess())
-    history.push('/')
-    dispatch(fetchEndpoints())
-    dispatch(showToaster())
-  } catch (error) {
-    dispatch(closeConfirmationModal())
-    errorHandler(dispatch)(error)
-  }
-}
-
 export const createUpdatedEndpoint = api => {
   const prepareApi = R.set(R.lensPath(['plugins']), R.__, api)
   const updatedEndpoint = R.compose(
@@ -362,41 +314,6 @@ export const createUpdatedEndpoint = api => {
   )(api)
 
   return updatedEndpoint
-}
-
-// @TODO: DELETE
-export const confirmedUpdateEndpoint = async (dispatch, api) => {
-  dispatch(saveEndpointRequest())
-  dispatch(closeConfirmationModal())
-
-  // substitude updated list of plugins
-  const updatedEndpoint = createUpdatedEndpoint(api)
-
-  try {
-    await client.put(`apis/${api.name}`, updatedEndpoint)
-
-    dispatch(saveEndpointSuccess())
-    history.push('/')
-    dispatch(showToaster())
-  } catch (error) {
-    errorHandler(dispatch)(error)
-  }
-}
-
-export const confirmedDeleteEndpoint = async (dispatch, apiName, isRedirect) => {
-  dispatch(deleteEndpointRequest())
-  dispatch(closeConfirmationModal())
-
-  try {
-    await client.delete(`apis/${apiName}`)
-
-    dispatch(deleteEndpointSuccess())
-    dispatch(fetchEndpoints())
-    isRedirect && history.push('/')
-    dispatch(showToaster())
-  } catch (error) {
-    errorHandler(dispatch)(error)
-  }
 }
 
 export const ___saveEndpointRequest = () => ({

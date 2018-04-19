@@ -1,7 +1,6 @@
 import { connect } from 'react-redux'
 
 import {
-  deleteEndpoint,
   fetchEndpoints,
   refreshEndpoints,
   setCurrentPageIndex,
@@ -23,7 +22,6 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    deleteEndpoint,
     fetchEndpoints,
     refreshEndpoints,
     setCurrentPageIndex,

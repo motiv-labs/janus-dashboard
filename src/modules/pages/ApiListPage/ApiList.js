@@ -23,7 +23,6 @@ const propTypes = {
   currentPageIndex: PropTypes.number.isRequired,
   isAdmin: PropTypes.bool.isRequired,
   setCurrentPageIndex: PropTypes.func.isRequired,
-  deleteEndpoint: PropTypes.func.isRequired,
   fetchEndpoints: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
   setSortingFilter: PropTypes.func.isRequired,

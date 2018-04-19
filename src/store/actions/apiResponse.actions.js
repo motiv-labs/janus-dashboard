@@ -9,11 +9,6 @@ import {
 } from '../constants'
 
 import {
-  confirmedSaveEndpoint,
-  confirmedUpdateEndpoint,
-  confirmedDeleteEndpoint
-} from './api.actions'
-import {
   confirmedSaveOAuthServer,
   confirmedUpdateOAuthServer,
   confirmedDeleteOAuthServer
@@ -93,20 +88,11 @@ export const closeToaster = () => ({
 
 export const afterCloseConfirmationModal = (actionType, item, itemName, isRedirect) => (dispatch, getState) => {
   switch (actionType) {
-    case 'save': {
-      return confirmedSaveEndpoint(dispatch, item)
-    }
     case 'saveOAuthServer': {
       return confirmedSaveOAuthServer(dispatch, item)
     }
-    case 'update': {
-      return confirmedUpdateEndpoint(dispatch, item)
-    }
     case 'updateOAuthServer': {
       return confirmedUpdateOAuthServer(dispatch, item)
-    }
-    case 'delete': {
-      return confirmedDeleteEndpoint(dispatch, itemName, isRedirect)
     }
     case 'deleteOAuthServer': {
       return confirmedDeleteOAuthServer(dispatch, itemName, isRedirect)
