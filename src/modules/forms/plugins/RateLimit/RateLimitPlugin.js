@@ -18,7 +18,7 @@ const propTypes = {
   plugin: PropTypes.object.isRequired,
   pluginName: PropTypes.string.isRequired,
   handlePluginExclude: PropTypes.func.isRequired,
-  disabled: PropTypes.bool
+  previewPage: PropTypes.bool
 }
 
 class RateLimitPlugin extends PureComponent {
@@ -46,7 +46,7 @@ class RateLimitPlugin extends PureComponent {
             name={`${this.props.name}.config.redis.dsn`}
             placeholder=''
             component={Input}
-            disabled={this.props.disabled}
+            disabled={this.props.previewPage}
           />
         </Row>
         <Row col>
@@ -56,7 +56,7 @@ class RateLimitPlugin extends PureComponent {
             name={`${this.props.name}.config.redis.prefix`}
             placeholder=''
             component={Input}
-            disabled={this.props.disabled}
+            disabled={this.props.previewPage}
           />
         </Row>
       </div>
@@ -73,7 +73,7 @@ class RateLimitPlugin extends PureComponent {
       handlePluginExclude,
       plugin,
       pluginName,
-      disabled
+      previewPage
     } = this.props
 
     const b = block(className)
@@ -96,7 +96,7 @@ class RateLimitPlugin extends PureComponent {
             <Input input={{value: 'Rate Limit'}} disabled />
           </Row>
           {
-            !disabled &&
+            !previewPage &&
             <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
           }
         </Row>
@@ -109,7 +109,7 @@ class RateLimitPlugin extends PureComponent {
                 name={`${name}.config.limit.value`}
                 placeholder=''
                 component={Input}
-                disabled={disabled}
+                disabled={previewPage}
               />
             </Row>
             <Row col>
@@ -121,7 +121,7 @@ class RateLimitPlugin extends PureComponent {
                 clearable={false}
                 options={createOptions(plugin.config.limit.units, getLabels(apiSchema.plugins))}
                 component={SimpleSelect}
-                disabled={disabled}
+                disabled={previewPage}
               />
             </Row>
             <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
@@ -138,7 +138,7 @@ class RateLimitPlugin extends PureComponent {
               onChange={this.handleChangeSelectedPolicy}
               value={this.state.selectedPolicy}
               component={SimpleSelect}
-              disabled={disabled}
+              disabled={previewPage}
             />
             <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
             <Hint>The rate-limiting policies to use for retrieving and incrementing the limits. Available values are local (counters will be stored locally in-memory on the node) and redis (counters are stored on a Redis server and will be shared across the nodes).</Hint>

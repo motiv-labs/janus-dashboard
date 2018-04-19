@@ -506,7 +506,7 @@ class EndpointForm extends PureComponent {
                 handlePluginExclude={excludePlugin}
                 response={response}
                 edit={editing}
-                disabled={previewPage}
+                previewPage={previewPage}
               />
             }
           </div>

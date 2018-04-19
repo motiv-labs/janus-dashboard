@@ -13,10 +13,10 @@ const propTypes = {
   name: PropTypes.string.isRequired,
   pluginName: PropTypes.string.isRequired,
   handlePluginExclude: PropTypes.func.isRequired,
-  disabled: PropTypes.bool
+  previewPage: PropTypes.bool
 }
 
-const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName, disabled }) => {
+const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName, previewPage }) => {
   const b = block(className)
 
   return (
@@ -27,7 +27,7 @@ const CompressionPlugin = ({ className, name, handlePluginExclude, pluginName, d
           <Input input={{value: 'Compression'}} disabled />
         </Row>
         {
-          !disabled &&
+          !previewPage &&
           <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
         }
       </Row>

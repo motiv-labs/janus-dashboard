@@ -20,7 +20,7 @@ const propTypes = {
   placeholder: PropTypes.string,
   suffix: PropTypes.string,
   title: PropTypes.string,
-  disabled: PropTypes.bool
+  previewPage: PropTypes.bool
 }
 
 const defaultProps = {
@@ -63,7 +63,7 @@ class MultiRowField extends PureComponent {
                   }
                 </div>
                 {
-                  !this.props.disabled &&
+                  !this.props.previewPage &&
                   <div className={row('control')()}>
                     <Control
                       onClick={() => fields.remove(index)}

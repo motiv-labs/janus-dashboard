@@ -25,7 +25,7 @@ const propTypes = {
   pluginFromValues: PropTypes.object.isRequired,
   pluginName: PropTypes.string.isRequired,
   handlePluginExclude: PropTypes.func.isRequired,
-  disabled: PropTypes.bool
+  previewPage: PropTypes.bool
 }
 
 class CorsPlugin extends PureComponent {
@@ -34,7 +34,7 @@ class CorsPlugin extends PureComponent {
     }
 
     render () {
-      const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginFromValues, pluginName, disabled } = this.props
+      const { apiSchema, className, edit, name, handlePluginExclude, plugin, pluginFromValues, pluginName, previewPage } = this.props
       const b = block(className)
       const allValues = key => apiSchema.plugins[0].config[key]
 
@@ -46,7 +46,7 @@ class CorsPlugin extends PureComponent {
               <Input input={{value: 'CORS'}} disabled />
             </Row>
             {
-              !disabled &&
+              !previewPage &&
               <ControlBar name={`${name}.enabled`} removePlugin={() => handlePluginExclude(pluginName)} />
             }
           </Row>
@@ -61,7 +61,7 @@ class CorsPlugin extends PureComponent {
                 value={() => getValues(['config', 'domains'])(plugin)}
                 options={optionsTransformer(allValues('domains'))}
                 component={TagSelect}
-                disabled={disabled}
+                disabled={previewPage}
               />
               <Hint>A list of all domains from which the endpoint will accept requests.</Hint>
             </Row>
@@ -75,7 +75,7 @@ class CorsPlugin extends PureComponent {
                 value={() => getValues(['config', 'methods'])(plugin)}
                 options={optionsTransformer(allValues('methods'))}
                 component={MultiSelect}
-                disabled={disabled}
+                disabled={previewPage}
               />
               <Hint>HTTP methods that are supported for the endpoint.</Hint>
             </Row>
@@ -94,7 +94,7 @@ class CorsPlugin extends PureComponent {
                   placeholder={SETUP.placeholders.cors.request_headers}
                   options={optionsTransformer(allValues('request_headers'))}
                   component={TagSelect}
-                  disabled={disabled}
+                  disabled={previewPage}
                 />
               </CopyToClipboard>
               <Hint>Value(s) for the Access-Control-Allow-Headers header.</Hint>
@@ -109,7 +109,7 @@ class CorsPlugin extends PureComponent {
                 placeholder={SETUP.placeholders.cors.request_headers}
                 options={optionsTransformer(allValues('exposed_headers'))}
                 component={TagSelect}
-                disabled={disabled}
+                disabled={previewPage}
               />
               <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
             </Row>

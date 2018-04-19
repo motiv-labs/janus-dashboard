@@ -22,7 +22,7 @@ const propTypes = {
   handlePluginExclude: PropTypes.func.isRequired,
   handlePluginInclude: PropTypes.func.isRequired,
   selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
-  disabled: PropTypes.bool
+  previewPage: PropTypes.bool
 }
 
 class RenderPlugin extends Component {
@@ -57,7 +57,7 @@ class RenderPlugin extends Component {
         handlePluginExclude,
         handlePluginInclude,
         initialValues,
-        disabled
+        previewPage
       } = this.props
       const b = block(className)
       const names = apiSchema.plugins.map(plugin => ({
@@ -80,7 +80,7 @@ class RenderPlugin extends Component {
                 apiSchema,
                 edit,
                 response,
-                disabled
+                previewPage
               }
 
               switch (pluginName) {
@@ -132,7 +132,7 @@ class RenderPlugin extends Component {
           }
 
           {
-            !disabled &&
+            !previewPage &&
             <Row className={b('row')()}>
               <Button
                 type='button'
