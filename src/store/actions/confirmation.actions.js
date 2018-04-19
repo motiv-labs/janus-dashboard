@@ -18,7 +18,7 @@ export const confirmAction = (
   }
 })
 
-export const closeConfirmation = () => ({
+export const ___closeConfirmation = () => ({
   type: ___CLOSE_CONFIRMATION
 })
 

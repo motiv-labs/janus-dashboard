@@ -6,7 +6,8 @@ import {
   refreshEndpoints,
   setCurrentPageIndex,
   setSortingFilter,
-  setAscendingFilter
+  setAscendingFilter,
+  confirmAction
 } from '../../../store/actions'
 import { filteredApiList } from '../../../store/selectors'
 
@@ -27,6 +28,7 @@ export default connect(
     refreshEndpoints,
     setCurrentPageIndex,
     setSortingFilter,
-    setAscendingFilter
+    setAscendingFilter,
+    confirmAction
   }
 )(ApiList)

@@ -9,7 +9,8 @@ import {
   saveEndpoint,
   excludePlugin,
   selectPlugin,
-  willClone
+  willClone,
+  confirmAction
 } from '../../../store/actions'
 
 import NewApiItem from './NewApiItem'
@@ -31,6 +32,7 @@ export default connect(
     excludePlugin,
     refreshEndpoints,
     selectPlugin,
-    willClone
+    willClone,
+    confirmAction
   }
 )(NewApiItem)

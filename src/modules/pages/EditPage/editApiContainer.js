@@ -10,7 +10,8 @@ import {
   refreshEndpoints,
   resetEndpoint,
   saveEndpoint,
-  updateEndpoint
+  updateEndpoint,
+  confirmAction
 } from '../../../store/actions'
 
 import ApiItem from './ApiItem'
@@ -35,6 +36,7 @@ export default connect(
     fetchEndpoint,
     refreshEndpoints,
     resetEndpoint,
-    updateEndpoint
+    updateEndpoint,
+    confirmAction
   }
 )(ApiItem)

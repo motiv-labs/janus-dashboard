@@ -27,7 +27,8 @@ const propTypes = {
   fetchEndpoints: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
   setSortingFilter: PropTypes.func.isRequired,
-  searchQuery: PropTypes.string.isRequired
+  searchQuery: PropTypes.string.isRequired,
+  confirmAction: PropTypes.func.isRequired
 }
 
 const table = block('j-table')
@@ -53,7 +54,7 @@ class ApiList extends PureComponent {
     }
 
     handleDelete = api => {
-      this.props.deleteEndpoint(api)
+      this.props.confirmAction('delete', 'endpoint', api.name)
     };
 
     handleCloseModal = () => this.setState({

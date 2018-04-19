@@ -15,13 +15,22 @@ import {
   SET_DEFAULT_ENDPOINT,
   EXCLUDE_PLUGIN,
   SELECT_PLUGIN,
-  RESET_ENDPOINT
+  RESET_ENDPOINT,
+
+  ___SAVE_ENDPOINT_START,
+  ___SAVE_ENDPOINT_SUCCESS,
+  ___SAVE_ENDPOINT_FAILURE,
+  ___DELETE_ENDPOINT_START,
+  ___DELETE_ENDPOINT_SUCCESS,
+  ___DELETE_ENDPOINT_FAILURE
 } from '../constants'
 import {
   closeConfirmationModal,
   fetchEndpoints,
   openConfirmationModal,
-  showToaster
+  showToaster,
+
+  ___closeConfirmation
 } from './index'
 import history from '../configuration/history'
 import errorHandler from '../../helpers/errorHandler'
@@ -258,15 +267,15 @@ export const preparePlugins = api => api.plugins.map(plugin => {
       const allTransformedHeaders = config.map((item, index) => {
         // headers comes as an array of objects:
         /**
-                 * @example #1
-                 *
-                 * add: {
-                 *     header: [
-                 *         {someKey: 'someValue'},
-                 *         {someAnotherKey: 'someAnotherValue'},
-                 *     ]
-                 * }
-                 */
+         * @example #1
+         *
+         * add: {
+         *     header: [
+         *         {someKey: 'someValue'},
+         *         {someAnotherKey: 'someAnotherValue'},
+         *     ]
+         * }
+         */
         const headers = item.headers
 
         // fill key/values arrays
@@ -282,15 +291,15 @@ export const preparePlugins = api => api.plugins.map(plugin => {
         // and now we are creating object that should be placed instead of
         // array of the objects from example #1
         /**
-                 * @example #2
-                 *
-                 * add: {
-                 *     headers: {
-                 *         someKey: 'someValue',
-                 *         someAnotherKey: 'someAnotherValue',
-                 *     }
-                 * }
-                 */
+         * @example #2
+         *
+         * add: {
+         *     headers: {
+         *         someKey: 'someValue',
+         *         someAnotherKey: 'someAnotherValue',
+         *     }
+         * }
+         */
         const transformedHeaders = R.zipObj(newKeyValues[0], newKeyValues[1])
 
         return transformedHeaders
@@ -319,6 +328,7 @@ export const updateEndpoint = api => dispatch =>
 export const deleteEndpoint = (api, isRedirect/*: Boolean */) => dispatch =>
   dispatch(openConfirmationModal('delete', {}, api.name, isRedirect))
 
+  // @TODO: DELETE
 export const confirmedSaveEndpoint = async (dispatch, api) => {
   dispatch(saveEndpointRequest(api))
   dispatch(closeConfirmationModal())
@@ -354,6 +364,7 @@ export const createUpdatedEndpoint = api => {
   return updatedEndpoint
 }
 
+// @TODO: DELETE
 export const confirmedUpdateEndpoint = async (dispatch, api) => {
   dispatch(saveEndpointRequest())
   dispatch(closeConfirmationModal())
@@ -384,6 +395,79 @@ export const confirmedDeleteEndpoint = async (dispatch, apiName, isRedirect) => 
     isRedirect && history.push('/')
     dispatch(showToaster())
   } catch (error) {
+    errorHandler(dispatch)(error)
+  }
+}
+
+export const ___saveEndpointRequest = () => ({
+  type: ___SAVE_ENDPOINT_START
+})
+
+export const ___saveEndpointSuccess = data => ({
+  type: ___SAVE_ENDPOINT_SUCCESS,
+  payload: data
+})
+
+export const ___saveEndpointFailure = () => ({
+  type: ___SAVE_ENDPOINT_FAILURE
+})
+
+export const ___saveEndpoint = ({ isEditing }) => api => async (dispatch, getState) => {
+  dispatch(___saveEndpointRequest())
+  dispatch(___closeConfirmation())
+
+  const preparedPlugins/*: Array<Object> */ = preparePlugins(api)
+  const apiWithoutDefaultUpstreams/*: Object */ = R.dissocPath(['proxy', 'upstreams', 'options'], R.__)
+  const setUpdatedPlugins/*: Object */ = R.set(R.lensPath(['plugins']), preparedPlugins, R.__)
+  const preparedEndpoint/*: Object */ = R.compose(
+    setUpdatedPlugins,
+    apiWithoutDefaultUpstreams
+  )(api)
+
+  try {
+    await saveEntity(isEditing)
+
+    dispatch(___saveEndpointSuccess())
+    history.push('/')
+    dispatch(fetchEndpoints())
+    dispatch(showToaster())
+  } catch (error) {
+    dispatch(___closeConfirmation())
+    errorHandler(dispatch)(error)
+  }
+
+  async function saveEntity (isEditing) {
+    isEditing
+      ? await client.put(`apis/${api.name}`, createUpdatedEndpoint(api))
+      : await client.post('apis', preparedEndpoint)
+  }
+}
+
+export const ___deleteEndpointRequest = () => ({
+  type: ___DELETE_ENDPOINT_START
+})
+
+export const ___deleteEndpointSuccess = () => ({
+  type: ___DELETE_ENDPOINT_SUCCESS
+})
+
+export const ___deleteEndpointFailure = () => ({
+  type: ___DELETE_ENDPOINT_FAILURE
+})
+
+export const ___deleteEndpoint = apiName => async dispatch => {
+  dispatch(___deleteEndpointRequest())
+  dispatch(___closeConfirmation())
+
+  try {
+    await client.delete(`apis/${apiName}`)
+
+    dispatch(___deleteEndpointSuccess())
+    history.push('/')
+    dispatch(fetchEndpoints())
+    dispatch(showToaster())
+  } catch (error) {
+    dispatch(___deleteEndpointFailure())
     errorHandler(dispatch)(error)
   }
 }

@@ -8,14 +8,16 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import {
-//   saveConfiguration,
-//   deleteConfiguration,
-//   saveProject,
-//   deleteProject,
-//   saveLocale,
-//   deleteLocale,
-//   rollbackAuditLog,
-  closeConfirmation
+  ___saveEndpoint,
+  ___deleteEndpoint,
+  //   saveConfiguration,
+  //   deleteConfiguration,
+  //   saveProject,
+  //   deleteProject,
+  //   saveLocale,
+  //   deleteLocale,
+  //   rollbackAuditLog,
+  ___closeConfirmation
 //   discardConfigurationToExactState
 } from '../../../store/actions'
 
@@ -41,20 +43,29 @@ const defaultProps = {
 }
 
 const ActionsMap = {
+  save: {
+    'endpoint': {
+      title: 'Save Endpoint title',
+      message: 'Habra-habra',
+      onConfirm: ___saveEndpoint({
+        isEditing: false
+      })
+    }
+  },
   update: {
-    configuration: {
-      title: 'Save configuration',
-      message: 'Are you sure you want to save configuration?'
-    //   onConfirm: saveConfiguration({
-    //     isEditing: true
-    //   })
-    },
-    locale: {
-      title: 'Save locale',
-      message: 'Are you sure you want to save locale?'
-    //   onConfirm: saveLocale({
-    //     isEditing: true
-    //   })
+    'endpoint': {
+      title: 'Update Endpoint title',
+      message: 'Habra-habra',
+      onConfirm: ___saveEndpoint({
+        isEditing: true
+      })
+    }
+  },
+  delete: {
+    'endpoint': {
+      title: 'Delete endpoint title',
+      message: 'Habra-habra',
+      onConfirm: ___deleteEndpoint
     }
   }
 }
@@ -132,7 +143,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    closeModal: bindActionCreators(closeConfirmation, dispatch)
+    closeModal: bindActionCreators(___closeConfirmation, dispatch)
   }
 }
 
