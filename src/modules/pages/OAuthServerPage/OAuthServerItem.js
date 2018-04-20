@@ -34,16 +34,14 @@ class OAuthServerItem extends PureComponent {
     this.props.confirmAction('update', 'OAuthServer', transformedValues)
   }
 
-  renderForm = () => {
-    return (
-      <OAuthServerForm
-        schema={this.props.schema}
-        onSubmit={this.submit}
-        initialValues={transformFormValues(this.props.oAuthServer)}
-        editing
-      />
-    )
-  }
+  renderForm = () => (
+    <OAuthServerForm
+      schema={this.props.schema}
+      onSubmit={this.submit}
+      initialValues={transformFormValues(this.props.oAuthServer)}
+      editing
+    />
+  )
 
   render () {
     if (isAnyEmpty([

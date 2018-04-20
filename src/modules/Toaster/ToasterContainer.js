@@ -11,6 +11,6 @@ export default connect(
     toaster: state.confirmationReducer.toaster
   }),
   {
-    closeToaster: closeToaster
+    closeToaster
   }
 )(Toaster)

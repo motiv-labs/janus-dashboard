@@ -36,10 +36,6 @@ class NewApiItem extends PureComponent {
     this.props.fetchEndpointSchema(true)
   }
 
-  handleDelete = apiName => {
-    // this.props.deleteEndpoint(apiName, this.props.refreshEndpoints)
-  }
-
   submit = values => {
     const updatedValues = R.compose(
       getUpdatedEndpoint(values)

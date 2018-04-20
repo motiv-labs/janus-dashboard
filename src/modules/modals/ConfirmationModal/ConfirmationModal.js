@@ -102,7 +102,9 @@ const ConfirmationModal = ({
       }
       title={getValue('title')}
       buttons={[
-        <Button key='cancel' mod='default' onClick={handleCloseModal}>Cancel</Button>,
+        <Button key='cancel' mod='default' onClick={handleCloseModal}>
+          Cancel
+        </Button>,
         <Button
           key='ok'
           mod='primary'
@@ -110,7 +112,7 @@ const ConfirmationModal = ({
             () => dispatch(onConfirm(objectEntity))
           }
         >
-                    OK
+          OK
         </Button>
       ]}
     />
@@ -133,8 +135,6 @@ const mapStateToProps = state => {
     objectEntity,
     objectType,
     isOpen
-    // configurationMetadata: state.configurationReducer.configurationDifference,
-    // backup: state.configurationReducer.backup
   }
 }
 
@@ -149,90 +149,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(ConfirmationModal)
-
-/*
-const ____ActionsMap = {
-    save: {
-      configuration: {
-        title: 'Save configuration',
-        message: 'Are you sure you want to save configuration?',
-        onConfirm: saveConfiguration({
-          isEditing: false
-        })
-      },
-      project: {
-        title: 'Save project',
-        message: 'Are you sure you want to save project?',
-        onConfirm: saveProject
-      },
-      locale: {
-        title: 'Save locale',
-        message: 'Are you sure you want to save locale?',
-        onConfirm: saveLocale({
-          isEditing: false
-        })
-      }
-    },
-    update: {
-      configuration: {
-        title: 'Save configuration',
-        message: 'Are you sure you want to save configuration?',
-        onConfirm: saveConfiguration({
-          isEditing: true
-        })
-      },
-      locale: {
-        title: 'Save locale',
-        message: 'Are you sure you want to save locale?',
-        onConfirm: saveLocale({
-          isEditing: true
-        })
-      }
-    },
-    delete: {
-      configuration: {
-        title: 'Delete configuration',
-        message: <DeleteConfigurationModalContent />,
-        onConfirm: deleteConfiguration
-      },
-      project: {
-        title: 'Delete project',
-        message: <DeleteProjectModalContent />,
-        onConfirm: deleteProject
-      },
-      locale: {
-        title: 'Delete country-locale',
-        message: <DeleteLocaleModalContent />,
-        onConfirm: deleteLocale
-      }
-    },
-    preview: {
-      auditlog: {
-        title: 'Audit log details',
-        message: <PreviewModalContent />,
-        onConfirm: closeConfirmation
-      }
-    },
-    rollback: {
-      auditlog: {
-        title: 'Rollback audit log',
-        message: <RollbackModalContent />,
-        onConfirm: rollbackAuditLog
-      }
-    },
-    error: {
-      error: {
-        title: 'Error',
-        message: <ErrorContent />,
-        onConfirm: closeConfirmation
-      }
-    },
-    conflict: {
-      configuration: {
-        title: 'Conflict detected',
-        message: <ConflictsPreviewContainer />,
-        onConfirm: closeConfirmation
-      }
-    }
-  }
-  */

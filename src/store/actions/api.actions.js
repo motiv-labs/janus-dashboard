@@ -22,8 +22,6 @@ import {
 } from '../constants'
 import {
   fetchEndpoints,
-  // showToaster,
-
   ___closeConfirmation
 } from './index'
 import history from '../configuration/history'

@@ -1,14 +1,10 @@
 /* eslint-env jest */
 import apiReducer, { initialState } from '../../../store/reducers/api.reducer'
 import {
-  // DELETE_ENDPOINT_START,
-  // DELETE_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_START,
   FETCH_ENDPOINT_SUCCESS,
   FETCH_ENDPOINT_SCHEMA_START,
   FETCH_ENDPOINT_SCHEMA_SUCCESS,
-  // SAVE_ENDPOINT_START,
-  // SAVE_ENDPOINT_SUCCESS,
   SET_DEFAULT_ENDPOINT,
   EXCLUDE_PLUGIN,
   SELECT_PLUGIN,
@@ -42,19 +38,6 @@ describe('apiReducer', () => {
     })
   })
 
-  // describe('DELETE_ENDPOINT_START', () => {
-  //   const initialState = { isFetching: false }
-  //   const result = apiReducer(initialState, { type: DELETE_ENDPOINT_START })
-
-  //   it('sets the isFetching state to true when delete endpoint started', () => {
-  //     expect(result.isFetching).toEqual(true)
-  //   })
-
-  //   it('should handle only change exact amount of reducer properties', () => {
-  //     expect(touchedReducerProps(result)).toBe(1)
-  //   })
-  // })
-
   describe('FETCH_ENDPOINT_START', () => {
     const initialState = { isFetching: false }
     const result = apiReducer(initialState, { type: FETCH_ENDPOINT_START })
@@ -80,45 +63,6 @@ describe('apiReducer', () => {
       expect(touchedReducerProps(result)).toBe(1)
     })
   })
-
-  // describe('SAVE_ENDPOINT_START', () => {
-  //   const initialState = { isFetching: false }
-  //   const result = apiReducer(initialState, { type: SAVE_ENDPOINT_START })
-
-  //   it('sets the isFetching state to true when save endpoint started', () => {
-  //     expect(result.isFetching).toEqual(true)
-  //   })
-
-  //   it('should handle only change exact amount of reducer properties', () => {
-  //     expect(touchedReducerProps(result)).toBe(1)
-  //   })
-  // })
-
-  // describe('DELETE_ENDPOINT_SUCCESS', () => {
-  //   const initialState = { isFetching: true }
-  //   const result = apiReducer(initialState, { type: DELETE_ENDPOINT_SUCCESS })
-
-  //   it('sets the isFetching state to false when delete endpoint succeeded', () => {
-  //     expect(result.isFetching).toEqual(false)
-  //   })
-
-  //   it('should handle only change exact amount of reducer properties', () => {
-  //     expect(touchedReducerProps(result)).toBe(1)
-  //   })
-  // })
-
-  // describe('SAVE_ENDPOINT_SUCCESS', () => {
-  //   const initialState = { isFetching: true }
-  //   const result = apiReducer(initialState, { type: SAVE_ENDPOINT_SUCCESS })
-
-  //   it('sets the isFetching state to false when save endpoint succeeded', () => {
-  //     expect(result.isFetching).toEqual(false)
-  //   })
-
-  //   it('should handle only change exact amount of reducer properties', () => {
-  //     expect(touchedReducerProps(result)).toBe(1)
-  //   })
-  // })
 
   describe('FETCH_ENDPOINT_SCHEMA_SUCCESS', () => {
     const payload = 'expected-value'

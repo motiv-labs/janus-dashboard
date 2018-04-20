@@ -20,7 +20,6 @@ const propTypes = {
   refreshEndpoints: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
-
   confirmAction: PropTypes.func.isRequired
 }
 
@@ -31,7 +30,7 @@ class ApiItem extends PureComponent {
     this.props.fetchEndpoint(this.props.location.pathname.substr(1))
   }
 
-  fillSelected = (arr) => {
+  fillSelected = arr => {
     const selectedPlugins = arr.map(item => item.name)
 
     this.props.fillSelected(selectedPlugins)
