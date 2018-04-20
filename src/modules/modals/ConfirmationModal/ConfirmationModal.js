@@ -8,11 +8,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import {
-  ___saveEndpoint,
-  ___deleteEndpoint,
-  ___saveOAuthServer,
-  ___deleteOAuthServer,
-  ___closeConfirmation
+  saveEndpoint,
+  deleteEndpoint,
+  saveOAuthServer,
+  deleteOAuthServer,
+  closeConfirmation
 } from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
@@ -34,14 +34,14 @@ const ActionsMap = {
     'endpoint': {
       title: 'Save endpoint',
       message: 'Are you sure you want to save endpoint?',
-      onConfirm: ___saveEndpoint({
+      onConfirm: saveEndpoint({
         isEditing: false
       })
     },
     'OAuthServer': {
       title: 'Save OAuthServer',
       message: 'Are you sure you want to save OAuth server?',
-      onConfirm: ___saveOAuthServer({
+      onConfirm: saveOAuthServer({
         isEditing: false
       })
     }
@@ -50,14 +50,14 @@ const ActionsMap = {
     'endpoint': {
       title: 'Update endpoint',
       message: 'Are you sure you want to update endpoint?',
-      onConfirm: ___saveEndpoint({
+      onConfirm: saveEndpoint({
         isEditing: true
       })
     },
     'OAuthServer': {
       title: 'Update OAuthServer title',
       message: 'Are you sure you want to update OAuth server?',
-      onConfirm: ___saveOAuthServer({
+      onConfirm: saveOAuthServer({
         isEditing: true
       })
     }
@@ -66,12 +66,12 @@ const ActionsMap = {
     'endpoint': {
       title: 'Delete endpoint',
       message: 'Are you sure you want to delete the endpoint?',
-      onConfirm: ___deleteEndpoint
+      onConfirm: deleteEndpoint
     },
     'OAuthServer': {
       title: 'Delete endpoint title',
       message: 'Are you sure you want to delete the OAuth server?',
-      onConfirm: ___deleteOAuthServer
+      onConfirm: deleteOAuthServer
     }
   }
 }
@@ -141,7 +141,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     dispatch,
-    closeModal: bindActionCreators(___closeConfirmation, dispatch)
+    closeModal: bindActionCreators(closeConfirmation, dispatch)
   }
 }
 

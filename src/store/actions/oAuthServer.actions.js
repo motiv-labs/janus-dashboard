@@ -6,24 +6,19 @@ import {
   FETCH_OAUTH_SERVER_SUCCESS,
   FETCH_OAUTH_SERVER_SCHEMA_START,
   FETCH_OAUTH_SERVER_SCHEMA_SUCCESS,
-  SAVE_OAUTH_SERVER_START,
-  SAVE_OAUTH_SERVER_SUCCESS,
   UPDATE_OAUTH_SERVER_START,
   UPDATE_OAUTH_SERVER_SUCCESS,
+  CLEAR_OAUTH_SERVER,
+  SAVE_OAUTH_SERVER_START,
+  SAVE_OAUTH_SERVER_SUCCESS,
+  SAVE_OAUTH_SERVER_FAILURE,
   DELETE_OAUTH_SERVER_START,
   DELETE_OAUTH_SERVER_SUCCESS,
-  CLEAR_OAUTH_SERVER,
-
-  ___SAVE_OAUTH_SERVER_START,
-  ___SAVE_OAUTH_SERVER_SUCCESS,
-  ___SAVE_OAUTH_SERVER_FAILURE,
-  ___DELETE_OAUTH_SERVER_START,
-  ___DELETE_OAUTH_SERVER_SUCCESS,
-  ___DELETE_OAUTH_SERVER_FAILURE
+  DELETE_OAUTH_SERVER_FAILURE
 } from '../constants'
 import {
   fetchOAuthServers,
-  ___closeConfirmation
+  closeConfirmation
 } from './index'
 import history from '../configuration/history'
 import oAuthServerSchema from '../../configurations/oAuthServerSchema.config'
@@ -47,15 +42,6 @@ export const getOAuthSchemaSuccess = api => ({
   payload: api
 })
 
-export const saveOAuthServerRequest = api => ({
-  type: SAVE_OAUTH_SERVER_START,
-  payload: api
-})
-
-export const saveOAuthServerSuccess = () => ({
-  type: SAVE_OAUTH_SERVER_SUCCESS
-})
-
 export const updateOAuthServerRequest = api => ({
   type: UPDATE_OAUTH_SERVER_START,
   payload: api
@@ -63,14 +49,6 @@ export const updateOAuthServerRequest = api => ({
 
 export const updateOAuthServerSuccess = () => ({
   type: UPDATE_OAUTH_SERVER_SUCCESS
-})
-
-export const deleteOAuthServerRequest = () => ({
-  type: DELETE_OAUTH_SERVER_START
-})
-
-export const deleteOAuthServerSuccess = () => ({
-  type: DELETE_OAUTH_SERVER_SUCCESS
 })
 
 export const redirectToServersList = () => history.push('/oauth/servers')
@@ -105,22 +83,22 @@ export const fetchOAuthServerSchema = () => async dispatch => {
   }
 }
 
-export const ___saveOAuthServerRequest = () => ({
-  type: ___SAVE_OAUTH_SERVER_START
+export const saveOAuthServerRequest = () => ({
+  type: SAVE_OAUTH_SERVER_START
 })
 
-export const ___saveOAuthServerSuccess = data => ({
-  type: ___SAVE_OAUTH_SERVER_SUCCESS,
+export const saveOAuthServerSuccess = data => ({
+  type: SAVE_OAUTH_SERVER_SUCCESS,
   payload: data
 })
 
-export const ___saveOAuthServerFailure = () => ({
-  type: ___SAVE_OAUTH_SERVER_FAILURE
+export const saveOAuthServerFailure = () => ({
+  type: SAVE_OAUTH_SERVER_FAILURE
 })
 
-export const ___saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf) => {
-  dispatch(___saveOAuthServerRequest())
-  dispatch(___closeConfirmation())
+export const saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf) => {
+  dispatch(saveOAuthServerRequest())
+  dispatch(closeConfirmation())
 
   const composeRateLimit = server => {
     const { value, unit } = server.rate_limit.limit
@@ -133,10 +111,10 @@ export const ___saveOAuthServer = ({ isEditing }) => server => async (dispatch, 
   try {
     await saveEntity(isEditing)
 
-    dispatch(___saveOAuthServerSuccess(server))
+    dispatch(saveOAuthServerSuccess(server))
     redirectToServersList()
   } catch (error) {
-    dispatch(___closeConfirmation())
+    dispatch(closeConfirmation())
     errorHandler(dispatch)(error)
   }
 
@@ -147,31 +125,31 @@ export const ___saveOAuthServer = ({ isEditing }) => server => async (dispatch, 
   }
 }
 
-export const ___deleteOAuthServerRequest = () => ({
-  type: ___DELETE_OAUTH_SERVER_START
+export const deleteOAuthServerRequest = () => ({
+  type: DELETE_OAUTH_SERVER_START
 })
 
-export const ___deleteOAuthServerSuccess = serverName => ({
-  type: ___DELETE_OAUTH_SERVER_SUCCESS,
+export const deleteOAuthServerSuccess = serverName => ({
+  type: DELETE_OAUTH_SERVER_SUCCESS,
   payload: serverName
 })
 
-export const ___deleteOAuthServerFailure = () => ({
-  type: ___DELETE_OAUTH_SERVER_FAILURE
+export const deleteOAuthServerFailure = () => ({
+  type: DELETE_OAUTH_SERVER_FAILURE
 })
 
-export const ___deleteOAuthServer = serverName => async dispatch => {
-  dispatch(___deleteOAuthServerRequest())
-  dispatch(___closeConfirmation())
+export const deleteOAuthServer = serverName => async dispatch => {
+  dispatch(deleteOAuthServerRequest())
+  dispatch(closeConfirmation())
 
   try {
     await client.delete(`oauth/servers/${serverName}`)
 
-    dispatch(___deleteOAuthServerSuccess(serverName))
+    dispatch(deleteOAuthServerSuccess(serverName))
     dispatch(fetchOAuthServers())
     redirectToServersList()
   } catch (error) {
-    dispatch(___deleteOAuthServerFailure())
+    dispatch(deleteOAuthServerFailure())
     errorHandler(dispatch)(error)
   }
 }

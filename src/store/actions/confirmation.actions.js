@@ -1,8 +1,8 @@
 import {
-  ___CONFIRMATION,
-  ___CLOSE_CONFIRMATION,
-  ___CLOSE_TOASTER,
-  ___SHOW_ERROR
+  CONFIRMATION,
+  CLOSE_CONFIRMATION,
+  CLOSE_TOASTER,
+  SHOW_ERROR
 } from '../constants'
 
 export const confirmAction = (
@@ -10,7 +10,7 @@ export const confirmAction = (
   objectType/*: String */,
   objectEntity/*: Object */
 ) => ({
-  type: ___CONFIRMATION,
+  type: CONFIRMATION,
   payload: {
     actionType,
     objectEntity,
@@ -18,16 +18,16 @@ export const confirmAction = (
   }
 })
 
-export const ___closeConfirmation = () => ({
-  type: ___CLOSE_CONFIRMATION
+export const closeConfirmation = () => ({
+  type: CLOSE_CONFIRMATION
 })
 
 export const closeToaster = () => ({
-  type: ___CLOSE_TOASTER
+  type: CLOSE_TOASTER
 })
 
 export const showError = error => ({
-  type: ___SHOW_ERROR,
+  type: SHOW_ERROR,
   payload: {
     error
   }

@@ -1,12 +1,12 @@
 import {
-  ___CONFIRMATION,
-  ___SAVE_ENDPOINT_SUCCESS,
-  ___SAVE_OAUTH_SERVER_SUCCESS,
-  ___DELETE_ENDPOINT_SUCCESS,
-  ___DELETE_OAUTH_SERVER_SUCCESS,
-  ___CLOSE_CONFIRMATION,
-  ___CLOSE_TOASTER,
-  ___SHOW_ERROR
+  CONFIRMATION,
+  SAVE_ENDPOINT_SUCCESS,
+  SAVE_OAUTH_SERVER_SUCCESS,
+  DELETE_ENDPOINT_SUCCESS,
+  DELETE_OAUTH_SERVER_SUCCESS,
+  CLOSE_CONFIRMATION,
+  CLOSE_TOASTER,
+  SHOW_ERROR
 } from '../constants'
 
 const toasterInitialState = {}
@@ -22,7 +22,7 @@ export const initialState = {
 
 export default function reducer (state = initialState, action) {
   switch (action.type) {
-    case ___CONFIRMATION: {
+    case CONFIRMATION: {
       return {
         ...state,
         actionType: action.payload.actionType,
@@ -31,18 +31,18 @@ export default function reducer (state = initialState, action) {
         isOpen: true
       }
     }
-    case ___CLOSE_CONFIRMATION: {
+    case CLOSE_CONFIRMATION: {
       return {
         ...initialState
       }
     }
-    case ___CLOSE_TOASTER: {
+    case CLOSE_TOASTER: {
       return {
         ...state,
         toaster: toasterInitialState
       }
     }
-    case ___SAVE_ENDPOINT_SUCCESS: {
+    case SAVE_ENDPOINT_SUCCESS: {
       return {
         toaster: {
           actionType: 'save',
@@ -51,7 +51,7 @@ export default function reducer (state = initialState, action) {
         }
       }
     }
-    case ___DELETE_ENDPOINT_SUCCESS: {
+    case DELETE_ENDPOINT_SUCCESS: {
       return {
         toaster: {
           actionType: 'delete',
@@ -60,7 +60,7 @@ export default function reducer (state = initialState, action) {
         }
       }
     }
-    case ___SAVE_OAUTH_SERVER_SUCCESS: {
+    case SAVE_OAUTH_SERVER_SUCCESS: {
       return {
         toaster: {
           actionType: 'save',
@@ -69,7 +69,7 @@ export default function reducer (state = initialState, action) {
         }
       }
     }
-    case ___DELETE_OAUTH_SERVER_SUCCESS: {
+    case DELETE_OAUTH_SERVER_SUCCESS: {
       return {
         toaster: {
           actionType: 'delete',
@@ -78,7 +78,7 @@ export default function reducer (state = initialState, action) {
         }
       }
     }
-    case ___SHOW_ERROR: {
+    case SHOW_ERROR: {
       return {
         ...state,
         error: action.payload.error

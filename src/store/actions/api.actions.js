@@ -12,17 +12,16 @@ import {
   EXCLUDE_PLUGIN,
   SELECT_PLUGIN,
   RESET_ENDPOINT,
-
-  ___SAVE_ENDPOINT_START,
-  ___SAVE_ENDPOINT_SUCCESS,
-  ___SAVE_ENDPOINT_FAILURE,
-  ___DELETE_ENDPOINT_START,
-  ___DELETE_ENDPOINT_SUCCESS,
-  ___DELETE_ENDPOINT_FAILURE
+  SAVE_ENDPOINT_START,
+  SAVE_ENDPOINT_SUCCESS,
+  SAVE_ENDPOINT_FAILURE,
+  DELETE_ENDPOINT_START,
+  DELETE_ENDPOINT_SUCCESS,
+  DELETE_ENDPOINT_FAILURE
 } from '../constants'
 import {
   fetchEndpoints,
-  ___closeConfirmation
+  closeConfirmation
 } from './index'
 import history from '../configuration/history'
 import errorHandler from '../../helpers/errorHandler'
@@ -304,22 +303,22 @@ export const createUpdatedEndpoint = api => {
   return updatedEndpoint
 }
 
-export const ___saveEndpointRequest = () => ({
-  type: ___SAVE_ENDPOINT_START
+export const saveEndpointRequest = () => ({
+  type: SAVE_ENDPOINT_START
 })
 
-export const ___saveEndpointSuccess = data => ({
-  type: ___SAVE_ENDPOINT_SUCCESS,
+export const saveEndpointSuccess = data => ({
+  type: SAVE_ENDPOINT_SUCCESS,
   payload: data
 })
 
-export const ___saveEndpointFailure = () => ({
-  type: ___SAVE_ENDPOINT_FAILURE
+export const saveEndpointFailure = () => ({
+  type: SAVE_ENDPOINT_FAILURE
 })
 
-export const ___saveEndpoint = ({ isEditing }) => api => async (dispatch, getState) => {
-  dispatch(___saveEndpointRequest())
-  dispatch(___closeConfirmation())
+export const saveEndpoint = ({ isEditing }) => api => async (dispatch, getState) => {
+  dispatch(saveEndpointRequest())
+  dispatch(closeConfirmation())
 
   const preparedPlugins/*: Array<Object> */ = preparePlugins(api)
   const apiWithoutDefaultUpstreams/*: Object */ = R.dissocPath(['proxy', 'upstreams', 'options'], R.__)
@@ -332,11 +331,11 @@ export const ___saveEndpoint = ({ isEditing }) => api => async (dispatch, getSta
   try {
     await saveEntity(isEditing)
 
-    dispatch(___saveEndpointSuccess(api))
+    dispatch(saveEndpointSuccess(api))
     history.push('/')
     dispatch(fetchEndpoints())
   } catch (error) {
-    dispatch(___closeConfirmation())
+    dispatch(closeConfirmation())
     errorHandler(dispatch)(error)
   }
 
@@ -347,32 +346,32 @@ export const ___saveEndpoint = ({ isEditing }) => api => async (dispatch, getSta
   }
 }
 
-export const ___deleteEndpointRequest = () => ({
-  type: ___DELETE_ENDPOINT_START
+export const deleteEndpointRequest = () => ({
+  type: DELETE_ENDPOINT_START
 })
 
-export const ___deleteEndpointSuccess = endpointName => console.error('endpointName', endpointName) ||
+export const deleteEndpointSuccess = endpointName => console.error('endpointName', endpointName) ||
  ({
-   type: ___DELETE_ENDPOINT_SUCCESS,
+   type: DELETE_ENDPOINT_SUCCESS,
    payload: endpointName
  })
 
-export const ___deleteEndpointFailure = () => ({
-  type: ___DELETE_ENDPOINT_FAILURE
+export const deleteEndpointFailure = () => ({
+  type: DELETE_ENDPOINT_FAILURE
 })
 
-export const ___deleteEndpoint = apiName => async dispatch => {
-  dispatch(___deleteEndpointRequest())
-  dispatch(___closeConfirmation())
+export const deleteEndpoint = apiName => async dispatch => {
+  dispatch(deleteEndpointRequest())
+  dispatch(closeConfirmation())
 
   try {
     await client.delete(`apis/${apiName}`)
 
-    dispatch(___deleteEndpointSuccess(apiName))
+    dispatch(deleteEndpointSuccess(apiName))
     history.push('/')
     dispatch(fetchEndpoints())
   } catch (error) {
-    dispatch(___deleteEndpointFailure())
+    dispatch(deleteEndpointFailure())
     errorHandler(dispatch)(error)
   }
 }

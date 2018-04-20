@@ -3,8 +3,7 @@
 import apiResponseReducer, { initialState } from '../../../store/reducers/apiResponse.reducer'
 import {
   OPEN_RESPONSE_MODAL,
-  CLOSE_RESPONSE_MODAL,
-  CLOSE_TOASTER
+  CLOSE_RESPONSE_MODAL
 } from '../../../store/constants/apiResponse.constants'
 import touchedReducerProps from '../../../helpers/touchedReducerProperties'
 import getRandomString from '../../../helpers/getRandomString'
@@ -53,28 +52,6 @@ describe('apiResponseReducer', () => {
 
       it('returns the initial state when user closes the modal', () => {
         expect(result).toEqual(initialState)
-      })
-    })
-  })
-
-  describe('Toaster manipulations', () => {
-    const toasterState = {
-      isOpen: false,
-      message: ''
-    }
-
-    describe('CLOSE_TOASTER', () => {
-      const result = apiResponseReducer({}, {
-        type: CLOSE_TOASTER
-      })
-
-      it('return initial state of the toaster', () => {
-        expect(result.toaster.isOpen).toBe(toasterState.isOpen)
-        expect(result.toaster.message).toBe(toasterState.message)
-      })
-
-      it('should handle only change exact amount of reducer properties', () => {
-        expect(touchedReducerProps(result.toaster)).toBe(2)
       })
     })
   })

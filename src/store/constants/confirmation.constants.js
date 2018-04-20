@@ -1,4 +1,4 @@
-export const ___CONFIRMATION = '___CONFIRMATION'
-export const ___CLOSE_CONFIRMATION = '___CLOSE_CONFIRMATION'
-export const ___CLOSE_TOASTER = '___CLOSE_TOASTER'
-export const ___SHOW_ERROR = '___SHOW_ERROR'
+export const CONFIRMATION = 'CONFIRMATION'
+export const CLOSE_CONFIRMATION = 'CLOSE_CONFIRMATION'
+export const CLOSE_TOASTER = 'CLOSE_TOASTER'
+export const SHOW_ERROR = 'SHOW_ERROR'
