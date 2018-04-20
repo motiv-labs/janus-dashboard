@@ -89,15 +89,7 @@ const ConfirmationModal = ({
   // eslint-disable-next-line no-mixed-operators
   const getValue = target => isOpen && ActionsMap[actionType][objectType][target] || ''
   const onConfirm = getValue('onConfirm')
-  const handleCloseModal = () => {
-    // if (actionType === 'conflict') {
-    //   const metadata = configurationMetadata.next.metadata
-
-    //   // dispatch(discardConfigurationToExactState(metadata, backup))
-    // }
-
-    closeModal()
-  }
+  const handleCloseModal = () => closeModal()
 
   return (
     <Modal
