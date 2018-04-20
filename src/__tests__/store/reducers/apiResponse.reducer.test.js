@@ -4,26 +4,12 @@ import apiResponseReducer, { initialState } from '../../../store/reducers/apiRes
 import {
   OPEN_RESPONSE_MODAL,
   CLOSE_RESPONSE_MODAL,
-  CLEAR_CONFIRMATION_MODAL,
   CLOSE_TOASTER
 } from '../../../store/constants/apiResponse.constants'
 import touchedReducerProps from '../../../helpers/touchedReducerProperties'
-// import setToasterMessage from '../../../helpers/setToasterMessage'
 import getRandomString from '../../../helpers/getRandomString'
-// import getRandomBoolean from '../../../helpers/getRandomBoolean'
 
 describe('apiResponseReducer', () => {
-  const confirmationModalState = {
-    actionType: '',
-    api: {},
-    apiName: null,
-    message: '',
-    needConfirm: false,
-    isRedirect: null,
-    status: null,
-    title: ''
-  }
-
   describe('Default', () => {
     it('returns the initial state by default', () => {
       const result = apiResponseReducer(initialState, {})
@@ -71,111 +57,11 @@ describe('apiResponseReducer', () => {
     })
   })
 
-  describe('Confirmation Modal manipulations', () => {
-    // const api = getRandomString()
-    // const apiName = getRandomString()
-    // const message = getRandomString()
-    // const isRedirect = getRandomBoolean()
-    // const status = getRandomString()
-    // const title = getRandomString()
-    // const payload = {
-    //   api,
-    //   apiName,
-    //   message,
-    //   isRedirect,
-    //   status,
-    //   title
-    // }
-    // const modalState = {
-    //   confirmationModal: payload
-    // }
-
-    // describe('OPEN_CONFIRMATION_MODAL', () => {
-    //   const result = apiResponseReducer({}, {
-    //     type: OPEN_CONFIRMATION_MODAL,
-    //     payload
-    //   })
-
-    //   it('returns an open modal with necesserity of confirmation deleting/saving of endpoint', () => {
-    //     expect(result.confirmationModal.api).toEqual(api)
-    //     expect(result.confirmationModal.apiName).toBe(apiName)
-    //     expect(result.confirmationModal.message).toBe(message)
-    //     expect(result.confirmationModal.isRedirect).toBe(isRedirect)
-    //     expect(result.confirmationModal.status).toBe(status)
-    //     expect(result.confirmationModal.title).toBe(title)
-    //     expect(result.confirmationModal.needConfirm).toBe(true)
-    //   })
-
-    //   it('should handle only change exact amount of reducer properties', () => {
-    //     expect(touchedReducerProps(result)).toBe(1)
-    //   })
-    // })
-
-    // describe('CLOSE_CONFIRMATION_MODAL', () => {
-    //   const result = apiResponseReducer(modalState, {
-    //     type: CLOSE_CONFIRMATION_MODAL
-    //   })
-
-    //   it('returns the whole state of confirmation modal and changes only `needConfirm` flag', () => {
-    //     expect(result.confirmationModal.apiName).toBe(modalState.confirmationModal.apiName)
-    //     expect(result.confirmationModal.message).toBe(modalState.confirmationModal.message)
-    //     expect(result.confirmationModal.status).toBe(modalState.confirmationModal.status)
-    //     expect(result.confirmationModal.title).toBe(modalState.confirmationModal.title)
-    //     expect(result.confirmationModal.needConfirm).toBe(confirmationModalState.needConfirm)
-    //   })
-
-    //   it('should handle only change exact amount of reducer properties', () => {
-    //     expect(touchedReducerProps(result)).toBe(1)
-    //   })
-
-    //   it('should handle only change exact amount of nested object of reducer property', () => {
-    //     expect(touchedReducerProps(result.confirmationModal))
-    //       .toBe(touchedReducerProps(modalState.confirmationModal) + 1)
-    //   })
-    // })
-
-    describe('CLEAR_CONFIRMATION_MODAL', () => {
-      const result = apiResponseReducer({}, {
-        type: CLEAR_CONFIRMATION_MODAL
-      })
-
-      it('return the initial state of confirmation modal', () => {
-        expect(result.confirmationModal).toEqual(confirmationModalState)
-      })
-
-      it('should handle only change exact amount of reducer properties', () => {
-        expect(touchedReducerProps(result)).toBe(1)
-      })
-    })
-  })
-
   describe('Toaster manipulations', () => {
     const toasterState = {
       isOpen: false,
       message: ''
     }
-    // const modalState = {
-    //   confirmationModal: confirmationModalState
-    // }
-
-    // describe('OPEN_TOASTER', () => {
-    //   const result = apiResponseReducer(modalState, {
-    //     type: OPEN_TOASTER
-    //   })
-
-    //   it('returns opened toaster with message computed out of `setToasterMessage` function', () => {
-    //     expect(result.toaster.isOpen).toBe(true)
-    //     expect(result.toaster.message).toEqual(setToasterMessage(modalState.confirmationModal))
-    //   })
-
-    //   it('should handle only change exact amount of reducer properties: state and toaster', () => {
-    //     expect(touchedReducerProps(result)).toBe(2)
-    //   })
-
-    //   it('should handle setting only exact amount of properties in toaster', () => {
-    //     expect(touchedReducerProps(result.toaster)).toBe(2)
-    //   })
-    // })
 
     describe('CLOSE_TOASTER', () => {
       const result = apiResponseReducer({}, {

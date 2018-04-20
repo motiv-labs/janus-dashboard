@@ -32,15 +32,15 @@ const defaultProps = {
 const ActionsMap = {
   save: {
     'endpoint': {
-      title: 'Save Endpoint title',
-      message: 'Habra-habra',
+      title: 'Save endpoint',
+      message: 'Are you sure you want to save endpoint?',
       onConfirm: ___saveEndpoint({
         isEditing: false
       })
     },
     'OAuthServer': {
-      title: 'Save OAuthServer title',
-      message: 'Habra-habra',
+      title: 'Save OAuthServer',
+      message: 'Are you sure you want to save OAuth server?',
       onConfirm: ___saveOAuthServer({
         isEditing: false
       })
@@ -48,15 +48,15 @@ const ActionsMap = {
   },
   update: {
     'endpoint': {
-      title: 'Update Endpoint title',
-      message: 'Habra-habra',
+      title: 'Update endpoint',
+      message: 'Are you sure you want to update endpoint?',
       onConfirm: ___saveEndpoint({
         isEditing: true
       })
     },
     'OAuthServer': {
       title: 'Update OAuthServer title',
-      message: 'Habra-habra',
+      message: 'Are you sure you want to update OAuth server?',
       onConfirm: ___saveOAuthServer({
         isEditing: true
       })
@@ -64,13 +64,13 @@ const ActionsMap = {
   },
   delete: {
     'endpoint': {
-      title: 'Delete endpoint title',
-      message: 'Habra-habra',
+      title: 'Delete endpoint',
+      message: 'Are you sure you want to delete the endpoint?',
       onConfirm: ___deleteEndpoint
     },
     'OAuthServer': {
       title: 'Delete endpoint title',
-      message: 'Habra-habra',
+      message: 'Are you sure you want to delete the OAuth server?',
       onConfirm: ___deleteOAuthServer
     }
   }
@@ -89,15 +89,7 @@ const ConfirmationModal = ({
   // eslint-disable-next-line no-mixed-operators
   const getValue = target => isOpen && ActionsMap[actionType][objectType][target] || ''
   const onConfirm = getValue('onConfirm')
-  const handleCloseModal = () => {
-    // if (actionType === 'conflict') {
-    //   const metadata = configurationMetadata.next.metadata
-
-    //   // dispatch(discardConfigurationToExactState(metadata, backup))
-    // }
-
-    closeModal()
-  }
+  const handleCloseModal = () => closeModal()
 
   return (
     <Modal

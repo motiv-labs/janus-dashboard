@@ -1,19 +1,7 @@
 import {
   OPEN_RESPONSE_MODAL,
-  CLOSE_RESPONSE_MODAL,
-  CLEAR_CONFIRMATION_MODAL
+  CLOSE_RESPONSE_MODAL
 } from '../constants'
-
-export const confirmationModalState = {
-  actionType: '',
-  api: {},
-  apiName: null,
-  message: '',
-  needConfirm: false,
-  isRedirect: null,
-  status: null,
-  title: ''
-}
 
 export const toasterState = {
   isOpen: false,
@@ -27,7 +15,6 @@ export const initialState = {
   statusText: '',
   title: '',
   message: '',
-  confirmationModal: confirmationModalState,
   toaster: toasterState
 }
 
@@ -43,12 +30,6 @@ export default function reducer (state = initialState, action) {
         status,
         statusText,
         isOpen: true
-      }
-    }
-    case CLEAR_CONFIRMATION_MODAL: {
-      return {
-        ...state,
-        confirmationModal: confirmationModalState
       }
     }
     case CLOSE_RESPONSE_MODAL: {
