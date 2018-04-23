@@ -6,8 +6,8 @@ services:
       build: .
       ports:
         - "8082:8082"
-      environment: 
-        REACT_APP_JANUS_URI: http://localhost:8081 
+      environment:
+        REACT_APP_JANUS_URI: http://localhost:8081
         REACT_APP_CLIENT_ID: yourClientID
         REACT_APP_SCOPE: read:org
         REACT_APP_GITHUB_TOKEN_URL:  http://localhost:8080/auth/github/token
