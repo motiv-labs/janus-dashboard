@@ -26,8 +26,48 @@ const propTypes = {
 const defaultProps = {
   isValidate: null
 }
+const renderField = ({ input }) => (
+  <div>
+    <input type='text' {...input} />
+  </div>
+)
+const validateInline = isValidate => value => {
+  // console.log('isValidate', isValidate)
+  console.warn(checkOnPattern(isValidate)(value))
+  console.warn('VALUE', value)
 
+  return ''
+}
+
+const renderList = ({ fields, suffix, isValidate }) => console.warn('fields', isValidate) || (
+  <div>
+    { fields.map((member, index) => (
+      <Field
+        // name={ field + ".foo" }
+        name={suffix ? `${member}.${suffix}` : `${member}`}
+        component={renderField}
+        isValidate={isValidate}
+        // handleDelete={() => fields.remove( index )}
+        validate={validateInline(isValidate)}
+        // validate={isValidate && checkOnPattern(isValidate)}
+      />
+    ))}
+  </div>
+)
 class MultiRowField extends PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+  componentDidMount () {
+    this.setState({
+      jo: renderList
+    })
+  }
+  componentWillUnmount () {
+    console.error('===========')
+  }
     renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title, warningMessage }) => (
       <div>
         <div className={row()}>
@@ -79,15 +119,17 @@ class MultiRowField extends PureComponent {
     )
 
     render () {
-      const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props
+      const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props // eslint-disable-line
+      console.error('name', this.props)
 
+      if (!this.state.jo) return null
       return (
         <Row col>
           <FieldArray
-            name={`${name}`}
-            component={this.renderMembers}
-            hint={hint}
-            placeholder={placeholder}
+            // name={`${name}`}
+            name='proxy.upstreams.targets'
+            // component={this.renderMembers}
+            component={this.state.jo}
             suffix={suffix}
             title={title}
             isValidate={isValidate}
