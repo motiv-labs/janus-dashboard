@@ -1,18 +1,19 @@
-FROM node:8-alpine
+FROM node:9.6-alpine as builder
+WORKDIR /app
 
-# Prepare app directory
-RUN mkdir -p /usr/src/app
-ADD . /usr/src/app
+COPY package.json package-lock.json ./
+RUN npm install --only=production
 
-# Install dependencies
-WORKDIR /usr/src/app
+COPY public/ ./public/
+COPY src/ ./src/
+RUN npm run build
 
-RUN npm set progress=false && \
-    npm install && \
-    npm run build --production --quiet
+# -----
 
-# Expose the app port
-EXPOSE 8082
-
-# Start the app
-CMD npm start
+FROM nginx:1.12-alpine
+MAINTAINER HelloFresh
+COPY --from=builder /app/src/default.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/build/ /usr/share/nginx/html/
+COPY --from=builder /app/src/config.js.tmpl /tmp/
+EXPOSE 80
+CMD envsubst < /tmp/config.js.tmpl > /usr/share/nginx/html/config.js && nginx -g 'daemon off;'

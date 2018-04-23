@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
+    "babel-eslint": "^8.2.3",
+    "bem-cn": "^2.1.3",
     "history": "^4.6.3",
     "js-beautify": "^1.7.5",
     "jsonwebtoken": "^8.0.1",
@@ -29,8 +31,6 @@
   },
   "devDependencies": {
     "assert": "^1.4.1",
-    "babel-eslint": "^8.2.2",
-    "bem-cn": "^2.1.3",
     "codeceptjs": "1.1.1",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
@@ -51,7 +51,7 @@
     "lint": "./node_modules/.bin/standard && stylelint '**/*.scss'",
     "lint-fix": "./node_modules/.bin/standard --fix && stylelint '**/*.scss' --fix",
     "start-js": "react-scripts start",
-    "build": "npm run build-css && npm run lint-fix && react-scripts build",
+    "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "test:acceptance": "codeceptjs run",
     "test:acceptance-dev": "codeceptjs run --steps",
