@@ -12,6 +12,7 @@ import RateLimitPlugin from './RateLimit/RateLimitPlugin'
 import AuthPlugin from './oAuth/AuthPlugin'
 import CompressionPlugin from './Compression/CompressionPlugin'
 import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin'
+import RetryPlugin from './RetryPlugin/RetryPlugin'
 
 const propTypes = {
   className: PropTypes.string,
@@ -116,7 +117,9 @@ class RenderPlugin extends Component {
                   )
                 case 'retry':
                   return (
-                    <p>Retry plugin</p>
+                    <RetryPlugin
+                      {...opts}
+                    />
                   )
                 default:
                   return null
