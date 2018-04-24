@@ -27,6 +27,22 @@ const propTypes = {
   previewPage: PropTypes.bool
 }
 
+const PluginsComponents = {
+  cors: CorsPlugin,
+  rate_limit: RateLimitPlugin,
+  oauth2: AuthPlugin,
+  compression: CompressionPlugin,
+  request_transformer: RequestTransformerPlugin,
+  retry: RetryPlugin,
+  cb: CircuitBreakerPlugin
+}
+
+const PluginComponent = ({ name, options }) => {
+  const Component = PluginsComponents[name]
+
+  return Component ? <Component {...options} /> : null
+}
+
 class RenderPlugin extends Component {
     state = {
       visiblePlugins: false
@@ -85,52 +101,7 @@ class RenderPlugin extends Component {
                 previewPage
               }
 
-              switch (pluginName) {
-                case 'cors':
-                  return (
-                    <CorsPlugin
-                      {...opts}
-                    />
-                  )
-                case 'rate_limit':
-                  return (
-                    <RateLimitPlugin
-                      {...opts}
-                    />
-                  )
-                case 'oauth2':
-                  return (
-                    <AuthPlugin
-                      {...opts}
-                    />
-                  )
-                case 'compression':
-                  return (
-                    <CompressionPlugin
-                      {...opts}
-                    />
-                  )
-                case 'request_transformer':
-                  return (
-                    <RequestTransformerPlugin
-                      {...opts}
-                    />
-                  )
-                case 'retry':
-                  return (
-                    <RetryPlugin
-                      {...opts}
-                    />
-                  )
-                case 'cb':
-                  return (
-                    <CircuitBreakerPlugin
-                      {...opts}
-                    />
-                  )
-                default:
-                  return null
-              }
+              return <PluginComponent key={pluginName} name={pluginName} options={opts} />
             })
           }
 
