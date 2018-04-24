@@ -285,7 +285,7 @@ class OAuthEndpoint extends PureComponent {
               </div>
             </div>
           </div>
-          <div className={row({fullwidth: true}).mix('j-api-form__row')}>
+          <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
             <div className={row('item')()}>
               <div className={col()}>
                 <Label>Hosts</Label>

@@ -32,7 +32,7 @@ class JWTStrategyOptions extends Component {
                         fields.map((member, index) => (
                           <Row className='double-fields' key={index} col>
                             <div className={row()}>
-                              <div className={row('item', {pair: true})}>
+                              <div className={row('item', {pair: true})()}>
                                 <Field
                                   name={`${member}.alg`}
                                   type='text'
@@ -40,7 +40,7 @@ class JWTStrategyOptions extends Component {
                                   placeholder='Alg'
                                 />
                               </div>
-                              <div className={row('item', {pair: true})}>
+                              <div className={row('item', {pair: true})()}>
                                 <Field
                                   name={`${member}.key`}
                                   type='text'
