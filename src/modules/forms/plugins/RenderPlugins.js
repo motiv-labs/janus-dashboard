@@ -114,6 +114,10 @@ class RenderPlugin extends Component {
                       {...opts}
                     />
                   )
+                case 'retry':
+                  return (
+                    <p>Retry plugin</p>
+                  )
                 default:
                   return null
               }

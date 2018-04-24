@@ -111,6 +111,11 @@ const schema = {
           querystring: []
         }
       }
+    },
+    {
+      name: 'retry',
+      label: 'Retry',
+      enabled: false
     }
   ]
 }
