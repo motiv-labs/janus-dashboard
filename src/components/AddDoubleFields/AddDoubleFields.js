@@ -27,7 +27,7 @@ const defaultProps = {
   isValidate: null
 }
 
-const passParse = config => config.type === 'number' ? parse : undefined
+const passParse = config => config.type === 'number' && parse
 
 const renderMembers = ({ fields, isValidate, config, title, warningMessage, disabled }) => {
   return (
