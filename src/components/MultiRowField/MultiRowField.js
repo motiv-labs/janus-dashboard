@@ -27,75 +27,89 @@ const defaultProps = {
   isValidate: null
 }
 
-class MultiRowField extends PureComponent {
-    renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title, warningMessage }) => (
-      <div>
+const validateInline = isValidate => value => checkOnPattern(isValidate)(value)
+
+const renderMembers = ({ fields, suffix, isValidate, hint, placeholder, previewPage, title, warningMessage, disabled }) => (
+  <div>
+    <div className={row()}>
+      <Label>{ title } { placeholder }</Label>
+      {
+        !disabled &&
+        <Control
+          onClick={() => fields.push()}
+          icon='add'
+        />
+      }
+    </div>
+    {
+      hint &&
+      <Hint title>{ hint }</Hint>
+    }
+    { fields.map((member, index) => (
+      <Row className='double-fields' key={index} col>
         <div className={row()}>
-          <Label>{ title } { placeholder }</Label>
-          {
-            !this.props.disabled &&
-            <Control
-              onClick={() => fields.push()}
-              icon='add'
+          <div className={row('item')()}>
+            <Field
+              name={suffix ? `${member}.${suffix}` : `${member}`}
+              type='text'
+              component={Input}
+              placeholder={placeholder || ''}
+              isValidate={isValidate}
+              validate={validateInline(isValidate)}
+              disabled={disabled}
             />
+            {
+              warningMessage &&
+              <span className='j-input__warning'>{warningMessage}</span>
+            }
+          </div>
+          {
+            !disabled &&
+            <div className={row('control')()}>
+              <Control
+                onClick={() => fields.remove(index)}
+                icon='remove'
+              />
+            </div>
           }
         </div>
-        {
-          hint &&
-          <Hint title>{ hint }</Hint>
-        }
-        {
-          fields.map((member, index) =>
-            <Row className='double-fields' key={index} col>
-              <div className={row()}>
-                <div className={row('item')()}>
-                  <Field
-                    name={suffix ? `${member}.${suffix}` : `${member}`}
-                    type='text'
-                    component={Input}
-                    placeholder={placeholder || ''}
-                    validate={isValidate && checkOnPattern(isValidate)}
-                    disabled={this.props.disabled}
-                  />
-                  {
-                    warningMessage &&
-                    <span className='j-input__warning'>{warningMessage}</span>
-                  }
-                </div>
-                {
-                  !this.props.previewPage &&
-                  <div className={row('control')()}>
-                    <Control
-                      onClick={() => fields.remove(index)}
-                      icon='remove'
-                    />
-                  </div>
-                }
-              </div>
-            </Row>
-          )
-        }
-      </div>
+      </Row>
+    ))}
+  </div>
+)
+
+class MultiRowField extends PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  componentDidMount () {
+    this.setState({ renderMembers })
+  }
+
+  render () {
+    if (!this.state.renderMembers) return null
+
+    const { hint, isValidate, name, placeholder, suffix, title, warningMessage, disabled } = this.props
+
+    return (
+      <Row col>
+        <FieldArray
+          name={`${name}`}
+          component={this.state.renderMembers}
+          hint={hint}
+          placehilder={placeholder}
+          suffix={suffix}
+          title={title}
+          isValidate={isValidate}
+          warningMessage={warningMessage}
+          disabled={disabled}
+        />
+      </Row>
     )
-
-    render () {
-      const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props
-
-      return (
-        <Row col>
-          <FieldArray
-            name={`${name}`}
-            component={this.renderMembers}
-            hint={hint}
-            placeholder={placeholder}
-            suffix={suffix}
-            title={title}
-            isValidate={isValidate}
-            warningMessage={warningMessage}
-          />
-        </Row>
-      )
-    }
+  }
 };
 
 MultiRowField.defaultProps = defaultProps
