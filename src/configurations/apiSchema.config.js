@@ -113,6 +113,16 @@ const schema = {
       }
     },
     {
+      name: 'retry',
+      label: 'Retry',
+      enabled: false,
+      config: {
+        attempts: 0,
+        backoff: '1s',
+        predicate: 'statusCode == 0 || statusCode >= 500'
+      }
+    },
+    {
       name: 'cb',
       label: 'Circuit breaker',
       enabled: false,

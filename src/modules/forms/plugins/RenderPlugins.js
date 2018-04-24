@@ -12,6 +12,7 @@ import RateLimitPlugin from './RateLimit/RateLimitPlugin'
 import AuthPlugin from './oAuth/AuthPlugin'
 import CompressionPlugin from './Compression/CompressionPlugin'
 import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin'
+import RetryPlugin from './RetryPlugin/RetryPlugin'
 import CircuitBreakerPlugin from './CircuitBreaker/CircuitBreakerPlugin'
 
 const propTypes = {
@@ -112,6 +113,12 @@ class RenderPlugin extends Component {
                 case 'request_transformer':
                   return (
                     <RequestTransformerPlugin
+                      {...opts}
+                    />
+                  )
+                case 'retry':
+                  return (
+                    <RetryPlugin
                       {...opts}
                     />
                   )
