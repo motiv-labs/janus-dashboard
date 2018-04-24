@@ -39,7 +39,7 @@ const ActionsMap = {
       })
     },
     'OAuthServer': {
-      title: 'Save OAuthServer',
+      title: 'Save OAuth server',
       message: 'Are you sure you want to save OAuth server?',
       onConfirm: saveOAuthServer({
         isEditing: false
@@ -55,7 +55,7 @@ const ActionsMap = {
       })
     },
     'OAuthServer': {
-      title: 'Update OAuthServer title',
+      title: 'Update OAuth server',
       message: 'Are you sure you want to update OAuth server?',
       onConfirm: saveOAuthServer({
         isEditing: true
@@ -69,7 +69,7 @@ const ActionsMap = {
       onConfirm: deleteEndpoint
     },
     'OAuthServer': {
-      title: 'Delete endpoint title',
+      title: 'Delete OAuth server',
       message: 'Are you sure you want to delete the OAuth server?',
       onConfirm: deleteOAuthServer
     }
