@@ -26,118 +26,90 @@ const propTypes = {
 const defaultProps = {
   isValidate: null
 }
-const renderField = ({ input }) => (
-  <div>
-    <input type='text' {...input} />
-  </div>
-)
-const validateInline = isValidate => value => {
-  // console.log('isValidate', isValidate)
-  console.warn(checkOnPattern(isValidate)(value))
-  console.warn('VALUE', value)
 
-  return ''
-}
+const validateInline = isValidate => value => checkOnPattern(isValidate)(value)
 
-const renderList = ({ fields, suffix, isValidate }) => console.warn('fields', isValidate) || (
+const renderMembers = ({ fields, suffix, isValidate, hint, placeholder, previewPage, title, warningMessage, disabled }) => (
   <div>
+    <div className={row()}>
+      <Label>{ title } { placeholder }</Label>
+      {
+        !disabled &&
+        <Control
+          onClick={() => fields.push()}
+          icon='add'
+        />
+      }
+    </div>
+    {
+      hint &&
+      <Hint title>{ hint }</Hint>
+    }
     { fields.map((member, index) => (
-      <Field
-        // name={ field + ".foo" }
-        name={suffix ? `${member}.${suffix}` : `${member}`}
-        component={renderField}
-        isValidate={isValidate}
-        // handleDelete={() => fields.remove( index )}
-        validate={validateInline(isValidate)}
-        // validate={isValidate && checkOnPattern(isValidate)}
-      />
+      <Row className='double-fields' key={index} col>
+        <div className={row()}>
+          <div className={row('item')()}>
+            <Field
+              name={suffix ? `${member}.${suffix}` : `${member}`}
+              type='text'
+              component={Input}
+              placeholder={placeholder || ''}
+              isValidate={isValidate}
+              validate={validateInline(isValidate)}
+              disabled={disabled}
+            />
+            {
+              warningMessage &&
+              <span className='j-input__warning'>{warningMessage}</span>
+            }
+          </div>
+          {
+            !disabled &&
+            <div className={row('control')()}>
+              <Control
+                onClick={() => fields.remove(index)}
+                icon='remove'
+              />
+            </div>
+          }
+        </div>
+      </Row>
     ))}
   </div>
 )
+
 class MultiRowField extends PureComponent {
   constructor (props) {
     super(props)
 
     this.state = {}
   }
+
   componentDidMount () {
-    this.setState({
-      jo: renderList
-    })
+    this.setState({ renderMembers })
   }
-  componentWillUnmount () {
-    console.error('===========')
-  }
-    renderMembers = ({ fields, hint, isValidate, placeholder, suffix, title, warningMessage }) => (
-      <div>
-        <div className={row()}>
-          <Label>{ title } { placeholder }</Label>
-          {
-            !this.props.disabled &&
-            <Control
-              onClick={() => fields.push()}
-              icon='add'
-            />
-          }
-        </div>
-        {
-          hint &&
-          <Hint title>{ hint }</Hint>
-        }
-        {
-          fields.map((member, index) =>
-            <Row className='double-fields' key={index} col>
-              <div className={row()}>
-                <div className={row('item')()}>
-                  <Field
-                    name={suffix ? `${member}.${suffix}` : `${member}`}
-                    type='text'
-                    component={Input}
-                    placeholder={placeholder || ''}
-                    validate={isValidate && checkOnPattern(isValidate)}
-                    disabled={this.props.disabled}
-                  />
-                  {
-                    warningMessage &&
-                    <span className='j-input__warning'>{warningMessage}</span>
-                  }
-                </div>
-                {
-                  !this.props.previewPage &&
-                  <div className={row('control')()}>
-                    <Control
-                      onClick={() => fields.remove(index)}
-                      icon='remove'
-                    />
-                  </div>
-                }
-              </div>
-            </Row>
-          )
-        }
-      </div>
+
+  render () {
+    if (!this.state.renderMembers) return null
+
+    const { hint, isValidate, name, placeholder, suffix, title, warningMessage, disabled } = this.props
+
+    return (
+      <Row col>
+        <FieldArray
+          name={`${name}`}
+          component={this.state.renderMembers}
+          hint={hint}
+          placehilder={placeholder}
+          suffix={suffix}
+          title={title}
+          isValidate={isValidate}
+          warningMessage={warningMessage}
+          disabled={disabled}
+        />
+      </Row>
     )
-
-    render () {
-      const { hint, isValidate, name, placeholder, suffix, title, warningMessage } = this.props // eslint-disable-line
-      console.error('name', this.props)
-
-      if (!this.state.jo) return null
-      return (
-        <Row col>
-          <FieldArray
-            // name={`${name}`}
-            name='proxy.upstreams.targets'
-            // component={this.renderMembers}
-            component={this.state.jo}
-            suffix={suffix}
-            title={title}
-            isValidate={isValidate}
-            warningMessage={warningMessage}
-          />
-        </Row>
-      )
-    }
+  }
 };
 
 MultiRowField.defaultProps = defaultProps

@@ -27,84 +27,96 @@ const defaultProps = {
   isValidate: null
 }
 
-class AddDoubleFields extends PureComponent {
-    passParse = config => config.type === 'number' ? parse : undefined;
+const passParse = config => config.type === 'number' ? parse : undefined
 
-    renderMembers = ({ fields, isValidate, config, title, warningMessage }) => {
-      return (
-        <div>
-          <div className={row()}>
-            <Label>{ title }</Label>
-            {
-              !this.props.disabled &&
-              <Control
-                onClick={() => fields.push({})}
-                icon='add'
-              />
-            }
-          </div>
-          {
-            fields.map((member, index) => (
-              <Row className='double-fields' key={index} col>
-                <div className={row()}>
-                  <div className={row('item', {pair: true})()}>
-                    <Field
-                      name={`${member}.${config[0].sufix}`}
-                      type={config[0].type}
-                      component={Input}
-                      placeholder={config[0].placeholder}
-                      parse={this.passParse(config[0])}
-                      validate={isValidate && checkOnPattern(isValidate)}
-                      disabled={this.props.disabled}
-                    />
-                    {
-                      warningMessage &&
-                      <span className='j-input__warning'>{warningMessage}</span>
-                    }
-                  </div>
-                  <div className={row('item')()}>
-                    <Field
-                      name={`${member}.${config[1].sufix}`}
-                      type={config[1].type}
-                      component={Input}
-                      placeholder={config[1].placeholder}
-                      parse={this.passParse(config[1])}
-                      disabled={this.props.disabled}
-                    />
-                  </div>
-                  {
-                    !this.props.disabled &&
-                    <div className={row('control')()}>
-                      <Control
-                        onClick={() => fields.remove(index)}
-                        icon='remove'
-                      />
-                    </div>
-                  }
-                </div>
-              </Row>
-            ))
-          }
-        </div>
-      )
-    };
-
-    render () {
-      const { config, isValidate, name, title, warningMessage } = this.props
-
-      return (
-        <div className='j-col__item'>
-          <FieldArray
-            name={`${name}`}
-            component={this.renderMembers}
-            title={title}
-            config={config}
-            isValidate={isValidate}
-            warningMessage={warningMessage}
+const renderMembers = ({ fields, isValidate, config, title, warningMessage, disabled }) => {
+  return (
+    <div>
+      <div className={row()}>
+        <Label>{ title }</Label>
+        {
+          !disabled &&
+          <Control
+            onClick={() => fields.push({})}
+            icon='add'
           />
-        </div>
-      )
-    }
+        }
+      </div>
+      {
+        fields.map((member, index) => (
+          <Row className='double-fields' key={index} col>
+            <div className={row()}>
+              <div className={row('item', {pair: true})()}>
+                <Field
+                  name={`${member}.${config[0].sufix}`}
+                  type={config[0].type}
+                  component={Input}
+                  placeholder={config[0].placeholder}
+                  parse={passParse(config[0])}
+                  validate={isValidate && checkOnPattern(isValidate)}
+                  disabled={disabled}
+                />
+                {
+                  warningMessage &&
+                  <span className='j-input__warning'>{warningMessage}</span>
+                }
+              </div>
+              <div className={row('item')()}>
+                <Field
+                  name={`${member}.${config[1].sufix}`}
+                  type={config[1].type}
+                  component={Input}
+                  placeholder={config[1].placeholder}
+                  parse={passParse(config[1])}
+                  disabled={disabled}
+                />
+              </div>
+              {
+                !disabled &&
+                <div className={row('control')()}>
+                  <Control
+                    onClick={() => fields.remove(index)}
+                    icon='remove'
+                  />
+                </div>
+              }
+            </div>
+          </Row>
+        ))
+      }
+    </div>
+  )
+}
+
+class AddDoubleFields extends PureComponent {
+  constructor (props) {
+    super(props)
+
+    this.state = {}
+  }
+
+  componentDidMount () {
+    this.setState({ renderMembers })
+  }
+
+  render () {
+    if (!this.state.renderMembers) return null
+
+    const { config, isValidate, name, title, warningMessage } = this.props
+
+    return (
+      <div className='j-col__item'>
+        <FieldArray
+          name={`${name}`}
+          component={renderMembers}
+          title={title}
+          config={config}
+          isValidate={isValidate}
+          warningMessage={warningMessage}
+        />
+      </div>
+    )
+  }
 };
 
 AddDoubleFields.defaultProps = defaultProps
