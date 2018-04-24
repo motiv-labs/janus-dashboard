@@ -1,12 +1,12 @@
 import { connect } from 'react-redux'
 
 import {
-  deleteEndpoint,
   fetchEndpoints,
   refreshEndpoints,
   setCurrentPageIndex,
   setSortingFilter,
-  setAscendingFilter
+  setAscendingFilter,
+  confirmAction
 } from '../../../store/actions'
 import { filteredApiList } from '../../../store/selectors'
 
@@ -22,11 +22,11 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    deleteEndpoint,
     fetchEndpoints,
     refreshEndpoints,
     setCurrentPageIndex,
     setSortingFilter,
-    setAscendingFilter
+    setAscendingFilter,
+    confirmAction
   }
 )(ApiList)

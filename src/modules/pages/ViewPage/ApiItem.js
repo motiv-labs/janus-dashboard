@@ -3,7 +3,6 @@ import R from 'ramda'
 import PropTypes from 'prop-types'
 
 import transformFormValues from '../../../helpers/transformFormValues'
-import getUpdatedEndpoint from '../../../helpers/getUpdatedEndpoint'
 import isAnyEmpty from '../../../helpers/isAnyEmpty'
 
 import EndpointForm from '../../forms/EndpointForm/EndpointForm'
@@ -11,16 +10,13 @@ import Preloader from '../../../components/Preloader/Preloader'
 
 const propTypes = {
   api: PropTypes.object.isRequired,
-  deleteEndpoint: PropTypes.func.isRequired,
   excludePlugin: PropTypes.func.isRequired,
   fetchEndpointSchema: PropTypes.func.isRequired,
-  fillSelected: PropTypes.func.isRequired,
   isAdmin: PropTypes.bool,
   selectPlugin: PropTypes.func.isRequired,
   fetchEndpoint: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
-  updateEndpoint: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired
 }
 
@@ -33,58 +29,38 @@ class ApiItem extends PureComponent {
     this.props.fetchEndpoint(endpointName)
   }
 
-    fillSelected = (arr) => {
-      const selectedPlugins = arr.map(item => item.name)
+  render () {
+    if (isAnyEmpty([
+      this.props.api,
+      this.props.apiSchema
+    ])) return <Preloader />
 
-      this.props.fillSelected(selectedPlugins)
-    }
+    const api = this.props.api
+    const apiPlugins = api.plugins
+    const defaultPlugins = this.props.apiSchema.plugins
+    const updatedPlugins = defaultPlugins.map(item => {
+      const res = apiPlugins.filter(pl => pl.name === item.name)
 
-    submit = values => R.compose(
-      this.props.updateEndpoint,
-      getUpdatedEndpoint(values)
-    )(this.props.selectedPlugins);
+      return res.length > 0 ? res[0] : item
+    })
+    const lens = R.lensPath(['plugins'])
+    // substitude the plugin.config.limit
+    const updatedApi = R.set(lens, updatedPlugins, api)
 
-    handleDelete = () => {
-      const needRedirect = true
-
-      this.props.deleteEndpoint(this.props.api, needRedirect)
-    };
-
-    render () {
-      if (isAnyEmpty([
-        this.props.api,
-        this.props.apiSchema
-      ])) return <Preloader />
-
-      const api = this.props.api
-      const apiPlugins = api.plugins
-      const defaultPlugins = this.props.apiSchema.plugins
-      const updatedPlugins = defaultPlugins.map(item => {
-        const res = apiPlugins.filter(pl => pl.name === item.name)
-
-        return res.length > 0 ? res[0] : item
-      })
-      const lens = R.lensPath(['plugins'])
-      // substitude the plugin.config.limit
-      const updatedApi = R.set(lens, updatedPlugins, api)
-
-      return (
-        <EndpointForm
-          api={this.props.api}
-          apiSchema={this.props.apiSchema}
-          disabled
-          editing
-          excludePlugin={this.props.excludePlugin}
-          handleDelete={this.handleDelete}
-          initialValues={transformFormValues(updatedApi)}
-          isAdmin={this.props.isAdmin}
-          onSubmit={this.submit}
-          selectPlugin={this.props.selectPlugin}
-          selectedPlugins={this.props.selectedPlugins}
-          previewPage
-        />
-      )
-    }
+    return (
+      <EndpointForm
+        api={this.props.api}
+        apiSchema={this.props.apiSchema}
+        disabled
+        editing
+        initialValues={transformFormValues(updatedApi)}
+        isAdmin={this.props.isAdmin}
+        selectPlugin={this.props.selectPlugin}
+        selectedPlugins={this.props.selectedPlugins}
+        previewPage
+      />
+    )
+  }
 }
 
 ApiItem.propTypes = propTypes

@@ -10,7 +10,8 @@ import Preloader from '../../../components/Preloader/Preloader'
 
 const propTypes = {
   schema: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  confirmAction: PropTypes.func.isRequired
 }
 
 class NewOAuthServerItem extends PureComponent {
@@ -18,31 +19,31 @@ class NewOAuthServerItem extends PureComponent {
     this.props.fetchOAuthServerSchema()
   }
 
-    submit = values => {
-      const transformedValues = transformFormValues(values, true)
+  submit = values => {
+    const transformedValues = transformFormValues(values, true)
 
-      this.props.saveOAuthServer(this.props.location.pathname, transformedValues)
-    }
+    this.props.confirmAction('save', 'OAuthServer', transformedValues)
+  }
 
-    renderForm = () => {
-      return (
-        <OAuthServerForm
-          schema={this.props.schema}
-          onSubmit={this.submit}
-          initialValues={transformFormValues(this.props.schema)}
-        />
-      )
-    }
+  renderForm = () => {
+    return (
+      <OAuthServerForm
+        schema={this.props.schema}
+        onSubmit={this.submit}
+        initialValues={transformFormValues(this.props.schema)}
+      />
+    )
+  }
 
-    render () {
-      if (R.isEmpty(this.props.schema)) return <Preloader />
+  render () {
+    if (R.isEmpty(this.props.schema)) return <Preloader />
 
-      return (
-        <Section outer>
-          { this.renderForm() }
-        </Section>
-      )
-    }
+    return (
+      <Section outer>
+        { this.renderForm() }
+      </Section>
+    )
+  }
 }
 
 NewOAuthServerItem.propTypes = propTypes

@@ -14,8 +14,8 @@ const propTypes = {
   fetchOAuthServerSchema: PropTypes.func.isRequired,
   location: PropTypes.object.isRequired,
   oAuthServer: PropTypes.object.isRequired,
-  updateOAuthServer: PropTypes.func.isRequired,
-  schema: PropTypes.object.isRequired
+  schema: PropTypes.object.isRequired,
+  confirmAction: PropTypes.func.isRequired
 }
 
 class OAuthServerItem extends PureComponent {
@@ -28,35 +28,33 @@ class OAuthServerItem extends PureComponent {
     this.props.clearOAuthServer()
   }
 
-    submit = values => {
-      const transformedValues = transformFormValues(values, true)
+  submit = values => {
+    const transformedValues = transformFormValues(values, true)
 
-      this.props.updateOAuthServer(this.props.location.pathname, transformedValues, true)
-    }
+    this.props.confirmAction('update', 'OAuthServer', transformedValues)
+  }
 
-    renderForm = () => {
-      return (
-        <OAuthServerForm
-          schema={this.props.schema}
-          onSubmit={this.submit}
-          initialValues={transformFormValues(this.props.oAuthServer)}
-          editing
-        />
-      )
-    }
+  renderForm = () => (
+    <OAuthServerForm
+      schema={this.props.schema}
+      onSubmit={this.submit}
+      initialValues={transformFormValues(this.props.oAuthServer)}
+      editing
+    />
+  )
 
-    render () {
-      if (isAnyEmpty([
-        this.props.oAuthServer,
-        this.props.schema
-      ])) return <Preloader />
+  render () {
+    if (isAnyEmpty([
+      this.props.oAuthServer,
+      this.props.schema
+    ])) return <Preloader />
 
-      return (
-        <Section outer>
-          { this.renderForm() }
-        </Section>
-      )
-    }
+    return (
+      <Section outer>
+        { this.renderForm() }
+      </Section>
+    )
+  }
 }
 
 OAuthServerItem.propTypes = propTypes

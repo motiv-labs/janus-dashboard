@@ -24,7 +24,7 @@ const propTypes = {
   plugin: PropTypes.object.isRequired,
   pluginFromValues: PropTypes.object.isRequired,
   pluginName: PropTypes.string.isRequired,
-  handlePluginExclude: PropTypes.func.isRequired,
+  handlePluginExclude: PropTypes.func,
   previewPage: PropTypes.bool
 }
 

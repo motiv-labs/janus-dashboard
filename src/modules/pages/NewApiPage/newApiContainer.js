@@ -1,15 +1,14 @@
 import { connect } from 'react-redux'
 
 import {
-  deleteEndpoint,
   fetchEndpoint,
   fetchEndpointSchema,
   resetEndpoint,
   refreshEndpoints,
-  saveEndpoint,
   excludePlugin,
   selectPlugin,
-  willClone
+  willClone,
+  confirmAction
 } from '../../../store/actions'
 
 import NewApiItem from './NewApiItem'
@@ -23,14 +22,13 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   {
-    deleteEndpoint,
     fetchEndpoint,
     fetchEndpointSchema,
     resetEndpoint,
-    saveEndpoint,
     excludePlugin,
     refreshEndpoints,
     selectPlugin,
-    willClone
+    willClone,
+    confirmAction
   }
 )(NewApiItem)

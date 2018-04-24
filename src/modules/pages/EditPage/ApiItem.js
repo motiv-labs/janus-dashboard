@@ -11,7 +11,6 @@ import Preloader from '../../../components/Preloader/Preloader'
 
 const propTypes = {
   api: PropTypes.object.isRequired,
-  deleteEndpoint: PropTypes.func.isRequired,
   excludePlugin: PropTypes.func.isRequired,
   fetchEndpointSchema: PropTypes.func.isRequired,
   fillSelected: PropTypes.func.isRequired,
@@ -20,8 +19,8 @@ const propTypes = {
   fetchEndpoint: PropTypes.func.isRequired,
   refreshEndpoints: PropTypes.func.isRequired,
   resetEndpoint: PropTypes.func.isRequired,
-  updateEndpoint: PropTypes.func.isRequired,
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
+  confirmAction: PropTypes.func.isRequired
 }
 
 class ApiItem extends PureComponent {
@@ -31,57 +30,56 @@ class ApiItem extends PureComponent {
     this.props.fetchEndpoint(this.props.location.pathname.substr(1))
   }
 
-    fillSelected = (arr) => {
-      const selectedPlugins = arr.map(item => item.name)
+  fillSelected = arr => {
+    const selectedPlugins = arr.map(item => item.name)
 
-      this.props.fillSelected(selectedPlugins)
-    }
+    this.props.fillSelected(selectedPlugins)
+  }
 
-    submit = values => R.compose(
-      this.props.updateEndpoint,
+  submit = values => {
+    const updatedValues = R.compose(
       getUpdatedEndpoint(values)
-    )(this.props.selectedPlugins);
+    )(this.props.selectedPlugins)
 
-    handleDelete = () => {
-      const needRedirect = true
+    this.props.confirmAction('update', 'endpoint', updatedValues)
+  }
 
-      this.props.deleteEndpoint(this.props.api, needRedirect)
-    };
+  handleDelete = () => this.props.confirmAction('delete', 'endpoint', this.props.api.name)
 
-    render () {
-      if (isAnyEmpty([
-        this.props.api,
-        this.props.apiSchema
-      ])) return <Preloader />
+  render () {
+    if (isAnyEmpty([
+      this.props.api,
+      this.props.apiSchema
+    ])) return <Preloader />
 
-      const api = this.props.api
-      const apiPlugins = api.plugins
-      const defaultPlugins = this.props.apiSchema.plugins
-      const updatedPlugins = defaultPlugins.map(item => {
-        const res = apiPlugins.filter(pl => pl.name === item.name)
+    const api = this.props.api
+    const apiPlugins = api.plugins
+    const defaultPlugins = this.props.apiSchema.plugins
+    const updatedPlugins = defaultPlugins.map(item => {
+      const res = apiPlugins.filter(pl => pl.name === item.name)
 
-        return res.length > 0 ? res[0] : item
-      })
-      const lens = R.lensPath(['plugins'])
-      // substitude the plugin.config.limit
-      const updatedApi = R.set(lens, updatedPlugins, api)
+      return res.length > 0 ? res[0] : item
+    })
+    const lens = R.lensPath(['plugins'])
+    // substitude the plugin.config.limit
+    const updatedApi = R.set(lens, updatedPlugins, api)
 
-      return (
-        <EndpointForm
-          api={this.props.api}
-          apiSchema={this.props.apiSchema}
-          disabled
-          editing
-          excludePlugin={this.props.excludePlugin}
-          handleDelete={this.handleDelete}
-          initialValues={transformFormValues(updatedApi)}
-          isAdmin={this.props.isAdmin}
-          onSubmit={this.submit}
-          selectPlugin={this.props.selectPlugin}
-          selectedPlugins={this.props.selectedPlugins}
-        />
-      )
-    }
+    return (
+      <EndpointForm
+        api={this.props.api}
+        apiSchema={this.props.apiSchema}
+        disabled
+        editing
+        excludePlugin={this.props.excludePlugin}
+        handleDelete={this.handleDelete}
+        initialValues={transformFormValues(updatedApi)}
+        isAdmin={this.props.isAdmin}
+        onSubmit={this.submit}
+        selectPlugin={this.props.selectPlugin}
+        selectedPlugins={this.props.selectedPlugins}
+      />
+    )
+  }
 }
 
 ApiItem.propTypes = propTypes

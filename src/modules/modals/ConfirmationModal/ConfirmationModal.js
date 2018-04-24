@@ -1,50 +1,119 @@
 import React from 'react'
-import PropTypes from 'prop-types'
+import {
+  func,
+  object,
+  string
+} from 'prop-types'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
+import {
+  saveEndpoint,
+  deleteEndpoint,
+  saveOAuthServer,
+  deleteOAuthServer,
+  closeConfirmation
+} from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
 
-import {
-  clearConfirmationModal,
-  afterCloseConfirmationModal
-} from '../../../store/actions'
-
 const propTypes = {
-  closeModal: PropTypes.func.isRequired,
-  afterCloseConfirmationModal: PropTypes.func.isRequired,
-  needConfirm: PropTypes.bool.isRequired,
-  message: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  closeModal: func.isRequired,
+  objectType: string,
+  objectEntity: object
 }
 
 const defaultProps = {
-  message: ''
+  isOpen: false,
+  objectEntity: {}
+}
+
+const ActionsMap = {
+  save: {
+    'endpoint': {
+      title: 'Save endpoint',
+      message: 'Are you sure you want to save endpoint?',
+      onConfirm: saveEndpoint({
+        isEditing: false
+      })
+    },
+    'OAuthServer': {
+      title: 'Save OAuth server',
+      message: 'Are you sure you want to save OAuth server?',
+      onConfirm: saveOAuthServer({
+        isEditing: false
+      })
+    }
+  },
+  update: {
+    'endpoint': {
+      title: 'Update endpoint',
+      message: 'Are you sure you want to update endpoint?',
+      onConfirm: saveEndpoint({
+        isEditing: true
+      })
+    },
+    'OAuthServer': {
+      title: 'Update OAuth server',
+      message: 'Are you sure you want to update OAuth server?',
+      onConfirm: saveOAuthServer({
+        isEditing: true
+      })
+    }
+  },
+  delete: {
+    'endpoint': {
+      title: 'Delete endpoint',
+      message: 'Are you sure you want to delete the endpoint?',
+      onConfirm: deleteEndpoint
+    },
+    'OAuthServer': {
+      title: 'Delete OAuth server',
+      message: 'Are you sure you want to delete the OAuth server?',
+      onConfirm: deleteOAuthServer
+    }
+  }
 }
 
 const ConfirmationModal = ({
-  api,
-  apiName,
+  dispatch,
+  isOpen,
+  actionType,
   closeModal,
-  message,
-  needConfirm,
-  status,
-  title,
-  afterCloseConfirmationModal,
-  isRedirect
+  objectEntity,
+  objectType,
+  configurationMetadata,
+  backup
 }) => {
-  const handleSubmitConfirmation = () =>
-    afterCloseConfirmationModal(status, api, apiName, isRedirect)
+  // eslint-disable-next-line no-mixed-operators
+  const getValue = target => isOpen && ActionsMap[actionType][objectType][target] || ''
+  const onConfirm = getValue('onConfirm')
+  const handleCloseModal = () => closeModal()
 
   return (
     <Modal
-      show={needConfirm}
-      closeModal={closeModal}
-      message={message}
-      title={title}
+      show={isOpen}
+      closeModal={handleCloseModal}
+      message={
+        React.isValidElement(getValue('message'))
+          ? React.cloneElement(getValue('message'), { objectEntity })
+          : getValue('message')
+      }
+      title={getValue('title')}
       buttons={[
-        <Button key='cancel' mod='default' onClick={closeModal}>Cancel</Button>,
-        <Button key='ok' mod='primary' onClick={handleSubmitConfirmation}>OK</Button>
+        <Button key='cancel' mod='default' onClick={handleCloseModal}>
+          Cancel
+        </Button>,
+        <Button
+          key='ok'
+          mod='primary'
+          onClick={
+            () => dispatch(onConfirm(objectEntity))
+          }
+        >
+          OK
+        </Button>
       ]}
     />
   )
@@ -53,32 +122,30 @@ const ConfirmationModal = ({
 ConfirmationModal.propTypes = propTypes
 ConfirmationModal.defaultProps = defaultProps
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   const {
-    api,
-    apiName,
-    message,
-    needConfirm,
-    isRedirect,
-    status,
-    title
-  } = state.apiResponseModalReducer.confirmationModal
+    actionType,
+    isOpen,
+    objectEntity,
+    objectType
+  } = state.confirmationReducer
 
   return {
-    api,
-    apiName,
-    message,
-    needConfirm,
-    isRedirect,
-    status,
-    title
+    actionType,
+    objectEntity,
+    objectType,
+    isOpen
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    dispatch,
+    closeModal: bindActionCreators(closeConfirmation, dispatch)
   }
 }
 
 export default connect(
   mapStateToProps,
-  {
-    closeModal: clearConfirmationModal,
-    afterCloseConfirmationModal
-  }
+  mapDispatchToProps
 )(ConfirmationModal)

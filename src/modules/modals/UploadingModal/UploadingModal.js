@@ -3,7 +3,7 @@ import { bool, object } from 'prop-types'
 import { connect } from 'react-redux'
 import R from 'ramda'
 
-import { saveEndpoint } from '../../../store/actions'
+import { confirmAction } from '../../../store/actions'
 
 import Modal from '../../../components/Modal/Modal'
 import Button from '../../../components/Button/Button'
@@ -97,7 +97,7 @@ class UploadingModal extends PureComponent {
               key='upload'
               mod='primary'
               onClick={() => {
-                this.props.saveEndpoint(uploaderMediator(this.state.updatedJSON))
+                this.props.confirmAction('save', 'endpoint', uploaderMediator(this.state.updatedJSON))
                 this.handleClose()
               }}
             >
@@ -116,7 +116,7 @@ UploadingModal.defaultProps = defaultProps
 export default connect(
   null,
   {
-    saveEndpoint
+    confirmAction
   }
 )(UploadingModal)
 

@@ -39,7 +39,7 @@ class HeadersSection extends Component {
               return (
                 <Row className='double-fields' key={index} col>
                   <div className={row()}>
-                    <div className={row('item', {pair: true})}>
+                    <div className={row('item', {pair: true})()}>
                       <Field
                         name={`${member}.key`}
                         type='text'
@@ -48,7 +48,7 @@ class HeadersSection extends Component {
                         disabled={disabled}
                       />
                     </div>
-                    <div className={row('item', {pair: true})}>
+                    <div className={row('item', {pair: true})()}>
                       <Field
                         name={`${member}.value`}
                         type='text'
