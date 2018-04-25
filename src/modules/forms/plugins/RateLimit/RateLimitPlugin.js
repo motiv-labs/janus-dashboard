@@ -141,7 +141,6 @@ class RateLimitPlugin extends PureComponent {
               disabled={previewPage}
             />
             <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
-            <Hint>The rate-limiting policies to use for retrieving and incrementing the limits. Available values are local (counters will be stored locally in-memory on the node) and redis (counters are stored on a Redis server and will be shared across the nodes).</Hint>
             { this.renderRedisOptions(this.props.pluginFromValues.config.policy.selected) }
           </Row>
         </Row>
