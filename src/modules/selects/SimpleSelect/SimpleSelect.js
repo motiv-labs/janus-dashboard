@@ -8,34 +8,29 @@ const propTypes = {
 }
 
 class SimpleSelect extends Component {
-    state = {
-      selectValue: this.props.input.value ? this.props.input.value : ''
-    }
+  state = {
+    selectValue: this.props.input.value ? this.props.input.value : ''
+  }
 
-    updateValue = (newValue) => {
-      this.setState({
-        selectValue: newValue
-      })
-    }
+  updateValue = (newValue) => this.setState({
+    selectValue: newValue
+  }, () => this.props.input.onBlur(this.state.selectValue))
 
-    render () {
-      return (
-        <Select
-          className='j-select'
-          {...this.props.input}
-          value={this.state.selectValue}
-          onChange={this.updateValue}
-          simpleValue
-          searchable={this.props.searchable}
-          clearable={this.props.clearable}
-          options={this.props.options}
-          onBlur={() => {
-            this.props.input.onBlur(this.state.selectValue)
-          }}
-          disabled={this.props.disabled}
-        />
-      )
-    }
+  render () {
+    return (
+      <Select
+        className='j-select'
+        {...this.props.input}
+        value={this.state.selectValue}
+        onChange={this.updateValue}
+        simpleValue
+        searchable={this.props.searchable}
+        clearable={this.props.clearable}
+        options={this.props.options}
+        disabled={this.props.disabled}
+      />
+    )
+  }
 };
 
 SimpleSelect.propTypes = propTypes
