@@ -12,11 +12,9 @@ class SimpleSelect extends Component {
       selectValue: this.props.input.value ? this.props.input.value : ''
     }
 
-    updateValue = (newValue) => {
-      this.setState({
-        selectValue: newValue
-      })
-    }
+    updateValue = (newValue) => this.setState({
+      selectValue: newValue
+    }, () => this.props.input.onBlur(this.state.selectValue))
 
     render () {
       return (
@@ -29,9 +27,6 @@ class SimpleSelect extends Component {
           searchable={this.props.searchable}
           clearable={this.props.clearable}
           options={this.props.options}
-          onBlur={() => {
-            this.props.input.onBlur(this.state.selectValue)
-          }}
           disabled={this.props.disabled}
         />
       )
