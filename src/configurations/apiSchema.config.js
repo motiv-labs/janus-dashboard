@@ -121,6 +121,19 @@ const schema = {
         backoff: '1s',
         predicate: 'statusCode == 0 || statusCode >= 500'
       }
+    },
+    {
+      name: 'cb',
+      label: 'Circuit breaker',
+      enabled: false,
+      config: {
+        timeout: 0,
+        max_concurrent_requests: 0,
+        error_percent_threshold: 0,
+        request_volume_threshold: 0,
+        sleep_window: 0,
+        predicate: 'statusCode == 0 || statusCode >= 500'
+      }
     }
   ]
 }

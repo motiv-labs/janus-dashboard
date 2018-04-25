@@ -13,6 +13,7 @@ import AuthPlugin from './oAuth/AuthPlugin'
 import CompressionPlugin from './Compression/CompressionPlugin'
 import RequestTransformerPlugin from './RequestTransformer/RequestTransformerPlugin'
 import RetryPlugin from './RetryPlugin/RetryPlugin'
+import CircuitBreakerPlugin from './CircuitBreaker/CircuitBreakerPlugin'
 
 const propTypes = {
   className: PropTypes.string,
@@ -24,6 +25,22 @@ const propTypes = {
   handlePluginInclude: PropTypes.func.isRequired,
   selectedPlugins: PropTypes.arrayOf(PropTypes.string).isRequired,
   previewPage: PropTypes.bool
+}
+
+const PluginsComponents = {
+  cors: CorsPlugin,
+  rate_limit: RateLimitPlugin,
+  oauth2: AuthPlugin,
+  compression: CompressionPlugin,
+  request_transformer: RequestTransformerPlugin,
+  retry: RetryPlugin,
+  cb: CircuitBreakerPlugin
+}
+
+const PluginComponent = ({ name, options }) => {
+  const Component = PluginsComponents[name]
+
+  return Component ? <Component {...options} /> : null
 }
 
 class RenderPlugin extends Component {
@@ -84,46 +101,7 @@ class RenderPlugin extends Component {
                 previewPage
               }
 
-              switch (pluginName) {
-                case 'cors':
-                  return (
-                    <CorsPlugin
-                      {...opts}
-                    />
-                  )
-                case 'rate_limit':
-                  return (
-                    <RateLimitPlugin
-                      {...opts}
-                    />
-                  )
-                case 'oauth2':
-                  return (
-                    <AuthPlugin
-                      {...opts}
-                    />
-                  )
-                case 'compression':
-                  return (
-                    <CompressionPlugin
-                      {...opts}
-                    />
-                  )
-                case 'request_transformer':
-                  return (
-                    <RequestTransformerPlugin
-                      {...opts}
-                    />
-                  )
-                case 'retry':
-                  return (
-                    <RetryPlugin
-                      {...opts}
-                    />
-                  )
-                default:
-                  return null
-              }
+              return <PluginComponent key={pluginName} name={pluginName} options={opts} />
             })
           }
 
