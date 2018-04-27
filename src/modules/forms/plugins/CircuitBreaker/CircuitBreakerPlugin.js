@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Field } from 'redux-form'
 
 import block from '../../../../helpers/bem-cn'
+import parse from '../../../../helpers/parse-value'
 
 import Row from '../../../Layout/Row/Row'
 import Label from '../../../../components/Label/Label'
@@ -41,6 +42,7 @@ const CircuitBreakerPlugin = ({ className, name, handlePluginExclude, pluginName
               type='number'
               name={`${name}.config.timeout`}
               component={Input}
+              parse={parse}
               disabled={previewPage}
             />
           </Row>
@@ -51,6 +53,7 @@ const CircuitBreakerPlugin = ({ className, name, handlePluginExclude, pluginName
               name={`${name}.config.max_concurrent_requests`}
               type='number'
               component={Input}
+              parse={parse}
               disabled={previewPage}
             />
           </Row>
@@ -61,6 +64,7 @@ const CircuitBreakerPlugin = ({ className, name, handlePluginExclude, pluginName
               name={`${name}.config.error_percent_threshold`}
               type='number'
               component={Input}
+              parse={parse}
               disabled={previewPage}
             />
           </Row>
@@ -73,6 +77,7 @@ const CircuitBreakerPlugin = ({ className, name, handlePluginExclude, pluginName
               type='number'
               name={`${name}.config.request_volume_threshold`}
               component={Input}
+              parse={parse}
               disabled={previewPage}
             />
           </Row>
@@ -83,6 +88,7 @@ const CircuitBreakerPlugin = ({ className, name, handlePluginExclude, pluginName
               name={`${name}.config.sleep_window`}
               type='number'
               component={Input}
+              parse={parse}
               disabled={previewPage}
             />
           </Row>
