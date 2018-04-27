@@ -55,7 +55,7 @@ const renderMembers = ({ fields, suffix, isValidate, hint, placeholder, previewP
               component={Input}
               placeholder={placeholder || ''}
               isValidate={isValidate}
-              validate={validateInline(isValidate)}
+              validate={isValidate && validateInline(isValidate)}
               disabled={disabled}
             />
             {
