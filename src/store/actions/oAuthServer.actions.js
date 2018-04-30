@@ -60,14 +60,25 @@ export const fetchOAuthServer = path => async dispatch => {
     const response = await client.get(`${path}`)
     const oAuthServer = response.data
     const rateLimit = oAuthServer.rate_limit.limit.split('-')
+    const secretsArr = Object.keys(oAuthServer.secrets)
+    const secrets = secretsArr.reduce((memo, item) => {
+      memo.push({
+        key: item,
+        value: oAuthServer.secrets[item]
+      })
+
+      return memo
+    }, [])
     const rateLimitValues = {
       value: rateLimit[0] * 1,
       unit: rateLimit[1]
     }
     const lens = R.lensPath(['rate_limit', 'limit'])
+    const lensSecrets = R.lensPath(['secrets'])
     const updatedOAuthServer = R.set(lens, rateLimitValues, oAuthServer)
+    const ss = R.set(lensSecrets, secrets, updatedOAuthServer)
 
-    dispatch(getOAuthServerSuccess(updatedOAuthServer))
+    dispatch(getOAuthServerSuccess(ss))
   } catch (error) {
     errorHandler(dispatch)(error)
   }
@@ -108,6 +119,22 @@ export const saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf
     return R.set(lens, concatenation, server)
   }
 
+  const transformSecrets = server => {
+    const transformedSecrets = server.secrets.reduce((memo, item) => {
+      memo[item.key] = item.value
+
+      return memo
+    }, {})
+    const lens = R.lensPath(['secrets'])
+
+    return R.set(lens, transformedSecrets, server)
+  }
+
+  const createFinalServer = R.compose(
+    transformSecrets,
+    composeRateLimit
+  )
+
   try {
     await saveEntity(isEditing)
 
@@ -120,8 +147,8 @@ export const saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf
 
   async function saveEntity (isEditing) {
     isEditing
-      ? await client.put(`oauth/servers/${server.name}`, composeRateLimit(server))
-      : await client.post('oauth/servers', composeRateLimit(server))
+      ? await client.put(`oauth/servers/${server.name}`, createFinalServer(server))
+      : await client.post('oauth/servers', createFinalServer(server))
   }
 }
 

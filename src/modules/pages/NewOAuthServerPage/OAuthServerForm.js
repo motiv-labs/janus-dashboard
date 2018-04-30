@@ -26,7 +26,7 @@ import MultiSelect from '../../selects/MultiSelect/MultiSelect'
 import TagSelect from '../../selects/TagSelect/TagSelect'
 import OAuthEndpoints from './partials/OAuthEndpoints/OAuthEndpoints'
 import OAuthClientEndpoints from './partials/OAuthClientEndpoints/OAuthClientEndpoints'
-import JWTStrategyOptions from './partials/JWTStrategyOptions/JWTStrategyOptions'
+import KeyValueOptions from './partials/KeyValueOptions/KeyValueOptions'
 
 import ButtonsGroup from '../../../components/ButtonsGroup/ButtonsGroup'
 import Button from '../../../components/Button/Button'
@@ -125,9 +125,32 @@ class OAuthServerForm extends PureComponent {
     renderJWTStrategy = () => (
       <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
         <Row className={b('row')()} fullwidth>
-          <JWTStrategyOptions
+          <KeyValueOptions
             name='token_strategy.settings'
             title='JWT settings'
+            k='alg'
+            val='key'
+            placeholder={{
+              key: 'Alg',
+              value: 'Key'
+            }}
+          />
+        </Row>
+      </div>
+    );
+
+    renderSecretsOptions = () => (
+      <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+        <Row className={b('row')()} fullwidth>
+          <KeyValueOptions
+            name='secrets'
+            title='JWT settings'
+            k='key'
+            val='value'
+            placeholder={{
+              key: 'Key',
+              value: 'Value'
+            }}
           />
         </Row>
       </div>
@@ -190,7 +213,7 @@ class OAuthServerForm extends PureComponent {
         default:
           return null
       }
-    };
+    }
 
     render () {
       const {
@@ -199,6 +222,7 @@ class OAuthServerForm extends PureComponent {
         schema,
         initialValues
       } = this.props
+
       const createOptions = (list1, list2) => {
         const combinedListOfUnitsAndLabels = R.zip(list1, list2)
 
@@ -422,6 +446,7 @@ class OAuthServerForm extends PureComponent {
                 </div>
               </div>
               { this.renderStrategy(this.state.strategy.name) }
+              { this.renderSecretsOptions() }
             </div>
           </div>
 
