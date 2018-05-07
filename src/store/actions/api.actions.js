@@ -61,6 +61,8 @@ export const resetEndpoint = () => ({
   type: RESET_ENDPOINT
 })
 
+export const redirectToApiList = () => history.push('/')
+
 /**
  * @name fetchEndpoint
  * @param {String} endpointName - name of target endpoint.
@@ -332,8 +334,10 @@ export const saveEndpoint = ({ isEditing }) => api => async (dispatch, getState)
     await saveEntity(isEditing)
 
     dispatch(saveEndpointSuccess(api))
-    history.push('/')
-    dispatch(fetchEndpoints())
+    if (!isEditing) {
+      redirectToApiList()
+      dispatch(fetchEndpoints())
+    }
   } catch (error) {
     dispatch(closeConfirmation())
     errorHandler(dispatch)(error)
