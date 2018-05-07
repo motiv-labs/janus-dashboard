@@ -112,7 +112,9 @@ export const saveOAuthServer = ({ isEditing }) => server => async (dispatch, wtf
     await saveEntity(isEditing)
 
     dispatch(saveOAuthServerSuccess(server))
-    redirectToServersList()
+    if (!isEditing) {
+      redirectToServersList()
+    }
   } catch (error) {
     dispatch(closeConfirmation())
     errorHandler(dispatch)(error)
