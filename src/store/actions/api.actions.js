@@ -334,6 +334,7 @@ export const saveEndpoint = ({ isEditing }) => api => async (dispatch, getState)
     await saveEntity(isEditing)
 
     dispatch(saveEndpointSuccess(api))
+
     if (!isEditing) {
       redirectToApiList()
       dispatch(fetchEndpoints())
@@ -372,7 +373,7 @@ export const deleteEndpoint = apiName => async dispatch => {
     await client.delete(`apis/${apiName}`)
 
     dispatch(deleteEndpointSuccess(apiName))
-    history.push('/')
+    redirectToApiList()
     dispatch(fetchEndpoints())
   } catch (error) {
     dispatch(deleteEndpointFailure())
