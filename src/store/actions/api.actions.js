@@ -334,6 +334,7 @@ export const saveEndpoint = ({ isEditing }) => api => async (dispatch, getState)
     await saveEntity(isEditing)
 
     dispatch(saveEndpointSuccess(api))
+
     if (!isEditing) {
       redirectToApiList()
       dispatch(fetchEndpoints())
