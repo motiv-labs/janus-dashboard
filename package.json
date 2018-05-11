@@ -32,6 +32,7 @@
   "devDependencies": {
     "assert": "^1.4.1",
     "codeceptjs": "1.1.1",
+    "cypress": "^2.1.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "jest-enzyme": "^6.0.0",
@@ -53,8 +54,8 @@
     "start-js": "react-scripts start",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:acceptance": "codeceptjs run",
-    "test:acceptance-dev": "codeceptjs run --steps",
+    "test:acceptance": "cypress run",
+    "test:acceptance-dev": "cypress open",
     "eject": "react-scripts eject"
   },
   "standard": {
@@ -68,7 +69,8 @@
       "FileReader"
     ],
     "ignore": [
-      "public"
+      "public",
+      "tests"
     ],
     "parser": "babel-eslint"
   },
