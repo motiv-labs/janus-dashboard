@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:8082",
+  "fixturesFolder": "tests/fixtures",
+  "integrationFolder": "tests/features",
+  "supportFile": "tests/support",
+  "pluginsFile": false,
+  "videoRecording": false,
+  "screenshotOnHeadlessFailure": false,
+  "chromeWebSecurity": false
+}
