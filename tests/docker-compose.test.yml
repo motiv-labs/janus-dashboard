@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  janus:
+    image: quay.io/hellofresh/janus
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    depends_on:
+      - janus-database
+    volumes:
+      - ./janus.toml:/etc/janus/janus.toml
+
+  janus-database:
+    image: mongo
+    ports:
+      - "27017:27017"
+
+  janus-dashboard:
+    image: quay.io/hellofresh/janus-dashboard
+    depends_on:
+      - janus
+    ports:
+      - "8082:80"
+    environment:
+      REACT_APP_JANUS_URI: http://localhost:8081
+      REACT_APP_CLIENT_ID: yourClientId
+      REACT_APP_SCOPE: read:org
+      REACT_APP_GITHUB_TOKEN_URL:  http://localhost:8080/auth/github/token
+      REACT_APP_JANUS_TOKEN_URL: http://localhost:8081
+      REACT_APP_GITHUB_AUTHORIZE_URL: http://localhost:8080/auth/github/authorize
+
