@@ -174,7 +174,7 @@ Add your `Client ID` to environment variables:
         REACT_APP_GITHUB_TOKEN_URL: 'http://<your-janus-public-api>:8080/auth/github/token'
         REACT_APP_GITHUB_AUTHORIZE_URL: 'http://<your-janus-public-api>:8080/auth/github/authorize'
       ports:
-          - "8083:80"
+          - "8082:80"
 ```
 
 and run again:
