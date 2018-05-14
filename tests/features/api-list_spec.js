@@ -55,7 +55,7 @@ describe('API List Page', () => {
 
     // Validate that API has been created correctly
     // Search
-    cy.get('.j-search-bar__input')
+    cy.get('.j-search-bar__input', { timeout: 100000 })
       .type(API_NAME)
 
     // Validate that item is created in API List Page
