@@ -1,3 +1,4 @@
+const JANUS_URL = 'http://localhost:8081'
 const UUID = Math.random().toString(36).replace(/[0-9]/g, '').substring(1)
 const API_NAME = `test-api-${UUID}`
 const API_PATH = `/test-api-${UUID}`
@@ -15,13 +16,8 @@ describe('API List Page', () => {
   it('should be able to add a new API Endpoint', () => {
     cy.loginVisit('/new')
 
-    // Validate URL
-    cy.location()
-      .its('pathname')
-      .should('eq', `/new`)
-
     // Fill form
-    cy.get(':nth-child(1) > .j-row--fullwidth > :nth-child(1) > .j-col > .j-input')
+    cy.get(':nth-child(1) > .j-row--fullwidth > :nth-child(1) > .j-col > .j-input', { timeout: 10000 })
       .type(API_NAME)
 
     cy.get('#is-active')
@@ -30,20 +26,16 @@ describe('API List Page', () => {
     cy.get(':nth-child(2) > :nth-child(2) > :nth-child(1) > .j-col > .j-input')
       .type(API_PATH)
 
-    cy.get('#react-select-2--value > .Select-placeholder')
-      .click()
-      .get('.Select-menu-outer > * > *:nth-child(1)')
-      .click()
+    cy.get('#react-select-2--value > .Select-input > input')
+      .type('roundrobin{enter}', { force: true })
 
     cy.get(':nth-child(1) > .j-control > .j-icon')
       .click()
       .get('.j-row__item > .j-input')
       .type(API_TARGET_URL)
 
-    cy.get('#react-select-3--value > .Select-placeholder')
-      .click()
-      .get('.Select-menu-outer > * > *:nth-child(1)')
-      .click()
+    cy.get('#react-select-3--value > .Select-input > input')
+      .type('all{enter}', { force: true })
 
     cy.get('#strip-path-true')
       .click()
@@ -52,21 +44,21 @@ describe('API List Page', () => {
       .type(API_HEALTH_CHECK_PATH)
 
     // Save
-    cy.get(':nth-child(2) > .j-button')
+    cy.get('.j-api-form__sticky .j-button.j-button--primary[type="submit"]')
       .click()
       .get('.j-buttons__wrapper > .j-button--primary')
       .click()
-
-    // Toaster Check
-    cy.get('.j-toaster__right-part')
-      .contains(API_NAME)
   })
 
   it('should add the API endpoint correctly', () => {
+    cy.loginVisit('/')
+    cy.wait(5000)
+
     // Validate that API has been created correctly
     // Search
-    cy.get('.j-search-bar__input')
+    cy.get('.j-search-bar__input', { timeout: 100000 })
       .type(API_NAME)
+    cy.wait(5000)
 
     // Validate that item is created in API List Page
     cy.get('.j-table__tbody')
@@ -91,9 +83,9 @@ describe('API List Page', () => {
     cy.get(':nth-child(2) > :nth-child(2) > :nth-child(1) > .j-col > .j-input')
       .should('have.value', API_PATH)
 
-    cy.get('#react-select-8--value > .Select-value')
-      .contains('roundrobin')
-      .get('.j-row__item > .j-input')
+    cy.get('input[name="token_strategy.name"]')
+      .should('have.value', 'roundrobin')
+    cy.get('input[name="proxy.upstreams.targets[0].target"]')
       .should('have.value', API_TARGET_URL)
 
     cy.get('#strip-path-true')
