@@ -31,7 +31,7 @@ before_script:
   - docker-compose -f tests/docker-compose.test.yml up -d
 
 script:
-  - docker run -v $(pwd):/app -w /app --net="host" cypress/browsers:chrome65-ff57 /bin/sh -c '$(npm bin)/cypress run'
+  - docker run -tv $(pwd):/app -w /app --net="host" cypress/browsers:chrome65-ff57 /bin/sh -c '$(npm bin)/cypress run'
 
 after_script:
   - docker-compose -f tests/docker-compose.test.yml down
