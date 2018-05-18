@@ -6,5 +6,9 @@
   "pluginsFile": false,
   "videoRecording": false,
   "screenshotOnHeadlessFailure": false,
-  "chromeWebSecurity": false
+  "chromeWebSecurity": false,
+  "modifyObstructiveCode": false,
+  "numTestsKeptInMemory": 0,
+  "defaultCommandTimeout": 20000,
+  "requestTimeout": 30000
 }

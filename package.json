@@ -52,8 +52,8 @@
     "start-js": "react-scripts start",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "test:acceptance": "cypress run",
-    "test:acceptance-dev": "cypress open",
+    "test:acceptance": "CYPRESS_numTestsKeptInMemory=50 cypress run",
+    "test:acceptance-dev": "CYPRESS_numTestsKeptInMemory=50 cypress open",
     "eject": "react-scripts eject"
   },
   "standard": {

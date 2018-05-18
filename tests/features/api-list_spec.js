@@ -52,13 +52,11 @@ describe('API List Page', () => {
 
   it('should add the API endpoint correctly', () => {
     cy.loginVisit('/')
-    cy.wait(5000)
 
     // Validate that API has been created correctly
     // Search
     cy.get('.j-search-bar__input', { timeout: 100000 })
       .type(API_NAME)
-    cy.wait(5000)
 
     // Validate that item is created in API List Page
     cy.get('.j-table__tbody')
