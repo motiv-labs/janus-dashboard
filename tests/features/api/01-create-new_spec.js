@@ -5,14 +5,7 @@ const API_PATH = `/test-api-${UUID}`
 const API_TARGET_URL = `http://localhost/${UUID}`
 const API_HEALTH_CHECK_PATH = `http://localhost/${UUID}/status`
 
-describe('API List Page', () => {
-  it('should be accessible', () => {
-    cy.loginVisit('/')
-      .then(() => cy.log(localStorage.getItem('access_token')))
-      .then(() => expect(localStorage.getItem('access_token')).to.exist)
-      .get('.j-title').should('contain', 'APIs')
-  })
-
+describe('Create New API', () => {
   it('should be able to add a new API Endpoint', () => {
     cy.loginVisit('/new')
 
@@ -46,7 +39,7 @@ describe('API List Page', () => {
     // Save
     cy.get('.j-api-form__sticky .j-button.j-button--primary[type="submit"]')
       .click()
-      .get('.j-buttons__wrapper > .j-button--primary')
+      .get('.j-confirmation__buttons-group > .j-button--primary')
       .click()
   })
 

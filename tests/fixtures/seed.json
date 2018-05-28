@@ -1,0 +1,26 @@
+{
+    "name": "seed-api",
+    "active": true,
+    "proxy": {
+        "preserve_host": false,
+        "listen_path": "/seed-api",
+        "upstreams": {
+            "balancing": "roundrobin",
+            "targets": [{
+                "target": "http://localhost/seed-api",
+                "weight": 0
+            }]
+        },
+        "insecure_skip_verify": false,
+        "strip_path": true,
+        "append_path": false,
+        "enable_load_balancing": false,
+        "methods": ["ALL"],
+        "hosts": []
+    },
+    "plugins": [],
+    "health_check": {
+        "url": "http://localhost/seed-api/status",
+        "timeout": 3
+    }
+}
