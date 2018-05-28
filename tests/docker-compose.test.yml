@@ -8,6 +8,7 @@ services:
       - "8081:8081"
     depends_on:
       - janus-database
+      - janus-database-seed
     volumes:
       - ./janus.toml:/etc/janus/janus.toml
 
@@ -15,6 +16,13 @@ services:
     image: mongo
     ports:
       - "27017:27017"
+
+  janus-database-seed:
+    build:
+      context: '.'
+      dockerfile: "seed.Dockerfile"
+    depends_on:
+     - janus-database
 
   janus-dashboard:
     image: quay.io/hellofresh/janus-dashboard
