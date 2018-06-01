@@ -37,4 +37,3 @@ services:
       REACT_APP_GITHUB_TOKEN_URL:  http://localhost:8080/auth/github/token
       REACT_APP_JANUS_TOKEN_URL: http://localhost:8081
       REACT_APP_GITHUB_AUTHORIZE_URL: http://localhost:8080/auth/github/authorize
-
