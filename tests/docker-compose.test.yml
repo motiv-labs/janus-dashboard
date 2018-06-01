@@ -25,7 +25,8 @@ services:
      - janus-database
 
   janus-dashboard:
-    image: quay.io/hellofresh/janus-dashboard
+    build:
+      context: '../'
     depends_on:
       - janus
     ports:

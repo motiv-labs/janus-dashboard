@@ -6,6 +6,7 @@ node_js:
 env:
   - DOCKER_COMPOSE_VERSION=1.20.1
     CYPRESS_ACCESS_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjIxNDc0ODM2NDgsImlhdCI6MCwiaXNfYWRtaW4iOnRydWUsInN1YiI6ImFjY2VwdGFuY2VfdGVzdCJ9.GEsz9zrpNo0N4uUD0amEr2ntRc1m9KPwvMsvU4p-MDk
+    CYPRESS_CACHE_FOLDER=$TRAVIS_BUILD_DIR/.cache/Cypress
 
 services:
   - docker
@@ -22,16 +23,25 @@ before_install:
   # Pull cypress image
   - docker pull cypress/browsers:chrome65-ff57
 
-install:
-  # Install only cypress
-  - rm package-lock.json package.json
-  - npm install cypress
+install: true
 
 before_script:
   - docker-compose -f tests/docker-compose.test.yml up -d
+  - rm package-lock.json package.json
+  - npm install cypress
 
 script:
-  - docker run -tv $(pwd):/app -w /app --net="host" -e "CYPRESS_ACCESS_TOKEN=$CYPRESS_ACCESS_TOKEN" cypress/browsers:chrome65-ff57 /bin/sh -c '$(npm bin)/cypress run'
+  - >
+    docker run
+    -t
+    -v $TRAVIS_BUILD_DIR:/app
+    -w /app
+    -e "CYPRESS_ACCESS_TOKEN=$CYPRESS_ACCESS_TOKEN"
+    -e "CYPRESS_CACHE_FOLDER=/app/.cache/Cypress"
+    --network="host"
+    cypress/browsers:chrome65-ff57
+    /bin/sh -c
+    '$(npm bin)/cypress run'
 
 after_script:
   - docker-compose -f tests/docker-compose.test.yml down
