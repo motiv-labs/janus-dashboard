@@ -1,8 +1,8 @@
-FROM node:9.6-alpine as builder
+FROM node:10.3.0-alpine as builder
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install --only=production
+RUN npm ci --production
 
 COPY public/ ./public/
 COPY src/ ./src/
