@@ -144,7 +144,7 @@ class OAuthServerForm extends PureComponent {
         <Row className={b('row')()} fullwidth>
           <KeyValueOptions
             name='secrets'
-            title='JWT settings'
+            title='Secrets'
             k='key'
             val='value'
             placeholder={{
