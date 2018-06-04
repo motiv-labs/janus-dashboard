@@ -13,6 +13,7 @@ import block from '../../../helpers/bem-cn'
 import checkOnPattern from '../../../helpers/pattern-check'
 import optionsTransformer from '../../../helpers/optionsTransformer'
 import getValues from '../../../helpers/getValues'
+import parse from '../../../helpers/parse-value'
 
 import Section from '../../Layout/Section/Section'
 import Row from '../../Layout/Row/Row'
@@ -138,6 +139,24 @@ class OAuthServerForm extends PureComponent {
         </Row>
       </div>
     );
+
+    renderLeewayField = () => (
+      <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
+        <Row classname={b('row')()} fullwidth>
+          <div className={col()}>
+            <Label>Leeway</Label>
+            <Field
+              name='token_strategy.leeway'
+              type='number'
+              component={Input}
+              required
+              parse={parse}
+            />
+            <Hint>Helps solve clock skew problem. The value is in seconds unit.</Hint>
+          </div>
+        </Row>
+      </div>
+    )
 
     renderSecretsOptions = () => (
       <div className={row({fullwidth: true}).mix('j-api-form__row')()}>
@@ -446,6 +465,7 @@ class OAuthServerForm extends PureComponent {
                 </div>
               </div>
               { this.renderStrategy(this.state.strategy.name) }
+              { this.renderLeewayField() }
               { this.renderSecretsOptions() }
             </div>
           </div>
