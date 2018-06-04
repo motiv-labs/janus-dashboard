@@ -7,7 +7,7 @@ const API_HEALTH_CHECK_PATH = `http://localhost/${API_NAME}/status`
 describe('Duplicating API', () => {
   it('should work properly', () => {
     cy.loginVisit('/')
-    cy.fixture('seed.json').then(SEED_API => {
+    cy.fixture('seed_api.json').then(SEED_API => {
 
       // Find the item and click `duplicate`
       cy.get('.j-search-bar__input', { timeout: 100000 })

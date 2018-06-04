@@ -7,7 +7,7 @@ const API_HEALTH_CHECK_PATH = `http://localhost/${API_NAME}/status`
 describe('Editing API', () => {
   it('should work properly', () => {
     cy.loginVisit('/')
-    cy.fixture('seed.json').then(SEED_API => {
+    cy.fixture('seed_api.json').then(SEED_API => {
 
       // Find the item and click `edit`
       cy.get('.j-search-bar__input', { timeout: 100000 })
@@ -46,7 +46,7 @@ describe('Editing API', () => {
   it('should edit the API endpoint correctly', () => {
     cy.loginVisit('/')
 
-    cy.fixture('seed.json').then(SEED_API => {
+    cy.fixture('seed_api.json').then(SEED_API => {
       // Validate that API has been created correctly
       // Search
       cy.get('.j-search-bar__input', { timeout: 100000 })
