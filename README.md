@@ -1,4 +1,5 @@
 # janus-dashboard
+[![Build Status](https://travis-ci.com/hellofresh/janus-dashboard.svg?branch=master)](https://travis-ci.com/hellofresh/janus-dashboard)
 
 > Dashbord for [Janus](https://github.com/hellofresh/janus) project
 
