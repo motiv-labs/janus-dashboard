@@ -62,6 +62,10 @@ describe('Create New OAuth Server', () => {
       cy.get('input[name="token_strategy.settings.use_auth_header"][value="true"]')
         .click()
 
+      // Leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .type(oauthJSON.token_strategy.leeway)
+
       // Secrets
       // Add Fields
       cy.get('.j-api-form__inner:not([class$="--overflowed"]) .j-api-form__section:nth-of-type(4) > .j-api-form__row:last-child .j-row .j-icon--type-add')
@@ -187,6 +191,10 @@ describe('Create New OAuth Server', () => {
       cy.get('input[name="token_strategy.settings.use_auth_header"][value="true"]')
         .should('have.value', 'true')
 
+      // Leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .should('have.value', oauthJSON.token_strategy.leeway.toString())
+
       // Secrets
       // Secret One
       cy.get('input[name="secrets[0].key"]')
@@ -283,6 +291,10 @@ describe('Create New OAuth Server', () => {
       // JWT Secret
       cy.get('input[name="token_strategy.settings[0].key"]')
         .type(oauthJSON.token_strategy.settings[0].key)
+
+      // Leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .type(oauthJSON.token_strategy.leeway)
 
       // Secrets
       // Add Fields
@@ -452,6 +464,10 @@ describe('Create New OAuth Server', () => {
       // Token Secret
       cy.get('input[name="token_strategy.settings[0].key"]')
         .should('have.value', oauthJSON.token_strategy.settings[0].key)
+
+      // Leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .should('have.value', oauthJSON.token_strategy.leeway.toString())
 
       // Secrets
       // Secret One
