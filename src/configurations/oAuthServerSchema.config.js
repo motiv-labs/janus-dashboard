@@ -245,7 +245,7 @@ const oAuthServerSchema = {
       {
         name: 'introspection',
         settings: {
-          use_oauth_header: false,
+          use_auth_header: false,
           auth_header_type: ''
         }
       }

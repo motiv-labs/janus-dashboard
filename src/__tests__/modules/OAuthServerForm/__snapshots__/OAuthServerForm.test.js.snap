@@ -335,7 +335,7 @@ exports[`EndpointForm component renders correctly 1`] = `
               "name": "introspection",
               "settings": Object {
                 "auth_header_type": "",
-                "use_oauth_header": false,
+                "use_auth_header": false,
               },
             },
           ],
@@ -681,7 +681,7 @@ exports[`EndpointForm component renders correctly if property \`editing\` is pas
               "name": "introspection",
               "settings": Object {
                 "auth_header_type": "",
-                "use_oauth_header": false,
+                "use_auth_header": false,
               },
             },
           ],
