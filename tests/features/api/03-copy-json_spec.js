@@ -2,7 +2,7 @@ describe('Copy as JSON', () => {
   it('should work properly', () => {
     cy.loginVisit('/')
 
-    cy.fixture('seed.json').then(SEED_API => {
+    cy.fixture('seed_api.json').then(SEED_API => {
       // Find the item and click `copy as json`
       cy.get('.j-search-bar__input', { timeout: 100000 })
         .type(SEED_API.name)

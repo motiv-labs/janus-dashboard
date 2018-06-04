@@ -41,7 +41,7 @@ script:
     --network="host"
     cypress/browsers:chrome65-ff57
     /bin/sh -c
-    '$(npm bin)/cypress run'
+    '$(npm bin)/cypress run --headed'
 
 after_script:
   - docker-compose -f tests/docker-compose.test.yml down
