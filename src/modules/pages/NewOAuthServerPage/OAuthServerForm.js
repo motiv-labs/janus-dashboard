@@ -178,7 +178,7 @@ class OAuthServerForm extends PureComponent {
             <Row className={b('radio-wrap')()}>
               <Row className={b('radio')()}>
                 <Field
-                  name='token_strategy.settings.use_oauth_header'
+                  name='token_strategy.settings.use_auth_header'
                   component={Radio}
                   value={'true'}
                   type='radio'
@@ -188,7 +188,7 @@ class OAuthServerForm extends PureComponent {
               </Row>
               <Row className={b('radio')()}>
                 <Field
-                  name='token_strategy.settings.use_oauth_header'
+                  name='token_strategy.settings.use_auth_header'
                   component={Radio}
                   value={'false'}
                   type='radio'
