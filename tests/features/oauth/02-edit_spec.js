@@ -1,4 +1,5 @@
 const NEW_RATE_LIMIT = 480
+const NEW_LEEWAY = 20
 const WEIGHT = 100
 
 describe('Editing OAuth Server', () => {
@@ -25,6 +26,11 @@ describe('Editing OAuth Server', () => {
       cy.get('input[name="rate_limit.limit.value"]')
         .clear()
         .type(NEW_RATE_LIMIT)
+
+      // Update Leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .clear()
+        .type(NEW_LEEWAY)
 
       // Update OAuth Endpoint Load Balancing Algorithm
       cy.get('#react-select-8--value > .Select-input > input')
@@ -66,6 +72,10 @@ describe('Editing OAuth Server', () => {
       // Validate rate limit
       cy.get('input[name="rate_limit.limit.value"]')
         .should('have.value', `${NEW_RATE_LIMIT}`)
+
+      // Validate leeway
+      cy.get('input[name="token_strategy.leeway"]')
+        .should('have.value', `${NEW_LEEWAY}`)
 
       // Validate OAuth Endpoint Load Balancing Algorithm
       cy.get('#react-select-8--value')

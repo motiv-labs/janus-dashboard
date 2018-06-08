@@ -232,6 +232,7 @@ const oAuthServerSchema = {
   token_strategy: {
     name: '',
     settings: [],
+    leeway: 0,
     strategies: [
       {
         name: 'jwt',
