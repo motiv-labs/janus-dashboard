@@ -104,6 +104,34 @@ export const authorizeThroughGithub = () => async dispatch => {
   window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`
 }
 
+export const authorizeBasic = payload => async dispatch => {
+  dispatch(requestStart())
+  dispatch(loginRequest())
+
+  const url = `${URL_GET_JANUS_TOKEN}/login`
+  try {
+    const response = await axios.post(url, {
+      username: payload.username,
+      password: payload.password
+    })
+
+    setAccessToken(response.data.access_token, payload.username)
+    history.push('/')
+    dispatch(getUserStatus())
+    dispatch(requestComplete())
+  } catch (error) {
+    dispatch(requestFailure())
+
+    if (error.response.status === 401) {
+      dispatch(loginFailure())
+    } else {
+      dispatch(openResponseModal({
+        message: error.message
+      }))
+    }
+  }
+}
+
 export const logout = () => dispatch => {
   removeAccessToken()
   dispatch(getUserStatus())
