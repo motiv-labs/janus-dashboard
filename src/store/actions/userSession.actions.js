@@ -1,7 +1,7 @@
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import history from '../configuration/history'
-import { getAccessToken, removeAccessToken, setAccessToken } from '../api'
+import { getAccessToken, getUserName, removeAccessToken, setAccessToken } from '../api'
 import {
   CHECK_LOGGED_STATUS,
   LOGIN_START,
@@ -115,20 +115,25 @@ export const logout = () => dispatch => {
 export const getUserStatus = () => dispatch => {
   dispatch(checkLoggedStatus())
   const JWTtoken = getAccessToken()
+  const username = getUserNameFromToken(JWTtoken) || getUserName()
+  const userrole = getUserRoleFromToken(JWTtoken) || true
 
   if (JWTtoken) {
     dispatch(loginSuccess(
-      getUserName(JWTtoken),
-      getUserAdminRole(JWTtoken)
+      username,
+      userrole
     ))
   } else {
     history.push('/login')
   }
 }
 
-function getUserName (JWTtoken) {
-  return jwt.decode(JWTtoken).sub
+function getUserNameFromToken (token) {
+  const payload = jwt.decode(token)
+  return payload ? payload.sub : false
 }
-function getUserAdminRole (JWTtoken) {
-  return jwt.decode(JWTtoken).is_admin
+
+function getUserRoleFromToken (token) {
+  const payload = jwt.decode(token)
+  return payload ? payload.is_admin : false
 }

@@ -13,7 +13,10 @@ const client = axios.create({
     headers,
 });
 
-export const setAccessToken = (token) => {
+export const setAccessToken = (token, username='') => {
+    if (username) {
+      localStorage.setItem('username', username);
+    }
     localStorage.setItem('access_token', token);
     client.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
@@ -31,12 +34,17 @@ export const getAccessToken = () => {
     }
 };
 
+export const getUserName = () => {
+    return localStorage.getItem('username')
+}
+
 export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
 
 export const getRefreshToken = () => localStorage.getItem('refresh_token');
 
 export const removeAccessToken = () => {
     localStorage.removeItem('access_token');
+    localStorage.removeItem('username');
 }
 
 if (getAccessToken()) {
