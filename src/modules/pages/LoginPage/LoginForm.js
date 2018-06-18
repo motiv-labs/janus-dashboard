@@ -1,11 +1,14 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { reduxForm } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 
 import block from '../../../helpers/bem-cn'
 
 import Row from '../../Layout/Row/Row'
+import Section from '../../Layout/Section/Section'
+import Input from '../../../modules/inputs/Input'
 import Button from '../../../components/Button/Button'
+import Label from '../../../components/Label/Label'
 import Logo from '../../../components/Logo/Logo'
 import Icon from '../../../components/Icon/Icon'
 import Preloader from '../../../components/Preloader/Preloader'
@@ -21,7 +24,7 @@ const propTypes = {
   isFetching: PropTypes.bool.isRequired
 }
 
-const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching, user }) => {
+const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetching, user, handleSubmit }) => {
   if (user) {
     history.push('/')
     return
@@ -32,15 +35,52 @@ const LoginForm = ({ authorizeThroughGithub, errorMsg, isFetching, user }) => {
   }
 
   return (
-    <form className={b({error: !!errorMsg})()} onSubmit={authorizeThroughGithub}>
+    <div className={b({error: !!errorMsg})()}>
       <Logo className={b('logo')()} />
-      <Row className={b('button-section')()} alignCenter>
-        <Button className={b('button')()} mod='primary' type='button' onClick={authorizeThroughGithub}>
-          <Icon type='github' />
-                    Login with Github
-        </Button>
-      </Row>
-    </form>
+      {
+        (!process.env.REACT_APP_DISABLE_BASIC_AUTH || process.env.REACT_APP_DISABLE_GITHUB_AUTH) &&
+          <Section className={b('login-section')()}>
+            <form onSubmit={handleSubmit(authorizeBasic)}>
+              <Row className={b('fields-section')()} col>
+                <Label>Username</Label>
+                <Field
+                  name='username'
+                  type='text'
+                  component={Input}
+                />
+                <Label htmlFor='password'>Password</Label>
+                <Field
+                  name='password'
+                  type='password'
+                  component={Input}
+                />
+              </Row>
+              {
+                errorMsg &&
+                  <small className={b('error-message')()}>
+                    { errorMsg }
+                  </small>
+              }
+              <Row className={b('button-section')()} col>
+                <Button className={b('button')()} mod='primary' type='submit'>
+                  Sign In
+                </Button>
+              </Row>
+            </form>
+          </Section>
+      }
+      {
+        !process.env.REACT_APP_DISABLE_GITHUB_AUTH &&
+          <Section className={b('oauth-section')()} small>
+            <Row className={b('button-section')()} col>
+              <Button className={b('button')()} mod='primary' type='button' onClick={authorizeThroughGithub}>
+                <Icon type='github' />
+                Login with GitHub
+              </Button>
+            </Row>
+          </Section>
+      }
+    </div>
   )
 }
 

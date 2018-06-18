@@ -1,6 +1,7 @@
 import { connect } from 'react-redux'
 
 import {
+  authorizeBasic,
   authorizeThroughGithub
 } from '../../../store/actions'
 
@@ -14,5 +15,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { authorizeThroughGithub }
+  { authorizeBasic, authorizeThroughGithub }
 )(FormWrapper)
