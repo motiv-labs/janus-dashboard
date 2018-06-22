@@ -14,9 +14,12 @@
         "insecure_skip_verify": false,
         "strip_path": true,
         "append_path": false,
-        "enable_load_balancing": false,
         "methods": ["ALL"],
-        "hosts": []
+        "hosts": [],
+        "forwarding_timeouts": {
+            "dial_timeout": "30s",
+            "response_header_timeout": "30s"
+        }
     },
     "plugins": [],
     "health_check": {
@@ -24,3 +27,4 @@
         "timeout": 3
     }
 }
+
