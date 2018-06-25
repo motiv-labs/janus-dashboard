@@ -1,0 +1,135 @@
+{
+  "name": "seed_oauth_server",
+  "oauth_endpoints": {
+    "authorize": {
+      "preserve_host": false,
+      "listen_path": "",
+      "upstreams": {
+        "balancing": "",
+        "targets": []
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [],
+      "hosts": []
+    },
+    "token": {
+      "preserve_host": false,
+      "listen_path": "",
+      "upstreams": {
+        "balancing": "",
+        "targets": []
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [],
+      "hosts": []
+    },
+    "introspect": {
+      "preserve_host": false,
+      "listen_path": "/auth/introspect",
+      "upstreams": {
+        "balancing": "roundrobin",
+        "targets": [
+          {
+            "target": "http://oauth_server/user",
+            "weight": 0
+          }
+        ]
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [
+        "ALL"
+      ],
+      "hosts": []
+    },
+    "revoke": {
+      "preserve_host": false,
+      "listen_path": "",
+      "upstreams": {
+        "balancing": "",
+        "targets": []
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [],
+      "hosts": []
+    }
+  },
+  "oauth_client_endpoints": {
+    "create": {
+      "preserve_host": false,
+      "listen_path": "",
+      "upstreams": {
+        "balancing": "",
+        "targets": []
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [],
+      "hosts": []
+    },
+    "remove": {
+      "preserve_host": false,
+      "listen_path": "",
+      "upstreams": {
+        "balancing": "",
+        "targets": []
+      },
+      "insecure_skip_verify": false,
+      "strip_path": false,
+      "append_path": false,
+      "enable_load_balancing": false,
+      "methods": [],
+      "hosts": []
+    }
+  },
+  "allowed_access_types": [],
+  "allowed_authorize_types": [],
+  "auth_login_redirect": "",
+  "secrets": {
+    "id": "secret"
+  },
+  "cors_meta": {
+    "domains": [
+      "*"
+    ],
+    "methods": [
+      "ALL"
+    ],
+    "request_headers": [
+      "Origin",
+      "Authorization",
+      "Content-Type"
+    ],
+    "exposed_headers": [
+      "X-Debug-Token",
+      "X-Debug-Token-Link"
+    ],
+    "enabled": true
+  },
+  "rate_limit": {
+    "limit": "240-S",
+    "enabled": true
+  },
+  "token_strategy": {
+    "name": "introspection",
+    "settings": {
+      "auth_header_type": "token",
+      "use_auth_header": true
+    },
+    "leeway": 0
+  },
+  "access_rules": []
+}
