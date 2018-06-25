@@ -25,6 +25,9 @@ const propTypes = {
 }
 
 const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetching, user, handleSubmit }) => {
+  const DISABLE_BASIC_AUTH_FORM = window.MAIN_CONFIG.ui.disable_basic_auth
+  const DISABLE_GITHUB_AUTH = window.MAIN_CONFIG.ui.disable_github_auth
+
   if (user) {
     history.push('/')
     return
@@ -38,7 +41,7 @@ const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetchin
     <div className={b({error: !!errorMsg})()}>
       <Logo className={b('logo')()} />
       {
-        (!process.env.REACT_APP_DISABLE_BASIC_AUTH || process.env.REACT_APP_DISABLE_GITHUB_AUTH) &&
+        (!DISABLE_BASIC_AUTH_FORM || DISABLE_GITHUB_AUTH) &&
           <Section className={b('login-section')()}>
             <form onSubmit={handleSubmit(authorizeBasic)}>
               <Row className={b('fields-section')()} col>
@@ -70,7 +73,7 @@ const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetchin
           </Section>
       }
       {
-        !process.env.REACT_APP_DISABLE_GITHUB_AUTH &&
+        !DISABLE_GITHUB_AUTH &&
           <Section className={b('oauth-section')()} small>
             <Row className={b('button-section')()} col>
               <Button className={b('button')()} mod='primary' type='button' onClick={authorizeThroughGithub}>
