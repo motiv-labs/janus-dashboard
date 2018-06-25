@@ -144,13 +144,14 @@ export const logout = () => dispatch => {
 export const getUserStatus = () => dispatch => {
   dispatch(checkLoggedStatus())
   const JWTtoken = getAccessToken()
-  const username = getUserNameFromToken(JWTtoken) || getUserName()
-  const userrole = getUserRoleFromToken(JWTtoken) || true
 
   if (JWTtoken) {
+    const userName = getUserNameFromToken(JWTtoken) || getUserName()
+    const userRole = getUserRoleFromToken(JWTtoken) || true
+
     dispatch(loginSuccess(
-      username,
-      userrole
+      userName,
+      userRole
     ))
   } else {
     history.push('/login')
@@ -159,10 +160,12 @@ export const getUserStatus = () => dispatch => {
 
 function getUserNameFromToken (token) {
   const payload = jwt.decode(token)
+
   return payload ? payload.sub : false
 }
 
 function getUserRoleFromToken (token) {
   const payload = jwt.decode(token)
+
   return payload ? payload.is_admin : false
 }
