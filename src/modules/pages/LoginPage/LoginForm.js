@@ -25,8 +25,8 @@ const propTypes = {
 }
 
 const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetching, user, handleSubmit }) => {
-  const DISABLE_BASIC_AUTH_FORM = window.MAIN_CONFIG.ui.disable_basic_auth
-  const DISABLE_GITHUB_AUTH = window.MAIN_CONFIG.ui.disable_github_auth
+  const DISABLE_BASIC_AUTH_FORM = (window.MAIN_CONFIG.ui.disable_basic_auth === 'true')
+  const DISABLE_GITHUB_AUTH = (window.MAIN_CONFIG.ui.disable_github_auth === 'true')
 
   if (user) {
     history.push('/')
