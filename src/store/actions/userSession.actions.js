@@ -109,8 +109,8 @@ export const authorizeBasic = payload => async dispatch => {
   dispatch(requestStart())
   dispatch(loginRequest())
 
-  const url = `${URL_JANUS}/login`
   try {
+    const url = `${URL_JANUS}/login`
     const response = await axios.post(url, {
       username: payload.username,
       password: payload.password
