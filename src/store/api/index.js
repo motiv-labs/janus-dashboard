@@ -34,9 +34,7 @@ export const getAccessToken = () => {
     }
 };
 
-export const getUserName = () => {
-    return localStorage.getItem('username')
-}
+export const getUserName = () => localStorage.getItem('username')
 
 export const setRefreshToken = token => localStorage.setItem('refresh_token', token);
 
