@@ -20,6 +20,7 @@ const state = getRandomString();
 const URL_GET_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL || MAIN_CONFIG.gateway.github_token_url;
 const URL_GET_JANUS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL || MAIN_CONFIG.gateway.janus_token_url;
 const URL_GITHUB_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL || MAIN_CONFIG.gateway.github_authorize_url;
+const URL_JANUS = process.env.REACT_APP_JANUS_URI || MAIN_CONFIG.gateway.uri;
 /* eslint-enable */
 
 export const getJWTtoken = (hash) => async dispatch => {
@@ -108,7 +109,7 @@ export const authorizeBasic = payload => async dispatch => {
   dispatch(requestStart())
   dispatch(loginRequest())
 
-  const url = `${URL_GET_JANUS_TOKEN}/login`
+  const url = `${URL_JANUS}/login`
   try {
     const response = await axios.post(url, {
       username: payload.username,
