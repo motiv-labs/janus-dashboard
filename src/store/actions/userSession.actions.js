@@ -1,7 +1,7 @@
 import axios from 'axios'
 import jwt from 'jsonwebtoken'
 import history from '../configuration/history'
-import { getAccessToken, removeAccessToken, setAccessToken } from '../api'
+import { getAccessToken, getUserName, removeAccessToken, setAccessToken } from '../api'
 import {
   CHECK_LOGGED_STATUS,
   LOGIN_START,
@@ -20,6 +20,7 @@ const state = getRandomString();
 const URL_GET_GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN_URL || MAIN_CONFIG.gateway.github_token_url;
 const URL_GET_JANUS_TOKEN = process.env.REACT_APP_JANUS_TOKEN_URL || MAIN_CONFIG.gateway.janus_token_url;
 const URL_GITHUB_AUTHORIZE = process.env.REACT_APP_GITHUB_AUTHORIZE_URL || MAIN_CONFIG.gateway.github_authorize_url;
+const URL_JANUS = process.env.REACT_APP_JANUS_URI || MAIN_CONFIG.gateway.uri;
 /* eslint-enable */
 
 export const getJWTtoken = (hash) => async dispatch => {
@@ -104,6 +105,34 @@ export const authorizeThroughGithub = () => async dispatch => {
   window.location.href = `${URL_GITHUB_AUTHORIZE}?response_type=code&state=${state}&client_id=${clientId}&scope=${scope}`
 }
 
+export const authorizeBasic = payload => async dispatch => {
+  dispatch(requestStart())
+  dispatch(loginRequest())
+
+  try {
+    const url = `${URL_JANUS}/login`
+    const response = await axios.post(url, {
+      username: payload.username,
+      password: payload.password
+    })
+
+    setAccessToken(response.data.access_token, payload.username)
+    history.push('/')
+    dispatch(getUserStatus())
+    dispatch(requestComplete())
+  } catch (error) {
+    dispatch(requestFailure())
+
+    if (error.response.status === 401) {
+      dispatch(loginFailure())
+    } else {
+      dispatch(openResponseModal({
+        message: error.message
+      }))
+    }
+  }
+}
+
 export const logout = () => dispatch => {
   removeAccessToken()
   dispatch(getUserStatus())
@@ -117,18 +146,26 @@ export const getUserStatus = () => dispatch => {
   const JWTtoken = getAccessToken()
 
   if (JWTtoken) {
+    const userName = getUserNameFromToken(JWTtoken) || getUserName()
+    const userRole = getUserRoleFromToken(JWTtoken) || true
+
     dispatch(loginSuccess(
-      getUserName(JWTtoken),
-      getUserAdminRole(JWTtoken)
+      userName,
+      userRole
     ))
   } else {
     history.push('/login')
   }
 }
 
-function getUserName (JWTtoken) {
-  return jwt.decode(JWTtoken).sub
+function getUserNameFromToken (token) {
+  const payload = jwt.decode(token)
+
+  return payload ? payload.sub : false
 }
-function getUserAdminRole (JWTtoken) {
-  return jwt.decode(JWTtoken).is_admin
+
+function getUserRoleFromToken (token) {
+  const payload = jwt.decode(token)
+
+  return payload ? payload.is_admin : false
 }
