@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select'
 
@@ -6,38 +6,25 @@ const propTypes = {
   options: PropTypes.arrayOf(PropTypes.object).isRequired
 }
 
-class MultiSelect extends Component {
-    state = {
-      options: this.props.options,
-      value: []
-    }
+const MultiSelect = ({ input, options, ...props }) => {
+  const handleChange = value => {
+    input.onChange(value.split(','))
+  }
 
-    componentWillReceiveProps = nextProps => {
-      if (nextProps.edit) {
-        this.setState({ value: nextProps.input.value })
-      }
-    }
-
-    handleSelectChange = value => {
-      this.setState((prevState, props) => ({ value }), this.props.input.onChange(value.split(',')))
-    }
-
-    render () {
-      return (
-        <Select
-          {...this.props}
-          multi
-          simpleValue
-          className='j-select'
-          value={this.state.value}
-          placeholder='Choose one or more methods'
-          options={this.props.options}
-          onChange={this.handleSelectChange}
-          onBlur={() => this.props.input.onBlur(this.props.input.value)}
-        />
-      )
-    }
-};
+  return (
+    <Select
+      {...props}
+      multi
+      simpleValue
+      className='j-select'
+      value={input.value}
+      placeholder='Choose one or more methods'
+      options={options}
+      onChange={handleChange}
+      onBlur={() => input.onBlur(input.value)}
+    />
+  )
+}
 
 MultiSelect.propTypes = propTypes
 
