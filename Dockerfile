@@ -10,7 +10,7 @@ RUN npm run build
 
 # -----
 
-FROM nginx:1.12-alpine
+FROM nginx:stable-alpine
 MAINTAINER HelloFresh
 COPY --from=builder /app/src/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build/ /usr/share/nginx/html/
