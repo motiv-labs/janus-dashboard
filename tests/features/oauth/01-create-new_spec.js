@@ -19,7 +19,7 @@ describe('Create New OAuth Server', () => {
 
       // CORS Methods
       cy.get('#react-select-3--value > .Select-input > input')
-        .type('All{enter}', { force: true })
+        .type('GET{enter}', { force: true })
 
       // CORS Request Headers
       cy.get('#react-select-4--value > .Select-input > input')
@@ -107,7 +107,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-24--value > .Select-input > input')
-        .type('ALL{enter}', { force: true })
+        .type('POST{enter}', { force: true })
 
       // Save
       cy.get('.j-api-form__sticky .j-button.j-button--primary[type="submit"]')
@@ -149,7 +149,7 @@ describe('Create New OAuth Server', () => {
 
       // CORS Methods
       cy.get('#react-select-3--value')
-        .contains('ALL')
+        .contains('GET')
 
       // CORS Request Headers
       cy.get('#react-select-4--value')
@@ -226,7 +226,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-9--value')
-        .contains('ALL')
+        .contains('POST')
     })
   })
 
@@ -250,7 +250,7 @@ describe('Create New OAuth Server', () => {
 
       // CORS Methods
       cy.get('#react-select-3--value > .Select-input > input')
-        .type('All{enter}', { force: true })
+        .type('GET{enter}', { force: true })
 
       // CORS Request Headers
       cy.get('#react-select-4--value > .Select-input > input')
@@ -337,7 +337,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-9--value > .Select-input > input')
-        .type('ALL{enter}', { force: true })
+        .type('POST{enter}', { force: true })
 
       // Token
       // Listen Path
@@ -359,7 +359,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-12--value > .Select-input > input')
-        .type('ALL{enter}', { force: true })
+        .type('POST{enter}', { force: true })
 
       // Revoke
       // Listen Path
@@ -381,7 +381,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-15--value > .Select-input > input')
-        .type('ALL{enter}', { force: true })
+        .type('DELETE{enter}', { force: true })
 
       // Save
       cy.get('.j-api-form__sticky .j-button.j-button--primary[type="submit"]')
@@ -423,7 +423,7 @@ describe('Create New OAuth Server', () => {
 
       // CORS Methods
       cy.get('#react-select-3--value')
-        .contains('ALL')
+        .contains('GET')
 
       // CORS Request Headers
       cy.get('#react-select-4--value')
@@ -500,7 +500,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-9--value')
-        .contains('ALL')
+        .contains('POST')
 
       // Token
       // Listen Path
@@ -517,7 +517,7 @@ describe('Create New OAuth Server', () => {
 
       // Load Balancing HTTP Methods
       cy.get('#react-select-9--value')
-        .contains('ALL')
+        .contains('POST')
 
       // Revoke
       // Listen Path
@@ -533,8 +533,8 @@ describe('Create New OAuth Server', () => {
         .should('have.value', oauthJSON.oauth_endpoints.revoke.upstreams.targets[0].target)
 
       // Load Balancing HTTP Methods
-      cy.get('#react-select-9--value')
-        .contains('ALL')
+      cy.get('#react-select-15--value')
+        .contains('DELETE')
 
     })
   })

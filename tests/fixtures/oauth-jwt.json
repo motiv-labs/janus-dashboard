@@ -17,9 +17,7 @@
       "strip_path": false,
       "append_path": false,
       "enable_load_balancing": false,
-      "methods": [
-        "ALL"
-      ],
+      "methods": [],
       "hosts": []
     },
     "token": {
@@ -38,9 +36,7 @@
       "strip_path": false,
       "append_path": false,
       "enable_load_balancing": false,
-      "methods": [
-        "ALL"
-      ],
+      "methods": [],
       "hosts": []
     },
     "introspect": {
@@ -73,9 +69,7 @@
       "strip_path": false,
       "append_path": false,
       "enable_load_balancing": false,
-      "methods": [
-        "ALL"
-      ],
+      "methods": [],
       "hosts": []
     }
   },
@@ -121,7 +115,7 @@
       "*"
     ],
     "methods": [
-      "ALL"
+      "GET"
     ],
     "request_headers": [
       "Origin",
