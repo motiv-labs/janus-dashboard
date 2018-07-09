@@ -33,7 +33,7 @@ const oAuthServerSchema = {
       append_path: false,
       enable_load_balancing: false,
       methods: [],
-      all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+      all_methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
       hosts: []
     },
     token: {
@@ -68,7 +68,7 @@ const oAuthServerSchema = {
       append_path: false,
       enable_load_balancing: false,
       methods: [],
-      all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+      all_methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
       hosts: []
     },
     introspect: {
@@ -103,7 +103,7 @@ const oAuthServerSchema = {
       append_path: false,
       enable_load_balancing: false,
       methods: [],
-      all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+      all_methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
       hosts: []
     },
     revoke: {
@@ -138,7 +138,7 @@ const oAuthServerSchema = {
       append_path: false,
       enable_load_balancing: false,
       methods: [],
-      all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+      all_methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
       hosts: []
     }
   },
@@ -215,7 +215,7 @@ const oAuthServerSchema = {
   cors_meta: {
     domains: ['*'],
     methods: [],
-    all_methods: ['ALL', 'CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
+    all_methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
     request_headers: ['Origin', 'Authorization', 'Content-Type'],
     exposed_headers: ['X-Debug-Token', 'X-Debug-Token-Link'],
     enabled: true
