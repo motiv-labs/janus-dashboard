@@ -46,7 +46,6 @@
       "append_path": false,
       "enable_load_balancing": false,
       "methods": [
-        "ALL"
       ],
       "hosts": []
     },
@@ -106,7 +105,7 @@
       "*"
     ],
     "methods": [
-      "ALL"
+      "GET"
     ],
     "request_headers": [
       "Origin",

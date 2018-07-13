@@ -45,9 +45,7 @@
       "strip_path": false,
       "append_path": false,
       "enable_load_balancing": false,
-      "methods": [
-        "ALL"
-      ],
+      "methods": [],
       "hosts": []
     },
     "revoke": {
@@ -106,7 +104,7 @@
       "*"
     ],
     "methods": [
-      "ALL"
+      "GET"
     ],
     "request_headers": [
       "Origin",
