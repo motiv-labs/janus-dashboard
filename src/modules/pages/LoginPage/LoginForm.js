@@ -19,18 +19,19 @@ import './LoginForm.css'
 const b = block('login-form')
 
 const propTypes = {
-  authorizeThroughGithub: PropTypes.func.isRequired,
+  authenticateWithUsernamePassword: PropTypes.func.isRequired,
   errorMsg: PropTypes.string,
+  getGithubAuthorizationCode: PropTypes.func.isRequired,
   isFetching: PropTypes.bool.isRequired
 }
 
-const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetching, user, handleSubmit }) => {
-  const DISABLE_BASIC_AUTH_FORM = (window.MAIN_CONFIG.ui.disable_basic_auth === 'true')
-  const DISABLE_GITHUB_AUTH = (window.MAIN_CONFIG.ui.disable_github_auth === 'true')
+const LoginForm = ({ authenticateWithUsernamePassword, getGithubAuthorizationCode, errorMsg, isFetching, user, handleSubmit, config }) => {
+  const DISABLE_BASIC_AUTH_FORM = (config.ui.disable_basic_auth === 'true')
+  const DISABLE_GITHUB_AUTH = (config.ui.disable_github_auth === 'true')
 
   if (user) {
     history.push('/')
-    return
+    return null
   }
 
   if (isFetching) {
@@ -40,43 +41,58 @@ const LoginForm = ({ authorizeBasic, authorizeThroughGithub, errorMsg, isFetchin
   return (
     <div className={b({error: !!errorMsg})()}>
       <Logo className={b('logo')()} />
-      {
-        (!DISABLE_BASIC_AUTH_FORM || DISABLE_GITHUB_AUTH) &&
-          <Section className={b('login-section')()}>
-            <form onSubmit={handleSubmit(authorizeBasic)}>
-              <Row className={b('fields-section')()} col>
-                <Label>Username</Label>
-                <Field
-                  name='username'
-                  type='text'
-                  component={Input}
-                />
-                <Label htmlFor='password'>Password</Label>
-                <Field
-                  name='password'
-                  type='password'
-                  component={Input}
-                />
-              </Row>
-              {
-                errorMsg &&
-                  <small className={b('error-message')()}>
-                    { errorMsg }
-                  </small>
-              }
-              <Row className={b('button-section')()} col>
-                <Button className={b('button')()} mod='primary' type='submit'>
-                  Sign In
-                </Button>
-              </Row>
-            </form>
-          </Section>
-      }
+      <Section className={b('login-section')()}>
+        <form onSubmit={handleSubmit(authenticateWithUsernamePassword)}>
+          <Row className={b('janus-admin-url')()} col>
+            <Label>Janus Admin URL</Label>
+            <Field
+              name='admin_url'
+              type='text'
+              component={Input}
+              placeholder='http://localhost:8081'
+            />
+          </Row>
+          {
+            (!DISABLE_BASIC_AUTH_FORM || DISABLE_GITHUB_AUTH) &&
+              <React.Fragment>
+                <Row className={b('username')()} col>
+                  <Label>Username</Label>
+                  <Field
+                    name='username'
+                    type='text'
+                    component={Input}
+                  />
+                </Row>
+                <Row className={b('password')()} col>
+                  <Label htmlFor='password'>Password</Label>
+                  <Field
+                    name='password'
+                    type='password'
+                    component={Input}
+                  />
+                </Row>
+                {
+                  errorMsg &&
+                  <Row className={b('error')()} col>
+                    <small className={b('error-message')()}>
+                      { errorMsg }
+                    </small>
+                  </Row>
+                }
+                <Row className={b('button-section')()} col>
+                  <Button className={b('button')()} mod='primary' type='submit'>
+                    Sign In
+                  </Button>
+                </Row>
+              </React.Fragment>
+          }
+        </form>
+      </Section>
       {
         !DISABLE_GITHUB_AUTH &&
           <Section className={b('oauth-section')()} small>
             <Row className={b('button-section')()} col>
-              <Button className={b('button')()} mod='primary' type='button' onClick={authorizeThroughGithub}>
+              <Button className={b('button')()} mod='primary' type='button' onClick={handleSubmit(getGithubAuthorizationCode)}>
                 <Icon type='github' />
                 Login with GitHub
               </Button>
