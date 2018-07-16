@@ -9,17 +9,31 @@ const headers = {
 };
 
 const client = axios.create({
-    baseURL: process.env.REACT_APP_JANUS_URI || MAIN_CONFIG.gateway.uri,
+    baseURL: localStorage.admin_url,
     headers,
 });
 
-export const setAccessToken = (token, username='') => {
-    if (username) {
-      localStorage.setItem('username', username);
-    }
+export const setAccessToken = (token) => {
     localStorage.setItem('access_token', token);
     client.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
+
+export const setGatewayAdminURL = url => {
+    localStorage.setItem("admin_url", url)
+    client.defaults.baseURL = url;
+}
+
+export const setUserName = username => {
+    localStorage.setItem('username', username)
+}
+
+export const setCSRFToken = token => {
+    localStorage.setItem('csrf_token', token)
+}
+
+export const removeCSRFToken = () => {
+  localStorage.removeItem('csrf_token')
+}
 
 export const getAccessToken = () => {
     const token = localStorage.getItem('access_token');
@@ -40,9 +54,8 @@ export const setRefreshToken = token => localStorage.setItem('refresh_token', to
 
 export const getRefreshToken = () => localStorage.getItem('refresh_token');
 
-export const removeAccessToken = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('username');
+export const clearLocalStorage = () => {
+    localStorage.clear()
 }
 
 if (getAccessToken()) {

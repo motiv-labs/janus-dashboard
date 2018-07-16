@@ -1,14 +1,24 @@
 import { connect } from 'react-redux'
 
-import { getJWTtoken } from '../../../store/actions'
+import { authenticateWithGitHubAuthorizationCode } from '../../../store/actions'
 
-const AuthorizationCallback = props => {
-  props.getJWTtoken(document.location.hash)
+const AuthorizationCallback = ({
+  authenticateWithGitHubAuthorizationCode
+}) => {
+  const authorizationCode = getParam('code', window.location.search)
+  const csrfToken = getParam('state', window.location.search)
+
+  authenticateWithGitHubAuthorizationCode(authorizationCode, csrfToken)
 
   return null
 }
 
 export default connect(
   null, // mapStateToProps
-  { getJWTtoken }
+  { authenticateWithGitHubAuthorizationCode }
 )(AuthorizationCallback)
+
+function getParam (param, string) {
+  const params = new URLSearchParams(string)
+  return params.get(param)
+}
