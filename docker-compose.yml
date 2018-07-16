@@ -8,10 +8,9 @@ services:
         - "8082:8082"
       environment:
         REACT_APP_JANUS_URI: http://localhost:8081
-        REACT_APP_CLIENT_ID: yourClientID
-        REACT_APP_SCOPE: read:org
-        REACT_APP_GITHUB_TOKEN_URL:  http://localhost:8080/auth/github/token
-        REACT_APP_JANUS_TOKEN_URL: http://localhost:8081
         REACT_APP_GITHUB_AUTHORIZE_URL: http://localhost:8080/auth/github/authorize
+        REACT_APP_GITHUB_CLIENT_ID: yourClientID
+        REACT_APP_GITHUB_SCOPE: read:org
+        REACT_APP_GITHUB_TOKEN_URL:  http://localhost:8080/auth/github/token
         REACT_APP_DISABLE_BASIC_AUTH: "false"
         REACT_APP_DISABLE_GITHUB_AUTH: "false"

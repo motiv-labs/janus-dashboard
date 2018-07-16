@@ -1,11 +1,14 @@
 var MAIN_CONFIG = {
     gateway: {
-        client_id: '${REACT_APP_CLIENT_ID}',
-        scope: '${REACT_APP_SCOPE}',
-        github_token_url: '${REACT_APP_GITHUB_TOKEN_URL}',
-        janus_token_url: '${REACT_APP_JANUS_TOKEN_URL}',
-        github_authorize_url: '${REACT_APP_GITHUB_AUTHORIZE_URL}',
-        uri: '${REACT_APP_JANUS_URI}',
+        admin_url: '${REACT_APP_JANUS_URI}',
+    },
+    oauth: {
+        github: {
+            authorize_url: '${REACT_APP_GITHUB_AUTHORIZE_URL}',
+            client_id: '${REACT_APP_GITHUB_CLIENT_ID}',
+            scope: '${REACT_APP_GITHUB_SCOPE}',
+            token_url: '${REACT_APP_GITHUB_TOKEN_URL}',
+        },
     },
     ui: {
         disable_basic_auth: '${REACT_APP_DISABLE_BASIC_AUTH}',
