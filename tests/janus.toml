@@ -18,6 +18,10 @@ port = 8080
     [web.credentials.basic]
     users = {admin = "admin"}
 
+    [web.credentials.github]
+    organizations = ["hellofresh"]
+    teams = {hellofresh = "devs"}
+
 [database]
 dsn = "mongodb://janus-database:27017/janus"
 
