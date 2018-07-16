@@ -69,6 +69,7 @@ client.interceptors.response.use(
             return Promise.reject(error);
         }
 
+        clearLocalStorage();
         history.push('/login');
 
         return Promise.reject({
