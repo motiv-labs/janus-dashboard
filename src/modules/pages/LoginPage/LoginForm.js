@@ -25,7 +25,15 @@ const propTypes = {
   isFetching: PropTypes.bool.isRequired
 }
 
-const LoginForm = ({ authenticateWithUsernamePassword, getGithubAuthorizationCode, errorMsg, isFetching, user, handleSubmit, config }) => {
+const LoginForm = ({
+  authenticateWithUsernamePassword,
+  getGithubAuthorizationCode,
+  errorMsg,
+  isFetching,
+  user,
+  handleSubmit,
+  config
+}) => {
   const DISABLE_BASIC_AUTH_FORM = (config.ui.disable_basic_auth === 'true')
   const DISABLE_GITHUB_AUTH = (config.ui.disable_github_auth === 'true')
 

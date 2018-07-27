@@ -66,6 +66,7 @@ export const getGitHubAccessToken = (authorizationCode, csrfToken) => async disp
     const token = getParam('access_token', response.data)
 
     dispatch(requestComplete())
+
     return token
   } catch (error) {
     dispatch(requestFailure())
@@ -81,19 +82,21 @@ export const getGithubAuthorizationCode = payload => async dispatch => {
 
   // Direct user to GitHub Authorization Page
   const csrfToken = getRandomString()
-  setCSRFToken(csrfToken)
   const params = createParams({
     client_id: config.oauth.github.client_id,
     response_type: 'code',
     scope: config.oauth.github.scope,
     state: csrfToken
   })
+
+  setCSRFToken(csrfToken)
   window.location.href = `${config.oauth.github.authorize_url}?${params.toString()}`
 }
 
 export const authenticateWithGitHubAuthorizationCode = (authorizationCode, state) => async dispatch => {
   try {
     const githubToken = await dispatch(getGitHubAccessToken(authorizationCode, state))
+
     dispatch(authenticateWithGitHubToken(githubToken))
   } catch (error) {
     dispatch(openResponseModal({

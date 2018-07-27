@@ -20,5 +20,6 @@ export default connect(
 
 function getParam (param, string) {
   const params = new URLSearchParams(string)
+
   return params.get(param)
 }
