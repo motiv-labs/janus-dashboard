@@ -17,8 +17,8 @@
         "methods": ["ALL"],
         "hosts": [],
         "forwarding_timeouts": {
-            "dial_timeout": 30000000000,
-            "response_header_timeout": 30000000000
+            "dial_timeout": "30s",
+            "response_header_timeout": "30s"
         }
     },
     "plugins": [],
@@ -27,4 +27,3 @@
         "timeout": 3
     }
 }
-
