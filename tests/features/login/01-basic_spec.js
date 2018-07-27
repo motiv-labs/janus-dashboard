@@ -19,9 +19,6 @@ describe('Login page', () => {
     cy.get('button.login-form__button')
       .click()
 
-    cy.location()
-      .its('pathname')
-      .should('eq', '/')
     cy.get('.j-header__user-name')
       .contains(USERNAME)
     cy.window().should(() => {
