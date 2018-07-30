@@ -13,15 +13,18 @@ $form-padding-top: 70px;
         background-color: $hf-color-white;
         border: $hf-border;
         border-radius: $hf-border-radius;
+        padding: $hf-padding-middle $hf-padding-big;
+        margin-top: $hf-padding-row;
+
+        &:first-of-type {
+            margin-top: 0;
+            padding-top: $form-padding-top;
+        }
     }
 
     .j-input {
         width: 300px;
         margin-bottom: $hf-padding-row;
-    }
-
-    & > div:first-of-type {
-        padding: $form-padding-top $hf-padding-big $hf-padding-big;
     }
 
     &--error {
@@ -53,10 +56,6 @@ $form-padding-top: 70px;
             display: flex;
             justify-content: center;
         }
-    }
-
-    &__login-section + &__oauth-section {
-        margin-top: $hf-padding-row;
     }
 
     &__error-message {
