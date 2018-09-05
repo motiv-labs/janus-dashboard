@@ -11,6 +11,7 @@ import Row from '../../../Layout/Row/Row'
 import Label from '../../../../components/Label/Label'
 import Input from '../../../inputs/Input'
 import Hint from '../../../../components/Hint/Hint'
+import Radio from '../../../../components/Radio/Radio'
 import ControlBar from '../ControlBar/ControlBar'
 import MultiSelect from '../../../selects/MultiSelect/MultiSelect'
 import TagSelect from '../../../selects/TagSelect/TagSelect'
@@ -114,6 +115,39 @@ class CorsPlugin extends PureComponent {
               <Hint>Value for the Access-Control-Expose-Headers header.</Hint>
             </Row>
           </Row>
+          <Row className={b('row')()} fullwidth>
+            <Row col>
+              <Label>Options Passthrough</Label>
+              <Row className={b('radio-wrap')()}>
+                <Row className={b('radio')()}>
+                  <Field
+                    name={`${name}.config.options_passthrough`}
+                    component={Radio}
+                    value
+                    normalize={normalizeBoolean}
+                    type='radio'
+                    id='options-passthrough-true'
+                    disabled={previewPage}
+                  />
+                  <Label htmlFor='options-passthrough-true'>Yes</Label>
+                </Row>
+                <Row className={b('radio')()}>
+                  <Field
+                    name={`${name}.config.options_passthrough`}
+                    component={Radio}
+                    value={false}
+                    normalize={normalizeBoolean}
+                    type='radio'
+                    id='options-passthrough-false'
+                    disabled={previewPage}
+                  />
+                  <Label htmlFor='options-passthrough-false'>No</Label>
+                </Row>
+              </Row>
+              <Hint>Instructs preflight to let other potential next handlers to process the OPTIONS method</Hint>
+            </Row>
+            <React.Fragment />
+          </Row>
         </div>
       )
     };
@@ -122,3 +156,9 @@ class CorsPlugin extends PureComponent {
 CorsPlugin.propTypes = propTypes
 
 export default CorsPlugin
+
+function normalizeBoolean (value) {
+  if (value === 'true') return true
+  if (value === 'false') return false
+  return value
+}
