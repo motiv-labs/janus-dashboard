@@ -6,7 +6,8 @@
       "domains": ["*"],
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE"],
       "request_headers": ["Origin", "Authorization", "Content-Type"],
-      "exposed_headers": ["X-Debug-Token", "X-Debug-Token-Link"]
+      "exposed_headers": ["X-Debug-Token", "X-Debug-Token-Link"],
+      "options_passthrough": false
     }
   },
   {
