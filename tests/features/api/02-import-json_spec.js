@@ -23,6 +23,9 @@ describe('Import JSON', () => {
       cy.get('.uploader')
         .trigger('drop', dropEvent).then(() => {
 
+        // Wait until editor appears, indicating successful upload
+        cy.get('#gw-json-editor')
+
         // Confirm upload
         cy.get('.j-confirmation-container > .j-confirmation__buttons-group > .j-button--primary')
           .click({ force: true })
