@@ -46,7 +46,8 @@ const schema = {
         domains: ['*'],
         methods: ['CONNECT', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'POST', 'PUT', 'PATCH'],
         request_headers: ['Origin', 'Authorization', 'Content-Type'],
-        exposed_headers: ['X-Debug-Token', 'X-Debug-Token-Link']
+        exposed_headers: ['X-Debug-Token', 'X-Debug-Token-Link'],
+        options_passthrough: false
       }
     },
     {
