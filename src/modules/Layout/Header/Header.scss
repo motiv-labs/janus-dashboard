@@ -13,10 +13,12 @@ $logo-part-width: 100px + $hf-padding-big;
 
     &__col {
         align-self: center;
-    }
 
-    &__col {
-        align-self: center;
+        &--right {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
     }
 
     &__logo {
@@ -28,10 +30,18 @@ $logo-part-width: 100px + $hf-padding-big;
         background-size: contain;
     }
 
+    &__warning .j-tooltip__content {
+        min-width: 180px;
+        font-size: $hf-font-size-base;
+        line-height: $hf-line-height-title;
+    }
+
     &__user {
         display: flex;
         justify-content: flex-end;
         height: $hf-height-header;
+        padding-left: $hf-gutter;
+        min-width: 100px;
 
         &-name {
             position: relative;

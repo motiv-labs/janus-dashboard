@@ -4,8 +4,12 @@ import { Link } from 'react-router-dom'
 
 import block from '../../../helpers/bem-cn'
 import Nav from '../Nav/Nav'
+import Icon from '../../../components/Icon/Icon'
+import Tooltip from '../../../components/Tooltip/Tooltip'
 
 import './Header.css'
+
+const config = window.MAIN_CONFIG
 
 const b = block('j-header')
 
@@ -27,15 +31,25 @@ const Header = ({ logout, user }) => {
           <Nav />
         </div>
         <div className={b('col', { right: true })()}>
-          {
-            user &&
-            <div className={b('user')()}>
-              <div className={b('user-name')()}>
-                {user}
-                <div className={b('user-menu')()} onClick={logout}>Logout</div>
+          <React.Fragment>
+            {
+              config.gateway.admin_url && (window.localStorage.admin_url !== config.gateway.admin_url) &&
+                <div className={b('warning')()}>
+                  <Tooltip label={<Icon type='warning' />}>
+                    Currently connected to non-default Janus backend.
+                  </Tooltip>
+                </div>
+            }
+            {
+              user &&
+              <div className={b('user')()}>
+                <div className={b('user-name')()}>
+                  {user}
+                  <div className={b('user-menu')()} onClick={logout}>Logout</div>
+                </div>
               </div>
-            </div>
-          }
+            }
+          </React.Fragment>
         </div>
       </header>
     )
