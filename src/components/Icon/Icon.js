@@ -23,7 +23,8 @@ const propTypes = {
     'view', // green eye
     'github',
     'remove', // red minus
-    'successful-white' // white success symbol
+    'successful-white', // white success symbol
+    'warning'
   ]).isRequired
 }
 
