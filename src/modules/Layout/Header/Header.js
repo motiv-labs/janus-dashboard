@@ -33,7 +33,7 @@ const Header = ({ logout, user }) => {
         <div className={b('col', { right: true })()}>
           <React.Fragment>
             {
-              window.localStorage.admin_url !== config.gateway.admin_url &&
+              config.gateway.admin_url && (window.localStorage.admin_url !== config.gateway.admin_url) &&
                 <div className={b('warning')()}>
                   <Tooltip label={<Icon type='warning' />}>
                     Currently connected to non-default Janus backend.
