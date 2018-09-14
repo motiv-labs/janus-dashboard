@@ -1,0 +1,63 @@
+@import 'variables.scss';
+
+$tooltip-position: calc(#{$hf-gutter} + 100%);
+
+.j-tooltip {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+
+    &__content {
+        visibility: hidden;
+        min-width: 180px;
+        padding: 8px;
+        text-align: center;
+        position: absolute;
+        left: 50%;
+        z-index: 99999;
+        background: $hf-color-white;
+        box-shadow: 0 0 2px 0 rgba(0,0,0,0.5);
+        border: 1px solid $hf-color-muted;
+        border-radius: 4px;
+        font-weight: normal;
+        opacity: 0;
+        transition: opacity $hf-time ease, visibility 0s ease $hf-time, transform $hf-time ease;
+        transform: translate(-50%, 8px);
+
+        &:before {
+            content: '';
+            width: 100%;
+            height: $hf-gutter;
+            position: absolute;
+            left: 0;
+            opacity: 0;
+        }
+    }
+
+    &--position-top > &__content {
+        top: auto;
+        bottom: $tooltip-position;
+
+        &:before {
+            top: 100%;
+            bottom: auto;
+        }
+    }
+
+    &--position-bottom > &__content {
+        bottom: auto;
+        top: $tooltip-position;
+
+        &:before {
+            top: auto;
+            bottom: 100%;
+        }
+    }
+
+    &:hover > &__content {
+        visibility: visible;
+        opacity: 1;
+        transition-delay: 0s;
+        transform: translate(-50%, 0);
+    }
+}
