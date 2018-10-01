@@ -5,7 +5,6 @@ import {
 } from 'react-router-dom'
 
 import block from '../../../helpers/bem-cn'
-import isNoSearchResults from '../../../helpers/isNoSearchResults'
 
 import PaginatedList from '../../PaginatedList/PaginatedList'
 import Button from '../../../components/Button/Button'
@@ -166,11 +165,11 @@ class ApiList extends PureComponent {
         )
       }
 
-      if (isNoSearchResults(this.props.searchQuery)) {
+      if (this.props.apiList.isFetching) {
+        return <Preloader />
+      } else {
         return <NoSearchResults />
       }
-
-      return <Preloader />
     }
 }
 
