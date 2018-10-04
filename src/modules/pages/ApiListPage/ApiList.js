@@ -167,9 +167,9 @@ class ApiList extends PureComponent {
 
       if (this.props.apiList.isFetching) {
         return <Preloader />
-      } else {
-        return <NoSearchResults />
       }
+
+      return <NoSearchResults />
     }
 }
 
