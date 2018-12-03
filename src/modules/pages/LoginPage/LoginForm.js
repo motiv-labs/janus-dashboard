@@ -46,6 +46,8 @@ const LoginForm = ({
     return <Preloader />
   }
 
+  const required = value => value ? undefined : 'Required'
+
   return (
     <div className={b({error: !!errorMsg})()}>
       <Logo className={b('logo')()} />
@@ -57,6 +59,7 @@ const LoginForm = ({
               name='admin_url'
               type='text'
               component={Input}
+              validate={[ required ]}
               placeholder='http://localhost:8081'
             />
           </Row>
