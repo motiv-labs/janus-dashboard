@@ -78,7 +78,7 @@ export const getGitHubAccessToken = (authorizationCode, csrfToken) => async disp
 
 export const getGithubAuthorizationCode = payload => async dispatch => {
   dispatch(requestStart())
-  setGatewayAdminURL(payload.admin_url)
+  setGatewayAdminURL(stripTrailingSlash(payload.admin_url))
 
   // Direct user to GitHub Authorization Page
   const csrfToken = getRandomString()
@@ -110,15 +110,17 @@ export const authenticateWithUsernamePassword = payload => async dispatch => {
   dispatch(requestStart())
   dispatch(loginRequest())
 
+  const gatewayAdminURL = stripTrailingSlash(payload.admin_url)
+
   try {
-    const url = `${payload.admin_url}/login`
+    const url = `${gatewayAdminURL}/login`
     const response = await axios.post(url, {
       username: payload.username,
       password: payload.password
     })
 
     setAccessToken(response.data.access_token)
-    setGatewayAdminURL(payload.admin_url)
+    setGatewayAdminURL(gatewayAdminURL)
     setUserName(payload.username)
     history.push('/')
     dispatch(getUserStatus())
@@ -207,4 +209,8 @@ function createParams (params) {
 function getParam (param, string) {
   const params = new URLSearchParams(string)
   return params.get(param)
+}
+
+function stripTrailingSlash (s) {
+  return s.replace(/\/$/, '')
 }
