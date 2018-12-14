@@ -23,6 +23,11 @@ const validation = pattern => value => {
 
       return urlRegex.test(value)
     }
+    case 'url-with-named-parameter': {
+      const urlRegex = /^https?:\/\/[\w\d\-/:.]+?(?:\/?[\w\d\-?={}]*)$/
+
+      return urlRegex.test(value)
+    }
     default: {
       const fn = p => new RegExp(`^${pattern}`).test(value)
 

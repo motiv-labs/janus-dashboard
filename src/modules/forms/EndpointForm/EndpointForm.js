@@ -123,7 +123,7 @@ class EndpointForm extends PureComponent {
             suffix='target'
             title='Targets'
             placeholder='Target'
-            isValidate='url'
+            isValidate='url-with-named-parameter'
             warningMessage={WARNINGS.URL}
             disabled={this.props.previewPage}
           />
@@ -134,7 +134,7 @@ class EndpointForm extends PureComponent {
           <WeightTargets
             name='proxy.upstreams.targets'
             title='Targets'
-            isValidate='url'
+            isValidate='url-with-named-parameter'
             warningMessage={WARNINGS.URL}
             disabled={this.props.previewPage}
           />
