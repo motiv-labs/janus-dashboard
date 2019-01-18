@@ -63,6 +63,8 @@ export const resetEndpoint = () => ({
 
 export const redirectToApiList = () => history.push('/')
 
+export const redirectToApiPage = apiName => history.push(`/${apiName}`)
+
 /**
  * @name fetchEndpoint
  * @param {String} endpointName - name of target endpoint.
@@ -336,7 +338,7 @@ export const saveEndpoint = ({ isEditing }) => api => async (dispatch, getState)
     dispatch(saveEndpointSuccess(api))
 
     if (!isEditing) {
-      redirectToApiList()
+      redirectToApiPage(api.name)
       dispatch(fetchEndpoints())
     }
   } catch (error) {
@@ -355,11 +357,10 @@ export const deleteEndpointRequest = () => ({
   type: DELETE_ENDPOINT_START
 })
 
-export const deleteEndpointSuccess = endpointName => console.error('endpointName', endpointName) ||
- ({
-   type: DELETE_ENDPOINT_SUCCESS,
-   payload: endpointName
- })
+export const deleteEndpointSuccess = endpointName => ({
+  type: DELETE_ENDPOINT_SUCCESS,
+  payload: endpointName
+})
 
 export const deleteEndpointFailure = () => ({
   type: DELETE_ENDPOINT_FAILURE
