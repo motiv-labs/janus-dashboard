@@ -10,7 +10,6 @@ import PLACEHOLDER from '../../../configurations/placeholders.config'
 import WARNINGS from '../../../configurations/warning-messages.config'
 
 import block from '../../../helpers/bem-cn'
-import checkOnPattern from '../../../helpers/pattern-check'
 import optionsTransformer from '../../../helpers/optionsTransformer'
 import getValues from '../../../helpers/getValues'
 import parse from '../../../helpers/parse-value'
@@ -295,7 +294,6 @@ class OAuthServerForm extends PureComponent {
                     type='text'
                     component={Input}
                     disabled={editing}
-                    validate={checkOnPattern('name')}
                     required
                   />
                   <span className='j-input__warning'>{WARNINGS.NAMES}</span>
