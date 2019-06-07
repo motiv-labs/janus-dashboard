@@ -9,6 +9,7 @@ import Row from '../../../Layout/Row/Row'
 import Label from '../../../../components/Label/Label'
 import Input from '../../../inputs/Input'
 import Hint from '../../../../components/Hint/Hint'
+import Radio from '../../../../components/Radio/Radio'
 import ControlBar from '../ControlBar/ControlBar'
 import SimpleSelect from '../../../selects/SimpleSelect/SimpleSelect'
 
@@ -112,6 +113,7 @@ class RateLimitPlugin extends PureComponent {
                 disabled={previewPage}
               />
             </Row>
+            <br />
             <Row col>
               <Label>Limit Unit</Label>
               <Field
@@ -127,21 +129,54 @@ class RateLimitPlugin extends PureComponent {
             <Hint>The maximum number of requests that the Gateway will forward to the upstream_path.</Hint>
           </Row>
           <Row col>
-            <Label>Policy</Label>
-            <Field
-              className='j-select'
-              name={`${name}.config.policy.selected`}
-              type='text'
-              searchable={false}
-              clearable={false}
-              options={plugin.config.policy.options}
-              onChange={this.handleChangeSelectedPolicy}
-              value={this.state.selectedPolicy}
-              component={SimpleSelect}
-              disabled={previewPage}
-            />
-            <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
-            { this.renderRedisOptions(this.props.pluginFromValues.config.policy.selected) }
+            <Row col>
+              <Label>Policy</Label>
+              <Field
+                className='j-select'
+                name={`${name}.config.policy.selected`}
+                type='text'
+                searchable={false}
+                clearable={false}
+                options={plugin.config.policy.options}
+                onChange={this.handleChangeSelectedPolicy}
+                value={this.state.selectedPolicy}
+                component={SimpleSelect}
+                disabled={previewPage}
+              />
+              <Hint>The type of rate-limiting policy used for retrieving and incrementing the limits.</Hint>
+              { this.renderRedisOptions(this.props.pluginFromValues.config.policy.selected) }
+            </Row>
+            <br />
+            <Row col>
+              <Label>Trust Forward Headers</Label>
+              <Row className={b('radio-wrap')()}>
+                <Row className={b('radio')()}>
+                  <Field
+                    name={`${name}.config.trust_forwarded_headers`}
+                    component={Radio}
+                    value
+                    normalize={normalizeBoolean}
+                    type='radio'
+                    id='trust-forward-headers-true'
+                    disabled={previewPage}
+                  />
+                  <Label htmlFor='options-passthrough-true'>Yes</Label>
+                </Row>
+                <Row className={b('radio')()}>
+                  <Field
+                    name={`${name}.config.trust_forwarded_headers`}
+                    component={Radio}
+                    value={false}
+                    normalize={normalizeBoolean}
+                    type='radio'
+                    id='trust-forward-headers-false'
+                    disabled={previewPage}
+                  />
+                  <Label htmlFor='options-passthrough-false'>No</Label>
+                </Row>
+              </Row>
+              <Hint>Determines whether <code>X-Forwarded-For</code> and <code>X-Real-IP</code> request headers should be trusted.</Hint>
+            </Row>
           </Row>
         </Row>
       </div>
@@ -152,3 +187,9 @@ class RateLimitPlugin extends PureComponent {
 RateLimitPlugin.propTypes = propTypes
 
 export default RateLimitPlugin
+
+function normalizeBoolean (value) {
+  if (value === 'true') return true
+  if (value === 'false') return false
+  return value
+}

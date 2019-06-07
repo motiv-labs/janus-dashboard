@@ -73,7 +73,8 @@ const schema = {
               value: 'redis'
             }
           ]
-        }
+        },
+        trust_forwarded_headers: false
       }
     },
     {
