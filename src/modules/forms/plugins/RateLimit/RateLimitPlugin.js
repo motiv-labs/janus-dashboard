@@ -152,7 +152,7 @@ class RateLimitPlugin extends PureComponent {
               <Row className={b('radio-wrap')()}>
                 <Row className={b('radio')()}>
                   <Field
-                    name={`${name}.config.trust_forwarded_headers`}
+                    name={`${name}.config.trust_forward_headers`}
                     component={Radio}
                     value
                     normalize={normalizeBoolean}
@@ -164,7 +164,7 @@ class RateLimitPlugin extends PureComponent {
                 </Row>
                 <Row className={b('radio')()}>
                   <Field
-                    name={`${name}.config.trust_forwarded_headers`}
+                    name={`${name}.config.trust_forward_headers`}
                     component={Radio}
                     value={false}
                     normalize={normalizeBoolean}
