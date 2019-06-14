@@ -5,6 +5,11 @@
     color: $hf-color-gray-medium;
     line-height: $hf-line-height-medium;
 
+    code {
+        font-family: Monaco, monospace;
+        letter-spacing: -0.5px;
+    }
+
     &--title {
         margin-bottom: $hf-gutter;
     }
