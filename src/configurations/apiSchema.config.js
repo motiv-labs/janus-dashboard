@@ -74,7 +74,7 @@ const schema = {
             }
           ]
         },
-        trust_forwarded_headers: false
+        trust_forward_headers: false
       }
     },
     {
