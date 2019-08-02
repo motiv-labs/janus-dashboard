@@ -30,12 +30,16 @@ const getFilteredApiList = (apiList, searchQuery, sortingFilter, sortAscend) => 
         return list
     }
   }
-  const listFilteredAccordingToSearchQuery = list => list.filter(el => {
-    const searchIsActive = el.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase())
+  const listFilteredAccordingToSearchQuery = list => {
+    if (!list.filter) return false
 
-    return (searchIsActive) ? el : false
-  })
+    return list.filter(el => {
+      const searchIsActive = el.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+              el.proxy.listen_path.toLowerCase().includes(searchQuery.toLowerCase())
+
+      return (searchIsActive) ? el : false
+    })
+  }
 
   return R.compose(listFilteredAccordingToSearchQuery, sortedList)(
     apiList,
