@@ -11,11 +11,21 @@ services:
       - janus-database-seed
     volumes:
       - ./janus.toml:/etc/janus/janus.toml
+    healthcheck:
+      test: [ "CMD", "curl", "--fail", "localhost:8081/status" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   janus-database:
     image: mongo
     ports:
       - "27017:27017"
+    healthcheck:
+      test: "mongo localhost:27017/test --quiet --eval 'quit(db.runCommand({ ping: 1 }).ok ? 0 : 2)'"
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   janus-database-seed:
     build:
