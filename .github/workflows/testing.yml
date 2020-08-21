@@ -1,0 +1,24 @@
+name: Testing
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  cypress:
+    name: Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Spin up dependencies
+        run: ./tests/docker-compose-up.sh
+      - name: Run cypress tests
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+        env:
+          CYPRESS_ACCESS_TOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjIxNDc0ODM2NDgsImlhdCI6MCwiaXNfYWRtaW4iOnRydWUsInN1YiI6ImFjY2VwdGFuY2VfdGVzdCJ9.GEsz9zrpNo0N4uUD0amEr2ntRc1m9KPwvMsvU4p-MDk"
