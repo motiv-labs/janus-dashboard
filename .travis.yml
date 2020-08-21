@@ -1,7 +1,7 @@
 sudo: required
 language: node_js
 node_js:
-  - "10"
+  - "12"
 
 env:
   - DOCKER_COMPOSE_VERSION=1.20.1
@@ -21,7 +21,7 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
   # Pull cypress image
-  - docker pull cypress/browsers:chrome65-ff57
+  - docker pull cypress/browsers:node12.14.1-chrome83-ff77
 
 install: true
 
@@ -39,7 +39,7 @@ script:
     -e "CYPRESS_ACCESS_TOKEN=$CYPRESS_ACCESS_TOKEN"
     -e "CYPRESS_CACHE_FOLDER=/app/.cache/Cypress"
     --network="host"
-    cypress/browsers:chrome65-ff57
+    cypress/browsers:node12.14.1-chrome83-ff77
     /bin/sh -c
     '$(npm bin)/cypress run --browser chrome'
 
