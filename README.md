@@ -13,7 +13,7 @@ Execute the following command to start the dashboard using the latest Docker ima
 docker run -d \
 -p 8082:80 \
 --name janus-dashboard \
-quay.io/hellofresh/janus-dashboard
+hellofreshtech/janus-dashboard
 ```
 
 You can then visit http://localhost:8082 and start using the dashboard.
@@ -32,7 +32,7 @@ docker run -d \
 -e REACT_APP_GITHUB_SCOPE=read:org \
 -e REACT_APP_GITHUB_TOKEN_URL=http://localhost:8080/auth/github/token \
 --name janus-dashboard \
-quay.io/hellofresh/janus-dashboard
+hellofreshtech/janus-dashboard
 ```
 
 Supported environment variables:
@@ -64,7 +64,7 @@ $ npm run start
 This method will load `public/config.js` as the configuration. A sample of this file can be found in [/src/config.js.tmpl][5].
 
 [1]: https://github.com/hellofresh/janus
-[2]: https://quay.io/hellofresh/janus-dashboard
+[2]: https://hub.docker.com/r/hellofreshtech/janus-dashboard
 [3]: https://hellofresh.gitbooks.io/janus/quick_start/authenticating.html
 [4]: https://github.com/hellofresh/janus-dashboard/wiki/Configuring-GitHub-OAuth
 [5]: https://github.com/hellofresh/janus-dashboard/blob/master/src/config.js.tmpl
